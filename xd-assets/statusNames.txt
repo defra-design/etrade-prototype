@@ -1,0 +1,13 @@
+Draft
+Submitted to Certifier
+Certifier Approved
+In Progress With Certifier
+Certifier Rejected
+Cancelled
+Returned by Certifier
+Certifier Partially Approved
+Certifier Partially Rejected
+In Progress With APHA
+APHA Rejected
+Certifier Cancelled
+Certifier Partially Cancelled
