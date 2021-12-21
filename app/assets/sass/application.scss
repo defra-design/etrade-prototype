@@ -16,3 +16,74 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/related-items";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.defra-contents-title {
+    margin-bottom: .625rem;
+    font-weight: 400;
+}
+.defra-contents-list--dashed {
+    li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 7.5px;
+        &:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            width: 20px;
+            overflow: hidden;
+        }   
+    }
+}
+
+.defra-column-hr {
+    border-top: 2px solid $govuk-border-colour;
+    padding-top: 20px;
+}
+
+.defra-pagination {
+    display: block;
+    border-top: 2px solid $govuk-border-colour;
+    margin-top: 40px;
+    .defra-pagination--link {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: block;
+        text-decoration: none;
+        &:hover {
+            background-color: #f3f2f1;
+        }
+        
+        &:focus {
+            background-color: $govuk-focus-colour;
+        }
+    }
+
+        .defra-pagination--link-title {
+            display: block;
+        
+            .defra-pagination--link-text {
+                margin-left: 10px;
+                font-size: 19px;
+            }
+            .defra-pagination--divider {
+                position: absolute;
+                width: 1px !important;
+                height: 1px !important;
+                overflow: hidden !important;
+                white-space: nowrap !important;
+            }
+        }
+
+
+        .defra-pagination--label {
+            font-size: 16px;
+            margin-left: 30px;
+            text-decoration: underline;
+        }
+    
+}
+
+// helpers
+.m-l-15 {
+    margin-left: 15px;
+}
