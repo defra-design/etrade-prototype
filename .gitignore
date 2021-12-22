@@ -9,5 +9,5 @@ lib/extensions/_extensions.scss
 .port.tmp
 public
 node_modules/*
-!node_modules/govuk-frontend/govuk/components/defra/
+!node_modules/govuk-frontend/govuk/components/defra-step-by-step/
 .tmuxp.*
