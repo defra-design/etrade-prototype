@@ -80,7 +80,72 @@ $govuk-assets-path: '/govuk/assets/';
             margin-left: 30px;
             text-decoration: underline;
         }
-    
+}
+
+.govuk-width-container.defra-fullWidth--override {
+    width: 100%;
+    max-width: 100%;
+    .govuk-phase-banner {
+        max-width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.govuk-main-wrapper--spacing-override {
+    padding-top: 20px;
+}
+
+.defra-banner {
+    background-color: $govuk-link-colour;
+    color: #ffffff;
+    padding-top: 40px;
+    .govuk-heading-xl, p {
+        color: #ffffff;
+    }
+
+    .govuk-heading-xl {
+        margin-bottom: 20px;
+    }
+
+    .govuk-grid-column-two-thirds {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.govuk-button.defra-button-inverse {
+    background-color: #ffffff;
+    color: $govuk-link-colour;
+    font-weight: bold;
+}
+
+ul.defra-subscription-links {
+    padding-left: 0;
+    margin-top: 40px;
+    li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 20px;
+        a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-decoration: none;
+            svg {
+                margin-right: 7.5px;
+                color: #111111;
+            }
+            
+            &.bottom-border {
+                border-bottom: 1px solid #111111;
+            }
+            &.full-border {
+                padding-left: 10px;
+                padding-right: 10px;
+                border: 1px solid #111111;
+            }
+        }
+    }
 }
 
 // helpers
