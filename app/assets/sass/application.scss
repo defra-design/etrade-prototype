@@ -15,6 +15,8 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/task-list";
 @import "patterns/related-items";
 
+$backgroundGrey: #b1b4b6;
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 .defra-contents-title {
     margin-bottom: .625rem;
@@ -150,6 +152,72 @@ ul.defra-subscription-links {
 
 .defra-qr-image {
     display: block;
+}
+
+// step-by-step - top level 
+// These styles are for the top level step-by-step guide - it sits on its own page.
+ol.defra-step-nav {
+    padding-left: 0;
+    > li.defra-step-nav--step {
+        list-style: none;
+        position: relative;
+        padding-left: 4em;
+    }
+
+    // Heading styles
+    .defra-step-nav--header {
+        display: block;
+        border-top: 1px solid $backgroundGrey;
+        padding-top: 1em;
+    }
+    .defra-step-nav--circle-number {
+        position: absolute;
+        top: 0.8em;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        width: 32px;
+        border:1px solid $backgroundGrey;
+        border-radius: 50%;
+        
+        font-size: 19px;
+        font-weight: bold;
+    }
+    .defra-step-nav--expand {
+        @extend .defra-step-nav--show-all;
+        padding: 0.5rem 0;        
+        .defra-step-nav--toggle {
+            @extend .defra-step-nav--show-all-label;
+        }
+    }
+
+    // Body styles
+    .defra-step-nav--panel {
+        font-size: 19px;
+        margin-bottom: 3rem;
+        &.panel--is-closed {
+            display: none;
+        }
+    }
+}
+
+.defra-step-nav--show-all {
+    display: block;
+    font: normal normal 16px $govuk-font-family;
+    padding: 0.5rem 0;
+    color: $govuk-link-colour;
+    &:hover {
+        cursor: pointer;
+        .defra-step-nav--show-all-label {
+            text-decoration: underline;
+        }
+    }
+}
+.defra-step-nav--show-all-label {
+    vertical-align: top;
+    margin-right: 0.4rem;
 }
 
 // helpers
