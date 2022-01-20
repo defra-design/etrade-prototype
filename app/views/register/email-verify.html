@@ -1,0 +1,61 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+{% endblock %} 
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Enter code to confirm your email address
+      </h1>
+      <p class="govuk-body">We have sent a to: <strong>{{data['email-address']}}</strong></p>
+      <p class="govuk-body">This code will expire in 30 minutes</p>
+      <form action="details" method="post" class="form">
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {{ govukInput({
+          label: {
+            text: "Confirmation code"
+          },
+
+          id: "confirmation-code",
+          name: "confirmation-code"
+        }) }}
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I haven't recieved a code
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">The email may take a few minutes to arrive. Its subject line is: ‘Confirm your email address - Government Gateway’.</p>
+
+          <p class="govuk-body">Check your spam or junk folder – if it still has not arrived, you can <a href="#">request a new code</a> or <a href="email">provide another email address</a>.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+  
+{% endblock %}
