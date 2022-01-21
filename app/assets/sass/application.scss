@@ -157,7 +157,17 @@ ul.defra-subscription-links {
 // step-by-step - top level 
 // These styles are for the top level step-by-step guide - it sits on its own page.
 ol.defra-step-nav {
+    position: relative;
     padding-left: 0;
+    // line through step circles
+    &:before {
+        content: '';
+        position: absolute;
+        top: 2rem;
+        left: 17px;
+        height: 87%;
+        border-left: 1px solid $backgroundGrey;
+    }
     > li.defra-step-nav--step {
         list-style: none;
         position: relative;
@@ -181,6 +191,7 @@ ol.defra-step-nav {
         width: 32px;
         border:1px solid $backgroundGrey;
         border-radius: 50%;
+        background-color: #ffffff;
         
         font-size: 19px;
         font-weight: bold;
@@ -218,6 +229,10 @@ ol.defra-step-nav {
 .defra-step-nav--show-all-label {
     vertical-align: top;
     margin-right: 0.4rem;
+}
+
+.defra-step-nav--chevron.flipped svg {
+    transform: rotate3d(0,0,1,180deg);
 }
 
 // helpers
