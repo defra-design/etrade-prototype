@@ -235,7 +235,54 @@ ol.defra-step-nav {
     transform: rotate3d(0,0,1,180deg);
 }
 
+// Topic list
+// Can be found on the Explore APIs page.
+ul.defra-topic-list {
+    padding-left: 0;
+}
+
+li.defra-topic-list--topic {
+    list-style: none;
+    padding: 2rem 0 1rem;
+    .topic-header {
+        display: block;
+        &:after{
+            content:'';
+            display: block;
+            clear: both;
+        }
+    }
+    h2.topic-heading {
+        float: left;
+    }
+    span.topic-list-caption {
+        float: right;
+        line-height: 175%;
+    }
+}
+
+dl {
+    .dl-wrapper {
+        border-bottom: 1px solid $backgroundGrey;
+        display: flex;
+        font: 16px $govuk-font-family;
+        padding: 1rem 0;
+    }
+    dt {
+        width: 30%;
+        max-width: 250px;
+        font-weight: bold;
+    }
+    dd {
+        width: 65%;
+    }
+}
+
 // helpers
 .m-l-15 {
     margin-left: 15px;
+}
+
+.m-r-15 {
+    margin-right: 15px;
 }
