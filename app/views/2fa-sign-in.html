@@ -21,25 +21,35 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
-        Create sign in details
+        Enter 2 factor authentication code
       </h1>
-      <p class="govuk-body-m">Create an account to start using Defra APIs in your applications.</p>
-      <p class="govuk-body">Already registered? <a href="../sign-in">Sign in</a>.</p>
-      <p class="govuk-body">Please provide your email address. You will recieve a confirmation code to continue.</p>
-      <form action="email-verify" method="post" class="form">
+      <p class="govuk-body">Enter the 6 digit code from your authentication app.</p>
+      <form action="homepage-v2" method="post" class="form">
         {% from "govuk/components/input/macro.njk" import govukInput %}
         {{ govukInput({
           label: {
-            text: "Email address"
+            text: "Authentication code"
           },
-          id: "email-address",
-          name: "email-address"
+          id: "authentication-code",
+          name: "authentication-code",
+          classes: "govuk-input--width-10"
         }) }}
-        {% from "govuk/components/button/macro.njk" import govukButton %}
+        
 
         {{ govukButton({
-          text: "Continue"
+          text: "Sign in"
         }) }}
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              I cannot access my authentication app
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <a href="#">What to do if you cannot access your authentication app.</a>
+          </div>
+        </details>
       </form>
     </div>
   </div>
