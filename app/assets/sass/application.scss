@@ -286,6 +286,10 @@ dl {
     }
     dd {
         width: 65%;
+        span {
+            display: inline-block;
+            margin-bottom: .8rem;
+        }
     }
 }
 
@@ -304,7 +308,15 @@ dl {
 }
 
 .defra-searchbox {
-    display: flex;
+    input{
+        margin-bottom: 1rem;
+    }
+    @media screen and (min-width:760px) {
+        display: flex;
+        input {
+            margin-bottom: 0;
+        }
+    }
     
 }
 
