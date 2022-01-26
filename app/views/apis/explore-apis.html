@@ -27,10 +27,78 @@
 </div>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-third">
-        <h2 class="govuk-heading-s">Filter options:</h2>
-        <p class="govuk-body">A-Z</p>
-        <p class="govuk-body">Search</p>
-        <p class="govuk-body">Dev/UAT</p>
+        <div class="defra-page-search">
+            <label for="api-search" class="govuk-label">Search APIs</label>
+            <div class="defra-searchbox">
+                <input type="text" id="api-search" class="govuk-input" />
+                <button id="api-search-button" class="govuk-button">Search</button>
+            </div>
+        </div>
+        <div class="defra-page-search">
+            <h2 class="govuk-heading-s">Search A-Z</h2>
+            <ul class="defra-az-search">
+                <li><a href="#a" class="defra-az-search-item">A</a></li>
+                <li><a href="#b" class="defra-az-search-item">B</a></li>
+                <li><a href="#c" class="defra-az-search-item">C</a></li>
+                <li><a href="#d" class="defra-az-search-item">D</a></li>
+                <li><a href="#e" class="defra-az-search-item">E</a></li>
+                <li><a href="#f" class="defra-az-search-item">F</a></li>
+                <li><a href="#g" class="defra-az-search-item">G</a></li>
+                <li><a href="#h" class="defra-az-search-item">H</a></li>
+                <li><a href="#i" class="defra-az-search-item">I</a></li>
+                <li><a href="#j" class="defra-az-search-item">J</a></li>
+                <li><a href="#k" class="defra-az-search-item">K</a></li>
+                <li><a href="#l" class="defra-az-search-item">L</a></li>
+                <li><a href="#m" class="defra-az-search-item">M</a></li>
+                <li><a href="#n" class="defra-az-search-item">N</a></li>
+                <li><a href="#o" class="defra-az-search-item">O</a></li>
+                <li><a href="#p" class="defra-az-search-item">P</a></li>
+                <li><a href="#q" class="defra-az-search-item">Q</a></li>
+                <li><a href="#r" class="defra-az-search-item">R</a></li>
+                <li><a href="#s" class="defra-az-search-item">S</a></li>
+                <li><a href="#t" class="defra-az-search-item">T</a></li>
+                <li><a href="#u" class="defra-az-search-item">U</a></li>
+                <li><a href="#v" class="defra-az-search-item">V</a></li>
+                <li><a href="#w" class="defra-az-search-item">W</a></li>
+                <li><a href="#x" class="defra-az-search-item">X</a></li>
+                <li><a href="#y" class="defra-az-search-item">Y</a></li>
+                <li><span class="defra-az-search-item">Z</span></li>
+            </ul>
+
+        </div>
+        <div class="defra-page-search">
+            <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend">
+                <h2 class="govuk-fieldset__heading">Available API status</h2>
+            </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter-development" name="filter-development" type="checkbox" value="Development">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter-development">
+                    Development
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="filter-production" name="filter-production" type="checkbox" value="Production">
+                  <label class="govuk-label govuk-checkboxes__label" for="filter-production">
+                    Production
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter-uat" name="filter-uat" type="checkbox" value="UAT">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter-uat">
+                        UAT
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter-retired" name="filter-retired" type="checkbox" value="Retired">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter-retired">
+                        Retired
+                    </label>
+                </div>
+            </div>
+            </fieldset>
+        </div>
     </div>
     <div class="govuk-grid-column-two-thirds">
         <ul class="defra-topic-list">
