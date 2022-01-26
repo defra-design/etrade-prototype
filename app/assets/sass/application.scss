@@ -28,7 +28,14 @@ $backgroundGrey: #b1b4b6;
     margin-right: 15px;
 }
 
+.masthead {
+    background-color: #005ea5!important;
+    color: #ffffff;
+}
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+// // Contents list
+// Contents list dashed
 .defra-contents-title {
     margin-bottom: .625rem;
     font-weight: 400;
@@ -47,6 +54,22 @@ $backgroundGrey: #b1b4b6;
         }   
     }
 }
+
+// Contents list side
+// sticky, plain
+.defra-page-contents {
+    position: sticky;
+    top: 1rem;
+    ul {
+        top: 0;
+        padding-left: 0;
+        li {
+            list-style-type: none;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
 
 .defra-column-hr {
     border-top: 2px solid $govuk-border-colour;
@@ -273,7 +296,7 @@ li.defra-topic-list--topic {
 }
 
 dl {
-    .dl-wrapper {
+    div.defra-definition-wrapper {
         border-bottom: 1px solid $backgroundGrey;
         display: flex;
         font: 16px $govuk-font-family;

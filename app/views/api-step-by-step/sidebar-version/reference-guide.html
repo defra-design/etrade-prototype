@@ -1,0 +1,173 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  <div class="app-step-nav-header">
+    <span class="app-step-nav-header__part-of">Part of</span>
+    <a class="app-step-nav-header__title" href="#">
+      Defra API Developer Portal user guide
+    </a>
+  </div>
+{% endblock %} 
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Reference guide
+      </h1>
+
+      <h2 class="govuk-heading-s defra-contents-title">Contents</h2>
+      <ul class="govuk-list defra-contents-list--dashed">
+        <li><a href="#api-access" class="govuk-link">API access</a></li>
+        <li><a href="#oauth-2.0-browser-support" class="govuk-link">Browser support for OAuth 2.0</a></li>
+        <li><a href="#cors" class="govuk-link">Cross-origin resource sharing (CORS)</a></li>
+        <li><a href="#http-redirection" class="govuk-link">HTTP redirection</a></li>
+        <li><a href="#rate-limiting" class="govuk-link">Rate limiting</a></li>
+        <li><a href="#redirect-uris" class="govuk-link">Redirect URIs</a></li>
+        <li><a href="#scopes" class="govuk-link">Scopes</a></li>
+        <li><a href="#tls-standards" class="govuk-link">TLS standards</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds defra-column-hr">
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          Currently you can only integrate with our sandbox environment. Production integration will be possible when the APIs have reached BETA
+        </strong>
+      </div>
+      <p>Read the reference guide for actions you need to take to make sure your application integrates with Defra.</p>
+      <h2 id="api-access" class="govuk-heading govuk-heading-m">API access</h2>
+      <p>The base URL for sandbox APIs is:</p>
+      <pre class="code--block govuk-!-font-size-16">https://gateway.trade.defra.gov.uk/api/uat</pre>
+      <p>The base URL for production APIs is:</p>
+      <pre class="code--block govuk-!-font-size-16">https://gateway.trade.defra.gov.uk/api</pre>
+      <h2 id="oauth-2.0-browser-support" class="govuk-heading govuk-heading-m">Browser support for OAuth 2.0</h2>
+      <p>The OAuth 2.0 <a href="authorisation">authorisation journey</a> is designed to work with most modern browsers as per the list specified on <a href="https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in">Designing for different browsers and devices</a>, including mobile devices and tablets.</p>
+      <div class="govuk-inset-text">If you are using the Microsoft Web Browser Control embedded browser for the authorisation journey, be aware that by default this will operate in IE7 compatibility mode which we do not formally support. For details of one way to handle this, see <a href="https://blogs.msdn.microsoft.com/patricka/2015/01/12/controlling-webbrowser-control-compatibility/">Controlling WebBrowser Control Compatibility (opens in a new tab)</a>.</div>
+      <h2 id="cors" class="govuk-heading govuk-heading-m">Cross-origin resource sharing (CORS)</h2>
+      <p>The API Platform does not support <a href="https://fetch.spec.whatwg.org/#http-cors-protocol">cross-origin resource sharing (CORS) (opens in a new tab)</a>. It is therefore not possible to call our APIs from client-side code within a web browser, for example using Ajax.</p>
+
+      <h2 id="http-redirection" class="govuk-heading govuk-heading-m">HTTP redirection</h2>
+      <p>Our API Platform uses HTTP redirection if endpoints move permanently or temporarily.</p>
+      <p>Redirection responses have a <strong>Location</strong> header with the endpoint's new URI. </p>
+
+      <h2 id="rate-limiting" class="govuk-heading govuk-heading-m">Rate limiting</h2>
+      <p>We limit the number of requests each application can make. This protects our service against excessive use and Denial-of-Service attacks, and also encourages you to use our APIs efficiently.</p>
+      <p>We set limits based on anticipated loads and peaks. Our standard limit is 5 requests per second per application.</p>
+      <p>If you reach this limit you’ll get a response with an HTTP status of 429 (Too Many Requests). If a 429 response is received we recommend that your code should stop making additional API requests for a short period of time before retrying.</p>
+      <p>Our rate limits are designed to encourage real-time interactions. As such we advise software developers to avoid batching requests if they wish to avoid being rate limited.</p>
+      <p>If you continually hit this rate limit, <a href="mailto:tradeplatform@defra.gov.uk" title="Email the Trade Platform team">contact us</a> to discuss your application design and whether it’s appropriate to raise your rate limit.</p>
+      <h2 id="redirect-uris" class="govuk-heading govuk-heading-m">Redirect URIs</h2>
+      <p>We use redirect URIs to send the user back to your application after successful (or unsuccessful) authorisation, prior to your application accessing <a href="authorisation#user-restricted">user-restricted endpoints</a>.</p>
+      <p>You must specify one or more redirect URIs when you create your application, and also specify one redirect URI when you send your user to our authorisation endpoint.</p>
+      <p>To protect your application from phishing attacks, the redirect URI you use for authorisation (in your call to /oauth/authorize) must match one of those you specified when you created your application.</p>
+      <p>Also, you must use the same redirect URI when exchanging your authorisation code for an access token (in your call to /oauth/token) that you used for authorisation (in your call to /oauth/authorize).</p>
+      <p>You can specify a maximum of five redirect URIs.</p>
+      <h3 class="govuk-heading govuk-heading-s">Examples</h3>
+      <table class="govuk-table">
+        <caption class="govuk-table__caption">Examples of valid (and invalid) redirect URIs</caption>
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">Redirect URI</th>
+                <th class="govuk-table__header" scope="col">Comments</th>
+            </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">https://www.example.com/auth-redirect</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Valid</strong> - when creating your application, you can use the full redirect URI or a partial URI, for example: <br><br><span class="code--slim">https://www.example.com/auth-redirect</span> <br><br><span class="code--slim">https://www.example.com</span> <br><br>When calling our authorisation endpoint, your redirect URI must be percent-encoded, for example: <br><br><span class="code--slim">https%3A%2F%2Fwww.example.com%2Fauth-redirect</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">https://www.example.com:8080/auth-redirect</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Valid</strong> - includes a port number</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">http://www.example.com:8080/auth-redirect</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Invalid</strong> - uses HTTP, not HTTPS (HTTP is OK for installed applications - see example below)</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">/auth-redirect</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Invalid</strong> - is a relative URI, not an absolute URI</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">https://203.0.113.11/auth-redirect</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Invalid</strong> - uses an IP address, not a DNS name</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">https://www.example.com:8080/auth-redirect?some_parameter=some_value</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Valid</strong> - includes a query component</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">https://www.example.com:8080/auth-redirect#some_fragment</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Invalid</strong> - includes a fragment component</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">http://localhost:8080</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Valid</strong> - as explained in <a title="User-restricted endpoints" class="govuk-link" href="authorisation">OAuth 2.0 for installed applications</a></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">urn:ietf:wg:oauth:2.0:oob</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Valid</strong> - as explained in <a title="User-restricted endpoints" class="govuk-link" href="authorisation">OAuth 2.0 for installed applications</a></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><span class="code--slim">urn:ietf:wg:oauth:2.0:oob:auto</span></td>
+                <td class="govuk-table__cell"><strong class="bold-small">Valid</strong> - as explained in <a title="User-restricted endpoints" class="govuk-link" href="authorisation">OAuth 2.0 for installed applications</a></td>
+            </tr>
+        </tbody>
+    </table>
+      <h2 id="scopes" class="govuk-heading govuk-heading-m">Scopes</h2>
+      <p>We use the OAuth 2.0 framework to manage and grant scope based roles to users during the authorisation process to allow communication with our APIs.</p>
+      <p>For details about authorisation, see <a href="authorisation">this guide topic</a>.</p>
+      <h2 id="tls-standards" class="govuk-heading govuk-heading-m">TLS standards</h2>
+      <p>Defra APIs are only accessible over Transport Layer Security (TLS). For example, URLs that begin with https://.</p>
+      <p>Applications must support TLS 1.2 or higher to avoid known weaknesses in previous versions.</p>
+      <div class="defra-pagination">
+        <a href="authorisation" class="govuk-link defra-pagination--link">
+          <span class="defra-pagination--link-title">
+            <span class="defra-pagination--symbol">
+              <svg xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg>
+            </span>
+            <span class="defra-pagination--link-text">
+              Next
+            </span>
+            <span class="defra-pagination--divider govuk-visually-hidden">:</span>
+          </span>
+          <span class="defra-pagination--label">
+            Authorisation
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      {{ stepByStepNavigation(
+        {
+          id: 'defra-step-by-step-3',
+          currentDefaultStep: 3
+        }
+      ) }}
+
+    </div>
+
+  </div>
+{% endblock %}
