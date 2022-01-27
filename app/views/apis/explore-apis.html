@@ -15,6 +15,20 @@
       </span>
     </p>
   </div>
+  {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+  <div class="govuk-width-container defra-breadcrumbs">
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/homepage-v2"
+      },
+      {
+        text: "Explore APIs"
+      }
+    ]
+  }) }}
+  </div>
 {% endblock %} 
 {% block content %}
   <div class="govuk-grid-row">
@@ -120,7 +134,7 @@
                     </div> -->
                     <div class="defra-definition-wrapper">
                         <dt>Documentation</dt>
-                        <dd><a href="api-apply-for-an-ehc">View the <span class="govuk-visually-hidden">Apply for an Export Health Certificate</span> API documentation</a></dd>
+                        <dd><a href="api-apply-for-an-ehc-masthead">View the <span class="govuk-visually-hidden">Apply for an Export Health Certificate</span> API documentation</a></dd>
                     </div>
                     <div class="defra-definition-wrapper">
                         <dt>Available APIs</dt>

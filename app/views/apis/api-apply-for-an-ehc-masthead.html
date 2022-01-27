@@ -18,6 +18,24 @@
       </span>
     </p>
   </div>
+  {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+  <div class="govuk-width-container defra-breadcrumbs">
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/../"
+      },
+      {
+        text: "Explore APIs",
+        href: "explore-apis"
+      },
+      {
+        text: "Apply for an EHC"
+      }
+    ]
+  }) }}
+  </div>
 {% endblock %} 
 {% block content %}
 
@@ -37,7 +55,7 @@
     <div class="govuk-grid-row">
         <section class="govuk-grid-column-one-third defra-page-contents">
             <h2 class="govuk-heading-s">Page contents</h2>
-            <ul>
+            <ul class="defra-contents-list--dashed">
                 <li><a href="#">URLs</a></li>
                 <li><a href="#">Benefits of using this API</a></li>
                 <li><a href="#">What it can do</a></li>

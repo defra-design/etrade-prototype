@@ -40,11 +40,35 @@ $backgroundGrey: #b1b4b6;
     margin-bottom: .625rem;
     font-weight: 400;
 }
+ul.defra-contents-list {
+    ul {
+        margin-top: 1rem;
+    }
+    li.contents-list--active-item {
+        border-left: 4px solid  $govuk-link-colour;
+        padding: 5px 0 5px 10px;
+        margin-left: -14px;
+        > a {
+            font-weight: bold;
+        }
+    }
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+        &:visited {
+            color:  $govuk-link-colour;
+    
+        }
+    }
+}
+
 .defra-contents-list--dashed {
     li {
         position: relative;
-        padding-left: 30px;
-        margin-bottom: 7.5px;
+        padding-left: 20px;
+        margin-bottom: 6px;
         &:before {
             content: "—";
             position: absolute;
@@ -54,6 +78,8 @@ $backgroundGrey: #b1b4b6;
         }   
     }
 }
+
+
 
 // Contents list side
 // sticky, plain
@@ -126,6 +152,17 @@ $backgroundGrey: #b1b4b6;
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+.defra-breadcrumbs {
+    margin-bottom: 0;
+    + main.govuk-main-wrapper.govuk-main-wrapper--spacing-override {
+        padding-top: 0;
+    }
+    + main.govuk-main-wrapper.govuk-main-wrapper--auto-spacing {
+        padding-top: 20px;
+    }
+
 }
 
 .govuk-main-wrapper--spacing-override {

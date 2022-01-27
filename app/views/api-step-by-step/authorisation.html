@@ -16,33 +16,33 @@
       </span>
     </p>
   </div>
-  <div class="app-step-nav-header">
-    <span class="app-step-nav-header__part-of">Part of</span>
-    <a class="app-step-nav-header__title" href="#">
-      Defra API Developer Portal user guide
-    </a>
-  </div>
 {% endblock %} 
 {% block content %}
   <div class="govuk-grid-row">
+    <section class="govuk-grid-column-one-third defra-page-contents">
+      <ul class="defra-contents-list">
+          <li><a href="introduction">Introduction</a></li>
+          <li><a href="application-naming-guidelines">Application naming guidelines</a></li>
+          <li><a href="reference-guide">Reference guide</a></li>
+          <li class="contents-list--active-item">
+            <a href="authorisation">Authorisation</a>
+            <ul class="defra-contents-list--dashed">
+              <li>
+                <a class="govuk-link" href="#user-restricted">User-restricted</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#application-restricted">Application-restricted</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="sample-project">Sample project</a></li>
+          <li><a href="terms-of-use">Terms of use</a></li>
+      </ul>
+    </section>
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
         Authorisation
       </h1>
-
-      <h2 class="govuk-heading-s defra-contents-title">Contents</h2>
-      <ul class="govuk-list defra-contents-list--dashed">
-        <li>
-          <a class="govuk-link" href="#user-restricted">User-restricted</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="#application-restricted">Application-restricted</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds defra-column-hr">
       <div class="govuk-warning-text">
         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
         <strong class="govuk-warning-text__text">
@@ -75,18 +75,5 @@
         </a>
       </div>
     </div>
-
-    <div class="govuk-grid-column-one-third">
-
-      {{ stepByStepNavigation(
-        {
-          id: 'defra-step-by-step-4',
-          currentDefaultStep: 4
-        }
-      ) }}
-
-
-    </div>
-
   </div>
 {% endblock %}
