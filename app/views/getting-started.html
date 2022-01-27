@@ -15,6 +15,20 @@
       </span>
     </p>
   </div>
+  {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+  <div class="govuk-width-container defra-breadcrumbs">
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/homepage"
+      },
+      {
+        text: "Getting started"
+      }
+    ]
+  }) }}
+  </div>
 {% endblock %} 
 {% block content %}
   <div class="govuk-grid-row">
@@ -67,10 +81,10 @@
               <p class="govuk-body">All Defra APIs are fully documented</p>
               <ul class="govuk-list govuk-list--spaced">
                 <li>
-                  <a href="explore-apis">General documentation relating to using Defra's APIs</a>
+                  <a href="documentation/introduction">General documentation relating to using Defra's APIs</a>
                 </li>
                 <li>
-                  <a href="#">Technical Documentation on APIs</a>
+                  <a href="apis/explore-apis">Technical Documentation on APIs</a>
                 </li>
               </ul>
             </div>
@@ -114,7 +128,7 @@
               <p class="govuk-body">The demo project can be used to try out steps for authenticating a user</p>
               <ul class="govuk-list govuk-list--spaced">
                 <li>
-                  <a href="register/email">View a sample project</a>
+                  <a href="documentation/sample-project">View a sample project</a>
                 </li>
               </ul>
             </div>
@@ -136,7 +150,7 @@
               <p class="govuk-body">Create and test your application using DEFRA's sandbox environment</p>
               <ul class="govuk-list govuk-list--spaced">
                 <li>
-                  <a href="#">Create a sandbox application</a>
+                  <a href="sign-in/sign-in">Create a sandbox application</a>
                 </li>
               </ul>
             </div>

@@ -40,7 +40,11 @@ $backgroundGrey: #b1b4b6;
     margin-bottom: .625rem;
     font-weight: 400;
 }
+h2 + ul.defra-contents-list {
+    margin-top: 1rem;
+}
 ul.defra-contents-list {
+    margin-top:0;
     ul {
         margin-top: 1rem;
     }
