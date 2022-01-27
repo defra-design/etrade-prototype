@@ -46,6 +46,23 @@
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
+    navigation: [
+      {
+        href: "/getting-started",
+        text: "Getting started",
+        active: getStartedActive
+      },
+      {
+        href: "/apis/explore-apis",
+        text: "Explore APIs",
+        active: exploreAPIsActive
+      },
+      {
+        href: "/documentation/introduction",
+        text: "Documentation",
+        active: documentationActive
+      }
+    ],
     containerClasses: "govuk-width-container"
   }) }}
 {% endblock %}
