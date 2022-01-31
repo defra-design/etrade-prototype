@@ -1,0 +1,178 @@
+{% set exploreAPIsActive = true %}
+{% set mainClasses = "govuk-main-wrapper--spacing-override" %}
+
+{% extends "../../layout.html" %}
+
+{% block pageTitle %}
+  Explore APIs
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+  <div class="govuk-width-container defra-breadcrumbs">
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/../"
+      },
+      {
+        text: "Explore APIs",
+        href: "explore-apis"
+      },
+      {
+        text: "Apply for an EHC",
+        href: "../api-apply-for-an-ehc-masthead"
+      },
+      {
+          text: "API end points"
+      }
+    ]
+  }) }}
+  </div>
+{% endblock %} 
+{% block content %}
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <section class="govuk-grid-column-one-quarter defra-page-contents">
+          <ul class="defra-contents-list">
+            <li><a href="../api-apply-for-an-ehc-masthead">Overview</span></li>
+            <li><a href="ehc-available-ehcs">Available EHCs</a></li>
+            <li class="contents-list--active-item"><a href="ehc-endpoints">API end points</a></li>
+            <li><a href="ehc-schemas">API schemas</a></li>
+            <li><a href="ehc-payload-definition">Payload definition</a></li>
+            <li><a href="ehc-error-codes">Error codes</a></li>
+          </ul>
+        </section>
+        <div class="govuk-grid-column-three-quarters">
+          <h1 class="govuk-heading-l">API schemas</h1>
+          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            <div class="govuk-accordion__section ">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    <strong class="govuk-tag">GET</strong>
+                    /ehc-application-summary
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <p class="gov-uk">Retrieve summary and status information of your Export Health Certificate Applications with filtering and pagination.</p>
+                <table class="govuk-table">
+                  <thead class="govuk-table__head">
+                      <th class="govuk-table__header">Parameters name</th>
+                      <th class="govuk-table__header">Description</th>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">
+                            <span>modifiedSince</span>
+                            <br>
+                            <small>string</small>
+                            <br>
+                            <small>(Query)</small>
+
+                          </td>
+                          <td class="govuk-table__cell">
+                            <p class="govuk-body">Format - date-time (as date-time in RFC3339). Filter for applications that have changed since a date/time.</p>
+                            <div class="govuk-form-group">
+                              <label class="govuk-label-m" for="ModifiedSince">
+                                  Modified since
+                              </label>
+                              <input class="govuk-input" id="ModifiedSince" name="modified-since" type="text">
+                            </div>
+                          </td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                          <span>applicationStatuses</span>
+                          <br>
+                          <small>array</small>
+                          <br>
+                          <small>(Query)</small>
+                        </td>
+                        <td class="govuk-table__cell">
+                          <p class="govuk-body">Filter Applications that are in one of the specified statuses.</p>
+                          <div class="govuk-form-group">
+                            <label class="govuk-label-m" for="ApplicationStatuses">
+                                Application statuses
+                            </label>
+                            <input class="govuk-input" id="ApplicationStatuses" name="ApplicationStatuses" type="text">
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                          <span>pageNumber</span>
+                          <br>
+                          <small>integer</small>
+                          <br>
+                          <small>(Query)</small>
+                        </td>
+                        <td class="govuk-table__cell">
+                          <p class="govuk-body">Format - int64. Page number to return.</p>
+                          <div class="govuk-form-group">
+                            <label class="govuk-label-m" for="pageNumber">
+                                Page number
+                            </label>
+                            <input class="govuk-input" id="pageNumber" name="pageNumber" type="text">
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                          <span>pageSize</span>
+                          <br>
+                          <small>integer</small>
+                          <br>
+                          <small>(Query)</small>
+                        </td>
+                        <td class="govuk-table__cell">
+                          <p class="govuk-body">Format - int64. Page size to return.</p>
+                          <div class="govuk-form-group">
+                            <label class="govuk-label-m" for="pageNumber">
+                                Page size
+                            </label>
+                            <input class="govuk-input" id="pageNumber" name="pageNumber" type="text">
+                          </div>
+                        </td>
+                      </tr>
+                  </tbody>
+                </table>
+                <h3 class="govuk-heading-s">Try this API</h3>
+                <button class="govuk-button">Execute a request to this endpoint</button>
+                <h2 class="govuk-heading-m">Response <strong class="govuk-tag float-r">APPLICATION/JSON</strong></h2>
+                <table class="govuk-table">
+                  <thead class="govuk-table__head">
+                    <th class="govuk-table__header">Code</th>
+                    <th class="govuk-table__header">Description</th>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">200</td>
+                      <td class="govuk-table__cell">Successfully retrieved the listing of the Export Health Certificate Application summary details.</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">400</td>
+                      <td class="govuk-table__cell">The parameters specified were invalid. Please correct before trying again.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

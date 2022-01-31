@@ -28,6 +28,10 @@ $backgroundGrey: #b1b4b6;
     margin-right: 15px;
 }
 
+.float-r {
+    float: right;
+}
+
 .masthead {
     background-color: #005ea5!important;
     color: #ffffff;
@@ -227,6 +231,19 @@ ul.defra-subscription-links {
 
 .defra-qr-image {
     display: block;
+}
+
+.defra-code-tag {
+    display: inline-block;
+    background-color: #f7f7f7;
+    color: #0b0c0c;
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    font-size: 14px;
+    line-height: 1.1em;
+    white-space: pre-wrap;
+    padding: 2px 4px;
+    border: 1px solid #dfe0e7;
+    border-radius: 4px;
 }
 
 // step-by-step - top level 
