@@ -1,10 +1,11 @@
 {% set exploreAPIsActive = true %}
 {% set mainClasses = "govuk-main-wrapper--spacing-override" %}
+{% set containerClasses = "defra-fullWidth--override" %} 
 
 {% extends "../../layout.html" %}
 
 {% block pageTitle %}
-  Explore APIs
+  EHC API Available EHCs
 {% endblock %}
 
 {% block beforeContent %}
@@ -42,6 +43,14 @@
   </div>
 {% endblock %} 
 {% block content %}
+<div class="defra-banner govuk-clearfix">
+  <div class="govuk-width-container govuk-clearfix">
+    <div class="govuk-grid-column">
+      <h1 class="govuk-heading-xl">Apply for an Export Health Certificate</h1>
+      <br>
+    </div>
+  </div>
+</div>
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">

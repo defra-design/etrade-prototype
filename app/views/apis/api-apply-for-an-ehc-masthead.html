@@ -54,7 +54,7 @@
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
-        <section class="govuk-grid-column-one-third defra-page-contents">
+        <section class="govuk-grid-column-one-quarter defra-page-contents">
             <ul class="defra-contents-list">
               <li class="contents-list--active-item">
                 <a href="api-apply-for-an-ehc-masthead">Overview</span>
@@ -76,7 +76,7 @@
               <li><a href="./ehc/ehc-error-codes">Error codes</a></li>
 
         </section>
-        <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-three-quarters">
             
             <dl>
                 <div class="defra-definition-wrapper">
@@ -92,52 +92,65 @@
                     <dd><a href="#">https://gateway.trade.defra.gov.uk/trace-sci-exports/dev</a></dd>
                 </div>
             </dl>
-            <p class="govuk-body">Brief introduction paragraph</p>
+            <p class="govuk-body"> This API provides endpoints related to <a href="https://www.gov.uk/government/publications/how-to-register-for-export-health-certificate-ehc-online/ehc-online-apply-for-export-health-certificates#accessing-ehc-online">Export Health Certificates</a>.</p>
+            <p class="govuk-body">You can use the development api endpoint to test through the portal pages. To use the sandbox api endpoints you must use a registered application.</p>
             <a href="#" class="govuk-button">Read API specification</a>
-            <h2 class="govuk-heading-m">Benefits of using this API</h2>
-            <p class="govuk-body">Fuller description of the API across various paragraphs.</p>
-            <div class="govuk-warning-text">
-                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                <strong class="govuk-warning-text__text">
-                  <span class="govuk-warning-text__assistive">Warning</span>
-                  Any warnings that apply to the API at a high level.</strong>
-              </div>
-            <h3 class="govuk-heading-m">What it can do</h3>
-            <p class="govuk-body">This API can:</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>Benefits of this API</li>
-                <li>Benefits of this API</li>
-                <li>Benefits of this API</li>
-                <li>Benefits of this API</li>
-                <li>Benefits of this API</li>
-            </ul>
-            <h3 class="govuk-heading-m">What it cannot do</h3>
-            <p class="govuk-body">This API cannot:</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>Benefits of this API</li>
-                <li>Benefits of this API</li>
-                <li>Benefits of this API</li>
-            </ul>
-            <div class="govuk-warning-text">
-                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                <strong class="govuk-warning-text__text">
-                  <span class="govuk-warning-text__assistive">Warning</span>
-                  Anything important about the API here.</strong>
-              </div>
+            <p class="govuk-body">This API enables traders to apply for export health certificates, check the status of applications you’ve made, and check for validation errors on your applications. This is the first step towards enabling digital integration for moving agri-food goods.</p>
 
-            <h2 class="govuk-heading-m">API status</h2>
-            <p class="govuk-body">This API is in <span class="govuk-tag">private beta</span>, meaning:</p>
+            <p class="govuk-body">An export health certificate (EHC) is an official document that confirms your export meets the health requirements of the destination country.</p>
+            
+            <p class="govuk-body">You must apply for an EHC via this API if you’re exporting or moving live animals or animal products from Great Britain (England, Scotland and Wales) to, or through:</p>
             <ul class="govuk-list govuk-list--bullet">
-                <li>Warning</li>
-                <li>Warning</li>
+              <li>The European Union</li>
+              <li>Non European Union countries</li>
+              <li>Northern Ireland (NI)</li>
             </ul>
-            <h2 class="govuk-heading-m">Coming soon</h2>
-            <p class="govuk-body">We are working on letting users submit....</p>
-            <h2 class="govuk-heading-m">Who can use it</h2>
-            <p class="govuk-body">Traders, importers and agents...</p>
-            <h2 class="govuk-heading-m">How it works</h2>
-            <p class="govuk-body">Describe process.</p>
-            <a href="#" class="govuk-button">View specification for this API</a>
+            <p class="govuk-body">Further guidance on <a href="https://www.gov.uk/guidance/get-an-export-health-certificate">how to get an Export health certificate is available</a>.</p>
+            <p class="govuk-body">Fuller description of the API across various paragraphs.</p>
+            <h2 class="govuk-heading-m">Currently Supported EHCs</h2>
+            <p class="govuk-body">This API is currently a alpha version and only supports the submission of a restricted list of EHC application forms. The supported list can be found here.</p>
+            <h3 class="govuk-heading-s">Coming Soon</h3>
+            <p class="govuk-body">We will soon be releasing more supported EHC’s via the API. Below is a list of EHC’s you can expect to see soon:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Great Britain to Northern Ireland</li>
+              <li>Great Britain to European Union</li>
+            </ul>
+
+            <h2 class="govuk-heading-m">When to use this API</h2>
+            <p class="govuk-body">Use this API when you wish to apply for an export health certificate, which is required as part of the end to end process for exporting goods from Great Britain as detailed in step 4 in the high-level process below.</p>
+            <ol class="govuk-list govuk-list--number">
+                <li>Decide to export an animal or animal product</li>
+                <li>Access guidance and understand EHC requirements for your consignment</li>
+                <li>Contact your certifier/ OV who will be responsible for certifying your EHC before you </li>submit <li>your application Check status for the application </li>
+                <li>Submit your application for an EHC*</li>
+                <li>APHA review EHC application</li>
+                <li>Physical EHC issued with wet signature</li>
+                <li>Import notification is raised with destination authority</li>
+                <li>The physical EHC will accompany the consignment as it leaves the UK</li>
+            </ol>
+            <p class="govuk-body">* This API enables system to system calls enabling integration with traders supply chain or logistics management application software, to facilitate the process of applying for an Export Health Certificate, reducing the burden of data entry duplication.</p>
+            <h2 class="govuk-heading-m">Usage scenarios</h2>
+            <p class="govuk-body">In this sandbox, this API currently provides the following endpoints enabling you too:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Submit a new Export Health Certificate application</li>
+              <li>Get validation errors for a submitted application</li>
+              <li>Get the status for a submitted Export Health Certificate application by request Id</li>
+              <li>Get metadata required for a submission for an Export Health Certificate</li>
+              <li>Additional endpoints are provided for development and testing purposes to enable you to:</li>
+              <li>Retrieve sample payloads for supported Export Health Certificates</li>
+            </ul>
+
+            <h2 class="govuk-heading-m">Find an OV or Inspector for your Export</h2>
+            <p class="govuk-body">An <a href="http://apha.defra.gov.uk/official-vets/index.htm">official veterinarian</a> is someone who has been authorised by APHA to perform statutory duties (work that is required by law). Use this guide to <a href="https://www.gov.uk/government/publications/find-a-professional-to-certify-export-health-certificates">find a professional to certify your export health certificate</a>.</p>
+            
+            <p class="govuk-body">As part of your application, you will need to include a specified OV or local authority inspector, ensuring that you:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>Name them in your application</li>
+                <li>Check that they can inspect your consignment and sign your EHC in the days before your export</li>
+            </ul>
+            <p class="govuk-body">Defra will be providing, in a future iteration of this service, a reference data API to publish an approved list of OV/local authority inspectors to enable you to attach the relevant details to your application.</p>
+            <h2 class="govuk-heading-m">User Authentication</h2>
+            <p class="govuk-body">The endpoint in this API is <a href="../documentation/authorisation">user-restricted</a> and <a href="../documentation/authorisation">application-restricted</a>. Your users, before submitting transactions via the API, must have registered to use the Export Health Certificate online service, <a href="https://www.access.service.gov.uk/login/signin/creds">https://www.access.service.gov.uk/login/signin/creds</a>.</p>
         </div>
     </div>
   </div>
