@@ -432,3 +432,24 @@ dl {
         }
     }
 }
+
+// Visualising code
+.defra-code-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    pre {
+        padding: 5px;
+        box-sizing: border-box;
+        display: block;
+        background-color: #f3f2f1;
+        color: #0b0c0c;
+        overflow: auto;
+        font-size: 12px;
+        white-space: pre-wrap;
+    }
+    code {
+        display: inline-block;
+    }
+}
