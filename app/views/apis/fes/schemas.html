@@ -46,7 +46,7 @@
 <div class="defra-banner govuk-clearfix">
   <div class="govuk-width-container govuk-clearfix">
     <div class="govuk-grid-column">
-      <h1 class="govuk-heading-xl">Apply for an Export Health Certificate</h1>
+      <h1 class="govuk-heading-xl">Fish Exports Service</h1>
       <br>
     </div>
   </div>
@@ -56,7 +56,7 @@
     <div class="govuk-grid-row">
         <section class="govuk-grid-column-one-quarter defra-page-contents">
           <ul class="defra-contents-list">
-            <li><a href="../api-apply-for-an-ehc-masthead">Overview</a></li>
+            <li><a href="../api-fish-exports-service-masthead">Overview</a></li>
             <li><a href="endpoints">API end points</a></li>
             <li class="contents-list--active-item"><a href="schemas">API schemas</a></li>
             <li><a href="payload-definition">Payload definition</a></li>
@@ -70,66 +70,35 @@
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
                   <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                    ResourceLink
+                    ApplicationStatus
                   </span>
                 </h2>
               </div>
               <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
                 <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <th class="govuk-table__header">Description</th>
-                        <th class="govuk-table__header">Hypermedia as the Engine of Application State (HATEOAS) resource link.</th>
-                    </thead>
                     <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">href</td>
-                            <td class="govuk-table__cell">
-                                <small>string</small>
-                                <br>
-                                <small>example: https://defra.gov.uk/api/v1/example/123</small>
-                                <br>
-                                <small>Uniform Resource Identifier of the resource being linked to.</small>
-                            </td>
+                          <th class="govuk-table__cell">Description</th>
+                          <td class="govuk-table__cell">
+                              Status of an application<br>
+                          </td>
                         </tr>
                         <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">rel</td>
-                            <td class="govuk-table__cell">
-                                <small>string</small>
-                                <br>
-                                <small>example: status</small>
-                                <br>
-                                <small>Relationship of this link to the resource to which it is attached.</small>
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">method</td>
-                            <td class="govuk-table__cell">
-                                <small>string</small>
-                                <br>
-                                <small>example: GET</small>
-                                <br>
-                                <small>HTTP method to use when calling the resource, e.g GET, PUT, POST, DELETE, PATCH.</small>
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">description</td>
-                            <td class="govuk-table__cell">
-                                <small>string</small>
-                                <br>
-                                <small>example: Example resource description.</small>
-                                <br>
-                                <small>Description of what the link offers in relation to this resource.</small>
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">propertyName</td>
-                            <td class="govuk-table__cell">
-                                <small>string</small>
-                                <br>
-                                <small>example: propertyName</small>
-                                <br>
-                                <small>Name of the property on the containing object to which the link relates.</small>
-                            </td>
+                          <th class="govuk-table__cell">Application Status</td>
+                          <td class="govuk-table__cell">
+                              <small>string</small>
+                              <br>
+                              <small>Status of an application</small>
+                              <br>
+                              Enum:<br>
+                              [
+                                <span class="govuk-tag">Draft</span>,
+                                <span class="govuk-tag">Locked</span>,
+                                <span class="govuk-tag">Failed</span>,
+                                <span class="govuk-tag">Pending</span>,
+                                <span class="govuk-tag">Complete</span>
+                              ]
+                          </td>
                         </tr>
                     </tbody>
                 </table>
