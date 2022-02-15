@@ -92,17 +92,22 @@ ul.defra-contents-list {
 // Contents list side
 // sticky, plain
 .defra-page-contents {
-    position: sticky;
-    top: 1rem;
-    ul {
-        top: 0;
-        padding-left: 0;
+    @media screen and (min-width: 780px) {
+        position: sticky;
+        top: 1rem;
+        ul {
+            top: 0;
+            padding-left: 0;
+        }
+    }
+    ul { 
         li {
             list-style-type: none;
             margin-bottom: 1rem;
         }
     }
 }
+
 
 
 .defra-column-hr {
@@ -376,7 +381,6 @@ dl {
 
 // In-page search
 .defra-page-search {
-    
     margin-bottom: 1rem;
     h2 {
         border-bottom: 1px solid $backgroundGrey;
