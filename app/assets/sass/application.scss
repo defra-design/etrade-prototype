@@ -28,6 +28,10 @@ $backgroundGrey: #b1b4b6;
     margin-right: 15px;
 }
 
+.m-b-0 {
+    margin-bottom: 0;
+}
+
 .float-r {
     float: right;
 }
@@ -37,7 +41,44 @@ $backgroundGrey: #b1b4b6;
     color: #ffffff;
 }
 
+.govuk-table td {
+    vertical-align: middle;
+}
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+// Section navigation
+.defra-section-nav {
+    @media screen and (min-width: 780px) {
+        border-right: 1px solid $backgroundGrey;
+    }
+    padding: 0;
+    h2 {
+      padding-left: 5px;  
+      margin-bottom: 0;
+    }
+    ul.defra-section-nav-list {
+        margin-top: 10px;
+        margin-bottom: 3rem;
+        padding: 0;
+        li {
+            list-style: none;
+            padding: 5px 5px 5px 10px;
+            a {
+                text-decoration: none;
+            }
+            &.defra-section-nav-list--active-item {
+                background-color: $govuk-link-colour;
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+
+
 // // Contents list
 // Contents list dashed
 .defra-contents-title {
@@ -107,8 +148,6 @@ ul.defra-contents-list {
         }
     }
 }
-
-
 
 .defra-column-hr {
     border-top: 2px solid $govuk-border-colour;

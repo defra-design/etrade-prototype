@@ -37,18 +37,18 @@
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
-        <section class="govuk-grid-column-one-quarter defra-admin-nav">
+        <section class="govuk-grid-column-one-quarter defra-section-nav">
           <h2 class="govuk-heading-s">Manage applications</h2>
-          <ul class="defra-admin-nav-list">
-            <li class="contents-list--active-item"><a href="view-apps">View all applications</a></li>
+          <ul class="defra-section-nav-list">
+            <li class="defra-section-nav-list--active-item"><a href="view-apps">View all applications</a></li>
             <li><a href="create-sandbox-app">Create sandbox application</a></li>
           </ul>
           <h2 class="govuk-heading-s">Manage team members</h2>
-          <ul class="defra-admin-nav-list">
+          <ul class="defra-section-nav-list">
             <li><a href="manage-team-members">Manage team members</a></li>
           </ul>
           <h2 class="govuk-heading-s">Manage my account</h2>
-          <ul class="defra-admin-nav-list">
+          <ul class="defra-section-nav-list">
             <li><a href="manage-profile">Manage profile</a></li>
             <li><a href="notification-preferences">Email and notification preferences</a></li>
             <li><a href="change-password">Change password</a></li>
@@ -88,8 +88,9 @@
               </ul>
             </div>
           </details>
+          <a href="create-sandbox-app" class="govuk-button govuk-button--primary">Create sandbox application</a>
           <table class="govuk-table">
-            <caption class="govuk-table__caption govuk-table__caption--m">All applications</caption>
+            <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">All applications</caption>
             <thead class="govuk-table__head">
               <th class="govuk-table__header">Sandbox applications</th>
               <th class="govuk-table__header">Last API call</th>

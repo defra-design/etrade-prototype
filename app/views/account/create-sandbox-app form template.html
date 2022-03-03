@@ -1,0 +1,81 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  EHC API Available EHCs
+{% endblock %}
+
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  <div class="govuk-width-container defra-breadcrumbs">
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/../"
+      },
+      {
+        text: "Create sandbox application"
+      }
+    ]
+  }) }}
+  </div>
+{% endblock %} 
+{% block content %}
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <section class="govuk-grid-column-one-quarter defra-section-nav">
+          <h2 class="govuk-heading-s">Manage applications</h2>
+          <ul class="defra-section-nav-list">
+            <li><a href="view-apps">View all applications</a></li>
+            <li class="defra-section-nav-list--active-item"><a href="create-sandbox-app" >Create sandbox application</a></li>
+          </ul>
+          <h2 class="govuk-heading-s">Manage team members</h2>
+          <ul class="defra-section-nav-list">
+            <li><a href="manage-team-members">Manage team members</a></li>
+          </ul>
+          <h2 class="govuk-heading-s">Manage my account</h2>
+          <ul class="defra-section-nav-list">
+            <li><a href="manage-profile">Manage profile</a></li>
+            <li><a href="notification-preferences">Email and notification preferences</a></li>
+            <li><a href="change-password">Change password</a></li>
+            <li><a href="account-security">Account security</a></li>
+          </ul>
+        </section>
+        <div class="govuk-grid-column-three-quarters">
+          <form class="govuk-form" action="app-name" method="post">
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              label: {
+                text: "What do you want to call your application?",
+                isPageHeading: true,
+                classes: "govuk-label--l"
+              },
+              hint: {
+                text: "Application names are limited to 10 characters"
+              },
+              id: "app-name",
+              name: "app-name",
+              classes: "govuk-label--l govuk-input--width-10"
+            }) }}
+            <button class="govuk-button govuk-button--primary">Continue</button>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
