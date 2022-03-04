@@ -60,23 +60,29 @@
 
           {{ govukBackLink({
             text: "Back",
-            href: "view-apps"
+            href: "create-sandbox-app-apis"
           }) }}
-          <form class="govuk-form" action="create-sandbox-app-apis" method="post">
-            {% from "govuk/components/input/macro.njk" import govukInput %}
+          <h1 class="govuk-heading-l">What are your redirect URIs?</h1>
+          <p class="govuk-body">You can change this later.</p>
+          {% from "govuk/components/details/macro.njk" import govukDetails %}
 
+          {{ govukDetails({
+            summaryText: "What are redirect URIs?",
+            html: "<p class='govuk-body'>Your application needs to ask users before it can access their personal data. We take users to Government Gateway to grant this permission.</p><p class='govuk-body'>Redirect URIs tell us where to send users after they leave Government Gateway.</p><p class='govuk-body'><a href='#'>Learn more about redirect URIs (opens in a new window or tab).</a></p>"
+          }) }}
+          <form class="govuk-form" action="create-sandbox-app-add-team-members" method="post">
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+            
             {{ govukInput({
               label: {
-                text: "What do you want to call your application?",
-                isPageHeading: true,
-                classes: "govuk-label--l"
+                text: "Redirect URIs?"
               },
               hint: {
-                text: "Application names are limited to 10 characters"
+                text: "Maximum of 5. URI must be HTTPS for example https://example.co.uk"
               },
               id: "app-name",
               name: "app-name",
-              classes: "govuk-label--l govuk-input--width-10"
+              classes: "govuk-label--l govuk-input--width-20"
             }) }}
             <button class="govuk-button govuk-button--primary">Continue</button>
           </form>

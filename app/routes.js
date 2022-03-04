@@ -14,12 +14,23 @@ router.get('/api-step-by-step/introduction', (req, res) => {
     res.redirect('/documentation/introduction');
 })
 
-router.get('/account/add-team-members', (req, res) => {
+router.get('/account', (req, res) => {
+    res.redirect('/account/view-apps')
+})
+
+router.post('/account/add-team-members', (req, res) => {
     var addAnother = req.session.data['add-another']
-    res.redirect('create-sandbox-app-team');
-    // if(addAnother == "yes") {
-    //     res.redirect('create-sandbox-review-team');
-    // } else {
-    //     res.redirect('create-sandbox-invite-team');
-    // }
+    var pageActionText
+    if(addAnother == 'yes') {
+        pageActionText = "Invite"
+    } else {
+        pageActionText = "Review"
+    }
+    console.log(pageActionText)
+    res.render('account/create-sandbox-app-team', {pageActionText: pageActionText})
+})
+
+router.get('/account/add-team-members', (req, res) => {
+    
 });
+

@@ -56,8 +56,17 @@
           </ul>
         </section>
         <div class="govuk-grid-column-three-quarters">
-          <h1 class="govuk-heading-l">Add team members</h1>
-          <p class="govuk-body"><a href="invite-team-member">Invite a team member</a></p>
+          {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+          {{ govukBackLink({
+            text: "Back",
+            href: "create-sandbox-app-add-team-members"
+          }) }}
+          <h1 class="govuk-heading-l">{{pageActionText}} team members</h1>
+          
+          {% if pageActionText == "Invite" %}
+            <p class="govuk-body"><a href="invite-team-member">Invite a team member</a></p>
+          {% endif %}         
           <table class="govuk-table">
             <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">All applications</caption>
             <thead class="govuk-table__head">
@@ -83,6 +92,7 @@
               </tr>
             </tbody>
           </table>
+          <a href="create-sandbox-app-check-your-answers" class="govuk-button govuk-button-primary">Continue</a>
         </div>
     </div>
   </div>

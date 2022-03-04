@@ -60,12 +60,12 @@
           </ul>
         </section>
         <div class="govuk-grid-column-three-quarters">
-          <form method="post" action="create-sandbox-app-team">
+          <form method="post" action="add-team-members">
             {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
             {{ govukRadios({
-              idPrefix: "do-you-want-to-add-another-team-member",
-              name: "do-you-want-to-add-another-team-member",
+              idPrefix: "add-another",
+              name: "add-another",
               fieldset: {
                 legend: {
                   text: "Do you want to add another team member?",

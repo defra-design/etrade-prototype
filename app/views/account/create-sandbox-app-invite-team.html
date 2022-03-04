@@ -60,26 +60,35 @@
 
           {{ govukBackLink({
             text: "Back",
-            href: "view-apps"
+            href: "create-sandbox-app-uris"
           }) }}
-          <form class="govuk-form" action="create-sandbox-app-apis" method="post">
-            {% from "govuk/components/input/macro.njk" import govukInput %}
-
-            {{ govukInput({
-              label: {
-                text: "What do you want to call your application?",
-                isPageHeading: true,
-                classes: "govuk-label--l"
-              },
-              hint: {
-                text: "Application names are limited to 10 characters"
-              },
-              id: "app-name",
-              name: "app-name",
-              classes: "govuk-label--l govuk-input--width-10"
-            }) }}
-            <button class="govuk-button govuk-button--primary">Continue</button>
-          </form>
+          <h1 class="govuk-heading-l">Add team members</h1>
+          <p class="govuk-body"><a href="invite-team-member">Invite a team member</a></p>
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">All applications</caption>
+            <thead class="govuk-table__head">
+              <th class="govuk-table__header">Email</th>
+              <th class="govuk-table__header">Role</th>
+              <th class="govuk-table__header">Action</th>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">john.doe@acme-foods.com</td>
+                <td class="govuk-table__cell">Administrator</td>
+                <td class="govuk-table__cell">Added</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">sarah.jane@acme-foods.com</td>
+                <td class="govuk-table__cell">Administrator</td>
+                <td class="govuk-table__cell">Added</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Fahid Ben</td>
+                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell"><span class="govuk-button m-b-0">Invite</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
     </div>
   </div>
