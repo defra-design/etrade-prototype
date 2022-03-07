@@ -1,3 +1,4 @@
+{% set accountActive = true %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
@@ -57,21 +58,17 @@
         </section>
         <div class="govuk-grid-column-three-quarters">
           <div class="govuk-panel govuk-panel--confirmation">
-            <h1 class="govuk-panel__title">Application complete</h1>
-            <div class="govuk-panel__body">
-              Your reference number<br><strong>HDJ2123F</strong>
-            </div>
+            <h1 class="govuk-panel__title">Sandbox application created</h1>
           </div>
     
           <p>
-            We have sent you a confirmation email.
+            Added team members have been sent a confirmation email.
           </p>
     
           <h2 class="govuk-heading-m">What happens next</h2>
-          <p>You can now work on your sandbox application.</p>
-          <p>When you are ready, you can apply for production credentials.</p>
+          <p>You can now work on your sandbox application. Information can be found in the <a href="../documentation/reference-guide.html">documentation section</a>.</p>
+          <p>When you are ready, you can <a href="#" title="Read about applying for production credentials">apply for production credentials</a>.</p>
           <a href="view-apps" class="govuk-button govuk-button-primary">Finish</a>
-          <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
         </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+{% set accountActive = true %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
@@ -56,31 +57,33 @@
           </ul>
         </section>
         <div class="govuk-grid-column-three-quarters">
-          <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+          <h1 class="govuk-heading-l">Check your answers before creating your sandbox application</h1>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Name
+                Application name
               </dt>
               <dd class="govuk-summary-list__value">
                 Sarah Philips
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a href="#">
+                <a href="create-sandbox-app">
                   Change
-                  <span class="govuk-visually-hidden"> name</span>
+                  <span class="govuk-visually-hidden"> application name</span>
                 </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Date of birth
+                APIs to be used
               </dt>
               <dd class="govuk-summary-list__value">
-                5 January 1978
+                Import of products, animals, food and feed system - beta,
+                <br>Export application - beta,
+                <br>Fish Export Service (FES) - beta,
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a href="#">
+                <a href="create-sandbox-app-apis">
                   Change
                   <span class="govuk-visually-hidden"> date of birth</span>
                 </a>
@@ -88,95 +91,47 @@
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Contact information
+                Redirect URIs
               </dt>
               <dd class="govuk-summary-list__value">
-                72 Guild Street
-                <br>London
-                <br>SE23 6FH
+                https://www.api.acme-foods.com/imports
+                <br>https://www.api.acme-foods.com/exports
+                <br>https://www.api.acme-foods.com/fish
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a href="#">
+                <a href="create-sandbox-app-apis">
                   Change
-                  <span class="govuk-visually-hidden"> contact information</span>
+                  <span class="govuk-visually-hidden"> redirect URIs</span>
                 </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Contact details
+                Team members on this application
               </dt>
               <dd class="govuk-summary-list__value">
-                <p>07700 900457</p>
-                <p>sarah.phillips@example.com</p>
+                john.doe@acme-foods.com,
+                <br>sarah.jane@acme-foods.com
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a href="#">
+                <a href="add-team-members">
                   Change
-                  <span class="govuk-visually-hidden"> contact details</span>
-                </a>
-              </dd>
-            </div>
-          </dl>
-    
-          <h2 class="govuk-heading-m">Application details</h2>
-    
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Previous application number
-              </dt>
-              <dd class="govuk-summary-list__value">
-                502135326
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="#">
-                  Change
-                  <span class="govuk-visually-hidden"> previous application number</span>
+                  <span class="govuk-visually-hidden"> team members</span>
                 </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Licence type
+                Team members
               </dt>
               <dd class="govuk-summary-list__value">
-                For personal use
+                john.doe@acme-foods.com,
+                <br>sarah.jane@acme-foods.com
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a href="#">
+                <a href="add-team-members">
                   Change
-                  <span class="govuk-visually-hidden"> licence type</span>
-                </a>
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Home address
-              </dt>
-              <dd class="govuk-summary-list__value">
-                72 Guild Street
-                <br>London
-                <br>SE23 6FH
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="#">
-                  Change
-                  <span class="govuk-visually-hidden"> home address</span>
-                </a>
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Licence period
-              </dt>
-              <dd class="govuk-summary-list__value">
-                Valid for 6 months
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="#">
-                  Change
-                  <span class="govuk-visually-hidden"> licence period</span>
+                  <span class="govuk-visually-hidden"> team members</span>
                 </a>
               </dd>
             </div>
