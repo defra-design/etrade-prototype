@@ -17,7 +17,13 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Colours
 $backgroundGrey: #b1b4b6;
+$govuk-text-colour:	#0b0c0c;
+$govuk-secondary-text-colour:#505a5f;
+$govuk-link-colour:	#1d70b8;
 
+$govuk-border-colour: $backgroundGrey;
+$govuk-focus-colour: #ffdd00;
+$govuk-font-family: "GDS Transport", arial, sans-serif;
 
 // helpers
 .m-l-15 {

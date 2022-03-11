@@ -87,9 +87,9 @@
                 <td class="govuk-table__cell">Added</td>
               </tr>
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Fahid Ben</td>
+                <td class="govuk-table__cell">fahid.ben@acme-foods.com</td>
                 <td class="govuk-table__cell"></td>
-                <td class="govuk-table__cell"><span class="govuk-button m-b-0">Invite</span></td>
+                <td class="govuk-table__cell"><span class="govuk-button m-b-0" id="create-sandbox-app-invite-button">Invite</span></td>
               </tr>
             </tbody>
           </table>
@@ -98,4 +98,11 @@
     </div>
   </div>
 </div>
+
+<script>
+document.getElementById('create-sandbox-app-invite-button').addEventListener('click', function(){
+  this.innerText = 'Invite sent';
+  this.classList.add('govuk-button--disabled')
+})
+</script>
 {% endblock %}

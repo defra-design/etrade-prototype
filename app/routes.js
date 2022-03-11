@@ -18,15 +18,18 @@ router.get('/account', (req, res) => {
     res.redirect('/account/view-apps')
 })
 
+router.get('/account/add-team-members', (req, res) => {
+    res.render('account/create-sandbox-app-team', {pageActionText: 'Review'})
+})
+
 router.post('/account/add-team-members', (req, res) => {
     var addAnother = req.session.data['add-another']
-    var pageActionText
+    var pageActionText = 'Review'
     if(addAnother == 'yes') {
         pageActionText = "Invite"
     } else {
         pageActionText = "Review"
     }
-    console.log(pageActionText)
     res.render('account/create-sandbox-app-team', {pageActionText: pageActionText})
 })
 
