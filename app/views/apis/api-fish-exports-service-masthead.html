@@ -32,7 +32,7 @@
         href: "explore-apis"
       },
       {
-        text: "Fish Exports Service"
+        text: "Create a catch certificate API"
       }
     ]
   }) }}
@@ -43,9 +43,9 @@
 <div class="defra-banner govuk-clearfix">
   <div class="govuk-width-container govuk-clearfix">
     <div class="govuk-grid-column">
-      <h1 class="govuk-heading-xl">Fish Exports Service</h1>
+      <h1 class="govuk-heading-xl">Create a catch certificate API</h1>
       <p class="govuk-body-l">
-        This API enables traders to use the Fish Export Service to create catch certificates for fish and shellfish caught by UK flagged vessels for export.
+        Create catch certificates for fish and shellfish
       </p>
       <br>
     </div>
@@ -56,20 +56,24 @@
     <div class="govuk-grid-row">
         <section class="govuk-grid-column-one-quarter defra-page-contents">
             <ul class="defra-contents-list">
-              <li class="contents-list--active-item">
-                <a href="api-fish-exports-service-masthead">Overview</span>
-                <!-- <ul class="defra-contents-list--dashed">
-                    <li><a href="#introduction">Introduction</a></li>
-                    <li><a href="#when-to-use">When to use this API</a></li>
-                    <li><a href="#usage-scenarios">Usage scenarios</a></li>
-                    <li><a href="#user-authentication">User authentication</a></li>
-                </ul> -->
+              <li class="contents-list--active-item"><a href="api-fish-exports-service-masthead">Overview</a>
+                <ul class="defra-contents-list--dashed">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#benefits">Benefits of using this API</a></li>
+                  <li><a href="#what-it-can-do">What it can do</a></li>
+                  <li><a href="#who-can-use-it">Who can use it</a></li>
+                  <li><a href="#how-to-export-using-this-api">How to export using this API</a></li>
+              </ul>
               </li>
-              <li><a href="./fes/endpoints">API end points</a></li>
-              <li><a href="./fes/schemas">API schemas</a></li>
+              <li><a href="fes/endpoints">API end points</a></li>
+              <li><a href="fes/schemas">API schemas</a></li>
+              <li><a href="fes/payload-definition">Payload definition</a></li>
+              <li><a href="fes/error-codes">Error codes</a></li>
+            </ul>
+
+            
         </section>
         <div class="govuk-grid-column-three-quarters">
-            
             <dl>
                 <div class="defra-definition-wrapper">
                     <dt>Development base URL</dt>
@@ -84,13 +88,49 @@
                     <dd><a href="https://gateway.trade.defra.gov.uk/fish-exports">https://gateway.trade.defra.gov.uk/fish-exports</a></dd>
                 </div>
             </dl>
-            <p class="govuk-body">This API provides stubbed operations to enable traders to explore the capabilities of the Fish Export Service, which will help to understand what it would entail to create catch certificates for fish and shellfish caught by UK flagged vessels for export.</p>
+            <p class="govuk-body">This API lets exporters create catch certificates for fish and shellfish using Defra’s Fish Exports Service.</p>
+            <h2 class="govuk-heading govuk-heading-m" id="introduction">Introduction</h2>
+            <p class="govuk-body">You must create a catch certificate to export a consignment of fish that has been landed into the UK by a UK flagged catching vessel. A catch certificate shows that you’ve caught your fish legally. Catch certificates are required for movements of fish from:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Great Britain to Northern Ireland</li>
+              <li>Great Britain to the EU the UK to the rest of the world (excluding movements from Northern Ireland to the EU)</li>
+            </ul>
+            <p class="govuk-body"><a href="https://www.gov.uk/guidance/exporting-or-moving-fish-from-the-uk">Find out more about exporting fish</a></p>
 
-
+            <h2 class="govuk-heading-m" id="benefits">Benefits of using this API</h2>
+            <p class="govuk-body">This API enables system-to-system calls between your own software and the Fish Exports Service. This makes it easier to apply for a catch certificate and reduces the admin burden on exporters. It also reduces the risk of errors and data entry duplication.</p>
+            <h3 class="govuk-heading-s" id="what-it-can-do">What it can do</h3>
+            <p class="govuk-body">When the API is ready, you'll be able to use it to create catch certificates for fish and shellfish.</p>
+            <p class="govuk-body">This API can:</p>
+            <ul class="govuk-list govuk-list--bullets">
+              <li>retrieve lists of valid catch areas and departure countries</li>
+              <li>check a vessel is eligible to create a catch certificate</li>
+              <li>search valid product species, preservation and presentation methods for creating catch certificates 
+              </li>
+            </ul>
+            <p class="govuk-body">To start using the sandbox, <a href="../register/email">create an account now</a></p>
+            <p class="govuk-body"><a href="fes/specification">Read API specification</a></p>
+            <h2 class="govuk-heading-m" id="who-can-use-it">Who can use it</h2>
+            <p class="govuk-body">Importers, traders and agencies will find this API useful.</p>
+            <p class="govuk-body">You’re welcome to try the current sandbox service. Only a small number of invited users can currently progress to full production integration. If you don't have an invite, you’re welcome to integrate with our sandbox environment in order to test your integration with Defra APIs ready for full integration when the service is ready. To begin using the sandbox,  <a href="../register/email">create an account</a></p>
+            <h2 class="govuk-heading-m" id="how-to-export-using-this-api">How to export using this API</h2>
+            <h3 class="govuk-heading-s">Before you login</h3>
+            <p class="govuk-body">Make sure you have read the <a href="https://www.gov.uk/guidance/exporting-or-moving-fish-from-the-uk">full guidance on exporting fish before you begin using this API</a>.
+            </p>
+            <p class="govuk-body">The endpoint in this API is user-restricted. Your users must <a href="https://www.access.service.gov.uk/login/signin/creds">register as an individual</a> before they can submit applications using the API.
+            </p>
+            <p class="govuk-body">Once you're fully integrated with the API you'll follow these steps to export goods:
+            </p>
+            <ol class="govuk-list govuk-list--number">
+              <li>Complete and submit your application using your integrated systems. You may also need to <a href="https://www.gov.uk/guidance/get-an-export-health-certificate">create an export health certificate</a>, which you can do using a different Defra API. You may also need a <a href="https://www.gov.uk/guidance/create-a-uk-storage-document">storage document</a> and <a href="https://www.gov.uk/guidance/create-a-uk-processing-statement">processing statement</a>.
+              </li>
+              <li>You can download and print your catch certificate from your integrated systems.</li>
+              <li>The physical catch certificate and other documentation should accompany the consignment as it leaves the UK.</li>
+            </ol>
             <!-- <p class="govuk-body"> This API provides endpoints related to <a href="https://www.gov.uk/government/publications/how-to-register-for-export-health-certificate-ehc-online/ehc-online-apply-for-export-health-certificates#accessing-ehc-online">Export Health Certificates</a>.</p> -->
-            <h2 class="govuk-heading-m" id="introduction">Introduction</h2>
+            <!-- <h2 class="govuk-heading-m" id="introduction">Introduction</h2>
             <p class="govuk-body">You can use the development api endpoint to test through the portal pages. To use the sandbox api endpoints you must use a registered application.</p>
-            <a href="./ehc/endpoints" class="govuk-button">Read API specification</a>
+            <a href="./ehc/endpoints" class="govuk-button">Read API specification</a> -->
             <!-- <p class="govuk-body">This API enables traders to apply for export health certificates, check the status of applications you’ve made, and check for validation errors on your applications. This is the first step towards enabling digital integration for moving agri-food goods.</p>
 
             <p class="govuk-body">An export health certificate (EHC) is an official document that confirms your export meets the health requirements of the destination country.</p>
