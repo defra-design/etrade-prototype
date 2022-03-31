@@ -513,3 +513,29 @@ dl {
         display: inline-block;
     }
 }
+
+// Downloads / attachments
+.defra-attachment {
+    display: flex;
+    margin-bottom: 3rem;
+    .defra-attachment-icon-container {
+        margin-right: 2rem;
+    }
+    svg.defra-attachment-icon {
+        display: block;
+        width: auto;
+        max-width: 99px;
+        height: 140px;
+        border: rgba(11,12,12,0.1);
+        outline: 5px solid rgba(11,12,12,0.1);
+        background: #fff;
+        box-shadow: 0 2px 2px rgba(11,12,12,0.4);
+        fill: #b1b4b6;
+        stroke: #b1b4b6;
+    }
+    .defra-attachment-info {
+        h2 {
+            font-weight: normal;
+        }
+    }
+}
