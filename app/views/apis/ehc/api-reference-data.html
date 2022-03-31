@@ -5,7 +5,7 @@
 {% extends "../../layout.html" %}
 
 {% block pageTitle %}
-  EHC API
+  EHC API reference data
 {% endblock %}
 
 {% block beforeContent %}
@@ -36,7 +36,7 @@
         href: "../api-apply-for-an-ehc-masthead"
       },
       {
-          text: "API"
+          text: "API reference data"
       }
     ]
   }) }}
@@ -58,36 +58,37 @@
           <ul class="defra-contents-list">
             <li><a href="../api-apply-for-an-ehc-masthead">Overview</a></li>
             <li><a href="available-ehcs">Available EHCs</a></li>
-            <li class="contents-list--active-item"><a href="api-operations">API</a>
+            <li><a href="api-operations">API</a>
+            </li>
+            <li class="contents-list--active-item"><a href="api-reference-data">Reference data API</a>
               <ul class="defra-contents-list--dashed">
                 <li><a href="#operations">Operations</a></li>
                 <li><a href="#schemas">Schemas</a></li>
                 <li><a href="#downloads">Downloads</a></li>
               </ul>
             </li>
-            <li><a href="api-reference-data">Reference data API</a></li>
             <!-- <li><a href="schemas">API schemas</a></li> -->
             <li><a href="payload-definition">Payload definition</a></li>
             <li><a href="error-codes">Error codes</a></li>
           </ul>
         </section>
         <div class="govuk-grid-column-three-quarters">
-          <h1 class="govuk-heading govuk-heading-l">API</h1>
-          <p class="govuk-body">This API enables traders to apply for export health certificates, check the status of applications you've made, and download certificate documentation. This is the first step towards enabling digital integration for moving agri-food goods.</p>
-          
-          <h2 class="govuk-heading-m" id="downloads">Operations</h2>
+          <h1 class="govuk-heading govuk-heading-l">Reference data API</h1>
+          <p class="govuk-body">This API provides reference data that should be used in your submissions to the Export Health Certificates Reference Data API.</p>
+          <p class="govuk-body">You can use the development api endpoint to test through the portal pages. To use the sandbox api endpoints you must use a registered application.</p>
+          <h2 class="govuk-heading-m" id="endpoints">API endpoints</h2>
           <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
             <div class="govuk-accordion__section ">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
                   <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
                     <strong class="govuk-tag">GET</strong>
-                    /ehc-application-summary
+                    /border-control-post
                   </span>
                 </h2>
               </div>
               <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-                <p class="gov-uk">Retrieve summary and status information of your Export Health Certificate Applications with filtering and pagination.</p>
+                <p class="gov-uk">Find Border Control Posts in Reference Data.</p>
                 <table class="govuk-table">
                   <thead class="govuk-table__head">
                       <th class="govuk-table__header">Parameters name</th>
@@ -192,7 +193,7 @@
             </div>
           </div>
           <br>
-          <h2 class="govuk-heading-m">API schemas</h2>
+          <h2 class="govuk-heading-m">Schemas</h2>
           <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
             <div class="govuk-accordion__section ">
               <div class="govuk-accordion__section-header">
@@ -262,46 +263,47 @@
                     </tbody>
                 </table>
               </div>
+
+              <h2 class="govuk-heading-m" id="downloads">Downloads</h2>
+              <p class="govuk-body">This API follows the OpenApi specification and is available for export and download in the following formats:</p>
+
+              <section class="defra-attachment">
+                <div class="defra-attachment-icon-container">
+                  <a href="#">
+                    <span class="govuk-visually-hidden">Download the OpenAPI 3 JSON file</span>
+                    <svg class="defra-attachment-icon" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true">
+                      <path d="M12 12h75v27H12zm0 47h18.75v63H12zm55 2v59H51V61h16m2-2H49v63h20V59z" stroke-width="0"></path>
+                      <path d="M49 61.05V120H32.8V61.05H49m2-2H30.75v63H51V59zm34 2V120H69.05V61.05H85m2-2H67v63h20V59z" stroke-width="0"></path>
+                      <path d="M30 68.5h56.5M30 77.34h56.5M30 112.7h56.5M30 95.02h56.5M30 86.18h56.5M30 103.86h56.5" fill="none" stroke-miterlimit="10" stroke-width="2"></path>
+                    </svg>
+                  </a>
+                </div>
+                <div class="defra-attachment-info">
+                  <h2 class="govuk-heading-m"><a href="#">OpenAPI 3 JSON</a></h2>
+                  <p class="defra-attachment-metadata">JSON, 4 KB</p>
+                  <p class="defra-attachment-description">This file contains the JSON format for OpenApi 3.</p>
+                </div>
+              </section>
+
+              <section class="defra-attachment">
+                <div class="defra-attachment-icon-container">
+                  <a href="#">
+                    <span class="govuk-visually-hidden">Download the OpenAPI 3 YAML file</span>
+                    <svg class="defra-attachment-icon" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true">
+                      <path d="M12 12h75v27H12zm0 47h18.75v63H12zm55 2v59H51V61h16m2-2H49v63h20V59z" stroke-width="0"></path>
+                      <path d="M49 61.05V120H32.8V61.05H49m2-2H30.75v63H51V59zm34 2V120H69.05V61.05H85m2-2H67v63h20V59z" stroke-width="0"></path>
+                      <path d="M30 68.5h56.5M30 77.34h56.5M30 112.7h56.5M30 95.02h56.5M30 86.18h56.5M30 103.86h56.5" fill="none" stroke-miterlimit="10" stroke-width="2"></path>
+                    </svg>
+                  </a>
+                </div>
+                <div class="defra-attachment-info">
+                  <h2 class="govuk-heading-m"><a href="#">OpenAPI 3 YAML</a></h2>
+                  <p class="defra-attachment-metadata">YAML, 4 KB</p>
+                  <p class="defra-attachment-description">This file contains the YAML format for OpenApi 3.</p>
+                </div>
+              </section>
             </div>
           </div>
-
-          <h2 class="govuk-heading-m" id="openapi">Downloads</h2>
-          <p class="govuk-body">This API follows the OpenApi specification and is available for export and download in the following formats:</p>
-          <section class="defra-attachment">
-            <div class="defra-attachment-icon-container">
-              <a href="#">
-                <span class="govuk-visually-hidden">Download the OpenAPI 3 JSON file</span>
-                <svg class="defra-attachment-icon" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true">
-                  <path d="M12 12h75v27H12zm0 47h18.75v63H12zm55 2v59H51V61h16m2-2H49v63h20V59z" stroke-width="0"></path>
-                  <path d="M49 61.05V120H32.8V61.05H49m2-2H30.75v63H51V59zm34 2V120H69.05V61.05H85m2-2H67v63h20V59z" stroke-width="0"></path>
-                  <path d="M30 68.5h56.5M30 77.34h56.5M30 112.7h56.5M30 95.02h56.5M30 86.18h56.5M30 103.86h56.5" fill="none" stroke-miterlimit="10" stroke-width="2"></path>
-                </svg>
-              </a>
-            </div>
-            <div class="defra-attachment-info">
-              <h2 class="govuk-heading-m"><a href="#">OpenAPI 3 JSON</a></h2>
-              <p class="defra-attachment-metadata">JSON, 4 KB</p>
-              <p class="defra-attachment-description">This file contains the JSON format for OpenApi 3.</p>
-            </div>
-          </section>
-
-          <section class="defra-attachment">
-            <div class="defra-attachment-icon-container">
-              <a href="#">
-                <span class="govuk-visually-hidden">Download the OpenAPI 3 YAML file</span>
-                <svg class="defra-attachment-icon" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true">
-                  <path d="M12 12h75v27H12zm0 47h18.75v63H12zm55 2v59H51V61h16m2-2H49v63h20V59z" stroke-width="0"></path>
-                  <path d="M49 61.05V120H32.8V61.05H49m2-2H30.75v63H51V59zm34 2V120H69.05V61.05H85m2-2H67v63h20V59z" stroke-width="0"></path>
-                  <path d="M30 68.5h56.5M30 77.34h56.5M30 112.7h56.5M30 95.02h56.5M30 86.18h56.5M30 103.86h56.5" fill="none" stroke-miterlimit="10" stroke-width="2"></path>
-                </svg>
-              </a>
-            </div>
-            <div class="defra-attachment-info">
-              <h2 class="govuk-heading-m"><a href="#">OpenAPI 3 YAML</a></h2>
-              <p class="defra-attachment-metadata">YAML, 4 KB</p>
-              <p class="defra-attachment-description">This file contains the YAML format for OpenApi 3.</p>
-            </div>
-          </section>
         </div>
     </div>
   </div>
