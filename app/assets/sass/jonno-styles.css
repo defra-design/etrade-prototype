@@ -3,12 +3,20 @@
   margin-left: 15px;
 }
 
+.m-r-30 {
+  margin-right: 30px;
+}
+
 .m-r-15 {
   margin-right: 15px;
 }
 
 .m-b-0 {
   margin-bottom: 0;
+}
+
+.m-b-5 {
+  vertical-align: middle;
 }
 
 .float-r {
@@ -437,4 +445,27 @@ dl dd span {
 }
 .defra-code-wrapper code {
   display: inline-block;
+}
+
+.defra-attachment {
+  display: flex;
+  margin-bottom: 3rem;
+}
+.defra-attachment .defra-attachment-icon-container {
+  margin-right: 2rem;
+}
+.defra-attachment svg.defra-attachment-icon {
+  display: block;
+  width: auto;
+  max-width: 99px;
+  height: 140px;
+  border: rgba(11, 12, 12, 0.1);
+  outline: 5px solid rgba(11, 12, 12, 0.1);
+  background: #fff;
+  box-shadow: 0 2px 2px rgba(11, 12, 12, 0.4);
+  fill: #b1b4b6;
+  stroke: #b1b4b6;
+}
+.defra-attachment .defra-attachment-info h2 {
+  font-weight: normal;
 }
