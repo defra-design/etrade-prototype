@@ -1,21 +1,23 @@
 
 {% extends "layout.html" %}
+{% set showBackLink = false %}
 
-{% block pageTitle %}
-API developer portal prototype - GOV.UK Prototype Kit
-{% endblock %}
+{% set pageHeading = "API developer portal prototype" %}
+{% set pageSection = "Prototype work" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        API developer portal prototype
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        A prototype of the API developer portal for testing.
-      </p>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+			<!-- <p>Testing deployment</p> -->
+    		<ul class="govuk-list govuk-body-s">
+          		<li>Last updated: 25 May 2022</li>
+            	<li>Prototype version: {{releaseVersion}}</li>
+        	</ul>
+                  
 
       <h2 class="govuk-heading-l">Items in this prototype</h2>
       <ul class="govuk-list govuk-list--bullet">
