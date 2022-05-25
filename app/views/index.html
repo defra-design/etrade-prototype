@@ -12,68 +12,44 @@
         <div class="govuk-grid-column-two-thirds">
 
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
-			<!-- <p>Testing deployment</p> -->
+			
     		<ul class="govuk-list govuk-body-s">
-          		<li>Last updated: 25 May 2022</li>
-            	<li>Prototype version: {{releaseVersion}}</li>
-        	</ul>
-                  
+          	    <li>Last updated: 25 May 2022</li>
+                <li>Prototype version: {{releaseVersion}}</li>
+        	</ul>        
 
-      <h2 class="govuk-heading-l">Items in this prototype</h2>
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="homepage">Homepage redesign</a>
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a href="homepage-2-buttons">Alternative (original) version with separate register and login buttons</a></li>
-          </ul>
-        </li>
-        <li><a href="/api-step-by-step/introduction">Developer portal step-by-step (documentation)</a>
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a href="/api-step-by-step/sidebar-version/introduction">Alternate version with sidebar step-by-step</a></li>
-          </ul>
-        </li>
-        <li><a href="/register/email">Create an account (register)</a></li>
-        <li><a href="sign-in">Sign-in</a></li>
-        <li><a href="forgot-password">Forgotten password</a></li>
-        <li><a href="/apis/explore-apis">Explore APIs</a>
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a href="/apis/api-apply-for-an-ehc">API details</a></li>
-            <li><a href="/apis/api-apply-for-an-ehc-masthead">API details - with Masthead</a></li>
-          </ul>
-        </li>
-        <li><a href="/application-permissions/terms-and-conditions">Application permission journey</a>
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a href="/application-permissions/permissions-singleline">Permissions on single line</a></li>
-            <li><a href="/application-permissions/permissions-conditional">Permissions revealed conditionally</a></li>
-            <li><a href="/application-permissions/review">Review choices page</a></li>
-          </ul>
-        </li>
-        <li>Account (logged in) section:
-          <ul>
-            <li><a href="/account/view-apps">View all apps (homepage)</a></li>
-            <li><a href="/account/helloworld">Hello world example app</a></li>
-            <li><a href="/account/create-sandbox-app">Create a sandbox app journey</a></li>
-            <li>Manage team (coming soon)</li>
-          </ul>
-          </li>
-      </ul>
-      <hr>
-      <!-- <h2 class="govuk-heading-m">About this page</h2>
+            {{ govukButton({
+      			text: "Journey from start",
+      			href: ""
+    		}) }}
+            
+            <br>
+    		{{ govukButton({
+      			text: "Page listings",
+      			href: "admin/listings",
+      			classes: "govuk-button--secondary"
+    		}) }}
 
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
+        	{{ govukButton({
+      			text: "Preload options",
+      			href: "/admin/preload",
+      			classes: "govuk-button--secondary govuk-!-margin-left-1"
+    		}) }}
 
-      <p>You can change the service name by editing the file '/app/config.js'.</p> -->
+        	{% include "includes/break.html" %}
 
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
+        	<h2 class="govuk-heading-m">User research</h2>
+        	<p>Area of the prototype for user research purposes, including link to share with user testing participants.</p>
+            <p>No current user research taking place.</p>
+        	{{ govukButton({
+            	text: "Continue",
+            	href: "#"
+        	}) }}
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/documentation/tutorials-and-examples">Example pages and documentation</a>
-        </li>
-        <li>
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
-        </li>
-      </ul>
+        	{% include "includes/break.html" %}    		
+
+
+      
     </div>
   </div>
 
