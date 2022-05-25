@@ -18,22 +18,22 @@ router.get('/account', (req, res) => {
     res.redirect('/account/view-apps')
 })
 
-router.get('/account/add-team-members', (req, res) => {
-    res.render('account/create-sandbox-app-team', {pageActionText: 'Review'})
-})
+// router.get('/account/add-team-members', (req, res) => {
+//     res.render('account/team', {pageActionText: 'Review'})
+// })
 
-router.post('/account/add-team-members', (req, res) => {
-    var addAnother = req.session.data['add-another']
-    var pageActionText = 'Review'
-    if(addAnother == 'yes') {
-        pageActionText = "Invite"
-    } else {
-        pageActionText = "Review"
-    }
-    res.render('account/create-sandbox-app-team', {pageActionText: pageActionText})
-})
+// router.post('/account/add-team-members', (req, res) => {
+//     var addAnother = req.session.data['add-another']
+//     var pageActionText = 'Review'
+//     if(addAnother == 'yes') {
+//         pageActionText = "Invite"
+//     } else {
+//         pageActionText = "Review"
+//     }
+//     res.render('account/team', {pageActionText: pageActionText})
+// })
 
-router.get('/account/add-team-members', (req, res) => {
+// router.get('/account/add-team-members', (req, res) => {
     
-});
+// });
 

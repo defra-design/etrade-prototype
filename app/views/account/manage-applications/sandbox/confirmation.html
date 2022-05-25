@@ -1,0 +1,44 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Sandbox application created" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+  
+            {% include "includes/defra-section-nav.html" %}
+
+            <div class="govuk-grid-column-three-quarters">
+
+                {{ govukPanel({
+                    titleText: pageHeading,
+                    classes: "govuk-!-margin-bottom-7"
+                }) }}                
+    
+                <p class="govuk-body">Added team members have been sent a confirmation email.</p>
+    
+                <h2 class="govuk-heading-m">What happens next</h2>
+                <p>You can now work on your sandbox application. Information can be found in the <a href="/documentation/reference-guide">documentation section</a>.</p>
+                <p>When you are ready, you can <a href="#" title="Read about applying for production credentials">apply for production credentials</a>.</p>
+                
+                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/account/manage-applications/">View your applications</a></p>
+                
+                
+                {{ govukButton({
+                    text: "Finish",
+                    href: "/account/manage-applications/"
+                }) }}
+
+                
+            
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

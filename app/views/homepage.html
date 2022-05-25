@@ -6,10 +6,11 @@
   We add this to override the fixed width for the banner header. 
 -->
 {% extends "layout.html" %}
+{% set showBackLink = false %}
 
-{% block pageTitle %}
-  Defra API developer portal
-{% endblock %}
+{% set pageHeading = "Defra API developer portal" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
 
@@ -23,7 +24,7 @@
         Connect your apps to our APIs and integrate with our sandbox environment.
       </p>
       <div class="govuk-button-group">
-        <a href="sign-in/sign-in-sso" class="govuk-button defra-button-inverse">Create or sign in to a developer account</a>
+        <a href="/sign-in/" class="govuk-button defra-button-inverse">Create or sign in to a developer account</a>
           <!-- <a href="register/email" class="govuk-button defra-button-inverse" data-module="govuk-button">Create an account</a>
           <a href="sign-in/sign-in" class="govuk-button defra-button-inverse" data-module="govuk-button">Sign in to developer account</a> -->
       </div>

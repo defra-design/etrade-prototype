@@ -1,0 +1,66 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Team members" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+  
+            {% include "includes/defra-section-nav.html" %}
+
+            <div class="govuk-grid-column-three-quarters">
+
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+          
+          <!-- <h1 class="govuk-heading-l">{{pageActionText}} team members</h1> -->
+          
+                {% if pageActionText == "Invite" %}
+                <p class="govuk-body"><a href="invite-team-member">Invite a team member</a></p>
+                {% endif %}         
+                
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">All applications</caption>
+                    <thead class="govuk-table__head">
+                        <th class="govuk-table__header">Email</th>
+                        <th class="govuk-table__header">Role</th>
+                        <th class="govuk-table__header">Action</th>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">john.doe@acme-foods.com</td>
+                            <td class="govuk-table__cell">Administrator</td>
+                            <td class="govuk-table__cell">Added</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">sarah.jane@acme-foods.com</td>
+                            <td class="govuk-table__cell">Administrator</td>
+                            <td class="govuk-table__cell">Added</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">fahid.ben@acme-foods.com</td>
+                            <td class="govuk-table__cell"></td>
+                            <td class="govuk-table__cell"><span class="govuk-button m-b-0" id="create-sandbox-app-invite-button">Invite</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <a href="check-your-answers" class="govuk-button govuk-button-primary">Continue</a>
+            
+            </div>
+        </div>
+    </div>
+
+<script>
+document.getElementById('create-sandbox-app-invite-button').addEventListener('click', function(){
+  this.innerText = 'Invite sent';
+  this.classList.add('govuk-button--disabled')
+})
+</script>
+{% endblock %}

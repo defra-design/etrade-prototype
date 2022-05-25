@@ -1,0 +1,87 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Check your answers before creating your sandbox application" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+  
+            {% include "includes/defra-section-nav.html" %}
+
+            <div class="govuk-grid-column-three-quarters">
+
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+
+          
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Application name</dt>
+                        <dd class="govuk-summary-list__value">Test</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="/account/manage-applications/sandbox/name">Change<span class="govuk-visually-hidden"> application name</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">APIs to be used</dt>
+                        <dd class="govuk-summary-list__value">Import of products, animals, food and feed system - beta,
+                            <br>Export application - beta,
+                            <br>Fish Export Service (FES) - beta,
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="which-apis">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Redirect URIs</dt>
+                        <dd class="govuk-summary-list__value">https://www.api.acme-foods.com/imports
+                            <br>https://www.api.acme-foods.com/exports
+                            <br>https://www.api.acme-foods.com/fish
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="which-apis">Change<span class="govuk-visually-hidden"> redirect URIs</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Team members on this application</dt>
+                        <dd class="govuk-summary-list__value">john.doe@acme-foods.com,
+                            <br>sarah.jane@acme-foods.com
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="add-team-members">Change<span class="govuk-visually-hidden"> team members</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Team members</dt>
+                        <dd class="govuk-summary-list__value">john.doe@acme-foods.com,
+                            <br>sarah.jane@acme-foods.com
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="add-team-members">Change<span class="govuk-visually-hidden"> team members</span></a>
+                        </dd>
+                    </div>
+                </dl>
+    
+                <h2 class="govuk-heading-m">Now create your sandbox application</h2>    
+                <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+    
+                <form action="confirmation" method="post" novalidate>
+    
+                    <input type="hidden" name="answers-checked" value="true">    
+                    
+                    <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Accept and send
+                    </button>    
+                
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
