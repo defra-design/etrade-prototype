@@ -6,17 +6,17 @@ const router = express.Router()
 module.exports = router
 
 // Catch any missed renames
-router.get('/homepage-v2', (req, res) => {
-    res.redirect('homepage');
-});
+// router.get('/homepage-v2', (req, res) => {
+//     res.redirect('homepage');
+// });
 
 router.get('/api-step-by-step/introduction', (req, res) => {
     res.redirect('/documentation/introduction');
 })
 
-router.get('/account', (req, res) => {
-    res.redirect('/account/view-apps')
-})
+// router.get('/account', (req, res) => {
+//     res.redirect('/account/view-apps')
+// })
 
 // router.get('/account/add-team-members', (req, res) => {
 //     res.render('account/team', {pageActionText: 'Review'})

@@ -27,14 +27,16 @@
                             classes: "govuk-label--l govuk-visually-hidden"
                         },
                         hint: {
-                            text: "Application names are limited to 10 characters"
+                            text: "Names are limited to 10 characters."
                         },
                         id: "app-name",
                         name: "app-name",
                         classes: "govuk-!-width-two-thirds"
                     }) }}
                     
-                    <button class="govuk-button govuk-button--primary">Continue</button>
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}                    
                 
                 </form>
             

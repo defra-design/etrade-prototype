@@ -1,10 +1,6 @@
 {% set containerClasses = "defra-fullWidth--override" %} 
 {% set mainClasses = "govuk-main-wrapper--spacing-override" %}
-<!-- 
-  Used in template.njk within the node_modules > govuk-frontend > govuk folder 
 
-  We add this to override the fixed width for the banner header. 
--->
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
@@ -21,9 +17,9 @@
       <h1 class="govuk-heading-xl">Defra API developer portal</h1>
       <p class="govuk-body-l">Connect your apps to our APIs and integrate with our sandbox environment.</p>
       <div class="govuk-button-group">
-        <a href="/sign-in/" class="govuk-button defra-button-inverse">Create or sign in to a developer account</a>
-          <!-- <a href="register/email" class="govuk-button defra-button-inverse" data-module="govuk-button">Create an account</a>
-          <a href="sign-in/sign-in" class="govuk-button defra-button-inverse" data-module="govuk-button">Sign in to developer account</a> -->
+        <!-- <a href="/sign-in/" class="govuk-button defra-button-inverse">Create or sign in to a developer account</a> -->
+          <a href="register/email" class="govuk-button defra-button-inverse" data-module="govuk-button">Create an account</a>
+          <a href="sign-in/sign-in" class="govuk-button defra-button-inverse" data-module="govuk-button">Sign in to developer account</a>
       </div>
     </div>
   </div>
@@ -36,8 +32,8 @@
       <div class="govuk-grid-column-two-thirds">        
         <p class="govuk-body">If you are a software developer, you can use the Defra API Developer Portal to learn about and integrate your applications with our RESTful APIs.</p>
         <p class="govuk-body">You will be able to find out more about our RESTful API platform, access detailed API documentation, understand how to integrate your application with our APIs, and how to test your application in the sandbox, before applying to go live.</p>
-      </div>      
-      <div class="govuk-grid-column-one-third">
+      
+      
         {{ govukInsetText({
           classes: "govuk-!-margin-top-0",
           text: "Currently you can only integrate with our sandbox environment. Production integration will be possible when the APIs have reached Beta."

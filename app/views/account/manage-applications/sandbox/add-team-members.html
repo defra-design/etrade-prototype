@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = "Do you want to add another team member to your application?" %}
+{% set pageHeading = 'Do you want to add another team member to ' + data['app-name'] + '?' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -17,7 +17,10 @@
             <div class="govuk-grid-column-three-quarters">
 
                 {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
-          
+                
+                <!-- This is not needed wrong place in flow -->
+                <!-- <p>You can change this later.</p> -->
+                
                 <form class="govuk-form" action="team" method="post">            
 
                     {{ govukRadios({
@@ -30,10 +33,7 @@
                             isPageHeading: true,
                             classes: "govuk-fieldset__legend--l govuk-visually-hidden"
                             }
-                        },
-                        hint: {
-                            text: "You can change this later"
-                        },
+                        },                        
                         items: [
                             {
                             value: "yes",
@@ -46,7 +46,10 @@
                         ]
                     }) }}
                     
-                    <button class="govuk-button govuk-button--primary">Continue</button>
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}  
+                    
                 
                 </form>
             

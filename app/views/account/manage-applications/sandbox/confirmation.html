@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = "Sandbox application created" %}
+{% set pageHeading = 'Application created' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -18,22 +18,29 @@
 
                 {{ govukPanel({
                     titleText: pageHeading,
-                    classes: "govuk-!-margin-bottom-7"
+                    html: data['app-name'],    
+                    classes: "govuk-!-margin-bottom-7"                         
                 }) }}                
-    
-                <p class="govuk-body">Added team members have been sent a confirmation email.</p>
-    
-                <h2 class="govuk-heading-m">What happens next</h2>
-                <p>You can now work on your sandbox application. Information can be found in the <a href="/documentation/reference-guide">documentation section</a>.</p>
-                <p>When you are ready, you can <a href="#" title="Read about applying for production credentials">apply for production credentials</a>.</p>
+                                
                 
-                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/account/manage-applications/">View your applications</a></p>
+                <p>For your application to interact with our services that give access delegation and authorisation as well as to maintain security and integrity you will need to use the <a href="#">credentials we have generated</a> for your application.</p>
                 
                 
-                {{ govukButton({
+                <h2 class="govuk-heading-m">What you can do next</h2>                                            
+                <p>When you are ready you should:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>read our <a href="/documentation/reference-guide">reference guides</a></li>
+                    <li>understand <a href="#">our APIs and how to use them</a></li>
+                    <li><a href="#">apply for production credentials</a> for this application</li>
+                </ul>                                    
+                
+                <p class="govuk-body govuk-!-margin-top-7"><a class="govuk-link govuk-link--no-visited-state" href="/account/manage-applications/">View your applications</a></p>
+                
+                
+                <!-- {{ govukButton({
                     text: "Finish",
                     href: "/account/manage-applications/"
-                }) }}
+                }) }} -->
 
                 
             

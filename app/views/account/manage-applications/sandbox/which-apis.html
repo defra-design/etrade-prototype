@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = "Which APIs do you want to use?" %}
+{% set pageHeading = 'Which APIs do you need to use with ' + data['app-name'] + '?' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -18,10 +18,26 @@
                 
                 {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
                 
-                <p>Learn more about our APIs in the <a href="../apis/explore-apis">API documentation (opens in new tab)</a></p>
+                <p>Learn more about our <a href="../apis/explore-apis">APIs in the documentation (opens in new tab)</a>.</p>
 
                 <form class="govuk-form" action="redirects" method="post">
-                    <div class="govuk-form-group">
+
+                    {{ govukCheckboxes({
+                        idPrefix: "app-apis",
+                        name: "app-apis",
+                        fieldset: { legend: { text: pageHeading, isPageHeading: false, classes: "govuk-fieldset__legend govuk-visually-hidden" } },
+                        hint: { text: "Select all that apply." },
+                        items: [
+                            { value: "Import of products, animals, food and feed system", text: "Import of products, animals, food and feed system" },
+                            { value: "Export application", text: "Export application" },
+                            { value: "Fish Export Service (FES)", text: "Fish Export Service (FES)" }
+                        ]
+                    }) }}
+
+
+
+
+                    <!-- <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                             <h1 class="govuk-fieldset__heading">
@@ -71,9 +87,12 @@
                             </div>
                             </div>
                         </fieldset>
-                    </div>
+                    </div> -->
                     
-                    <button class="govuk-button govuk-button--primary">Continue</button>
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}
+                
                 
                 </form>
             

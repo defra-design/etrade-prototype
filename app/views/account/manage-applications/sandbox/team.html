@@ -51,7 +51,15 @@
                     </tbody>
                 </table>
                 
-                <a href="check-your-answers" class="govuk-button govuk-button-primary">Continue</a>
+                <form method="post" action="check-your-answers" >
+                    
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}  
+                    
+                </form>
+
+                
             
             </div>
         </div>
