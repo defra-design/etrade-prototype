@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Are you sure you want to use these redirect’s?" %}
+{% set pageSection = "Production credentials - SandboxName" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            <form action="traffic-volumes" method="post" class="form">        
+            
+                <p>Playback redirect URLs</p> 
+                
+                {{ govukButton({
+                    text: "Confirm and continue"
+                }) }}
+
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}
