@@ -1,38 +1,30 @@
 
+
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-  GOV.UK Prototype Kit
-{% endblock %}
+{% set pageHeading = "Add 2-step verification" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
-{% block beforeContent %}
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-        alpha
-      </strong>
-      <span class="govuk-phase-banner__text">
-        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
-      </span>
-    </p>
-  </div>
-{% endblock %} 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        Add 2-step verification
-      </h1>
-      <p class="govuk-body-m">Use 2-step verification to protect your Developer Portal account and application details from being compromised</p>
-      <form action="2fa-verify" method="post" class="form">
-        {% from "govuk/components/button/macro.njk" import govukButton %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-      </form>
-      <a href="../homepage">I can't do this right now</a>
+            <p class="govuk-body-m">Use 2-step verification to protect your Developer Portal account and application details from being compromised</p>
+            <form action="2fa-verify" method="post" class="form">        
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+            </form>
+            
+           <p><a href="../homepage">I can't do this right now</a></p>
+
+        </div>
     </div>
-  </div>
   
 {% endblock %}

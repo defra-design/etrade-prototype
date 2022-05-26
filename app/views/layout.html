@@ -30,7 +30,11 @@
 {% from "govuk/components/tag/macro.njk"                 import govukTag %}
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
-{% from "govuk/components/defra-step-by-step-navigation/macro.njk"        import stepByStepNavigation %}
+
+
+
+{% import "macros/page-title.njk" as macroPageTitle %}
+{% import "macros/page-header.njk" as macroPageHeader %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -43,9 +47,9 @@
 {% block header %}
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-    homepageUrl: "/homepage",
+    homepageUrl: "/",
     serviceName: serviceName,
-    serviceUrl: "/homepage",
+    serviceUrl: "/",
     navigation: [
       {
         href: "/getting-started",
@@ -78,12 +82,29 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "alpha"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
+{% if showPhaseBanner != false %}
+{{ govukPhaseBanner({
+  tag: { text: "Prototype" },
+  html: "This is a prototype. It is not a real service."
+}) }}
+{% endif %}
+
+{% if showBackLink != false %}
+
+    {% if showManageBackLink != true %}
+
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.go(-1)"
+        }) }}  
+
+    {% endif %}
+
+{% endif %}
+
+{% block pageNavigation %}{% endblock %}
+{% block pageBanner %}{% endblock %}
+
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}

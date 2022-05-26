@@ -1,52 +1,39 @@
 
+
 {% extends "layout.html" %}
+{% set showBackLink = false %}
 
-{% block pageTitle %}
-  GOV.UK Prototype Kit
-{% endblock %}
+{% set pageHeading = "Set up 2-step verification" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
-{% block beforeContent %}
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-        alpha
-      </strong>
-      <span class="govuk-phase-banner__text">
-        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
-      </span>
-    </p>
-  </div>
-{% endblock %} 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        Set up 2-step verification
-      </h1>
-      <ol class="govuk-list govuk-list--number">
-        <li>On your smartphone or tablet, download an authenticator app from your app store</li>
-        <li>Using the app, scan this code
-            <img src="/public/images/dummy-qr-code.png" alt="A dummy QR code for prototyping purposes" class="defra-qr-image">
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+                  
+            <ol class="govuk-list govuk-list--number">
+                <li>On your smartphone or tablet, download an authenticator app from your app store</li>
+                <li>Using the app, scan this code <img src="/public/images/dummy-qr-code.png" alt="A dummy QR code for prototyping purposes" class="defra-qr-image">        
+                    <details class="govuk-details">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">I cannot scan the QR code</span>
+                        </summary>
+                        <div class="govuk-details__text"><a href="#">What to do if you can scan the QR code</a></div>
+                    </details>
+                </li>
+                <li>Check the app for your 6 digit access code</li>
+            </ol>
             
-            <details class="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  I cannot scan the QR code
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                <a href="#">What to do if you can scan the QR code</a>
-              </div>
-            </details>
-        </li>
-        <li>Check the app for your 6 digit access code</li>
-      </ol>
-      <form class="form" method="post" action="2fa-enter-code">
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-      </form>
+            <form class="form" method="post" action="2fa-enter-code">
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+            </form>
+
+        </div>
     </div>
-  </div>
   
 {% endblock %}

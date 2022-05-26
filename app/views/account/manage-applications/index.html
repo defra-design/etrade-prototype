@@ -1,0 +1,72 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "View all applications" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+  
+            {% include "includes/defra-section-nav.html" %}
+
+            <div class="govuk-grid-column-three-quarters">
+                
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+          
+                <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">Getting production credentials</span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">If your appliucation subscribes to an API only available in the sandbox, you cannot request production credentials. <a href="../apis/explore-apis">Review the specific API documentation</a> to check if an API is available in production.</p>
+                        <p>You will need to test your application before requesting production credentials.</p>
+                        <p>You do not need production credentials for APIs with only open access endpoints or:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>APIs for testing your service</li>
+                            <li>Hello world API</li>
+                        </ul>
+                    </div>
+                </details>
+                
+                <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">What the sandbox lets you do</span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>create your sandbox application</li>
+                            <li>subscribe it to the APIs you want to integrate with</li>
+                            <li>get access to its testing credentials</li>
+                            <li>use its testing credentials for integration testing</li>
+                        </ul>
+                    </div>
+                </details>
+                
+                <a href="/account/manage-applications/sandbox/name" class="govuk-button govuk-button--primary">Create sandbox application</a>
+
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">All applications</caption>
+                    <thead class="govuk-table__head">
+                        <th class="govuk-table__header">Sandbox applications</th>
+                        <th class="govuk-table__header">Last API call</th>
+                        <th class="govuk-table__header">Your role</th>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell"><a href="helloworld?helloworld">Hello World</a></td>
+                            <td class="govuk-table__cell">No API called</td>
+                            <td class="govuk-table__cell">Admin</td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

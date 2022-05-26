@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Check your answers" %}
+{% set pageSection = "Production credentials - SandboxName" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            <p>Playback all answers given, with option to change.</p>
+
+            <form action="confirmation" method="post" class="form">                                
+
+              
+                
+                {{ govukButton({
+                    text: "Accept and send"
+                }) }}
+
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}

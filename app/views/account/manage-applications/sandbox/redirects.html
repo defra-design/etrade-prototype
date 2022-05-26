@@ -1,0 +1,99 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = 'What are your redirect URIs for ' + data['app-name'] + '?' %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+  
+            {% include "includes/defra-section-nav.html" %}
+
+            <div class="govuk-grid-column-three-quarters">
+                
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+                
+                
+                <p class='govuk-body'>Your application needs to ask users before it can access their personal data. We take users to Government Gateway to grant this permission.</p>
+                <p class='govuk-body'><a href='#'>Redirect URIs tell us where to send users (opens in new tab)</a> after they leave Government Gateway.</p>
+                <!-- <p class='govuk-body'><a href='#'>Learn more about redirect URIs (opens in new tab).</a></p> -->
+                
+                
+                <!-- <p class="govuk-body">You can change this later.</p>
+          
+                {{ govukDetails({
+                    summaryText: "What are redirect URIs?",
+                    html: "<p class='govuk-body'>Your application needs to ask users before it can access their personal data. We take users to Government Gateway to grant this permission.</p><p class='govuk-body'>Redirect URIs tell us where to send users after they leave Government Gateway.</p><p class='govuk-body'><a href='#'>Learn more about redirect URIs (opens in a new window or tab).</a></p>"
+                }) }} -->
+
+                <!-- Maximum of 5.  -->
+                <form class="govuk-form" action="add-team-members" method="post">            
+            
+                    {{ govukInput({
+                        label: { text: "Redirect URIs?", classes: "govuk-visually-hidden" },
+                        hint: {
+                            text: "URI must be HTTPS for example https://example.co.uk"
+                        },
+                        prefix: {
+                            text: "https://"
+                          },
+                        id: "app-redirects",
+                        name: "app-redirects",
+                        classes: "govuk-label--l govuk-!-width-two-thirds"
+                    }) }}
+
+                    <!-- {{ govukInput({
+                        label: { text: "Redirect URIs?", classes: "govuk-visually-hidden" },                        
+                        prefix: {
+                            text: "https://"
+                          },
+                        id: "app-redirects",
+                        name: "app-redirects",
+                        classes: "govuk-label--l govuk-!-width-two-thirds"
+                    }) }}
+
+                    {{ govukInput({
+                        label: { text: "Redirect URIs?", classes: "govuk-visually-hidden" },                        
+                        prefix: {
+                            text: "https://"
+                          },
+                        id: "app-redirects",
+                        name: "app-redirects",
+                        classes: "govuk-label--l govuk-!-width-two-thirds"
+                    }) }}
+                    {{ govukInput({
+                        label: { text: "Redirect URIs?", classes: "govuk-visually-hidden" },                        
+                        prefix: {
+                            text: "https://"
+                          },
+                        id: "app-redirects",
+                        name: "app-redirects",
+                        classes: "govuk-label--l govuk-!-width-two-thirds"
+                    }) }}
+                    {{ govukInput({
+                        label: { text: "Redirect URIs?", classes: "govuk-visually-hidden" },                        
+                        prefix: {
+                            text: "https://"
+                          },
+                        id: "app-redirects",
+                        name: "app-redirects",
+                        classes: "govuk-label--l govuk-!-width-two-thirds"
+                    }) }} -->
+                    
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}  
+                    
+                
+                </form>
+            
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

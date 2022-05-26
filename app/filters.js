@@ -41,5 +41,35 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
+  
+  filters.currency = (number, prefix) => {
+    if (!prefix) {
+      prefix = '£'
+    }
+    return prefix + separateThousandsWithComma(number)
+  }
+
+  filters.lowerCase = str => {
+    return str.toLowerCase()
+  }
+
+  filters.upperCase = str => {
+    return str.toUpperCase()
+  }
+
+  filters.titleCase = str => {
+    return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() })
+  }
+
+  filters.toMonth = function (month) {
+    if (!isNaN(month)) {
+      const monthIndex = month - 1
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      // Return month name
+      return months[monthIndex]
+    }
+  }
+
   return filters
 }
+

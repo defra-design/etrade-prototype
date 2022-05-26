@@ -1,0 +1,191 @@
+{% set accountActive = true %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Defra developer portal - Hello world application
+{% endblock %}
+
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  <div class="govuk-width-container defra-breadcrumbs">
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "../homepage"
+      },
+      {
+        text: "View apps",
+        href: "view-apps"
+      },
+      {
+          text: "Hello World"
+      }
+    ]
+  }) }}
+  </div>
+{% endblock %} 
+{% block content %}
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <section class="govuk-grid-column-one-quarter defra-section-nav">
+          <h2 class="govuk-heading-s">Manage applications</h2>
+          <ul class="defra-section-nav-list">
+            <li class="defra-section-nav-list--active-item"><a href="/account/manage-applications/">View all applications</a></li>
+            <li><a href="/account/manage-applications/sandbox/name">Create sandbox application</a></li>
+          </ul>
+          <h2 class="govuk-heading-s">Manage team members</h2>
+          <ul class="defra-section-nav-list">
+            <li><a href="/account/manage-team/">Manage team members</a></li>
+          </ul>
+          <h2 class="govuk-heading-s">Manage my account</h2>
+          <ul class="defra-section-nav-list">
+            <li><a href="/account/manage-account/manage-profile">Manage profile</a></li>
+            <li><a href="/account/manage-account/notification-preferences">Email and notification preferences</a></li>
+            <li><a href="/account/manage-account/change-password">Change password</a></li>
+            <li><a href="/account/manage-account/account-security">Account security</a></li>
+          </ul>
+        </section>
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l">
+                Hello World
+                <span class="govuk-tag govuk-tag--blue m-l-15 m-b-5">Sandbox</span>
+            </h1>
+            <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                    Getting production credentials
+                </span>
+                </summary>
+                <div class="govuk-details__text">
+                <p class="govuk-body">If your appliucation subscribes to an API only available in the sandbox, you cannot request production credentials. <a href="../apis/explore-apis">Review the specific API documentation</a> to check if an API is available in production.</p>
+                <p>You will need to test your applicationq before requesting production credentials.</p>
+                <p>You do not need production credentials for APIs with only open access endpoints or:</p>
+                <ul class="govuk-list govuk-list--bullets">
+                    <li>APIs for testing your service</li>
+                    <li>Hello world API</li>
+                </ul>
+                </div>
+            </details>
+            <a href="apply-for-production-credentials" class="govuk-button govuk-button--primary">Apply for production credentials</a>
+            <hr />
+            
+            <table class="govuk-table">
+                <caption class="govuk-table__caption govuk-table__caption--m">Redirect URIs</caption>
+                <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">URI</th>
+                    <th scope="col" class="govuk-table__header">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">https://www.fetch.example.com</th>
+                    <td class="govuk-table__cell">
+                        <a href="#" class="m-r-30">Edit</a>
+                        <a href="#">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <form>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="app-name">
+                        Add another redirect URI
+                    </label>
+                    <div id="app-name-hint" class="govuk-hint">
+                        Maximum of 5. URI must be HTTPS for example https://example.co.uk
+                    </div>
+                    <input class="govuk-input govuk-input--width-20" id="add-another-uri" name="add-another-uri" type="text">
+                    <button class="govuk-button govuk-button--secondary" for="add-another-uri">Add URI</button>
+                </div>
+            </form>
+            <hr />
+            <h2 class="govuk-heading-m">Team members</h2>        
+            <a href="manage-application">Manage and add team members</a>
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <th class="govuk-table__header">Email</th>
+                    <th class="govuk-table__header">Role</th>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">jonno@defra.gov.uk</td>
+                    <td class="govuk-table__cell">Admin</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">cathy@defra.gov.uk</td>
+                    <td class="govuk-table__cell">Admin</td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">sinead@defra.gov.uk</td>
+                    <td class="govuk-table__cell">Admin</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <h2 class="govuk-heading-m">Application activity</h2>
+            <a href="#">View all activity</a>
+            <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+                <div class="govuk-accordion__section ">
+                  <div class="govuk-accordion__section-header">
+                    <h2 class="govuk-accordion__section-heading">
+                      <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                        <strong class="govuk-tag">GET</strong>
+                        /ehc-application-summary
+                      </span>
+                    </h2>
+                  </div>
+                  <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                    <p class="gov-uk">Retrieve summary and status information of your Export Health Certificate Applications with filtering and pagination.</p>
+                  </div>
+                </div>
+            </div>
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                  <th class="govuk-table__header">Request status</th>
+                  <th class="govuk-table__header">Date and time</th>
+                  <th class="govuk-table__header"></th>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">202</span></td>
+                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">23/03/2022 15:03:52</span></td>
+                    <td class="govuk-table__cell"><a href="#">View details</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--red">404</span></td>
+                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">23/03/2022 14:29:12</span></td>
+                    <td class="govuk-table__cell"><a href="#">View details</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">202</span></td>
+                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">23/03/2022 14:02:42</span></td>
+                    <td class="govuk-table__cell"><a href="#">View details</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">202</span></td>
+                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">23/03/2022 14:01:58</span></td>
+                    <td class="govuk-table__cell"><a href="#">View details</a></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
