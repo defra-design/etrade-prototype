@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+<!-- {% set pageHeading = "Sign in with your existing account" %} -->
+{% set pageHeading = "Sign in" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            <form action="2fa-sign-in" method="post" class="form">        
+            
+                {{ govukInput({
+                    label: {
+                        text: "Email address"
+                    },
+                    id: "email-address",
+                    name: "email-address",
+                    classes: "govuk-!-width-two-thirds"
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Password"
+                    },
+                    id: "password",
+                    name: "password",
+                    type: "password",
+                    classes: "govuk-!-width-two-thirds"
+                }) }}
+                    
+                <p class="govuk-body"><a href="/forgot-password/">Forgotten password?</a></p>        
+        
+                {{ govukButton({
+                    text: "Sign in"
+                }) }}
+
+                <p class="govuk-body"><a href="/register/">Create an account</a></p>
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}

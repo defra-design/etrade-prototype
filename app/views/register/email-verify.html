@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Enter code to confirm your email address" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+      
+            <p class="govuk-body">We have sent a to: <strong>{{data['email-address']}}</strong></p>
+            <p class="govuk-body">This code will expire in 30 minutes</p>
+            
+            <form action="details" method="post" class="form">
+        
+                {{ govukInput({
+                    label: {
+                        text: "Confirmation code"
+                    },
+                    id: "confirmation-code",
+                    name: "confirmation-code",
+                    classes: "govuk-!-width-two-thirds"
+                }) }}    
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+            </form>
+        
+            <p class="govuk-body">The email may take a few minutes to arrive. Its subject line is: ‘Confirm your email address - Government Gateway’.</p>
+            <p class="govuk-body">Check your spam or junk folder – if it still has not arrived, you can <a href="#">request a new code</a> or <a href="email">provide another email address</a>.</p>        
+
+        </div>
+    </div>
+  
+{% endblock %}

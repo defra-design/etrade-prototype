@@ -1,0 +1,108 @@
+{% set documentationActive = true %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+{% endblock %} 
+{% block content %}
+  <div class="govuk-grid-row">
+    <section class="govuk-grid-column-one-third defra-page-contents">
+      <ul class="defra-contents-list">
+          <li><a href="introduction">Introduction</a></li>
+          <li class="contents-list--active-item">
+            <a href="application-naming-guidelines">Application naming guidelines</a>
+            <ul class="defra-contents-list--dashed">
+              <li>
+                <a class="govuk-link" href="#using-defra-in-the-name">Using Defra in the name</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#existing-names">Existing names</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#trademarked-and-registered-names">Trademarked and registered names</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#offensive-names">Offensive names</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#misleading-names">Misleading names</a>
+              </li> 
+              <li>
+                <a class="govuk-link" href="#removal-from-developer-portal">Removal from the Defra API Developer Portal</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="reference-guide">Reference guide</a></li>
+          <li><a href="authorisation">Authorisation</a></li>
+          <li><a href="sample-project">Sample project</a></li>
+          <li><a href="terms-of-use">Terms of use</a></li>
+      </ul>
+    </section>
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Application naming guidelines
+      </h1>
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          Currently you can only integrate with our sandbox environment. Production integration will be possible when the APIs have reached BETA
+        </strong>
+      </div>
+      <p>We'll check the name of your application before giving you access to production credentials. This is because we show its name to users during the authorisation process. While you are testing your sandbox application, you can name it whatever you like.</p>
+      <h2 id="using-defra-in-the-name" class="govuk-heading-m">Using Defra in the name</h2>
+      <p>Using Defra, or making any reference to Defra as part of the name is not allowed and will result in your application being rejected.</p>
+      <h2 id="existing-names" class="govuk-heading-m">Existing names</h2>
+      <p>The name of your application can't be the same or similar to the name of an application which has already requested production credentials on the Developer Portal.</p>
+      <p>'The same' means a name that's either identical or where the only difference is punctuation or a special character. For example, 'International Trade App' is treated the same as 'International Tr@de App'.</p>
+      <p>'Similar' means a name that's close enough to another to confuse users. For example, 'Import Traders App' is too similar to 'Import Traderz App'.</p>
+      <h3 class="govuk-heading-s">Exceptions</h3>
+      <p>This doesn't apply if it meets both these conditions:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>The name will be part of a group with an existing application with the same or similar name.</li>
+        <li>The administrators of the existing application permit you to use the name.</li>
+      </ul>
+      <h2 id="trademarked-and-registered-names" class="govuk-heading-m">Trademarked and registered names</h2>
+      <p>Your application's name must not be the same or similar to a trademarked name that's registered by another business outside the Defra API Developer Portal.</p>
+      <p>For example, you can't register as 'Trader A', without permission from 'Trader A'.</p>
+      <h2 id="offensive-names" class="govuk-heading-m">Offensive names</h2>
+      <p>Your name can't contain offensive words or phrases.</p>
+      <h2 id="misleading-names" class="govuk-heading-m">Misleading names</h2>
+      <p>Your application's name can't mislead users into believing your application has special status or power. Such names might associate your application with government, local authorities or institutions. For example, the Defra Trade App could be misleading.</p>
+      <h2 id="removal-from-developer-portal" class="govuk-heading-m">Removal from the Defra API Developer Portal</h2>
+      <p>We have the right to delete your application at any point, for any reason.</p>
+
+      <div class="defra-pagination">
+        <a href="reference-guide" class="govuk-link defra-pagination--link">
+          <span class="defra-pagination--link-title">
+            <span class="defra-pagination--symbol">
+              <svg xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg>
+            </span>
+            <span class="defra-pagination--link-text">
+              Next
+            </span>
+            <span class="defra-pagination--divider govuk-visually-hidden">:</span>
+          </span>
+          <span class="defra-pagination--label">
+            Reference guide
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

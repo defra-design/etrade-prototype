@@ -1,0 +1,93 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Details" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+  
+            {% include "includes/defra-section-nav.html" %}
+
+            <div class="govuk-grid-column-three-quarters">
+                
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+                
+                
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Name</dt>
+                        <dd class="govuk-summary-list__value">James Hendrix</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="/account/manage-applications/sandbox/name">Change<span class="govuk-visually-hidden"> team member name</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Email address</dt>
+                        <dd class="govuk-summary-list__value">jimi.hendrix@defra.gov.uk</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="which-apis">Change<span class="govuk-visually-hidden"> email address</span></a>
+                        </dd>
+                    </div>
+                </dl>
+                
+                <h2 class="govuk-heading-s">Applications attached to</h2>
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Hello World</dt>
+                        <dd class="govuk-summary-list__value">Role: Administrator</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="/account/manage-applications/sandbox/name">Change<span class="govuk-visually-hidden"> hello world app membership</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Acme EHC application</dt>
+                        <dd class="govuk-summary-list__value">Role: Developer</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="which-apis">Change<span class="govuk-visually-hidden"> acme EHC application membership</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Border check point app</dt>
+                        <dd class="govuk-summary-list__value">Role: Administrator</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="which-apis">Change<span class="govuk-visually-hidden"> acme EHC application membership</span></a>
+                        </dd>
+                    </div>
+                </dl>
+
+                <a href="/account/manage-team/" class="govuk-button govuk-button--primary">Save changes</a>
+                <a href="/account/manage-team/" class="float-r govuk-button govuk-button--warning">Delete team member</a>
+
+
+                <!-- <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <th class="govuk-table__header">App name</th>
+                        <th class="govuk-table__header"></th>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Hello World</td>
+                        <td class="govuk-table__cell"><a href="../team.html">Change</a></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Acme EHC application</td>
+                        <td class="govuk-table__cell"><a href="../team.html">Change</a></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Border check point app</td>
+                        <td class="govuk-table__cell"><a href="../team.html">Change</a></td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

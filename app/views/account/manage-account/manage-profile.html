@@ -1,0 +1,41 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Manage profile" %}
+{% set pageSection = "Account" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+  
+            {% include "includes/defra-section-nav.html" %}
+
+            <div class="govuk-grid-column-three-quarters">
+                
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+                <form>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="name">
+                        Name
+                        </label>
+                        <input class="govuk-input" id="name" name="name" type="text" value="James Hendrix">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="name">
+                        Email
+                        </label>
+                        <input class="govuk-input" id="name" name="name" type="text" value="jimi.hendrix@defra.gov.uk">
+                    </div>
+                    <button class="govuk-button govuk-button--primary">Save changes</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,171 @@
+{% set exploreAPIsActive = true %}
+{% set mainClasses = "govuk-main-wrapper--spacing-override" %}
+{% set containerClasses = "defra-fullWidth--override" %} 
+
+{% extends "../../layout.html" %}
+
+{% block pageTitle %}
+  EHC API endpoints
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+  <div class="govuk-width-container defra-breadcrumbs">
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/../"
+      },
+      {
+        text: "Explore APIs",
+        href: "explore-apis"
+      },
+      {
+        text: "Create a catch certificate API",
+        href: "../api-fish-exports-service-masthead"
+      },
+      {
+          text: "API end points"
+      }
+    ]
+  }) }}
+  </div>
+{% endblock %} 
+{% block content %}
+<div class="defra-banner govuk-clearfix">
+  <div class="govuk-width-container govuk-clearfix">
+    <div class="govuk-grid-column">
+      <h1 class="govuk-heading-xl">Create a catch certificate API</h1>
+      <br>
+    </div>
+  </div>
+</div>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <section class="govuk-grid-column-one-quarter defra-page-contents">
+          <ul class="defra-contents-list">
+            <li><a href="../api-fish-exports-service-masthead">Overview</a></li>
+            <li class="contents-list--active-item"><a href="endpoints">API end points</a></li>
+            <li><a href="schemas">API schemas</a></li>
+            <li><a href="payload-definition">Payload definition</a></li>
+            <li><a href="error-codes">Error codes</a></li>
+          </ul>
+        </section>
+        <div class="govuk-grid-column-three-quarters">
+          <h1 class="govuk-heading-l">API end points</h1>
+          <p class="govuk-body">The following endpoints will soon be made available for the catch certificates API.</p>
+          <p class="govuk-body">This API follows the OpenApi specification and is available for export and download in the following formats:</p>
+          <ul class="govuk-list">
+            <li><a href="">OpenApi 3 JSON</a>
+            <li><a href="">OpenApi 3 YAML</a></li>
+          </ul>
+          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            <div class="govuk-accordion__section ">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    <strong class="govuk-tag govuk-tag--green">POST</strong>
+                    /catch-certificate
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <p class="govuk-body">Provide the details of an Application to create a Catch Certificate for export.</p>
+                <p class="govuk-body">To support the process of creating the payload, you can use the online documentation and Open API specification provided. Please use the trade-fish-reference-data/metadata endpoint to find and search reference data lists for sub sections of the payload according to your requirements, e.g. Countries, Vessels, Species and Commodities.
+                <p class="govuk-body">Submit your constructed payload and react to the response status code accordingly.</p>
+                <table class="govuk-table">
+                  <thead class="govuk-table__head">
+                      <th class="govuk-table__header">Parameters name</th>
+                      <th class="govuk-table__header">Description</th>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">
+                            <span>CatchCertificate</span>
+                            <small>(Body)</small>
+                          </td>
+                          <td class="govuk-table__cell">
+                            <p class="govuk-body">Details of your Catch Certificate Application</p>
+                          </td>
+                      </tr>
+                  </tbody>
+                </table>
+                <h3 class="govuk-heading-s">Try this API</h3>
+                <button class="govuk-button">Execute a request to this endpoint</button>
+                <h2 class="govuk-heading-m">Response <strong class="govuk-tag float-r">APPLICATION/JSON</strong></h2>
+                <table class="govuk-table">
+                  <thead class="govuk-table__head">
+                    <th class="govuk-table__header">Code</th>
+                    <th class="govuk-table__header">Description</th>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">202</td>
+                      <td class="govuk-table__cell">
+                        <p class="govuk-body">The submitted payload has passed preliminary validation and has resulted in a Request being created.</p>
+                        <p class="govuk-body">A <strong>Request</strong> is a way to track the asynchronous processing of your message.</p>
+                        <p class="govuk-body">The <strong>Request</strong> is now being validated and processed in order to attempt to create a Catch Certificate Application.</p>
+                        <p class="govuk-body">You can commence polling for status changes to the <strong>Request</strong> using the request status endpoint and the Request Id provided in the response body.</p>
+                        <p class="govuk-body">Here is an example response for this <span class="govuk-tag">RequestStatusDetails</span> schema:</p>
+                        <div class="defra-code-wrapper">
+                          <pre><code class="defra-code-block">{
+  "requestId": "b09fb181-948d-4c0c-9928-bf6d0b7ca357",
+  "reference": "FES-EG-1234",
+  "status": "Accepted",
+  "createdOn": "2022-01-02T14:05:20.534+00:00",
+  "_links": [
+    {
+      "href": "https://gateway.trade.defra.gov.uk/trade-fish/v1/catch-certificate/request/b09fb181-948d-4c0c-9928-bf6d0b7ca357/statusdsadsaasdasdasddsa",
+      "rel": "catch-certificate-request-status",
+      "method": "GET",
+      "description": "Asynchronous polling endpoint to query using a Request Id for status changes or validation errors."
+    }
+  ]
+}</code></pre>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">400</td>
+                      <td class="govuk-table__cell">
+                        <p class="govuk-body">The attempt to create a <strong>Request</strong> failed preliminary validation and has not been created.</p>
+                        <p class="govuk-body">Validation errors can be found in the response body and must be corrected before re-submitting.</p>
+                        <p class="govuk-body">Here is an example response for this <span class="govuk-tag">CommonProblemDetails</span> schema:</p>
+                        <div class="defra-code-wrapper">
+                          <pre><code class="defra-code-block">{
+"type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+"title": "One or more validation errors occurred.",
+"status": 400,
+"traceId": "00-d55147526d044e41aa246671de874080-de7c8222d3b2684a-00",
+"errors": {
+  "applicationName": [
+    "'Application Name' must not be empty."
+  ],
+  "certificateQuantity": [
+    "'Certificate Quantity' must be greater than or equal to '1'."
+  ]
+}
+                          }</code></pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

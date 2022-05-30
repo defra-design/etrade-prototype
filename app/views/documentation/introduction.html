@@ -1,0 +1,90 @@
+{% set documentationActive = true %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+{% endblock %} 
+{% block content %}
+  <div class="govuk-grid-row">
+    <section class="govuk-grid-column-one-third defra-page-contents">
+      <ul class="defra-contents-list">
+          <li class="contents-list--active-item"><a href="introduction">Introduction</a>
+            <ul class="defra-contents-list--dashed">
+              <li>
+                <a class="govuk-link" href="#introduction">Introduction</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#route-to-live">Route to live</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="application-naming-guidelines">Application naming guidelines</a></li>
+          <li><a href="reference-guide">Reference guide</a></li>
+          <li><a href="authorisation">Authorisation</a></li>
+          <li><a href="sample-project">Sample project</a></li>
+          <li><a href="terms-of-use">Terms of use</a></li>
+      </ul>
+    </section>
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Introduction
+      </h1>
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          Currently you can only integrate with our sandbox environment. Production integration will be possible when the APIs have reached BETA
+        </strong>
+      </div>
+      <h2 id="introduction" class="govuk-heading-m">Introduction</h2>
+      <p>Defra offers API integrations for you to apply for export health certificates, check the status of applications you’ve made, and check for validation errors on your applications. This is the first step towards enabling digital certification for moving agri-food goods.</p>
+
+      <p>This guidance explains how trading organisations and community software providers (CSPs) can configure their systems to directly feed information to Defra trade services, drawing information from across their supply chains.</p>
+
+      <p>This first release of Defra’s Trade API provides an interface for the automated creation of export health certificates (EHCs), from Great Britain to Northern Ireland. Subsequent releases will support the raising of additional EHCs from Great Britain to Europe Union and 3rd countries, phytosanitary certificates, the upload of EHC data in TRACES NT for the automated creation of Common Health Entry Documents (CHEDs), and full eCertification and ePhyto.</p>
+
+      <p>Trader organisations and Community Software Providers may need to amend their existing systems in order to fully embrace and utilise the service.</p>
+      
+      <h2 id="route-to-live" class="govuk-heading-m">Route to live</h2>
+      <ol class="govuk-list govuk-list--number">
+        <li>Register for the Defra API Developer Portal</li>
+        <li>Review the API Documentation and Defra API Developer Portal end to end service guide</li>
+        <li>Download the sample project</li>
+        <li>Register your application for sandbox testing</li>
+        <li>Test the Defra endpoints and develop your software application.</li>
+      </ol>
+
+      <div class="defra-pagination">
+        <a href="application-naming-guidelines" class="govuk-link defra-pagination--link">
+          <span class="defra-pagination--link-title">
+            <span class="defra-pagination--symbol">
+              <svg xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg>
+            </span>
+            <span class="defra-pagination--link-text">
+              Next
+            </span>
+            <span class="defra-pagination--divider govuk-visually-hidden">:</span>
+          </span>
+          <span class="defra-pagination--label">
+            Application naming guidelines
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

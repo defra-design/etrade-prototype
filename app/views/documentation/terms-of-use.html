@@ -1,0 +1,199 @@
+{% set documentationActive = true %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+{% endblock %} 
+{% block content %}
+  <div class="govuk-grid-row">
+    <section class="govuk-grid-column-one-third defra-page-contents">
+      <ul class="defra-contents-list">
+          <li><a href="introduction">Introduction</a></li>
+          <li><a href="application-naming-guidelines">Application naming guidelines</a></li>
+          <li><a href="reference-guide">Reference guide</a></li>
+          <li><a href="authorisation">Authorisation</a></li>
+          <li><a href="sample-project">Sample project</a></li>
+          <li class="contents-list--active-item"><a href="terms-of-use">Terms of use</a>
+            <ul class="defra-contents-list--dashed">
+                <li>
+                  <a class="govuk-link" href="#background-checks">Background checks</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#what-you-can-expect-from-us">What you can expect from us</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#what-we-expect-from-you">What we expect from you</a>
+                </li>
+              </ul>
+          </li>
+      </ul>
+    </section>
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Terms of use
+      </h1>
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          Currently you can only integrate with our sandbox environment. Production integration will be possible when the APIs have reached BETA
+        </strong>
+      </div>
+      <p>Version 1.0 issued 12 Jan 2021</p>
+      <p>These terms of use explain what you can expect from us and what we expect from you when creating and operating software services that consume Defra Application Programming Interfaces (APIs) hosted on the Defra API Developer Portal. They do not create a legal relationship between Defra and any software developer.</p>
+      <p>We reserve the right to remove your access to the Defra API Developer Portal and its APIs temporarily or permanently.</p>
+      <p>These terms may change from time to time and we will let you know when this happens. For major changes, you may need to re-accept these terms of use, but for minor changes, we will assume you agree to the changes unless we hear from you.</p>
+      <p>If you have any questions <a href="mailto:tradeplatform@defra.gov.uk">ask for support</a>.</p>
+      <h2 class="govuk-heading govuk-heading-m" id="background-checks">Background checks</h2>
+      <p>We’ll carry out basic background checks on your organisation. They include checking:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Information held by Companies House</li>
+        <li>Your website</li>
+      </ul>
+      <h2 class="govuk-heading govuk-heading-m" id="what-you-can-expect-from-us">What you can expect from us</h2>
+      <p>We will:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Give you at least 6 months’ notice of changes affecting any stable APIs</li>
+        <li>Make sure any minor changes made to stable APIs are backwards compatible</li>
+        <li>Provide reasonable notice of changes affecting APIs, which can change fairly frequently</li>
+        <li>Warn you before we retire an API</li>
+        <li>Provide a robust test environment</li>
+      </ul>
+      <h2 class="govuk-heading govuk-heading-m" id="what-we-expect-from-you">What we expect from you</h2>
+      <p>We take the protection of customer data seriously. We expect you to do the same by following data protection law and protecting users in line with the:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a rel="noopener noreferrer" href="https://www.ncsc.gov.uk/collection/digital-service-security" target="_blank">National Cyber Security Centre’s Digital Service Security (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="https://www.ncsc.gov.uk/blog-post/secure-development-and-deployment" target="_blank">National Cyber Security Centre’s Guidance for secure development and deployment (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="https://www.ncsc.gov.uk/guidance/tls-external-facing-services" target="_blank">Transport Layer Security principles for protecting data (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr" target="_blank">General Data Protection Regulation – GDPR (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="https://ico.org.uk/about-the-ico/what-we-do/legislation-we-cover/privacy-and-electronic-communications-regulations/" target="_blank" >Privacy and Electronic Communications (EC Directive) Regulations 2003 – as amended (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="http://www.legislation.gov.uk/ukpga/2010/15/contents" target="_blank" >Equality Act 2010 (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="https://ico.org.uk/for-organisations/" target="_blank">Information Commissioner’s Office (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="https://ico.org.uk/for-organisations/data-protection-act-2018/" target="_blank">Data Protection Act 2018 (opens in a new tab)</a></li>
+      </ul>
+      <p>You must also follow these acts and regulations if they’re changed or replaced.</p>
+      <h3 class="govuk-heading govuk-heading-s">Accessing data</h3>
+      <p>You must give your users access to their data. We may also ask to access their data if we open an investigation.</p>
+      <p>If you withdraw a piece of software or a user stops using it, you must let them retrieve and export all their data so they can meet their obligations to us.</p>
+      <p>We recommend using multi-factor authentication to protect personal data.</p>
+
+      <h3 class="govuk-heading govuk-heading-s">Processing data</h3>
+      <p>You may need to pay a data protection fee (opens in a new tab) if your software processes personal data.</p>
+      <p>You must help us protect our users’ confidential data by sending us particular types of user audit data which we will record. Our APIs provide HTTP headers that you can use to pass this audit data to us.</p>
+      <p>Supplying header information for all our APIs will become mandatory - so we recommend designing it into your applications now.</p>
+      <p>To find out if header information is mandatory for an API that you use, read its API documentation.</p>
+      <h3 class="govuk-heading govuk-heading-s">Storing data</h3>
+      <p>If you store and process their personal data, you must tell users:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>What personal data you’ll be processing and what you’ll use it for</li>
+        <li>That you’re responsible for protecting their data</li>
+        <li>If you intend to store their data outside the European Economic Area</li>
+        <li>Your lawful basis (opens in a new tab) for processing their personal data</li>
+      </ul>
+      <p>If you need users’ consent to store and process their personal data you’ll need to follow <a rel="noopener noreferrer" href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/lawful-basis-for-processing/consent/" target="_blank">GDPR rules on obtaining consent (opens in a new tab)</a>.</p>
+      <p>If you store or process data outside the European Economic Area, you must follow <a rel="noopener noreferrer" href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/lawful-basis-for-processing/consent/" target="_blank">GDPR guidance on international transfers (opens in a new tab)</a>.</p>
+      <h3 class="govuk-heading govuk-heading-s">Data breaches</h3>
+      <p>If there’s a data breach or any other issue concerning customer data you must tell us immediately by emailing <a href="mailtotradeplatform@defra.gov.uk">tradeplatform@defra.gov.uk</a>.</p>
+      <p>Under GDPR rules, you must also <a rel="noopener noreferrer" href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/personal-data-breaches/" target="_blank">notify ICO about certain types of personal data breach (opens in a new tab)</a> within 72 hours of becoming aware of it.</p>
+      <h3 class="govuk-heading govuk-heading-s">Service standard</h3>
+      <p>Your software must take into account the <a href="https://www.gov.uk/service-manual/service-standard">Digital Service Standard</a>.</p>
+      <h3 class="govuk-heading govuk-heading-s">Accessibility</h3>
+      <p></p>
+      <h3 class="govuk-heading govuk-heading-s">Advertising and marketing</h3>
+      <p>Any advertising that appears in your software must follow both:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a rel="noopener noreferrer" href="https://www.asa.org.uk/codes-and-rulings/advertising-codes.html" target="_blank">Advertising Standards Authority Codes (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="https://www.gov.uk/marketing-advertising-law/regulations-that-affect-advertising" target="_blank">UK marketing and advertising laws (opens in a new tab)</a></li>
+      </ul>
+      <p>You must not use advertising that promotes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Adult themes</li>
+        <li>Dating</li>
+        <li>Gaming</li>
+      </ul>
+      <p>You cannot share personal data for marketing without users’ consent, as defined in the Direct Marketing Guidance PDF from the Information Commissioner’s Office (opens in a new tab).</p>
+      <p>You cannot advertise your software as ‘Defra accredited’, ‘Defra endorsed’, ‘Defra certified’ or similar.</p>
+      <p>You cannot use our Defra brand in any way including logo placement on your website.</p>
+      <h3 class="govuk-heading govuk-heading-s">Licence agreeements</h3>
+      <p>You must make the terms of the licence agreement between you and your users clear to them.</p>
+      <h3 class="govuk-heading govuk-heading-s">Security</h3>
+      <p>You must:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Check software for vulnerabilities through secure development and pre-release testing</li>
+        <li>Check open-source or reused proprietary code using resources like the <a href="https://cve.mitre.org/">Common Vulnerabilities and Exposures (opens in a new tab)</a> database</li>
+        <li>React quickly if you find vulnerabilities in your code</li>
+        <li>Have a patching policy in place</li>
+      </ul>
+      <p>Your re-releases and upgrades should also follow secure development practices and pre-release testing.</p>
+      <p>We recommend following the security principles of:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>The <a rel="noopener noreferrer" href="https://www.ncsc.gov.uk" target="_blank" class="govuk-link">National Cyber Security Centre (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="https://www.ncsc.gov.uk/blog-post/secure-development-and-deployment" target="_blank" class="govuk-link">National Cyber Security Centre’s Guidance for secure development and deployment (opens in a new tab)</a></li>
+        <li>The <a rel="noopener noreferrer" href="https://www.owasp.org/index.php/Main_Page" target="_blank" class="govuk-link">Open Web Application Security Project (opens in a new tab)</a></li>
+        <li><a rel="noopener noreferrer" href="https://www.cyberessentials.ncsc.gov.uk/" target="_blank" class="govuk-link">Cyber Essentials or Cyber Essentials Plus certification (opens in a new tab)</a></li>
+      </ul>
+      <h3 class="govuk-heading govuk-heading-s">Suspicious activity</h3>
+      <p>We expect you to look out for and block suspicious attempts to access or manipulate user accounts.</p>
+      <h3 class="govuk-heading govuk-heading-s">Support</h3>
+      <p>You must give software support to your users. If you need help <a href="mailto:tradeplatform@defra.gov.uk">ask for support</a>.</p>
+      <h3 class="govuk-heading govuk-heading-s">Dispute process</h3>
+      <ol class="govuk-list govuk-list--number">
+        <li>We’ll contact you if we learn about an issue that affects us or your clients.</li>
+        <li>We’ll work together to solve the issue.</li>
+        <li>If the problem’s under your control we expect you to solve it straight away.</li>
+        <li>If you can’t solve it, we’ll refer it to your managing director or accountable officer.</li>
+        <li>If we can’t find a solution together, we’ll remove your access to the API Platform temporarily or permanently.</li>
+        <li>If we remove your access, we’ll tell your users and give them time to find other ways to submit information - during this period we won’t give them penalties or charge interest for late submissions.</li>
+        <li>We can remove your access to the API Platform for several reasons, including:
+          <Ul class="govuk-list govuk-list--bullet">
+            <li>Using personal data for something the user has not given you permission for</li>
+            <li>Having serious data or cybersecurity concerns for our systems or customer data</li>
+            <li>Not maintaining and supporting your product</li>
+          </ul>
+        </li>
+        <li>We can also remove your access if you don’t follow the rules around paying taxes or making social security contributions, as long as:
+          <ul class="govuk-list govuk-list--bullet">
+            <li>It’s supported by a final UK court decision (or the equivalent in the country you’re based)</li>
+            <li>Or we can show you’ve broken those rules in another way</li>
+          </ul>
+        </li>
+        <li>However, we won’t remove your access in this case if you’ve repaid everything you owe (plus interest and fines), or you’ve made arrangements with us to pay the amount.</li>
+        <li>If you’re listed on GOV.UK, we may remove you.</li>
+      </ol>
+
+      <p>To agree to the terms of use for each of your applications, you must <a href="#">sign in to your account</a>.</p>
+
+      <div class="defra-pagination">
+        <a href="../register/email" class="govuk-link defra-pagination--link">
+          <span class="defra-pagination--link-title">
+            <span class="defra-pagination--symbol">
+              <svg xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg>
+            </span>
+            <span class="defra-pagination--link-text">
+              Next
+            </span>
+            <span class="defra-pagination--divider govuk-visually-hidden">:</span>
+          </span>
+          <span class="defra-pagination--label">
+            Register for an account
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

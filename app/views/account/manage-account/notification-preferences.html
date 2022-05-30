@@ -1,0 +1,26 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Email and notification preferences" %}
+{% set pageSection = "Account" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+  
+            {% include "includes/defra-section-nav.html" %}
+
+            <div class="govuk-grid-column-three-quarters">
+                
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+                <p>TBC what needs to go here</p>    
+            
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
