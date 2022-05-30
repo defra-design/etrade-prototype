@@ -19,3 +19,527 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/task-list";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+// Colours
+$backgroundGrey: #b1b4b6;
+$govuk-text-colour:	#0b0c0c;
+$govuk-secondary-text-colour:#505a5f;
+$govuk-link-colour:	#1d70b8;
+
+$govuk-border-colour: $backgroundGrey;
+$govuk-focus-colour: #ffdd00;
+$govuk-font-family: "GDS Transport", arial, sans-serif;
+
+// helpers
+.m-l-15 {
+    margin-left: 15px;
+}
+
+.m-r-30 {
+    margin-right: 30px;
+}
+
+.m-r-15 {
+    margin-right: 15px;
+}
+
+.m-b-0 {
+    margin-bottom: 0;
+}
+
+.m-b-5 {
+    vertical-align: middle;
+}
+
+.float-r {
+    float: right;
+}
+
+.masthead {
+    background-color: #005ea5!important;
+    color: #ffffff;
+}
+
+.govuk-table td {
+    vertical-align: middle;
+}
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+// Section navigation
+.defra-section-nav {
+    @media screen and (min-width: 780px) {
+        border-right: 1px solid $backgroundGrey;
+    }
+    padding: 0;
+    h2 {
+      padding-left: 5px;  
+      margin-bottom: 0;
+    }
+    ul.defra-section-nav-list {
+        margin-top: 10px;
+        margin-bottom: 3rem;
+        padding: 0;
+        li {
+            list-style: none;
+            padding: 5px 5px 5px 10px;
+            a {
+                text-decoration: none;
+            }
+            &.defra-section-nav-list--active-item {
+                background-color: $govuk-link-colour;
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+    + .govuk-grid-column-three-quarters {
+        padding-left: 2rem;
+    }
+}
+
+
+
+// // Contents list
+// Contents list dashed
+.defra-contents-title {
+    margin-bottom: .625rem;
+    font-weight: 400;
+}
+h2 + ul.defra-contents-list {
+    margin-top: 1rem;
+}
+ul.defra-contents-list {
+    margin-top:0;
+    ul {
+        margin-top: 1rem;
+    }
+    li.contents-list--active-item {
+        border-left: 4px solid  $govuk-link-colour;
+        padding: 5px 0 5px 10px;
+        margin-left: -14px;
+        > a {
+            font-weight: bold;
+        }
+    }
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+        &:visited {
+            color:  $govuk-link-colour;
+    
+        }
+    }
+}
+
+.defra-contents-list--dashed {
+    li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 6px;
+        &:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            width: 20px;
+            overflow: hidden;
+        }   
+    }
+}
+
+
+
+// Contents list side
+// sticky, plain
+.defra-page-contents {
+    @media screen and (min-width: 780px) {
+        position: sticky;
+        top: 1rem;
+        ul {
+            top: 0;
+            padding-left: 0;
+        }
+    }
+    ul { 
+        li {
+            list-style-type: none;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.defra-column-hr {
+    border-top: 2px solid $govuk-border-colour;
+    padding-top: 20px;
+}
+
+.defra-pagination {
+    display: block;
+    border-top: 2px solid $govuk-border-colour;
+    margin-top: 40px;
+    .defra-pagination--link {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: block;
+        text-decoration: none;
+        &:hover {
+            background-color: #f3f2f1;
+        }
+        
+        &:focus {
+            background-color: $govuk-focus-colour;
+        }
+    }
+
+        .defra-pagination--link-title {
+            display: block;
+        
+            .defra-pagination--link-text {
+                margin-left: 10px;
+                font-size: 19px;
+            }
+            .defra-pagination--divider {
+                position: absolute;
+                width: 1px !important;
+                height: 1px !important;
+                overflow: hidden !important;
+                white-space: nowrap !important;
+            }
+        }
+
+
+        .defra-pagination--label {
+            font-size: 16px;
+            margin-left: 30px;
+            text-decoration: underline;
+        }
+}
+
+.govuk-width-container.defra-fullWidth--override {
+    width: 100%;
+    max-width: 100%;
+    .govuk-phase-banner {
+        max-width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.defra-breadcrumbs {
+    margin-bottom: 0;
+    + main.govuk-main-wrapper.govuk-main-wrapper--spacing-override {
+        padding-top: 0;
+    }
+    + main.govuk-main-wrapper.govuk-main-wrapper--auto-spacing {
+        padding-top: 20px;
+    }
+
+}
+
+.govuk-main-wrapper--spacing-override {
+    padding-top: 20px;
+}
+
+.defra-banner {
+    background-color: $govuk-link-colour;
+    color: #ffffff;
+    padding-top: 40px;
+    .govuk-heading-xl, p {
+        color: #ffffff;
+    }
+
+    .govuk-heading-xl {
+        margin-bottom: 20px;
+    }
+
+    .govuk-grid-column-two-thirds {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.govuk-button.defra-button-inverse {
+    background-color: #ffffff;
+    color: $govuk-link-colour;
+    font-weight: bold;
+}
+
+ul.defra-subscription-links {
+    padding-left: 0;
+    margin-top: 40px;
+    li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 20px;
+        a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-decoration: none;
+            svg {
+                margin-right: 7.5px;
+                color: #111111;
+            }
+            
+            &.bottom-border {
+                border-bottom: 1px solid #111111;
+            }
+            &.full-border {
+                padding-left: 10px;
+                padding-right: 10px;
+                border: 1px solid #111111;
+            }
+        }
+    }
+}
+
+.defra-qr-image {
+    display: block;
+}
+
+.defra-code-tag {
+    display: inline-block;
+    background-color: #f7f7f7;
+    color: #0b0c0c;
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    font-size: 14px;
+    line-height: 1.1em;
+    white-space: pre-wrap;
+    padding: 2px 4px;
+    border: 1px solid #dfe0e7;
+    border-radius: 4px;
+}
+
+// step-by-step - top level 
+// These styles are for the top level step-by-step guide - it sits on its own page.
+ol.defra-step-nav {
+    position: relative;
+    padding-left: 0;
+    // line through step circles
+    &:before {
+        content: '';
+        position: absolute;
+        top: 2rem;
+        left: 17px;
+        height: 87%;
+        border-left: 1px solid $backgroundGrey;
+    }
+    > li.defra-step-nav--step {
+        list-style: none;
+        position: relative;
+        padding-left: 4em;
+    }
+
+    // Heading styles
+    .defra-step-nav--header {
+        display: block;
+        border-top: 1px solid $backgroundGrey;
+        padding-top: 1em;
+    }
+    .defra-step-nav--circle-number {
+        position: absolute;
+        top: 0.8em;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        width: 32px;
+        border:1px solid $backgroundGrey;
+        border-radius: 50%;
+        background-color: #ffffff;
+        
+        font-size: 19px;
+        font-weight: bold;
+    }
+    .defra-step-nav--expand {
+        @extend .defra-step-nav--show-all;
+        padding: 0.5rem 0;        
+        .defra-step-nav--toggle {
+            @extend .defra-step-nav--show-all-label;
+        }
+    }
+
+    // Body styles
+    .defra-step-nav--panel {
+        font-size: 19px;
+        margin-bottom: 3rem;
+        &.panel--is-closed {
+            display: none;
+        }
+    }
+}
+
+.defra-step-nav--show-all {
+    display: block;
+    font: normal normal 16px $govuk-font-family;
+    padding: 0.5rem 0;
+    color: $govuk-link-colour;
+    &:hover {
+        cursor: pointer;
+        .defra-step-nav--show-all-label {
+            text-decoration: underline;
+        }
+    }
+}
+.defra-step-nav--show-all-label {
+    vertical-align: top;
+    margin-right: 0.4rem;
+}
+
+.defra-step-nav--chevron.flipped svg {
+    transform: rotate3d(0,0,1,180deg);
+}
+
+// Topic list
+// Can be found on the Explore APIs page.
+ul.defra-topic-list {
+    padding-left: 0;
+}
+
+li.defra-topic-list--topic {
+    list-style: none;
+    padding: 2rem 0 1rem;
+    .topic-header {
+        display: block;
+        &:after{
+            content:'';
+            display: block;
+            clear: both;
+        }
+    }
+    h2.topic-heading {
+        float: left;
+    }
+    span.topic-list-caption {
+        float: right;
+        line-height: 175%;
+    }
+}
+
+dl {
+    div.defra-definition-wrapper {
+        border-bottom: 1px solid $backgroundGrey;
+        display: flex;
+        font: 16px $govuk-font-family;
+        padding: 1rem 0;
+    }
+    dt {
+        width: 30%;
+        max-width: 250px;
+        font-weight: bold;
+    }
+    dd {
+        width: 65%;
+        span {
+            display: inline-block;
+            margin-bottom: .8rem;
+        }
+    }
+}
+
+// In-page search
+.defra-page-search {
+    margin-bottom: 1rem;
+    h2 {
+        border-bottom: 1px solid $backgroundGrey;
+        padding-bottom: .6rem; 
+    }
+    legend {
+        width: 100%;
+        font-weight: bold;
+    }
+}
+
+.defra-searchbox {
+    input{
+        margin-bottom: 1rem;
+    }
+    @media screen and (min-width:760px) {
+        display: flex;
+        input {
+            margin-bottom: 0;
+        }
+    }
+    
+}
+
+.defra-az-search {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 1rem 1rem;
+    
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        list-style: none;
+        a, span {
+            display:inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+            text-decoration: none;
+        }
+        a {
+            color: #144e81;
+            background: #d2e2f1;
+        }
+        span {
+            font-family: $govuk-font-family;
+            background-color: lighten($backgroundGrey, 20%);
+            color: darken($backgroundGrey,20%);
+        }
+    }
+}
+
+// Visualising code
+.defra-code-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    pre {
+        padding: 5px;
+        box-sizing: border-box;
+        display: block;
+        background-color: #f3f2f1;
+        color: #0b0c0c;
+        overflow: auto;
+        font-size: 12px;
+        white-space: pre-wrap;
+    }
+    code {
+        display: inline-block;
+    }
+}
+
+// Downloads / attachments
+.defra-attachment {
+    display: flex;
+    margin-bottom: 3rem;
+    .defra-attachment-icon-container {
+        margin-right: 2rem;
+    }
+    svg.defra-attachment-icon {
+        display: block;
+        width: auto;
+        max-width: 99px;
+        height: 140px;
+        border: rgba(11,12,12,0.1);
+        outline: 5px solid rgba(11,12,12,0.1);
+        background: #fff;
+        box-shadow: 0 2px 2px rgba(11,12,12,0.4);
+        fill: #b1b4b6;
+        stroke: #b1b4b6;
+    }
+    .defra-attachment-info {
+        h2 {
+            font-weight: normal;
+        }
+    }
+}
