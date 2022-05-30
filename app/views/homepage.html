@@ -1,0 +1,100 @@
+{% set containerClasses = "defra-fullWidth--override" %} 
+{% set mainClasses = "govuk-main-wrapper--spacing-override" %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Defra API developer portal" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+<div class="defra-banner govuk-clearfix">
+  <div class="govuk-width-container govuk-clearfix">
+
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Defra API developer portal</h1>
+      <p class="govuk-body-l">Connect your apps to our APIs and integrate with our sandbox environment.</p>
+      <div class="govuk-button-group">
+        <!-- <a href="/sign-in/" class="govuk-button defra-button-inverse">Create or sign in to a developer account</a> -->
+          <a href="/register/" class="govuk-button defra-button-inverse" data-module="govuk-button">Create an account</a>
+          <a href="/sign-in/" class="govuk-button defra-button-inverse" data-module="govuk-button">Sign in to developer account</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    
+    <div class="govuk-grid-row">      
+      <div class="govuk-grid-column-two-thirds">        
+        <p class="govuk-body">If you are a software developer, you can use the Defra API Developer Portal to learn about and integrate your applications with our RESTful APIs.</p>
+        <p class="govuk-body">You will be able to find out more about our RESTful API platform, access detailed API documentation, understand how to integrate your application with our APIs, and how to test your application in the sandbox, before applying to go live.</p>
+      
+      
+        {{ govukInsetText({
+          classes: "govuk-!-margin-top-0",
+          text: "Currently you can only integrate with our sandbox environment. Production integration will be possible when the APIs have reached Beta."
+        }) }}        
+      </div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-5 govuk-!-margin-bottom-5">
+    
+    <div class="govuk-grid-row">
+      
+      <div class="govuk-grid-column-one-third-from-desktop govuk-!-margin-bottom-3">        
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-5">
+          <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="getting-started">Getting started</a>
+        </h2>
+        <p class="govuk-body">A step-by-step introduction to what our APIs can do and how to get up and running with your own applications.</p>
+      </div>
+      <div class="govuk-grid-column-one-third-from-desktop govuk-!-margin-bottom-3">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-5">
+          <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="apis/explore-apis">Explore APIs</a>
+        </h2>
+        <p class="govuk-body">Find an API and read the specifications</p>
+      </div>
+      <div class="govuk-grid-column-one-third-from-desktop govuk-!-margin-bottom-3">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-5">
+          <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="documentation/introduction">Documentation</a>
+        </h2>
+        <p class="govuk-body">Learn how to use the defra API and view the available developer resources.</p>
+      </div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-3 govuk-!-margin-bottom-5">
+    
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        
+        <h3 class="govuk-heading-m">Latest news</h3>
+        
+        <p>Explore health certificates - Alpha v1 release</p>
+        
+        <p class="govuk-body">The initial release of the Export Health Certificates API and Exports Reference Data API is available.</p>
+        <a href="news">See all latest news</a>
+
+        <ul class="defra-subscription-links">
+          <li class="govuk-body-m">
+            <a href="#" >
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"></path>
+              </svg> -->
+              Get email updates
+            </a>
+          </li>
+          <li class="govuk-body-m">
+            <a href="#">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M1.996 11A2 2 0 0 0 0 12.993c0 1.101.895 1.99 1.996 1.99 1.106 0 2-.889 2-1.99a2 2 0 0 0-2-1.993zM.002 5.097V7.97c1.872 0 3.632.733 4.958 2.059A6.984 6.984 0 0 1 7.015 15h2.888c0-5.461-4.443-9.903-9.9-9.903zM.006 0v2.876c6.676 0 12.11 5.44 12.11 12.124H15C15 6.731 8.273 0 .006 0z"></path>
+              </svg> -->
+              Subscribe to feed
+            </a>
+          </li>
+        </ul>
+      </div>
+  </div>
+</div>
+{% endblock %}
