@@ -38,9 +38,9 @@ In your web browser, <a href="http://localhost:3000" target="_blank">open http:/
 
 <figure>
 
-![The heading is GOV.UK Prototype Kit.](/public/images/docs/prototype-kit-homepage.png)
+![The heading is GOV.UK Prototype Kit.](/public/images/docs/prototype-kit-start.png)
 
-<figcaption class="govuk-body">Screenshot of what your prototype homepage should look like.</figcaption>
+<figcaption class="govuk-body">Screenshot of what your prototype start should look like.</figcaption>
 </figure>
 
 ## Quitting the kit

@@ -28,7 +28,7 @@ This component may be useful if you are prototyping product or marketing pages.
     href: "/get-started/"
   },
   image: {
-    src: "/images/homepage-illustration.svg"
+    src: "/images/start-illustration.svg"
   }
 }) }}
 ```

@@ -31,13 +31,17 @@
     <div class="govuk-grid-row">      
       <div class="govuk-grid-column-two-thirds">        
         <p class="govuk-body">If you are a software developer, you can use the Defra API Developer Portal to learn about and integrate your applications with our RESTful APIs.</p>
+
+        {{ govukInsetText({
+          classes: "govuk-!-margin-top-0",
+          text: "Currently you can only integrate with our sandbox environment."
+        }) }}        
+        <!-- text: "Currently you can only integrate with our sandbox environment. Production integration will be possible when the APIs have reached Beta." -->
+
         <p class="govuk-body">You will be able to find out more about our RESTful API platform, access detailed API documentation, understand how to integrate your application with our APIs, and how to test your application in the sandbox, before applying to go live.</p>
       
       
-        {{ govukInsetText({
-          classes: "govuk-!-margin-top-0",
-          text: "Currently you can only integrate with our sandbox environment. Production integration will be possible when the APIs have reached Beta."
-        }) }}        
+        
       </div>
     </div>
     

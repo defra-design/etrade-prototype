@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = "API developer portal prototype" %}
+{% set pageHeading = "API developer portal" %}
 {% set pageSection = "Prototype work" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -21,23 +21,26 @@
 
 			<!-- Testing heroku push-->
 			
-            {{ govukButton({
-      			text: "Service start",
-      			href: "/homepage"
-    		}) }}
             
-            <br>
-    		{{ govukButton({
-      			text: "Page listings",
-      			href: "admin/listings",
-      			classes: "govuk-button--secondary"
-    		}) }}
+            
+            <div class="govuk-button-group">
+				{{ govukButton({
+					text: "Service startpage",
+					href: "/start"
+			  }) }}
 
-        	{{ govukButton({
-      			text: "Preload options",
-      			href: "/admin/preload",
-      			classes: "govuk-button--secondary govuk-!-margin-left-1"
-    		}) }}
+				{{ govukButton({
+					text: "Page listings",
+					href: "admin/listings",
+					classes: "govuk-button--secondary"
+				}) }}
+
+				{{ govukButton({
+					text: "Data preload options",
+					href: "/admin/preload",
+					classes: "govuk-button--secondary"
+				}) }}
+			</div>
 
         	{% include "includes/break.html" %}
 
@@ -48,10 +51,6 @@
             	text: "Continue",
             	href: "#"
         	}) }}
-
-        	{% include "includes/break.html" %}    		
-
-
       
     </div>
   </div>
