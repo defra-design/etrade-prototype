@@ -14,23 +14,19 @@
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 			
     		<ul class="govuk-list govuk-body-s">
-          	    <li>Last updated: 30 May 2022</li>
+          	    <li>Last updated: 26 June 2022</li>
                 <li>Prototype version: {{releaseVersion}}</li>
         	</ul>        
-
-
-			<!-- Testing heroku push-->
 			
             {{ govukButton({
       			text: "Service start",
       			href: "/homepage"
     		}) }}
             
-            <br>
     		{{ govukButton({
       			text: "Page listings",
       			href: "admin/listings",
-      			classes: "govuk-button--secondary"
+      			classes: "govuk-button--secondary govuk-!-margin-left-1"
     		}) }}
 
         	{{ govukButton({
@@ -50,10 +46,8 @@
         	}) }}
 
         	{% include "includes/break.html" %}    		
-
-
       
-    </div>
-  </div>
+    	</div>
+  	</div>
 
 {% endblock %}

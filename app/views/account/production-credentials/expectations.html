@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = 'How is ' + data.pcName + ' secured?' %}
+{% set pageHeading = 'What are your expectations from Defra for ' + data.pcName + '?' %}
 {% set pageSection = "Production credentials - SandboxName" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -12,7 +12,7 @@
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-            <form action="expectations" method="post" class="form">                                
+            <form action="check-your-answers" method="post" class="form">                                
 
               {{ govukTextarea({
                 name: "more-detail",
