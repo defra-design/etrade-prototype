@@ -1,0 +1,58 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+{% endblock %} 
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Application access
+      </h1>
+      <p class="govuk-body">Please read the <a href="#">terms and conditions</a> and <a href="#">privacy policy</a> of this service. You need to accept both to create the application.</p>
+      <div class="govuk-form-group">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="terms-and-conditions" name="terms-and-conditions" type="checkbox" value="terms-and-conditions">
+        <label class="govuk-label govuk-checkboxes__label" for="terms-and-conditions">
+          I accept the Terms and Conditions of this service.
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="privacy-policy" name="privacy-policy" type="checkbox" value="privacy-policy">
+        <label class="govuk-label govuk-checkboxes__label" for="privacy-policy">
+          I accept the Privacy Policy of this service.
+        </label>
+      </div>
+    </div>
+      <form class="form" method="post" action="permissions-singleline">
+        <div class="govuk-button-group">
+            {% from "govuk/components/button/macro.njk" import govukButton %}
+
+            {{ govukButton({
+            text: "Continue"
+            }) }}
+
+            {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+            }) }}
+        </div>
+      </form>
+    </div>
+  </div>
+  
+{% endblock %}

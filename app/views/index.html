@@ -1,44 +1,56 @@
 
 {% extends "layout.html" %}
+{% set showBackLink = false %}
 
-{% block pageTitle %}
-  Home – GOV.UK Prototype Kit
-{% endblock %}
+{% set pageHeading = "API developer portal prototype" %}
+{% set pageSection = "Prototype work" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        Prototype your service using GOV.UK Prototype Kit
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
-      </p>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+			
+    		<ul class="govuk-list govuk-body-s">
+          	    <li>Last updated: 27 June 2022</li>
+                <li>Prototype version: {{releaseVersion}}</li>
+        	</ul>        
+			
+            {{ govukButton({
+      			text: "Service start",
+      			href: "/homepage"
+    		}) }}
+			
+            
+    		{{ govukButton({
+      			text: "Page listings",
+      			href: "admin/listings",
+      			classes: "govuk-button--secondary govuk-!-margin-left-1"
+    		}) }}
 
-      <h2 class="govuk-heading-m">About this page</h2>
+        	{{ govukButton({
+      			text: "Preload options",
+      			href: "/admin/preload",
+      			classes: "govuk-button--secondary govuk-!-margin-left-1"
+    		}) }}
 
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
+			<p><a class="govuk-link govuk-link--no-visited-state" href="/account/production-credentials/">Product credentials temp link</a></p>
 
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
+        	{% include "includes/break.html" %}
 
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
+        	<h2 class="govuk-heading-m">User research</h2>
+        	<p>Area of the prototype for user research purposes, including link to share with user testing participants.</p>
+            <p>No current user research taking place.</p>
+        	{{ govukButton({
+            	text: "Continue",
+            	href: "#"
+        	}) }}
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="https://govuk-prototype-kit.herokuapp.com/docs/tutorials-and-examples">Tutorials and templates</a>
-        </li>
-        <li>
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+        	{% include "includes/break.html" %}    		
+      
+    	</div>
+  	</div>
 
 {% endblock %}

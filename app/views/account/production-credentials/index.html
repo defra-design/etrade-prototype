@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% set showBackLink = true %}
+
+{% set pageHeading = 'What we need' %}
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            <p>To apply for product credentials you will need to tell us:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+                <li>company name</li>
+                <li>registered address</li>
+                <li>companies house registration number</li>
+                <li>if you will allow third party access</li>
+                <li>how your application will be secured</li>
+            </ul>
+
+            {{ govukButton({
+                text: "Continue",
+                href: "name"
+            }) }}
+
+        </div>
+    </div>
+  
+{% endblock %}

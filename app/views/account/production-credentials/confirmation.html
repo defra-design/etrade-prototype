@@ -1,0 +1,33 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = 'Prodction credentials for ' + data.pcName + ' submitted' %}
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">        
+        <div class="govuk-grid-column-two-thirds">
+
+                {{ govukPanel({
+                    titleText: pageHeading,
+                    html: "Your reference number<br><strong>HDJ2123F</strong>",
+                    classes: "govuk-!-margin-bottom-7"
+                }) }}                
+    
+    
+                <p>Information relating to the submission.</p>            
+                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/account/manage-applications/">View your applications</a></p>
+                
+                
+    
+                
+            
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

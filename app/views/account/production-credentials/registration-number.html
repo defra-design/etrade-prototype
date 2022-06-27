@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% set showBackLink = true %}
+
+{% set pageHeading = 'What’s the company registration number ?' %}
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            <p>This is to help us identify the company...</p>
+
+            <form action="who-can-view" method="post" class="form">        
+            
+                {{ govukInput({
+                    label: {
+                      text: pageHeading,
+                      classes: "govuk-visually-hidden"
+                    },
+                    hint: {
+                        text: "You can find it on ... It’s usually 8-10 numbers"
+                    },
+                    classes: "govuk-!-width-two-thirds",
+                    id: "pcOrganisationNumber",
+                    name: "pcOrganisationNumber"
+                }) }}
+        
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}

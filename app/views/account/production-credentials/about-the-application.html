@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% set showBackLink = true %}
+
+{% set pageHeading = 'Can you provide more detail about ' + data.pcName + '' %}
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            <p>This could be information of any issues with technology, or any potential security concerns.</p>
+            <form action="security" method="post" class="form">                                
+
+              {{ govukTextarea({
+                name: "more-detail",
+                id: "more-detail",
+                label: {
+                  text: pageHeading,
+                  classes: "govuk-label--l govuk-visually-hidden",
+                  isPageHeading: false
+                },
+                hint: {
+                  text: "Do not include personal or financial information."
+                }
+              }) }}
+                
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}

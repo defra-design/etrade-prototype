@@ -1,0 +1,103 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = 'Which APIs do you want to use with ' + data['app-name'] + '?' %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+  
+            {% include "includes/defra-section-nav.html" %}
+
+            <div class="govuk-grid-column-three-quarters">
+                
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+                
+                <p>Learn more about our <a href="../apis/explore-apis">APIs in the documentation (opens in new tab)</a>.</p>
+
+                <form class="govuk-form" action="redirects" method="post">
+
+                    {{ govukCheckboxes({
+                        idPrefix: "app-apis",
+                        name: "app-apis",
+                        fieldset: { legend: { text: pageHeading, isPageHeading: false, classes: "govuk-fieldset__legend govuk-visually-hidden" } },
+                        hint: { text: "Select all that apply." },
+                        items: [
+                            { value: "Import of products, animals, food and feed system", text: "Import of products, animals, food and feed system" },
+                            { value: "Export application", text: "Export application" },
+                            { value: "Fish Export Service (FES)", text: "Fish Export Service (FES)" }
+                        ]
+                    }) }}
+
+
+
+
+                    <!-- <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <h1 class="govuk-fieldset__heading">
+                                Which APIs do you want to use?
+                            </h1>
+                            </legend>                            
+                            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="use-apis" name="use-apis" type="checkbox" value="import-products" data-aria-controls="conditional-imports">
+                                <label class="govuk-label govuk-checkboxes__label" for="use-apis">
+                                Import of products, animals, food and feed system
+                                </label>
+                            </div>
+                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-imports">
+                                <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="import-products-beta" name="import-products-beta" type="checkbox">
+                                <label class="govuk-label govuk-checkboxes__label" for="import-products-beta">
+                                    Beta
+                                </label>
+                                </div>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="use-apis-2" name="use-apis" type="checkbox" value="export-application" data-aria-controls="conditional-export">
+                                <label class="govuk-label govuk-checkboxes__label" for="use-apis-2">
+                                Export application
+                                </label>
+                            </div>
+                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-export">
+                                <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="export-products-beta" name="export-products-beta" type="checkbox">
+                                <label class="govuk-label govuk-checkboxes__label" for="export-products-beta">Beta</label>
+                                </div>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="use-apis-3" name="use-apis" type="checkbox" value="fes" data-aria-controls="conditional-fes">
+                                <label class="govuk-label govuk-checkboxes__label" for="use-apis-3">
+                                Fish Export Service (FES)
+                                </label>
+                            </div>
+                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-fes">
+                                <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="fes-beta" name="fes-beta" value="fes" type="checkbox">
+                                <label class="govuk-label govuk-checkboxes__label" for="fes-beta">
+                                    Beta
+                                </label>
+                                </div>
+                            </div>
+                            </div>
+                        </fieldset>
+                    </div> -->
+                    
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}
+                
+                
+                </form>
+            
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

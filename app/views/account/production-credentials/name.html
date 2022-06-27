@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% set showBackLink = true %}
+
+{% set pageHeading = 'What’s the name for this application?' %}
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}            
+
+            <form action="company" method="post" class="form">                                              
+                
+                
+                {{ govukInput({
+                    label: {
+                      text: pageHeading,
+                      classes: "govuk-visually-hidden"
+                    },
+                    classes: "govuk-!-width-two-thirds",
+                    id: "pcName",
+                    name: "pcName"
+                }) }}
+
+                
+
+
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}
+
+                    
+
+                
+
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% set showBackLink = true %}
+
+{% set pageHeading = "Confirm you want to use these API’s?" %}
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+                <li>Import of products, animals, food and feed system</li>
+                <li>Export application</li>
+                <li>Fish Export Service (FES)</li>
+            </ul>
+
+            <form action="privacy-policy" method="post" class="form">                                
+                
+                <div class="govuk-button-group">
+                
+                
+                    {{ govukButton({
+                      text: "Confirm and continue"
+                    }) }}
+                  
+                    <a class="govuk-link" href="#">Not the correct APIs</a>
+                  </div>
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}

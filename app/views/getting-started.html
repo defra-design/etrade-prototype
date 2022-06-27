@@ -1,0 +1,208 @@
+{% extends "layout.html" %}
+
+{% set getStartedActive = true %}
+
+{% block pageTitle %}
+  Getting started
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+  <div class="govuk-width-container defra-breadcrumbs">
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/homepage"
+      },
+      {
+        text: "Getting started"
+      }
+    ]
+  }) }}
+  </div>
+{% endblock %} 
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            Getting started
+        </h1>
+        <p class="govuk-body">Defra’s API service is still being developed. Right now, you’re welcome to try the current sandbox service but only a small number of invited users can progress to full production integration.</p>
+        <span class="defra-step-nav--show-all" id="defra-step-nav--show-all">
+          <span class="defra-step-nav--show-all-label">Show all steps</span>
+          <span class="defra-step-nav--chevron">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="gem-c-step-nav__chevron-stroke" d="M19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.75329 19.5 0.499997 15.2467 0.499998 10C0.499999 4.7533 4.7533 0.500001 10 0.500002C15.2467 0.500003 19.5 4.7533 19.5 10Z" stroke="#1D70B8"></path><path class="gem-c-step-nav__chevron-stroke" d="M6.32617 12.3262L10 8.65234L13.6738 12.3262" stroke="#1D70B8" stroke-width="2"></path></svg>
+          </span>
+        </span>
+        <ol class="defra-step-nav" id="defra-step-nav">
+          <li id="defra-step-nav-explore-apis-1" class="defra-step-nav--step">
+            <div class="defra-step-nav--header">
+              <h2 class="govuk-heading-m defra-step-nav--heading">Find out what APIs are available
+                <span class="defra-step-nav--circle-number">1</span>
+                <span class="defra-step-nav--expand">
+                  <span class="defra-step-nav--toggle"><span class="visible">Show</span><span class="govuk-visually-hidden"> this section</span></span>  
+                  <span class="defra-step-nav--chevron">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="gem-c-step-nav__chevron-stroke" d="M19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.75329 19.5 0.499997 15.2467 0.499998 10C0.499999 4.7533 4.7533 0.500001 10 0.500002C15.2467 0.500003 19.5 4.7533 19.5 10Z" stroke="#1D70B8"></path><path class="gem-c-step-nav__chevron-stroke" d="M6.32617 12.3262L10 8.65234L13.6738 12.3262" stroke="#1D70B8" stroke-width="2"></path></svg>
+                  </span>
+                </span>
+              </h2>
+            </div>
+            <div class="defra-step-nav--panel" id="defra-step-nav-explore-apis-1--panel">
+              <p class="govuk-body">Defra offers a number of API integrations across different categories of import and export, such as fish and animal products.</p>
+              <ul class="govuk-list govuk-list--spaced">
+                <li>
+                  <a href="apis/explore-apis">Explore APIs</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li id="defra-step-nav-review-api-documentation-2" class="defra-step-nav--step">
+            <div class="defra-step-nav--header">
+              <h2 class="govuk-heading-m defra-step-nav--heading">Review API documentation
+                <span class="defra-step-nav--circle-number">2</span>
+                <span class="defra-step-nav--expand">
+                  <span class="defra-step-nav--toggle"><span class="visible">Show</span><span class="govuk-visually-hidden"> this section</span></span>
+                  
+                  <span class="defra-step-nav--chevron">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="gem-c-step-nav__chevron-stroke" d="M19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.75329 19.5 0.499997 15.2467 0.499998 10C0.499999 4.7533 4.7533 0.500001 10 0.500002C15.2467 0.500003 19.5 4.7533 19.5 10Z" stroke="#1D70B8"></path><path class="gem-c-step-nav__chevron-stroke" d="M6.32617 12.3262L10 8.65234L13.6738 12.3262" stroke="#1D70B8" stroke-width="2"></path></svg>
+                  </span>
+                </span>
+              </h2>
+            </div>
+            <div class="defra-step-nav--panel" id="defra-step-nav-review-api-documentation-2--panel">
+              <p class="govuk-body">Explore technical details of API integration.</p>
+              <ul class="govuk-list govuk-list--spaced">
+                <li>
+                  <a href="documentation/introduction">General documentation</a>
+                </li>
+                <li>
+                  <a href="apis/explore-apis">Technical Documentation on APIs</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li id="defra-step-nav-create-account-3" class="defra-step-nav--step">
+            <div class="defra-step-nav--header">
+              <h2 class="govuk-heading-m defra-step-nav--heading">Create an account
+                <span class="defra-step-nav--circle-number">3</span>
+                <span class="defra-step-nav--expand">
+                  <span class="defra-step-nav--toggle"><span class="visible">Show</span><span class="govuk-visually-hidden"> this section</span></span>
+                  
+                  <span class="defra-step-nav--chevron">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="gem-c-step-nav__chevron-stroke" d="M19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.75329 19.5 0.499997 15.2467 0.499998 10C0.499999 4.7533 4.7533 0.500001 10 0.500002C15.2467 0.500003 19.5 4.7533 19.5 10Z" stroke="#1D70B8"></path><path class="gem-c-step-nav__chevron-stroke" d="M6.32617 12.3262L10 8.65234L13.6738 12.3262" stroke="#1D70B8" stroke-width="2"></path></svg>
+                  </span>
+                </span>
+              </h2>
+            </div>
+            <div class="defra-step-nav--panel" id="defra-step-nav-create-account-3--panel">
+              <p class="govuk-body">To start integrating with DEFRA APIs you need to create an account.</p>
+              <ul class="govuk-list govuk-list--spaced">
+                <li>
+                  <a href="register/email">Create an Account</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li id="defra-step-nav-view-sample-project-4" class="defra-step-nav--step">
+            <div class="defra-step-nav--header">
+              <h2 class="govuk-heading-m defra-step-nav--heading">Try a sample project
+                <span class="defra-step-nav--circle-number">4</span>
+                <span class="defra-step-nav--expand">
+                  <span class="defra-step-nav--toggle"><span class="visible">Show</span><span class="govuk-visually-hidden"> this section</span></span>
+                  
+                  <span class="defra-step-nav--chevron">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="gem-c-step-nav__chevron-stroke" d="M19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.75329 19.5 0.499997 15.2467 0.499998 10C0.499999 4.7533 4.7533 0.500001 10 0.500002C15.2467 0.500003 19.5 4.7533 19.5 10Z" stroke="#1D70B8"></path><path class="gem-c-step-nav__chevron-stroke" d="M6.32617 12.3262L10 8.65234L13.6738 12.3262" stroke="#1D70B8" stroke-width="2"></path></svg>
+                  </span>
+                </span>
+              </h2>
+            </div>
+            <div class="defra-step-nav--panel" id="defra-step-nav-view-sample-project-4--panel">
+              <p class="govuk-body">Try out the steps for authenticating as a user, accepting the relevant scopes, contacting a protected Defra API and then viewing the response.</p>
+              <ul class="govuk-list govuk-list--spaced">
+                <li>
+                  <a href="documentation/sample-project">View a sample project</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li id="defra-step-nav-view-sample-project-5" class="defra-step-nav--step">
+            <div class="defra-step-nav--header">
+              <h2 class="govuk-heading-m defra-step-nav--heading">Create a sandbox application
+                <span class="defra-step-nav--circle-number">5</span>
+                <span class="defra-step-nav--expand">
+                  <span class="defra-step-nav--toggle"><span class="visible">Show</span><span class="govuk-visually-hidden"> this section</span></span>
+                  
+                  <span class="defra-step-nav--chevron">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="gem-c-step-nav__chevron-stroke" d="M19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.75329 19.5 0.499997 15.2467 0.499998 10C0.499999 4.7533 4.7533 0.500001 10 0.500002C15.2467 0.500003 19.5 4.7533 19.5 10Z" stroke="#1D70B8"></path><path class="gem-c-step-nav__chevron-stroke" d="M6.32617 12.3262L10 8.65234L13.6738 12.3262" stroke="#1D70B8" stroke-width="2"></path></svg>
+                  </span>
+                </span>
+              </h2>
+            </div>
+            <div class="defra-step-nav--panel" id="defra-step-nav-view-sample-project-5--panel">
+              <p class="govuk-body">Create and test your application using DEFRA's sandbox environment.</p>
+              <ul class="govuk-list govuk-list--spaced">
+                <li>
+                  <a href="sign-in/sign-in">Create a sandbox application</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li id="defra-step-nav-view-sample-project-6" class="defra-step-nav--step">
+            <div class="defra-step-nav--header">
+              <h2 class="govuk-heading-m defra-step-nav--heading">Apply to go live
+                <span class="defra-step-nav--circle-number">6</span>
+                <span class="defra-step-nav--expand">
+                  <span class="defra-step-nav--toggle"><span class="visible">Show</span><span class="govuk-visually-hidden"> this section</span></span>
+                  
+                  <span class="defra-step-nav--chevron">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="gem-c-step-nav__chevron-stroke" d="M19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.75329 19.5 0.499997 15.2467 0.499998 10C0.499999 4.7533 4.7533 0.500001 10 0.500002C15.2467 0.500003 19.5 4.7533 19.5 10Z" stroke="#1D70B8"></path><path class="gem-c-step-nav__chevron-stroke" d="M6.32617 12.3262L10 8.65234L13.6738 12.3262" stroke="#1D70B8" stroke-width="2"></path></svg>
+                  </span>
+                </span>
+              </h2>
+            </div>
+            <div class="defra-step-nav--panel" id="defra-step-nav-view-sample-project-6--panel">
+              <p class="govuk-body">Right now, only a small number of invited users can progress to full production integration.</p>
+              <p class="govuk-body">When full production integration is available to you, we’ll notify you using your registration email address. You can then apply for full production integration.</p>
+            </div>
+          </li>
+        </ol>
+        <!--<h2 class="govuk-heading-m">Using the developer portal</h2>
+        <h3 class="govuk-heading-s">1. Before you start</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>Find out which <a href="#">APIs are available</a></li>
+            <li>Read our <a href="api-step-by-step/authorisation.html">terms of use</a>.</li>
+            <li>Read up on <a href="api-step-by-step/authorisation.html">authorisation</a></li>
+        </ul>
+        <h3 class="govuk-heading-s">2. Create a developer account</h3>
+        <div class="govuk-inset-text">
+            The easiest way to test integration is to <a href="api-step-by-step/sample-project.html">Download our sample project</a>.
+        </div>
+        <p><a href="register/email">Create an account</a> and sign in.</p>
+        <p>To use our test APIs you need to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>Use Defra <a href="api-step-by-step/application-naming-guidelines.html">naming guidelines</a> to name your application appropriately.</li>
+            <li><a href="#">Create a sandbox application</a>.</li>
+            <li>Choose which APIs you want to use</li>
+            <li>Get credentials to use our APIs</li>
+        </ul>
+        <h3 class="govuk-heading-s">3. Apply to go live</h3>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Currently you can only integrate with our sandbox environment. Production integration will be possible when the APIs have reached Beta.</strong>
+        </div> -->
+    </div>
+  </div>
+{% endblock %}

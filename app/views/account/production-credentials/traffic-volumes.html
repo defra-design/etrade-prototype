@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% set showBackLink = true %}
+
+{% set pageHeading = "What do you estimate your monthly submissions will be?" %}
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+            
+            <p>Content relating to submission volumes and what they mean.</p>
+            <form action="third-party" method="post" class="form">        
+            
+                {{ govukRadios({
+                    idPrefix: "pcVolumes",
+                    name: "pcVolumes",
+                    fieldset: {
+                      legend: {
+                        text: pageHeading,
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--l govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "small",
+                        text: "100 to 1000"
+                      },
+                      {
+                        value: "medium",
+                        text: "1001 to 10000"
+                      },
+                      {
+                        value: "large",
+                        text: "10001 to 50000"
+                      },
+                      {
+                        value: "extralarge",
+                        text: "Above 50000"
+                      }
+                    ]
+                  }) }}
+
+
+                
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}

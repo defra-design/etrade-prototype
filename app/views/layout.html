@@ -31,6 +31,9 @@
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
 
+{% import "macros/page-title.njk" as macroPageTitle %}
+{% import "macros/page-header.njk" as macroPageHeader %}
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
@@ -45,8 +48,61 @@
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
+    navigation: [
+      {
+        href: "/getting-started",
+        text: "Getting started",
+        active: getStartedActive
+      },
+      {
+        href: "/apis/explore-apis",
+        text: "Explore APIs",
+        active: exploreAPIsActive
+      },
+      {
+        href: "/documentation/introduction",
+        text: "Documentation",
+        active: documentationActive
+      },
+      {
+        href: "/account/",
+        text: "Account",
+        active: accountActive
+      },
+      {
+        href: "/sign-in",
+        text: "Sign in",
+        active: signInActive
+      }
+    ],
     containerClasses: "govuk-width-container"
   }) }}
+{% endblock %}
+
+{% block beforeContent %}
+{% if showPhaseBanner != false %}
+{{ govukPhaseBanner({
+  tag: { text: "Prototype" },
+  html: "This is a prototype. It is not a real service."
+}) }}
+{% endif %}
+
+{% if showBackLink != false %}
+
+    {% if showManageBackLink != true %}
+
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.go(-1)"
+        }) }}  
+
+    {% endif %}
+
+{% endif %}
+
+{% block pageNavigation %}{% endblock %}
+{% block pageBanner %}{% endblock %}
+
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}

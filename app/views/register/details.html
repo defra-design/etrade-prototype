@@ -1,0 +1,84 @@
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = "Create an account" %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+            
+            <form class="form" method="post" action="2fa">
+                {{ govukInput({
+                    label: {
+                    text: "Organisation (optional)"
+                    },
+                    id: "organisation",
+                    name: "organisation",
+                    classes: "govuk-input--width-20"
+                }) }}
+        
+                {{ govukInput({
+                    label: {
+                    text: "First name"
+                    },
+                    id: "first-name",
+                    name: "first-name",
+                    classes: "govuk-input--width-20"
+                }) }}
+                
+                {{ govukInput({
+                    label: {
+                    text: "Last name"
+                    },
+                    id: "last-name",
+                    name: "last-name",
+                    classes: "govuk-input--width-20"
+                }) }}
+        
+                <h2 class="govuk-heading-m">Password</h2>
+                <p class="govuk-">Your password should have at least 8 characters and not include your name or email address</p>
+                {{ govukInput({
+                    label: {
+                    text: "Create password"
+                    },
+                    id: "create-password",
+                    name: "create-password",
+                    type: "password",
+                    classes: "govuk-input--width-20"
+                }) }}
+            
+                {{ govukInput({
+                    label: {
+                    text: "Confirm password"
+                    },
+                    id: "confirm-password",
+                    name: "confirm-password",
+                    type: "password",
+                    classes: "govuk-input--width-20"
+                }) }}
+        
+                <p class="govuk-body">By creating an account, you agree to our <a href="#">terms and conditions</a>, <a href="#">privacy policy</a> and <a href="#">cookie policy</a></p>
+                    
+                {{ govukButton({
+                    text: "Save and continue"
+                }) }}
+
+                {{ govukButton({
+                    text: "Cancel",
+                    classes: "govuk-button--secondary"
+                }) }}
+
+            </form>
+            
+            <p class="govuk-body">Already registered? <a href="/sign-in">Sign in to your account</a>.</p>
+
+        </div>
+    </div>
+  
+{% endblock %}
