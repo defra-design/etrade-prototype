@@ -14,7 +14,7 @@
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 			
     		<ul class="govuk-list govuk-body-s">
-          	    <li>Last updated: 26 June 2022</li>
+          	    <li>Last updated: 27 June 2022</li>
                 <li>Prototype version: {{releaseVersion}}</li>
         	</ul>        
 			
@@ -22,6 +22,7 @@
       			text: "Service start",
       			href: "/homepage"
     		}) }}
+			
             
     		{{ govukButton({
       			text: "Page listings",
@@ -34,6 +35,8 @@
       			href: "/admin/preload",
       			classes: "govuk-button--secondary govuk-!-margin-left-1"
     		}) }}
+
+			<p><a class="govuk-link govuk-link--no-visited-state" href="/account/production-credentials/">Product credentials temp link</a></p>
 
         	{% include "includes/break.html" %}
 
