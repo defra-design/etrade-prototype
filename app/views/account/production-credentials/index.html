@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
-{% set showBackLink = false %}
+{% set showBackLink = true %}
 
-{% set pageHeading = "What’s the name of the application?" %}
-{% set pageSection = "Production credentials - SandboxName" %}
+{% set pageHeading = 'What we need' %}
+{% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
@@ -12,25 +12,19 @@
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-            <form action="organisation" method="post" class="form">        
-            
-                {{ govukInput({
-                    label: {
-                      text: pageHeading,
-                      classes: "govuk-visually-hidden"
-                    },
-                    classes: "govuk-!-width-two-thirds",
-                    id: "pcName",
-                    name: "pcName"
-                }) }}
+            <p>To apply for product credentials you will need to tell us:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+                <li>company name</li>
+                <li>registered address</li>
+                <li>companies house registration number</li>
+                <li>if you will allow third party access</li>
+                <li>how your application will be secured</li>
+            </ul>
 
-                
-                {{ govukButton({
-                    text: "Continue"
-                }) }}
-
-                
-            </form>
+            {{ govukButton({
+                text: "Continue",
+                href: "name"
+            }) }}
 
         </div>
     </div>

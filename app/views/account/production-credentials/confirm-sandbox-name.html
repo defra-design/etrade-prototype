@@ -2,7 +2,7 @@
 {% set showBackLink = false %}
 
 {% set pageHeading = "Confirm the name of the sandbox" %}
-{% set pageSection = "Production credentials - SandboxName" %}
+{% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
@@ -12,9 +12,13 @@
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
+            {{ govukInsetText({
+                text: "Sneaker23"
+              }) }}
+
             <form action="confirm-apis" method="post" class="form">        
             
-                 <p>Playback name of sandbox</p>
+                 
         
                 {{ govukButton({
                     text: "Confirm and continue"

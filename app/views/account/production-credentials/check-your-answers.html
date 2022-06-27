@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
-{% set showBackLink = false %}
+{% set showBackLink = true %}
 
 {% set pageHeading = "Check your answers" %}
-{% set pageSection = "Production credentials - SandboxName" %}
+{% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
@@ -14,16 +14,23 @@
 
             <p>Playback all answers given, with option to change.</p>
 
-            <form action="confirmation" method="post" class="form">                                
-
+            
               
-                
-                {{ govukButton({
-                    text: "Accept and send"
-                }) }}
-
-                
-            </form>
+            <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Row title</dt>
+                    <dd class="govuk-summary-list__value">Answer</dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                    </dd>
+                </div>                    
+            </dl>
+    
+            {{ govukButton({
+                text: "Confirm and send",
+                href: "confirmation"
+            }) }}
+                        
 
         </div>
     </div>

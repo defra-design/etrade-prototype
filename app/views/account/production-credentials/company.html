@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
-{% set showBackLink = false %}
+{% set showBackLink = true %}
 
-{% set pageHeading = "What’s the name of the organisation?" %}
-{% set pageSection = "Production credentials - SandboxName" %}
+{% set pageHeading = "What’s the company name?" %}
+{% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
@@ -12,7 +12,9 @@
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-            <form action="registration-number" method="post" class="form">        
+            <p>This helps us make sure....</p>
+
+            <form action="registered" method="post" class="form">        
             
                 {{ govukInput({
                     label: {

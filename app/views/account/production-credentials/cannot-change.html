@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = true %}
 
-{% set pageHeading = "Defra privacy policy" %}
+{% set pageHeading = 'You cannot change the APIs' %}
 {% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -12,16 +12,10 @@
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-            <form action="data-protection" method="post" class="form">        
+            <p>Information explaining that you cannot change the APIs...</p>
             
-                <p>Confirm have read</p> 
-                
-                {{ govukButton({
-                    text: "Confirm and continue"
-                }) }}
 
-                
-            </form>
+            
 
         </div>
     </div>
