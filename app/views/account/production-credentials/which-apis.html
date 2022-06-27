@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% set showBackLink = true %}
+
+{% set pageHeading = "Which APIs do you want to use?" %}
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            <p>You can only use the APIs that you selected as part of your sandbox.</p>            
+
+            <form action="privacy-policy" method="post" class="form">                                                            
+                
+
+                {{ govukCheckboxes({
+                    idPrefix: "app-apis",
+                    name: "app-apis",
+                    fieldset: { legend: { text: pageHeading, isPageHeading: false, classes: "govuk-fieldset__legend govuk-visually-hidden" } },
+                    hint: { text: "Select all that apply." },
+                    items: [
+                        { value: "Import of products, animals, food and feed system", text: "Import of products, animals, food and feed system" },
+                        { value: "Export application", text: "Export application" },
+                        { value: "Fish Export Service (FES)", text: "Fish Export Service (FES)" }
+                    ]
+                }) }}
+
+
+                
+                    {{ govukButton({
+                      text: "Continue"
+                    }) }}
+                  
+                  
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}
