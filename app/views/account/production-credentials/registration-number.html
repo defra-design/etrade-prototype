@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = true %}
 
-{% set pageHeading = 'What’s the company registration number ?' %}
+{% set pageHeading = 'What’s ' + data['pcOrganisation'] + '’s Companies House registration number?' %}
 {% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -12,7 +12,7 @@
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-            <p>This is to help us identify the company...</p>
+            
 
             <form action="who-can-view" method="post" class="form">        
             
