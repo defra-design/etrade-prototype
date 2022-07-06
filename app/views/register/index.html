@@ -1,5 +1,6 @@
 
 {% extends "layout.html" %}
+{% set showBackLink = false %}
 
 {% set pageHeading = "Create an account" %}
 {% set pageSection = "" %}
@@ -12,11 +13,7 @@
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
             
-            <p class="govuk-body-m">Creating an account lets you try out the sandbox service and make sample projects. We’ll also use your registration details to notify you when full production integration is available to you.</p>
-            <p class="govuk-body">Already registered? <a href="../sign-in/sign-in">Sign in</a>.</p>
-            <p class="govuk-body">Enter your email address. You will recieve a confirmation code to continue.</p>
-            <p class="govuk-body"><a href="#">Read the terms and conditions.</a></p>
-            <p class="govuk-body"><a href="#">Read the privacy and cookie policy.</a></p>
+            <p class="govuk-body-m">This lets you try out the sandbox service and make sample projects. We’ll also use your details to notify you when full production integration is available.</p>            
             
             <form action="email-verify" method="post" class="form">
         
@@ -28,12 +25,27 @@
                 name: "email-address",
                 classes: "govuk-!-width-two-thirds"
                 }) }}
-        
-                {{ govukButton({
-                    text: "Continue"
-                }) }}
+                
+                <p class="govuk-body">You will recieve a confirmation code to continue.</p>
+
+                
+                <div class="govuk-button-group">
+                    
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}
+
+                     <a class="govuk-link govuk-link--no-visited-state" href="/sign-in">Already registered? Sign in</a>
+                </div>
 
             </form>
+            
+            
+
+            <ul class="govuk-list">
+                <li><a href="#">Read the terms and conditions.</a></li>
+                <li><a href="#">Read the privacy and cookie policy.</a></li>
+            </ul>
 
         </div>
     </div>

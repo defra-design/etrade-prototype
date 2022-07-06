@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = true %}
 
-{% set pageHeading = "What’s the company name?" %}
+{% set pageHeading = "What’s the name of the business?" %}
 {% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -11,8 +11,9 @@
         <div class="govuk-grid-column-two-thirds">
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
-
-            <p>This helps us make sure....</p>
+            
+            
+            <p>This must match the registered name on the certificate of incorporation.</p>
 
             <form action="registered" method="post" class="form">        
             

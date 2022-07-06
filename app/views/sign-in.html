@@ -34,13 +34,16 @@
                     classes: "govuk-!-width-two-thirds"
                 }) }}
                     
-                <p class="govuk-body"><a href="/forgot-password/">Forgotten password?</a></p>        
+                
         
                 {{ govukButton({
                     text: "Sign in"
                 }) }}
 
-                <p class="govuk-body"><a href="/register/">Create an account</a></p>
+                <ul class="govuk-list">
+                <li><a href="/forgot-password/">Forgotten password</a></li>        
+                <li><a href="/register/">Create an account</a></li>
+                </ul>
             </form>
 
         </div>
