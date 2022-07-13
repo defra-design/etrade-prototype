@@ -3,7 +3,7 @@
 
 
 
-{% set pageHeading = "Why are you suspending {name of application}?" %}
+{% set pageHeading = "What other information is needed for {name of application}?" %}
 {% set pageSection = "API administration" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -42,7 +42,7 @@
                     name: "admin-suspend-details",
                     id: "admin-suspend-details",
                     label: {
-                      text: "Additional reasons for decision",
+                      text: "Additional reasons for needing further information",
                       classes: "govuk-label--s ",
                       isPageHeading: false
                     },
