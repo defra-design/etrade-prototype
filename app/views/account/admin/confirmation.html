@@ -8,7 +8,7 @@
 {% elif data['admin-application-status'] == "rejected" %}
     {% set pageHeading = 'Production credentials for {APPLICATION NAME} have been rejected' %}
 {% elif data['admin-application-status'] == "suspended" %}
-{% set pageHeading = 'Need for more information has been asked or {APPLICATION NAME}' %}
+{% set pageHeading = 'Request for more information for {APPLICATION NAME} has been recieved ' %}
 {% endif %}
 
 
@@ -42,7 +42,7 @@
                     <li>Anything else that the ADMIN user needs to be aware of</li>
                 </ul>
                 {% elif data['admin-application-status'] == "suspended" %}
-                <p>Information relating to the suspended decision by the admin. If we need anything.</p>            
+                <p>Information relating to the need for further information by the admin. If we need anything.</p>            
                 <p>Do we:</p>           
                 <ul class="govuk-list govuk-list--bullet">
                     <li>Send email?</li>

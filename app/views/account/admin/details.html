@@ -13,85 +13,56 @@
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
         
 
+            <p>Page not designed yet - just basic example content</p>
             <dl class="govuk-summary-list govuk-!-margin-bottom-7">
 
                 {{ govukSummaryList({
                     rows: [
-                      {
-                        key: {
-                          text: "Name"
-                        },
-                        value: {
-                          text: "Sarah Philips"
-                        },
+                    {
+                        key: { text: "Application name" },
+                        value: { text: "TestApplication" },
                         actions: {
                           items: [
-                            {
-                              href: "#",
-                              text: "Change",
-                              visuallyHiddenText: "name"
-                            }
+                            { href: "#", text: "Change", visuallyHiddenText: "application name" }
+                          ]
+                        }
+                      },  
+                    {
+                        key: { text: "Name" },
+                        value: { text: "MadeUpCompany" },
+                        actions: {
+                          items: [
+                            { href: "#", text: "Change", visuallyHiddenText: "company name" }
                           ]
                         }
                       },
                       {
-                        key: {
-                          text: "Date of birth"
-                        },
-                        value: {
-                          text: "5 January 1978"
-                        },
+                        key: { text: "Date of application" },
+                        value: { text: "10 July 2022" },
                         actions: {
                           items: [
-                            {
-                              href: "#",
-                              text: "Change",
-                              visuallyHiddenText: "date of birth"
-                            }
+                            { href: "#", text: "Change", visuallyHiddenText: "date of application" }
                           ]
                         }
                       },
                       {
-                        key: {
-                          text: "Address"
-                        },
-                        value: {
-                          html: "72 Guild Street<br>London<br>SE23 6FH"
-                        },
+                        key: { text: "Status" },
+                        value: { text: "Draft" },
                         actions: {
                           items: [
-                            {
-                              href: "#",
-                              text: "Change",
-                              visuallyHiddenText: "address"
-                            }
-                          ]
-                        }
-                      },
-                      {
-                        key: {
-                          text: "Contact details"
-                        },
-                        value: {
-                          html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "#",
-                              text: "Change",
-                              visuallyHiddenText: "contact details"
-                            }
+                            { href: "#", text: "Change", visuallyHiddenText: "address" }
                           ]
                         }
                       }
+                      
+                      
                     ]
                   }) }}
 
             </dl>
 
             {{ govukButton({
-                text: "Enter decision",
+                text: "Continue to decision",
                 href: "/account/admin/decision"
             }) }}
 
