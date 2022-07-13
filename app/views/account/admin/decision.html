@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% set showBackLink = true %}
+
+{% set pageHeading = "What’s the status of {application name}?" %}
+{% set pageSection = "API administration" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            <form action="confirmation" method="post" class="form">        
+            
+                {{ govukRadios({
+                    idPrefix: "admin-application-status",
+                    name: "admin-application-status",
+                    fieldset: {
+                      legend: {
+                        text: pageHeading,
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--l govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      { value: "approved", text: "Approve" },
+                      { value: "rejected, redirect(reject)", text: "Reject" },
+                      { value: "suspended, redirect(suspend)", text: "Suspend" }                      
+                    ]
+                  }) }}
+                
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}

@@ -1,0 +1,64 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% if data['admin-application-status'] == "approved" %}
+    {% set pageHeading = 'Production credentials for {APPLICATION NAME} have been approved' %}
+{% elif data['admin-application-status'] == "rejected" %}
+    {% set pageHeading = 'Production credentials for {APPLICATION NAME} have been rejected' %}
+{% elif data['admin-application-status'] == "suspended" %}
+{% set pageHeading = 'Production credentials for {APPLICATION NAME} have been suspended' %}
+{% endif %}
+
+
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">        
+        <div class="govuk-grid-column-two-thirds">
+
+                {{ govukPanel({
+                    titleText: pageHeading,                    
+                    classes: "govuk-!-margin-bottom-7"
+                }) }}                
+    
+                {% if data['admin-application-status'] == "approved" %}
+                <p>Information relating to the approval decision by the admin. If we need anything.</p> 
+                <p>Do we:</p>           
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Send email?</li>
+                    <li>Inform the user in another way</li>
+                    <li>Anything else that the ADMIN user needs to be aware of</li>
+                </ul>
+                {% elif data['admin-application-status'] == "rejected" %}
+                <p>Information relating to the rejection decision by the admin. If we need anything.</p>            
+                <p>Do we:</p>           
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Send email?</li>
+                    <li>Inform the user in another way</li>
+                    <li>Anything else that the ADMIN user needs to be aware of</li>
+                </ul>
+                {% elif data['admin-application-status'] == "suspended" %}
+                <p>Information relating to the suspended decision by the admin. If we need anything.</p>            
+                <p>Do we:</p>           
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Send email?</li>
+                    <li>Inform the user in another way</li>
+                    <li>Anything else that the ADMIN user needs to be aware of</li>
+                </ul>
+                {% endif %}
+
+                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="#">Return to... </a></p>
+                
+                
+    
+                
+            
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
