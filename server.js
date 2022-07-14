@@ -24,8 +24,10 @@ const prototypeAdminRoutes = require('./lib/prototype-admin-routes.js')
 const packageJson = require('./package.json')
 const routes = require(`${process.cwd()}/app/routes.js`)
 const utils = require('./lib/utils.js')
+const helpers = require('./lib/helpers.js')
 const extensions = require('./lib/extensions/extensions.js')
 const { projectDir } = require('./lib/path-utils')
+const addNunjucksFiltersWithAppContext = require('./lib/filters-with-app-context')
 
 const app = express()
 
@@ -110,6 +112,9 @@ var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
 
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)
+
+// Add Nunjucks filters with access to app, req and res
+addNunjucksFiltersWithAppContext(nunjucksAppEnv, app)
 
 // Set views engine
 app.set('view engine', 'html')

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = true %}
 
-{% set pageHeading = "What’s the name of the business?" %}
+{% set pageHeading = 'What’s ' + data['pcOrganisation'] + '’s Companies House registration number?' %}
 {% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -11,20 +11,22 @@
         <div class="govuk-grid-column-two-thirds">
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
-            
-            
-            <p>This must match the registered name on the certificate of incorporation.</p>
 
-            <form action="registered" method="post" class="form">        
+            
+
+            <form action="/account/production-credentials/who-can-view" method="post" class="form">        
             
                 {{ govukInput({
                     label: {
                       text: pageHeading,
                       classes: "govuk-visually-hidden"
                     },
+                    hint: {
+                        text: "You can find it on ... It’s usually 8-10 numbers"
+                    },
                     classes: "govuk-!-width-two-thirds",
-                    id: "pcOrganisation",
-                    name: "pcOrganisation"
+                    id: "pcOrganisationNumber",
+                    name: "pcOrganisationNumber"
                 }) }}
         
                 {{ govukButton({

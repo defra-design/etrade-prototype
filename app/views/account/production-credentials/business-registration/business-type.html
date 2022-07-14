@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% set showBackLink = true %}
+
+{% set pageHeading = 'What is your business type?' %}
+{% set pageSection = "Production credentials" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+      
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}            
+
+            <form action="/account/production-credentials/business-registration/company" method="post" class="form">                                              
+                
+                
+                {{ govukRadios({
+                    idPrefix: "companyType",
+                    name: "companyType",
+                    fieldset: {
+                      legend: {
+                        text: pageHeading,
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--l govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      { value: "SoleTrader", text: "Sole trader" },
+                      { value: "LimitedCompany", text: "Limited company" },
+                      { value: "Partnership", text: "Partnership" },
+                      { value: "LLP", text: "Limited liability partnership" },
+                      { value: "Trust", text: "Unincorporated association or trust" },
+                      { value: "NotUK", text: "Business not registered in the UK" }
+                    ]
+                  }) }}
+
+                  
+
+
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+                
+            </form>
+
+        </div>
+    </div>
+  
+{% endblock %}
