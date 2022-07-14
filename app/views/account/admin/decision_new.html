@@ -2,7 +2,7 @@
 {% set showBackLink = true %}
 
 {% set pageHeading = "Is {application name} approved for production?" %}
-{% set pageSection = "API administration" %}
+{% set pageSection = "Administration" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
@@ -14,9 +14,9 @@
 
             <p>This means it has:</p>
             <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-                <li>given us x information</li>
-                <li>provided enough things we asked about</li>
-                <li>told us everything we need to know</li>
+              <li>given us all the correct information</li>
+              <li>provided enough things we asked about for us to review</li>
+              <li>told us everything we need to know</li>                
             </ul>
 
             <form action="confirmation" method="post" class="form">        
@@ -38,9 +38,16 @@
                     ]
                   }) }}
                 
-                {{ govukButton({
-                    text: "Continue"
-                }) }}
+
+                  <div class="govuk-button-group">
+                    {{ govukButton({
+                      text: "Continue"
+                    }) }}
+                  
+                    <a class="govuk-link" href="more-information">Need more information</a>
+                  </div>
+
+                
 
                 
             </form>

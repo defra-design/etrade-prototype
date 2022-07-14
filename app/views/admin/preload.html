@@ -13,7 +13,14 @@
 
         <p class="govuk-!-padding-bottom-3">Preload the prototype with user data.</p>
 
-        
+        {{ govukCheckboxes({
+            fieldset: {
+                legend: { text: "Point of registration", isPageHeading: false, classes: "govuk-visually-hidden" }
+            },
+            items: [
+                { value: "ProdCred", text: "During production credentials request" }                
+            ]
+          } | decorateFormAttributes('serviceRegistration')) }}
 
     </div>
 </div>
