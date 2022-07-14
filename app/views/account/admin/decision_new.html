@@ -1,3 +1,6 @@
+
+
+
 {% extends "layout.html" %}
 {% set showBackLink = true %}
 
@@ -12,17 +15,17 @@
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-            <p>This means it has:</p>
+            <p>This means the company has:</p>
             <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-              <li>given us all the correct information</li>
-              <li>provided enough things we asked about for us to review</li>
-              <li>told us everything we need to know</li>                
+                <li>given us all the correct information</li>
+                <li>provided enough things we asked about for us to review</li>
+                <li>told us everything we need to know</li>                
             </ul>
 
             <form action="confirmation" method="post" class="form">        
             
                 {{ govukRadios({
-                    classes: "govuk-radios--inline",
+                  
                     idPrefix: "admin-application-status",
                     name: "admin-application-status",
                     fieldset: {
@@ -34,20 +37,14 @@
                     },
                     items: [
                       { value: "approved", text: "Yes" },
-                      { value: "rejected, redirect(reject)", text: "No" }                      
+                      { value: "rejected, redirect(reject)", text: "No" },
+                      { value: "suspended, redirect(more-information)", text: "Need more information" }                      
                     ]
                   }) }}
                 
-
-                  <div class="govuk-button-group">
-                    {{ govukButton({
-                      text: "Continue"
-                    }) }}
-                  
-                    <a class="govuk-link" href="more-information">Need more information</a>
-                  </div>
-
-                
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
 
                 
             </form>
