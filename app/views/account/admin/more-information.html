@@ -51,7 +51,16 @@
                     }
                   }) }}
 
-
+                  <div class="govuk-visually-hidden">
+                  {{ govukRadios({
+                    fieldset: {
+                        legend: { text: "More information required", isPageHeading: false, classes: "govuk-visually-hidden" }
+                    },
+                    items: [
+                        { value: "moreInfo", text: "hidden field", checked: checked }                
+                    ]
+                  } | decorateFormAttributes('admin-application-status')) }}
+                  </div>
                 
                 {{ govukButton({
                     text: "Continue"
