@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = "View all applications" %}
+{% set pageHeading = "Your sandbox applications" %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -12,13 +12,84 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
   
-            {% include "includes/defra-section-nav.html" %}
+            <!-- {% include "includes/defra-section-nav.html" %} -->
 
-            <div class="govuk-grid-column-three-quarters">
+            <div class="govuk-grid-column-two-thirds">
                 
-                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}                                           
+                
+                <p class="govuk-body">Create a sandbox application to:</p>
+                <ul class="govuk-list govuk-list--bullet">                    
+                    <li>subscribe it to the APIs you want to integrate with</li>
+                    <li>get access to its testing credentials</li>
+                    <li>use its testing credentials for integration testing</li>
+                </ul>
+
+                <form method="post" action="/account/manage-applications/sandbox/name" >
+
+                    <input type="hidden" name="new-sandbox-application" id="new-sandbox-application" value="Yes" />
+                    {{ govukButton({
+                        text: "Create an application"
+                    }) }}
+
+                </form>
+
+            </div>
+
+            
+                <!-- <p class="govuk-body govuk-!-margin-bottom-7">Learn more about interacting with our APIs in the <a href="/documentation/introduction">documentation</a> or discover what the APIs offer through the <a href="/apis/expore-apis">explore APIs pages</a>.</p> -->
+            
+                
+                <!-- {{ govukWarningText({
+                    text: "You must comply with our terms of use.",
+                    iconFallbackText: "Warning"
+                }) }} -->
+                
+                <!-- Not needed its wrong place. -->
+                
+
+                
+                
+
+
+
+                <div class="govuk-grid-column-full">
+
+                    
+                                     
+                        
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-two-thirds">
+                               
+                                
+                                    <!-- <p class="govuk-body">You can now create your application in a sandbox environment.</p>
+                                    <p class="govuk-body">Sandbox environment lets you:</p>
+                                    <ul class="govuk-list govuk-list--bullet">
+                                        <li>create your application</li>
+                                        <li>subscribe it to the APIs you want to integrate with</li>
+                                        <li>get access to its testing credentials</li>
+                                        <li>use its testing credentials for integration testing</li>
+                                    </ul>
+                    
+                                    {{ govukWarningText({
+                                        text: "You must comply with our terms of use.",
+                                        iconFallbackText: "Warning"
+                                    }) }} -->
+                               
+                            </div>
+                        </div>
+                        <table class="govuk-table govuk-!-margin-bottom-9">
+                            {% include "includes/dash_sandApp_head.html" %}
+                            <tbody class="govuk-table__body">                                    
+                                {% include "includes/dash_sandApp_row.html" %}                                    
+                            </tbody>
+                        </table>                    
+                    
+                        </div>
+
+
           
-                <details class="govuk-details" data-module="govuk-details">
+                <!-- <details class="govuk-details" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                         <span class="govuk-details__summary-text">Getting production credentials</span>
                     </summary>
@@ -31,9 +102,9 @@
                             <li>Hello world API</li>
                         </ul>
                     </div>
-                </details>
+                </details> -->
                 
-                <details class="govuk-details" data-module="govuk-details">
+                <!-- <details class="govuk-details" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                         <span class="govuk-details__summary-text">What the sandbox lets you do</span>
                     </summary>
@@ -45,25 +116,10 @@
                             <li>use its testing credentials for integration testing</li>
                         </ul>
                     </div>
-                </details>
+                </details> -->
                 
-                <a href="/account/manage-applications/sandbox/name" class="govuk-button govuk-button--primary">Create sandbox application</a>
-
-                <table class="govuk-table">
-                    <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">All applications</caption>
-                    <thead class="govuk-table__head">
-                        <th class="govuk-table__header">Sandbox applications</th>
-                        <th class="govuk-table__header">Last API call</th>
-                        <th class="govuk-table__header">Your role</th>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell"><a href="helloworld?helloworld">Hello World</a></td>
-                            <td class="govuk-table__cell">No API called</td>
-                            <td class="govuk-table__cell">Admin</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- <a href="/account/manage-applications/sandbox/name" class="govuk-button govuk-button--primary">Create sandbox application</a> -->
+                
             
             </div>
         </div>
