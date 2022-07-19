@@ -1,7 +1,5 @@
 {% set accountActive = true %}
-
 {% extends "layout.html" %}
-{% set showBackLink = false %}
 
 {% set pageHeading = 'Which APIs do you want to use with ' + data['app-name'] + '?' %}
 {% set pageSection = "" %}
@@ -10,11 +8,10 @@
 {% block content %}
 
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
+        <div class="govuk-grid-column-two-thirds">
   
-            {% include "includes/defra-section-nav.html" %}
-
-            <div class="govuk-grid-column-three-quarters">
+            <!-- {% include "includes/defra-section-nav.html" %} -->
+            
                 
                 {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
                 
@@ -96,7 +93,7 @@
                 
                 </form>
             
-            </div>
+            
         </div>
     </div>
 

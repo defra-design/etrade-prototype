@@ -1,5 +1,4 @@
 {% set accountActive = true %}
-
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
@@ -10,11 +9,11 @@
 {% block content %}
 
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
+        <div class="govuk-grid-column-two-thirds">
   
-            {% include "includes/defra-section-nav.html" %}
+            <!-- {% include "includes/defra-section-nav.html" %} -->
 
-            <div class="govuk-grid-column-three-quarters">
+            
 
                 {{ govukPanel({
                     titleText: pageHeading,
@@ -45,7 +44,7 @@
 
                 
             
-            </div>
+            
         </div>
     </div>
 
