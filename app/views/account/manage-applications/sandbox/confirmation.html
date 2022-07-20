@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = 'Application created' %}
+{% set pageHeading = 'Application created in sandbox environment' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -28,13 +28,13 @@
                 <h2 class="govuk-heading-m">What you can do next</h2>                                            
                 <p>When you are ready you should:</p>
                 <ul class="govuk-list govuk-list--bullet">
-                    <li><a href="#">apply for production credentials</a> for {{ data['app-name'] }}</li>
+                    <li>apply for production credentials</li>
                     <li>read our <a href="/documentation/reference-guide">reference guides</a></li>
                     <li>understand <a href="#">our APIs and how to use them</a></li>
                     
                 </ul>                                    
                 
-                <p class="govuk-body govuk-!-margin-top-7"><a class="govuk-link govuk-link--no-visited-state" href="/account/manage-applications/">View your applications</a></p>
+                <p class="govuk-body govuk-!-margin-top-7"><a class="govuk-link govuk-link--no-visited-state" href="/account/manage-applications/">Return to your applications</a></p>
                 
                 
                 <!-- {{ govukButton({
