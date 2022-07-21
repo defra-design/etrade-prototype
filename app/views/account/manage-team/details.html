@@ -3,23 +3,34 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = "Details" %}
+{% set pageHeading = "FULL NAME" %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
 
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-  
-            {% include "includes/defra-section-nav.html" %}
+        <div class="govuk-grid-column-two-thirds">
 
-            <div class="govuk-grid-column-three-quarters">
+            <!-- <nav class="app-subnav" aria-label="Sub navigation">
+                <ul class="app-subnav__list">
+                    <li class="app-subnav__list-item"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/">Overview</a></li>
+                    <li class="app-subnav__list-item"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/manage-applications/">Applications</a></li>
+                    <li class="app-subnav__list-item app-subnav__list-item--selected"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/manage-team/">Team</a></li>
+                </ul>
+            </nav>
+        
+        </div> -->
+            <!-- {% include "includes/defra-section-nav.html" %} -->
+
+            <!-- <div class="govuk-grid-column-two-thirds"> -->
+
+                <p><a href="/account/manage-team/" class="govuk-back-link">Return to team members</a></p>
                 
                 {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
                 
                 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <dl class="govuk-summary-list govuk-!-margin-bottom-7">
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">Name</dt>
                         <dd class="govuk-summary-list__value">James Hendrix</dd>
@@ -34,35 +45,49 @@
                             <a href="which-apis">Change<span class="govuk-visually-hidden"> email address</span></a>
                         </dd>
                     </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Applications</dt>
+                        <dd class="govuk-summary-list__value">
+                            Hello World                            
+                            <br>Border Checkpoint
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="which-apis">Change<span class="govuk-visually-hidden"> email address</span></a>
+                        </dd>
+                    </div>
                 </dl>
                 
-                <h2 class="govuk-heading-s">Applications attached to</h2>
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <!-- <h2 class="govuk-heading-m">Applications</h2>
+                <dl class="govuk-summary-list govuk-!-margin-bottom-7">
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">Hello World</dt>
-                        <dd class="govuk-summary-list__value">Role: Administrator</dd>
+                        <dd class="govuk-summary-list__value">Administrator</dd>
                         <dd class="govuk-summary-list__actions">
                             <a href="/account/manage-applications/sandbox/name">Change<span class="govuk-visually-hidden"> hello world app membership</span></a>
                         </dd>
                     </div>
+                    
                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Acme EHC application</dt>
-                        <dd class="govuk-summary-list__value">Role: Developer</dd>
+                        <dt class="govuk-summary-list__key">Acme EHC</dt>
+                        <dd class="govuk-summary-list__value">Developer</dd>
                         <dd class="govuk-summary-list__actions">
                             <a href="which-apis">Change<span class="govuk-visually-hidden"> acme EHC application membership</span></a>
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Border check point app</dt>
-                        <dd class="govuk-summary-list__value">Role: Administrator</dd>
+                        <dt class="govuk-summary-list__key">Border Checkpoint</dt>
+                        <dd class="govuk-summary-list__value">Administrator</dd>
                         <dd class="govuk-summary-list__actions">
                             <a href="which-apis">Change<span class="govuk-visually-hidden"> acme EHC application membership</span></a>
                         </dd>
                     </div>
-                </dl>
+                </dl> -->
+                
 
-                <a href="/account/manage-team/" class="govuk-button govuk-button--primary">Save changes</a>
-                <a href="/account/manage-team/" class="float-r govuk-button govuk-button--warning">Delete team member</a>
+
+                
+                
+                <p><a class="govuk-link govuk-link--no-visited-state" href="#">Remove NAME</a></p>
 
 
                 <!-- <table class="govuk-table">
@@ -86,7 +111,7 @@
                     </tbody>
                 </table> -->
                 
-            </div>
+            
         </div>
     </div>
 
