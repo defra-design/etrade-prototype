@@ -1,0 +1,39 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+
+
+{% set pageHeading = 'What’s ' + data['teamName'] + '’s email address?' %}
+{% set pageSection = "Add team member" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+              
+                
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+                        
+                <form method="post" action="check-your-answers">
+                    
+                    {{ govukInput({
+                        label: {
+                            text: "Email address",
+                            isPageHeading: true,
+                            classes: "govuk-visually-hidden"
+                        },
+                        id: "teamEmail",
+                        name: "teamEmail",
+                        classes: "govuk-!-width-two-thirds"
+                    }) }}
+          
+                    <button class="govuk-button govuk-button--primary">Continue</button>
+
+                </form>
+        
+  
+        </div>
+    </div>
+  
+{% endblock %}

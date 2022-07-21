@@ -1,0 +1,40 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+
+
+{% set pageHeading = "What’s this person’s full name?" %}
+{% set pageSection = "Add team member" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+              
+                
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+                        
+                <form method="post" action="email">
+
+                    {{ govukInput({
+                        label: {
+                            text: "Name",
+                            isPageHeading: false,
+                            classes: "govuk-visually-hidden"
+                        },
+                        id: "teamName",
+                        name: "teamName",
+                        classes: "govuk-!-width-two-thirds"
+                    }) }}
+                    
+          
+                    <button class="govuk-button govuk-button--primary">Continue</button>
+
+                </form>
+        
+  
+        </div>
+    </div>
+  
+{% endblock %}

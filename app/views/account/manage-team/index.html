@@ -3,8 +3,8 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = "Members" %}
-{% set pageSection = "Team" %}
+{% set pageHeading = "Team" %}
+{% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
@@ -12,13 +12,24 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
   
-            {% include "includes/defra-section-nav.html" %}
+            <!-- {% include "includes/defra-section-nav.html" %} -->
 
-            <div class="govuk-grid-column-three-quarters">
+            <nav class="app-subnav" aria-label="Sub navigation">
+                <ul class="app-subnav__list">
+                    <li class="app-subnav__list-item"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/">Overview</a></li>
+                    <li class="app-subnav__list-item"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/manage-applications/">Applications</a></li>
+                    <li class="app-subnav__list-item app-subnav__list-item--selected"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/manage-team/">Team</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div class="govuk-grid-column-two-thirds">
                 
                 {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+                <p>Content relating to what this is etc.</p>
         
-                <a href="add-team-member" class="govuk-button govuk-button--primary">Add team member</a>
+                <a href="/account/manage-team/add/name" class="govuk-button govuk-button--primary">Add new team member</a>
                  
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
@@ -45,7 +56,7 @@
                     </tbody>
                 </table>
             
-            </div>
+            
         </div>
     </div>
 
