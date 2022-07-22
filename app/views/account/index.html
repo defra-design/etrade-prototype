@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = "Your account" %}
+{% set pageHeading = "Overview" %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -11,13 +11,29 @@
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-  
-            {% include "includes/defra-section-nav.html" %}
 
-            <div class="govuk-grid-column-three-quarters">
+            
+            <nav class="app-subnav" aria-label="Sub navigation">
+                <ul class="app-subnav__list">
+                    <li class="app-subnav__list-item app-subnav__list-item--selected"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/">Overview</a></li>
+                    <li class="app-subnav__list-item"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/manage-applications/">Applications</a></li>
+                    <li class="app-subnav__list-item"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/manage-team/">Team</a></li>
+                </ul>
+            </nav>
+        </div>
+  
+            <!-- {% include "includes/defra-section-nav.html" %} -->
+
+            <div class="govuk-grid-column-two-thirds">
                 
                 {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
                 
+                <p class="govuk-body">Creating a sandbox application allows you to:</p>
+            <ul class="govuk-list govuk-list--bullet">                    
+                <li>subscribe it to the APIs you want to integrate with</li>
+                <li>get access to its testing credentials</li>
+                <li>use its testing credentials for integration testing</li>
+            </ul>
                 
                 <p class="govuk-body">You can now create your application in a sandbox environment.</p>
                 <p class="govuk-body">Sandbox environment lets you:</p>
@@ -36,14 +52,14 @@
                 <!-- Not needed its wrong place. -->
                 <p class="govuk-body govuk-!-margin-bottom-7">Learn more about interacting with our APIs in the <a href="/documentation/introduction">documentation</a> or discover what the APIs offer through the <a href="/apis/expore-apis">explore APIs pages</a>.</p>
 
-                <form method="post" action="/account/manage-applications/sandbox/name" >
+                <!-- <form method="post" action="/account/manage-applications/sandbox/name" >
 
                     <input type="hidden" name="new-sandbox-application" id="new-sandbox-application" value="Yes" />
                     {{ govukButton({
                         text: "Create a sandbox application"
                     }) }}
 
-                </form>
+                </form> -->
 
 
 
