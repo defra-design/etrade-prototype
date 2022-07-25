@@ -2,8 +2,8 @@ const { generateRandomString } = require('../utils/helpers')
 
 module.exports = router => {
   router.all([
-    '/account/production-credentials/:id',
-    '/account/production-credentials/:id/*',    
+    '/account/production-credentials/production-credentials/:id',
+    '/account/production-credentials/production-credentials/:id/*',    
     
   ], (req, res, next) => {
     const data = req.session.data

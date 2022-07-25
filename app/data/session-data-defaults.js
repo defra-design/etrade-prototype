@@ -14,8 +14,18 @@ Example usage:
 
 */
 
+
+
 module.exports = {
 
   // Insert values here
+  appName: "Goat23",
+  appApis: "Export application",
+  appRedirect: "https://www.23goat.com",
+  addAnother: "No",  
+
+  sandbox: {
+    ME1: { appName: 'Goat23' },
+  }
 
 }
