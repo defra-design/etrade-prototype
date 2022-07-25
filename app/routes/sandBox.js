@@ -2,8 +2,8 @@ const { generateRandomString } = require('../utils/helpers')
 
 module.exports = router => {
   router.all([
-    '/account/manage-applications/sandbox/:id',
-    '/account/manage-applications/sandbox/:id/*',    
+    '/account/applications/sandbox/:id',
+    '/account/applications/sandbox/:id/*',    
     
   ], (req, res, next) => {
     const data = req.session.data

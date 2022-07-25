@@ -16,7 +16,7 @@
             <nav class="app-subnav" aria-label="Sub navigation">
                 <ul class="app-subnav__list">
                     <li class="app-subnav__list-item"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/">Overview</a></li>
-                    <li class="app-subnav__list-item app-subnav__list-item--selected"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/manage-applications/">Applications</a></li>
+                    <li class="app-subnav__list-item app-subnav__list-item--selected"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/applications/">Applications</a></li>
                     <li class="app-subnav__list-item"><a class="app-subnav__link govuk-link--no-visited-state" href="/account/manage-team/">Team</a></li>
                 </ul>
             </nav>
@@ -34,7 +34,7 @@
                 <li>use its testing credentials for integration testing</li>
             </ul>
 
-            <form method="post" action="/account/manage-applications/sandbox/name" class="govuk-!-margin-bottom-5" >
+            <form method="post" action="/account/applications/sandbox/name" class="govuk-!-margin-bottom-5" >
                 <input type="hidden" name="new-sandbox-application" id="new-sandbox-application" value="Yes" />
                 {{ govukButton({
                     text: "Create new sandbox application"
@@ -125,7 +125,7 @@
                     </div>
                 </details> -->
                 
-                <!-- <a href="/account/manage-applications/sandbox/name" class="govuk-button govuk-button--primary">Create sandbox application</a> -->
+                <!-- <a href="/account/applications/sandbox/name" class="govuk-button govuk-button--primary">Create sandbox application</a> -->
                 
             
             </div>
