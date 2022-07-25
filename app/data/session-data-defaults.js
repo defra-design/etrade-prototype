@@ -17,15 +17,18 @@ Example usage:
 
 
 module.exports = {
-
-  // Insert values here
-  appName: "Goat23",
-  appApis: "Export application",
-  appRedirect: "https://www.23goat.com",
-  addAnother: "No",  
-
-  sandbox: {
-    ME1: { appName: 'Goat23' },
+  
+  applications: {
+    ME1: { name: 'Bird', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" },
+    GH3: { name: 'Magic', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" },
+    JH2: { name: 'Curry', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" },
+    LK9: { name: 'Chamberlain', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" },
+    NB7: { name: 'LeBron', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" },    
+    SA1: { name: 'Jordan', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" },
+    DF9: { name: 'Pippen', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" },
+    JR6: { name: 'Bryant', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" },
+    OQ4: { name: 'Erving', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" },
+    PL7: { name: 'Rodman', apis: "Export application" , redirectURI: "exampleTest.com", production: "No" }
   }
 
 }

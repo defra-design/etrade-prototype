@@ -21,14 +21,14 @@
                 <dl class="govuk-summary-list govuk-!-margin-bottom-7">
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">Name</dt>
-                        <dd class="govuk-summary-list__value">{{ data['app-name'] }}</dd>
+                        <dd class="govuk-summary-list__value">{{ application.name }}</dd>
                         <dd class="govuk-summary-list__actions">
                             <a href="/account/applications/sandbox/name">Change<span class="govuk-visually-hidden"> application name</span></a>
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">APIs required</dt>
-                        <dd class="govuk-summary-list__value">{{ data['app-apis'] }}
+                        <dd class="govuk-summary-list__value">{{ application.apis }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a href="which-apis">Change<span class="govuk-visually-hidden"> date of birth</span></a>
@@ -36,20 +36,20 @@
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">Redirect URIs</dt>
-                        <dd class="govuk-summary-list__value">http://{{ data['app-redirects'] }}
+                        <dd class="govuk-summary-list__value">http://{{ application.redirectURI }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a href="which-apis">Change<span class="govuk-visually-hidden"> redirect URIs</span></a>
                         </dd>
                     </div>
-                    <div class="govuk-summary-list__row">
+                    <!-- <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">Team members</dt>
                         <dd class="govuk-summary-list__value">Hugo.furst@test.defra.gov.uk
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a href="add-team-members">Change<span class="govuk-visually-hidden"> team members</span></a>
                         </dd>
-                    </div>                    
+                    </div>                     -->
                 </dl>
     
                 <!-- <h2 class="govuk-heading-m">Now create your sandbox application</h2>     -->

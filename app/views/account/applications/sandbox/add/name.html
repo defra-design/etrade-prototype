@@ -14,8 +14,7 @@
                 
                 {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
               
-                <form class="govuk-form" action="which-apis" method="post">
-                    
+                <form class="govuk-form" action="which-apis" method="post">                    
 
                     {{ govukInput({
                         label: { text: pageHeading, classes: "govuk-visually-hidden", isPageHeading: false },
@@ -23,11 +22,9 @@
                         hint: {
                             text: "Application names are limited to 10 characters."
                         }
-                    } | decorateFormAttributes(['sandboxes', id, 'sandName']) ) }}
+                    } | decorateFormAttributes(['applications', id, 'name']) ) }}
 
-
-                    
-                    
+                                    
                     {{ govukButton({
                         text: "Continue"
                     }) }}                    

@@ -1,0 +1,62 @@
+{% set accountActive = true %}
+{% extends "layout.html" %}
+
+{% set pageHeading = 'What are your redirect URIs for ' + application.name + '?' %}
+{% set pageSection = "Create new sandbox application" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+  
+            <!-- {% include "includes/defra-section-nav.html" %} -->
+
+            
+                
+                {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+                
+                
+                <p class='govuk-body'>Your application needs to ask users before it can access their personal data. We take users to Government Gateway to grant this permission.</p>
+                <p class='govuk-body'><a href='#'>Redirect URIs tell us where to send users (opens in new tab)</a> after they leave Government Gateway.</p>
+                <!-- <p class='govuk-body'><a href='#'>Learn more about redirect URIs (opens in new tab).</a></p> -->
+                
+                
+                <!-- <p class="govuk-body">You can change this later.</p>
+          
+                {{ govukDetails({
+                    summaryText: "What are redirect URIs?",
+                    html: "<p class='govuk-body'>Your application needs to ask users before it can access their personal data. We take users to Government Gateway to grant this permission.</p><p class='govuk-body'>Redirect URIs tell us where to send users after they leave Government Gateway.</p><p class='govuk-body'><a href='#'>Learn more about redirect URIs (opens in a new window or tab).</a></p>"
+                }) }} -->
+
+                <!-- Maximum of 5.  -->
+                <form class="govuk-form" action="check-your-answers" method="post">            
+                    
+                    {{ govukInput({
+                        label: { text: pageHeading, classes: "govuk-visually-hidden", isPageHeading: false },
+                        classes: "govuk-!-width-two-thirds",
+                        hint: {
+                            text: "URI must be HTTPS for example https://example.co.uk"
+                        },
+                        prefix: {
+                            text: "https://"
+                          }
+                    } | decorateFormAttributes(['applications', id, 'redirectURI']) ) }}
+
+
+            
+
+                    
+                    
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}  
+                    
+                
+                </form>
+            
+            
+        </div>
+    </div>
+
+{% endblock %}
