@@ -1,7 +1,7 @@
 {% set accountActive = true %}
 {% extends "layout.html" %}
 
-{% set pageHeading = "What do you want to call your application?" %}
+{% set pageHeading = "What’s the name of your application?" %}
 {% set pageSection = "Create new sandbox application" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -14,22 +14,17 @@
                 
                 {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
               
-                <form class="govuk-form" action="which-apis" method="post">
-                    
+                <form class="govuk-form" action="which-apis" method="post">                    
+
                     {{ govukInput({
-                        label: {
-                            text: "What do you want to call your application?",
-                            isPageHeading: false,
-                            classes: "govuk-label--l govuk-visually-hidden"
-                        },
+                        label: { text: pageHeading, classes: "govuk-visually-hidden", isPageHeading: false },
+                        classes: "govuk-!-width-two-thirds",
                         hint: {
-                            text: "Names are limited to 10 characters."
-                        },
-                        id: "app-name",
-                        name: "app-name",
-                        classes: "govuk-!-width-two-thirds"
-                    }) }}
-                    
+                            text: "Application names are limited to 10 characters."
+                        }
+                    } | decorateFormAttributes(['applications', id, 'name']) ) }}
+
+                                    
                     {{ govukButton({
                         text: "Continue"
                     }) }}                    

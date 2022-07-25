@@ -1,7 +1,7 @@
 {% set accountActive = true %}
 {% extends "layout.html" %}
 
-{% set pageHeading = 'Which APIs do you want to use with ' + data['app-name'] + '?' %}
+{% set pageHeading = 'Which APIs do you want to use with ' +  application.name + '?' %}
 {% set pageSection = "Create new sandbox application" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -18,21 +18,16 @@
                 <p>Learn more about our <a href="../apis/explore-apis">APIs in the documentation (opens in new tab)</a>.</p>
 
                 <form class="govuk-form" action="redirects" method="post">
+                    
 
                     {{ govukCheckboxes({
-                        idPrefix: "app-apis",
-                        name: "app-apis",
-                        fieldset: { legend: { text: pageHeading, isPageHeading: false, classes: "govuk-fieldset__legend govuk-visually-hidden" } },
                         hint: { text: "Select all that apply." },
-                        items: [
+                        items: [ 
                             { value: "Import of products, animals, food and feed system", text: "Import of products, animals, food and feed system" },
                             { value: "Export application", text: "Export application" },
-                            { value: "Fish Export Service (FES)", text: "Fish Export Service (FES)" }
+                            { value: "Fish Export Service (FES)", text: "Fish Export Service (FES)" }                        
                         ]
-                    }) }}
-
-
-
+                    } | decorateFormAttributes(['applications', id, 'apis']) ) }}
 
                     <!-- <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" aria-describedby="waste-hint">

@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = '' +  data['app-name'] + ' sandbox application has been created' %}
+{% set pageHeading = '' +  sandbox.name + ' sandbox application has been created' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -13,8 +13,6 @@
   
             <!-- {% include "includes/defra-section-nav.html" %} -->
 
-            
-
                 {{ govukPanel({
                     titleText: pageHeading,
                     html: "Reference: 000394394",    
@@ -22,7 +20,7 @@
                 }) }}                
                                 
                 
-                <p>For your application to interact with our services that give access delegation and authorisation as well as to maintain security and integrity you will need to use the <a href="#">application credentials we have generated</a>.</p>
+                <p>For {{ sandbox.name }} to interact with our services that give access delegation and authorisation as well as to maintain security and integrity you will need to use the <a href="#">application credentials we have generated</a>.</p>
                 
                 
                 <h2 class="govuk-heading-m">What you can do next</h2>                                            
