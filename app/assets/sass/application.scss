@@ -30,6 +30,21 @@ $govuk-border-colour: $backgroundGrey;
 $govuk-focus-colour: #ffdd00;
 $govuk-font-family: "GDS Transport", arial, sans-serif;
 
+
+// Brians
+
+.js-enabled .govuk-tabs__panel {
+    border: none;
+    // padding-left: 0;
+    // padding-right: 0;
+    padding-top: 40px;
+}
+    
+
+// End
+
+
+
 // helpers
 .m-l-15 {
     margin-left: 15px;

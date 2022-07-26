@@ -1,11 +1,13 @@
 <tr class="govuk-table__row">
-    <td class="govuk-table__cell"><a href="/account/applications/helloworld?helloworld">{{ application.name }}</a></td>
+    <td class="govuk-table__cell"><a href="/account/applications/{{ id }}">{{ application.name }}</a></td>
     <td class="govuk-table__cell">
         {{ application.apis }}
     </td>    
-    <td class="govuk-table__cell"> 
+    <td class="govuk-table__cell govuk-table__cell--numeric"> 
         {% if application.production == "Yes" %}
-            Yes
+            Created
+        {% elif application.production == "Applied" %}
+            Applied
         {% else %}
             <a href="/account/applications/production-credentials/">Apply</a></td>
         {% endif %}
