@@ -27,11 +27,19 @@
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Team</dt>
+                        <dd class="govuk-summary-list__value">{{ application.teamName }}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a href="/account/applications/sandbox/select-team">Change<span class="govuk-visually-hidden"> which team</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">APIs required</dt>
                         <dd class="govuk-summary-list__value">{{ application.apis }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                            <a href="which-apis">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                            <a href="/account/applications/sandbox/which-apis">Change<span class="govuk-visually-hidden"> apis</span></a>
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -39,7 +47,7 @@
                         <dd class="govuk-summary-list__value">http://{{ application.redirectURI }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                            <a href="which-apis">Change<span class="govuk-visually-hidden"> redirect URIs</span></a>
+                            <a href="/account/applications/sandbox/redirects">Change<span class="govuk-visually-hidden"> redirect URIs</span></a>
                         </dd>
                     </div>
                     <!-- <div class="govuk-summary-list__row">
