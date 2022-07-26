@@ -29,5 +29,21 @@ module.exports = router => {
   })
 
 
+  // List out applications
+  // router.all('/account/applications', (req, res, next) => {
+  //   const applications = req.session.data.applications
+  //   res.locals.hasAnyApps = Object.values(applications).some((p) => p.status === 'Contacted' )
+  //   next()
+  // })
+
+
+  // User validation
+  router.all('/account/applications', (req, res, next) => {
+    const applications = req.session.data.applications
+    res.locals.hasAnyContacted = Object.values(applications).some((p) => p.status === 'Contacted' )
+    next()
+  })
+
+
 
 }

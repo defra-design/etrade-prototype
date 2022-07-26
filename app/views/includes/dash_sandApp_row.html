@@ -1,20 +1,18 @@
 <tr class="govuk-table__row">
-    <td class="govuk-table__cell"><a href="/account/applications/helloworld?helloworld">Hello World</a></td>
+    <td class="govuk-table__cell"><a href="/account/applications/helloworld?helloworld">{{ application.name }}</a></td>
     <td class="govuk-table__cell">
-        <ul class="govuk-list">
-            <li>Import of products, animals, food and feed system</li>
-            <li>Export application</li>
-            <!-- <li>Fish Export Service (FES)</li> -->
-        </ul>
+        {{ application.apis }}
     </td>    
-    <td class="govuk-table__cell">Sandbox<br><a href="/account/applications/production-credentials/">Apply for production</a></td>
+    <td class="govuk-table__cell">Sandbox<br>
+        {% if application.production == "Yes" %}
+            Production
+        {% else %}
+            <a href="/account/applications/production-credentials/">Apply for production</a></td>
+        {% endif %}
+        
+        
     <!-- <td class="govuk-table__cell govuk-table__cell--numeric">10 July 2022</td> -->
 </tr>
 
-<tr class="govuk-table__row">
-    <td class="govuk-table__cell"><a href="/account/applications/helloworld?helloworld">TestApplication</a></td>
-    <td class="govuk-table__cell">Export application</td>    
-    <td class="govuk-table__cell">Sandbox<br>Production</td>
-    <!-- <td class="govuk-table__cell govuk-table__cell--numeric">10 July 2022</td> -->
-</tr>
+
 

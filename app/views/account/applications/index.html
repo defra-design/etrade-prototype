@@ -54,20 +54,24 @@
                 
                 <!-- Not needed its wrong place. -->
                 
-
-                
-                
-
-
-
                 <div class="govuk-grid-column-full">
 
-                    
-                                     
+                    {% if hasAnyContacted %}
+                        <table class="govuk-table govuk-!-margin-bottom-9">
+                            {% include "includes/dash_sandApp_head.html" %}
+                            <tbody class="govuk-table__body">                               
+                            {% for id, application in data.applications %}   
+                                {% include "includes/dash_sandApp_row.html" %}                                                                                                                                                                                     
+                            {% endfor %}
+                            </tbody>
+                        </table>   
+                    {% endif %}                 
+            
+                </div>         
                         
-                        <div class="govuk-grid-row">
+                        <!-- <div class="govuk-grid-row">
                             <div class="govuk-grid-column-two-thirds">
-                               
+                                -->
                                 
                                     <!-- <p class="govuk-body">You can now create your application in a sandbox environment.</p>
                                     <p class="govuk-body">Sandbox environment lets you:</p>
@@ -82,17 +86,15 @@
                                         text: "You must comply with our terms of use.",
                                         iconFallbackText: "Warning"
                                     }) }} -->
-                               
+<!--                                
                             </div>
-                        </div>
-                        <table class="govuk-table govuk-!-margin-bottom-9">
-                            {% include "includes/dash_sandApp_head.html" %}
-                            <tbody class="govuk-table__body">                                    
-                                {% include "includes/dash_sandApp_row.html" %}                                    
-                            </tbody>
-                        </table>                    
-                    
-                        </div>
+                        </div> -->
+                        
+                        
+
+
+                                
+                           
 
 
           
