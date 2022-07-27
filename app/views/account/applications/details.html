@@ -15,27 +15,47 @@
 
 
             {% set pastDayHtml %}
-            
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
                 <h2 class="govuk-heading-m">Redirect URIs</h2>
+
+                <p>We use redirect URIs to send the user back to your application after successful (or unsuccessful) authorisation, prior to your application accessing user-restricted endpoints. You can find more information about how we use redirect URIs.</p>
+              </div>
+              </div>
+
+                
                 <table class="govuk-table">                    
                     <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">URI</th>
+                        <th scope="col" class="govuk-table__header">Environment</th>
                         <th scope="col" class="govuk-table__header">Actions</th>
                     </tr>
                     </thead>
                     <tbody class="govuk-table__body">
                     <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">https://www.fetch.example.com</th>
+                        <td class="govuk-table__cell">https://www.sandbox.fetch.example.com</th>
+                          <td class="govuk-table__cell">Sandbox</th>
                         <td class="govuk-table__cell">
                             <a href="#" class="m-r-30">Edit</a>
                             <a href="#">Delete</a>
                         </td>
                     </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">https://www.fetch.example.com</th>
+                        <td class="govuk-table__cell">Production</th>
+                        <td class="govuk-table__cell">
+                          <a href="#" class="m-r-30">Edit</a>
+                          <a href="#">Delete</a>
+                      </td>
+                  </tr>
                     </tbody>
                 </table>
 
                 <p><a class="gouvk-link govuk-link--no-visited-state" href="#">Add a new redirect URI</a></p>
+
+
+                
 
 
 
@@ -139,7 +159,7 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 
-            <h2 class="govuk-heading-m">Production credentials</h2>    
+            <h2 class="govuk-heading-m">Credentials</h2>    
             <!-- <p class="govuk-body">If your application subscribes to an API only available in the sandbox, you cannot request production credentials. <a href="../apis/explore-apis">Review the specific API documentation</a> to check if an API is available in production.</p>
             <p>You will need to test your application before requesting production credentials.</p>
             <p>You do not need production credentials for APIs with only open access endpoints or:</p>
@@ -147,9 +167,29 @@
                 <li>APIs for testing your service</li>
                 <li>Hello world API</li>
             </ul>             -->
-            <p><a href="/account/applications/{{ id }}/production-credentials/">Apply for production credentials</a></p>
+            <!-- <p><a href="/account/applications/{{ id }}/production-credentials/">Apply for production credentials</a></p> -->
 
+            <p>We use the OAuth2 Open Standard for access delegation and authorisation to its services and APIs to maintain security and integrity. You can find out more information about our authorisation approach.</p>
+
+            <h2 class="govuk-heading-m">Sandbox</h2>
+            <!-- <p>Sandbox App Id	
+            <br>0ccb95a4-b00d-ed11-b47a-0003ffea7107</p>             -->
             
+            <p>Sandbox Client ID	
+            <br>57367e47-ae4c-42d9-9df1-58212104d079</p>
+
+            <p>Sandbox Client Secret	
+              <br>57367e47-ae4c-42d9-9df1-58212104d079
+              <br>57367e47-ae4c-42d9-9df1-58212104d079</p>
+
+
+              <h2 class="govuk-heading-m">Production</h2>
+            <p>Client ID	111f2538-abb3-4ddf-bd78-e3fee22689bf</p>
+<p>Client secret	Not available</p>
+
+              Expiry date
+
+              
             </div>
         </div>
         
@@ -163,7 +203,7 @@
     { label: "Redirect URIs", id: "past-day", panel: { html: pastDayHtml } },    
     { label: "Activity", id: "past-month", panel: { html: pastMonthHtml } },
     { label: "Team", id: "past-week", panel: { html: pastWeekHtml } },
-    { label: "Production credentials", id: "past-year", panel: { html: prodCredHtml } }
+    { label: "Credentials", id: "past-year", panel: { html: prodCredHtml } }
   ]
 }) }}
 
