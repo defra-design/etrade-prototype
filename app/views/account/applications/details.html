@@ -19,7 +19,8 @@
               <div class="govuk-grid-column-two-thirds">
                 <h2 class="govuk-heading-m">Redirect URIs</h2>
 
-                <p>We use redirect URIs to send the user back to your application after successful (or unsuccessful) authorisation, prior to your application accessing user-restricted endpoints. You can find more information about how we use redirect URIs.</p>
+                <p>We use redirect URIs to send the user back to your application after successful (or unsuccessful) authorisation, prior to your application accessing user-restricted endpoints.</p>
+                <p>Read more <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">information about how we use redirect URIs (opens in new tab)</a>.</p>
               </div>
               </div>
 
@@ -29,23 +30,23 @@
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">URI</th>
                         <th scope="col" class="govuk-table__header">Environment</th>
-                        <th scope="col" class="govuk-table__header">Actions</th>
+                        <th scope="col" class="govuk-table__header"></th>
                     </tr>
                     </thead>
                     <tbody class="govuk-table__body">
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">https://www.sandbox.fetch.example.com</th>
                           <td class="govuk-table__cell">Sandbox</th>
-                        <td class="govuk-table__cell">
-                            <a href="#" class="m-r-30">Edit</a>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <!-- <a href="#">Change</a> -->
                             <a href="#">Delete</a>
                         </td>
                     </tr>
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">https://www.fetch.example.com</th>
                         <td class="govuk-table__cell">Production</th>
-                        <td class="govuk-table__cell">
-                          <a href="#" class="m-r-30">Edit</a>
+                          <td class="govuk-table__cell govuk-table__cell--numeric">
+                          <!-- <a href="#">Change</a> -->
                           <a href="#">Delete</a>
                       </td>
                   </tr>
@@ -157,7 +158,7 @@
         {% set prodCredHtml %}
             
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-grid-column-two-thirds">
 
             <h2 class="govuk-heading-m">Credentials</h2>    
             <!-- <p class="govuk-body">If your application subscribes to an API only available in the sandbox, you cannot request production credentials. <a href="../apis/explore-apis">Review the specific API documentation</a> to check if an API is available in production.</p>
@@ -170,28 +171,68 @@
             <!-- <p><a href="/account/applications/{{ id }}/production-credentials/">Apply for production credentials</a></p> -->
 
             <p>We use the OAuth2 Open Standard for access delegation and authorisation to its services and APIs to maintain security and integrity. You can find out more information about our authorisation approach.</p>
-
-            <h2 class="govuk-heading-m">Sandbox</h2>
-            <!-- <p>Sandbox App Id	
-            <br>0ccb95a4-b00d-ed11-b47a-0003ffea7107</p>             -->
             
-            <p>Sandbox Client ID	
-            <br>57367e47-ae4c-42d9-9df1-58212104d079</p>
-
-            <p>Sandbox Client Secret	
-              <br>57367e47-ae4c-42d9-9df1-58212104d079
-              <br>57367e47-ae4c-42d9-9df1-58212104d079</p>
-
-
-              <h2 class="govuk-heading-m">Production</h2>
-            <p>Client ID	111f2538-abb3-4ddf-bd78-e3fee22689bf</p>
-<p>Client secret	Not available</p>
-
-              Expiry date
-
-              
+            <!-- <h2 class="govuk-heading-m">Sandbox</h2> -->
             </div>
-        </div>
+          </div>
+
+            {{ govukTable({
+              caption: "Sandbox",
+              captionClasses: "govuk-table__caption--m",
+              
+              head: [
+                { text: "Credential", classes: "govuk-!-width-one-quarter" },
+                { text: "Value" },
+                { text: "Expiry date", classes: "govuk-!-width-one-quarter" }
+              ],
+              rows: [
+                [
+                  { text: "Client ID" },
+                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },
+                  { text: "" }
+                ],
+                [
+                  { text: "Client Secret" },
+                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },
+                  { text: "24 August 2022" }
+                ],
+                [
+                  { text: "Client Secret" },
+                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },
+                  { text: "24 July 2023" }
+                ]
+                
+              ]
+            }) }}
+
+
+            {{ govukTable({
+              caption: "Production",
+              captionClasses: "govuk-table__caption--m",
+              
+              head: [
+                { text: "Credential", classes: "govuk-!-width-one-quarter" },
+                { text: "Value" },
+                { text: "Expiry date", classes: "govuk-!-width-one-quarter" }
+              ],
+              rows: [
+                [
+                  { text: "Client ID" },
+                  { text: "111f2538-abb3-4ddf-bd78-e3fee22689bf" },
+                  { text: "" }
+                ],
+                [
+                  { text: "Client Secret" },
+                  { text: "Not available" },
+                  { text: "" }
+                ]                                
+              ]
+            }) }}
+
+
+          
+
+            
         
         {% endset -%}
 
@@ -201,9 +242,10 @@
 {{ govukTabs({
   items: [    
     { label: "Redirect URIs", id: "past-day", panel: { html: pastDayHtml } },    
+    { label: "Credentials", id: "past-year", panel: { html: prodCredHtml } },
     { label: "Activity", id: "past-month", panel: { html: pastMonthHtml } },
-    { label: "Team", id: "past-week", panel: { html: pastWeekHtml } },
-    { label: "Credentials", id: "past-year", panel: { html: prodCredHtml } }
+    { label: "Team", id: "past-week", panel: { html: pastWeekHtml } }
+    
   ]
 }) }}
 
