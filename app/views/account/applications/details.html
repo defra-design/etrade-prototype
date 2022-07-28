@@ -181,29 +181,57 @@
               captionClasses: "govuk-table__caption--m",
               
               head: [
-                { text: "Credential", classes: "govuk-!-width-one-quarter" },
+                { text: "Client credential", classes: "govuk-!-width-one-quarter" },                
+                { text: "Expiry date", classes: "govuk-!-width-one-quarter" },
                 { text: "Value" },
-                { text: "Expiry date", classes: "govuk-!-width-one-quarter" }
+                { text: "" }
               ],
               rows: [
                 [
-                  { text: "Client ID" },
-                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },
+                  { text: "ID" },
+                  { text: "" },
+                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },                  
                   { text: "" }
                 ],
                 [
-                  { text: "Client Secret" },
-                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },
-                  { text: "24 August 2022" }
+                  { text: "Secret" },
+                  { text: "24 August 2022" },
+                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },                  
+                  { text: "Manage" }
                 ],
                 [
-                  { text: "Client Secret" },
-                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },
-                  { text: "24 July 2023" }
+                  { text: "Secret" },
+                  { text: "24 July 2023" },
+                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },                  
+                  { text: "Manage" }
                 ]
                 
               ]
             }) }}
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-7">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Client ID</dt>
+                    <dd class="govuk-summary-list__value">06f3c6ce-1bc0-4ddb-99cf-419487318c4f</dd>
+                    <dd class="govuk-summary-list__actions"></dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Client secret</dt>
+                    <dd class="govuk-summary-list__value">57367e47-ae4c-42d9-9df1-58212104d079</dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a href="/account/applications/sandbox/select-team">Remove<span class="govuk-visually-hidden"> client secret</span></a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Client secret</dt>
+                    <dd class="govuk-summary-list__value"></dd></dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a href="/account/applications/sandbox/which-apis">Generate<span class="govuk-visually-hidden"> client secret</span></a>
+                    </dd>
+                </div>                
+            </dl>
+            
+
 
 
             {{ govukTable({
@@ -211,20 +239,23 @@
               captionClasses: "govuk-table__caption--m",
               
               head: [
-                { text: "Credential", classes: "govuk-!-width-one-quarter" },
+                { text: "Client credential", classes: "govuk-!-width-one-quarter" },
                 { text: "Value" },
-                { text: "Expiry date", classes: "govuk-!-width-one-quarter" }
+                { text: "Expiry date", classes: "govuk-!-width-one-quarter" },
+                { text: "" }
               ],
               rows: [
                 [
-                  { text: "Client ID" },
+                  { text: "ID" },
                   { text: "111f2538-abb3-4ddf-bd78-e3fee22689bf" },
+                  { text: "" },
                   { text: "" }
                 ],
                 [
-                  { text: "Client Secret" },
+                  { text: "Secret" },
                   { text: "Not available" },
-                  { text: "" }
+                  { text: "" },
+                  { text: "Generate" }
                 ]                                
               ]
             }) }}
