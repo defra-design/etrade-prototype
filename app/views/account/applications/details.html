@@ -14,33 +14,33 @@
 
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-            {% set redirectsHtml %}
-                {% include "includes/appDetails_redirects.html" %}
-            {% endset -%}
-
             {% set credentialsHtml %}
                 {% include "includes/appDetails_credentials.html" %}
-            {% endset -%}
+            {% endset -%}            
 
             {% set apisHtml %}
                 {% include "includes/appDetails_api.html" %}
             {% endset -%}
-            
-            {% set activityHtml %}
-                {% include "includes/appDetails_activity.html" %}
-            {% endset -%}
 
+            {% set redirectsHtml %}
+                {% include "includes/appDetails_redirects.html" %}
+            {% endset -%}
+            
             {% set teamsHtml %}
                 {% include "includes/appDetails_teams.html" %}
             {% endset -%}
 
+            {% set activityHtml %}
+                {% include "includes/appDetails_activity.html" %}
+            {% endset -%}            
+
             {{ govukTabs({
             items: [
-                { label: "Redirect URIs", id: "redirects", panel: { html: redirectsHtml } },
-                { label: "Credentials", id: "credentials", panel: { html: credentialsHtml } },
+                { label: "Credentials", id: "credentials", panel: { html: credentialsHtml } },    
                 { label: "APIs", id: "apis", panel: { html: apisHtml } },
-                { label: "Activity", id: "activity", panel: { html: activityHtml } },
-                { label: "Team", id: "teams", panel: { html: teamsHtml } }
+                { label: "Redirect URIs", id: "redirects", panel: { html: redirectsHtml } },                                
+                { label: "Team", id: "teams", panel: { html: teamsHtml } },
+                { label: "Activity", id: "activity", panel: { html: activityHtml } }                
             ]
             }) }}
 
