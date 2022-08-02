@@ -1,7 +1,13 @@
 <tr class="govuk-table__row">
     <td class="govuk-table__cell"><a href="/account/applications/{{ id }}">{{ application.name }}</a></td>
     <td class="govuk-table__cell">
-        {{ application.apis }}
+
+        <!-- {% for item in application.apis %}
+            <li>{{ item }}</li>
+        {% endfor %} -->
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>{{ application.apis }}</li>
+        </ul>
     </td>    
     <td class="govuk-table__cell govuk-table__cell--numeric"> 
         {% if application.production == "Yes" %}
