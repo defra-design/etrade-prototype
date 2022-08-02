@@ -1,6 +1,8 @@
 {% set accountActive = true %}
 {% extends "layout.html" %}
 
+{% set showAppBackLink = true %}
+
 
 {% set pageHeading = '' + application.name + '' %}
 {% set pageSection = "Application details" %}
@@ -181,35 +183,39 @@
               captionClasses: "govuk-table__caption--m",
               
               head: [
-                { text: "Client credential", classes: "govuk-!-width-one-quarter" },                
-                { text: "Expiry date", classes: "govuk-!-width-one-quarter" },
+                { text: "Client credentia;s", classes: "govuk-!-width-one-quarter" },                                
                 { text: "Value" },
+                { text: "Expiry date", classes: "govuk-!-width-one-quarter" },
                 { text: "" }
               ],
               rows: [
                 [
-                  { text: "ID" },
-                  { text: "" },
+                  { text: "ID" },                  
                   { text: "57367e47-ae4c-42d9-9df1-58212104d079" },                  
+                  { text: "" },
                   { text: "" }
                 ],
                 [
-                  { text: "Secret" },
+                  { text: "Secret" },                  
+                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },                  
                   { text: "24 August 2022" },
-                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },                  
-                  { text: "Manage" }
-                ],
-                [
-                  { text: "Secret" },
-                  { text: "24 July 2023" },
-                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },                  
-                  { text: "Manage" }
+                  { text: "Remove" }
                 ]
                 
               ]
             }) }}
 
-            <dl class="govuk-summary-list govuk-!-margin-bottom-7">
+            <p class="govuk-!-margin-bottom-7"><a href="#">Add new client secret</a></p>
+
+            <!-- [
+            { text: "Secret" },                  
+            { text: "" },      
+            { text: "" },            
+            { text: "" }
+          ] -->
+
+
+            <!-- <dl class="govuk-summary-list govuk-!-margin-bottom-7">
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">Client ID</dt>
                     <dd class="govuk-summary-list__value">06f3c6ce-1bc0-4ddb-99cf-419487318c4f</dd>
@@ -229,7 +235,7 @@
                         <a href="/account/applications/sandbox/which-apis">Generate<span class="govuk-visually-hidden"> client secret</span></a>
                     </dd>
                 </div>                
-            </dl>
+            </dl> -->
             
 
 
@@ -239,7 +245,7 @@
               captionClasses: "govuk-table__caption--m",
               
               head: [
-                { text: "Client credential", classes: "govuk-!-width-one-quarter" },
+                { text: "Client credentials", classes: "govuk-!-width-one-quarter" },
                 { text: "Value" },
                 { text: "Expiry date", classes: "govuk-!-width-one-quarter" },
                 { text: "" }

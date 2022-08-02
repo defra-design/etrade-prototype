@@ -88,15 +88,22 @@
 {% endif %}
 
 {% if showBackLink != false %}
+  
+  {% if showAppBackLink == true %}
 
-    {% if showManageBackLink != true %}
+    {{ govukBackLink({
+        text: "Back to applications",
+        href: "/account/applications/"
+    }) }}  
 
-        {{ govukBackLink({
-            text: "Back",
-            href: "javascript:history.go(-1)"
-        }) }}  
+  {% elif showManageBackLink != true %}
 
-    {% endif %}
+    {{ govukBackLink({
+        text: "Back",
+        href: "javascript:history.go(-1)"
+    }) }}  
+
+  {% endif %}
 
 {% endif %}
 
