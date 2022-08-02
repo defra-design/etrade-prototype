@@ -47,6 +47,15 @@ module.exports = router => {
     res.render(`account/applications/details/${req.params.view}`)
   })
 
+  // Delete application
+  router.all('/account/applications/:id/delete/', (req, res) => {
+    res.render('account/applications/delete/index')    
+  })
+
+  router.all('/account/applications/:id/delete/:view', (req, res) => {
+    res.render(`account/applications/delete/${req.params.view}`)
+  })
+
 
   // Apply for product credentials
   router.all('/account/applications/:id/production-credentials/', (req, res) => {
