@@ -1,6 +1,5 @@
-{% set accountActive = true %}
 {% extends "layout.html" %}
-
+{% set accountActive = true %}
 {% set showAppBackLink = true %}
 
 
@@ -13,283 +12,39 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
-          {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}                        
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-
-            {% set pastDayHtml %}
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-thirds">
-                <h2 class="govuk-heading-m">Redirect URIs</h2>
-
-                <p>We use redirect URIs to send the user back to your application after successful (or unsuccessful) authorisation, prior to your application accessing user-restricted endpoints.</p>
-                <p>Read more <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">information about how we use redirect URIs (opens in new tab)</a>.</p>
-              </div>
-              </div>
-
-                
-                <table class="govuk-table">                    
-                    <thead class="govuk-table__head">
-                    <tr class="govuk-table__row">
-                        <th scope="col" class="govuk-table__header">URI</th>
-                        <th scope="col" class="govuk-table__header">Environment</th>
-                        <th scope="col" class="govuk-table__header"></th>
-                    </tr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">https://www.sandbox.fetch.example.com</th>
-                          <td class="govuk-table__cell">Sandbox</th>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">
-                            <!-- <a href="#">Change</a> -->
-                            <a href="#">Delete</a>
-                        </td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">https://www.fetch.example.com</th>
-                        <td class="govuk-table__cell">Production</th>
-                          <td class="govuk-table__cell govuk-table__cell--numeric">
-                          <!-- <a href="#">Change</a> -->
-                          <a href="#">Delete</a>
-                      </td>
-                  </tr>
-                    </tbody>
-                </table>
-
-                <p><a class="gouvk-link govuk-link--no-visited-state" href="#">Add a new redirect URI</a></p>
-
-
-                
-
-
-
-                <!-- <form>
-                    <div class="govuk-form-group">
-                        <label class="govuk-label" for="app-name">
-                            Add another redirect URI
-                        </label>
-                        <div id="app-name-hint" class="govuk-hint">
-                            Maximum of 5. URI must be HTTPS for example https://example.co.uk
-                        </div>
-                        <input class="govuk-input govuk-input--width-20" id="add-another-uri" name="add-another-uri" type="text">
-                        <button class="govuk-button govuk-button--secondary" for="add-another-uri">Add URI</button>
-                    </div>
-                </form> -->
-
+            {% set redirectsHtml %}
+                {% include "includes/appDetails_redirects.html" %}
             {% endset -%}
 
-            {% set pastWeekHtml %}
-                
-                <h2 class="govuk-heading-m">Team members</h2>   
-                <p>To be confirmed what we will add here.</p>
-                    
-                <!-- <a href="manage-application">Manage and add team members</a>
-                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <th class="govuk-table__header">Email</th>
-                        <th class="govuk-table__header">Role</th>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">jonno@defra.gov.uk</td>
-                            <td class="govuk-table__cell">Admin</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">cathy@defra.gov.uk</td>
-                            <td class="govuk-table__cell">Admin</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">sinead@defra.gov.uk</td>
-                            <td class="govuk-table__cell">Admin</td>
-                        </tr>
-                    </tbody>
-                </table> -->
-            
+            {% set credentialsHtml %}
+                {% include "includes/appDetails_credentials.html" %}
             {% endset -%}
 
-            {% set pastMonthHtml %}
-                
-                <h2 class="govuk-heading-m">Application activity</h2>                
-            <a href="#">View all activity</a>
-            <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-                <div class="govuk-accordion__section ">
-                  <div class="govuk-accordion__section-header">
-                    <h2 class="govuk-accordion__section-heading">
-                      <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                        <strong class="govuk-tag">GET</strong>
-                        /ehc-application-summary
-                      </span>
-                    </h2>
-                  </div>
-                  <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-                    <p class="gov-uk">Retrieve summary and status information of your Export Health Certificate Applications with filtering and pagination.</p>
-                  </div>
-                </div>
-            </div>
-            <table class="govuk-table">
-                <thead class="govuk-table__head">
-                  <th class="govuk-table__header">Request status</th>
-                  <th class="govuk-table__header">Date and time</th>
-                  <th class="govuk-table__header"></th>
-                </thead>
-                <tbody class="govuk-table__body">
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">202</span></td>
-                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">23/03/2022 15:03:52</span></td>
-                    <td class="govuk-table__cell"><a href="#">View details</a></td>
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--red">404</span></td>
-                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">23/03/2022 14:29:12</span></td>
-                    <td class="govuk-table__cell"><a href="#">View details</a></td>
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">202</span></td>
-                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">23/03/2022 14:02:42</span></td>
-                    <td class="govuk-table__cell"><a href="#">View details</a></td>
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">202</span></td>
-                    <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">23/03/2022 14:01:58</span></td>
-                    <td class="govuk-table__cell"><a href="#">View details</a></td>
-                  </tr>
-                </tbody>
-              </table>
-
+            {% set apisHtml %}
+                {% include "includes/appDetails_api.html" %}
+            {% endset -%}
+            
+            {% set activityHtml %}
+                {% include "includes/appDetails_activity.html" %}
             {% endset -%}
 
-        {% set prodCredHtml %}
-            
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
+            {% set teamsHtml %}
+                {% include "includes/appDetails_teams.html" %}
+            {% endset -%}
 
-            <h2 class="govuk-heading-m">Credentials</h2>    
-            <!-- <p class="govuk-body">If your application subscribes to an API only available in the sandbox, you cannot request production credentials. <a href="../apis/explore-apis">Review the specific API documentation</a> to check if an API is available in production.</p>
-            <p>You will need to test your application before requesting production credentials.</p>
-            <p>You do not need production credentials for APIs with only open access endpoints or:</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>APIs for testing your service</li>
-                <li>Hello world API</li>
-            </ul>             -->
-            <!-- <p><a href="/account/applications/{{ id }}/production-credentials/">Apply for production credentials</a></p> -->
-
-            <p>We use the OAuth2 Open Standard for access delegation and authorisation to its services and APIs to maintain security and integrity. You can find out more information about our authorisation approach.</p>
-            
-            <!-- <h2 class="govuk-heading-m">Sandbox</h2> -->
-            </div>
-          </div>
-
-            {{ govukTable({
-              caption: "Sandbox",
-              captionClasses: "govuk-table__caption--m",
-              
-              head: [
-                { text: "Client credentia;s", classes: "govuk-!-width-one-quarter" },                                
-                { text: "Value" },
-                { text: "Expiry date", classes: "govuk-!-width-one-quarter" },
-                { text: "" }
-              ],
-              rows: [
-                [
-                  { text: "ID" },                  
-                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },                  
-                  { text: "" },
-                  { text: "" }
-                ],
-                [
-                  { text: "Secret" },                  
-                  { text: "57367e47-ae4c-42d9-9df1-58212104d079" },                  
-                  { text: "24 August 2022" },
-                  { text: "Remove" }
-                ]
-                
-              ]
+            {{ govukTabs({
+            items: [
+                { label: "Redirect URIs", id: "redirects", panel: { html: redirectsHtml } },
+                { label: "Credentials", id: "credentials", panel: { html: credentialsHtml } },
+                { label: "APIs", id: "apis", panel: { html: apisHtml } },
+                { label: "Activity", id: "activity", panel: { html: activityHtml } },
+                { label: "Team", id: "teams", panel: { html: teamsHtml } }
+            ]
             }) }}
 
-            <p class="govuk-!-margin-bottom-7"><a href="#">Add new client secret</a></p>
+        </div>
+    </div>
 
-            <!-- [
-            { text: "Secret" },                  
-            { text: "" },      
-            { text: "" },            
-            { text: "" }
-          ] -->
-
-
-            <!-- <dl class="govuk-summary-list govuk-!-margin-bottom-7">
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">Client ID</dt>
-                    <dd class="govuk-summary-list__value">06f3c6ce-1bc0-4ddb-99cf-419487318c4f</dd>
-                    <dd class="govuk-summary-list__actions"></dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">Client secret</dt>
-                    <dd class="govuk-summary-list__value">57367e47-ae4c-42d9-9df1-58212104d079</dd>
-                    <dd class="govuk-summary-list__actions">
-                        <a href="/account/applications/sandbox/select-team">Remove<span class="govuk-visually-hidden"> client secret</span></a>
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">Client secret</dt>
-                    <dd class="govuk-summary-list__value"></dd></dd>
-                    <dd class="govuk-summary-list__actions">
-                        <a href="/account/applications/sandbox/which-apis">Generate<span class="govuk-visually-hidden"> client secret</span></a>
-                    </dd>
-                </div>                
-            </dl> -->
-            
-
-
-
-            {{ govukTable({
-              caption: "Production",
-              captionClasses: "govuk-table__caption--m",
-              
-              head: [
-                { text: "Client credentials", classes: "govuk-!-width-one-quarter" },
-                { text: "Value" },
-                { text: "Expiry date", classes: "govuk-!-width-one-quarter" },
-                { text: "" }
-              ],
-              rows: [
-                [
-                  { text: "ID" },
-                  { text: "111f2538-abb3-4ddf-bd78-e3fee22689bf" },
-                  { text: "" },
-                  { text: "" }
-                ],
-                [
-                  { text: "Secret" },
-                  { text: "Not available" },
-                  { text: "" },
-                  { text: "Generate" }
-                ]                                
-              ]
-            }) }}
-
-
-          
-
-            
-        
-        {% endset -%}
-
-
-
-
-{{ govukTabs({
-  items: [    
-    { label: "Redirect URIs", id: "past-day", panel: { html: pastDayHtml } },    
-    { label: "Credentials", id: "past-year", panel: { html: prodCredHtml } },
-    { label: "Activity", id: "past-month", panel: { html: pastMonthHtml } },
-    { label: "Team", id: "past-week", panel: { html: pastWeekHtml } }
-    
-  ]
-}) }}
-
-
-            
-        
-    
-  </div>
-</div>
 {% endblock %}
