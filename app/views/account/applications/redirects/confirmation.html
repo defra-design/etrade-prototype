@@ -16,8 +16,14 @@
                     titleText: pageHeading,                    
                     classes: "govuk-!-margin-bottom-7"
                 }) }}                
-                                    
-                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/">Return to your application</a></p>
+
+                <ul class="govuk-list">
+                    <li><a href="/account/applications/{{ id }}/redirects/">Add another new redirect URI</a></li>
+                    <li><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#redirects">Return to your application redirects</a></li>
+
+                </ul>
+                
+                
             
             </div>
         </div>
