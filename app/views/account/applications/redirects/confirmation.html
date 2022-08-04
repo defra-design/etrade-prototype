@@ -1,0 +1,26 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = 'Redirect has been added to ' + application.name + '' %}
+{% set pageSection = "" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">        
+        <div class="govuk-grid-column-two-thirds">
+
+                {{ govukPanel({
+                    titleText: pageHeading,                    
+                    classes: "govuk-!-margin-bottom-7"
+                }) }}                
+                                    
+                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/">Return to your application</a></p>
+            
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
