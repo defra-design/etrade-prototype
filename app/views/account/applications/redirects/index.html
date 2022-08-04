@@ -15,7 +15,11 @@
                 
             <!-- <p class='govuk-body'>{{ application.name }} is required to use Government Gateway for permission to access users personal data. <a href='#'>Redirect URIs tell us where to send users (opens in new tab)</a> after they leave Government Gateway.</p> -->
             
-            <form class="govuk-form" action="confirmation" method="post">            
+            {% if application.production == "Yes" %}  
+                <form class="govuk-form" action="which" method="post">
+            {% else %}
+                <form class="govuk-form" action="confirmation" method="post">
+            {% endif %}
                 
                 {{ govukInput({
                     label: { text: pageHeading, classes: "govuk-visually-hidden", isPageHeading: false },

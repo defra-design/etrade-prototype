@@ -3,7 +3,11 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = 'The redirect URI has been added to ' + application.name + '' %}
+{% if application.production == "Yes" %}  
+    {% set pageHeading = 'The redirect URI has been added to the ' + application.apisNewWhich + ' enironment ' + application.name + '' %}
+{% else %}
+    {% set pageHeading = 'The redirect URI has been added to ' + application.name + '' %}
+{% endif %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
