@@ -2,8 +2,8 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = "Create an account" %}
-{% set pageSection = "" %}
+{% set pageHeading = "What is your email address?" %}
+{% set pageSection = "Create an account" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
@@ -13,20 +13,23 @@
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
             
-            <p class="govuk-body-m">This lets you try out the sandbox service and make sample projects. We’ll also use your details to notify you when full production integration is available.</p>            
-            
+            <!-- <p class="govuk-body">This lets you try out the sandbox service and make sample projects. We’ll also use your details to notify you when full production integration is available.</p> -->
+            <p class="govuk-body">We will use this email address to send you a confirmation code.</p>
+
+
             <form action="email-verify" method="post" class="form">
         
                 {{ govukInput({
-                label: {
-                    text: "Email address"
-                },
-                id: "email-address",
-                name: "email-address",
-                classes: "govuk-!-width-two-thirds"
+                    label: {
+                        text: "Email address",
+                        classes: "govuk-visually-hidden"
+                    },
+                    id: "email-address",
+                    name: "email-address",
+                    classes: "govuk-!-width-two-thirds"
                 }) }}
                 
-                <p class="govuk-body">You will recieve a confirmation code to continue.</p>
+                
 
                 
                 <div class="govuk-button-group">
@@ -34,18 +37,16 @@
                     {{ govukButton({
                         text: "Continue"
                     }) }}
+                    <a class="govuk-link govuk-link--no-visited-state" href="/sign-in">Already registered? Sign in</a>
 
-                     <a class="govuk-link govuk-link--no-visited-state" href="/sign-in">Already registered? Sign in</a>
                 </div>
 
             </form>
-            
-            
 
-            <ul class="govuk-list">
-                <li><a href="#">Read the terms and conditions.</a></li>
-                <li><a href="#">Read the privacy and cookie policy.</a></li>
-            </ul>
+            <!-- <ul class="govuk-list">
+                <li><a class="govuk-link govuk-link--no-visited-state" href="#">Read the terms and conditions</a></li>
+                <li><a class="govuk-link govuk-link--no-visited-state" href="#">Read the privacy and cookie policy</a></li>
+            </ul> -->
 
         </div>
     </div>

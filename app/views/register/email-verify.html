@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
-{% set showBackLink = false %}
+{% set showBackLink = true %}
 
-{% set pageHeading = "Enter the code" %}
-{% set pageSection = "" %}
+{% set pageHeading = "Enter the confirmation code" %}
+{% set pageSection = "Create an account" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
 {% block content %}
@@ -12,12 +12,9 @@
 
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-            <p class="govuk-body">We have sent a confirmation code to: <strong>{{data['email-address']}}</strong></p>            
-            <p>Its subject line is: ‘Confirm your email address - Government Gateway’.</p>            
-            <p class="govuk-body">It may take a few minutes to arrive and will expire in 30 minutes.</p>
-      
-            
-            
+            <p class="govuk-body">We sent this to {{data['email-address']}}</p>
+            <p class="govuk-body">It may take a few minutes to arrive and will expire in 30 minutes. Its subject line is: ‘Confirm your email address - Government Gateway’.</p>                        
+            <p class="govuk-body">Still not arrived, <a href="#">request a new code</a>.</p>        
             
             <form action="details" method="post" class="form">
         
@@ -37,7 +34,7 @@
 
             </form>
 
-            <p class="govuk-body">Still has not arrived, you can <a href="#">request a new code</a> or <a href="/register/">provide another email address</a>.</p>        
+            
         
             
 
