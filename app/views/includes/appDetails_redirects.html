@@ -24,6 +24,15 @@
                 <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
             </td>
         </tr>
+        
+        {% if application.newRedirectURI %}
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">https://{{ application.newRedirectURI }}</th>            
+            <td class="govuk-table__cell govuk-table__cell--numeric">            
+                <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
+            </td>
+        </tr>
+        {% endif %}
     </tbody>
 </table>
 
@@ -43,12 +52,26 @@
                 <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
             </td>    
         </tr>
+        {% if application.newRedirectURI %}
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">https://{{ application.newRedirectURI }}</th>            
+            <td class="govuk-table__cell govuk-table__cell--numeric">            
+                <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
+            </td>
+        </tr>
+        {% endif %}
     </tbody>
 </table>
 {% endif %}
 
 
-<p class="govuk-body"><a href="/account/applications/{{ id }}/redirects/">Add a new redirect URI</a></p>
+{% if application.production == "Yes" %}  
+    <p class="govuk-body"><a href="/account/applications/{{ id }}/redirects/">Add a new redirect URI</a></p>
+{% else %}
+    <p class="govuk-body"><a href="/account/applications/{{ id }}/redirects/uri">Add a new redirect URI</a></p>
+{% endif %}
+
+
 
                 <!-- <form>
                     <div class="govuk-form-group">
