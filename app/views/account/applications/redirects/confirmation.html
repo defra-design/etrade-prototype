@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = 'Redirect URI has been added to your application' %}
+{% set pageHeading = 'The new redirect URI has been added to your application' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -41,7 +41,7 @@
                                 
                 <ul class="govuk-list">
                     <li><a href="/account/applications/{{ id }}/redirects/">Add another new redirect URI to {{ application.name }}</a></li>
-                    <li><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#credentials">Return to your application</a></li>
+                    <li><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#redirects">Return to your application</a></li>
                 </ul>
                 
                 
