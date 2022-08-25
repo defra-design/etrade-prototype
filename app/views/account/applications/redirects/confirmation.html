@@ -4,9 +4,9 @@
 {% set showBackLink = false %}
 
 {% if application.production == "Yes" %}  
-    {% set pageHeading = 'The redirect URI has been added to the ' + application.apisNewWhich + ' enironment ' + application.name + '' %}
+    {% set pageHeading = 'Redirect URI has been added to the ' + application.apisNewWhich + ' environment for ' + application.name + '' %}
 {% else %}
-    {% set pageHeading = 'The redirect URI has been added to ' + application.name + '' %}
+    {% set pageHeading = 'Redirect URI has been added to the sandbox environment for ' + application.name + '' %}
 {% endif %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
@@ -20,10 +20,12 @@
                     titleText: pageHeading,                    
                     classes: "govuk-!-margin-bottom-7"
                 }) }}                
-
+                
+                
+                
                 <ul class="govuk-list">
-                    <li><a href="/account/applications/{{ id }}/redirects/">Add another new redirect URI</a></li>
-                    <li><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#redirects">Return to your application redirects</a></li>
+                    <li><a href="/account/applications/{{ id }}/redirects/">Add another redirect URI to {{ application.name }}</a></li>
+                    <li><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#credentials">Return to your application</a></li>
 
                 </ul>
                 
