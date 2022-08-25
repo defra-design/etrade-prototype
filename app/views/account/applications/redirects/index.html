@@ -1,7 +1,7 @@
 {% set accountActive = true %}
 {% extends "layout.html" %}
 
-{% set pageHeading = 'What is the redirect URI?' %}
+{% set pageHeading = 'What’s the new redirect URI?' %}
 {% set pageSection = 'Application ' + application.name + '' %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -25,7 +25,7 @@
                     label: { text: pageHeading, classes: "govuk-visually-hidden", isPageHeading: false },
                     classes: "govuk-!-width-two-thirds",
                     hint: {
-                        text: "URI must be HTTPS for example https://example.co.uk"
+                        text: "URI must use HTTPS for example https://example.co.uk"
                     },
                     prefix: {
                         text: "https://"
