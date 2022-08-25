@@ -3,11 +3,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% if application.production == "Yes" %}  
-    {% set pageHeading = 'Redirect URI has been added to the ' + application.apisNewWhich + ' environment for ' + application.name + '' %}
-{% else %}
-    {% set pageHeading = 'Redirect URI has been added to the sandbox environment for ' + application.name + '' %}
-{% endif %}
+{% set pageHeading = 'Redirect URI has been added to your application' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -21,12 +17,31 @@
                     classes: "govuk-!-margin-bottom-7"
                 }) }}                
                 
-                
-                
-                <ul class="govuk-list">
-                    <li><a href="/account/applications/{{ id }}/redirects/">Add another redirect URI to {{ application.name }}</a></li>
-                    <li><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#credentials">Return to your application</a></li>
 
+                {% if application.production == "Yes" %}                  
+
+                    {% if application.apisNewWhich == "production" %}                  
+                        <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on the production environment only.</p>
+                    {% elif application.apisNewWhich == "sandbox" %}                  
+                        <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on the sandbox environment only.</p>
+                    {% else %}
+                    <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on both sandbox and production environments.</p>
+                    {% endif %}
+
+
+                {% else %}
+                    <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application.</p>
+                {% endif %}
+                
+                <p class="govuk-body">Read more <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">about how to use redirect URIs (opens in new tab)</a>.</p>
+
+                <h2 class="govuk-heading-m">What you can do next</h2>
+
+                
+                                
+                <ul class="govuk-list">
+                    <li><a href="/account/applications/{{ id }}/redirects/">Add another new redirect URI to {{ application.name }}</a></li>
+                    <li><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#credentials">Return to your application</a></li>
                 </ul>
                 
                 
