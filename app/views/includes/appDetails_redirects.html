@@ -1,41 +1,51 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         
-        <h2 class="govuk-heading-m">Redirect URIs</h2>
+        <h2 class="govuk-heading-l">Redirect URIs</h2>
         <p class="govuk-body">We use redirect URIs to send the user back to your application after successful (or unsuccessful) authorisation, prior to your application accessing user-restricted endpoints.</p>
         <p class="govuk-body">Read more <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">information about how we use redirect URIs (opens in new tab)</a>.</p>
     
     </div>
 </div>
 
+
+<!-- <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Sandbox</h2> -->
+<table class="govuk-table">                    
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Sandbox URI’s</th>            
+            <th scope="col" class="govuk-table__header"></th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">https://{{ application.redirectURI }}</th>            
+            <td class="govuk-table__cell govuk-table__cell--numeric">            
+                <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% if application.production == "Yes" %}  
+<!-- <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Production</h2> -->
 <table class="govuk-table">                    
     <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-        <th scope="col" class="govuk-table__header">URI</th>
-        <th scope="col" class="govuk-table__header">Environment</th>
+        <th scope="col" class="govuk-table__header">Production URI’s</th>        
         <th scope="col" class="govuk-table__header"></th>
     </tr>
     </thead>
-    <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-        <td class="govuk-table__cell">https://{{ application.redirectURI }}</th>
-        <td class="govuk-table__cell">Sandbox</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">            
-            <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
-        </td>
-    </tr>
-
-    {% if application.production == "Yes" %}  
-    <tr class="govuk-table__row">
-    <td class="govuk-table__cell">https://{{ application.redirectURI }}</th>
-        <td class="govuk-table__cell">Production</th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">        
-            <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
-    </td>
-    {% endif %}
-</tr>
+    <tbody class="govuk-table__body">        
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">https://{{ application.redirectURI }}</th>            
+            <td class="govuk-table__cell govuk-table__cell--numeric">        
+                <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
+            </td>    
+        </tr>
     </tbody>
 </table>
+{% endif %}
 
 
 <p class="govuk-body"><a href="/account/applications/{{ id }}/redirects/">Add a new redirect URI</a></p>
