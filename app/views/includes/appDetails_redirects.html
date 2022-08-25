@@ -24,12 +24,15 @@
             <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
         </td>
     </tr>
+
+    {% if application.production == "Yes" %}  
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">https://www.fetch.example.com</th>
         <td class="govuk-table__cell">Production</th>
         <td class="govuk-table__cell govuk-table__cell--numeric">        
             <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
     </td>
+    {% endif %}
 </tr>
     </tbody>
 </table>

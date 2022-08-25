@@ -21,16 +21,16 @@
                 {% if application.production == "Yes" %}                  
 
                     {% if application.apisNewWhich == "production" %}                  
-                        <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on the production environment only.</p>
+                        <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on your production environment.</p>
                     {% elif application.apisNewWhich == "sandbox" %}                  
-                        <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on the sandbox environment only.</p>
+                        <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on your sandbox environment.</p>
                     {% else %}
                     <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on both sandbox and production environments.</p>
                     {% endif %}
 
 
                 {% else %}
-                    <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application.</p>
+                    <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on your sandbox environment.</p>
                 {% endif %}
                 
                 <p class="govuk-body">Read more <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">about how to use redirect URIs (opens in new tab)</a>.</p>
