@@ -50,7 +50,7 @@ module.exports = {
     NB7: { 
       name: 'LeBron', 
       apis: "Import of products, animals, food and feed systemn" , 
-      redirectURI: "lebronhames.test.com", 
+      redirectURI: "lebronjames.test.com", 
       production: "No", 
       status: 'Contacted' },  
 
