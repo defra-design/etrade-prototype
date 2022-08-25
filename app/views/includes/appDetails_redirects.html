@@ -18,7 +18,7 @@
     </thead>
     <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-        <td class="govuk-table__cell">https://www.sandbox.fetch.example.com</th>
+        <td class="govuk-table__cell">https://{{ application.redirectURI }}</th>
         <td class="govuk-table__cell">Sandbox</th>
         <td class="govuk-table__cell govuk-table__cell--numeric">            
             <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
@@ -27,7 +27,7 @@
 
     {% if application.production == "Yes" %}  
     <tr class="govuk-table__row">
-    <td class="govuk-table__cell">https://www.fetch.example.com</th>
+    <td class="govuk-table__cell">https://{{ application.redirectURI }}</th>
         <td class="govuk-table__cell">Production</th>
         <td class="govuk-table__cell govuk-table__cell--numeric">        
             <a href="/account/applications/{{ id }}/delete/redirect">Remove <span class="govuk-visually-hidden"> this redirect</span></a>
