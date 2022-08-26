@@ -36,9 +36,29 @@
     </tbody>
 </table>
 
+{% if application.maxRedirectsProd == "Yes" %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-inset-text">
+            <p>You can have a maximum of 5 redirect. You will need to remove a redirect URI before you can add a new one.</p>
+        </div>
+
+    </div>
+</div>
+
+{% else %}
+    
+    <p class="govuk-body"><a href="/account/applications/{{ id }}/redirects/uri?apisNewWhich=sandbox">Add a redirect URI to sandbox</a></p>    
+
+{% endif %}
+
+
+
 {% if application.production == "Yes" %}  
 <!-- <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Production</h2> -->
-<table class="govuk-table">                    
+<table class="govuk-table govuk-!-margin-top-7">                    
     <thead class="govuk-table__head">
     <tr class="govuk-table__row">
         <th scope="col" class="govuk-table__header">Production URI’s</th>        
@@ -65,10 +85,25 @@
 {% endif %}
 
 
-{% if application.production == "Yes" %}  
-    <p class="govuk-body"><a href="/account/applications/{{ id }}/redirects/">Add a new redirect URI</a></p>
+
+{% if application.maxRedirectsProd == "Yes" %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-inset-text">
+            <p>You can have a maximum of 5 redirect. You will need to remove a redirect URI before you can add a new one.</p>
+        </div>
+
+    </div>
+</div>
+
 {% else %}
-    <p class="govuk-body"><a href="/account/applications/{{ id }}/redirects/uri">Add a new redirect URI</a></p>
+
+    {% if application.production == "Yes" %}  
+        <p class="govuk-body"><a href="/account/applications/{{ id }}/redirects/uri?apisNewWhich=production">Add a redirect URI to production</a></p>    
+    {% endif %}
+
 {% endif %}
 
 
