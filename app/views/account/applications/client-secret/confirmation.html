@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = 'The new redirect URI has been added to your application' %}
+{% set pageHeading = 'A new client secret has been generated' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -17,34 +17,19 @@
                     classes: "govuk-!-margin-bottom-7"
                 }) }}                
                 
-
-                {% if application.production == "Yes" %}                  
-
-                    {% if data ['apisNewWhich'] == "production" %}                  
-                        <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on your production environment.</p>
-                    {% elif data ['apisNewWhich'] == "sandbox" %}                  
-                        <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on your sandbox environment.</p>
-                    {% else %}
-                    <!-- <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on both sandbox and production environments.</p> -->
-                    {% endif %}
-
-
-                {% else %}
-                    <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on your sandbox environment.</p>
-                {% endif %}
+                <p>This client secret has been generated to use with your {{ application.name }} application in the sandbox environment.</p>
                 
-                <p class="govuk-body">Read more <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">about how to use redirect URIs (opens in new tab)</a>.</p>
-                <p><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#redirects">Return to your application</a></p>
-
-
-                <!-- <h2 class="govuk-heading-m">What you can do next</h2> -->
-
+                <h2 class="govuk-heading-m">What to do next</h2>
+                <p>Make a copy of this client secret as it will not be available in full from your credentials page after you leave this confirmation page.</p>
+                <p>You would have to create a new one.</p>
+                <div class="govuk-inset-text">
+                    <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-0">Client secret</p>
+                    <p>78916e47-ae4c-42d9-9df1-66871104d079</p>
+                </div>
+                <p class="govuk-body">Read more <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">about how to use these credentials (opens in new tab)</a> to interact with our services.</p>
                 
-                                
-                <!-- <ul class="govuk-list"> -->
-                    <!-- <li><a href="/account/applications/{{ id }}/redirects/uri?">Add another redirect URI to this application</a></li> -->
-                    
-                <!-- </ul> -->
+                
+                <p><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#credentials">Return to your application</a></p>
                 
                 
             

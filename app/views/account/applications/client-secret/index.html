@@ -1,0 +1,34 @@
+{% set accountActive = true %}
+
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+
+{% set pageHeading = 'Confirm you want to generate a new client secret' %}
+{% set pageSection = 'Application ' + application.name + '' %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">        
+        <div class="govuk-grid-column-two-thirds">
+
+            {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
+
+            <p>Content required for action about to undertake.</p>
+
+            <form class="govuk-form" action="confirmation" method="post">                    
+                
+                
+                {{ govukButton({
+                    text: "Confirm and generate"
+                }) }}
+            
+            
+            </form>
+        
+            
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
