@@ -67,6 +67,16 @@ module.exports = router => {
   })
 
 
+  // Add redirect
+  router.all('/account/applications/:id/client-secret/', (req, res) => {
+    res.render('account/applications/client-secret/index')    
+  })
+
+  router.all('/account/applications/:id/client-secret/:view', (req, res) => {
+    res.render(`account/applications/client-secret/${req.params.view}`)
+  })
+
+
   // Apply for product credentials
   router.all('/account/applications/:id/production-credentials/', (req, res) => {
     res.render('account/applications/production-credentials/index')
