@@ -1,9 +1,12 @@
 {% set accountActive = true %}
-
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = 'A new client secret has been generated' %}
+{% if application.clientSecret %}
+    {% set pageHeading = 'A new client secret has been generated for your sandbox application' %}
+{% else %}
+    {% set pageHeading = 'A client secret has been generated for your sandbox application' %}    
+{% endif %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -13,25 +16,25 @@
         <div class="govuk-grid-column-two-thirds">
 
                 {{ govukPanel({
-                    titleText: pageHeading,                    
+                    titleText: pageHeading,           
+                    html: "Client secret<br><strong>78916e47-ae4c-42d9-9df1-66871104d079</strong>",         
                     classes: "govuk-!-margin-bottom-7"
                 }) }}                
                 
-                <p>This client secret has been generated to use with your {{ application.name }} application in the sandbox environment.</p>
+                <!-- <p>This client secret has been generated to use with your {{ application.name }} application in the sandbox environment.</p> -->
                 
-                <h2 class="govuk-heading-m">What to do next</h2>
-                <p>Make a copy of this client secret as it will not be available from your credentials page after you leave this confirmation page.</p>
+                
+                <p>It’s important to copy or make a note of this client secret as it will not be available after you leave this confirmation page.</p>
                 <!-- <p>You will need to create a new client secret.</p> -->
-                <div class="govuk-inset-text">
-                    <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-0">Client secret</p>
+                <!-- <div class="govuk-inset-text">                    
                     <p>78916e47-ae4c-42d9-9df1-66871104d079</p>
-                </div>
-                <p class="govuk-body">Read more <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">about how to use these credentials (opens in new tab)</a> to interact with our services.</p>
-                
-                
+                </div> -->
+
+
+                <h2 class="govuk-heading-m">What to do next</h2>                
+                <p class="govuk-body">You can read more about <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">how to use these credentials (opens in new tab)</a> to interact with our services.</p>                            
                 <p><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#credentials">Return to your application</a></p>
-                
-                
+                            
             
             </div>
         </div>

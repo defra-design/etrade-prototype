@@ -24,19 +24,24 @@ module.exports = {
       apis: "Export application" , 
       redirectURI: "larrybird.test.com", 
       production: "No", 
-      status: 'Contacted' 
+      status: 'Contacted'
+
+
     },
     GH3: { 
       name: 'Magic', 
       apis: "Fish Export Service (FES)" , 
       redirectURI: "magicjohnson.test.com", 
+      clientSecret: "Yes",
       production: "Yes", 
       status: 'Contacted' 
+
     },
     JH2: { 
       name: 'Curry', 
       apis: "Import of products, animals, food and feed system" , 
       redirectURI: "stephcurry.test.com", 
+      clientSecret: "Yes",
       production: "Yes", 
       status: 'Contacted' 
     },
@@ -65,6 +70,7 @@ module.exports = {
       name: 'Pippen', 
       apis: "Export application" , 
       redirectURI: "scottiepippen.test.com", 
+      clientSecret: "Yes",
       production: "Yes", 
       status: 'Contacted' 
     },
@@ -79,6 +85,7 @@ module.exports = {
       name: 'Erving', 
       apis: "Fish Export Service (FES)" , 
       redirectURI: "juliuserving.test.com", 
+      clientSecret: "Yes",
       production: "Yes", 
       status: 'Contacted' 
     },
