@@ -67,7 +67,7 @@ module.exports = router => {
   })
 
 
-  // Add redirect
+  // Add client secret
   router.all('/account/applications/:id/client-secret/', (req, res) => {
     res.render('account/applications/client-secret/index')    
   })
