@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = 'The new redirect URI has been added to your application' %}
+{% set pageHeading = 'The new redirect URI has been added to your sandbox application' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -33,6 +33,8 @@
                     <p>You can use the redirect URI ( https://{{ application.newRedirectURI }} ) to send users back to your application on your sandbox environment.</p>
                 {% endif %}
                 
+
+                <h2 class="govuk-heading-m">What to do next</h2>
                 <p class="govuk-body">Read more <a class="govuk-link govuk-link--no-visited-state" href="#" target="_blank">about how to use redirect URIs (opens in new tab)</a>.</p>
                 <p><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}#redirects">Return to your application</a></p>
 

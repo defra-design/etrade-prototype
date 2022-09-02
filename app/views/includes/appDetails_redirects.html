@@ -36,23 +36,11 @@
     </tbody>
 </table>
 
-{% if application.maxRedirectsProd == "Yes" %}
 
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-        <div class="govuk-inset-text">
-            <p>You can have a maximum of 5 redirect. You will need to remove a redirect URI before you can add a new one.</p>
-        </div>
-
-    </div>
+<div class="govuk-inset-text govuk-!-width-two-thirds">
+    <p>You can have a maximum of 5 redirects. You will need to remove a redirect URI before you can add a new one.</p>
 </div>
-
-{% else %}
-    
-    <p class="govuk-body"><a href="/account/applications/{{ id }}/redirects/uri?apisNewWhich=sandbox">Add a redirect URI to sandbox</a></p>    
-
-{% endif %}
 
 
 
