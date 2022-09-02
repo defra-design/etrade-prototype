@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = true %}
 
-{% set pageHeading = 'Will ' + data.pcName + ' be available to third parties?' %}
+{% set pageHeading = 'Will ' + application.name + ' be available to third parties?' %}
 {% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -36,7 +36,7 @@
                       }
                     },                    
                     items: [
-                      { value: "yes, redirect(third-party-info)", text: "Yes" },
+                      { value: "yes", text: "Yes" },
                       { value: "no", text: "No" }
                     ]
                   }) }}

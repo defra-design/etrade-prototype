@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = true %}
 
-{% set pageHeading = 'Can you provide more detail about ' + data.pcName + '' %}
+{% set pageHeading = 'Can you provide more detail about ' + application.name + '' %}
 {% set pageSection = "Production credentials" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 

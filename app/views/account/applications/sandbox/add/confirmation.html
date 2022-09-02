@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% set pageHeading = '' +  application.name + ' sandbox has been created' %}
+{% set pageHeading = 'A sandbox application ' +  application.name + ' has been created' %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -15,28 +15,36 @@
 
                 {{ govukPanel({
                     titleText: pageHeading,
-                    html: "Reference: 000394394",    
                     classes: "govuk-!-margin-bottom-7"                         
                 }) }}                
                                 
-                
                 <p>For {{ application.name }} to interact with our services that give access delegation and authorisation as well as to maintain security and integrity you will need to use the application credentials we have generated.</p>
                 
+                <div class="govuk-inset-text">
+                    <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Sandbox app ID</h2>
+                    <p>92eb8656-812a-ed11-bd6e-c8966541133f</p>
+                    <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Client ID</h2>
+                    <p>78916e47-ae4c-42d9-9df1-66871104d079</p>
+                </div>
+                
+                <p>It’s important to copy or make a note of these details as they will not be available after you leave this confirmation page.</p>
+
                 
                 <h2 class="govuk-heading-m">What you can do next</h2>                                            
                 <p>When you are ready you should:</p>
                 <ul class="govuk-list govuk-list--bullet">
                     <li>apply for production credentials</li>
-                    <li>read our <a href="#">reference guides</a></li>
-                    <li>understand <a href="#">our APIs and how to use them</a></li>                    
+                    <li>read our <a href="#" target="_blank">reference guides (opens in new tab)</a></li>
+                    <li>understand <a href="#" target="_blank">our APIs and how to use them (opens in new tab)</a></li>                    
                 </ul>                                    
                 
+                <p><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}">View your application summary</a></p>
 
-                <ul class="govuk-list govuk-!-margin-top-7">
+                <!-- <ul class="govuk-list govuk-!-margin-top-7">
                     <li><a class="govuk-link govuk-link--no-visited-state" href="#">View this applications credentials</a></li>
                     <li><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/sandbox/add">Create a new sandbox application</a></li>
                     <li><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/">Return to your applications</a></li>
-                </ul>
+                </ul> -->
                 
                 
                 
