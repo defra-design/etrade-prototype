@@ -11,19 +11,55 @@
         <div class="govuk-grid-column-two-thirds">
       
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
-
-            <p>Playback all answers given, with option to change.</p>
-
-            
               
             <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">Row title</dt>
-                    <dd class="govuk-summary-list__value">Answer</dd>
+                    <dt class="govuk-summary-list__key">Redirect URIs</dt>
+                    <dd class="govuk-summary-list__value">
+                        <ul class="govuk-list" >
+                        http://www.sneaker23.com
+                        http://www.sneakers23.com
+                        http://www.sneaker_23.com
+                        </ul>
+                    </dd>
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
                     </dd>
-                </div>                    
+                </div> 
+                
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Monthly submissions</dt>
+                    <dd class="govuk-summary-list__value">{{ application.prodSubmissions }} XXXXXXX</dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                    </dd>
+                </div> 
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Commercialised</dt>
+                    <dd class="govuk-summary-list__value">{{ application.prodCommercial }}</dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                    </dd>
+                </div> 
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">More details</dt>
+                    <dd class="govuk-summary-list__value">{{ application.prodDetails }}</dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                    </dd>
+                </div> 
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Security details</dt>
+                    <dd class="govuk-summary-list__value">{{ application.prodSecurity}}</dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                    </dd>
+                </div> 
+
+               
             </dl>
     
             {{ govukButton({

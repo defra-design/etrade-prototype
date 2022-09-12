@@ -16,24 +16,16 @@
 
 
             <form action="third-party" method="post" class="form">        
-            
-                {{ govukRadios({
-                    idPrefix: "pcVolumes",
-                    name: "pcVolumes",
-                    fieldset: {
-                      legend: {
-                        text: pageHeading,
-                        isPageHeading: false,
-                        classes: "govuk-fieldset__legend--l govuk-visually-hidden"
-                      }
-                    },
-                    items: [
-                      { value: "small", text: "100 to 1000" },
-                      { value: "medium", text: "1001 to 10000" },
-                      { value: "large", text: "10001 to 50000" },
-                      { value: "extralarge", text: "Above 50000" }
+
+                  {{ govukRadios({                        
+                    items: [ 
+                    { value: "100 to 1000", text: "100 to 1000" },
+                    { value: "1001 to 10000", text: "1001 to 10000" },
+                    { value: "10001 to 50000", text: "10001 to 50000" },
+                    { value: "Above 50000", text: "Above 50000" }
                     ]
-                  }) }}
+                } | decorateFormAttributes(['applications', id, 'prodSubmissions']) ) }}                    
+               
 
 
                 

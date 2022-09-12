@@ -24,22 +24,14 @@
 
             <form action="about-the-application" method="post" class="form">                                
 
-                {{ govukRadios({
-                    classes: "govuk-radios--inline",
-                    idPrefix: "sandobox-commercialised",
-                    name: "sandobox-commercialised",
-                    fieldset: {
-                      legend: {
-                        text: pageHeading,
-                        isPageHeading: false,
-                        classes: "govuk-fieldset__legend--l govuk-visually-hidden"
-                      }
-                    },                    
-                    items: [
-                      { value: "yes", text: "Yes" },
-                      { value: "no", text: "No" }
+                
+                  {{ govukRadios({    
+                    classes: "govuk-radios--inline",                    
+                    items: [ 
+                    { value: "Yes", text: "Yes" },
+                      { value: "No", text: "No" }
                     ]
-                  }) }}
+                } | decorateFormAttributes(['applications', id, 'prodCommercial']) ) }}                    
                 
                 {{ govukButton({
                     text: "Continue"
