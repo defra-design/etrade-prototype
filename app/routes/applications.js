@@ -65,6 +65,7 @@ module.exports = router => {
   router.all('/account/applications/:id/redirects/:view', (req, res) => {
     res.render(`account/applications/redirects/${req.params.view}`)
   })
+  
 
 
   // Add client secret
