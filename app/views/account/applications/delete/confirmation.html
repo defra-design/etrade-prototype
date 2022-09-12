@@ -2,8 +2,11 @@
 
 {% extends "layout.html" %}
 {% set showBackLink = false %}
-
-{% set pageHeading = '' + application.name + ' has been deleted from your applications' %}
+{% if data['remove'] == "cred" %}
+    {% set pageHeading = 'The client credential has been removed from the application ' + application.name + '' %}
+{% else %}
+    {% set pageHeading = '' + application.name + ' has been deleted from your applications' %}
+{% endif %}
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -16,9 +19,11 @@
                     titleText: pageHeading,                    
                     classes: "govuk-!-margin-bottom-7"
                 }) }}                
-                                    
-                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/">Return to your applications</a></p>
-            
+
+                <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/account/applications/{{ id }}">Return to your application</a></p>
+                
+                
+
             </div>
         </div>
     </div>
