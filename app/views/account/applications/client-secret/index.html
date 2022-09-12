@@ -3,10 +3,20 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% if application.clientSecret %}
-    {% set pageHeading = 'Confirm you want to generate a new client secret' %}
+{% if data['env'] == "prod" %}
+
+    {% if application.prodClientSecret %}
+        {% set pageHeading = 'Confirm you want to generate a new client secret for production' %}
+    {% else %}
+        {% set pageHeading = 'Confirm you want to generate a client secret for production' %}
+    {% endif %}
+
 {% else %}
-    {% set pageHeading = 'Confirm you want to generate a client secret' %}
+    {% if application.clientSecret %}
+        {% set pageHeading = 'Confirm you want to generate a new client secret' %}
+    {% else %}
+        {% set pageHeading = 'Confirm you want to generate a client secret' %}
+    {% endif %}
 {% endif %}
 {% set pageSection = 'Application ' + application.name + '' %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
@@ -18,8 +28,10 @@
 
             {{ macroPageHeader.pageHeader(pageHeading,pageSection) }}
 
-            <!-- If a client secret already exists -->
-            {% if application.clientSecret %}
+
+            {% if data['env'] == "prod" %}
+
+            {% if application.prodClientSecret %}
                 <p>You only need to do this if the existing one:</p>
                 <ul class="govuk-list govuk-list--bullet">                    
                     <li>is due to expire shortly</li>
@@ -31,31 +43,81 @@
                 <p>This will...</p>
             {% endif %}
 
+
+            {% else %}
+                <!-- If a client secret already exists -->
+                {% if application.clientSecret %}
+                    <p>You only need to do this if the existing one:</p>
+                    <ul class="govuk-list govuk-list--bullet">                    
+                        <li>is due to expire shortly</li>
+                        <li>has been compromised</li>                    
+                    </ul>
+                    <p class="govuk-body govuk-!-margin-bottom-7">You can continue to use the one you have until it’s expiry date, or you remove it from your application.</p>
+                <!-- No client secret yet -->
+                {% else %}
+                    <p>This will...</p>
+                {% endif %}
+            {% endif %}
+
+
+
             
             
             <form class="govuk-form" action="confirmation" method="post">                    
                 
-                {% if application.clientSecret %}
 
-                    <div class="govuk-visually-hidden">
-                    {{ govukCheckboxes({
-                        classes: "govuk-checkboxes--small govuk-!-padding-bottom-1",
-                        items: [
-                            { value: "Yes", text: "SecondClientSecret", checked: checked }
-                        ]
-                    } | decorateFormAttributes(['applications', id, 'secondClientSecret']) ) }}
-                    </div>
+
+                {% if data['env'] == "prod" %}
+
+                    {% if application.prodClientSecret %}
+
+                        <div class="govuk-visually-hidden">
+                        {{ govukCheckboxes({
+                            classes: "govuk-checkboxes--small govuk-!-padding-bottom-1",
+                            items: [
+                                { value: "Yes", text: "SecondClientSecret", checked: checked }
+                            ]
+                        } | decorateFormAttributes(['applications', id, 'secondProdClientSecret']) ) }}
+                        </div>
+
+                    {% else %}
+
+                        <div class="govuk-visually-hidden">
+                        {{ govukCheckboxes({
+                            classes: "govuk-checkboxes--small govuk-!-padding-bottom-1",
+                            items: [
+                                { value: "Yes", text: "ClientSecret", checked: checked }
+                            ]
+                        } | decorateFormAttributes(['applications', id, 'prodClientSecret']) ) }}
+                        </div>
+
+                    {% endif %}
 
                 {% else %}
 
-                    <div class="govuk-visually-hidden">
-                    {{ govukCheckboxes({
-                        classes: "govuk-checkboxes--small govuk-!-padding-bottom-1",
-                        items: [
-                            { value: "Yes", text: "ClientSecret", checked: checked }
-                        ]
-                    } | decorateFormAttributes(['applications', id, 'clientSecret']) ) }}
-                    </div>
+                    {% if application.clientSecret %}
+
+                        <div class="govuk-visually-hidden">
+                        {{ govukCheckboxes({
+                            classes: "govuk-checkboxes--small govuk-!-padding-bottom-1",
+                            items: [
+                                { value: "Yes", text: "SecondClientSecret", checked: checked }
+                            ]
+                        } | decorateFormAttributes(['applications', id, 'secondClientSecret']) ) }}
+                        </div>
+
+                    {% else %}
+
+                        <div class="govuk-visually-hidden">
+                        {{ govukCheckboxes({
+                            classes: "govuk-checkboxes--small govuk-!-padding-bottom-1",
+                            items: [
+                                { value: "Yes", text: "ClientSecret", checked: checked }
+                            ]
+                        } | decorateFormAttributes(['applications', id, 'clientSecret']) ) }}
+                        </div>
+
+                    {% endif %}
 
                 {% endif %}
 

@@ -2,11 +2,21 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
 
-{% if application.clientSecret %}
-    {% set pageHeading = 'A new client secret has been generated for your sandbox application' %}
+
+{% if data['env'] == "prod" %}
+    {% if application.prodClientSecret %}
+        {% set pageHeading = 'A new client secret has been generated for your production application' %}
+    {% else %}
+        {% set pageHeading = 'A client secret has been generated for your production application' %}    
+    {% endif %}
 {% else %}
-    {% set pageHeading = 'A client secret has been generated for your sandbox application' %}    
+    {% if application.clientSecret %}
+        {% set pageHeading = 'A new client secret has been generated for your sandbox application' %}
+    {% else %}
+        {% set pageHeading = 'A client secret has been generated for your sandbox application' %}    
+    {% endif %}
 {% endif %}
+
 {% set pageSection = "" %}
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
