@@ -121,10 +121,17 @@
 
                 {% endif %}
 
+                <div class="govuk-button-group">
+                    
+                    {{ govukButton({
+                        text: "Confirm and generate"                    
+                    }) }}
 
-                {{ govukButton({
-                    text: "Confirm and generate"
-                }) }}
+                    <a class="govuk-link" href="/account/applications/{{ id }}">Cancel and return to credentials</a>
+
+
+                </div>
+                
             
             
             </form>
