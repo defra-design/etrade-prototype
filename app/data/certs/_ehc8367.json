@@ -1,0 +1,78 @@
+{
+  "number": "EHC8367",
+  "title": "Fresh meat of wild bovidae, camelid and cervid animals to the European Union and Northern Ireland post 21 April 2021",
+  "batchNumber": "single",
+  "coldStore": "yes",
+  "dateOfCollection": "single",
+  "Plant / Establishment / Centre": "yes",
+  "cuttingPlant": "yes",
+  "Slaughterhouse": "yes",
+  "finalConsumerOption": "yes",
+  "dateOfFreezing": "multiple",
+  "identificationMark": "yes",
+  "multiples": ["dateOfFreezing"],
+  "natureOfCommodity": [
+    "Carcass_quarters",
+    "Carcass_side",
+    "Carcass_whole",
+    "Cuts"
+  ],
+
+  "treatmentType": [
+    "Bone in",
+    "Deboned",
+    "Matured"
+  ],
+  "species": [
+    "Bibos spp.",
+    "Bison",
+    "Bos",
+    "Bubalus",
+    "Novibos spp.",
+    "Ovibos",
+    "Poephagus spp.",
+    "Suncerus spp."
+  ],
+  "commodities": [{
+      "code": "020120",
+      "title": "Other cuts with bone in"
+    },
+    {
+      "code": "020130",
+      "title": "Boneless"
+
+    },
+    {
+      "code": "020210",
+      "title": "Carcases and half-carcases"
+    },
+    {
+      "code": "020230",
+      "title": "Boneless"
+    },
+    {
+      "code": "020890",
+      "title": "Other"
+    },
+    {
+      "code": "02086000",
+      "title": "Of camels and other camelids (Camelidae)"
+    },
+    {
+      "code": "02089030",
+      "title": "Of game, other than of rabbits or hares"
+    },
+    {
+      "code": "2089060",
+      "title": "Of reindeer"
+    },
+    {
+      "code": "02089098",
+      "title": "Other"
+    },
+    {
+      "code": "05040000",
+      "title": "Guts, bladders and stomachs of animals (other than fish), whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"
+    }
+  ]
+}

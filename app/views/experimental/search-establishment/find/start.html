@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or-exporter – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set id = query.id or "1" %}
+{% set consignor = data.establishments[id]%}
+<form class="" action="./results" method="get">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Find a manufacturing plant</h1>
+      {% block countryOfOrigin %}{% include "../components/_country-of-origin.html" %}{% endblock %}
+      <div class="govuk-form-group"><label class="govuk-label" for="PRODUCT_DESCRIPTION-0-10410-31010000">Search by approval number or name</label>
+        <input class="govuk-input  govuk-input--width-20" type="text" id="description" name="k" value="">
+      </div>
+      <button class="govuk-button">Search</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+
+  })
+</script>
+{% endblock%}

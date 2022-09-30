@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Download commodity template - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!--<span class="govuk-caption-xl">
+      Description of the goods
+    </span>-->
+    <h1 class="govuk-heading-xl">Download commodity data template for {{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</h1>
+    <p>This template was last updated with TRACES data on 13 June 2022. If you have a copy of the template from before this date, you'll need to download the latest template.</p>
+    <p>You can only upload data for the commodities that you've selected.</p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Review {{ data.commodityCode | length }} commodities in this template
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list">
+        {% for comCode in data.commodityCode %}
+          <li><span class="govuk-tag">{{ data.certificates[data.certificate | makeNumber].commodities[comCode | makeNumber].code }}</span>
+          {{ data.certificates[data.certificate | makeNumber].commodities[comCode | makeNumber].title | truncate(60) }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+    </details>
+
+    <form action="#" method="post">
+      <div class="govuk-button-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Download latest template
+        </button>
+        <a href="./upload-template" class="govuk-link">Upload commodity data</a>
+        <!--
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Continue to upload
+        </button>
+        -->
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

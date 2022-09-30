@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Certificate summary – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+{% set ehcNumber = data.certificates[(data.certificate | makeNumber)].number or "test" %}
+{% set ehcDescription = data.certificates[(data.certificate | makeNumber)].title or "test" %}
+
+{% if query.iteration == "2"%}
+{% set summaryData = data.scheduleUploadProcessing[0]['summary-2'][0]['commodities'] %}
+{% set summaryDataCount = data.scheduleUploadProcessing[0]['summary-2'][1]['totalCount'] %}
+{% else %}
+{% set summaryData = data.scheduleUploadProcessing[0]['summary-1'][0]['commodities'] %}
+{% set summaryDataCount = data.scheduleUploadProcessing[0]['summary-1'][1]['totalCount'] %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <header>
+      <!--<span class="govuk-caption-xl">
+        Description of the goods
+      </span>-->
+      <h1 class="govuk-heading-xl">This application has 1 certificate</h1>
+    </header>
+
+
+    <section class="app-summary-card govuk-!-margin-bottom-6" id="cert1-summary-card">
+      <header class="app-summary-card__header">
+        <h2 class="app-summary-card__title" title="{{commodity.commodity_code}} - {{commodity.commodity_description}}">
+          <strong>{{ehcNumber}} - </strong> {{ ehcDescription }}
+        </h2>
+        <div class="app-summary-card__actions">
+
+          <ul class="app-summary-card__actions-list">
+            <li class="app-summary-card__actions-list-item ">
+              <a class="govuk-link" href="remove-commodity?id={{loop.index-1}}">
+                Remove<span class="govuk-visually-hidden"> {{ ehcNumber }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="app-summary-card__body">
+        <style media="screen">
+          .app-summary-list--wide .govuk-summary-list__key{
+            width:66%;
+
+            padding-top:20px;
+            padding-bottom:20px;
+          }
+          .app-summary-list--wide .govuk-summary-list__value{
+
+
+          }
+
+          .govuk-summary-list__key span {
+            font-weight: normal;
+          }
+
+          .no-border {
+            border: 0;
+          }
+
+        </style>
+
+        <dl class="govuk-summary-list app-summary-list--wide">
+        {% for commod in summaryData %}
+
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {{ commod.commodity }} - <span>{{ commod.description }}</span>
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ commod.count }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Edit<span class="govuk-visually-hidden"> {{ commod.commodity }}</span>
+                </a>
+              </dd>
+            </div>
+
+        {% endfor %}
+
+            <div class="govuk-summary-list__row no-border">
+              <dt class="govuk-summary-list__key">
+                Total commodities added
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ summaryDataCount }}
+              </dd>
+
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__value">
+                <a href="#">Add a different commodity</a>
+              </dt>
+
+            </div>
+
+        </dl>
+      </div>
+    </section>
+
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $("#cert1-summary-card a").click(function() {
+      alert("This functionality is not available in this prototype");
+      return false;
+    })
+  })
+</script>
+{% endblock%}

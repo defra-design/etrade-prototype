@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+  <section id="intro" data-v-01948390="">
+    <div class="govuk-grid-row" data-v-01948390="">
+      <div class="govuk-grid-column-two-thirds" data-v-01948390=""><span class="govuk-caption-xl"></span>
+        <h1 class="govuk-heading-xl">Create a reference </h1>
+      </div>
+    </div>
+  </section>
+  <section id="questions" data-v-01948390="">
+    <div class="govuk-grid-row" data-v-01948390="">
+      <div class="govuk-grid-column-two-thirds" data-v-01948390="">
+        <div class="govuk-form-group" data-v-01948390="">
+          <div id="ref-label" class="govuk-hint" data-v-01948390=""> Enter a reference to help you identify this Export Health Certificate(s) application within the service. This reference is for your own use and will not appear on any final
+            certificate(s). References can be up to 20 letters or numbers in length. </div>
+          <!----><input class="govuk-input govuk-input--width-20" id="ref" aria-labelledby="ref-label" aria-describedby="ref-hint" name="UserReference" type="text" max="20" required="" data-v-01948390="">
+        </div>
+        <!---->
+
+        <!---->
+      </div>
+    </div>
+  </section>
+  <section class="m-t-15" id="actions" data-v-01948390="">
+    <div class="govuk-grid-row" data-v-01948390="">
+      <div class="govuk-grid-column-two-thirds" data-v-01948390=""><a role="button" class="govuk-button" data-v-01948390="" href="select-commodities">Save and continue</a></div>
+    </div>
+  </section>
+
+{% endblock %}

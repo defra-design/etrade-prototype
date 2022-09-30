@@ -1,0 +1,23 @@
+{
+  "number": "EHC8332",
+  "manufacturingPlant": "yes",
+  "title": "Fish oil not intended for human consumption to, or transit through, the European Union and Northern Ireland",
+  "multiples": [],
+  "commodities": [{
+      "code": "150410",
+      "title": "Fish-liver oils and their fractions"
+    },
+    {
+      "code": "150420",
+      "title": "Fats and oils and their fractions, of fish, other than liver oils"
+    },
+    {
+      "code": "15180091",
+      "title": "Animal or vegetable fats and oils and their fractions, boiled, oxidised, dehydrated, sulphurised, blown, polymerised by heat in vacuum or in inert gas or otherwise chemically modified, excluding those of heading|1516"
+    },
+    {
+      "code": "15180095",
+      "title": "Inedible mixtures or preparations of animal or of animal and vegetable fats and oils and their fractions"
+    }
+  ]
+}

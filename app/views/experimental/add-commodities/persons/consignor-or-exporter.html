@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="../task-list" method="post">
+
+  <!---->
+  <!---->
+  <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+    <!---->
+  </div>
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl"> Consignor or exporter </h1>
+      <!---->
+      <!---->
+      <!---->
+      <p class="govuk-body"> Search for and select the name and address (street, city and region, province or state, as appropriate) of the natural or legal person dispatching the consignment. The consignor selected must be located in Great Britain.
+      </p>
+      <h2 class="govuk-visually-hidden">Consignor search</h2>
+      <section>
+        <div class="current-selection">
+          <div class="current-selection--heading">
+            <h3 class="govuk-heading-s heading">Currently selected</h3>
+          </div>
+          <div class="current-selection--body">
+            <h4 class="govuk-heading-s">LMS Test 67</h4>
+            <ul class="govuk-list">
+              <li>Processing Plant , Food<span class="govuk-tag pull-right">VALID</span></li>
+              <li>Slaughterhouse , Food<span class="govuk-tag pull-right">VALID</span></li>
+              <li>Cold Stores , Food<span class="govuk-tag pull-right">VALID</span></li>
+            </ul>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary"><span class="govuk-details__summary-text"> View address for this consignor</span></summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">Castle 5<br>
+                  <!---->
+                  <!----><span>Inverness<br></span><span>Highland<br></span><span>Scotland<br></span> IV24 <span><br>United Kingdom (GB) </span>
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="current-selection--action"><button class="govuk-button govuk-button--secondary full-width">Change selection</button></div>
+        </div>
+      </section><button class="govuk-button">Save and return</button>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds" id="skip-target">
+       <h1 class="govuk-heading-xl" id="enterCodeTitle">Enter code to confirm your email address</h1>
+       <p class="govuk-body" id="enterCodeText">We have sent a code to: <b>{{data.emailAddress or name@example.com}}</b></p>
+       <p class="govuk-body">The code will expire in 30 minutes.</p>
+       <div class="govuk-warning-text"><span class="govuk-warning-text__icon" aria-hidden="true">!</span> <strong class="govuk-warning-text__text"> <span class="govuk-warning-text__assistive">Warning</span> If you use a browser to access your email, you may need to open a new window or tab to see the code. </strong>
+      </div>
+       <form action="valid-email" method="POST">
+        <div class="govuk-form-group">
+          <label for="code" class="govuk-label" aria-describedby="code-hint">Confirmation code</label>
+          <div class="govuk-hint" id="code-hint">For example, DNCLRK</div>
+         <input type="text" name="code" id="code" class="govuk-input govuk-input--width-10" value="" maxlength="12" aria-describedby="code-hint" autocomplete="one-time-code">
+        </div>
+        <details class="govuk-details" data-module="govuk-details"><summary class="govuk-details__summary" id="check-email"> <span class="govuk-details__summary-text"> I have not received the email </span> </summary>
+        <div class="govuk-details__text">
+         <p id="emailArrivalDescription">The email may take a few minutes to arrive. Its subject line is: ‘Confirm your email address - Government Gateway’.</p>
+         <p id="resendCode">Check your spam or junk folder – if it still has not arrived, you can <a class="govuk-link" id="resendCodeLink" href="/registration/generate-code" data-ga="Reg-Verify-Email:Verify-Email-Address-Resend:DEFRA">request a new code</a> or <a class="govuk-link" id="correctEmailAddressLink" href="/registration/email" data-ga="Reg-Verify-Email:Verify-Email-Address-Restart:DEFRA">provide another email address</a>.</p>
+        </div>
+       </details>
+        <div class="govuk-form-group"> <button type="submit" class="govuk-button" id="continue" formnovalidate="">Confirm</button>
+         <script nonce="">sendEventOnClick('continue', 'Continue', 'Reg-Verify-Email', 'HMRC');</script>
+        </div>
+       </form>
+      </div>
+</div>
+
+{% endblock %}

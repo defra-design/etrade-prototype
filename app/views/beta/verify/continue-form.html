@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <header class="hmrc-page-heading">
+      <h1 class="govuk-heading-l">Do you want to continue where you left off?</h1>
+    </header>
+    <p class="govuk">You last saved this application on 21 January 2021 at 14:51</p>
+    <form action="bank-details" method="POST" class="js-form" autocomplete="on" novalidate="novalidate" id="gf-form">
+      <!-- <h2 class="govuk-heading-m">Original surcharge paid: £{{(data.original_cost|makeNumber)}}</h2> -->
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-!-margin-bottom-6">
+          <h1 class="govuk-fieldset__heading">
+            What is the amount you want to reclaim?
+          </h1>
+        </legend> -->
+        <div class="govuk-radio govuk-radios--conditional" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="requirementAnswer1-Yes" name="continue" type="radio" value="Yes~../{{data.continue_url}}" data-aria-controls="conditional-is-authorised">
+            <label class="govuk-label govuk-radios__label" for="requirementAnswer1-Yes">
+              Yes - continue
+            </label>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="requirementAnswer1-no" name="continue" type="radio" value="No~../{{data.login_url}}" >
+            <label class="govuk-label govuk-radios__label" for="requirementAnswer1-no">
+              No - start again
+            </label>
+          </div>
+        </div>
+      </fieldset>
+      <br>
+      <button class="govuk-button" type="submit" data-module="govuk-button">
+        Save and continue
+      </button>
+    </form>
+    {% block pageFooter %}{% include "../../includes/page-footer.html" %}{% endblock %}
+
+
+  </div>
+</div>
+{% endblock %}

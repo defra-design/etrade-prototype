@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Passport uploaded – Prove your identity service – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<style media="screen">
+  .attachment .attachment-thumb {
+    display: block;
+    width: 99px;
+    height: 140px;
+    background: #fff;
+    outline: 5px solid rgba(11, 12, 12, 0.1);
+    box-shadow: 0 2px 2px rgb(11 12 12 / 40%);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .attachment .attachment-thumb span {
+    padding-top: 50px;
+  }
+
+  .spreadsheet td,
+  .spreadsheet th {
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #bfc1c3;
+  }
+
+  .spreadsheet thead th {
+    border-bottom-width: 0px;
+  }
+
+  .spreadsheet .table-field-index,
+  .spreadsheet th {
+    background: #f8f8f8;
+    font-weight: 700;
+    text-align: center;
+  }
+</style>
+
+{% set filename= data.file or "Updated_Passport-one-page.png" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          File uploaded
+        </h3>
+      </div>
+    </div>
+    <h1 class="govuk-heading-xl">
+      Add details about this file
+    </h1>
+
+
+
+        <h2 class="govuk-heading-m">Uploaded file</h2>
+        {% if "PNG" in (filename|upper) or "JPG" in (filename|upper) %}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+        <div class="attachment">
+          <img src="/public/images/excel-timesheet.png" alt="Image of your uploaded file" width="100%">
+          <p class="govuk-body">{{data.file or "Updated_Passport-one-page.png"}} </p>
+          <p><a class="govuk-button govuk-button--secondary" href="uploads">Remove file</a></p>
+        </div>
+</div></div>
+        {%elseif "PDF" in (filename|upper) %}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+        <div class="attachment">
+          <div class="attachment-thumb ">
+            <img src="/public/images/pdf-version-passport.png" alt="your passport image" width="100%">
+          </div>
+          <p class="govuk-body">Uploaded file: <a href="#">{{data.file}}</a></p>
+        </div>
+</div></div>
+        {%elseif "XLSX" in (filename|upper) %}
+        <!-- We dont accept CSV but we should.  -->
+        <div class="spreadsheet">
+          <table class="govuk-table govuk-table--csv">
+            <caption class="govuk-table__caption govuk-table__caption--s govuk-visually-hidden">Sample of CSV file you uploaded</caption>
+            <thead class="govuk-table__head">
+              <th scope="col" class="govuk-table__header"></th>
+              <th scope="col" class="govuk-table__header">A</th>
+              <th scope="col" class="govuk-table__header">B</th>
+              <th scope="col" class="govuk-table__header">C</th>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">1</th>
+                <td class="govuk-table__cell">Period</td>
+                <td class="govuk-table__cell">Amount</td>
+                <td class="govuk-table__cell">Frequency</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">2</th>
+                <td class="govuk-table__cell">First 6 weeks</td>
+                <td class="govuk-table__cell">£109.80</td>
+                <td class="govuk-table__cell">Weekly</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">3</th>
+                <td class="govuk-table__cell">Next 33 weeks</td>
+                <td class="govuk-table__cell">£109.80</td>
+                <td class="govuk-table__cell">Weekly</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">4</th>
+                <td class="govuk-table__cell">Total estimated pay</td>
+                <td class="govuk-table__cell">£4,282.20</td>
+                <td class="govuk-table__cell">Annually</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="govuk-body">This is a sample of the uploaded file: <a href="#">{{data.file}}</a></p>
+        </div>
+        {%else%}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="attachment">
+          <div class="attachment-thumb ">
+            <span class="govuk-hint"><strong>{{ (filename | getFileName) | upper}}</strong> </span>
+          </div>
+          <p class="govuk-body">Uploaded file: <a href="#">{{data.file}}</a></p>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+    <form method="post" novalidate action="uploads2">
+      
+      <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+    </form>
+
+  </div>
+</div>
+<script type="text/javascript">
+  window.onload = function() {
+
+    $('#accessibility-upload-submit').hide();
+    $('.delete-file').on("click", function() {
+      $('#fileuploaded').hide();
+      $('#uploadAbbrev').val("")
+    })
+    $('#uploadAbbrev').on("change", function() {
+      $('#fileuploaded #file-name').text($('#uploadAbbrev').val().split('\\').pop())
+      $('#fileuploaded').show();
+
+    })
+
+  }
+  $(document).ready(function() {
+
+  });
+</script>
+{% endblock %}

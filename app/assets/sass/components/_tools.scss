@@ -1,0 +1,17 @@
+.app-edit-mode{
+  position:relative;
+  border:5px solid #1d70b8;
+}
+.app-editing-mode{
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  padding:20px 0;
+  background-color: #1d70b8;
+  .app-stop-editing{
+    color: #fff;;
+    font-weight: 700;
+    display:block;
+
+  }
+}

@@ -1,0 +1,166 @@
+{% if commodity.batchNumber %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Batch Number
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.batchNumber or '28081231'}}
+  </dd>
+</div>
+{% endif %}
+
+{% if commodity.manufacturingPlant %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half" >
+  <dt class="govuk-summary-list__key">
+    Manufacturing plant:
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.manufacturingPlant or "HELEN BILLINGHAM"}}
+  </dd>
+</div>
+{% endif %}
+
+{% if commodity.coldStore %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Cold store
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.coldStore or "HELEN BILLINGHAM"}}
+  </dd>
+</div>
+{% endif %}
+
+{% if commodity.dateOfCollection %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Date of collection
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.COLLECTION_PRODUCTION_DATE or "Not set"}}
+  </dd>
+</div>
+{% endif %}
+
+{% if commodity.dateOfCollectionProduction %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Date of collection/production
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.dateOfCollectionProduction | getDateFromExcel }}
+  </dd>
+</div>
+{% endif %}
+
+{% if commodity.finalConsumer %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Final consumer
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.finalConsumer or "Not set"}}
+  </dd>
+</div>
+{% endif %}
+
+{% if commodity.cuttingPlant %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Cutting plant
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.search-field-Cuttingplant or "HELEN BILLINGHAM"}}
+  </dd>
+</div>
+{% endif %}
+
+{% if commodity.dateOfFreezing %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Date of freezing
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.dateOfFreezing or "1 June 2022"}}
+  </dd>
+</div>
+{% endif %}
+
+{% if commodity.identificationMark %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Identification mark
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.identificationMark or "DD322DD"}}
+  </dd>
+</div>
+{% endif %}
+
+{% if commodity.natureOfCommodity %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Nature of commodity
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.natureOfCommodity or "Something"}}
+  </dd>
+</div>
+{% endif %}
+
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Net weight
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.NET_WEIGHT or "23"}} {{commodity.NET_WEIGHT_quatifier or "kilogram"}}
+  </dd>
+
+</div>
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Package count
+
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity.PACKAGE_COUNT or "17"}} {{commodity.PACKAGE_COUNT_quatifier or "Bale, compressed"}}
+  </dd>
+
+</div>
+
+{% if commodity["quantity"] %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Quantity
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity["quantity"]}} {{commodity["quantity_unit"]}}
+  </dd>
+
+</div>
+{% endif %}
+
+{% if commodity["Plant / Establishment / Centre"] %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Plant / Establishment / Centre
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity["search-field-Plant/Establishment/Centre"] or "Plant center limited"}}
+  </dd>
+
+</div>
+{% endif %}
+
+{% if commodity.Slaughterhouse %}
+<div class="govuk-summary-list__row govuk-grid-column-one-half">
+  <dt class="govuk-summary-list__key">
+    Slaughter house
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{commodity["Slaughterhouse"] or "The slaughter house ltd"}}
+  </dd>
+
+</div>
+
+{% endif %}

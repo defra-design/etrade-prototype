@@ -1,0 +1,15 @@
+{% set id = (searchLabel | removeWhiteSpace) or "Manufacturingplant"%}
+<label class="govuk-label" >Manufacturing plant</label>
+{% if data.has_manufacturing_plant != "yes" %}
+<div class="govuk-form-group app-find-establishment-card">
+  <p class="govuk-!-margin-bottom-0"><a href="./find/start">Find a manufacturing plant</a></p>
+  <input type="hidden" name="manufaturingPlant_name" value="">
+  <input type="hidden" name="manufaturingPlant_address" value="">
+</div>
+{% else %}
+<div class="govuk-form-group app-find-establishment-card">
+  <a href="#">Find a manufacturing plant</a>
+  <input type="hidden" name="manufaturingPlant_name" value="">
+  <input type="hidden" name="manufaturingPlant_address" value="">
+</div>
+{% endif %}

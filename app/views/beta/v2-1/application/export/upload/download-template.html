@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Download commodity data template - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+
+{% set ehcNumber = data.certificates[(data.certificate | makeNumber)].number or "test" %}
+<!-- TODO: make this more flexible / resilient -->
+{% if ((ehcNumber == "EHC8361") or (ehcNumber == "EHC8364")) %}
+{% set ehcTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_21092022-v3.xlsx" %}
+{% else %}
+{% set ehcTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_09082022-v2.xlsx" %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!--<span class="govuk-caption-xl">
+      Description of the goods
+    </span>-->
+    <h1 class="govuk-heading-xl">Make sure you are using the updated spreadsheet template</h1>
+    <p class="govuk-body">This template was last updated with TRACES data on <strong>16 September 2022</strong>. If you have a copy of the template from before this date, you'll need to download the latest template.</p>
+    <p class="govuk-body">You can enter up to 100 rows of data for up to 20 different commodities. If you want to enter more commodity data, you can upload multiple spreadsheets.</p>
+
+
+    <form action="#" method="post">
+      <div class="govuk-button-group">
+
+        <a href="{{ ehcTemplateDownloadPath }}" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+          Download latest template
+        </a>
+
+        <a href="./" class="govuk-link">Upload commodity data</a>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

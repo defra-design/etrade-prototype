@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <header class="hmrc-page-heading">
+      <h1 class="govuk-heading-l">You are already signed in</h1>
+    </header>
+
+    <form action="" method="POST" class="js-form" autocomplete="on" novalidate="novalidate" id="gf-form">
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xs ">
+            Do you want to continue the this Government Gateway user ID?
+          </legend>
+        <div class="govuk-radio govuk-radios--conditional" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="requirementAnswer1-Yes" name="verifiy_method" type="radio" value="gg_logged~/gforms/NRSDLT/v4-1/agent">
+            <label class="govuk-label govuk-radios__label" for="requirementAnswer1-Yes">
+              Yes, continue with this user ID
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="requirementAnswer1-no" name="verifiy_method" type="radio" value="gg_not_logged~gov-sign-in" data-aria-controls="conditional-differnet-account">
+            <label class="govuk-label govuk-radios__label" for="requirementAnswer1-no">
+              No, sign in with a different Government Gateway user ID
+            </label>
+            <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+              This will sign you out of any service currenlty using your Government Gateway account
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <br>
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+    </form>
+    {% block pageFooter %}{% include "../../includes/page-footer.html" %}{% endblock %}
+
+  </div>
+</div>
+{% endblock %}

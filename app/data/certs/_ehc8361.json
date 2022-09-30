@@ -1,0 +1,2135 @@
+{
+  "number": "EHC8361",
+  "title": "Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland",
+  "multiples": [],
+  "batchNumber": "single",
+      "coldStore": "optional",
+      "dateOfCollectionProduction": "yes",
+      "finalConsumer": "optional",
+      "identificationMark": "yes",
+      "manufacturingPlant": "yes",
+      "natureOfCommodity": [
+        "Wild stock",
+        "Farmed"
+      ],
+      "quantity": "optional",
+      "quantity_unit": "optional",
+      "treatmentType": [
+        "Chilled",
+        "frozen",
+        "Live",
+        "processed"
+      ],
+  "schema": [
+        { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+        { "id": "productDescription", "title": "Description", "required" : "no", "type" : "string"},
+        { "id": "species", "title": "Species", "required" : "yes", "type" : "string", "error" : "Species name is invalid"},
+        { "id": "coldStore", "title": "Cold store", "required" : "no", "type" : "string"},
+        { "id": "identificationMark", "title": "Identification mark", "required" : "yes", "type" : "string", "error" : "Identification mark is a required field"},
+        { "id": "PACKAGE_COUNT", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+        { "id": "PACKAGE_COUNT_quatifier", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
+        { "id": "NET_WEIGHT", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+        { "id": "NET_WEIGHT_quatifier", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+        { "id": "treatmentType", "title": "Treatment type", "required" : "yes", "type" : "string", "error" : "Select a valid treatment type from the list"},
+        { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "type" : "string", "error" : "Nature of commodity is a required field"},
+        { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "string", "error" : "Batch number is required"},
+        { "id": "finalConsumer", "title": "Final consumer", "required" : "no", "type" : "string"},
+        { "id": "dateOfCollectionProduction", "title": "Date of collection / production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of collection / production"},
+        { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "string", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+        { "id": "quantity", "title": "Quantity", "required" : "no", "type" : "decimal"},
+        { "id": "quantity_unit", "title": "Quantity unit", "required" : "no", "type" : "string"}
+      ],
+  "commodities": [
+    {
+      "code": "030231",
+      "title": " Albacore or longfinned tunas (Thunnus alalunga)"
+    },
+    {
+      "code": "030232",
+      "title": " Yellowfin tunas (Thunnus albacares)"
+    },
+    {
+      "code": "030233",
+      "title": " Skipjack or stripe-bellied bonito"
+    },
+    {
+      "code": "030234",
+      "title": " Bigeye tunas (Thunnus obesus)"
+    },
+    {
+      "code": "030235",
+      "title": " Atlantic and Pacific bluefin tuna (Thunnus thynnus, Thunnus orientalis)"
+    },
+    {
+      "code": "030236",
+      "title": " Southern bluefin tunas (Thunnus maccoyii)"
+    },
+    {
+      "code": "030239",
+      "title": " tuna others than 030231 030232 030233 030234 030235 030236"
+    },
+    {
+      "code": "03063400",
+      "title": " Norway lobsters (Nephrops norvegicus)"
+    },
+    {
+      "code": "03091000",
+      "title": " Of fish"
+    },
+    {
+      "code": "03099000",
+      "title": " Other"
+    },
+    {
+      "code": "160300",
+      "title": " Extracts and juices of meat, fish or crustaceans, molluscs or other aquatic invertebrates"
+    },
+    {
+      "code": "03024100",
+      "title": " Herrings (Clupea harengus, Clupea pallasii), excluding livers and roes"
+    },
+    {
+      "code": "03024200",
+      "title": " Anchovies (Engraulis spp.)"
+    },
+    {
+      "code": "03024310",
+      "title": " Sardines of the species Sardina pilchardus"
+    },
+    {
+      "code": "03024330",
+      "title": " Sardines of the genus Sardinops; sardinella (Sardinella spp.)"
+    },
+    {
+      "code": "03024390",
+      "title": " Brisling or sprats (Sprattus sprattus)"
+    },
+    {
+      "code": "03024400",
+      "title": " Mackerel (Scomber scombrus, Scomber australasicus, Scomber japonicus)"
+    },
+    {
+      "code": "03024510",
+      "title": " Atlantic horse mackerel (Trachurus trachurus)"
+    },
+    {
+      "code": "03024530",
+      "title": " Chilean jack mackerel (Trachurus murphyi)"
+    },
+    {
+      "code": "03024590",
+      "title": " Other"
+    },
+    {
+      "code": "03024600",
+      "title": " Cobia (Rachycentron canadum)"
+    },
+    {
+      "code": "03024700",
+      "title": " Swordfish (Xiphias gladius)"
+    },
+    {
+      "code": "03024990",
+      "title": " Other"
+    },
+    {
+      "code": "03025110",
+      "title": " Of the species Gadus morhua"
+    },
+    {
+      "code": "03025190",
+      "title": " Cod Of the species Other than Gadus morhua"
+    },
+    {
+      "code": "03025200",
+      "title": " Haddock (Melanogrammus aeglefinus)"
+    },
+    {
+      "code": "03025300",
+      "title": " Coalfish (Pollachius virens)"
+    },
+    {
+      "code": "03025490",
+      "title": " Hake of the genus Urophycis"
+    },
+    {
+      "code": "03025500",
+      "title": " Alaska pollack (Theragra chalcogramma)"
+    },
+    {
+      "code": "03025600",
+      "title": " Blue whiting (Micromesistius poutassou, Micromesistius australis)"
+    },
+    {
+      "code": "03025910",
+      "title": " Fish of the species Boreogadus saida"
+    },
+    {
+      "code": "03025920",
+      "title": " Whiting (Merlangius merlangus)"
+    },
+    {
+      "code": "03025930",
+      "title": " Pollack (Pollachius pollachius)"
+    },
+    {
+      "code": "03025940",
+      "title": " Ling (Molva spp.)"
+    },
+    {
+      "code": "03025990",
+      "title": " Other"
+    },
+    {
+      "code": "03031100",
+      "title": " Sockeye salmon (red salmon) (Oncorhynchus nerka)"
+    },
+    {
+      "code": "03031200",
+      "title": " Other Pacific salmon (Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus)"
+    },
+    {
+      "code": "03031300",
+      "title": " Atlantic salmon (Salmo salar) and Danube salmon (Hucho hucho)"
+    },
+    {
+      "code": "03031410",
+      "title": " Of the species Oncorhynchus apache or Oncorhynchus chrysogaster"
+    },
+    {
+      "code": "03031420",
+      "title": " Of the species Oncorhynchus mykiss, with heads and gills on, gutted, weighing more than 1,2|kg each, or with heads off, gilled and gutted, weighing more than 1|kg each"
+    },
+    {
+      "code": "03031490",
+      "title": " Salmo trutta, Oncorhynchus clarki, Oncorhynchus aguabonita, Oncorhynchus gilae, Oncorhynchus mykiss"
+    },
+    {
+      "code": "03031900",
+      "title": " other than. 0303 11 00; 0303 12 00; 0303 13 00; 0303 14 10; 0303 14 20; 0303 14 90."
+    },
+    {
+      "code": "03038910",
+      "title": " Freshwater fish"
+    },
+    {
+      "code": "03038940",
+      "title": " Fish of the species Orcynopsis unicolor"
+    },
+    {
+      "code": "03038945",
+      "title": " Anchovies (Engraulis spp.)"
+    },
+    {
+      "code": "03038950",
+      "title": " Sea bream (Dentex dentex and Pagellus spp.)"
+    },
+    {
+      "code": "03038955",
+      "title": " Gilt-head sea bream (Sparus aurata)"
+    },
+    {
+      "code": "03038960",
+      "title": " Ray’s bream (Brama spp.)"
+    },
+    {
+      "code": "03038965",
+      "title": " Monkfish (Lophius spp.)"
+    },
+    {
+      "code": "03038970",
+      "title": " Pink cusk-eel (Genypterus blacodes)"
+    },
+    {
+      "code": "03038990",
+      "title": " Other"
+    },
+    {
+      "code": "030341",
+      "title": " Albacore or longfinned tunas (Thunnus alalunga)"
+    },
+    {
+      "code": "030342",
+      "title": " Yellowfin tunas (Thunnus albacares)"
+    },
+    {
+      "code": "030343",
+      "title": " Skipjack or stripe-bellied bonito"
+    },
+    {
+      "code": "030344",
+      "title": " Bigeye tunas (Thunnus obesus)"
+    },
+    {
+      "code": "030345",
+      "title": " Atlantic and Pacific bluefin tuna (Thunnus thynnus, Thunnus orientalis)"
+    },
+    {
+      "code": "030346",
+      "title": " Southern bluefin tunas (Thunnus maccoyii)"
+    },
+    {
+      "code": "030349",
+      "title": " Other tunas exc 030341, 030342, 030343, 030344, 030345 and 030346"
+    },
+    {
+      "code": "03052000",
+      "title": " Livers and roes of fish, dried, smoked, salted or in brine"
+    },
+    {
+      "code": "03063100",
+      "title": " Rock lobster and other sea crawfish (Palinurus spp., Panulirus spp., Jasus spp.)"
+    },
+    {
+      "code": "03063210",
+      "title": " Live"
+    },
+    {
+      "code": "03063310",
+      "title": " Crabs of the species Cancer pagurus"
+    },
+    {
+      "code": "03063390",
+      "title": " Other"
+    },
+    {
+      "code": "03063550",
+      "title": " Other"
+    },
+    {
+      "code": "03063590",
+      "title": " Other"
+    },
+    {
+      "code": "03063610",
+      "title": " Shrimps of the family Pandalidae, other than of the genus Pandalus"
+    },
+    {
+      "code": "03063650",
+      "title": " Shrimps of the genus Crangon, other than of the species Crangon crangon"
+    },
+    {
+      "code": "03063690",
+      "title": " Other"
+    },
+    {
+      "code": "03063910",
+      "title": " Freshwater crayfish"
+    },
+    {
+      "code": "03063990",
+      "title": " Other"
+    },
+    {
+      "code": "03069520",
+      "title": " Pandalus spp"
+    },
+    {
+      "code": "03069540",
+      "title": " Shrimps of the genus Crangon, other than of the species Crangon crangon"
+    },
+    {
+      "code": "03069590",
+      "title": " Other"
+    },
+    {
+      "code": "03083050",
+      "title": " Frozen"
+    },
+    {
+      "code": "03083080",
+      "title": " Other"
+    },
+    {
+      "code": "03089010",
+      "title": " Live, fresh or chilled"
+    },
+    {
+      "code": "03089050",
+      "title": " Frozen"
+    },
+    {
+      "code": "03089090",
+      "title": " Other"
+    },
+    {
+      "code": "16042005",
+      "title": " Preparations of surimi"
+    },
+    {
+      "code": "16042010",
+      "title": " Of salmon"
+    },
+    {
+      "code": "16042030",
+      "title": " Of salmonidae, other than salmon"
+    },
+    {
+      "code": "16042040",
+      "title": " Of anchovies"
+    },
+    {
+      "code": "16042050",
+      "title": " Of sardines, bonito, mackerel of the species Scomber scombrus and Scomber japonicus, fish of the species Orcynopsis unicolor"
+    },
+    {
+      "code": "16042070",
+      "title": " Of tunas, skipjack or other fish of the genus Euthynnus"
+    },
+    {
+      "code": "16042090",
+      "title": " fish other than 160420"
+    },
+    {
+      "code": "16051000",
+      "title": " Crab"
+    },
+    {
+      "code": "16053010",
+      "title": " Lobster meat, cooked, for the manufacture of lobster butter or of lobster pastes, pâtés, soups or sauces"
+    },
+    {
+      "code": "16053090",
+      "title": " Other"
+    },
+    {
+      "code": "16054000",
+      "title": " Other crustaceans"
+    },
+    {
+      "code": "03019110",
+      "title": " Of the species Oncorhynchus apache or Oncorhynchus chrysogaster"
+    },
+    {
+      "code": "03019190",
+      "title": " Of the species Salmo trutta, Oncorhynchus mykiss, Oncorhynchus clarki, Oncorhynchus aguabonita, Oncorhynchus gilae"
+    },
+    {
+      "code": "03019210",
+      "title": " Of a length of less than 12|cm"
+    },
+    {
+      "code": "03019230",
+      "title": " Of a length of 12|cm or more but less than 20|cm"
+    },
+    {
+      "code": "03019290",
+      "title": " Of a length of 20|cm or more"
+    },
+    {
+      "code": "03019300",
+      "title": " Carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.)"
+    },
+    {
+      "code": "03019410",
+      "title": " Bluefin tunas (Thunnus thynnus)"
+    },
+    {
+      "code": "03019490",
+      "title": " Pacific bluefin tuna (Thunnus orientalis)"
+    },
+    {
+      "code": "03019500",
+      "title": " Southern bluefin tunas (Thunnus maccoyii)"
+    },
+    {
+      "code": "03019911",
+      "title": " Pacific salmon (Oncorhynchus nerka, Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus), Atlantic salmon (Salmo salar) and Danube salmon (Hucho hucho)"
+    },
+    {
+      "code": "03019917",
+      "title": " Other"
+    },
+    {
+      "code": "03019985",
+      "title": " Saltwater fish"
+    },
+    {
+      "code": "03024911",
+      "title": " For the industrial manufacture of products of heading 1604"
+    },
+    {
+      "code": "03024919",
+      "title": " Other"
+    },
+    {
+      "code": "03025411",
+      "title": " Cape hake (shallow-water hake) (Merluccius capensis) and deepwater hake (deepwater Cape hake) (Merluccius paradoxus)"
+    },
+    {
+      "code": "03025415",
+      "title": " Southern hake (Merluccius australis)"
+    },
+    {
+      "code": "03025419",
+      "title": " Other"
+    },
+    {
+      "code": "03022110",
+      "title": " Lesser or Greenland halibut (Reinhardtius hippoglossoides)"
+    },
+    {
+      "code": "03022130",
+      "title": " Atlantic halibut (Hippoglossus hippoglossus)",
+      "species": [
+        "Hippoglossus hippoglossus"
+      ]
+    },
+    {
+      "code": "03022190",
+      "title": " Pacific halibut (Hippoglossus stenolepis)"
+    },
+    {
+      "code": "03022200",
+      "title": " Plaice (Pleuronectes platessa)",
+      "species": [
+        "Pleuronectes platessa"
+      ]
+    },
+    {
+      "code": "03022300",
+      "title": " Sole (Solea spp.)"
+    },
+    {
+      "code": "03022400",
+      "title": " Turbot (Psetta maxima)",
+      "species": [
+        "Psetta maxima"
+      ]
+    },
+    {
+      "code": "03022910",
+      "title": " Megrim (Lepidorhombus spp.)"
+    },
+    {
+      "code": "03022980",
+      "title": " Other",
+      "species": [
+        "Embassichthys spp",
+        "Bothus podas podas",
+        "Typhlachirus",
+        "Vanstraelenia",
+        "Microstomus kitt",
+        "Heteromycteris capensis",
+        "Parabothus coarctatus",
+        "Lepidopsetta mochigarei",
+        "Hypsopsetta spp",
+        "Dicologlossa cuneata",
+        "Crossorhombus azureus",
+        "Paraplagusia blochii",
+        "Limanda proboscidea",
+        "Lepidopsetta spp",
+        "Buglossidium",
+        "Pleuronectes glacialis",
+        "Microstomus achne",
+        "Heteromycteris spp",
+        "Lophonectes spp",
+        "Pseudopleuronectes americanus",
+        "Achiroides leucorhynchos",
+        "Lyopsetta spp",
+        "Solea senegalensis",
+        "Solea solea",
+        "Hippoglossoides spp",
+        "Tanakius spp",
+        "Buglossidium luteum",
+        "Pleuronectes schrenki",
+        "Taeniopsetta spp",
+        "Rendahlia spp",
+        "Symphurus strictus",
+        "Psettichthys spp",
+        "Lophonectes gallus",
+        "Symphurus plagiusa",
+        "Cleisthenes pinetorum",
+        "Pseudopleuronectes spp",
+        "Symphurus",
+        "Symphurus ginsburgi",
+        "Grammatobothus polyophthalmus",
+        "Atheresthes stomias",
+        "Verasper spp",
+        "Glyptocephalus",
+        "Glyptocephalus cynoglossus",
+        "Acanthopsetta nadeshnyi",
+        "Embassichthys bathybius",
+        "Cynoglossus lida",
+        "Isopsetta spp"
+      ]
+    },
+    {
+      "code": "03029100",
+      "title": " Livers, roes and milt"
+    },
+    {
+      "code": "03029200",
+      "title": " Shark fins"
+    },
+    {
+      "code": "03029900",
+      "title": " Other"
+    },
+    {
+      "code": "03028115",
+      "title": " Picked dogfish (Squalus acanthias) and catsharks (Scyliorhinus spp.)"
+    },
+    {
+      "code": "03028130",
+      "title": " Porbeagle shark (Lamna nasus)"
+    },
+    {
+      "code": "03028140",
+      "title": " Blue shark (Prionace glauca)"
+    },
+    {
+      "code": "03028180",
+      "title": " Other"
+    },
+    {
+      "code": "03028200",
+      "title": " Rays and skates (Rajidae)"
+    },
+    {
+      "code": "03028300",
+      "title": " Toothfish (Dissostichus spp.)"
+    },
+    {
+      "code": "03028410",
+      "title": " European sea bass (Dicentrarchus labrax)"
+    },
+    {
+      "code": "03028490",
+      "title": " other than 0302 84 10"
+    },
+    {
+      "code": "03028510",
+      "title": " Sea bream (Dentex dentex and Pagellus spp.)"
+    },
+    {
+      "code": "03028530",
+      "title": " Gilt-head seabreams (Sparus aurata)"
+    },
+    {
+      "code": "03028590",
+      "title": " Other"
+    },
+    {
+      "code": "03028910",
+      "title": " Freshwater fish"
+    },
+    {
+      "code": "03028921",
+      "title": " For the industrial manufacture of products of heading|1604"
+    },
+    {
+      "code": "03028929",
+      "title": " Other"
+    },
+    {
+      "code": "03028931",
+      "title": " Of the species Sebastes marinus"
+    },
+    {
+      "code": "03028939",
+      "title": " Redfish Of species Other than Sebastes marinus"
+    },
+    {
+      "code": "03028940",
+      "title": " Ray’s bream (Brama spp.)"
+    },
+    {
+      "code": "03028950",
+      "title": " Monkfish (Lophius spp.)"
+    },
+    {
+      "code": "03028960",
+      "title": " Pink cusk-eel (Genypterus blacodes)"
+    },
+    {
+      "code": "03028990",
+      "title": " Other"
+    },
+    {
+      "code": "03021110",
+      "title": " Of the species Oncorhynchus apache or Oncorhynchus chrysogaster"
+    },
+    {
+      "code": "03021120",
+      "title": " Of the species Oncorhynchus mykiss, with heads and gills on, gutted, weighing more than 1,2|kg each, or with heads off, gilled and gutted, weighing more than 1|kg each"
+    },
+    {
+      "code": "03021180",
+      "title": " Of the species Salmo trutta, Oncorhynchus clarki, Oncorhynchus aguabonita, Oncorhynchus gilae, Oncorhynchus mykiss"
+    },
+    {
+      "code": "03021300",
+      "title": " Pacific salmon (Oncorhynchus nerka, Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus)"
+    },
+    {
+      "code": "03021400",
+      "title": " Atlantic salmon (Salmo salar) and Danube salmon (Hucho hucho)"
+    },
+    {
+      "code": "03021900",
+      "title": " Other"
+    },
+    {
+      "code": "03027100",
+      "title": " Tilapias (Oreochromis spp.)"
+    },
+    {
+      "code": "03027200",
+      "title": " Catfish (Pangasius spp., Silurus spp., Clarias spp., Ictalurus spp.)"
+    },
+    {
+      "code": "03027300",
+      "title": " Carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.)"
+    },
+    {
+      "code": "03027400",
+      "title": " Eels (Anguilla spp.)"
+    },
+    {
+      "code": "03027900",
+      "title": " Other"
+    },
+    {
+      "code": "03038921",
+      "title": " For the industrial manufacture of products of heading|1604"
+    },
+    {
+      "code": "03038929",
+      "title": " Other"
+    },
+    {
+      "code": "03038931",
+      "title": " Of the species Sebastes marinus"
+    },
+    {
+      "code": "03038939",
+      "title": " Redfish (Sebastes spp Other than Sebastes marinus)"
+    },
+    {
+      "code": "03036310",
+      "title": " Of the species Gadus morhua"
+    },
+    {
+      "code": "03036330",
+      "title": " Of the species Gadus ogac"
+    },
+    {
+      "code": "03036390",
+      "title": " Of the species Gadus macrocephalus"
+    },
+    {
+      "code": "03036400",
+      "title": " Haddock (Melanogrammus aeglefinus)"
+    },
+    {
+      "code": "03036500",
+      "title": " Coalfish (Pollachius virens)"
+    },
+    {
+      "code": "03036690",
+      "title": " Hake of the genus Urophycis"
+    },
+    {
+      "code": "03036700",
+      "title": " Alaska pollack (Theragra chalcogramma)"
+    },
+    {
+      "code": "03036810",
+      "title": " Blue whiting (Micromesistius poutassou, Gadus poutassou)"
+    },
+    {
+      "code": "03036890",
+      "title": " Southern blue whiting (Micromesistius australis)"
+    },
+    {
+      "code": "03036910",
+      "title": " Fish of the species Boreogadus saida"
+    },
+    {
+      "code": "03036930",
+      "title": " Whiting (Merlangius merlangus)"
+    },
+    {
+      "code": "03036950",
+      "title": " Pollack (Pollachius pollachius)"
+    },
+    {
+      "code": "03036970",
+      "title": " Blue grenadier (Macruronus novaezelandiae)"
+    },
+    {
+      "code": "03036980",
+      "title": " Ling (Molva spp.)"
+    },
+    {
+      "code": "03036990",
+      "title": " Other"
+    },
+    {
+      "code": "03033110",
+      "title": " Lesser or Greenland halibut (Reinhardtius hippoglossoides)"
+    },
+    {
+      "code": "03033130",
+      "title": " Atlantic halibut (Hippoglossus hippoglossus)"
+    },
+    {
+      "code": "03033190",
+      "title": " Pacific halibut (Hippoglossus stenolepis)"
+    },
+    {
+      "code": "03033200",
+      "title": " Plaice (Pleuronectes platessa)"
+    },
+    {
+      "code": "03033300",
+      "title": " Sole (Solea spp.)"
+    },
+    {
+      "code": "03033400",
+      "title": " Turbot (Psetta maxima)"
+    },
+    {
+      "code": "03033910",
+      "title": " Flounder (Platichthys flesus)"
+    },
+    {
+      "code": "03033930",
+      "title": " Fish of the genus Rhombosolea"
+    },
+    {
+      "code": "03033950",
+      "title": " Fish of the species Pelotreis flavilatus or Peltorhamphus novaezelandiae"
+    },
+    {
+      "code": "03033985",
+      "title": " other than. 0303 39 10; 0303 39 30; 0303 93 50;"
+    },
+    {
+      "code": "03039110",
+      "title": " Hard and soft roes for the manufacture of deoxyribonucleic acid or protamine sulphate"
+    },
+    {
+      "code": "03039190",
+      "title": " Other"
+    },
+    {
+      "code": "03039200",
+      "title": " Shark fins"
+    },
+    {
+      "code": "03039900",
+      "title": " Other"
+    },
+    {
+      "code": "03038115",
+      "title": " Picked dogfish (Squalus acanthias) and catsharks (Scyliorhinus spp.)"
+    },
+    {
+      "code": "03038130",
+      "title": " Porbeagle shark (Lamna nasus)"
+    },
+    {
+      "code": "03038140",
+      "title": " Blue shark (Prionace glauca)"
+    },
+    {
+      "code": "03038190",
+      "title": " Other"
+    },
+    {
+      "code": "03038200",
+      "title": " Rays and skates (Rajidae)"
+    },
+    {
+      "code": "03038300",
+      "title": " Toothfish (Dissostichus spp.)"
+    },
+    {
+      "code": "03038410",
+      "title": " European sea bass (Dicentrarchus labrax)"
+    },
+    {
+      "code": "03038490",
+      "title": " other than. 0303 84 10"
+    },
+    {
+      "code": "03032300",
+      "title": " Tilapia (Oreochromis|spp.)"
+    },
+    {
+      "code": "03032400",
+      "title": " Catfish (Pangasius|spp., Silurus|spp., Clarias|spp., Ictalurus|spp.)"
+    },
+    {
+      "code": "03032500",
+      "title": " Carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.)"
+    },
+    {
+      "code": "03032600",
+      "title": " Eels (Anguilla spp.)"
+    },
+    {
+      "code": "03032900",
+      "title": " other than. 0303 23 00; 0303 24; 0303 25 00; 0303 26 00."
+    },
+    {
+      "code": "03035100",
+      "title": " Herrings (Clupea harengus, Clupea pallasii)"
+    },
+    {
+      "code": "03035310",
+      "title": " Sardines of the species Sardina pilchardus"
+    },
+    {
+      "code": "03035330",
+      "title": " Sardines of the genus Sardinops; sardinella (Sardinella spp.)"
+    },
+    {
+      "code": "03035390",
+      "title": " Brisling or sprats (Sprattus sprattus)"
+    },
+    {
+      "code": "03035410",
+      "title": " Of the species Scomber scombrus or Scomber japonicus"
+    },
+    {
+      "code": "03035490",
+      "title": " Of the species Scomber australasicus"
+    },
+    {
+      "code": "03035510",
+      "title": " Atlantic horse mackerel (Trachurus trachurus)"
+    },
+    {
+      "code": "03035530",
+      "title": " Chilean jack mackerel (Trachurus murphyi)"
+    },
+    {
+      "code": "03035590",
+      "title": " other than. 0303 55 10; 0303 55 30"
+    },
+    {
+      "code": "03035600",
+      "title": " Cobia (Rachycentron canadum)"
+    },
+    {
+      "code": "03035700",
+      "title": " Swordfish (Xiphias gladius)"
+    },
+    {
+      "code": "03035910",
+      "title": " Anchovies (Engraulis spp.)"
+    },
+    {
+      "code": "03035990",
+      "title": " Other"
+    },
+    {
+      "code": "03044100",
+      "title": " Of Pacific salmon (Oncorhynchus nerka, Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus), Atlantic salmon (Salmo salar) and Danube salmon (Hucho hucho)"
+    },
+    {
+      "code": "03044210",
+      "title": " Of the species Oncorhynchus mykiss, weighing more than 400|g each"
+    },
+    {
+      "code": "03044250",
+      "title": " Of the species Oncorhynchus apache or Oncorhynchus chrysogaster"
+    },
+    {
+      "code": "03044290",
+      "title": " other than. 0304 42 10; 0304 42 50"
+    },
+    {
+      "code": "03044300",
+      "title": " Flat fish (Pleuronectidae, Bothidae, Cynoglossidae, Soleidae, Scophthalmidae and Citharidae)",
+      "species": [
+        "Pleuronectes platessa",
+        "Glyptocephalus cynoglossus",
+        "Aseraggodes"
+      ]
+    },
+    {
+      "code": "03044410",
+      "title": " Of cod (Gadus morhua, Gadus ogac, Gadus macrocephalus) and of fish of the species Boreogadus saida"
+    },
+    {
+      "code": "03044430",
+      "title": " Of coalfish (Pollachius virens)"
+    },
+    {
+      "code": "03044490",
+      "title": " other than. 0304 44 10; 0304 44 30"
+    },
+    {
+      "code": "03044500",
+      "title": " Swordfish (Xiphias gladius)"
+    },
+    {
+      "code": "03044600",
+      "title": " Toothfish (Dissostichus spp.)"
+    },
+    {
+      "code": "03044710",
+      "title": " Picked dogfish (Squalus acanthias) and catsharks (Scyliorhinus spp.)"
+    },
+    {
+      "code": "03044720",
+      "title": " Porbeagle shark (Lamna nasus)"
+    },
+    {
+      "code": "03044730",
+      "title": " Blue shark (Prionace glauca)"
+    },
+    {
+      "code": "03044790",
+      "title": " Other"
+    },
+    {
+      "code": "03044800",
+      "title": " Rays and skates (Rajidae)"
+    },
+    {
+      "code": "03044910",
+      "title": " Of freshwater fish"
+    },
+    {
+      "code": "03044950",
+      "title": " Of redfish (Sebastes spp.)"
+    },
+    {
+      "code": "03044990",
+      "title": " other than. 0304 49 10; 0304 49 50"
+    },
+    {
+      "code": "03043100",
+      "title": " Of tilapia (Oreochromis spp.)"
+    },
+    {
+      "code": "03043200",
+      "title": " Catfish (Pangasius|spp., Silurus|spp., Clarias|spp., Ictalurus|spp.)"
+    },
+    {
+      "code": "03043300",
+      "title": " Of Nile perch (Lates niloticus)"
+    },
+    {
+      "code": "03043900",
+      "title": " Other"
+    },
+    {
+      "code": "03047110",
+      "title": " Cod of the species Gadus macrocephalus"
+    },
+    {
+      "code": "03047190",
+      "title": " other than.0304 71 10"
+    },
+    {
+      "code": "03047200",
+      "title": " Of haddock (Melanogrammus aeglefinus)"
+    },
+    {
+      "code": "03047300",
+      "title": " Of coalfish (Pollachius virens)"
+    },
+    {
+      "code": "03047419",
+      "title": " other than.0304 74 11; 0304 74 15"
+    },
+    {
+      "code": "03047490",
+      "title": " Hake of the genus Urophycis"
+    },
+    {
+      "code": "03047500",
+      "title": " Of Alaska pollack (Theragra chalcogramma)"
+    },
+    {
+      "code": "03047910",
+      "title": " Fish of the species Boreogadus saida"
+    },
+    {
+      "code": "03047930",
+      "title": " Of whiting (Merlangius merlangus)"
+    },
+    {
+      "code": "03047950",
+      "title": " Of blue grenadier (Macruronus novaezelandiae)"
+    },
+    {
+      "code": "03047980",
+      "title": " Of ling (Molva spp.)"
+    },
+    {
+      "code": "03047990",
+      "title": " other than.0304 79 10; 0304 79 30; 0304 79 50; 0304 79 80"
+    },
+    {
+      "code": "03048100",
+      "title": " Of Pacific salmon (Oncorhynchus nerka, Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus), Atlantic salmon (Salmo salar) and Danube salmon (Hucho hucho)"
+    },
+    {
+      "code": "03048210",
+      "title": " Of the species Oncorhynchus mykiss weighing more than 400|g each"
+    },
+    {
+      "code": "03048250",
+      "title": " Of the species Oncorhynchus apache or Oncorhynchus chrysogaster"
+    },
+    {
+      "code": "03048290",
+      "title": " other than.0304 82 10; 0304 82 50"
+    },
+    {
+      "code": "03048310",
+      "title": " Of plaice (Pleuronectes platessa)"
+    },
+    {
+      "code": "03048330",
+      "title": " Of flounder (Platichthys flesus)"
+    },
+    {
+      "code": "03048350",
+      "title": " Of megrim (Lepidorhombus spp.)"
+    },
+    {
+      "code": "03048390",
+      "title": " other than.0304 83 10;0304 83 30; 0304 83 50"
+    },
+    {
+      "code": "03048400",
+      "title": " Swordfish (Xiphias gladius)"
+    },
+    {
+      "code": "03048500",
+      "title": " Toothfish (Dissostichus spp.)"
+    },
+    {
+      "code": "03048600",
+      "title": " Of herring (Clupea harengus, Clupea pallasii)"
+    },
+    {
+      "code": "03048700",
+      "title": " Tuna (of the genus Thunnus), skipjack or stripe-bellied bonito (Euthynnus (Katsuwonus) pelamis)"
+    },
+    {
+      "code": "03048890",
+      "title": " Rays and skates (Rajidae)"
+    },
+    {
+      "code": "03048910",
+      "title": " Of freshwater fish"
+    },
+    {
+      "code": "03048921",
+      "title": " Of the species Sebastes marinus"
+    },
+    {
+      "code": "03048929",
+      "title": " Of redfish (Sebastes spp.) Other than Sebastes marinus"
+    },
+    {
+      "code": "03048930",
+      "title": " Fish of the genus Euthynnus, other than the skipjack or stripe-bellied bonito (Euthynnus (Katsuwonus) pelamis) mentioned in subheading 0304|87|00"
+    },
+    {
+      "code": "03048941",
+      "title": " Of mackerel of the species Scomber australasicus"
+    },
+    {
+      "code": "03048949",
+      "title": " Of mackerel of the species Scomber scombrus, Scomber japonicus and of fish of the species Orcynopsis unicolor"
+    },
+    {
+      "code": "03048960",
+      "title": " Of monkfish (Lophius spp.)"
+    },
+    {
+      "code": "03048990",
+      "title": " Other"
+    },
+    {
+      "code": "03046100",
+      "title": " Of tilapia (Oreochromis spp.)"
+    },
+    {
+      "code": "03046200",
+      "title": " Catfish (Pangasius|spp., Silurus|spp., Clarias|spp., Ictalurus|spp.)"
+    },
+    {
+      "code": "03046300",
+      "title": " Of Nile perch (Lates niloticus)"
+    },
+    {
+      "code": "03046900",
+      "title": " other than.0304 6100; 0304 62 00; 0304 63 00"
+    },
+    {
+      "code": "03045100",
+      "title": " Tilapias (Oreochromis spp.), catfish (Pangasius spp., Silurus spp., Clarias spp., Ictalurus spp.), carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.), eels (Anguilla spp.), Nile perch (Lates niloticus) and snakeheads (Channa spp.)"
+    },
+    {
+      "code": "03045200",
+      "title": " Salmonidae"
+    },
+    {
+      "code": "03045300",
+      "title": " Fish of the families Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae and Muraenolepididae"
+    },
+    {
+      "code": "03045400",
+      "title": " Swordfish (Xiphias gladius)"
+    },
+    {
+      "code": "03045500",
+      "title": " Toothfish (Dissostichus spp.)"
+    },
+    {
+      "code": "03045610",
+      "title": " Picked dogfish (Squalus acanthias) and catsharks (Scyliorhinus spp.)"
+    },
+    {
+      "code": "03045620",
+      "title": " Porbeagle shark (Lamna nasus)"
+    },
+    {
+      "code": "03045630",
+      "title": " Blue shark (Prionace glauca)"
+    },
+    {
+      "code": "03045690",
+      "title": " Other"
+    },
+    {
+      "code": "03045700",
+      "title": " Rays and skates (Rajidae)"
+    },
+    {
+      "code": "03045910",
+      "title": " fish meat (whether or not minced but not fillets) Of freshwater fish, Fresh or chilled"
+    },
+    {
+      "code": "03045950",
+      "title": " Flaps of herring Fresh or chilled"
+    },
+    {
+      "code": "03045990",
+      "title": " other than.0304 59 10; 0304 59 50"
+    },
+    {
+      "code": "03049100",
+      "title": " Swordfish (Xiphias gladius)"
+    },
+    {
+      "code": "03049200",
+      "title": " Toothfish (Dissostichus spp.)"
+    },
+    {
+      "code": "03049310",
+      "title": " Surimi"
+    },
+    {
+      "code": "03049390",
+      "title": " other than.0304 93 10"
+    },
+    {
+      "code": "03049410",
+      "title": " Surimi"
+    },
+    {
+      "code": "03049490",
+      "title": " other than.0304 94 10"
+    },
+    {
+      "code": "03049510",
+      "title": " Surimi"
+    },
+    {
+      "code": "03049521",
+      "title": " Of cod of the species Gadus macrocephalus"
+    },
+    {
+      "code": "03049525",
+      "title": " Of cod of the species Gadus morhua"
+    },
+    {
+      "code": "03049529",
+      "title": " other than.0304 95 21; 0304 95 25"
+    },
+    {
+      "code": "03049530",
+      "title": " Of haddock (Melanogrammus aeglefinus)"
+    },
+    {
+      "code": "03049540",
+      "title": " Of coalfish (Pollachius virens)"
+    },
+    {
+      "code": "03049550",
+      "title": " Hake of the genus Merluccius|spp."
+    },
+    {
+      "code": "03049560",
+      "title": " Of blue whiting (Micromesistius poutassou or Gadus poutassou)"
+    },
+    {
+      "code": "03049590",
+      "title": " Other"
+    },
+    {
+      "code": "03049610",
+      "title": " Picked dogfish (Squalus acanthias) and catsharks (Scyliorhinus spp.)"
+    },
+    {
+      "code": "03049620",
+      "title": " Porbeagle shark (Lamna nasus)"
+    },
+    {
+      "code": "03049630",
+      "title": " Blue shark (Prionace glauca)"
+    },
+    {
+      "code": "03049690",
+      "title": " Other"
+    },
+    {
+      "code": "03049700",
+      "title": " Rays and skates (Rajidae)"
+    },
+    {
+      "code": "03049910",
+      "title": " Surimi"
+    },
+    {
+      "code": "03049921",
+      "title": " Of freshwater fish"
+    },
+    {
+      "code": "03049923",
+      "title": " Of herring (Clupea harengus, Clupea pallasii)"
+    },
+    {
+      "code": "03049929",
+      "title": " Of redfish (Sebastes spp.)"
+    },
+    {
+      "code": "03049955",
+      "title": " Of megrim (Lepidorhombus spp.)"
+    },
+    {
+      "code": "03049961",
+      "title": " Of Ray’s bream (Brama spp.)"
+    },
+    {
+      "code": "03049965",
+      "title": " Of monkfish (Lophius spp.)"
+    },
+    {
+      "code": "03049999",
+      "title": " of saltwater fishes not already listed in 030499"
+    },
+    {
+      "code": "03055110",
+      "title": " Dried, unsalted"
+    },
+    {
+      "code": "03055190",
+      "title": " Dried, salted"
+    },
+    {
+      "code": "03055200",
+      "title": " Tilapias (Oreochromis spp.), catfish (Pangasius spp., Silurus spp., Clarias spp., Ictalurus spp), carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.), eels (Anguilla spp.), Nile perch (Lates niloticus) and snakeheads (Channa spp.)"
+    },
+    {
+      "code": "03055310",
+      "title": " Polar Cod (Boreogadus saida)"
+    },
+    {
+      "code": "03055390",
+      "title": " Other"
+    },
+    {
+      "code": "03055430",
+      "title": " Herrings (Clupea harengus, Clupea pallasii)"
+    },
+    {
+      "code": "03055450",
+      "title": " Anchovies (Engraulis spp.)"
+    },
+    {
+      "code": "03055490",
+      "title": " Other"
+    },
+    {
+      "code": "03055970",
+      "title": " Atlantic halibut (Hippoglossus hippoglossus)"
+    },
+    {
+      "code": "03055985",
+      "title": " Other"
+    },
+    {
+      "code": "03053100",
+      "title": " Tilapias (Oreochromis spp.), catfish (Pangasius spp., Silurus spp., Clarias spp., Ictalurus spp.), carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.), eels (Anguilla spp.), Nile perch (Lates niloticus) and snakeheads (Channa spp.)"
+    },
+    {
+      "code": "03053290",
+      "title": " Other"
+    },
+    {
+      "code": "03053910",
+      "title": " Pacific salmon (Oncorhynchus nerka, Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus), Atlantic salmon (Salmo salar), and Danube salmon (Hucho hucho), salted or in brine"
+    },
+    {
+      "code": "03053950",
+      "title": " Lesser or Greenland halibut (Reinhardtius hippoglossoides), salted or in brine"
+    },
+    {
+      "code": "03053990",
+      "title": " Other"
+    },
+    {
+      "code": "03057100",
+      "title": " Shark fins"
+    },
+    {
+      "code": "03057200",
+      "title": " Fish heads, tails and maws"
+    },
+    {
+      "code": "03057900",
+      "title": " other than. 0305 71; 0305 72 00"
+    },
+    {
+      "code": "03056100",
+      "title": " Herrings (Clupea harengus, Clupea pallasii)"
+    },
+    {
+      "code": "03056200",
+      "title": " Cod (Gadus morhua, Gadus ogac, Gadus macrocephalus)"
+    },
+    {
+      "code": "03056300",
+      "title": " Anchovies (Engraulis spp.)"
+    },
+    {
+      "code": "03056400",
+      "title": " Tilapias (Oreochromis spp.), catfish (Pangasius spp., Silurus spp., Clarias spp., Ictalurus spp.), carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.), eels (Anguilla spp.), Nile perch (Lates niloticus) and snakeheads (Channa spp.)"
+    },
+    {
+      "code": "03056910",
+      "title": " Fish of the species Boreogadus saida"
+    },
+    {
+      "code": "03056930",
+      "title": " Atlantic halibut (Hippoglossus hippoglossus)"
+    },
+    {
+      "code": "03056950",
+      "title": " Pacific salmon (Oncorhynchus nerka, Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus), Atlantic salmon (Salmo salar) and Danube salmon (Hucho hucho)"
+    },
+    {
+      "code": "03056980",
+      "title": " Other than 030561 00; 0305662 00; 030563 00; 030569 10; 030569 30; 030569 50;"
+    },
+    {
+      "code": "03054100",
+      "title": " Pacific salmon (Oncorhynchus nerka, Oncorhynchus gorbuscha, Oncorhynchus keta, Oncorhynchus tschawytscha, Oncorhynchus kisutch, Oncorhynchus masou and Oncorhynchus rhodurus), Atlantic salmon (Salmo salar) and Danube salmon (Hucho hucho)"
+    },
+    {
+      "code": "03054200",
+      "title": " Herrings (Clupea harengus, Clupea pallasii)"
+    },
+    {
+      "code": "03054300",
+      "title": " Trout (Salmo trutta, Oncorhynchus mykiss, Oncorhynchus clarki, Oncorhynchus aguabonita, Oncorhynchus gilae, Oncorhynchus apache and Oncorhynchus chrysogaster)"
+    },
+    {
+      "code": "03054410",
+      "title": " Eels (Anguilla|spp.)"
+    },
+    {
+      "code": "03054490",
+      "title": " other than.0305 44 10"
+    },
+    {
+      "code": "03054910",
+      "title": " Lesser or Greenland halibut (Reinhardtius hippoglossoides)"
+    },
+    {
+      "code": "03054920",
+      "title": " Atlantic halibut (Hippoglossus hippoglossus)"
+    },
+    {
+      "code": "03054930",
+      "title": " Mackerel (Scomber scombrus, Scomber australasicus, Scomber japonicus)"
+    },
+    {
+      "code": "03054980",
+      "title": " Smoked fish, including fillets Other than 0305 41 00; 0305 42 00; 0305 43 00; 0305 44 10; 0305 44 90; 0305 49 10; 0305 49 20; 0305 49 30."
+    },
+    {
+      "code": "03063291",
+      "title": " Whole"
+    },
+    {
+      "code": "03063299",
+      "title": " Other"
+    },
+    {
+      "code": "03063510",
+      "title": " Fresh or chilled"
+    },
+    {
+      "code": "03069530",
+      "title": " Shrimps of the family Pandalidae, other than of the genus Pandalus"
+    },
+    {
+      "code": "03069511",
+      "title": " Cooked by steaming or by boiling in water"
+    },
+    {
+      "code": "03069519",
+      "title": " Other"
+    },
+    {
+      "code": "03061110",
+      "title": " Crawfish tails"
+    },
+    {
+      "code": "03061190",
+      "title": " Rock lobster and other sea crawfish (Palinurus spp., Panulirus spp., Jasus spp.) excluding tails"
+    },
+    {
+      "code": "03061210",
+      "title": " Whole"
+    },
+    {
+      "code": "03061290",
+      "title": " Lobsters parts (Homarus spp.)"
+    },
+    {
+      "code": "03061410",
+      "title": " Crabs of the species Paralithodes camchaticus, Chionoecetes spp. and Callinectes sapidus"
+    },
+    {
+      "code": "03061430",
+      "title": " Crabs of the species Cancer pagurus"
+    },
+    {
+      "code": "03061490",
+      "title": " Other than 030614 10; 030614 30;"
+    },
+    {
+      "code": "03061500",
+      "title": " Norway lobsters (Nephrops norvegicus)"
+    },
+    {
+      "code": "03061691",
+      "title": " Shrimps of the species Crangon crangon"
+    },
+    {
+      "code": "03061699",
+      "title": " Other"
+    },
+    {
+      "code": "03061791",
+      "title": " Deepwater rose shrimps (Parapenaeus longirostris)"
+    },
+    {
+      "code": "03061792",
+      "title": " Shrimps of the genus Penaeus"
+    },
+    {
+      "code": "03061793",
+      "title": " Shrimps of the family Pandalidae, other than of the genus Pandalus"
+    },
+    {
+      "code": "03061794",
+      "title": " Shrimps of the genus Crangon, other than of the species Crangon crangon"
+    },
+    {
+      "code": "03061799",
+      "title": " Other"
+    },
+    {
+      "code": "03061910",
+      "title": " Freshwater crayfish"
+    },
+    {
+      "code": "03061990",
+      "title": " Other Crustaceans including flours, meals and pellets of crustaceans, fit for human consumption"
+    },
+    {
+      "code": "03069100",
+      "title": " Rock lobster and other sea crawfish (Palinurus spp., Panulirus spp., Jasus spp.)"
+    },
+    {
+      "code": "03069210",
+      "title": " Whole"
+    },
+    {
+      "code": "03069290",
+      "title": " Other"
+    },
+    {
+      "code": "03069310",
+      "title": " Crabs of the species Cancer pagurus"
+    },
+    {
+      "code": "03069390",
+      "title": " Other"
+    },
+    {
+      "code": "03069400",
+      "title": " Norway lobsters (Nephrops norvegicus)"
+    },
+    {
+      "code": "03069910",
+      "title": " Freshwater crayfish"
+    },
+    {
+      "code": "03069990",
+      "title": " Other"
+    },
+    {
+      "code": "03078100",
+      "title": " Live, fresh or chilled"
+    },
+    {
+      "code": "03078200",
+      "title": " Live, fresh or chilled stromboid conchs (Strombus spp.)"
+    },
+    {
+      "code": "03078300",
+      "title": " Frozen abalone (Haliotis spp.)"
+    },
+    {
+      "code": "03078400",
+      "title": " Frozen stromboid conchs (Strombus spp.)"
+    },
+    {
+      "code": "03078800",
+      "title": " Other stromboid conchs (Strombus spp.)"
+    },
+    {
+      "code": "03077100",
+      "title": " Live, fresh or chilled"
+    },
+    {
+      "code": "03077210",
+      "title": " Striped venus or other species of the family Veneridae"
+    },
+    {
+      "code": "03077290",
+      "title": " Other"
+    },
+    {
+      "code": "03077900",
+      "title": " Other"
+    },
+    {
+      "code": "03074210",
+      "title": " Cuttle fish (Sepia officinalis, Rossia macrosoma, Sepiola spp.)"
+    },
+    {
+      "code": "03074220",
+      "title": " Loligo spp"
+    },
+    {
+      "code": "03074230",
+      "title": " Squid (Ommastrephes spp., Nototodarus spp., Sepioteuthis spp.)"
+    },
+    {
+      "code": "03074240",
+      "title": " European flying squid (Todarodes sagittatus)"
+    },
+    {
+      "code": "03074290",
+      "title": " Other"
+    },
+    {
+      "code": "03074391",
+      "title": " Ommastrephes spp., other than Ommastrephes sagittatus, Nototodarus spp., Sepioteuthis spp."
+    },
+    {
+      "code": "03074392",
+      "title": " Illex spp"
+    },
+    {
+      "code": "03074395",
+      "title": " European flying squid (Todarodes sagittatus) (Ommastrephes sagittatus)"
+    },
+    {
+      "code": "03074399",
+      "title": " Other"
+    },
+    {
+      "code": "03074920",
+      "title": " Cuttle fish (Sepia officinalis, Rossia macrosoma, Sepiola spp.)"
+    },
+    {
+      "code": "03074940",
+      "title": " Loligo spp"
+    },
+    {
+      "code": "03074950",
+      "title": " Ommastrephes spp., other than Ommastrephes sagittatus, Nototodarus spp., Sepioteuthis spp."
+    },
+    {
+      "code": "03074960",
+      "title": " European flying squid (Todarodes sagittatus) (Ommastrephes sagittatus)"
+    },
+    {
+      "code": "03074980",
+      "title": " Other"
+    },
+    {
+      "code": "03073110",
+      "title": " Mytilus spp"
+    },
+    {
+      "code": "03073190",
+      "title": " Perna spp"
+    },
+    {
+      "code": "03073210",
+      "title": " Mytilus spp"
+    },
+    {
+      "code": "03073290",
+      "title": " Perna spp"
+    },
+    {
+      "code": "03073920",
+      "title": " Mytilus spp"
+    },
+    {
+      "code": "03073980",
+      "title": " Perna spp"
+    },
+    {
+      "code": "03075100",
+      "title": " Live, fresh or chilled"
+    },
+    {
+      "code": "03075200",
+      "title": " Frozen"
+    },
+    {
+      "code": "03075900",
+      "title": " Other"
+    },
+    {
+      "code": "03079100",
+      "title": " Live, fresh or chilled"
+    },
+    {
+      "code": "03079200",
+      "title": " Frozen"
+    },
+    {
+      "code": "03079900",
+      "title": " Other"
+    },
+    {
+      "code": "03071110",
+      "title": " Flat oysters (of the genus Ostrea), live and weighing (shell included) not more than 40|g each"
+    },
+    {
+      "code": "03071190",
+      "title": " Oysters Other than 03071110"
+    },
+    {
+      "code": "03071200",
+      "title": " Frozen"
+    },
+    {
+      "code": "03071900",
+      "title": " Other"
+    },
+    {
+      "code": "03072110",
+      "title": " Scallops, including queen scallops, of the genera Pecten, Chlamys or Placopecten"
+    },
+    {
+      "code": "03072190",
+      "title": " Other"
+    },
+    {
+      "code": "03072295",
+      "title": " Other"
+    },
+    {
+      "code": "03072910",
+      "title": " Scallops, including queen scallops, of the genera Pecten, Chlamys or Placopecten"
+    },
+    {
+      "code": "03072990",
+      "title": " Other"
+    },
+    {
+      "code": "03081100",
+      "title": " Live, fresh or chilled"
+    },
+    {
+      "code": "03081200",
+      "title": " Frozen"
+    },
+    {
+      "code": "03081900",
+      "title": " Other"
+    },
+    {
+      "code": "03082100",
+      "title": " Live, fresh or chilled"
+    },
+    {
+      "code": "03082200",
+      "title": " Frozen"
+    },
+    {
+      "code": "03082900",
+      "title": " Other"
+    },
+    {
+      "code": "16043100",
+      "title": " Caviar (sturgeon roe)"
+    },
+    {
+      "code": "16043200",
+      "title": " Caviar substitutes"
+    },
+    {
+      "code": "16041100",
+      "title": " Salmon"
+    },
+    {
+      "code": "16041210",
+      "title": " Fillets, raw, merely coated with batter or breadcrumbs, whether or not pre-fried in oil, frozen"
+    },
+    {
+      "code": "16041291",
+      "title": " In airtight containers"
+    },
+    {
+      "code": "16041299",
+      "title": " other than 16041210; 16041291"
+    },
+    {
+      "code": "16041390",
+      "title": " sardinella and brisling or sprats,"
+    },
+    {
+      "code": "16041490",
+      "title": " Bonito (Sarda spp.)"
+    },
+    {
+      "code": "16041590",
+      "title": " Of the species Scomber australasicus"
+    },
+    {
+      "code": "16041600",
+      "title": " Anchovies"
+    },
+    {
+      "code": "16041700",
+      "title": " Eels"
+    },
+    {
+      "code": "16041800",
+      "title": " Shark fins"
+    },
+    {
+      "code": "16041910",
+      "title": " Salmonidae, other than salmon"
+    },
+    {
+      "code": "16041950",
+      "title": " Fish of the species Orcynopsis unicolor"
+    },
+    {
+      "code": "16041991",
+      "title": " Fillets, raw, merely coated with batter or breadcrumbs, whether or not pre-fried in oil, frozen other than 16041910; 160419 31; 160419 39; 160419 50"
+    },
+    {
+      "code": "16041992",
+      "title": " Cod (Gadus morhua, Gadus ogac, Gadus macrocephalus)"
+    },
+    {
+      "code": "16041993",
+      "title": " Coalfish (Pollachius virens)"
+    },
+    {
+      "code": "16041994",
+      "title": " Hake (Merluccius spp., Urophycis spp.)"
+    },
+    {
+      "code": "16041995",
+      "title": " Alaska pollack (Theragra chalcogramma) and pollack (Pollachius pollachius)"
+    },
+    {
+      "code": "16041997",
+      "title": " fish, not already listed in 160419"
+    },
+    {
+      "code": "16055100",
+      "title": " Oysters"
+    },
+    {
+      "code": "16055200",
+      "title": " Scallops, including queen scallops"
+    },
+    {
+      "code": "16055310",
+      "title": " In airtight containers"
+    },
+    {
+      "code": "16055390",
+      "title": " Other"
+    },
+    {
+      "code": "16055400",
+      "title": " Cuttlefish and squid"
+    },
+    {
+      "code": "16055500",
+      "title": " Octopus"
+    },
+    {
+      "code": "16055600",
+      "title": " Clams, cockles and arkshells"
+    },
+    {
+      "code": "16055700",
+      "title": " Abalone"
+    },
+    {
+      "code": "16055900",
+      "title": " Other"
+    },
+    {
+      "code": "16056100",
+      "title": " Sea cucumbers"
+    },
+    {
+      "code": "16056200",
+      "title": " Sea urchins"
+    },
+    {
+      "code": "16056300",
+      "title": " Jellyfish"
+    },
+    {
+      "code": "16056900",
+      "title": " other than. 1605 61 00; 1605 62 00; 1605 63 00;"
+    },
+    {
+      "code": "16052110",
+      "title": " In immediate packings of a net content not exceeding 2|kg"
+    },
+    {
+      "code": "16052190",
+      "title": " other than. 1605 21 10"
+    },
+    {
+      "code": "16052900",
+      "title": " other than. 1605 21"
+    },
+    {
+      "code": "03036611",
+      "title": " Cape hake (shallow-water hake) (Merluccius capensis) and deepwater hake (deepwater Cape hake) (Merluccius paradoxus)"
+    },
+    {
+      "code": "03036612",
+      "title": " Argentine hake (Southwest Atlantic hake) (Merluccius hubbsi)"
+    },
+    {
+      "code": "03036613",
+      "title": " Southern hake (Merluccius australis)"
+    },
+    {
+      "code": "03036619",
+      "title": " other than. 0303 6611; 0303 66 12; 0303 66 13"
+    },
+    {
+      "code": "03035921",
+      "title": " For the industrial manufacture of products of heading 1604"
+    },
+    {
+      "code": "03035929",
+      "title": " Other"
+    },
+    {
+      "code": "03047411",
+      "title": " Cape hake (shallow-water hake) (Merluccius capensis) and deepwater hake (deepwater Cape hake) (Merluccius paradoxus)"
+    },
+    {
+      "code": "03047415",
+      "title": " Argentine hake (Southwest Atlantic hake) (Merluccius hubbsi)"
+    },
+    {
+      "code": "03048811",
+      "title": " Picked dogfish (Squalus acanthias) and catsharks (Scyliorhinus spp.)"
+    },
+    {
+      "code": "03048815",
+      "title": " Porbeagle shark (Lamna nasus)"
+    },
+    {
+      "code": "03048818",
+      "title": " Blue shark (Prionace glauca)"
+    },
+    {
+      "code": "03048819",
+      "title": " Other"
+    },
+    {
+      "code": "03053211",
+      "title": " Cod of the species Gadus macrocephalus"
+    },
+    {
+      "code": "03053219",
+      "title": " Other"
+    },
+    {
+      "code": "03074331",
+      "title": " Loligo vulgaris"
+    },
+    {
+      "code": "03074333",
+      "title": " Loligo pealei"
+    },
+    {
+      "code": "03074335",
+      "title": " Loligo gahi"
+    },
+    {
+      "code": "03074338",
+      "title": " Other"
+    },
+    {
+      "code": "03074321",
+      "title": " Lesser cuttle fish (Sepiola rondeleti)"
+    },
+    {
+      "code": "03074325",
+      "title": " Other"
+    },
+    {
+      "code": "03074329",
+      "title": " Sepia officinalis, Rossia macrosoma"
+    },
+    {
+      "code": "03072210",
+      "title": " Coquilles St Jacques (Pecten maximus)"
+    },
+    {
+      "code": "03072290",
+      "title": " Other"
+    },
+    {
+      "code": "16041311",
+      "title": " In olive oil"
+    },
+    {
+      "code": "16041319",
+      "title": " not in olive oil"
+    },
+    {
+      "code": "16041441",
+      "title": " In vegetable oil"
+    },
+    {
+      "code": "16041446",
+      "title": " Fillets known as ‘loins’"
+    },
+    {
+      "code": "16041448",
+      "title": " other"
+    },
+    {
+      "code": "16041421",
+      "title": " In vegetable oil"
+    },
+    {
+      "code": "16041426",
+      "title": " Fillets known as ‘loins’"
+    },
+    {
+      "code": "16041428",
+      "title": " other"
+    },
+    {
+      "code": "16041431",
+      "title": " In vegetable oil"
+    },
+    {
+      "code": "16041436",
+      "title": " Fillets known as ‘loins’"
+    },
+    {
+      "code": "16041438",
+      "title": " other"
+    },
+    {
+      "code": "16041511",
+      "title": " Fillets"
+    },
+    {
+      "code": "16041519",
+      "title": " other than 16041511"
+    },
+    {
+      "code": "16041931",
+      "title": " Fillets known as ‘loins’"
+    },
+    {
+      "code": "16041939",
+      "title": " other than 16041931"
+    },
+    {
+      "code": "150410",
+      "title": " Fish-liver oils and their fractions"
+    },
+    {
+      "code": "150420",
+      "title": " Fats and oils and their fractions, of fish, other than liver oils"
+    },
+    {
+      "code": "150430",
+      "title": " Fats and oils and their fractions, of marine mammals"
+    },
+    {
+      "code": "151610",
+      "title": " Animal fats and oils and their fractions"
+    },
+    {
+      "code": "210610",
+      "title": " Protein concentrates and textured protein substances"
+    },
+    {
+      "code": "210690",
+      "title": " Other"
+    },
+    {
+      "code": "15180091",
+      "title": " Animal or vegetable fats and oils and their fractions, boiled, oxidised, dehydrated, sulphurised, blown, polymerised by heat in vacuum or in inert gas or otherwise chemically modified, excluding those of heading|1516"
+    },
+    {
+      "code": "15180099",
+      "title": " other than 15180010; 15180031; 15180091; 15180095"
+    },
+    {
+      "code": "21069092",
+      "title": " Containing no milkfats, sucrose, isoglucose, glucose or starch or containing, by weight, less than 1,5|% milkfat, 5|% sucrose or isoglucose, 5|% glucose or starch"
+    },
+    {
+      "code": "21069098",
+      "title": " Other"
+    }
+  ]
+}

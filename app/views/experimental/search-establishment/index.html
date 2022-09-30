@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      Search for establishment / business
+      <p>This is a redesign of the reused componenet that looks up establishments, certifiers, exeporters etc.</p>
+      <!-- <h2 class="govuk-heading-m">What changed</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Initial build</li>
+        <li>Adding manage commodites, not dynamic</li>
+      </ul> -->
+
+      <p>This version has not been tested yet</p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <h3 class="govuk-heading-m">Micoservice</h3>
+      <p>a more focused design approach. User is taken from current page to complete task.
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li><a href="commodity-v2?has_manufacturing_plant=no">Full journey from commodity page</a></li>
+        <li><a href="commodity-v2?has_manufacturing_plant=no&has_saved_orgs=no">No previously selected organisations - from commodity page</a></li>
+        <li><a href="find-v2/results?searchLabel=manufacturing%20plant&searchReturnURL=../commodity-v2&q=a&show_pagination=yes">Search - many results - pagination </a></li>
+        <li><a href="find-v2/results?presetCountry=no&searchLabel=consignee%20or%20importer&searchReturnURL=../commodity-v2&q=farm">No approval number (select importer)</a></li>
+        <p class="govuk-!-margin-top-4 govuk-!-margin-bottom-0">Alternative</p>
+        <li><a href="find-v2/results?show_filter=no&searchLabel=manufacturing%20plant&searchReturnURL=../commodity-v2&q=farm">Alternative verision - no filter</a></li>
+        <li><a href="commodity">Alternative verision - Search pattern - side filters</a></li>
+      </ul>
+      <h3 class="govuk-heading-m">Other variations</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="consignor-or-exporter">Original pattern on Consignee or importer</a></li>
+        <li><a href="consignor-or-exporter-2">Version 2 - combined search</a></li>
+        <li><a href="consignor-or-exporter-3">Version 3 - two search fields - conditional</a></li>
+        <li><a href="consignor-or-exporter-4">Version 4 - two search fields - inline</a></li>
+        <br>
+      </ul>
+  </div>
+
+</div>
+
+{% endblock %}

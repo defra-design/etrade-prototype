@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or-exporter – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<form class="" action="../task-list" method="post">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl"> Consignor or exporter </h1>
+      <!---->
+      <!---->
+      <!---->
+      <p class="govuk-body"> Search for and select the name and address (street, city and region, province or state, as appropriate) of the natural or legal person dispatching the consignment. The consignor selected must be located in Great Britain.
+      </p>
+      <h2 class="govuk-visually-hidden">Consignor search</h2>
+      <section>
+        <!---->
+        <div class="govuk-form-group " >
+          <select class="govuk-select full-width" id="operator-search-country" hidden="hidden">
+            <option value="AT">Austria</option>
+            <option value="BE">Belgium</option>
+            <option value="BG">Bulgaria</option>
+            <option value="HR">Croatia</option>
+            <option value="CY">Cyprus</option>
+            <option value="CZ">Czechia</option>
+            <option value="DK">Denmark</option>
+            <option value="EE">Estonia</option>
+            <option value="FI">Finland</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="GR">Greece</option>
+            <option value="HU">Hungary</option>
+            <option value="IE">Ireland</option>
+            <option value="IT">Italy</option>
+            <option value="LV">Latvia</option>
+            <option value="LT">Lithuania</option>
+            <option value="LU">Luxembourg</option>
+            <option value="MT">Malta</option>
+            <option value="NL">Netherlands (the)</option>
+            <option value="PL">Poland</option>
+            <option value="PT">Portugal</option>
+            <option value="RO">Romania</option>
+            <option value="SK">Slovakia</option>
+            <option value="SI">Slovenia</option>
+            <option value="ES">Spain</option>
+            <option value="SE">Sweden</option>
+            <option value="GB" selected>United Kingdom</option>
+            <option value="XI">United Kingdom - Northern Ireland</option>
+          </select></div>
+        <div class="govuk-form-group"><label class="govuk-label govuk-label--s" for="search-field-CONSIGNOR"> Search for and select consignor
+            <!---->
+          </label>
+          <div class="govuk-input__wrapper"><input class="govuk-input" id="search-field-CONSIGNOR" spellcheck="false" placeholder="Type here">
+            <div class="govuk-input__suffix operator-search-indicator no-bg"><button class="govuk-button govuk-button--primary"> Search
+                <!---->
+              </button></div>
+          </div><label class="govuk-label govuk-label--s m-t-10" for="search-field-postcode-CONSIGNOR"> Postcode </label>
+          <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-10" id="search-field-postcode-CONSIGNOR" spellcheck="false" placeholder="Type postcode here"></div>
+          <div class="govuk-checkboxes__item m-t-10"><input class="govuk-checkboxes__input" id="show-exact-match-CONSIGNOR" name="show-exact-match" type="checkbox"><label class="govuk-label govuk-checkboxes__label" for="show-exact-match-CONSIGNOR">
+              Show only exact matches </label></div>
+          <div class="govuk-checkboxes__item m-t-10"><input class="govuk-checkboxes__input" id="search-by-approval-CONSIGNOR" name="search-by-approval" type="checkbox"><label class="govuk-label govuk-checkboxes__label"
+              for="search-by-approval-CONSIGNOR"> Search by approval number </label></div>
+          <!---->
+        </div>
+        <!---->
+        <p class="govuk-body"> If you would like to cancel and keep your current selection, <a class="govuk-link" href="#" id="operator-search-cancel-search"> click here </a></p>
+        <!---->
+      </section><button class="govuk-button">Save and return</button>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

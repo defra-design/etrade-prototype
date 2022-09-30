@@ -1,0 +1,13 @@
+{% set listOfItems = data.certificates[ehc].natureOfCommodity%}
+<div class="govuk-form-group"><label class="govuk-label" for="natureOfCommodity">Nature of commodity
+  </label><select class="govuk-select full-width" id="natureOfCommodity" name="natureOfCommodity">
+    <option disabled="" value="" selected>Select a Nature of commodity</option>
+    {% if (listOfItems| length) > 0%}
+    {% for item in listOfItems%}
+    <option value="{{item}}">{{item}}</option>
+    {% endfor %}]
+    {% else %}
+    <option value="not set">Not set any species in JSON</option>
+    {% endif %}
+  </select>
+</div>

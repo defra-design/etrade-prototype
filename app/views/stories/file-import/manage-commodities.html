@@ -1,0 +1,768 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row"   data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-full"  ><span class="govuk-caption-xl"> Description of the goods
+      <!---->
+    </span>
+    <h1 class="govuk-heading-xl"> Manage commodities </h1>
+    <!---->
+    <!---->
+    <!---->
+    <div class="govuk-!-margin-bottom-8"  >
+      <div class="govuk-tabs"  >
+        <h2 class="govuk-tabs__title"  > Contents </h2>
+        <ul class="govuk-tabs__list"  >
+          <li id="select-by-certificate" class="govuk-tabs__list-item govuk-tabs__list-item--selected"  ><a href="#" class="govuk-tabs__tab">By certificate</a></li>
+          <li id="select-by-commodity" class="govuk-tabs__list-item"  ><a href="#" class="govuk-tabs__tab"  >By commodity</a></li>
+        </ul>
+        <!---->
+        <!---->
+      </div><a class="toggle-tab-view" href="#"  >
+        <p class="govuk-body-s"  > Show selection <span class="fas fa-chevron-down pull-right"  ></span></p>
+      </a>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters" >
+          <!-- <h2 class="govuk-heading-l"  > Certificates, commodities and identifications </h2> -->
+          <h3 class="govuk-heading-m"  >Add multiple commodities</h3>
+          <p class="govuk-body govuk-!-margin-bottom-6"  >If you want to add more than one commodity to this application, it may be quicker to <a href="./upload/manage-imports" class="govuk-link">upload commodity data from a spreadsheet</a>.</p>
+        </div>
+      </div>
+        <div class="certificate-pane open"  >
+          <button class="certificate-pane--heading prototype-open-panel" data-target="certificate-info-panel">EHC8319 Processed manure, derived products from processed manure and guano from bats to, or transit through, the European Union and Northern Ireland - 1 commodity <span
+              class="pull-right"><span class="fas fa-chevron-up"></span></span></button>
+          <div class="certificate-pane--body open" id="certificate-info-panel">
+            <div class="certificate-pane--body--actions">
+              <h4 class="govuk-heading-s">Showing 1 commodity <span class="pull-right">
+                  <!----><a href="#" class="tag-action danger"><span class="fas fa-trash"></span> Remove certificate </a>
+                </span></h4>
+            </div>
+
+            <div class="commodity-pane open"><button class="commodity-pane--heading prototype-open-panel" data-target="commodity-details-panel"><span class="govuk-caption-m caption">31010000</span>
+                <h4 class="govuk-heading-s heading">Animal or vegetable fertilisers, whether or not mixed together or chemically treated; fertilisers produced by the mixing or chemical treatment of animal or vegetable products <span
+                    class="pull-right"><span class="fas fa-chevron-down"></span></span></h4>
+              </button>
+              <div class="commodity-pane--body" style="display:none" id="commodity-details-panel">
+                <div class="commodity-pane--body--actions">
+                  <h4 class="govuk-heading-m"> Identifications and weights <span class="pull-right"><a href="#" class="tag-action danger"><span class="fas fa-trash"></span> Remove commodity </a></span></h4>
+                </div>
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-one-half model-questions">
+                    <div class="identification-questions">
+                      <section id="intro">
+                        <h4 class="govuk-heading-s">Add an identification</h4>
+                      </section>
+                      <section id="questions">
+                        <!---->
+                        <div class="govuk-form-group"><label class="govuk-label" for="PRODUCT_DESCRIPTION-0-10410-31010000">Product description &nbsp;(Optional) </label>
+                          <!---->
+                          <!---->
+                          <!----><input class="govuk-input" type="text" id="PRODUCT_DESCRIPTION-0-10410-31010000">
+                        </div>
+                        <div class="govuk-form-group"><label class="govuk-label" for="MANUFACTURING_PLANT-1-10410-31010000">Manufacturing plant
+                            <!---->
+                          </label>
+                          <div class="operator-search">
+                            <div class="operator-search-dropdown">
+                              <section>
+                                <!---->
+                                <div class="govuk-form-group"><label class="govuk-label" for="operator-search-country"> Country </label><select class="govuk-select full-width" id="operator-search-country">
+                                    <option value="AF">Afghanistan</option>
+                                    <option value="AX">Åland Islands</option>
+                                    <option value="AL">Albania</option>
+                                    <option value="DZ">Algeria</option>
+                                    <option value="AS">American Samoa</option>
+                                    <option value="AD">Andorra</option>
+                                    <option value="AO">Angola</option>
+                                    <option value="AI">Anguilla</option>
+                                    <option value="AG">Antigua and Barbuda</option>
+                                    <option value="AR">Argentina</option>
+                                    <option value="AM">Armenia</option>
+                                    <option value="AW">Aruba</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="AT">Austria</option>
+                                    <option value="AZ">Azerbaijan</option>
+                                    <option value="BS">Bahamas (the)</option>
+                                    <option value="BH">Bahrain</option>
+                                    <option value="BD">Bangladesh</option>
+                                    <option value="BB">Barbados</option>
+                                    <option value="BY">Belarus</option>
+                                    <option value="BE">Belgium</option>
+                                    <option value="BZ">Belize</option>
+                                    <option value="BJ">Benin</option>
+                                    <option value="BM">Bermuda</option>
+                                    <option value="BT">Bhutan</option>
+                                    <option value="BO">Bolivia (Plurinational State of)</option>
+                                    <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                                    <option value="BA">Bosnia and Herzegovina</option>
+                                    <option value="BW">Botswana</option>
+                                    <option value="BR">Brazil</option>
+                                    <option value="IO">British Indian Ocean Territory (the)</option>
+                                    <option value="BN">Brunei Darussalam</option>
+                                    <option value="BG">Bulgaria</option>
+                                    <option value="BF">Burkina Faso</option>
+                                    <option value="BI">Burundi</option>
+                                    <option value="CV">Cabo Verde</option>
+                                    <option value="KH">Cambodia</option>
+                                    <option value="CM">Cameroon</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="KY">Cayman Islands (the)</option>
+                                    <option value="CF">Central African Republic (the)</option>
+                                    <option value="TD">Chad</option>
+                                    <option value="CL">Chile</option>
+                                    <option value="CN">China</option>
+                                    <option value="CO">Colombia</option>
+                                    <option value="KM">Comoros (the)</option>
+                                    <option value="CD">Congo (the Democratic Republic of the)</option>
+                                    <option value="CG">Congo (the)</option>
+                                    <option value="CK">Cook Islands (the)</option>
+                                    <option value="CR">Costa Rica</option>
+                                    <option value="CI">Côte d'Ivoire</option>
+                                    <option value="HR">Croatia</option>
+                                    <option value="CU">Cuba</option>
+                                    <option value="CW">Curaçao</option>
+                                    <option value="CY">Cyprus</option>
+                                    <option value="CZ">Czechia</option>
+                                    <option value="DK">Denmark</option>
+                                    <option value="DJ">Djibouti</option>
+                                    <option value="DM">Dominica</option>
+                                    <option value="DO">Dominican Republic (the)</option>
+                                    <option value="EC">Ecuador</option>
+                                    <option value="EG">Egypt</option>
+                                    <option value="SV">El Salvador</option>
+                                    <option value="GQ">Equatorial Guinea</option>
+                                    <option value="ER">Eritrea</option>
+                                    <option value="EE">Estonia</option>
+                                    <option value="SZ">Eswatini</option>
+                                    <option value="ET">Ethiopia</option>
+                                    <option value="FK">Falkland Islands (the) [Malvinas]</option>
+                                    <option value="FO">Faroe Islands (the)</option>
+                                    <option value="FJ">Fiji</option>
+                                    <option value="FI">Finland</option>
+                                    <option value="FR">France</option>
+                                    <option value="GF">French Guiana</option>
+                                    <option value="PF">French Polynesia</option>
+                                    <option value="GA">Gabon</option>
+                                    <option value="GM">Gambia (the)</option>
+                                    <option value="GE">Georgia</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="GH">Ghana</option>
+                                    <option value="GI">Gibraltar</option>
+                                    <option value="GR">Greece</option>
+                                    <option value="GL">Greenland</option>
+                                    <option value="GD">Grenada</option>
+                                    <option value="GP">Guadeloupe</option>
+                                    <option value="GU">Guam</option>
+                                    <option value="GT">Guatemala</option>
+                                    <option value="GG">Guernsey</option>
+                                    <option value="GN">Guinea</option>
+                                    <option value="GW">Guinea-Bissau</option>
+                                    <option value="GY">Guyana</option>
+                                    <option value="HT">Haiti</option>
+                                    <option value="VA">Holy See (the)</option>
+                                    <option value="HN">Honduras</option>
+                                    <option value="HK">Hong Kong</option>
+                                    <option value="HU">Hungary</option>
+                                    <option value="IS">Iceland</option>
+                                    <option value="IN">India</option>
+                                    <option value="ID">Indonesia</option>
+                                    <option value="IR">Iran (Islamic Republic of)</option>
+                                    <option value="IQ">Iraq</option>
+                                    <option value="IE">Ireland</option>
+                                    <option value="IM">Isle of Man</option>
+                                    <option value="IL">Israel</option>
+                                    <option value="IT">Italy</option>
+                                    <option value="JM">Jamaica</option>
+                                    <option value="JP">Japan</option>
+                                    <option value="JE">Jersey</option>
+                                    <option value="JO">Jordan</option>
+                                    <option value="KZ">Kazakhstan</option>
+                                    <option value="KE">Kenya</option>
+                                    <option value="KI">Kiribati</option>
+                                    <option value="KP">Korea (the Democratic People's Republic of)</option>
+                                    <option value="KR">Korea (the Republic of)</option>
+                                    <option value="KW">Kuwait</option>
+                                    <option value="KG">Kyrgyzstan</option>
+                                    <option value="LA">Lao People's Democratic Republic (the)</option>
+                                    <option value="LV">Latvia</option>
+                                    <option value="LB">Lebanon</option>
+                                    <option value="LS">Lesotho</option>
+                                    <option value="LR">Liberia</option>
+                                    <option value="LY">Libya</option>
+                                    <option value="LI">Liechtenstein</option>
+                                    <option value="LT">Lithuania</option>
+                                    <option value="LU">Luxembourg</option>
+                                    <option value="MO">Macao</option>
+                                    <option value="MG">Madagascar</option>
+                                    <option value="MW">Malawi</option>
+                                    <option value="MY">Malaysia</option>
+                                    <option value="ML">Mali</option>
+                                    <option value="MT">Malta</option>
+                                    <option value="MH">Marshall Islands (the)</option>
+                                    <option value="MQ">Martinique</option>
+                                    <option value="MR">Mauritania</option>
+                                    <option value="MU">Mauritius</option>
+                                    <option value="YT">Mayotte</option>
+                                    <option value="MX">Mexico</option>
+                                    <option value="FM">Micronesia (Federated States of)</option>
+                                    <option value="MD">Moldova (the Republic of)</option>
+                                    <option value="MC">Monaco</option>
+                                    <option value="MN">Mongolia</option>
+                                    <option value="ME">Montenegro</option>
+                                    <option value="MS">Montserrat</option>
+                                    <option value="MA">Morocco</option>
+                                    <option value="MZ">Mozambique</option>
+                                    <option value="MM">Myanmar</option>
+                                    <option value="NA">Namibia</option>
+                                    <option value="NR">Nauru</option>
+                                    <option value="NP">Nepal</option>
+                                    <option value="NL">Netherlands (the)</option>
+                                    <option value="NC">New Caledonia</option>
+                                    <option value="NZ">New Zealand</option>
+                                    <option value="NI">Nicaragua</option>
+                                    <option value="NE">Niger (the)</option>
+                                    <option value="NG">Nigeria</option>
+                                    <option value="NU">Niue</option>
+                                    <option value="NF">Norfolk Island</option>
+                                    <option value="MP">Northern Mariana Islands (the)</option>
+                                    <option value="NO">Norway</option>
+                                    <option value="OM">Oman</option>
+                                    <option value="PK">Pakistan</option>
+                                    <option value="PW">Palau</option>
+                                    <option value="PS">Palestine, State of</option>
+                                    <option value="PA">Panama</option>
+                                    <option value="PG">Papua New Guinea</option>
+                                    <option value="PY">Paraguay</option>
+                                    <option value="PE">Peru</option>
+                                    <option value="PH">Philippines (the)</option>
+                                    <option value="PN">Pitcairn</option>
+                                    <option value="PL">Poland</option>
+                                    <option value="PT">Portugal</option>
+                                    <option value="PR">Puerto Rico</option>
+                                    <option value="QA">Qatar</option>
+                                    <option value="MK">Republic of North Macedonia</option>
+                                    <option value="RE">Réunion</option>
+                                    <option value="RO">Romania</option>
+                                    <option value="RU">Russian Federation (the)</option>
+                                    <option value="RW">Rwanda</option>
+                                    <option value="BL">Saint Barthélemy</option>
+                                    <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+                                    <option value="KN">Saint Kitts and Nevis</option>
+                                    <option value="LC">Saint Lucia</option>
+                                    <option value="MF">Saint Martin (French part)</option>
+                                    <option value="PM">Saint Pierre and Miquelon</option>
+                                    <option value="VC">Saint Vincent and the Grenadines</option>
+                                    <option value="WS">Samoa</option>
+                                    <option value="SM">San Marino</option>
+                                    <option value="ST">Sao Tome and Principe</option>
+                                    <option value="SA">Saudi Arabia</option>
+                                    <option value="SN">Senegal</option>
+                                    <option value="RS">Serbia</option>
+                                    <option value="SC">Seychelles</option>
+                                    <option value="SL">Sierra Leone</option>
+                                    <option value="SG">Singapore</option>
+                                    <option value="SX">Sint Maarten (Dutch part)</option>
+                                    <option value="SK">Slovakia</option>
+                                    <option value="SI">Slovenia</option>
+                                    <option value="SB">Solomon Islands</option>
+                                    <option value="SO">Somalia</option>
+                                    <option value="ZA">South Africa</option>
+                                    <option value="GS">South Georgia and the South Sandwich Islands</option>
+                                    <option value="SS">South Sudan</option>
+                                    <option value="ES">Spain</option>
+                                    <option value="LK">Sri Lanka</option>
+                                    <option value="SD">Sudan (the)</option>
+                                    <option value="SR">Suriname</option>
+                                    <option value="SE">Sweden</option>
+                                    <option value="CH">Switzerland</option>
+                                    <option value="SY">Syrian Arab Republic</option>
+                                    <option value="TW">Taiwan (Province of China)</option>
+                                    <option value="TJ">Tajikistan</option>
+                                    <option value="TZ">Tanzania, United Republic of</option>
+                                    <option value="TH">Thailand</option>
+                                    <option value="TL">Timor-Leste</option>
+                                    <option value="TG">Togo</option>
+                                    <option value="TK">Tokelau</option>
+                                    <option value="TO">Tonga</option>
+                                    <option value="TT">Trinidad and Tobago</option>
+                                    <option value="TN">Tunisia</option>
+                                    <option value="TR">Turkey</option>
+                                    <option value="TM">Turkmenistan</option>
+                                    <option value="TC">Turks and Caicos Islands (the)</option>
+                                    <option value="TV">Tuvalu</option>
+                                    <option value="UG">Uganda</option>
+                                    <option value="UA">Ukraine</option>
+                                    <option value="AE">United Arab Emirates (the)</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="XI">United Kingdom - Northern Ireland</option>
+                                    <option value="UM">United States Minor Outlying Islands (the)</option>
+                                    <option value="US">United States of America (the)</option>
+                                    <option value="UY">Uruguay</option>
+                                    <option value="UZ">Uzbekistan</option>
+                                    <option value="VU">Vanuatu</option>
+                                    <option value="VE">Venezuela (Bolivarian Republic of)</option>
+                                    <option value="VN">Viet Nam</option>
+                                    <option value="VG">Virgin Islands (British)</option>
+                                    <option value="VI">Virgin Islands (U.S.)</option>
+                                    <option value="WF">Wallis and Futuna</option>
+                                    <option value="YE">Yemen</option>
+                                    <option value="ZM">Zambia</option>
+                                    <option value="ZW">Zimbabwe</option>
+                                  </select></div>
+                                <div class="govuk-form-group"><label class="govuk-label govuk-label--s" for="search-field-MANUFACTURING_PLANT"> Search for and select Manufacturing plant
+                                    <!---->
+                                  </label>
+                                  <div class="govuk-input__wrapper"><input class="govuk-input" id="search-field-MANUFACTURING_PLANT" spellcheck="false" placeholder="Type here">
+                                    <div class="govuk-input__suffix operator-search-indicator no-bg"><button class="govuk-button govuk-button--primary"> Search
+                                        <!---->
+                                      </button></div>
+                                  </div><label class="govuk-label govuk-label--s m-t-10" for="search-field-postcode-MANUFACTURING_PLANT"> Postcode </label>
+                                  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-10" id="search-field-postcode-MANUFACTURING_PLANT" spellcheck="false" placeholder="Type postcode here"></div>
+                                  <div class="govuk-checkboxes__item m-t-10"><input class="govuk-checkboxes__input" id="show-exact-match-MANUFACTURING_PLANT" name="show-exact-match" type="checkbox"><label class="govuk-label govuk-checkboxes__label"
+                                      for="show-exact-match-MANUFACTURING_PLANT"> Show only exact matches </label></div>
+                                  <div class="govuk-checkboxes__item m-t-10"><input class="govuk-checkboxes__input" id="search-by-approval-MANUFACTURING_PLANT" name="search-by-approval" type="checkbox"><label
+                                      class="govuk-label govuk-checkboxes__label" for="search-by-approval-MANUFACTURING_PLANT"> Search by approval number </label></div>
+                                  <!---->
+                                </div>
+                                <!---->
+                                <!---->
+                                <!---->
+                              </section>
+                            </div>
+                          </div>
+                          <!---->
+                          <!---->
+                          <!---->
+                        </div>
+                        <div class="govuk-form-group"><label class="govuk-label" for="NATURE_OF_COMMODITY-2-10410-31010000">Nature of commodity
+                            <!---->
+                          </label>
+                          <!---->
+                          <!----><select class="govuk-select full-width" id="NATURE_OF_COMMODITY-2-10410-31010000">
+                            <option disabled="" value="">Select a Nature of commodity</option>
+                            <option value="ALMONDS">Almonds</option>
+                            <option value="ANIMAL">Animal</option>
+                            <option value="API">Apiculture by-products</option>
+                            <option value="APICULTURE_PRODUCTS_FOR_HC">Apiculture products for hc</option>
+                            <option value="AQUARIUM">Aquarium</option>
+                            <option value="AUBERGINES">Aubergines</option>
+                            <option value="BASIL_HOLY_SWEET">Basil (holy, sweet)</option>
+                            <option value="BASMATI_RICE_FOR_HC">Basmati rice for direct human consumption</option>
+                            <option value="BETEL_LEAVES">Betel leaves</option>
+                            <option value="BILE">Bile</option>
+                            <option value="BIOD">Biodiesel</option>
+                            <option value="BIOG">Biogas</option>
+                            <option value="BITTER_MELON_MOMORDICA">Bitter melon (momordica charantia)</option>
+                            <option value="BLOOD">Blood</option>
+                            <option value="SERE">Blood and blood products from equidae</option>
+                            <option value="BLOOD_PRODUCTS_FEEDINGSTUFF">Blood products / feedingstuff</option>
+                            <option value="BLOOD_PRODUCTS_TECHNICAL">Blood products / technical</option>
+                            <option value="BLPF">Blood products for feeding purposes</option>
+                            <option value="BLPT">Blood products for technical purposes</option>
+                            <option value="BONE">Bone</option>
+                            <option value="BHHP">Bones, horns, hooves and products thereof</option>
+                            <option value="BOWELS">Bowels</option>
+                            <option value="BRASSICA_VEGETABLES">Brassica vegetables</option>
+                            <option value="BRAZIL_NUTS_IN_SHELL">Brazil nuts in shell</option>
+                            <option value="BREEDING_EGGS">Breeding eggs</option>
+                            <option value="BUDWOOD_SCIONS">Budwood/scions</option>
+                            <option value="BY_PRODUCTS_FEEDINGSTUFF">By-products / feedingstuff</option>
+                            <option value="BY_PRODUCTS_TECHNICAL">By-products / technical</option>
+                            <option value="PETC">Canned petfood</option>
+                            <option value="CARCASS_QUARTERS">Carcass_quarters</option>
+                            <option value="CARCASS_SIDE">Carcass_side</option>
+                            <option value="CARCASS_WHOLE">Carcass_whole</option>
+                            <option value="CASING">Casing</option>
+                            <option value="CASING">Casing</option>
+                            <option value="CATW">Catering waste</option>
+                            <option value="CHEESE_FONDUES">Cheese fondues</option>
+                            <option value="CHILLI_PRODUCTS">Chilli products (curry)</option>
+                            <option value="CHINESE_CELERY">Chinese celery (apium graveolens)</option>
+                            <option value="COL">Collagen</option>
+                            <option value="COLOSTRUM">Colostrum</option>
+                            <option value="COMPOSITE_PRODUCTS">Composite products</option>
+                            <option value="COMR">Compost after composting</option>
+                            <option value="CONSUMPTION">Consumption</option>
+                            <option value="CORIANDER_LEAVE">Coriander leaves</option>
+                            <option value="COSM">Cosmetic products</option>
+                            <option value="CURRY_LEAVES_BERGERA">Curry leaves (bergera/ murraya koenigii)</option>
+                            <option value="CUTS">Cuts</option>
+                            <option value="DAIRY">Dairy</option>
+                            <option value="DCAP">Dicalcium phosphate</option>
+                            <option value="BIOR">Digestion residues from biogas production other than biogas</option>
+                            <option value="DTC">Digestive tract content</option>
+                            <option value="DOMESTIC">Domestic</option>
+                            <option value="DRAGON_FRUIT">Dragon fruit</option>
+                            <option value="DRIED_NOODLES">Dried noodles</option>
+                            <option value="EDIBLE_COLLAGEN">Edible collagen</option>
+                            <option value="EGG">Egg products</option>
+                            <option value="EGG_PRODUCTS_FOR_HC">Egg products for hc</option>
+                            <option value="EMBRYOS">Embryos</option>
+                            <option value="GIBEL">Farmed game</option>
+                            <option value="FARMED_STOCK">Farmed stock</option>
+                            <option value="FATD">Fat derivatives</option>
+                            <option value="FEATHERS">Feathers</option>
+                            <option value="FEED_ADDITIVES_AND_PREMIXTURES">Feed additives and premixtures</option>
+                            <option value="FEED">Feed production (please specify)</option>
+                            <option value="FERT">Fertilisers other than comr, bior, manu, manp</option>
+                            <option value="FIG_PASTE">Fig paste</option>
+                            <option value="FIGS">Figs</option>
+                            <option value="FIGS_PREPARED_OR_PRESERVED">Figs, prepared or preserved</option>
+                            <option value="FISHERY_PRODUCTS">Fishery products</option>
+                            <option value="FISHERY_PRODUCTS_CANNED">Fishery_products_canned</option>
+                            <option value="FISHERY_PRODUCTS_NOT_CANNED">Fishery_products_not_canned</option>
+                            <option value="FLAVOURING_INNARDS">Flavouring innards</option>
+                            <option value="PETFI">Flavouring innards for petfood</option>
+                            <option value="FIGS_FLOUR_MEAL_POWDER">Flour, meal and powder of figs</option>
+                            <option value="HAZELNUTS_FLOUR_MEAL_POWDER">Flour, meal and powder of hazelnuts</option>
+                            <option value="PISTACHIOS_FLOUR_MEAL_POWDER">Flour, meal and powder of pistachios</option>
+                            <option value="FRESH_MEAT">Fresh meat</option>
+                            <option value="FRESH_OKRA">Fresh okra</option>
+                            <option value="GIBIER">Game</option>
+                            <option value="GAME_TROPHIES">Game trophies</option>
+                            <option value="GATR">Game trophies</option>
+                            <option value="GEL">Gelatine</option>
+                            <option value="GELATINE_COLLAGEN_FOR_HC">Gelatine/collagen for hc</option>
+                            <option value="GREEN_BEANS">Green beans</option>
+                            <option value="HATCHING_EGGS">Hatching eggs</option>
+                            <option value="HAZELNUT_PASTE">Hazelnut paste</option>
+                            <option value="HAZELNUTS">Hazelnuts</option>
+                            <option value="HAZELNUTS_PREPARED_PRESERVED">Hazelnuts, prepared or preserved</option>
+                            <option value="HC_PRESERVED_AT_AMBIENT_TEMPERATURE">Hc, preserved at ambient temperature</option>
+                            <option value="HC_PRESERVED_AT_FROZEN_CHILLED_TEMPERATURE">Hc, preserved at frozen/chilled temperature</option>
+                            <option value="HIDES">Hides</option>
+                            <option value="HIGHLY_REFINED_PRODUCTS_FOR_HC">Highly refined products for hc</option>
+                            <option value="HORNS_HOOVES">Horns/hooves</option>
+                            <option value="HTST_SIMPLE">Htst simple</option>
+                            <option value="HTST_UHT">Htst,sterilisation,uht</option>
+                            <option value="HUMAN_CONSUMPTION">Human consumption</option>
+                            <option value="HYDROLISED_PROTEINS">Hydrolised proteins</option>
+                            <option value="HYDP">Hydrolysed protein</option>
+                            <option value="INSECTS_FOR_HC">Insects for hc</option>
+                            <option value="INSE">Insects including maggots and worms</option>
+                            <option value="INTENDED_FOR_PLANTING_ALREADY_PLANTED">Intended for planting: already planted</option>
+                            <option value="INTENDED_FOR_PLANTING_AQUATIC_PLANTS">Intended for planting: aquatic plants</option>
+                            <option value="INTENDED_FOR_PLANTING_BONSAI">Intended for planting: bonsai</option>
+                            <option value="INTENDED_FOR_PLANTING_CARNIVOROUS_PLANTS">Intended for planting: carnivorous plants</option>
+                            <option value="INTENDED_FOR_PLANTING_CUTTINGS">Intended for planting: cuttings</option>
+                            <option value="INTENDED_FOR_PLANTING_NOT_YET_PLANTED">Intended for planting: not yet planted</option>
+                            <option value="INTENDED_FOR_PLANTING_OTHERS">Intended for planting: others</option>
+                            <option value="INTENDED_FOR_PLANTING_PLANT_TISSUE_CULTURE">Intended for planting: plant tissue culture</option>
+                            <option value="INTENDED_FOR_PLANTING_SEED_POTATOES">Intended for planting: seed potatoes</option>
+                            <option value="INTENDED_FOR_PLANTING_SEEDLINGS">Intended for planting: seedlings (except forestry reproductive material), young plants of strawberries or of vegetables</option>
+                            <option value="INTENDED_FOR_PLANTING_SEEDS">Intended for planting: seeds</option>
+                            <option value="INTENDED_FOR_PLANTING_SHRUBS">Intended for planting: shrubs, trees (other than cut christmas trees), other woody nursery plants including forest reproductive material</option>
+                            <option value="INTENDED_FOR_PLANTING_UNDERGROUND_ORGANS">Intended for planting: underground organs</option>
+                            <option value="GELEEROY">Jelly royal</option>
+                            <option value="GGIBEL">Large farmed game</option>
+                            <option value="GGIB">Large wild game</option>
+                            <option value="GRGIBSAUV">Large wild game</option>
+                            <option value="LAUKI_LAGENARIA">Lauki (lagenaria siceraria)</option>
+                            <option value="WWT">Material collected from waste water treatment</option>
+                            <option value="MATERIAL_CATEGORY_1">Material of category 1</option>
+                            <option value="MATERIAL_CATEGORY_2">Material of category 2</option>
+                            <option value="MATERIAL_CATEGORY_3">Material of category 3</option>
+                            <option value="MBM">Meat and bone meal (category 1, 2)</option>
+                            <option value="MEAT_PREPARATIONS">Meat preparations</option>
+                            <option value="MEAT_PRODUCTS">Meat products</option>
+                            <option value="MEDD">Medical devices</option>
+                            <option value="MILK_BASED">Milk based products</option>
+                            <option value="MIMC">Milk, colostrum and derived products from milk and colostrum</option>
+                            <option value="MINCED_MEAT">Minced meat</option>
+                            <option value="MINT">Mint</option>
+                            <option value="NON_EDIBLE_COLLAGEN">Non edible collagen</option>
+                            <option value="NON_HUMAN_CONSUMPTION">Non human consumption</option>
+                            <option value="OFFAL">Offal</option>
+                            <option value="ORGANIC">Organic</option>
+                            <option value="OTHER">Other</option>
+                            <option value="OTHER_LIVING_PLANTS_CUT_BRANCHES_WITHOUT_FOLIAGE">Other living plants: cut branches without foliage</option>
+                            <option value="OTHER_LIVING_PLANTS_CUT_FLOWERS_AND_BRANCHES_WITH_FOLIAGE">Other living plants: cut flowers and branches with foliage</option>
+                            <option value="OTHER_LIVING_PLANTS_CUT_TREES_RETAINING_FOLIAGE">Other living plants: cut trees retaining foliage</option>
+                            <option value="OTHER_LIVING_PLANTS_FRUIT_AND_VEGETABLES">Other living plants: fruit and vegetables</option>
+                            <option value="OTHER_LIVING_PLANTS_LEAFY_VEGETABLES">Other living plants: leafy vegetables</option>
+                            <option value="OTHER_LIVING_PLANTS_LEAVES">Other living plants: leaves</option>
+                            <option value="OTHER_LIVING_PLANTS_OTHERS">Other living plants: others</option>
+                            <option value="OTHER_LIVING_PLANTS_POLLEN">Other living plants: pollen</option>
+                            <option value="OTHER_LIVING_PLANTS_STORED_PRODUCTS_CAPABLE_OF_GERMINATING">Other living plants: stored products capable of germinating</option>
+                            <option value="OTHER_LIVING_PLANTS_WARE_POTATOES">Other living plants: ware potatoes</option>
+                            <option value="RAW">Other unprocessed abp</option>
+                            <option value="OTHERS">Others</option>
+                            <option value="OVA_EMBRYO">Ova-embryos</option>
+                            <option value="OVOPROD">Ovoproducts</option>
+                            <option value="PARSLEY">Parsley</option>
+                            <option value="PASTEURIZED">Pasteurized</option>
+                            <option value="PETD">Petfood: dogchews</option>
+                            <option value="PHARM">Pharmaceutical products</option>
+                            <option value="PISTACHIO_PASTE">Pistachio paste</option>
+                            <option value="PISTACHIOS">Pistachios</option>
+                            <option value="PISTACHIOS_PREPARED">Pistachios, prepared or preserved</option>
+                            <option value="PLANT_PRODUCTS_BARK">Plant products: bark</option>
+                            <option value="PLANT_PRODUCTS_DUNNAGE">Plant products: dunnage</option>
+                            <option value="PLANT_PRODUCTS_LOGS">Plant products: logs</option>
+                            <option value="PLANT_PRODUCTS_OTHERS">Plant products: others</option>
+                            <option value="PLANT_PRODUCTS_SAWN_WOOD">Plant products: sawn wood / timber</option>
+                            <option value="PLANT_PRODUCTS_STORED_PRODUCTS_NOT_CAPABLE_OF_GERMINATING">Plant products: stored products not capable of germinating</option>
+                            <option value="PLANT_PRODUCTS_WASTE_OF_PLANT_ORIGIN">Plant products: waste of plant origin</option>
+                            <option value="PLANT_PRODUCTS_WOOD_AND_BARK">Plant products: wood and bark</option>
+                            <option value="POWDER">Powder</option>
+                            <option value="POWDER_BONES">Powder bones</option>
+                            <option value="PAP">Processed animal protein (category 3; indicate animal species)</option>
+                            <option value="MANURE_PROCESSED">Processed manure</option>
+                            <option value="MANP">Processed manure and manure products</option>
+                            <option value="PETP">Processed petfood other than canned petfood</option>
+                            <option value="CAPSULES_PRODUCTS">Product in capsules</option>
+                            <option value="FORMF">Products of animal origin/ no longer for human consumption</option>
+                            <option value="BEES_PRODUCTS">Products produced by bees</option>
+                            <option value="HISKR">Raw hides and skins</option>
+                            <option value="RAW_MATERIAL_FOR_HC_GELATINE_COLLAGEN">Raw material for hc gelatine/collagen</option>
+                            <option value="RAW_MATERIAL_FOR_GEL_COL">Raw material for processing of gelatine and collagen</option>
+                            <option value="RAW_MILK">Raw milk</option>
+                            <option value="PETR">Raw petfood</option>
+                            <option value="RAW_PET_FOOD">Raw petfood</option>
+                            <option value="RENDERED_FAT_FOR_HC">Rendered fat for hc</option>
+                            <option value="FATOL">Rendered fat from abp for oleochemical purposes</option>
+                            <option value="FATF">Rendered fats and fish oil for feeding</option>
+                            <option value="FATOT">Rendered fats and fish oil for purposes other than for feeding or for oleochemical purposes</option>
+                            <option value="ROASTED_ALMONDS">Roasted almonds</option>
+                            <option value="ROASTED_PISTACH">Roasted pistachios</option>
+                            <option value="SEMEN">Semen</option>
+                            <option value="SESAMUM_SEEDS">Sesamum seeds</option>
+                            <option value="PEGIBPLUMEE">Small feathered farmed game</option>
+                            <option value="PEGIBPLUMES">Small feathered wild game</option>
+                            <option value="PEGIBSAUV">Small wild game</option>
+                            <option value="SPF">Spf</option>
+                            <option value="STERILIZATION">Sterilization</option>
+                            <option value="TEA_LEAVES">Tea leaves (black and green)</option>
+                            <option value="HISKT">Treated hides and skins</option>
+                            <option value="TREATED_RAW_MATERIAL_FOR_PROCESSING_GELATINE_COLLAGEN">Treated raw material for processing of gelatine and collagen</option>
+                            <option value="TCAP">Tricalcium phosphate</option>
+                            <option value="UHT">Uht</option>
+                            <option value="MANURE_UNPROCESSED">Unprocessed manure</option>
+                            <option value="MANU">Unprocessed manure</option>
+                            <option value="VINE_LEAVES">Vine leaves</option>
+                            <option value="WATERMELON_EGUSI">Watermelon (egusi, citrullus lanatus) seeds and derived products</option>
+                            <option value="CAD">Whole bodies of dead animals (cadavers)</option>
+                            <option value="GIBSAUV">Wild game</option>
+                            <option value="WILD_STOCK">Wild stock</option>
+                            <option value="WHBF">Wool, hair, pig bristles, feathers</option>
+                            <option value="YARDLONG_BEANS">Yardlong beans (vigna unguiculata spp. sesquipedalis)</option>
+                          </select>
+                          <!---->
+                        </div>
+                        <div class="govuk-form-group"><label class="govuk-label" for="NET_WEIGHT-3-10410-31010000">Net weight
+                            <!---->
+                          </label>
+                          <!---->
+                          <!---->
+                          <!---->
+                          <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8=""><input class="govuk-input" type="number" data-type="quantity" name="NET_WEIGHT" step="0.01" min="0" max="9999999" id="NET_WEIGHT-3-10410-31010000"
+                              data-v-4e8f37a8="">
+                            <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8=""><select class="govuk-select" id="NET_WEIGHT-3-10410-31010000-units" data-v-4e8f37a8="">
+                                <option disabled="" value="" data-v-4e8f37a8="">Select a unit</option>
+                                <option value="GRM" data-v-4e8f37a8="">gram</option>
+                                <option value="KGM" data-v-4e8f37a8="">kilogram</option>
+                                <option value="KTN" data-v-4e8f37a8="">kilotonne</option>
+                                <option value="TNE" data-v-4e8f37a8="">tonne (metric ton)</option>
+                              </select></div>
+                          </div>
+                        </div>
+                        <div class="govuk-form-group"><label class="govuk-label" for="PACKAGE_COUNT-4-10410-31010000">Package count
+                            <!---->
+                          </label>
+                          <!---->
+                          <!---->
+                          <!---->
+                          <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8=""><input class="govuk-input" type="number" data-type="quantity" name="PACKAGE_COUNT" step="1" min="0" max="9999999" id="PACKAGE_COUNT-4-10410-31010000"
+                              data-v-4e8f37a8="" data-mask="########" data-mask-inited="true" data-mask-raw-value="">
+                            <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8=""><select class="govuk-select" id="PACKAGE_COUNT-4-10410-31010000-units" data-v-4e8f37a8="">
+                                <option disabled="" value="" data-v-4e8f37a8="">Select a unit</option>
+                                <option value="BG" data-v-4e8f37a8="">Bag</option>
+                                <option value="BL" data-v-4e8f37a8="">Bale, compressed</option>
+                                <option value="QH" data-v-4e8f37a8="">Barrel, wooden, bung type</option>
+                                <option value="QJ" data-v-4e8f37a8="">Barrel, wooden, removable head</option>
+                                <option value="BX" data-v-4e8f37a8="">Box</option>
+                                <option value="QP" data-v-4e8f37a8="">Box, wooden, natural wood, ordinary</option>
+                                <option value="QQ" data-v-4e8f37a8="">Box, wooden, natural wood, with sift proof walls</option>
+                                <option value="VR" data-v-4e8f37a8="">Bulk, solid, granular particles ("grains")</option>
+                                <option value="CA" data-v-4e8f37a8="">Can, rectangular</option>
+                                <option value="CI" data-v-4e8f37a8="">Canister</option>
+                                <option value="CT" data-v-4e8f37a8="">Carton</option>
+                                <option value="CS" data-v-4e8f37a8="">Case</option>
+                                <option value="EE" data-v-4e8f37a8="">Case, with pallet base, wooden</option>
+                                <option value="CK" data-v-4e8f37a8="">Cask</option>
+                                <option value="CF" data-v-4e8f37a8="">Coffer</option>
+                                <option value="CN" data-v-4e8f37a8="">Container, not otherwise specified as transport equipment</option>
+                                <option value="CR" data-v-4e8f37a8="">Crate</option>
+                                <option value="8B" data-v-4e8f37a8="">Crate, wooden</option>
+                                <option value="DR" data-v-4e8f37a8="">Drum</option>
+                                <option value="GR" data-v-4e8f37a8="">Receptacle, glass</option>
+                                <option value="JR" data-v-4e8f37a8="">Jar</option>
+                                <option value="LZ" data-v-4e8f37a8="">Logs, in bundle/bunch/truss</option>
+                                <option value="LU" data-v-4e8f37a8="">Lug</option>
+                                <option value="LE" data-v-4e8f37a8="">Luggage</option>
+                                <option value="PK" data-v-4e8f37a8="">Package</option>
+                                <option value="IA" data-v-4e8f37a8="">Package, display, wooden</option>
+                                <option value="PL" data-v-4e8f37a8="">Pail</option>
+                                <option value="PX" data-v-4e8f37a8="">Pallet</option>
+                                <option value="XD" data-v-4e8f37a8="">Bag, plastics film</option>
+                                <option value="QR" data-v-4e8f37a8="">Box, plastic, expanded</option>
+                                <option value="PJ" data-v-4e8f37a8="">Punnet</option>
+                                <option value="RT" data-v-4e8f37a8="">Rednet</option>
+                                <option value="TK" data-v-4e8f37a8="">Tank, rectangular</option>
+                                <option value="TT" data-v-4e8f37a8="">Bag, tote</option>
+                                <option value="PU" data-v-4e8f37a8="">Tray pack</option>
+                                <option value="TU" data-v-4e8f37a8="">Tube</option>
+                                <option value="VI" data-v-4e8f37a8="">Vial</option>
+                              </select></div>
+                          </div>
+                        </div>
+                        <div class="govuk-form-group"><label class="govuk-label" for="TAXON_ID-5-10410-31010000">Species
+                            <!---->
+                          </label><select class="govuk-select full-width" id="TAXON_ID-5-10410-31010000">
+                            <option disabled="" value="">Select a taxonomy</option>
+                            <option>Aves</option>
+                            <option>Bovidae</option>
+                            <option>Chiroptera</option>
+                            <option>Equidae</option>
+                            <option>Otra mammalia</option>
+                            <option>Suidae</option>
+                          </select>
+                          <!---->
+                          <!---->
+                          <!---->
+                        </div>
+                      </section>
+                      <!---->
+                      <section id="actions"><a href="#" class="govuk-button m-r-5" id="addIdentification">Add identification</a><a href="#" class="govuk-button govuk-button--secondary m-r-5">Clear</a>
+                        <!---->
+                        <!---->
+                        <!---->
+                      </section>
+                    </div>
+                    <!---->
+                  </div>
+                  <div class="govuk-grid-column-one-half">
+                    <div class="identifications">
+                      <section id="identifications-for-commodity">
+                        <h3 class="govuk-heading-s"> Identifications for this commodity <span> : 1</span></h3>
+                      </section>
+                      <div class="alert-pane alert-pane--information"><div class="alert-pane--heading"><span class="fas fa-info-circle"></span> Hint </div> Identifications will appear here when added to the certificate. Use the form to enter the identification details and then click "Add identification". </div>
+                      <section id="identification-cards" style="display:none">
+                        <div class="govuk-grid-row">
+                          <div class="govuk-grid-column-full">
+                            <div class="identification-pane "><a href="#" class="identification-pane--heading prototype-open-panel" data-target="identification-detail-panel">Identification - Fertiliser <span class="pull-right"><span class="fas fa-chevron-up"></span></span></a>
+                              <div class="identification-pane--body open" id="identification-detail-panel">
+                                <div class="govuk-grid-row">
+                                  <div class="govuk-grid-column-one-half">Product description: Fertiliser</div>
+                                  <div class="govuk-grid-column-one-half">Manufacturing plant: Selsea (Billingsgate) Ltd</div>
+                                  <div class="govuk-grid-column-one-half">Nature of commodity: Animal</div>
+                                  <div class="govuk-grid-column-one-half">Net weight: 123 gram</div>
+                                  <div class="govuk-grid-column-one-half">Package count: 1 Bag</div>
+                                  <div class="govuk-grid-column-one-half">Species: Bovidae</div>
+                                </div>
+                              </div>
+                              <div class="identification-pane--actions">
+                                <div class="identification-pane--action"><a class="govuk-button govuk-button--secondary full-width" href="#"> Change </a></div>
+                                <div class="identification-pane--action"><a class="govuk-button govuk-button--secondary full-width" href="#"> Copy </a></div>
+                                <div class="identification-pane--action"><a class="govuk-button govuk-button--secondary full-width" href="#"> Remove </a></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-weights" data-v-0ea98b26="">
+              <div class="certificate-weights-title" data-v-0ea98b26=""> Total weight of the commodities in this certificate </div>
+              <div class="certificate-weights-body" data-v-0ea98b26="">
+                <div class="" data-v-0ea98b26="">
+                  <!---->
+                  <table class="govuk-table" data-v-0ea98b26="">
+                    <caption class="govuk-table__caption govuk-table__caption--s" data-v-0ea98b26="">Quantity and weight</caption>
+                    <thead class="govuk-table__head" data-v-0ea98b26="">
+                      <tr class="govuk-table__row" data-v-0ea98b26="">
+                        <th scope="col" class="govuk-table__header" data-v-0ea98b26=""><span class="govuk-visually-hidden" data-v-0ea98b26="">Measurement</span></th>
+                        <th scope="col" class="govuk-table__header" data-v-0ea98b26="">Amount</th>
+                        <th scope="col" class="govuk-table__header" data-v-0ea98b26="">Unit</th>
+                      </tr>
+                    </thead>
+                    <tbody class="govuk-table__body" data-v-0ea98b26="">
+                      <!---->
+                      <tr class="govuk-table__row" data-v-0ea98b26="">
+                        <th scope="row" class="govuk-table__header" id="gross-weight-header" data-v-0ea98b26="">Gross weight</th>
+                        <td class="govuk-table__cell" data-v-0ea98b26=""><input class="govuk-input govuk-input--width-10" name="grossWeightForCommodity" aria-labelledby="gross-weight-header" type="number" min="1000000000000" max="0"
+                            data-v-0ea98b26=""><br data-v-0ea98b26="">
+                          <div class="commodity-total-quick-actions-group" data-v-0ea98b26=""><button class="commodity-total-quick-action" data-v-0ea98b26="">1</button><button class="commodity-total-quick-action" data-v-0ea98b26="">10</button><button
+                              class="commodity-total-quick-action" data-v-0ea98b26="">100</button><button class="commodity-total-quick-action" data-v-0ea98b26="">1000</button></div>
+                        </td>
+                        <td class="govuk-table__cell" data-v-0ea98b26=""><select class="govuk-select full-width" name="units-for-gross-weight" data-v-0ea98b26="">
+                            <option value="GRM" data-v-0ea98b26="">gram</option>
+                            <option value="KGM" data-v-0ea98b26="">kilogram</option>
+                            <option value="KTN" data-v-0ea98b26="">kilotonne</option>
+                            <option value="TNE" data-v-0ea98b26="">tonne (metric ton)</option>
+                          </select></td>
+                      </tr>
+                      <tr data-v-0ea98b26="">
+                        <td data-v-0ea98b26=""></td>
+                        <td class="p-b-25 p-r-15" data-v-0ea98b26="">
+                          <!---->
+                          <!---->
+                        </td>
+                        <td data-v-0ea98b26=""><button class="govuk-button full-width m-t-15" data-v-0ea98b26=""> Update totals </button>
+                          <!---->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!----><a class="govuk-button govuk-button--secondary m-t-15" href="task-list" >Return</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $(".prototype-open-panel").on("click",function(e){
+      console.log("working")
+      e.preventDefault()
+      let n = "#"+$(this).attr("data-target")
+      let panel =   $(n)
+      let icon = $(this).find(".fas")
+      if(panel.hasClass("open")){
+        icon.removeClass("fa-chevron-up").addClass("fa-chevron-down")
+        panel.removeClass("open")
+        panel.hide()
+      }else{
+        icon.removeClass("fa-chevron-down").addClass("fa-chevron-up")
+        panel.addClass("open")
+        panel.show()
+      }
+
+    })
+
+    $("#addIdentification").on("click", function(e){
+      e.preventDefault()
+      $(".alert-pane").hide()
+      $("#identification-cards").show()
+    })
+  })
+
+
+</script>
+{% endblock%}

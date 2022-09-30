@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <header class="hmrc-page-heading">
+      <h1 class="govuk-heading-l">Email address confirmed</h1>
+    </header>
+    <form method="post" action="{% if data.prototype=='gform' %}https://www.qa.tax.service.gov.uk/auth-login-stub/gg-sign-in{% else %}../{{data.login_url or 'verifiy/error-no-url'}}{% endif %}">
+      {% if data.prototype=='gform' %}
+
+      <input id="urlRedirect" type="hidden" name="redirectionUrl" value="https://www.qa.tax.service.gov.uk/submissions/new-form/{{ data.gform_template or 'nrsdlt-v4-1' }}">
+      <input id="credentialStrength" type="hidden" name="credentialStrength" value="weak">
+      <input id="email" type="hidden" name="email" size="30" maxlength="300" value="user@test.com">
+      <input id="authorityId" type="hidden" aria-describedby="authorityIdHint" name="authorityId" size="30" maxlength="30" value="">
+      <select id="confidenceLevel" name="confidenceLevel" aria-describedby="confidenceLevelHint" style="display: none">
+        <option value="weak">weak</option>
+        <option value="50" selected="selected">50</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+      </select>
+      <select name="affinityGroup" id="affinityGroupSelect" style="display: none">
+        <option value="Individual">Individual</option>
+        <option value="Organisation">Organisation</option>
+        <option value="Agent">Agent</option>
+      </select>
+      <select name="credentialRole" aria-describedby="credentialRoleHint" style="display: none" id="credential-role-select">
+        <option value="User">User</option>
+      </select>
+      {%endif%}
+    <p><button type="submit" href="../{{data.login_url or 'verifiy/error-no-url'}}" class="govuk-button" data-module="govuk-button">
+        Continue</button>
+      </p>
+      </form>
+    {% block pageFooter %}{% include "../../includes/page-footer.html" %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

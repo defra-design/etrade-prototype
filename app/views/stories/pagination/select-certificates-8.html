@@ -1,0 +1,102 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <!-- <div class="govuk-grid-column-full" data-v-75a00750=""><span class="govuk-caption-xl"> Description of the goods
+
+    </span> -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="" method="post">
+      <h1 class="govuk-heading-xl">Select a certificate for your export</h1>
+
+
+      <div class="govuk-form-group">
+        <p class="govuk-body"></p>
+        <label class="govuk-label" for="search-term">Search for certificate</label>
+        <div class="govuk-hint">Search by certificate number or name</div>
+        <input class="govuk-input" id="search-term" type="text">
+      </div>
+      <div class="govuk-form-group">
+        <div class="govuk-radios" data-module="govuk-radios">
+          {% for cert in data.certificates %}
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection{{loop.index}}" type="radio" data-target="EHC8328-commodities" value="{{loop.index-1}}">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection{{loop.index}}"><strong>{{cert.number}}</strong> {{cert.title}} ({{(cert.commodities | length)}} commodities) </label>
+          </div>
+          {% endfor%}
+        </div>
+
+      </div>
+
+      <div class="govuk-form-group">
+        <nav id="pagination" class="govuk-pagination" role="navigation" aria-label="results">
+          <div class="govuk-pagination__prev">
+            <a class="govuk-link govuk-pagination__link" href="select-certificates-7#pagination" rel="prev">
+              <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+              </svg>
+              <span class="govuk-pagination__link-title">Previous</span></a>
+          </div>
+          <ul class="govuk-pagination__list">
+            <li class="govuk-pagination__item ">
+              <a class="govuk-link govuk-pagination__link" href="select-certificates-1#pagination" aria-label="Page 1">
+                1
+              </a>
+            </li>
+            <li class="govuk-pagination__item govuk-pagination__item--ellipses">&ctdot;</li>
+
+
+            <li class="govuk-pagination__item ">
+              <a class="govuk-link govuk-pagination__link" href="select-certificates-5#pagination" aria-label="Page 5" >
+                5
+              </a>
+            </li>
+            <li class="govuk-pagination__item">
+              <a class="govuk-link govuk-pagination__link" href="select-certificates-6#pagination" aria-label="Page 6" >
+                6
+              </a>
+            </li>
+            <li class="govuk-pagination__item  ">
+              <a class="govuk-link govuk-pagination__link" href="select-certificates-7#pagination" aria-label="Page 7">
+                7
+              </a>
+            </li>
+            <li class="govuk-pagination__item govuk-pagination__item--current">
+              <a class="govuk-link govuk-pagination__link" href="select-certificates-8#pagination" aria-label="Page 8" aria-current="page">
+                8
+              </a>
+            </li>
+          </ul>
+          <!-- <div class="govuk-pagination__next">
+            <a class="govuk-link govuk-pagination__link" href="select-certificates-8#pagination" rel="next"> <span class="govuk-pagination__link-title">Next</span> <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13"
+                width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg></a>
+          </div> -->
+        </nav>
+      </div>
+
+
+      <div class="govuk-button-group" type="submit"><button class="govuk-button" id="add-export">Add to export</button>
+        <!---->
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

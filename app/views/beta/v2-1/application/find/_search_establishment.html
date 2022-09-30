@@ -1,0 +1,33 @@
+{% set id = (searchLabel | removeWhiteSpace) or "Manufacturingplant"%}
+
+<!-- Commodity data needs to be stored differently to other page version of this search -->
+{% if isCommodity %}
+<!-- Create a unique Idendifier so each new commodity added the establishment is not set -->
+<!-- isCommodity, commodityID and cert are set in the parent commodity page, if this is nested there.-->
+{% set id = id+"-"+cert.number+"-"+commodityID+"-"+commodityListID %}
+
+{% endif %}
+<label class="govuk-label" for="{{id}}">{{searchLabel}}</label>
+{% if data["has_"+id] != "yes" or data.newCommodity == "yes" %}
+  <div class="govuk-form-group app-find-establishment-card">
+    {% set url = "start" %}
+    {% if query.has_saved_orgs == "no" %}
+      {% set url = "results" %}
+    {% endif %}
+    <p class="govuk-!-margin-bottom-0"><a href="../find/results?searchLabel={{searchLabel}}&searchReturnURL={{returnURL or '../export/commodity'}}&searchID={{id}}&canSearchApprovalNumber=yes">Select a {{searchLabel | lower }}</a></p>
+  </div>
+
+{% else %}
+
+  {% set org = data.establishments[data["selected"+id] or 0] %}
+  <div class="govuk-form-group app-find-establishment-card">
+    <input type="hidden" id="{{id}}" name="{{id}}" value="{{data['selected'+id]}}">
+    <input type="hidden" id="{{(searchLabel | removeWhiteSpace)}}-basic" name="{{(searchLabel | removeWhiteSpace)}}" value="{{org.TradingName}}">
+    <input type="hidden" id="{{id}}-activity" name="{{id}}-activity" value="{{org.All_Activities[(data['activityFor'+id] or 0)]}}">
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}} ({{org.AppNo}})</h3>
+    <p class="govuk-!-margin-bottom-2">{{org.Address1}},{% if org.Address2 !="" %} {{org.Address2}},{%endif%} {{org.Town}}, {{org.Postcode}}, {{org.Country}}<br>
+      Activity: {{org.All_Activities[(data["activityFor"+id] or 0)]}}
+    </p>
+    <p class="govuk-!-margin-bottom-0"><a href="../find/results?id={{data['selected'+id] or 0}}&change=yes&searchLabel={{searchLabel}}&searchID={{id}}&canSearchApprovalNumber=yes&searchReturnURL={{returnURL or '../export/commodity'}}">Select a different {{searchLabel | lower }}</a></p>
+  </div>
+{% endif %}

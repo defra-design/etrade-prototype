@@ -1,0 +1,394 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <!-- <div class="govuk-grid-column-full" data-v-75a00750=""><span class="govuk-caption-xl"> Description of the goods
+
+    </span> -->
+    <form class="" method="post">
+      <h1 class="govuk-heading-xl">Select a certificate for your export</h1>
+
+      <div class="govuk-!-margin-bottom-8" data-v-75a00750="">
+        <div class="govuk-tabs" data-module="govuk-tabs" data-v-75a00750="">
+          <h2 class="govuk-tabs__title" data-v-75a00750=""> Contents </h2>
+          <ul class="govuk-tabs__list" data-v-75a00750="">
+            <li id="select-by-certificate" class="govuk-tabs__list-item govuk-tabs__list-item--selected" data-v-75a00750=""><a href="#by-certificate" class="govuk-tabs__tab" data-v-75a00750="">By certificate</a></li>
+            <li id="select-by-commodity" class="govuk-tabs__list-item" data-v-75a00750=""><a href="#by-commodity" class="govuk-tabs__tab" data-v-75a00750="">By commodity</a></li>
+          </ul>
+          <div class="govuk-tabs__panel" id="by-certificate">
+
+            <p class="govuk-body">Search for and select the certificate that you want to add to this export.</p>
+            <div class="govuk-form-group"><label class="govuk-label" for="search-term">Enter a certificate number or name</label><input class="govuk-input" id="search-term" type="text"></div>
+
+            <div>
+              <div class="govuk-radios" data-module="govuk-radios">
+                {% for cert in data.certificates %}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input " name="certificate" id="certificate-selection{{loop.index}}" type="radio" data-target="EHC8328-commodities" value="{{loop.index-1}}">
+                  <label class="govuk-label govuk-radios__label" for="certificate-selection{{loop.index}}">{{cert.number}} {{cert.title}} ({{(cert.commodities | length)}} commodities) </label>
+                </div>
+                {% endfor%}
+              </div>
+            </div>
+            <div class="p-paginator p-component" modelvalue="1">
+              <!----><button class="p-paginator-first p-paginator-element p-link p-disabled" type="button" disabled=""><span class="p-sr-only"><i class="fas fa-chevron-double-left"></i></span><span
+                  class="p-paginator-icon pi pi-angle-double-left"></span></button><button class="p-paginator-prev p-paginator-element p-link p-disabled" type="button" disabled=""><span class="p-sr-only"><i class="fa fa-chevron-left"></i></span><span
+                  class="p-paginator-icon pi pi-angle-left"></span></button><span class="p-paginator-pages"><button class="p-paginator-page p-paginator-element p-link p-highlight" type="button">1</button><button
+                  class="p-paginator-page p-paginator-element p-link" type="button">2</button><button class="p-paginator-page p-paginator-element p-link" type="button">3</button><button class="p-paginator-page p-paginator-element p-link"
+                  type="button">4</button><button class="p-paginator-page p-paginator-element p-link" type="button">5</button></span><button class="p-paginator-next p-paginator-element p-link" type="button"><span class="p-sr-only"><i
+                    class="fa fa-chevron-right"></i></span><span class="p-paginator-icon pi pi-angle-right"></span></button><button class="p-paginator-last p-paginator-element p-link" type="button"><span class="p-sr-only"><i
+                    class="fas fa-chevron-double-right"></i></span><span class="p-paginator-icon pi pi-angle-double-right"></span></button>
+              <!---->
+              <!---->
+            </div>
+
+
+          </div>
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="by-commodity">
+            <div class="commodity" data-v-75a00750="">
+              <section id="commodity" class="m-b-15">
+                <!---->
+                <div class="panel panel--search no-bottom-margin tree-closed not-collapsible">
+                  <p class="govuk-body"> Select commodities from the list by CN code (example: 030232) or name (example: tuna). Click on the desired commodity and then select the certificate you wish to use. </p>
+                  <div class="govuk-form-group"><label class="govuk-label govuk-label--m" for="commodity-search"> Search Commodities </label><input class="govuk-input" id="commodity-search" placeholder="Search by description or code"></div>
+                  <div class="govuk-form-group"><label class="govuk-label" for="weight"></label>
+                    <div class="govuk-input__wrapper"><a class="govuk-button govuk-button--primary m-0" href="#" id="search"><span class="fas fa-search"></span> Search </a>
+                      <div class="govuk-input__suffix link-suffix"><a class="govuk-link" href="#">View commodity tree</a></div>
+                    </div>
+                  </div>
+                  <!---->
+                </div>
+                <div class="panel panel--commodities closed not-collapsible">
+                  <p class="govuk-body"><a class="govuk-link" href="#">Go to top level</a></p>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">01</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">LIVE ANIMALS</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">02</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">MEAT AND EDIBLE MEAT OFFAL</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">03</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">FISH AND CRUSTACEANS, MOLLUSCS AND OTHER AQUATIC INVERTEBRATES</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">04</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">DAIRY PRODUCE; BIRDS' EGGS; NATURAL HONEY; EDIBLE PRODUCTS OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">05</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">PRODUCTS OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">06</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">LIVE TREES AND OTHER PLANTS; BULBS, ROOTS AND THE LIKE; CUT FLOWERS AND ORNAMENTAL FOLIAGE</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">10</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">CEREALS</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">11</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">PRODUCTS OF THE MILLING INDUSTRY; MALT; STARCHES; INULIN; WHEAT GLUTEN</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">12</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">OIL SEEDS AND OLEAGINOUS FRUITS; MISCELLANEOUS GRAINS, SEEDS AND FRUIT; INDUSTRIAL OR MEDICINAL PLANTS; STRAW AND FODDER</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">14</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">VEGETABLE PLAITING MATERIALS; VEGETABLE PRODUCTS NOT ELSEWHERE SPECIFIED OR INCLUDED</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">15</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">ANIMAL OR VEGETABLE FATS AND OILS AND THEIR CLEAVAGE PRODUCTS; PREPARED EDIBLE FATS; ANIMAL OR VEGETABLE WAXES</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">16</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">PREPARATIONS OF MEAT, OF FISH OR OF CRUSTACEANS, MOLLUSCS OR OTHER AQUATIC INVERTEBRATES</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">17</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">SUGARS AND SUGAR CONFECTIONERY</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">18</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">COCOA AND COCOA PREPARATIONS</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">19</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">PREPARATIONS OF CEREALS, FLOUR, STARCH OR MILK; PASTRYCOOKS' PRODUCTS</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">20</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">PREPARATIONS OF VEGETABLES, FRUIT, NUTS OR OTHER PARTS OF PLANTS</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">21</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">MISCELLANEOUS EDIBLE PREPARATIONS</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">22</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">BEVERAGES, SPIRITS AND VINEGAR</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">23</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">RESIDUES AND WASTE FROM THE FOOD INDUSTRIES; PREPARED ANIMAL FODDER</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">28</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">INORGANIC CHEMICALS; ORGANIC OR INORGANIC COMPOUNDS OF PRECIOUS METALS, OF RARE-EARTH METALS, OF RADIOACTIVE ELEMENTS OR OF ISOTOPES</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">29</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">HYDROCARBONS AND THEIR HALOGENATED, SULPHONATED, NITRATED OR NITROSATED DERIVATIVES</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">30</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">PHARMACEUTICAL PRODUCTS</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">31</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">FERTILISERS</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">35</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">ALBUMINOIDAL SUBSTANCES; MODIFIED STARCHES; GLUES; ENZYMES</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">38</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">MISCELLANEOUS CHEMICAL PRODUCTS</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">39</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">PLASTICS AND ARTICLES THEREOF</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">41</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">RAW HIDES AND SKINS (OTHER THAN FURSKINS) AND LEATHER</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">42</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">ARTICLES OF LEATHER; SADDLERY AND HARNESS; TRAVEL GOODS, HANDBAGS AND SIMILAR CONTAINERS; ARTICLES OF ANIMAL GUT (OTHER THAN SILKWORM GUT)</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">43</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">FURSKINS AND ARTIFICIAL FUR; MANUFACTURES THEREOF</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">51</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">WOOL, FINE OR COARSE ANIMAL HAIR; HORSEHAIR YARN AND WOVEN FABRIC</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">95</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">TOYS, GAMES AND SPORTS REQUISITES; PARTS AND ACCESSORIES THEREOF</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">96</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">MISCELLANEOUS MANUFACTURED ARTICLES</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <li class="node-tree" data-v-7f2da1c9=""><strong class="commodity-code" data-v-7f2da1c9=""><a class="govuk-link" href="#" data-v-7f2da1c9="">97</a></strong><span class="commodity-label" data-v-7f2da1c9=""><a class="govuk-link"
+                            href="#" data-v-7f2da1c9="">WORKS OF ART, COLLECTORS' PIECES AND ANTIQUES</a></span>
+                        <!---->
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tree">
+                    <ul class="govuk-list no-bottom-margin">
+                      <!---->
+                    </ul>
+                  </div>
+                </div>
+              </section>
+              <!---->
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="govuk-button-group" type="submit"><button class="govuk-button" id="add-export">Add to export</button>
+        <!---->
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

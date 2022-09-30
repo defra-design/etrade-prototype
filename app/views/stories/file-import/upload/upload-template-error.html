@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!--<span class="govuk-caption-xl">
+      Description of the goods
+    </span>-->
+
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#upload-form">The uploaded file is password protected and cannot be read</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h1 class="govuk-heading-xl">Upload commodity data from a spreadsheet for {{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</h1>
+    <p>The spreadsheet that you upload must:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>be a .xlsx file</li>
+      <li>be no larger than 10MB</li>
+      <li>use the most updated version of the template</li>
+      <!--<li>only contain the commodities you have selected</li>-->
+    </ul>
+
+    <!--
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          View selected commodities in this certificate
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list">
+        {% for comCode in data.commodityCode %}
+          <li><span class="govuk-tag">{{ data.certificates[data.certificate | makeNumber].commodities[comCode | makeNumber].code }}</span>
+          {{ data.certificates[data.certificate | makeNumber].commodities[comCode | makeNumber].title | truncate(50) }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+    </details>
+    -->
+
+
+    <form class="" action="../processing/processing" method="post" id="upload-form">
+
+      <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="upload-file">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Upload the spreadsheet
+          </legend>
+          <p id="file-upload-1-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> The uploaded file is password protected and cannot be read
+          </p>
+          <input class="govuk-file-upload" id="file-upload-1" name="file_upload" type="file">
+
+        </fieldset>
+
+      </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Upload file
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

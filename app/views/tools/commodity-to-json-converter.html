@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Convert HTML select to JSON  – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+  pre, code {
+    font-family: monospace,monospace;
+    font-size: 1em;
+}
+
+pre {
+    max-width: inherit;
+    margin-bottom: 0;
+    padding: 20px;
+    border: 3px solid rgba(0,0,0,0);
+    outline: 1px solid rgba(0,0,0,0);
+    color: #0b0c0c;
+    background-color: #f3f2f1;
+    font-size: inherit;
+    margin-bottom:30px;
+}
+</style>
+
+<h1 class="govuk-heading-xl">
+  <span class="govuk-caption-xl">Tools</span>
+  Convert a HTML select to JSON
+</h1>
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+        Example structure to use
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <pre data-module="app-copy" style="" tabindex="0"><code class="hljs html">*030231* Albacore or longfinned tunas (Thunnus alalunga)
+
+*030232* Yellowfin tunas (Thunnus albacares)
+
+*030233* Skipjack or stripe-bellied bonito
+
+*030234* Bigeye tunas (Thunnus obesus)
+</code>
+</pre>
+  </div>
+</details>
+
+
+<form class="" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="htmlInput">
+          HTML
+        </label>
+        <textarea class="govuk-textarea" id="htmlInput" name="htmlInput" rows="9">{% if data.htmlInput %}{{data.htmlInput}}{% endif %}</textarea>
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="jsonOutput">
+          JSON output
+        </label>
+        <textarea class="govuk-textarea" id="jsonOutput" name="jsonOutput" rows="9" >{% if query.showResult == "yes"%}{{data.jsonResult}}{% endif %}</textarea>
+      </div>
+    </div>
+    <div class="govuk-grid-column-full">
+      <button class="govuk-button" data-module="govuk-button">
+        Convert to JSON
+    </button>
+      </div>
+</form>
+
+<script type="text/javascript">
+
+</script>
+
+{% endblock %}

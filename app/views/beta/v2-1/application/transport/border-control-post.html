@@ -1,0 +1,398 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+  .border-inspection-post {
+    margin: 1em 0;
+    background-color: #fff;
+}
+.border-inspection-post .bcp-heading {
+    padding: 0.5em;
+    background-color: #1f70b8;
+}
+.border-inspection-post .bcp-heading .govuk-heading-s {
+    margin: 0;
+    color: #fff;
+}
+.border-inspection-post .bcp-body {
+    padding: 0.5em;
+    border: 4px solid #1f70b8;
+}
+.border-inspection-post .govuk-button {
+    margin: 0;
+}
+</style>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="../task-list" method="post">
+  <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+    <!---->
+  </div>
+  <div class="govuk-grid-row" data-v-771dc26c="" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds" data-v-771dc26c=""><span class="govuk-caption-xl"> Transport </span>
+      <h1 class="govuk-heading-xl"> Entry border control post </h1>
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <div data-v-771dc26c="">
+        <p class="govuk-body" data-v-771dc26c=""> Select the country from the list below and then find and select the relevant entry border control post. </p>
+        <div class="govuk-form-group" data-v-771dc26c=""><label class="govuk-label" for="country" data-v-771dc26c=""> Country </label><select class="govuk-select" id="country" data-v-771dc26c="">
+            <option disabled="" value="" data-v-771dc26c=""> Select a country </option>
+            <option value="AT" data-v-771dc26c="">Austria</option>
+            <option value="BE" data-v-771dc26c="">Belgium</option>
+            <option value="BG" data-v-771dc26c="">Bulgaria</option>
+            <option value="HR" data-v-771dc26c="">Croatia</option>
+            <option value="CY" data-v-771dc26c="">Cyprus</option>
+            <option value="CZ" data-v-771dc26c="">Czechia</option>
+            <option value="DK" data-v-771dc26c="">Denmark</option>
+            <option value="EE" data-v-771dc26c="">Estonia</option>
+            <option value="FI" data-v-771dc26c="">Finland</option>
+            <option value="FR" data-v-771dc26c="">France</option>
+            <option value="DE" data-v-771dc26c="">Germany</option>
+            <option value="GR" data-v-771dc26c="">Greece</option>
+            <option value="HU" data-v-771dc26c="">Hungary</option>
+            <option value="IE" data-v-771dc26c="">Ireland</option>
+            <option value="IT" data-v-771dc26c="">Italy</option>
+            <option value="LV" data-v-771dc26c="">Latvia</option>
+            <option value="LT" data-v-771dc26c="">Lithuania</option>
+            <option value="LU" data-v-771dc26c="">Luxembourg</option>
+            <option value="MT" data-v-771dc26c="">Malta</option>
+            <option value="NL" data-v-771dc26c="">Netherlands (the)</option>
+            <option value="PL" data-v-771dc26c="">Poland</option>
+            <option value="PT" data-v-771dc26c="">Portugal</option>
+            <option value="RO" data-v-771dc26c="">Romania</option>
+            <option value="SK" data-v-771dc26c="">Slovakia</option>
+            <option value="SI" data-v-771dc26c="">Slovenia</option>
+            <option value="ES" data-v-771dc26c="">Spain</option>
+            <option value="SE" data-v-771dc26c="">Sweden</option>
+            <option value="XI" data-v-771dc26c="">United Kingdom - Northern Ireland</option>
+          </select></div>
+        <div class="govuk-form-group" data-v-771dc26c=""><label for="search-border-post-name" class="govuk-visually-hidden" data-v-771dc26c=""></label><input class="govuk-input" id="search-border-post-name" type="text" placeholder="Search"
+            data-v-771dc26c=""></div>
+        <div data-v-771dc26c="">
+          <div class="border-inspection-post" data-v-771dc26c="">
+            <div class="bcp-heading" data-v-771dc26c="">
+              <h4 class="govuk-heading-s" data-v-771dc26c="">Belfast Port - BCC <span class="govuk-tag govuk-tag--grey pull-right" data-v-771dc26c="">XIBEL1-BCC</span></h4>
+            </div>
+            <div class="bcp-body" data-v-771dc26c="">
+              <p class="govuk-body" data-v-771dc26c=""><strong data-v-771dc26c="">Address:</strong> Belfast City Council, 5 Corry Place, Belfast Harbour Estate, BT3 9HY</p>
+              <div data-v-771dc26c="">
+                <h4 class="govuk-heading-s" data-v-771dc26c="">Categories of animal goods specs</h4>
+                <ul class="govuk-list list-horizontal scrollable-auto" tabindex="0" data-v-771dc26c="">
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC-T(FR)(2)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-NHC-T(FR)(2)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">HC (Food)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">NHC (other)</span></li>
+                </ul>
+                <details class="govuk-details" data-module="govuk-details" data-v-771dc26c="">
+                  <summary class="govuk-details__summary" data-v-771dc26c=""><span class="govuk-details__summary-text" data-v-771dc26c=""> Help with categories of animal goods specs </span></summary>
+                  <div class="govuk-details__text" data-v-771dc26c="">
+                    <ul class="govuk-list govuk-list--bullet" data-v-771dc26c="">
+                      <li data-v-771dc26c="">POA-HC-T(FR)(2) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. Frozen products. Packed products only.</li>
+                      <li data-v-771dc26c="">POA-NHC-T(FR)(2) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. Frozen products. Packed products only.</li>
+                      <li data-v-771dc26c="">PNAO : Products of non-animal origin.</li>
+                      <li data-v-771dc26c="">HC (Food) : Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014.</li>
+                      <li data-v-771dc26c="">NHC (other) : Products of non-animal origin, which are neither food nor feed.</li>
+                    </ul>
+                  </div>
+                </details>
+              </div><button class="govuk-button govuk-button--secondary full-width select-this-bcp" data-v-771dc26c="">Select this entry border control post</button>
+            </div>
+          </div>
+          <div class="border-inspection-post" data-v-771dc26c="">
+            <div class="bcp-heading" data-v-771dc26c="">
+              <h4 class="govuk-heading-s" data-v-771dc26c="">Belfast Port - DAERA <span class="govuk-tag govuk-tag--grey pull-right" data-v-771dc26c="">XIBEL1-DAERA</span></h4>
+            </div>
+            <div class="bcp-body" data-v-771dc26c="">
+              <p class="govuk-body" data-v-771dc26c=""><strong data-v-771dc26c="">Address:</strong> Belfast City Council, 5 Corry Place, Belfast Harbour Estate, BT3 9HY</p>
+              <div data-v-771dc26c="">
+                <h4 class="govuk-heading-s" data-v-771dc26c="">Categories of animal goods specs</h4>
+                <ul class="govuk-list list-horizontal scrollable-auto" tabindex="0" data-v-771dc26c="">
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC-T(FR)(2)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-NHC-T(FR)(2)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">HC (Food)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">NHC (other)</span></li>
+                </ul>
+                <details class="govuk-details" data-module="govuk-details" data-v-771dc26c="">
+                  <summary class="govuk-details__summary" data-v-771dc26c=""><span class="govuk-details__summary-text" data-v-771dc26c=""> Help with categories of animal goods specs </span></summary>
+                  <div class="govuk-details__text" data-v-771dc26c="">
+                    <ul class="govuk-list govuk-list--bullet" data-v-771dc26c="">
+                      <li data-v-771dc26c="">POA-HC-T(FR)(2) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. Frozen products. Packed products only.</li>
+                      <li data-v-771dc26c="">POA-NHC-T(FR)(2) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. Frozen products. Packed products only.</li>
+                      <li data-v-771dc26c="">PNAO : Products of non-animal origin.</li>
+                      <li data-v-771dc26c="">HC (Food) : Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014.</li>
+                      <li data-v-771dc26c="">NHC (other) : Products of non-animal origin, which are neither food nor feed.</li>
+                    </ul>
+                  </div>
+                </details>
+              </div><button class="govuk-button govuk-button--secondary full-width select-this-bcp" data-v-771dc26c="">Select this entry border control post</button>
+            </div>
+          </div>
+          <div class="border-inspection-post" data-v-771dc26c="">
+            <div class="bcp-heading" data-v-771dc26c="">
+              <h4 class="govuk-heading-s" data-v-771dc26c="">Belfast International Airport - DAERA <span class="govuk-tag govuk-tag--grey pull-right" data-v-771dc26c="">XIBEL4</span></h4>
+            </div>
+            <div class="bcp-body" data-v-771dc26c="">
+              <p class="govuk-body" data-v-771dc26c=""><strong data-v-771dc26c="">Address:</strong> DAERA Office,Cargo Centre,Belfast International Airport,Belfast,BT29 4AB</p>
+              <div data-v-771dc26c="">
+                <h4 class="govuk-heading-s" data-v-771dc26c="">Categories of animal goods specs</h4>
+                <ul class="govuk-list list-horizontal scrollable-auto" tabindex="0" data-v-771dc26c="">
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-NHC-NT</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-NHC-T(CH)</span></li>
+                </ul>
+                <details class="govuk-details" data-module="govuk-details" data-v-771dc26c="">
+                  <summary class="govuk-details__summary" data-v-771dc26c=""><span class="govuk-details__summary-text" data-v-771dc26c=""> Help with categories of animal goods specs </span></summary>
+                  <div class="govuk-details__text" data-v-771dc26c="">
+                    <ul class="govuk-list govuk-list--bullet" data-v-771dc26c="">
+                      <li data-v-771dc26c="">POA-NHC-NT : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. No temperature requirement.</li>
+                      <li data-v-771dc26c="">POA-NHC-T(CH) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. Chilled products.</li>
+                    </ul>
+                  </div>
+                </details>
+              </div><button class="govuk-button govuk-button--secondary full-width select-this-bcp" data-v-771dc26c="">Select this entry border control post</button>
+            </div>
+          </div>
+          <div class="border-inspection-post" data-v-771dc26c="">
+            <div class="bcp-heading" data-v-771dc26c="">
+              <h4 class="govuk-heading-s" data-v-771dc26c="">Larne Harbour - DAERA <span class="govuk-tag govuk-tag--grey pull-right" data-v-771dc26c="">XILAR1-DAERA</span></h4>
+            </div>
+            <div class="bcp-body" data-v-771dc26c="">
+              <p class="govuk-body" data-v-771dc26c=""><strong data-v-771dc26c="">Address:</strong> Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Redlands Road, Larne Harbour, BT40 1AX</p>
+              <div data-v-771dc26c="">
+                <h4 class="govuk-heading-s" data-v-771dc26c="">Categories of animal goods specs</h4>
+                <ul class="govuk-list list-horizontal scrollable-auto" tabindex="0" data-v-771dc26c="">
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">LA-E</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">LA-O</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">LA-U</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-NHC</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-NHC(feed)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">P</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP(WP)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">OO</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC(fish/fishery products)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-HC(food)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-NHC(other)(1)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">COI(organics)</span></li>
+                </ul>
+                <details class="govuk-details" data-module="govuk-details" data-v-771dc26c="">
+                  <summary class="govuk-details__summary" data-v-771dc26c=""><span class="govuk-details__summary-text" data-v-771dc26c=""> Help with categories of animal goods specs </span></summary>
+                  <div class="govuk-details__text" data-v-771dc26c="">
+                    <ul class="govuk-list govuk-list--bullet" data-v-771dc26c="">
+                      <li data-v-771dc26c="">LA-E : Live animals. Registered equidae.</li>
+                      <li data-v-771dc26c="">LA-O : Live animals. Other animals other than Ungulates (This abbreviation includes zoo Ungulates).</li>
+                      <li data-v-771dc26c="">LA-U : Live animals. Ungulates other than registered equidae.</li>
+                      <li data-v-771dc26c="">POA-HC : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption.</li>
+                      <li data-v-771dc26c="">POA-NHC : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption.</li>
+                      <li data-v-771dc26c="">PNAO-NHC(feed) : Products of non-animal origin. Feed of non-animal origin covered by conditions or measures referred to in Article 47(1)(d)(e) or (f) of (Regulation (EU) 2017/625.</li>
+                      <li data-v-771dc26c="">P : Plants.</li>
+                      <li data-v-771dc26c="">PP : Plant products.</li>
+                      <li data-v-771dc26c="">PP(WP) : Wood and wood products.</li>
+                      <li data-v-771dc26c="">OO : Other objects.</li>
+                      <li data-v-771dc26c="">POA-HC(fish/fishery products) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Unknown description.</li>
+                      <li data-v-771dc26c="">PNAO-HC(food) : Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014.</li>
+                      <li data-v-771dc26c="">PNAO-NHC(other)(1) : Products of non-animal origin. Products of non-animal origin, which are neither food nor feed. See additional specifications.</li>
+                      <li data-v-771dc26c="">COI(organics) : Unknown description.</li>
+                    </ul>
+                  </div>
+                </details>
+              </div><button class="govuk-button govuk-button--secondary full-width select-this-bcp" data-v-771dc26c="">Select this entry border control post</button>
+            </div>
+          </div>
+          <div class="border-inspection-post" data-v-771dc26c="">
+            <div class="bcp-heading" data-v-771dc26c="">
+              <h4 class="govuk-heading-s" data-v-771dc26c="">Larne Harbour - MEA <span class="govuk-tag govuk-tag--grey pull-right" data-v-771dc26c="">XILAR1-MEA</span></h4>
+            </div>
+            <div class="bcp-body" data-v-771dc26c="">
+              <p class="govuk-body" data-v-771dc26c=""><strong data-v-771dc26c="">Address:</strong> Mid and East Antrim Borough Council, Shed 66, Redlands Road Larne Harbour, BT40 1AX</p>
+              <div data-v-771dc26c="">
+                <h4 class="govuk-heading-s" data-v-771dc26c="">Categories of animal goods specs</h4>
+                <ul class="govuk-list list-horizontal scrollable-auto" tabindex="0" data-v-771dc26c="">
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">LA-E</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">LA-O</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">LA-U</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-NHC</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-NHC(feed)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">P</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP(WP)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">OO</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC(fish/fishery products)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-HC(food)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-NHC(other)(1)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">COI(organics)</span></li>
+                </ul>
+                <details class="govuk-details" data-module="govuk-details" data-v-771dc26c="">
+                  <summary class="govuk-details__summary" data-v-771dc26c=""><span class="govuk-details__summary-text" data-v-771dc26c=""> Help with categories of animal goods specs </span></summary>
+                  <div class="govuk-details__text" data-v-771dc26c="">
+                    <ul class="govuk-list govuk-list--bullet" data-v-771dc26c="">
+                      <li data-v-771dc26c="">LA-E : Live animals. Registered equidae.</li>
+                      <li data-v-771dc26c="">LA-O : Live animals. Other animals other than Ungulates (This abbreviation includes zoo Ungulates).</li>
+                      <li data-v-771dc26c="">LA-U : Live animals. Ungulates other than registered equidae.</li>
+                      <li data-v-771dc26c="">POA-HC : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption.</li>
+                      <li data-v-771dc26c="">POA-NHC : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption.</li>
+                      <li data-v-771dc26c="">PNAO-NHC(feed) : Products of non-animal origin. Feed of non-animal origin covered by conditions or measures referred to in Article 47(1)(d)(e) or (f) of (Regulation (EU) 2017/625.</li>
+                      <li data-v-771dc26c="">P : Plants.</li>
+                      <li data-v-771dc26c="">PP : Plant products.</li>
+                      <li data-v-771dc26c="">PP(WP) : Wood and wood products.</li>
+                      <li data-v-771dc26c="">OO : Other objects.</li>
+                      <li data-v-771dc26c="">POA-HC(fish/fishery products) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Unknown description.</li>
+                      <li data-v-771dc26c="">PNAO-HC(food) : Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014.</li>
+                      <li data-v-771dc26c="">PNAO-NHC(other)(1) : Products of non-animal origin. Products of non-animal origin, which are neither food nor feed. See additional specifications.</li>
+                      <li data-v-771dc26c="">COI(organics) : Unknown description.</li>
+                    </ul>
+                  </div>
+                </details>
+              </div><button class="govuk-button govuk-button--secondary full-width select-this-bcp" data-v-771dc26c="">Select this entry border control post</button>
+            </div>
+          </div>
+          <div class="border-inspection-post" data-v-771dc26c="">
+            <div class="bcp-heading" data-v-771dc26c="">
+              <h4 class="govuk-heading-s" data-v-771dc26c="">Foyle Port - DAERA <span class="govuk-tag govuk-tag--grey pull-right" data-v-771dc26c="">XILDY1</span></h4>
+            </div>
+            <div class="bcp-body" data-v-771dc26c="">
+              <p class="govuk-body" data-v-771dc26c=""><strong data-v-771dc26c="">Address:</strong> Dept. Agriculture, Environment and Rural Affairs, Lisahally Port, Port Road, Londonderry, Co. Londonderry, BT47 6FL</p>
+              <div data-v-771dc26c="">
+                <h4 class="govuk-heading-s" data-v-771dc26c="">Categories of animal goods specs</h4>
+                <ul class="govuk-list list-horizontal scrollable-auto" tabindex="0" data-v-771dc26c="">
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">P</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP(WP)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">OO</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-NHC-NT</span></li>
+                </ul>
+                <details class="govuk-details" data-module="govuk-details" data-v-771dc26c="">
+                  <summary class="govuk-details__summary" data-v-771dc26c=""><span class="govuk-details__summary-text" data-v-771dc26c=""> Help with categories of animal goods specs </span></summary>
+                  <div class="govuk-details__text" data-v-771dc26c="">
+                    <ul class="govuk-list govuk-list--bullet" data-v-771dc26c="">
+                      <li data-v-771dc26c="">P : Plants.</li>
+                      <li data-v-771dc26c="">PP : Plant products.</li>
+                      <li data-v-771dc26c="">PP(WP) : Wood and wood products.</li>
+                      <li data-v-771dc26c="">OO : Other objects.</li>
+                      <li data-v-771dc26c="">POA-NHC-NT : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. No temperature requirement.</li>
+                    </ul>
+                  </div>
+                </details>
+              </div><button class="govuk-button govuk-button--secondary full-width select-this-bcp" data-v-771dc26c="">Select this entry border control post</button>
+            </div>
+          </div>
+          <div class="border-inspection-post" data-v-771dc26c="">
+            <div class="bcp-heading" data-v-771dc26c="">
+              <h4 class="govuk-heading-s" data-v-771dc26c="">Warrenpoint Port - DAERA <span class="govuk-tag govuk-tag--grey pull-right" data-v-771dc26c="">XIWPT1-DAERA</span></h4>
+            </div>
+            <div class="bcp-body" data-v-771dc26c="">
+              <p class="govuk-body" data-v-771dc26c=""><strong data-v-771dc26c="">Address:</strong> Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Portal Inspection Office, Warrenpoint Port, BT34 3JR</p>
+              <div data-v-771dc26c="">
+                <h4 class="govuk-heading-s" data-v-771dc26c="">Categories of animal goods specs</h4>
+                <ul class="govuk-list list-horizontal scrollable-auto" tabindex="0" data-v-771dc26c="">
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-NHC</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-HC (food)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-NHC (feed)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">P</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP(WP)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">OO</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC (fish/fishery products)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-HC (food)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-NHC (other) (1)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">COI (organics)</span></li>
+                </ul>
+                <details class="govuk-details" data-module="govuk-details" data-v-771dc26c="">
+                  <summary class="govuk-details__summary" data-v-771dc26c=""><span class="govuk-details__summary-text" data-v-771dc26c=""> Help with categories of animal goods specs </span></summary>
+                  <div class="govuk-details__text" data-v-771dc26c="">
+                    <ul class="govuk-list govuk-list--bullet" data-v-771dc26c="">
+                      <li data-v-771dc26c="">POA-HC : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption.</li>
+                      <li data-v-771dc26c="">POA-NHC : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption.</li>
+                      <li data-v-771dc26c="">PNAO-HC (food) : Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014.</li>
+                      <li data-v-771dc26c="">PNAO-NHC (feed) : Products of non-animal origin. Feed of non-animal origin covered by conditions or measures referred to in Article 47(1)(d)(e) or (f) of (Regulation (EU) 2017/625.</li>
+                      <li data-v-771dc26c="">P : Plants.</li>
+                      <li data-v-771dc26c="">PP : Plant products.</li>
+                      <li data-v-771dc26c="">PP(WP) : Wood and wood products.</li>
+                      <li data-v-771dc26c="">OO : Other objects.</li>
+                      <li data-v-771dc26c="">POA-HC (fish/fishery products) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Unknown description.</li>
+                      <li data-v-771dc26c="">PNAO-HC (food) : Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014.</li>
+                      <li data-v-771dc26c="">PNAO-NHC (other) (1) : Products of non-animal origin. Products of non-animal origin, which are neither food nor feed. See additional specifications.</li>
+                      <li data-v-771dc26c="">COI (organics) : Unknown description.</li>
+                    </ul>
+                  </div>
+                </details>
+              </div><button class="govuk-button govuk-button--secondary full-width select-this-bcp" data-v-771dc26c="">Select this entry border control post</button>
+            </div>
+          </div>
+          <div class="border-inspection-post" data-v-771dc26c="">
+            <div class="bcp-heading" data-v-771dc26c="">
+              <h4 class="govuk-heading-s" data-v-771dc26c="">Warrenpoint Port - NMD <span class="govuk-tag govuk-tag--grey pull-right" data-v-771dc26c="">XIWPT1-NMD</span></h4>
+            </div>
+            <div class="bcp-body" data-v-771dc26c="">
+              <p class="govuk-body" data-v-771dc26c=""><strong data-v-771dc26c="">Address:</strong> Newry, Mourne and Down District Council, Warrenpoint Harbour, Inspection Facility, The Docks, Warrenpoint, BT34 3JR</p>
+              <div data-v-771dc26c="">
+                <h4 class="govuk-heading-s" data-v-771dc26c="">Categories of animal goods specs</h4>
+                <ul class="govuk-list list-horizontal scrollable-auto" tabindex="0" data-v-771dc26c="">
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-NHC</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-HC (food)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-NHC (feed)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">P</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PP(WP)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">OO</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">POA-HC (fish/fishery products)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-HC (food)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">PNAO-NHC (other) (1)</span></li>
+                  <li data-v-771dc26c=""><span class="govuk-tag" data-v-771dc26c="">COI (organics)</span></li>
+                </ul>
+                <details class="govuk-details" data-module="govuk-details" data-v-771dc26c="">
+                  <summary class="govuk-details__summary" data-v-771dc26c=""><span class="govuk-details__summary-text" data-v-771dc26c=""> Help with categories of animal goods specs </span></summary>
+                  <div class="govuk-details__text" data-v-771dc26c="">
+                    <ul class="govuk-list govuk-list--bullet" data-v-771dc26c="">
+                      <li data-v-771dc26c="">POA-HC : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption.</li>
+                      <li data-v-771dc26c="">POA-NHC : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption.</li>
+                      <li data-v-771dc26c="">PNAO-HC (food) : Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014.</li>
+                      <li data-v-771dc26c="">PNAO-NHC (feed) : Products of non-animal origin. Feed of non-animal origin covered by conditions or measures referred to in Article 47(1)(d)(e) or (f) of (Regulation (EU) 2017/625.</li>
+                      <li data-v-771dc26c="">P : Plants.</li>
+                      <li data-v-771dc26c="">PP : Plant products.</li>
+                      <li data-v-771dc26c="">PP(WP) : Wood and wood products.</li>
+                      <li data-v-771dc26c="">OO : Other objects.</li>
+                      <li data-v-771dc26c="">POA-HC (fish/fishery products) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Unknown description.</li>
+                      <li data-v-771dc26c="">PNAO-HC (food) : Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014.</li>
+                      <li data-v-771dc26c="">PNAO-NHC (other) (1) : Products of non-animal origin. Products of non-animal origin, which are neither food nor feed. See additional specifications.</li>
+                      <li data-v-771dc26c="">COI (organics) : Unknown description.</li>
+                    </ul>
+                  </div>
+                </details>
+                <input type="hidden" name="border-control-post" value="yes">
+              </div><button class="govuk-button govuk-button--secondary full-width select-this-bcp" data-v-771dc26c="">Select this entry border control post</button>
+            </div>
+          </div>
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

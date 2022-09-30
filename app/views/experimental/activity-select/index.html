@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      Select activity when searching an address</h1>
+      <!-- <p>This is a redesign of the reused componenet that looks up establishments, certifiers, exeporters etc.</p> -->
+      <!-- <h2 class="govuk-heading-m">What changed</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Initial build</li>
+        <li>Adding manage commodites, not dynamic</li>
+      </ul> -->
+
+      <p>This version has not been tested yet</p>
+
+
+
+      <h3 class="govuk-heading-m">As-is design</h3>
+
+      <p>If you search of "Moy" you will get 2 results one with a single activity and one with multiple.</p>
+      <ul class="govuk-list">
+        <li><a href="consignee">Search for consignee or importer</a></li>
+        <li><a href="consignee-selected?id=11&back=consignee">Select activity (multiple activites for address)</a></li>
+        <li><a href="consignee-selected?id=10&back=consignee">Activity already set (single activity for address)</a></li>
+        <li><a href="consignee-selected?id=11&back=consignee&hasError=yes">Select activity error (not selected)</a></li>
+        <li><a href="consignee?id=4">Select a different consignee</a></li>
+
+        <br>
+        <li><a href="https://www.figma.com/file/l3MMeJ9NJCJfmIgtEioFcr/E-certs?node-id=329%3A691">Commodity page example - (Figma)</a></li>
+      </ul>
+
+      <h3 class="govuk-heading-m">Redesign (micro service)</h3>
+      <p>Based on current redesign. Search for "farm" you will get 3 results.</p>
+      <ul class="govuk-list">
+        <li><a href="commodity-v2">Start from commodity page</a></li>
+      </ul>
+
+
+  </div>
+
+</div>
+
+{% endblock %}

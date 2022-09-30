@@ -1,0 +1,219 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or-exporter – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<style media="screen">
+  .js-enabled #search-block{
+    display:none;
+  }
+</style>
+<form class="" action="../task-list" method="post">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl">Responsible for load</h1>
+      <p class="govuk-body">If you wish to complete this section you should search for the name and address of the forwarding agent/importer in the EU who will be declaring the consignment to the BCP.
+</p>
+<p class="govuk-body">Search for the name and address of the person in the European Union in charge of the consignment when presented to the BCP and who makes the necessary declarations to the competent authorities either as the importer or on behalf of the importer.</p>
+      <h2 class="govuk-visually-hidden">Country</h2>
+      <section>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="operator-search-country"> Country </label>
+          <select class="govuk-select full-width" id="operator-search-country">
+            <option value="choose" selected>Choose a country</option>
+            <option value="AT">Austria</option>
+            <option value="BE">Belgium</option>
+            <option value="BG">Bulgaria</option>
+            <option value="HR">Croatia</option>
+            <option value="CY">Cyprus</option>
+            <option value="CZ">Czechia</option>
+            <option value="DK">Denmark</option>
+            <option value="EE">Estonia</option>
+            <option value="FI">Finland</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="GR">Greece</option>
+            <option value="HU">Hungary</option>
+            <option value="IE">Ireland</option>
+            <option value="IT">Italy</option>
+            <option value="LV">Latvia</option>
+            <option value="LT">Lithuania</option>
+            <option value="LU">Luxembourg</option>
+            <option value="MT">Malta</option>
+            <option value="NL">Netherlands (the)</option>
+            <option value="PL">Poland</option>
+            <option value="PT">Portugal</option>
+            <option value="RO">Romania</option>
+            <option value="SK">Slovakia</option>
+            <option value="SI">Slovenia</option>
+            <option value="ES">Spain</option>
+            <option value="SE">Sweden</option>
+            <option value="XI">United Kingdom - Northern Ireland</option>
+          </select>
+        </div>
+        <div class="prototype-block " id="search-block">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="search-field-CONSIGNOR"> Search for and select consignor
+          </label>
+          <div class="govuk-input__wrapper">
+            <input class="govuk-input" id="search-field-CONSIGNOR" spellcheck="false" placeholder="Type here">
+            <div class="govuk-input__suffix operator-search-indicator no-bg"><button id="operator-search-button" class="govuk-button govuk-button--primary" type="button"> Search
+                <!---->
+              </button></div>
+          </div>
+          <label class="govuk-label govuk-label--s m-t-10" for="search-field-postcode-CONSIGNOR"> Postcode </label>
+          <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-10" id="search-field-postcode-CONSIGNOR" spellcheck="false" placeholder="Type postcode here"></div>
+          <div class="govuk-checkboxes__item m-t-10"><input class="govuk-checkboxes__input" id="show-exact-match-CONSIGNOR" name="show-exact-match" type="checkbox"><label class="govuk-label govuk-checkboxes__label" for="show-exact-match-CONSIGNOR">
+              Show only exact matches </label></div>
+          <div class="govuk-checkboxes__item m-t-10"><input class="govuk-checkboxes__input" id="search-by-approval-CONSIGNOR" name="search-by-approval" type="checkbox"><label class="govuk-label govuk-checkboxes__label"
+              for="search-by-approval-CONSIGNOR"> Search by approval number </label></div>
+          <!---->
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible operator-search-results">
+        <span class="govuk-caption-m operator-search-results">Search results</span>
+        <h2 class="govuk-heading-m search-result" aria-live="polite" aria-atomic="true"></h2> <!-- "<span class="search-result--query"></span>"  -->
+        <div class="govuk-form-group operator-search-filter">
+          <label class="govuk-label" for="operator-search-filter-classification"> Filter by classification </label><select class="govuk-select" id="operator-search-filter-classification"
+            name="operator-search-filter-classification">
+            <option>None</option>
+            <option value="ANIMAL_EXPORTER">Animal exporter</option>
+            <option value="MEAT_PREPARATION_PLANT">Meat Preparation Plant</option>
+            <option value="ANIMAL_IMPORTER">Animal importer</option>
+            <option value="EXPORTER">Exporter</option>
+          </select></div>
+          <input type="hidden" name="defaultValue" id="defaultValue" value="{% if query.hasError == 'yes'%}{{data.countrySelect[0]}}{%else%}{% endif %}">
+        {% set type = "operator"%}
+        {% for operator in data.establishments %}
+        <div class="operator-pane" data-content="{{operator.TradingName}}">
+          <div class="operator-pane-heading">
+            <h4 class="govuk-heading-s">{{operator.TradingName}}</h4>
+          </div>
+          <div class="operator-pane-body">
+            <h4 class="govuk-heading-s">{{operator.TradingName}}</h4>
+            <ul class="govuk-list">
+              {% for activity in operator.All_Activities%}
+              <li class="row">
+                <div class="col-sm-10"><strong>{{activity}}</strong> - Food</div>
+                <div class="col-sm-2"><span class="govuk-tag pull-right">Valid</span></div>
+              </li>
+              {% endfor %}
+            </ul>
+            <details class="govuk-details" data-module="govuk-details" open="">
+              <summary class="govuk-details__summary"><span class="govuk-details__summary-text">View address for this {{type}}</span></summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">
+                  {{operator.Address1}}<br>
+                  {% if operator.Address2%}{{operator.Address2}}<br>{% endif %}
+                  {% if operator.Address3%}{{operator.Address3}}<br>{% endif %}
+                  {{operator.Town}}<br>
+                  {{operator.Postcode}}
+                </p>
+              </div>
+            </details><button class="govuk-button govuk-button--secondary full-width"> Select this operator</button>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% if query.change == "yes"%}
+        <p class="govuk-body"> If you would like to cancel and keep your current selection, <a class="govuk-link" href="#" id="operator-search-cancel-search"> click here </a></p>
+        {% endif %}
+        </div>
+        <div class="prototype-block" id="search-waiting-text">
+          <h3 class="govuk-heading-s">Search for and select operator </h3>
+          <div class="govuk-inset-text" > You must select a country before beginning a search </div>
+        </div>
+
+      </section><button class="govuk-button">Save and return</button>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+
+
+    id = 'autocomplete-autoselect';
+    element = document.querySelector('#operator-search-country')
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: element,
+      name : "country",
+      showAllValues: true,
+      autoselect: false,
+      dropdownArrow: function (config) {
+        return '<svg class="autocomplete__dropdown-arrow-down" style="top: 8px;" viewBox="0 0 512 512"><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"></path></svg>'
+      },
+      defaultValue: document.querySelector("#defaultValue").value || ''
+
+    })
+    // dropdownArrow: function(config) {
+    //     return '<svg class="' + config.className +
+    //       '" style="top: 8px; z-index:1" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+    //   },
+  })
+</script>
+<script type="text/javascript">
+
+  window.addEventListener('load', function() {
+
+
+    $(document).on('change','#operator-search-country',function(){
+        $('#search-waiting-text').hide();
+        $('#search-block').show();
+    });
+
+
+
+    $(".operator-search-results").hide()
+    $(".operator-pane").hide()
+    $(".operator-search-filter").hide()
+    $('#operator-search-button').on("click", function() {
+      $(".operator-pane").hide()
+      $(".operator-search-filter").hide()
+      if ($(".operator-search-results").hasClass("hidden")) {
+        $(".operator-search-results").removeClass("hidden")
+      }
+      $(".operator-search-results").show()
+      let q = $('#search-field-CONSIGNOR').val().toLowerCase()
+      $(".operator-pane").filter(function() {
+        var t = $(this).attr("data-content").toLowerCase()
+        if (q != "" && t.indexOf(q) > 0) {
+          return $(this)
+        }
+      }).show()
+      var count = $(".operator-pane:visible").length
+      var r
+      if (count == 1) {
+        r = count + " match found"
+
+      } else {
+        r = count + " matches found"
+      }
+      if (count > 0) {
+
+        $(".operator-search-filter").show()
+      }
+
+      $(".search-result").text(r)
+
+    })
+
+
+
+  })
+</script>
+{% endblock%}

@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <header class="hmrc-page-heading">
+      <h1 class="govuk-heading-l">How do you want to sign in?</h1>
+    </header>
+    <p class="govuk-body govuk-!-margin-bottom-2">You are already signed in with Government Gateway user ID:</p>
+
+      <h2 class="govuk-heading-m">33 22 12 03 43</h2>
+
+
+    <!-- with the User ID <strong>33 22 12 03 43</strong></p> -->
+    <form action="" method="POST" class="js-form" autocomplete="on" novalidate="novalidate" id="gf-form">
+      <!-- <h2 class="govuk-heading-m">Original surcharge paid: £{{(data.original_cost|makeNumber)}}</h2> -->
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        {% if data.prototype=='gform' %}
+
+        <input id="urlRedirect" type="hidden" name="redirectionUrl" value="https://www.qa.tax.service.gov.uk/submissions/new-form/{{ data.gform_template or 'nrsdlt-v4-1' }}">
+        <input id="credentialStrength" type="hidden" name="credentialStrength" value="weak">
+        <input id="email" type="hidden" name="email" size="30" maxlength="300" value="user@test.com">
+        <input id="authorityId" type="hidden" aria-describedby="authorityIdHint" name="authorityId" size="30" maxlength="30" value="">
+        <select id="confidenceLevel" name="confidenceLevel" aria-describedby="confidenceLevelHint" style="display: none">
+          <option value="weak">weak</option>
+          <option value="50" selected="selected">50</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+          <option value="300">300</option>
+        </select>
+        <select name="affinityGroup" id="affinityGroupSelect" style="display: none">
+          <option value="Individual">Individual</option>
+          <option value="Organisation">Organisation</option>
+          <option value="Agent">Agent</option>
+        </select>
+        <select name="credentialRole" aria-describedby="credentialRoleHint" style="display: none" id="credential-role-select">
+          <option value="User">User</option>
+        </select>
+        {%endif%}
+        <div class="govuk-radio govuk-radios--conditional" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="requirementAnswer1-Yes" name="verifiy_method" type="radio" value="gg_logged">
+            <label class="govuk-label govuk-radios__label" for="requirementAnswer1-Yes">
+              Continue with this Government Gateway user ID
+            </label>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="requirementAnswer1-no" name="verifiy_method" type="radio" value="gg_not_logged~gov-sign-in" data-aria-controls="conditional-differnet-account">
+            <label class="govuk-label govuk-radios__label" for="requirementAnswer1-no">
+              Sign in with a different Government Gateway user ID
+            </label>
+            <!-- <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+          This will sign you out of any service currenlty using your Government Gateway account 33 22 12 03 43
+        </div> -->
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-differnet-account"">
+              <p class="govuk-body">This will sign you out of any service currenlty using your Government Gateway user ID <strong>33 22 12 03 43</strong></p>
+      </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="sign-in-2" name="verifiy_method" type="radio" value="email-verify~enter-email" aria-describedby="sign-in-2-item-hint">
+            <label class="govuk-label govuk-radios__label" for="sign-in-2">
+              Sign in with your email address
+            </label>
+
+
+          </div>
+        </div>
+      </fieldset>
+      <br>
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+    </form>
+    {% block pageFooter %}{% include "../../includes/page-footer.html" %}{% endblock %}
+
+  </div>
+</div>
+{% endblock %}

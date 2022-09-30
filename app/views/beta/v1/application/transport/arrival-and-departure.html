@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="../task-list" method="post">
+  <section id="intro" data-v-4e598067="">
+    <div class="govuk-grid-row" data-v-4e598067="">
+      <div class="govuk-grid-column-two-thirds" data-v-4e598067=""><span class="govuk-caption-xl"> Transport </span>
+        <h1 class="govuk-heading-xl"> Departure and arrival </h1>
+        <!---->
+        <!---->
+        <!---->
+        <p class="govuk-body" data-v-4e598067=""> Provide details about the date and time of departure and the date and time of arrival at the border control post, for your export below. </p>
+      </div>
+    </div>
+  </section>
+  <!---->
+  <section id="departure" data-v-4e598067="">
+    <div class="govuk-grid-row" data-v-4e598067="">
+      <div class="govuk-grid-column-two-thirds" data-v-4e598067="">
+        <h2 class="govuk-heading-l" data-v-4e598067="">1. Departure</h2>
+        <p class="govuk-body" data-v-4e598067=""> The date and time when the means of transport departs (aeroplane, vessel, railway or road vehicle). </p>
+        <div class="govuk-form-group" data-v-4e598067="">
+          <fieldset class="govuk-fieldset" aria-describedby="date-hint" data-v-4e598067="">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-4e598067="">
+              <h1 class="govuk-fieldset__heading" data-v-4e598067=""> What date and time is this export due for departure? </h1>
+            </legend>
+            <div id="date-hint" class="govuk-hint" data-v-4e598067=""> For example, 26/09/2022 10:07 </div>
+            <!---->
+            <!----><span class="p-calendar p-component p-inputwrapper p-inputwrapper-filled" data-v-4e598067=""><input type="text" class="p-inputtext p-component" name="departure" inputmode="none">
+              <!---->
+            </span>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="arrival" data-v-4e598067="">
+    <h2 class="govuk-heading-l" data-v-4e598067="">2. Estimated arrival</h2>
+    <p class="govuk-body" data-v-4e598067=""> The estimated date and time when the means of transport arrives at the BCP. </p>
+    <div class="govuk-form-group" data-v-4e598067="">
+      <fieldset class="govuk-fieldset" aria-describedby="date-hint" data-v-4e598067="">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-4e598067="">
+          <h1 class="govuk-fieldset__heading" data-v-4e598067=""> What estimated date and time will this export arrive at the border control post? </h1>
+        </legend>
+        <div id="departure-date-hint" class="govuk-hint" data-v-4e598067=""> For example, 29/09/2022 10:07 </div>
+        <!----><span class="p-calendar p-component p-inputwrapper p-inputwrapper-filled" data-v-4e598067=""><input type="text" class="p-inputtext p-component" name="arrival" inputmode="none">
+          <!---->
+        </span>
+      </fieldset>
+    </div>
+  </section>
+  <p class="govuk-body" data-v-4e598067=""> Based on the dates selected above, this export application must be submitted to the EU before <strong data-v-4e598067="">04 June 2022</strong>. </p>
+  <section id="actions" data-v-4e598067=""><button class="govuk-button" data-v-4e598067="">
+      <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Save and return</font>
+      </font>
+    </button></section>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

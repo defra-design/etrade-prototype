@@ -1,0 +1,325 @@
+{
+  "number": "EHC8364",
+  "title": "Live bivalve molluscs, echinoderms, tunicates, marine gastropods and products from these animals intended for human consumption to the European Union and Northern Ireland",
+  "batchNumber": "single",
+  "coldStore" : "yes",
+  "identificationMark": "yes",
+  "treatmentType": [
+    "Chilled",
+    "Frozen",
+    "Live",
+    "Processed"
+  ],
+  "natureOfCommodity": [
+    "Aquarium",
+    "Wild stock"
+  ],
+  "finalConsumerOption": "yes",
+  "dateOfCollectionProduction": "single",
+  "manufacturingPlant" : "yes",
+  "sanitaryRegionOfOrigin" : "yes",
+
+  "schema": [
+    { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+    { "id": "productDescription", "title": "Description", "required" : "no", "type" : "string"},
+    { "id": "species", "title": "Species", "required" : "yes", "type" : "string", "error" : "Species name is invalid"},
+    { "id": "coldStore", "title": "Cold store", "required" : "yes", "type" : "string", "error" : "Enter a valid approval number for cold store"},
+    { "id": "identificationMark", "title": "Identification mark", "required" : "yes", "type" : "string", "error" : "Missing identification mark"},
+    { "id": "PACKAGE_COUNT", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+    { "id": "PACKAGE_COUNT_quatifier", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
+    { "id": "NET_WEIGHT", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+    { "id": "NET_WEIGHT_quatifier", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+    { "id": "treatmentType", "title": "Treatment type", "required" : "yes", "type" : "string", "error" : "Select a valid treatment type from the list"},
+    { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "type" : "string", "error" : "Nature of commodity is a required field"},
+    { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "string", "error" : "Batch number is required"},
+    { "id": "finalConsumer", "title": "Final consumer", "required" : "no", "type" : "string"},
+    { "id": "dateOfCollectionProduction", "title": "Date of collection / production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of collection / production"},
+    { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "string", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+    { "id": "sanitaryRegionOfOrigin", "title": "Sanitary region of origin", "required" : "no", "type" : "string"}
+  ],
+  "commodities" : [
+    {
+      "code": "03099000",
+      "title": "Other"
+    },
+    {
+      "code": "03083050",
+      "title": "Frozen"
+    },
+    {
+      "code": "03083080",
+      "title": "Other"
+    },
+    {
+      "code": "03089010",
+      "title": "Live, fresh or chilled"
+    },
+    {
+      "code": "03089050",
+      "title": "Frozen"
+    },
+    {
+      "code": "03089090",
+      "title": "Other"
+    },
+    {
+      "code": "03078100",
+      "title": "Live, fresh or chilled"
+    },
+    {
+      "code": "03078200",
+      "title": "Live, fresh or chilled stromboid conchs (Strombus spp.)"
+    },
+    {
+      "code": "03078300",
+      "title": "Frozen abalone (Haliotis spp.)"
+    },
+    {
+      "code": "03078400",
+      "title": "Frozen stromboid conchs (Strombus spp.)"
+    },
+    {
+      "code": "03078700",
+      "title": "Other abalone (Haliotis spp.)"
+    },
+    {
+      "code": "03078800",
+      "title": "Other stromboid conchs (Strombus spp.)"
+    },
+    {
+      "code": "03077100",
+      "title": "Live, fresh or chilled"
+    },
+    {
+      "code": "03077210",
+      "title": "Striped venus or other species of the family Veneridae"
+    },
+    {
+      "code": "03077290",
+      "title": "Other"
+    },
+    {
+      "code": "03077900",
+      "title": "Other"
+    },
+    {
+      "code": "03074210",
+      "title": "Cuttle fish (Sepia officinalis, Rossia macrosoma, Sepiola spp.)"
+    },
+    {
+      "code": "03074220",
+      "title": "Loligo spp"
+    },
+    {
+      "code": "03074230",
+      "title": "Squid (Ommastrephes spp., Nototodarus spp., Sepioteuthis spp.)"
+    },
+    {
+      "code": "03074240",
+      "title": "European flying squid (Todarodes sagittatus)"
+    },
+    {
+      "code": "03074290",
+      "title": "Other"
+    },
+    {
+      "code": "03074391",
+      "title": "Ommastrephes spp., other than Ommastrephes sagittatus, Nototodarus spp., Sepioteuthis spp."
+    },
+    {
+      "code": "03074392",
+      "title": "Illex spp"
+    },
+    {
+      "code": "03074395",
+      "title": "European flying squid (Todarodes sagittatus) (Ommastrephes sagittatus)"
+    },
+    {
+      "code": "03074399",
+      "title": "Other"
+    },
+    {
+      "code": "03074920",
+      "title": "Cuttle fish (Sepia officinalis, Rossia macrosoma, Sepiola spp.)"
+    },
+    {
+      "code": "03074940",
+      "title": "Loligo spp"
+    },
+    {
+      "code": "03074950",
+      "title": "Ommastrephes spp., other than Ommastrephes sagittatus, Nototodarus spp., Sepioteuthis spp."
+    },
+    {
+      "code": "03074960",
+      "title": "European flying squid (Todarodes sagittatus) (Ommastrephes sagittatus)"
+    },
+    {
+      "code": "03074980",
+      "title": "Other"
+    },
+    {
+      "code": "03073110",
+      "title": "Mytilus spp"
+    },
+    {
+      "code": "03073190",
+      "title": "Perna spp"
+    },
+    {
+      "code": "03073210",
+      "title": "Mytilus spp"
+    },
+    {
+      "code": "03073290",
+      "title": "Perna spp"
+    },
+    {
+      "code": "03073920",
+      "title": "Mytilus spp"
+    },
+    {
+      "code": "03073980",
+      "title": "Perna spp"
+    },
+    {
+      "code": "03075100",
+      "title": "Live, fresh or chilled"
+    },
+    {
+      "code": "03075200",
+      "title": "Frozen"
+    },
+    {
+      "code": "03075900",
+      "title": "Other"
+    },
+    {
+      "code": "03079100",
+      "title": "Live, fresh or chilled"
+    },
+    {
+      "code": "03079200",
+      "title": "Frozen"
+    },
+    {
+      "code": "03079900",
+      "title": "Other"
+    },
+    {
+      "code": "03071110",
+      "title": "Flat oysters (of the genus Ostrea), live and weighing (shell included) not more than 40g each"
+    },
+    {
+      "code": "03071190",
+      "title": "Oysters Other than 03071110"
+    },
+    {
+      "code": "03071200",
+      "title": "Frozen"
+    },
+    {
+      "code": "03071900",
+      "title": "Other"
+    },
+    {
+      "code": "03072110",
+      "title": "Scallops, including queen scallops, of the genera Pecten, Chlamys or Placopecten",
+      "species": [
+        "Pecten spp","Pecten diegensis","Chlamys rubida","Pecten modestus","Placopecten spp","Chlamys livida","Pecten","Chlamys squamata","Pecten jacobaeus","Chlamys spp","Chlamys varia","Pecten maximus","Chlamys","Pecten sericeus","Pecten sulcicostatus","Placopecten","Pecten albicans","Placopecten magellanicus","Chlamys farreri","Chlamys asperrima","Chlamys senatoria","Chlamys multistriata","Chlamys hastata","Chlamys nobilis","Pecten fumatus","Pecten berryi","Pecten sinensis","Pecten ziczac","Pecten vogdesi","Chlamys islandica","Pecten novaezelandiae"
+      ]
+    },
+    {
+      "code": "03072190",
+      "title": "Other"
+    },
+    {
+      "code": "03072295",
+      "title": "Other"
+    },
+    {
+      "code": "03072910",
+      "title": "Scallops, including queen scallops, of the genera Pecten, Chlamys or Placopecten"
+    },
+    {
+      "code": "03072990",
+      "title": "Other"
+    },
+    {
+      "code": "03081100",
+      "title": "Live, fresh or chilled"
+    },
+    {
+      "code": "03081200",
+      "title": "Frozen"
+    },
+    {
+      "code": "03081900",
+      "title": "Other"
+    },
+    {
+      "code": "03082100",
+      "title": "Live, fresh or chilled"
+    },
+    {
+      "code": "03082200",
+      "title": "Frozen"
+    },
+    {
+      "code": "03082900",
+      "title": "Other"
+    },
+    {
+      "code": "16055310",
+      "title": "In airtight containers"
+    },
+    {
+      "code": "16055390",
+      "title": "Other"
+    },
+    {
+      "code": "16055400",
+      "title": "Cuttlefish and squid"
+    },
+    {
+      "code": "16055600",
+      "title": "Clams, cockles and arkshells"
+    },
+    {
+      "code": "03074331",
+      "title": "Loligo vulgaris"
+    },
+    {
+      "code": "03074333",
+      "title": "Loligo pealei"
+    },
+    {
+      "code": "03074335",
+      "title": "Loligo gahi"
+    },
+    {
+      "code": "03074338",
+      "title": "Other"
+    },
+    {
+      "code": "03074321",
+      "title": "Lesser cuttle fish (Sepiola rondeleti)"
+    },
+    {
+      "code": "03074325",
+      "title": "Other"
+    },
+    {
+      "code": "03074329",
+      "title": "Sepia officinalis, Rossia macrosoma"
+    },
+    {
+      "code": "03072210",
+      "title": "Coquilles St Jacques (Pecten maximus)"
+    },
+    {
+      "code": "03072290",
+      "title": "Other"
+    }
+  ]
+}

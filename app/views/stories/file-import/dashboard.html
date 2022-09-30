@@ -1,0 +1,338 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Your applications - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+  /* hack to make the link less apparent so users don't click on it during testing */
+.d-md-table-cell a {
+  text-decoration: none;
+  color: black !important;
+}
+  </style>
+
+<main class="govuk-width-container container-content">
+    <!---->
+    <div class="govuk-main-wrapper" id="main-content" style="padding-top: 0;">
+        <!---->
+        <!---->
+
+        <!---->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl"> Your applications <span class="govuk-visually-hidden"> for export health certificates </span></h1>
+
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              {% if query.v == "2" %}
+                <a href="/stories/file-import/application-reference?v=2" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                Start a new application
+                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                </svg></a>
+              {% else %}
+                <a href="/stories/file-import/start-now" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                Start a new application
+                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                </svg></a>
+              {% endif %}
+
+            </div>
+
+
+        </div>
+
+        <div class="govuk-grid-row home-list p-govuk" >
+            <div class="govuk-grid-column-full" >
+                <table class="govuk-table" data-module="moj-sortable-table" >
+                    <thead class="govuk-table__head small-text" >
+                        <tr class="govuk-table__row" >
+                            <th scope="col" class="govuk-table__header d-none d-md-table-cell nowrap" > Serial No. </th>
+                            <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="none" ><button type="button" data-index="0" > Reference </button></th>
+                            <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="none" ><button type="button" data-index="1" > Exporter </button></th>
+                            <th scope="col" class="govuk-table__header d-none d-md-table-cell" > Country </th>
+                            <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="descending" ><button type="button" data-index="2" > Created </button></th>
+                            <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="none" ><button type="button" data-index="3" > Exported </button></th>
+                            <th scope="col" class="govuk-table__header d-none d-md-table-cell" > Status </th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body" >
+                        <tr class="govuk-table__row" >
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-1239201</span></a></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >FSB Export 8299</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >Sam Hackett</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="nowrap" ><span class="flag f-gb normal-flag flag" data-v-8720a308=""  ></span><span class="small-text" >XI</span></span>
+                            </td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >10 Aug 2022</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >11 Aug 2022</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="govuk-tag Submitted" ><span class="small-text" >Submitted to Certifier</span></span><br >
+                                <!---->
+                            </td>
+                            <td class="govuk-table__cell" >
+                                <div class="d-md-none" >
+                                    <table class="govuk-table" >
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Serial No.</th>
+                                            <td align="right" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-1239201</span></a></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Reference</th>
+                                            <td align="right" ><span class="small-text" >H3 Frozen 298</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exporter</th>
+                                            <td align="right" ><span class="small-text" >Sam Hackett</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Country</th>
+                                            <td align="right" ><span ><span class="flag f-gb normal-flag" data-v-8720a308=""  ></span></span><span class="small-text" >XI</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Created</th>
+                                            <td align="right" ><span class="small-text" >10 Aug 2022</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exported</th>
+                                            <td align="right" ><span class="small-text" >11 Aug 2022</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Status</th>
+                                            <td align="right" ><span class="govuk-tag Submitted" ><span class="small-text" >Submitted to Certifier</span></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <!---->
+                    </tbody>
+                    <tbody class="govuk-table__body" >
+                        <tr class="govuk-table__row" >
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-1239202</span></a></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >FSB Export 2872</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >Sam Hackett</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" >
+                                <!---->
+                            </td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >10 Aug 2022</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >--</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="govuk-tag Draft" ><span class="small-text" >Draft</span></span><br >
+                                <!---->
+                            </td>
+                            <td class="govuk-table__cell" >
+                                <div class="d-md-none" >
+                                    <table class="govuk-table" >
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Serial No.</th>
+                                            <td align="right" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-1239202</span></a></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Reference</th>
+                                            <td align="right" ><span class="small-text" >FSB Export 2872</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exporter</th>
+                                            <td align="right" ><span class="small-text" >Sam Hackett</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Country</th>
+                                            <td align="right" >
+                                                <!----><span class="small-text" ></span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Created</th>
+                                            <td align="right" ><span class="small-text" >10 Aug 2022</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exported</th>
+                                            <td align="right" ><span class="small-text" >--</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Status</th>
+                                            <td align="right" ><span class="govuk-tag Draft" ><span class="small-text" >Draft</span></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <!---->
+                    </tbody>
+                    <tbody class="govuk-table__body" >
+                        <tr class="govuk-table__row" >
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-1239302</span></a></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >H3 Frozen 298</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >Sam Hackett</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="nowrap" ><span class="flag f-gb normal-flag flag" data-v-8720a308=""  ></span><span class="small-text" >XI</span></span>
+                            </td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >10 Aug 2022</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >23 Aug 2022</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="govuk-tag Submitted" ><span class="small-text" >Submitted to Certifier</span></span><br >
+                                <!---->
+                            </td>
+                            <td class="govuk-table__cell" >
+                                <div class="d-md-none" >
+                                    <table class="govuk-table" >
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Serial No.</th>
+                                            <td align="right" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-1239302</span></a></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Reference</th>
+                                            <td align="right" ><span class="small-text" >H3 Frozen 298</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exporter</th>
+                                            <td align="right" ><span class="small-text" >Sam Hackett</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Country</th>
+                                            <td align="right" ><span ><span class="flag f-gb normal-flag" data-v-8720a308=""  ></span></span><span class="small-text" >XI</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Created</th>
+                                            <td align="right" ><span class="small-text" >10 Aug 2022</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exported</th>
+                                            <td align="right" ><span class="small-text" >23 Aug 2022</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Status</th>
+                                            <td align="right" ><span class="govuk-tag Submitted" ><span class="small-text" >Submitted to Certifier</span></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <!---->
+                    </tbody>
+                    <tbody class="govuk-table__body" >
+                        <tr class="govuk-table__row" >
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-1239517</span></a></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >Test1944</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >Sam Hackett</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" >
+                                <!---->
+                            </td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >10 Aug 2022</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >--</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="govuk-tag Draft" ><span class="small-text" >Draft</span></span><br >
+                                <!---->
+                            </td>
+                            <td class="govuk-table__cell" >
+                                <div class="d-md-none" >
+                                    <table class="govuk-table" >
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Serial No.</th>
+                                            <td align="right" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-1239517</span></a></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Reference</th>
+                                            <td align="right" ><span class="small-text" >Test1944</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exporter</th>
+                                            <td align="right" ><span class="small-text" >Sam Hackett</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Country</th>
+                                            <td align="right" >
+                                                <!----><span class="small-text" ></span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Created</th>
+                                            <td align="right" ><span class="small-text" >10 Aug 2022</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exported</th>
+                                            <td align="right" ><span class="small-text" >--</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Status</th>
+                                            <td align="right" ><span class="govuk-tag Draft" ><span class="small-text" >Draft</span></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <!---->
+                    </tbody>
+
+
+                    <tbody class="govuk-table__body" >
+                        <tr class="govuk-table__row" >
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-12338211</span></a></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >EHC8331-MK3</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text" >Sam Hackett</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="nowrap" ><span class="flag f-gb normal-flag flag" data-v-8720a308=""  ></span><span class="small-text" >XI</span></span>
+                            </td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >08 Aug 2022</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="small-text nowrap" >--</span></td>
+                            <td class="govuk-table__cell d-none d-md-table-cell" ><span class="govuk-tag Draft" ><span class="small-text" >Draft</span></span><br >
+                                <!---->
+                            </td>
+                            <td class="govuk-table__cell" >
+                                <div class="d-md-none" >
+                                    <table class="govuk-table" >
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Serial No.</th>
+                                            <td align="right" ><a href="#" class="govuk-link" ><span class="small-text" >ABC-12338211</span></a></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Reference</th>
+                                            <td align="right" ><span class="small-text" >EHC8331-MK3</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exporter</th>
+                                            <td align="right" ><span class="small-text" >Sam Hackett</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Country</th>
+                                            <td align="right" ><span ><span class="flag f-gb normal-flag" data-v-8720a308=""  ></span></span><span class="small-text" >XI</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Created</th>
+                                            <td align="right" ><span class="small-text" >08 Aug 2022</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Exported</th>
+                                            <td align="right" ><span class="small-text" >--</span></td>
+                                        </tr>
+                                        <tr class="govuk-table__row" >
+                                            <th class="small-text" >Status</th>
+                                            <td align="right" ><span class="govuk-tag Draft" ><span class="small-text" >Draft</span></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <!---->
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</main>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

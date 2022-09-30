@@ -1,0 +1,169 @@
+.certificate-pane {
+    border-radius: 5px;
+}
+.certificate-pane.closed .certificate-pane--heading {
+    border-radius: 5px;
+}
+
+.certificate-pane .certificate-pane--heading {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: GDS Transport,arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    border: 0;
+    background-color: #f2f2f2;
+    color: #212529;
+    transition: background-color .2s;
+    cursor: pointer;
+    padding: 1em;
+}
+.certificate-pane .certificate-pane--body {
+    border: 5px solid #f2f2f2;
+    border-top: none;
+}
+.certificate-pane .certificate-pane--body .certificate-pane--body--actions {
+    padding: 0.5em;
+    margin-bottom: 0.2em;
+}
+.commodity-pane.open .commodity-pane--heading {
+    box-shadow: 0 5px 10px -5px #000;
+}
+
+.commodity-pane .commodity-pane--heading {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1em;
+    background-color: #005ea5;
+    transition: background-color .2s;
+}
+.commodity-pane .commodity-pane--heading .caption {
+    color: #fff;
+}
+.commodity-pane .commodity-pane--heading .heading {
+    margin: 0;
+    color: #fff;
+}
+.commodity-pane .commodity-pane--body {
+    padding: 1em;
+    border: 5px solid #005ea5;
+    border-top: none;
+    transition: .2s;
+    max-height: 1000vh;
+    overflow: auto;
+}
+.identification-pane {
+    border: 1px solid #f2f2f2;
+    font-family: GDS Transport,arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    display: block;
+    border-radius: 3px 3px 0 0;
+}
+.identification-pane--heading {
+    display: block;
+    padding: 0.5em;
+    background-color: #005ea5;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+    cursor: pointer;
+}
+.identification-pane .identification-pane--heading {
+    display: block;
+    padding: 0.5em;
+    background-color: #005ea5;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+    cursor: pointer;
+}
+.identification-pane .identification-pane--body {
+    padding: 0.5em;
+}
+.identification-pane .identification-pane--actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0.3em 0;
+}
+.identification-pane .identification-pane--actions .identification-pane--action .govuk-button {
+    margin: 0;
+}
+.identification-pane .identification-pane--actions .identification-pane--action {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2px;
+}
+.tag-action.danger {
+    background-color: #d5341c;
+    color: #fff;
+}
+
+.tag-action {
+    color: #000;
+    margin: 0 5px;
+    padding: 0.2em 0.5em;
+    cursor: pointer;
+    font-size: .8em;
+    box-shadow: 0 2px 0 #000;
+    font-weight: 400;
+}
+.certificate-weights .certificate-weights-title[data-v-0ea98b26] {
+    font-family: GDS Transport,arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    background-color: #e1e1e1;
+    transition: background-color .2s;
+    padding: 1em;
+}
+.certificate-weights .certificate-weights-body {
+    padding: 15px;
+}
+.commodity-total-quick-actions-group {
+    margin-top: 15px;
+}
+.commodity-total-quick-action {
+    background-color: #f3f2f1;
+    border: 0;
+    border-bottom: 2px solid #000;
+    font-size:19px;
+    padding: 3px 5px;
+    margin: 0 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+// Favicon icon
+.fa, .fas {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+}
+
+.fa, .fab, .fad, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+.fa-chevron-up:before {
+    content: "\f077";
+}

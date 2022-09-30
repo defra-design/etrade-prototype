@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <header class="hmrc-page-heading">
+      <h1 class="govuk-heading-l">Enter your email address</h1>
+    </header>
+    <form action="enter-code" method="GET" class="js-form" autocomplete="on" novalidate="novalidate" id="gf-form">
+      <div id="changed-name-hint" class="govuk-hint">
+        <p>We’ll send a code to confirm your email address.</p>
+        <p>{{ data.email_info_text or 'We will also use this email address to send a confirmation when this application is complete, and to contact you in the future.'}}</p>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="email">
+          Email address
+        </label>
+        <span id="email-hint" class="govuk-hint">
+        </span>
+        <input class="govuk-input  govuk-input--width-30" id="email" name="email" type="text" aria-describedby="email-hint">
+      </div>
+      <button value="Continue" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+    {% block pageFooter %}{% include "../../includes/page-footer.html" %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Attaching addtional documents improval</h1>
+      <p><a href="#">View the ticket on the design Kanban board</a></p>
+      <h2 class="govuk-heading-m">What changed</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Accessiblity</li>
+        <li>Add to list pattern like in the new commodities journey</li>
+        <li>File upload is on a seperate page</li>
+        <li>Type of file are radio buttons, previously it was a select</li>
+        <li>Uploading screen to alert the user the progress of the upload</li>
+      </ul>
+      <p>This version has not been tested yet</p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <h2 class="govuk-heading-m">Pages</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="task-list">From Taks list</a></li>
+        <li><a href="added-documents?additionalDocuments=">Additional documents (none added / first time) </a></li>
+        <li><a href="uploads">Upload a document</a></li>
+
+      </ul>
+
+  </div>
+</div>
+
+{% endblock %}

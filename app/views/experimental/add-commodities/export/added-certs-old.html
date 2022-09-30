@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<!-- {% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %} -->
+<style media="screen">
+  .app-cert-card {
+    background: #F5F5F5;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .app-summary-card .app-summary-card__title {
+        max-width: 80%;
+}
+</style>
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds">
+    {% set ehc = (data.certificate|makeNumber) or 0 %}
+    {% set ccode =  (data.commodityCode|makeNumber) or 0 %}
+    {% set cert = data.certificates[ehc]%}
+    <span class="govuk-caption-xl">{{ data.certificates[ehc].number or "test" }}</span>
+    <h1 class="govuk-heading-xl">Added 1 certificate</h1>
+    <section class="app-summary-card govuk-!-margin-bottom-6">
+      <header class="app-summary-card__header">
+
+        <h2 class="app-summary-card__title">
+          <strong>{{ data.certificates[ehc].number }}</strong> - {{data.certificates[ehc].title }}
+        </h2>
+        <div class="app-summary-card__actions">
+
+          <ul class="app-summary-card__actions-list">
+
+
+            <li class="app-summary-card__actions-list-item  govuk-!-font-size-16">
+              <a class="govuk-link" href="remove-commodity?id={{loop.index-1}}">
+                Remove<span class="govuk-visually-hidden"> commodity 4012</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="app-summary-card__body">
+        <dl class="govuk-summary-list govuk-!-font-size-16">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Commodities
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{(data.addedCommodities | length)}}
+            </dd>
+            <dd class="govuk-summary-list__actions" style="width: 40%;">
+              <a class="govuk-link" href="{{data.listURL}}">
+                Manage commodites<span class="govuk-visually-hidden"> for EHC8328</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total weight
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.GROSS_WEIGHT or "210"}} {{data.GROSS_WEIGHT_quantifier or "kilograms"}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="weight">
+                Change weight<span class="govuk-visually-hidden"> for EHC8328</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+        </div>
+        </section>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="select-commodities">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you want to add another certificate to this export?
+          </legend>
+          <div id="add-another-hint" class="govuk-hint">
+            <!-- You must tell us about all your directors. -->
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~select-certificates">
+              <label class="govuk-label govuk-radios__label" for="add-another">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~../task-list">
+              <label class="govuk-label govuk-radios__label" for="add-another-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

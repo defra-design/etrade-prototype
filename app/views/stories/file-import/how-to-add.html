@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+{% set ehc = (data.certificate|makeNumber) or 0 %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="added-certs">
+      <div class="govuk-form-group">
+        <!-- <span class="govuk-caption-xl">
+          {{ data.certificates or "EHC8328" }}
+        </span> -->
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--l">
+            Do you want to upload commodity data for {{data.certificates[ehc].number}} from a spreadsheet?
+          </legend>
+          <!-- <div id="add-another-hint" class="govuk-hint">
+          We have calculated this by adding together the net weight of every commodity you’ve added.
+          </div> -->
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <!--<input class="govuk-radios__input" id="how-to-add-manually" name="how-to-add" type="radio" value="upload~./upload/manage-imports" aria-describedby="manually-adding-hint">-->
+              <!--<input class="govuk-radios__input" id="how-to-add-manually" name="how-to-add" type="radio" value="~./select-multiple-commodities" aria-describedby="manually-adding-hint">-->
+              <input class="govuk-radios__input" id="how-to-add-manually" name="how-to-add" type="radio" value="~./upload/download-template-simple" aria-describedby="manually-adding-hint">
+              <label class="govuk-label govuk-radios__label" for="how-to-add-manually">
+                Yes, upload spreadsheet
+              </label>
+              <div id="manually-adding-hint" class="govuk-hint govuk-radios__hint">
+                This method may be quicker if you want to add data for multiple commodities.
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-to-add-upload" name="how-to-add" type="radio" value="manually~manage-commodities" aria-describedby="manually-adding-hint">
+              <label class="govuk-label govuk-radios__label" for="how-to-add-upload">
+                No
+              </label>
+              <!-- <div id="manually-adding-hint" class="govuk-hint govuk-radios__hint">
+                Add information for up to 100 commodities using a spreadsheet template. This method may be more useful if you're adding a lot of commodities at once.
+              </div> -->
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

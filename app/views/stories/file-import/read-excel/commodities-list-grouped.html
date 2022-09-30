@@ -1,0 +1,251 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Grouped commodities – E-Certification for EHC's - GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+
+{% block content %}
+
+<!-- // TODO: get ehc index dynamically -->
+{% set ehc = query.certificate_index %}
+{% set cert = data.addedEHC %}
+
+{% set cert_schema = data.certificates[ehc].schema %}
+{% set sorted_commodities = cert[0].addedCommodities | sort(false, false, 'commodity_code') %}
+{% set last_commodity_code = "0" %}
+
+{% set commodityTitle = "commodities"%}
+{% if (cert.addedCommodities | length) == 1 %}
+  {% set commodityTitle = "commodity"%}
+{% endif %}
+
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-three-quarters">
+    <span class="govuk-caption-xl">{{ data.certificates[ehc].number or "EHC9999" }}</span>
+    <h1 class="govuk-heading-xl">Added {{cert[0].addedCommodities | length}} {{commodityTitle}}</h1>
+    <p>You can add multiple commodites for this certificate by <a href="./">uploading a spreadsheet</a></p>
+    <div class="app-accordion"  id="accordion-default">
+      <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion">
+
+        {% for commodity in sorted_commodities %}
+
+        {% if commodity.commodity_code != last_commodity_code %}
+          {% set last_commodity_code = commodity.commodity_code %}
+          <div style="border-bottom: 1px solid #b1b4b6; margin-top:30px;padding-bottom:10px">
+            <strong class="govuk-tag">{{commodity.commodity_code}}</strong>
+
+            {% for x in cert[0].commodities %}
+              {% if x.code == last_commodity_code %}
+                <strong>{{ x.title }}</strong>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+        {% endif %}
+
+        <div class="govuk-summary-list__row govuk-accordion__section">
+          <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+            <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+              {{ commodity.NET_WEIGHT }} {{ commodity.NET_WEIGHT_quatifier }},
+              {{ commodity.PACKAGE_COUNT }} {{ commodity.PACKAGE_COUNT_quatifier }}
+              {% if commodity.productDescription %}, {{ commodity.productDescription }}{% endif %}
+            </dt>
+            <dd class="govuk-summary-list__actions">
+              <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?id={{loop.index-1}}">
+                    Remove<span class="govuk-visually-hidden"> commodity {{ commodity.commodity_code }}</span>
+                  </a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity={{commodity.type}}&change=yes&id={{loop.index-1}}">
+                    Change<span class="govuk-visually-hidden"> commodity {{ commodity.commodity_code }}</span>
+                  </a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity={{commodity.type}}&copy=yes&id={{loop.index-1}}">
+                    Copy<span class="govuk-visually-hidden"> commodity {{ commodity.commodity_code }}</span>
+                  </a>
+                </li>
+
+              </ul>
+            </dd>
+          </div>
+          <dd class="govuk-summary-list__value">
+            <div class="govuk-accordion__section-heading">
+              <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                  <span class="govuk-accordion__section-heading-text-focus">
+                    <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                    <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                      <span class="govuk-accordion__section-toggle-focus">
+                        <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                        <span class="govuk-accordion__section-toggle-text">
+                          Show details<span class="govuk-visually-hidden"> for commodity {{ commodity.commodity_code }}</span>
+                        </span>
+                      </span>
+                    </span>
+              </button>
+            </div>
+
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+              <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                <div class="govuk-grid-row">
+
+                  {% for index, value in commodity %}
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                      <dt class="govuk-summary-list__key">
+                        {{ cert_schema[loop.index - 1].title }}
+                        {% if cert_schema[loop.index - 1].required == "no" %}
+                          <span style="font-weight:normal">(optional)</span>
+                        {% endif %}
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if cert_schema[loop.index - 1].type == "excel_date" %}
+                          {{ value | getDateFromExcel }}
+                        {% else %}
+                          {% if value %}
+                          {{value}}
+                          {% else %}
+                            <span>Not specified</span>
+                          {% endif %}
+                        {% endif %}
+                      </dd>
+                    </div>
+                  {% endfor %}
+
+
+
+
+                </div>
+              </dl>
+            </div>
+          </dd>
+        </div>
+
+        {%endfor%}
+      </dl>
+    </div>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="select-commodities">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you want to add another commodity to this certificate?
+          </legend>
+          <div id="add-another-hint" class="govuk-hint">
+            <!-- You must tell us about all your directors. -->
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~select-commodities">
+              <label class="govuk-label govuk-radios__label" for="add-another">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+
+              {% if data.has_multiple_certificates == 'yes' %}
+                  {% set nextPage = "weight" %}
+              {% elseif data.originalCommodityCount < (cert.addedCommodities | length) and data.GROSS_WEIGHT %}
+                  {% set nextPage = "update-weight" %}
+              {% else %}
+                  {% set nextPage = "../task-list" %}
+              {% endif %}
+              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~{{nextPage}}?originalCommodityCount={{cert.addedCommodities | length}}">
+              <label class="govuk-label govuk-radios__label" for="add-another-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    var controls = '<div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span class="govuk-accordion__show-all-text">Show all sections</span></button></div>'
+    var accordion = $('.app-accordion')
+    if($('.govuk-accordion__section').length > 1){
+        accordion.prepend(controls)
+    }
+    var showAllBtn = $('.govuk-accordion__show-all')
+    var showDetails = $('.govuk-accordion__section-button')
+    function showSection(b,t,a=""){
+      var txt = (a) ? "Hide all sections" : "Hide details";
+      var label =  (a) ? ".govuk-accordion__show-all-text" : ".govuk-accordion__section-toggle-text";
+      $(b).attr('aria-expanded',"true")
+      $(b).find(".govuk-accordion-nav__chevron").removeClass("govuk-accordion-nav__chevron--down")
+      if(!$(t).hasClass("govuk-accordion__section--expanded")){
+        $(t).addClass('govuk-accordion__section--expanded')
+      }
+      $(t).find(label).text(txt)
+      if(a){
+        var eb = $(t).find(".govuk-accordion__section-button")
+        console.log(eb)
+        showSection(eb,t)
+      }
+
+    }
+    function hideSection(b,t,a=false){
+
+      var txt = (a) ? "Show all sections" : "Show details";
+      var label =  (a) ? ".govuk-accordion__show-all-text" : ".govuk-accordion__section-toggle-text";
+      $(b).attr('aria-expanded',"false")
+      $(b).find(".govuk-accordion-nav__chevron").addClass("govuk-accordion-nav__chevron--down")
+      $(t).removeClass('govuk-accordion__section--expanded')
+      $(t).find(label).text(txt)
+      if(a){
+        var eb = $(t).find(".govuk-accordion__section-button")
+        console.log(eb)
+        hideSection(eb,t)
+      }
+    }
+    showDetails.on('click',function(e){
+      e.preventDefault()
+      console.log("working")
+      var section = $(this).closest('.govuk-accordion__section');
+      if($(this).attr('aria-expanded')=='false'){
+
+        // $(this).attr('aria-expanded',"true")
+        showSection(this,section)
+
+      }else{
+
+        hideSection(this,section)
+      }
+    })
+    showAllBtn.on('click',function(e){
+      e.preventDefault()
+      var section = $('.govuk-accordion__section')
+      if($(this).attr('aria-expanded')=='false'){
+
+        // $(this).attr('aria-expanded',"true")
+        showSection(this,section,true)
+
+      }else{
+
+        hideSection(this,section,true)
+      }
+
+    })
+  })
+</script>
+{% endblock%}

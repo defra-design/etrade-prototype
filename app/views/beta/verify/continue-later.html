@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l" id="enterCodeTitle">We have saved your progress</h1>
+    {% if authentication == 'secure' %}
+    <p id="enterCodeText">Make a note of your temporary access key. You will need this when you retrun to complete your form.</p>
+
+    <div class="govuk-inset-text">
+        <h2 class="govuk-heading-xl">HR5-21FG-2R4</h2>
+      </div>
+    {% endif %}
+    <p>To continue, return to the <a href="../NRSDLT/v4/start">start page</a>. Start an application   {% if data.authentication == 'secure' %}and{%else%},{%endif%} confirm your email address <strong>{{data.email or 'yourname@gmail.com'}}</strong>{% if data.authentication == 'secure' %} and enter your temporary passcode{%endif%}.</p>
+    <!-- <p>You can then carry on where you left off.</p> -->
+    <p>We will keep your answers for 30 days.</p>
+    <p><a href="/">Back to GOV.UK</a></p>
+  </div>
+</div>
+{% endblock %}

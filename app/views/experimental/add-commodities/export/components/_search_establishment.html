@@ -1,0 +1,34 @@
+{% set id = (searchLabel | removeWhiteSpace) or "Manufacturingplant"%}
+<div class="govuk-form-group">
+  <!-- for protype only start-->
+  <input type="hidden" name="has_{{id or 'Manufacturingplant'}}" value="yes">
+  <!-- for protype only end-->
+  <label class="govuk-label" for="MANUFACTURING_PLANT-1-10410-31010000">{{searchLabel or 'Manufacturing plant'}}
+  </label>
+  <div class="operator-search">
+    <div class="operator-search-dropdown">
+      <section>
+        <!---->
+        {% block countryOfOrigin %}{% include "./_country-of-origin.html" %}{% endblock %}
+        <div class="govuk-form-group"><label class="govuk-label govuk-label--s" for="search-field-{{id or 'Manufacturing plant'}}">Search for and select {{id}}
+          </label>
+          <div class="govuk-input__wrapper">
+            <input class="govuk-input" id="search-field-{{id or 'Manufacturingplant'}}" name="search-field-{{id or 'Manufacturingplant'}}" spellcheck="false" placeholder="Type here">
+            <div class="govuk-input__suffix operator-search-indicator no-bg">
+              <button class="govuk-button govuk-button--primary"> Search
+              </button>
+            </div>
+          </div><label class="govuk-label govuk-label--s m-t-10" for="search-field-postcode-{{id}}"> Postcode </label>
+          <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-10" id="search-field-postcode-{{id}}" spellcheck="false" placeholder="Type postcode here"></div>
+          <div class="govuk-checkboxes__item m-t-10"><input class="govuk-checkboxes__input" id="show-exact-match-{{id or 'Manufacturingplant'}}" name="show-exact-match" type="checkbox"><label class="govuk-label govuk-checkboxes__label"
+              for="show-exact-match-{{establishment_name or 'Manufacturingplant'}}"> Show only exact matches </label></div>
+          <div class="govuk-checkboxes__item m-t-10"><input class="govuk-checkboxes__input" id="search-by-approval-{{id}}" name="search-by-approval" type="checkbox"><label class="govuk-label govuk-checkboxes__label"
+              for="search-by-approval-{{establishment_name or 'Manufacturingplant'}}"> Search by approval number </label></div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <!---->
+  <!---->
+  <!---->
+</div>

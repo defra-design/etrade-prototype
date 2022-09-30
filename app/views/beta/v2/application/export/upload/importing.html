@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full"><span class="govuk-caption-xl"> Description of the goods </span>
+    <h1 class="govuk-heading-xl"> Manage identification imports </h1>
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+    <!----><span class="govuk-caption-m"></span>
+    <h3 class="govuk-heading-m"> Current import for this application </h3>
+    <!---->
+    <div>
+      <div class="govuk-inset-text"> Import for 3 commodities created on the 1/06/2022. <span class="govuk-tag pull-right">Pending</span></div>
+      <!---->
+      <!---->
+      <div class="p-datatable p-component p-datatable-responsive-stack" data-scrollselectors=".p-datatable-wrapper" pv_id_1="">
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <div class="p-datatable-header">
+          <div class="table-header"> Import progress <a class="govuk-link pull-right" href="#"><span class="fas fa-sync-alt"></span> Refresh</a></div>
+        </div>
+        <!---->
+        <div class="p-datatable-wrapper">
+          <table role="table" class="p-datatable-table">
+            <thead class="p-datatable-thead" role="rowgroup">
+              <tr role="row">
+                <th class="" role="cell">
+                  <!---->
+                  <div class="p-column-header-content">
+                    <!----><span class="p-column-title">Commodity code</span>
+                    <!---->
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </th>
+                <th class="" role="cell">
+                  <!---->
+                  <div class="p-column-header-content">
+                    <!----><span class="p-column-title">Status</span>
+                    <!---->
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </th>
+              </tr>
+              <!---->
+            </thead>
+            <!---->
+            <tbody class="p-datatable-tbody" role="rowgroup">
+              <!---->
+              <tr class="" role="row">
+                <td class="" role="cell"><span class="p-column-title">Commodity code</span>4101</td>
+                <td class="" role="cell"><span class="p-column-title">Status</span><span class="govuk-tag govuk-tag--grey">Pending processing
+                    <!---->
+                  </span></td>
+              </tr>
+              <!---->
+              <!---->
+              <!---->
+              <tr class="" role="row" draggable="false">
+                <td class="" role="cell"><span class="p-column-title">Commodity code</span>4103</td>
+                <td class="" role="cell"><span class="p-column-title">Status</span><span class="govuk-tag govuk-tag--grey">Pending processing
+                    <!---->
+                  </span></td>
+              </tr>
+              <!---->
+              <!---->
+              <!---->
+              <tr class="" role="row">
+                <td class="" role="cell"><span class="p-column-title">Commodity code</span>4102</td>
+                <td class="" role="cell"><span class="p-column-title">Status</span><span class="govuk-tag govuk-tag--grey">Pending processing
+                    <!---->
+                  </span></td>
+              </tr>
+              <!---->
+              <!---->
+            </tbody>
+            <!---->
+          </table>
+        </div>
+        <!---->
+        <!---->
+        <div class="p-column-resizer-helper" style="display: none;"></div>
+        <!---->
+        <!---->
+      </div>
+    </div>
+    <!----><a href="/Export-health-certificate/934f5796-9467-430c-b639-a4d4ee678e4d" class="govuk-button govuk-button--secondary m-t-15"> Return to task list </a>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

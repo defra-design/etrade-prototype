@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or-exporter – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set id = query.id or "1" %}
+{% set operator = data.establishments[id]%}
+{% set activityToSearch = data.searchActivity or "not set"%}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Which activity do you want to send to TRACES?</h1>
+
+    <div class="margin-top-30">
+      <p class="govuk-body" lang="en">
+        Select a activity that is associated with <strong>{{operator.TradingName}}</strong>
+      </p>
+    </div>
+
+    <form method="post" novalidate="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            {% if activityToSearch in operator.All_Activities %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="savedOrg1" name="whichActivity" type="radio" {% if query.change and id == 0 %}checked{% endif %} value="0~../commodity-v2?has_manufacturing_plant=yes&id=0">
+              <label class="govuk-label govuk-radios__label" for="savedOrg1">
+                {{activityToSearch}} - {% if activityToSearch=="Importer" or activity=="Exporter" or activity=="Terrestrial animal establishment" %}veterinary{%else%}food{% endif %}
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="savedOrg1" name="whichActivity" type="radio" {% if query.change and id == 0 %}checked{% endif %} value="0~../commodity-v2?has_manufacturing_plant=yes&id=0" aria-controls="conditional-activity-select">
+              <label class="govuk-label govuk-radios__label" for="savedOrg1">
+                a different activity
+                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint"></div>
+            </div>
+            <div class="govuk-radios__conditional" id="conditional-activity-select">
+              {% set listOfItems = operator.All_Activities%}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label" for="natureOfCommodity">Approved activity
+                </label>
+                <select class="govuk-select {% if query.hasError %}govuk-select--error{% endif%}" id="activity" name="activity">
+                  <option disabled="" value="" selected>Select activity</option>
+                  {% if (listOfItems| length) > 0%}
+                  {% for item in listOfItems%}
+                  <option value="{{item}}">{{item}}</option>
+                  {% endfor %}]
+                  {% else %}
+                  <option value="not set">Not set any species in JSON</option>
+                  {% endif %}
+                </select>
+              </div>
+
+
+            </div>
+            {% else %}
+            {% for  activity in operator.All_Activities %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="savedOrg1" name="whichOrg" type="radio" {% if query.change and id == 0 %}checked{% endif %} value="0~../commodity-v2?has_manufacturing_plant=yes&id=0">
+              <label class="govuk-label govuk-radios__label" for="savedOrg1">
+                {{activity}} - {% if activity=="Importer" or activity=="Exporter" or activity=="Terrestrial animal establishment" %}veterinary{%else%}food{% endif %}
+              </label>
+            </div>
+            {% endfor%}
+            <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-plants">
+              <p class="govuk-body">You will be taken to form finder. Some plants are not currently available to apply for online</p>
+            </div> -->
+            {% endif %}
+          </div>
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+
+  })
+</script>
+{% endblock%}

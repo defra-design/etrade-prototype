@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l" id="enterCodeTitle">Enter code to confirm your email address</h1>
+    <p id="enterCodeText">We have sent a code to: <strong>{{data.email or "yourname@business.com"}}</strong>. <a href="email" class="govuk-link">Provide different email address</a></p>
+    <!-- <div class="govuk-inset-text">
+        <p>You need to keep this page open when you go to your email so you can come back and enter the code.</p>
+      </div> -->
+    <div class="govuk-inset-text">
+      <p>If you use a browser to access your email, you may need to open a new window or tab to see the code.</p>
+    </div>
+    <!-- This form action is controled in /views/gforms/verify/routes.js -->
+    <form  method="POST" class="js-form" autocomplete="on" novalidate="novalidate" id="gf-form" action="email-confirmed">
+      <div class="govuk-form-group"> <label for="code" class="govuk-label" aria-describedby="code-hint">Confirmation code</label> <span class="govuk-hint" id="code-hint">For example, DNCLRK</span>
+        <input type="text" name="code" id="code" class="govuk-input govuk-input--width-5" value="" maxlength="12" aria-describedby="code-hint" autocomplete="one-time-code">
+      </div>
+      <details class="gform-details govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I cannot find the email
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>The email may take a few minutes to arrive. It's subject time is: 'Confirm your email address - [[service name]] - Goevernment Gateway'.</p>
+          <p>Check your spam or junk folder – if it still has not arrived, you will need to <a href="email" class="govuk-link">start again</a></p>
+        </div>
+      </details>
+      <button value="Continue" class="govuk-button" data-module="govuk-button">
+        Confirm
+      </button>
+    </form>
+    {% block pageFooter %}{% include "../../includes/page-footer.html" %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

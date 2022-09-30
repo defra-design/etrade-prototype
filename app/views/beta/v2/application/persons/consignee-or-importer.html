@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="../task-list" method="post">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl">Consignee or importer</h1>
+      <!---->
+      <!---->
+      <!---->
+      <p class="govuk-body">This is the natural or legal person to whom the consignment is intended in Northern Ireland or EU Member State. </p>
+      {% set searchLabel = "Consignee or importer"%}
+      {% set returnURL = "../persons/consignee-or-importer"%}
+      {% block searchConsignee %}{% include "../find/_search_establishment.html" %}{% endblock %}
+      <button class="govuk-button">Continue</button>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

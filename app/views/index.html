@@ -1,45 +1,98 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Home – GOV.UK Prototype Kit
+Home – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        Prototype your service using GOV.UK Prototype Kit
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">DEFRA Trade</span>
+      E-certs
+      </h1>
+      <!-- <p>
+        What is E-certs
+      </p> -->
+
+      <h2 class="govuk-heading-m">Release phase (beta)</h2>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <p class="govuk-body govuk-!-margin-bottom-1">
+        10 August 2022
+        <strong class="govuk-tag govuk-tag--blue">
+          Current
+        </strong>
       </p>
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
+        <h3 class="govuk-heading-m govuk-!-margin-bottom-2"><a href="/beta/v2/index" class="govuk-link">Version 2</a></h3>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-2">New designs and features</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/beta/v2-1/index">Version 2.1 - main testing version</a></li>
+          <li><a href="/beta/v2-2/index">Version 2.2 - composite testing</a><br></li>
+
+          <li><a href="/stories/pagination/">Pagination</a></li>
+          <li><a href="/experimental/transport/">Means of transport redesign v1</a></li>
+          </ul>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <p class="govuk-body govuk-!-margin-bottom-1">
+        1 June 2022 - 9 August 2022
+
       </p>
 
-      <h2 class="govuk-heading-m">About this page</h2>
-
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
-
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
-
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
-
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-2"><a href="/beta/v1/index" class="govuk-link">Version 1</a></h3>
+      <!-- <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Main changes
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <table class='govuk-table'>
+            <thead class='govuk-table__head'>
+              <tr class='govuk-table__row'>
+                <th scope='col' class='govuk-table__header'>What we've done</th>
+                <th scope='col' class='govuk-table__header'>Why we did it</th>
+              </tr>
+            </thead>
+            <tbody class='govuk-table__body'>
+              <tr class='govuk-table__row'>
+                <td class='govuk-table__cell'>Changed sign in process, now emailing a code</td>
+                <td class='govuk-table__cell'>Issues were discoved with emailing a link. Senders were using it as a book mark.</td>
+              </tr>
+              <tr class='govuk-table__row'>
+                <td class='govuk-table__cell'>New verion for mailroom with after ur <a href="/v9/mailroom/">look up and forwarding</a></td>
+                <td class='govuk-table__cell'>Slimmed down version of the previous journey (v7)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details> -->
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Other features</h3>
       <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/docs/tutorials-and-examples">Tutorials and templates</a>
-        </li>
-        <li>
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
-        </li>
+        <li><a href="/stories/file-import/">Improve uploading of commodities V1</a></li>
+<li><a href="/experimental/activity-select/">Select activity when searching addresses</a></li>
+        <li><a href="/stories/accessiblity/">Accessibility updates</a></li>
+        <li><a href="/experimental/add-commodities/">Adding commodities redesign v1 (Experimental)</a></li>
+        <li><a href="experimental/copy/">Copy certificate (Experimental)</a></li>
+
+        <li><a href="/experimental/search-establishment/">Search establishments redesign v1  (Experimental)</a></li>
+
+        <li><a href="/stories/remove-dropdown/place-of-origin">Remove single option drowpdowns</a></li>
+        <li><a href="/stories/phase-banner/dashboard">Feedback link in phase banner</a></li>
+        <li><a href="/experimental/attachments/">Additional documents</a></li>
+
+        <li><a href="/stories/other/start">New start page</a></li>
+        <li><a href="/stories/certifier/profile">MAS Profile - Update your company information and bank details</a></li>
+        <li><a href="/experimental/species/commodity">Update species autocomplete when list is 1000+</a></li>
+
       </ul>
-    </div>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
   </div>
+</div>
+<script type="text/javascript">
+
+</script>
 
 {% endblock %}

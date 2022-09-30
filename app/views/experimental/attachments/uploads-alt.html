@@ -1,0 +1,324 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+{% if data.has_error %}Error: {% endif %}Upload a document – {{service}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link" id="backButton">Back</a>
+{% endblock%}
+{% block content %}
+<style media="screen">
+  .hide {
+    display: none;
+  }
+
+  #photo-label-text {
+    display: inline-block;
+    color: #fff;
+  }
+
+  .js-enabled .photo-choose-file {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+
+  .photo-upload-label {
+    margin-bottom: 2px;
+  }
+
+  .app-progress-spinner {
+    border: 12px solid #DEE0E2;
+    border-radius: 50%;
+    border-top-color: #005EA5;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .app-hidden,
+  .app-file-spinner--hidden,
+  .app-progress--hidden {
+    display: none;
+  }
+
+  .app-progress-container {
+    text-align: center;
+  }
+</style>
+<div id="progress-container" class="app-progress-container" role="region" aria-live="polite" tabindex="-1" aria-labelledby="progress">
+  <h2 id="progress" class="app-progress app-progress--hidden govuk-heading-l" role="progressbar">Upload file</h2>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if query.error == "yes"%}
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          {%if query.error_type == "empty"%}
+          <li>
+            <a href="#file-upload-1-error">The file is empty</a>
+          </li>
+          {% else %}
+          <li>
+            <a href="#file-upload-1-error">Files must not be larger than 5MB and be one of PDF, JPEG, XLSX, DOCX, PPTX</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+    <header>
+      <!-- <span class="govuk-caption-l">Accompanying documents</span> -->
+      <h1 class="govuk-heading-xl" id="uploadTitle">
+        Upload an additional document
+        <span class="govuk-body-l js-percentage"></span>
+      </h1>
+    </header>
+    <div aria-hidden="true" class="app-uploading-spinner app-file-spinner--hidden"></div>
+    <form method="post" novalidate id="fileupload">
+      <!-- <p>Upload any supporting documents that will help with your application.</p> -->
+
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend">
+            Type of document
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="fileType" name="fileType" type="radio" value="Air waybill">
+              <label class="govuk-label govuk-radios__label" for="fileType">
+                Air waybill
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="fileType-2" name="fileType" type="radio" value="Rail consignment note">
+              <label class="govuk-label govuk-radios__label" for="fileType-2">
+                Rail consignment note
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="fileType-3" name="fileType" type="radio" value="Releated document" data-aria-controls="conditional-related">
+              <label class="govuk-label govuk-radios__label" for="fileType-3">
+                Releated document
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-related">
+              <div class="govuk-form-group" data-v-ff267ef6="">
+                <!---->
+                <label class="govuk-label govuk-label" for="document-reference-2">
+                  Enter a title for this document
+                </label>
+                <div class="govuk-hint" id="document-ref-header">This can be up 20 characters long</div>
+                <input class="govuk-input govuk-!-width-three-quarters" id="document-reference-2" name="documentReference" aria-labelledby="document-ref-header">
+              </div>
+
+      </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="fileType-4" name="fileType" type="radio" value="Road consignment note">
+              <label class="govuk-label govuk-radios__label" for="fileType-4">
+                Road consignment note
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="fileType-4" name="fileType" type="radio" value="Sanitary Certificate">
+              <label class="govuk-label govuk-radios__label" for="fileType-4">
+                Sanitary Certificate
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="fileType-4" name="fileType" type="radio" value="Sea waybill">
+              <label class="govuk-label govuk-radios__label" for="fileType-4">
+                Sea waybill
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="fileType-4" name="fileType" type="radio" value="Other" data-aria-controls="conditional-other">
+              <label class="govuk-label govuk-radios__label" for="fileType-4">
+                Other
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
+              <div class="govuk-form-group" data-v-ff267ef6="">
+                <!---->
+                <label class="govuk-label govuk-label" for="document-reference-2" >
+                  Enter a title for this document
+                </label>
+                <div class="govuk-hint" id="document-ref-header">This can be up 20 characters long</div>
+                <input class="govuk-input govuk-!-width-three-quarters" id="document-reference-2" name="documentReference" aria-labelledby="document-ref-header">
+              </div>
+
+      </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+          <legend class="govuk-fieldset__legend ">
+            Do you want to send this file to traces?
+          </legend>
+          <div id="changed-name-hint" class="govuk-hint">
+            If this is only for the certifier select 'no'.
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes" data-aria-controls="conditional-contact">
+              <label class="govuk-label govuk-radios__label" for="changed-name">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+              <div class="govuk-date-input" data-v-ff267ef6="">
+                <div class="govuk-date-input__item" data-v-ff267ef6="">
+                  <div class="govuk-form-group" data-v-ff267ef6="">
+                    <label class="govuk-label govuk-label" for="fileType-4">
+                      Date of issue
+                    </label>
+                    <div id="changed-name-hint" class="govuk-hint">
+                      Required for doucments sent to TRACES. If there is no date of issue enter the last date the document was updated. For example 24/12/2022
+                    </div>
+                    <input class="govuk-input govuk-!-width-one-third " id="document-date-of-issue-2" type="date" name="dateOfIssue" aria-labelledby="document-date-header" data-v-ff267ef6="">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+      <div class="govuk-form-group {% if query.error == 'yes' %}govuk-form-group--error{% endif %}">
+        <label class="govuk-label govuk-label" id="file-upload-label" for="photo-button">
+          Upload file
+        </label>
+        <div id="file-hint" class="govuk-hint">
+          Files must not be larger than 5MB and be one of PDF, JPEG, XLSX, DOCX, PPTX, CSV
+        </div>
+        {% if data.error == "yes"%}
+        <div id="file-upload-1-error" class="govuk-error-message">
+          {%if data.error_type == "emp  ty"%}
+          <span class="govuk-visually-hidden">Error:</span> The file is empty
+          {%else%}
+          <span class="govuk-visually-hidden">Error:</span> The file must be one of PDF, JPEG, XLSX, DOCX, PPTX
+          {% endif %}
+        </div>
+
+        {% endif %}
+        <input class="govuk-file-upload" id="file" name="file" type="file" aria-describedby="file-hint" data-form-template-id="richard" data-max-file-size-mb="10" data-access-code="-">
+      </div>
+      <input type="hidden" name="error" value="no">
+      <button id="file-uploader" class="govuk-button" type="submit" data-module="govuk-button">Upload file</button>
+    </form>
+
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function() {
+    let filename
+    var percentatge = 0
+    var processing = 0
+    var timer
+
+    $("#file-uploader").on('click', function(e) {
+      e.preventDefault()
+      console.log('working')
+      let filename = $('#file').val().split('\\').pop()
+      if (filename.toUpperCase().indexOf("JPG") >= 0 || filename.toUpperCase().indexOf("PDF") >= 0 || filename.toUpperCase().indexOf("XLSX") >= 0 || filename.toUpperCase().indexOf("DOCX") >= 0 || filename.toUpperCase().indexOf("PNG") >= 0) {
+        <
+        !--$('#fileupload').submit() -- >
+          startUpload(e)
+      } else {
+        window.location.href = "?error=yes&error_type=file type&filename=" + filename;
+      }
+
+    })
+
+    function fileupload() {
+      console.log("working")
+      if (percentatge >= 100) {
+        $('.app-progress-percentage').attr('aria-hidden', 'true').addClass('app-hidden');
+        processing += 10
+        if (processing >= 100) {
+          clearInterval(timer);
+          if (filename == "empty_file.jpg") {
+            window.location.href = "uploads-v4?error=yes&error_type=empty";
+          } else {
+            $('#fileupload').submit()
+          }
+        } else {
+          $('.app-progress').html("Processing file");
+        }
+      } else {
+        percentatge += 10
+        $('.app-progress').attr('aria-total', 'value');
+        $('.app-progress-percentage ').html(percentatge + "% <span class='govuk-visually-hidden'>upload complete</span></p>");
+      }
+    }
+
+    function startUpload(e) {
+      e.preventDefault()
+      console.log("start uploading")
+      filename = $('#file').val().split('\\').pop()
+      if (filename.toUpperCase().indexOf("JPG") >= 0 || filename.toUpperCase().indexOf("PDF") >= 0 || filename.toUpperCase().indexOf("XLSX") >= 0 || filename.toUpperCase().indexOf("DOCX") >= 0 || filename.toUpperCase().indexOf("DOC") >= 0 ||
+        filename.toUpperCase().indexOf("PNG") >= 0 ||
+        filename.toUpperCase().indexOf("CSV") >= 0) {
+        // $('#uploadStatus').attr('aria-hidden', 'false').attr('aria-hidden', 'false');
+        $('#progress').removeClass('app-progress--hidden').attr('aria-valuenow', '0').attr('aria-valuemin', '0').attr('aria-valuemax', '100').text("Uploading file");
+        $('.govuk-grid-row:first').attr('aria-hidden', 'true').addClass('app-hidden')
+        $('.govuk-error-summary').attr('aria-hidden', 'true').addClass('app-hidden');
+        $('#backButton').attr('aria-hidden', 'true').addClass('app-hidden');
+        $('#progress-container').prepend('<div class="app-progress-spinner"></div>')
+        $('#progress-container').append('<p class="govuk-body-l app-progress-percentage"><span class="percentage">0%</span> <span class="govuk-visually-hidden">complete</span></p>')
+        // $('#fileupload').submit()
+        timer = setInterval(fileupload, 100);
+      } else {
+        window.location.href = "?error=yes&error_type=file type&filename=" + filename;
+      }
+    }
+
+  }
+</script>
+{% endblock %}

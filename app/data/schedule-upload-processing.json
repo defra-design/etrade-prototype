@@ -1,0 +1,310 @@
+[
+  {
+    "upload-1": [
+      {
+        "success": 1,
+        "failure": 0,
+        "error": []
+      },
+      {
+        "success": 2,
+        "failure": 0,
+        "error": []
+      },
+      {
+        "success": 2,
+        "failure": 1,
+        "error": [
+          {
+            "description": "Date of collection/production is required",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "success": 3,
+        "failure": 1,
+        "error": [
+          {
+            "description": "Date of collection/production is required",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "success": 4,
+        "failure": 1,
+        "error": [
+          {
+            "description": "Date of collection/production is required",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "success": 4,
+        "failure": 2,
+        "error": [
+          {
+            "description": "Date of collection/production is required",
+            "count": 2
+          },
+          {
+            "description": "Operator for Manufacturing plant with approval number GB888 cannot be found",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "success": 5,
+        "failure": 2,
+        "error": [
+          {
+            "description": "Date of collection/production is required",
+            "count": 2
+          },
+          {
+            "description": "Operator for Manufacturing plant with approval number GB888 cannot be found",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "success": 5,
+        "failure": 3,
+        "error": [
+          {
+            "description": "Date of collection/production is required",
+            "count": 2
+          },
+          {
+            "description": "Operator for Manufacturing plant with approval number GB888 cannot be found",
+            "count": 1
+          },
+          {
+            "description": "Species must have a valid selection",
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "upload-2": [
+      {
+        "success": 1,
+        "failure": 0
+      },
+      {
+        "success": 2,
+        "failure": 0
+      },
+      {
+        "success": 3,
+        "failure": 0
+      }
+    ],
+    "summary-1": [
+      {
+        "commodities": [
+          {
+            "commodity": "41012030",
+            "description": "Wet-salted",
+            "count": 3
+          },
+          {
+            "commodity": "41021010",
+            "description": "Of lambs",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "totalCount": 5
+      }
+    ],
+    "summary-2": [
+      {
+        "commodities": [
+          {
+            "commodity": "41012030",
+            "description": "Wet-salted",
+            "count": 4
+          },
+          {
+            "commodity": "41021010",
+            "description": "Of lambs",
+            "count": 3
+          },
+          {
+            "commodity": "41012050",
+            "description": "Dried or dry-salted",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "totalCount": 8
+      }
+    ],
+
+    "upload1Data": [
+      {
+        "commodity" : "41012030",
+        "weight" : "15 kg",
+        "description" : "Wet salted",
+        "hasError" : "no",
+        "errorMessage" : ""
+      },
+      {
+        "commodity" : "41012030",
+        "weight" : "18 kg",
+        "description" : "Wet salted",
+        "hasError" : "no",
+        "errorMessage" : ""
+      },
+      {
+        "commodity" : "41012030",
+        "weight" : "16 kg",
+        "description" : "Wet salted",
+        "hasError" : "yes",
+        "errorMessage" : ["Species must have a valid selection"]
+      },
+      {
+        "commodity" : "41021010",
+        "weight" : "87 kg",
+        "description" : "Of lambs",
+        "hasError" : "no",
+        "errorMessage" : ""
+      },
+      {
+        "commodity" : "41012030",
+        "weight" : "15 kg",
+        "description" : "Wet salted",
+        "hasError" : "yes",
+        "errorMessage" : ["Species must have a valid selection", "Operator for Manufacturing plant with approval number GB888 cannot be found"]
+      },
+      {
+        "commodity" : "41021010",
+        "weight" : "15 kg",
+        "description" : "Of lambs",
+        "hasError" : "no",
+        "errorMessage" : ""
+      },
+      {
+        "commodity" : "41012050",
+        "weight" : "15 kg",
+        "description" : "Dried or dry-salted",
+        "hasError" : "no",
+        "errorMessage" : ""
+      },
+      {
+        "commodity" : "41021010",
+        "weight" : "15 kg",
+        "description" : "Of lambs",
+        "hasError" : "yes",
+        "errorMessage" : ["Date of collection/production is required"]
+      }
+    ],
+
+    "addedCommoditiesUpload1": [
+
+        {
+          "ehc": "EHC8329",
+          "commodity_id": "4",
+          "commodity_code": "41012050",
+          "commodity_description": "Dried or dry-salted",
+          "description": "Dry salted 1",
+          "Manufacturingplant": "Riverways Farm (22028)",
+          "NET_WEIGHT": "2",
+          "NET_WEIGHT_quatifier": "kilogram",
+          "PACKAGE_COUNT": "5",
+          "PACKAGE_COUNT_quatifier": "Box"
+        },
+        {
+          "ehc": "EHC8329",
+          "commodity_id": "5",
+          "commodity_code": "41021010",
+          "commodity_description": "Of lambs",
+          "description": "Lambs 3",
+          "Manufacturingplant": "Riverways Farm (22028)",
+          "NET_WEIGHT": "27",
+          "NET_WEIGHT_quatifier": "kilogram",
+          "PACKAGE_COUNT": "4",
+          "PACKAGE_COUNT_quatifier": "Drum"
+        },
+        {
+          "ehc": "EHC8329",
+          "commodity_id": "5",
+          "commodity_code": "41021010",
+          "commodity_description": "Of lambs",
+          "description": "Lambs 2",
+          "Manufacturingplant": "Riverways Farm (22028)",
+          "NET_WEIGHT": "27",
+          "NET_WEIGHT_quatifier": "kilogram",
+          "PACKAGE_COUNT": "4",
+          "PACKAGE_COUNT_quatifier": "Drum"
+        },
+        {
+          "ehc": "EHC8329",
+          "commodity_id": "5",
+          "commodity_code": "41021010",
+          "commodity_description": "Of lambs",
+          "description": "Lambs 1",
+          "Manufacturingplant": "Riverways Farm (22028)",
+          "NET_WEIGHT": "27",
+          "NET_WEIGHT_quatifier": "kilogram",
+          "PACKAGE_COUNT": "4",
+          "PACKAGE_COUNT_quatifier": "Drum"
+        },
+        {
+          "ehc": "EHC8329",
+          "commodity_id": "3",
+          "commodity_code": "41012030",
+          "commodity_description": "Wet-salted",
+          "description": "Description 4",
+          "Manufacturingplant": "Riverways Farm (22028)",
+          "NET_WEIGHT": "55",
+          "NET_WEIGHT_quatifier": "kilogram",
+          "PACKAGE_COUNT": "3",
+          "PACKAGE_COUNT_quatifier": "Case"
+        }
+
+    ],
+    "addedCommoditiesUpload2" : [
+      {
+        "ehc": "EHC8329",
+        "commodity_id": "3",
+        "commodity_code": "41012030",
+        "commodity_description": "Wet-salted",
+        "description": "Description 3",
+        "Manufacturingplant": "Riverways Farm (22028)",
+        "NET_WEIGHT": "55",
+        "NET_WEIGHT_quatifier": "kilogram",
+        "PACKAGE_COUNT": "3",
+        "PACKAGE_COUNT_quatifier": "Case"
+      },
+      {
+        "ehc": "EHC8329",
+        "commodity_id": "3",
+        "commodity_code": "41012030",
+        "commodity_description": "Wet-salted",
+        "description": "Description 2",
+        "NET_WEIGHT": "55",
+        "NET_WEIGHT_quatifier": "kilogram",
+        "PACKAGE_COUNT": "3",
+        "PACKAGE_COUNT_quatifier": "Case"
+      },
+      {
+        "ehc": "EHC8329",
+        "commodity_id": "3",
+        "commodity_code": "41012030",
+        "commodity_description": "Wet-salted",
+        "description": "Description 1",
+        "NET_WEIGHT": "55",
+        "NET_WEIGHT_quatifier": "kilogram",
+        "PACKAGE_COUNT": "3",
+        "PACKAGE_COUNT_quatifier": "Case",
+        "species": "not set"
+      }
+    ]
+  }
+]

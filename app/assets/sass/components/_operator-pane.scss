@@ -1,0 +1,29 @@
+.operator-pane {
+  margin: 1em 0;
+  background-color: #fff;
+
+  .operator-pane-heading {
+    padding: 0.5em 1em;
+    background-color: #1f70b8;
+
+    .govuk-heading-s {
+      margin: 0;
+      color: #fff;
+    }
+  }
+
+  .operator-pane-body {
+    padding: 0.5em;
+    border: 4px solid #1f70b8;
+    border-radius: 0 0 4px 4px!important;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+ .govuk-button {
+    margin: 0;
+}
+}

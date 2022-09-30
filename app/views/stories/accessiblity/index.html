@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">E-certs</span>
+      Accessibility updates
+      </h1>
+      <p>
+        Based on these <a href="https://docs.google.com/spreadsheets/d/1LlrpdxhB2VbsF0ByaBRjQZhAzNc-F4AOfsuUcbqVWWQ/edit#gid=0">accessibility findings</a>.
+      </p>
+
+      <!-- <h2 class="govuk-heading-m">Release phase (beta)</h2> -->
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <ul class="govuk-list">
+        <li><a href="goods-certified-as" class="govuk-link">Goods certified as - covers titles, error handling and search pattern</a></li>
+        <li><a href="create-reference-2" class="govuk-link">Create reference</a></li>
+        <li><a href="create-reference" class="govuk-link">Create reference - with updated content</a></li>
+
+        <li><a href="manage-commodities" class="govuk-link">Manage commodities</a></li>
+      </ul>
+      <h2 class="govuk-heading-m">Task list</h2>
+      <ul class="govuk-list">
+        <li><a href="./task-list/task-list" class="govuk-link">Task list - partially complete</a></li>
+        <li><a href="./task-list/task-list-no-certificate" class="govuk-link">Task list - no certificates selected - Cannot start</a></li>
+        <li><a href="./task-list/task-list-complete" class="govuk-link">Task list - completed - apply now</a></li>
+      </ul>
+      <!-- <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Main changes
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <table class='govuk-table'>
+            <thead class='govuk-table__head'>
+              <tr class='govuk-table__row'>
+                <th scope='col' class='govuk-table__header'>What we've done</th>
+                <th scope='col' class='govuk-table__header'>Why we did it</th>
+              </tr>
+            </thead>
+            <tbody class='govuk-table__body'>
+              <tr class='govuk-table__row'>
+                <td class='govuk-table__cell'>Changed sign in process, now emailing a code</td>
+                <td class='govuk-table__cell'>Issues were discoved with emailing a link. Senders were using it as a book mark.</td>
+              </tr>
+              <tr class='govuk-table__row'>
+                <td class='govuk-table__cell'>New verion for mailroom with after ur <a href="/v9/mailroom/">look up and forwarding</a></td>
+                <td class='govuk-table__cell'>Slimmed down version of the previous journey (v7)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details> -->
+      <!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Other features</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/stories/file-import/">Improve uploading of commodities V1</a></li>
+        <li><a href="/stories/accessiblity/">Accessibility updates</a></li>
+        <li><a href="/experimental/add-commodities/">Adding commodities redesign v1(Experimental)</a></li>
+        <li><a href="/stories/place-of-origin-remove-dropdown/place-of-origin">Remove single option drowpdowns</a></li>
+
+      </ul> -->
+      <!-- <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> -->
+  </div>
+</div>
+<script type="text/javascript">
+
+</script>
+
+{% endblock %}

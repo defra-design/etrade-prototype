@@ -1,0 +1,415 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or-exporter – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<style media="screen">
+  .app-search-wrapper {
+    display: table;
+    width: 100%;
+  }
+
+  .govuk-button--search {
+    background-color: #1d70b8;
+    text-indent: -5000px;
+    overflow: hidden;
+    width: 38px;
+    height: 38px;
+    position: relative;
+  }
+
+  .govuk-button--search:hover {
+    background-color: #003078;
+
+  }
+
+  .govuk-button--search .gem-c-search__icon {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 8px;
+    left: 7px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-\!-show--from-tablet {
+      display: block !important;
+    }
+  }
+
+  .das-show-hide__section {
+    display: none;
+  }
+
+  .das-filter {
+    margin-bottom: 30px;
+  }
+
+  .das-filter__header {
+    border: 1px solid #b1b4b6;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-\!-show--from-tablet {
+      display: block !important;
+    }
+  }
+
+  .das-filter__body {
+    padding: 20px;
+    border: 1px solid #b1b4b6;
+    border-top: none;
+  }
+
+
+
+  .js-enabled .das-show-hide__button {
+    display: block;
+  }
+
+  .das-show-hide__button {
+    display: none;
+  }
+
+  .das-filter__toggle {
+    width: auto;
+    margin: 20px 0;
+  }
+
+  @media (min-width: 40.0625em) {
+    .js-enabled .das-show-hide__button {
+      display: none;
+    }
+  }
+
+  .das-filter__heading {
+    margin-bottom: 0;
+  }
+
+  .das-filter__selected-filters {
+    background: #f3f2f1;
+    border: 1px solid #b1b4b6;
+    border-top: none;
+    padding: 20px;
+  }
+
+  .das-filter__selected-action {
+    margin-top: 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .das-filter__tag:link,
+  .das-filter__tag:visited {
+    color: #0b0c0c;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-filter__tag {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+  }
+
+  .das-filter__tag:after {
+    content: "";
+    background-image: url(/public/images/icon-cross--black.svg);
+    display: block;
+    font-weight: bold;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 0.6em;
+    right: 7px;
+  }
+
+  .das-filter__tag {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.14286;
+    background-color: #fff;
+    border: 1px solid #0b0c0c;
+    color: #0b0c0c;
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px 7px;
+    padding-right: 30px;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .das-breakable {
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .das-filter__selected-sub-heading {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .app-establishment-list {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    margin: 0;
+    margin-bottom: 20px;
+}
+@media (min-width: 40.0625em){
+  .app-establishment-list {
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1.3157894737;
+  }
+}
+.app-establishment-list__row{
+  border-bottom:1px solid #b1b4b6;
+  padding:10px 0;
+  clear:both;
+}
+.app-establishment-list__row:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.app-establishment-list__key{
+  font-weight: 700;
+  width:70%;
+  float:left;
+}
+.app-establishment-list__value{
+  margin:5px 0;
+  width:70%;
+  float:left;
+}
+
+.app-establishment-list__activities{
+  color: #505a5f;
+}
+
+.app2-establishment-list__activities{
+  padding-top:5px;
+    font-size: 14px !important;
+    font-size: .875rem !important;
+    line-height: 1.1428571429 !important;
+}
+@media (min-width: 40.0625em){
+  .app-2establishment-list__activities{
+
+      font-size: 16px !important;
+      font-size: 1rem !important;
+      line-height: 1.25 !important;
+  }
+
+}
+.app-establishment-list__action{
+  float:right;
+  margin-top:-55px;
+}
+</style>
+{% set id = query.id or "1" %}
+{% set consignor = data.establishments[id]%}
+<form class="" action="./results" method="post">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Find a manufacturing plant</h1>
+      <div class="govuk-form-group govuk-!-margin-bottom-8">
+        <div class="govuk-hint">Search by approval number or name</div>
+        <div class="govuk-input__wrapper">
+
+          <input class="govuk-input" id="search-field-CONSIGNOR" spellcheck="false" placeholder="" value="{{query.q or 'ldksajkfjs'}}">
+          <div class="govuk-input__suffix operator-search-indicator no-bg"><button id="operator-search-button" class="govuk-button govuk-button--primary" type="button"> Search
+              <!---->
+            </button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <!-- filter -->
+    <div class="govuk-grid-column-one-third">
+      <div class="das-show-hide" data-module="das-show-hide">
+        <div class="das-filter das-!-show--from-tablet das-show-hide__section" id="fat-filter" tabindex="0">
+          <div class="das-filter__header">
+            <h2 class="govuk-heading-m das-filter__heading">Filter</h2>
+          </div>
+          <div class="das-filter__selected-filters">
+            <div class="das-filter__selected-header">
+              <h3 class="govuk-heading-m das-filter__heading">Selected filters</h3>
+              <a class="das-filter__selected-action govuk-link govuk-link--no-visited-state" href="/courses">Clear <span class="govuk-visually-hidden">the selected filters</span></a>
+            </div>
+            <h4 class="govuk-heading-s das-filter__heading">Country</h4>
+            <a title="Clear this filter '32423423vrfaedf a'" class="das-filter__tag das-breakable" href="/courses">‘32423423vrfaedf a’</a>
+          </div>
+          <div class="das-filter__body das-!-show--from-tablet" id="fat-filter-options">
+            <form method="GET" action="/courses">
+
+              <button type="submit" class="govuk-button" id="filters-submit">Apply filters</button>
+              {% block countryOfOrigin %}{% include "../components/_country-of-origin.html" %}{% endblock %}
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    Classification
+                  </legend>
+                  <div class="govuk-checkboxes govuk-checkboxes--small">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="level-2" name="levels" type="checkbox" value="2">
+                      <label class="govuk-label govuk-checkboxes__label" for="level-2">
+                        Animal exporter
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="level-3" name="levels" type="checkbox" value="3">
+                      <label class="govuk-label govuk-checkboxes__label" for="level-3">
+                        Meat Preparation Plant
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="level-4" name="levels" type="checkbox" value="4">
+                      <label class="govuk-label govuk-checkboxes__label" for="level-4">
+                        Animal importer
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="level-5" name="levels" type="checkbox" value="5">
+                      <label class="govuk-label govuk-checkboxes__label" for="level-5">
+                        Exporter
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="level-6" name="levels" type="checkbox" value="6">
+                      <label class="govuk-label govuk-checkboxes__label" for="level-6">
+                        Importer
+                      </label>
+                    </div>
+
+                  </div>
+                </fieldset>
+
+              </div>
+
+              <button type="submit" class="govuk-button" id="filters-submit-second">Apply filters</button>
+            </form>
+          </div>
+        </div>
+        <button class="govuk-button das-filter__toggle das-show-hide__button" data-button-string="filter " data-focus-id="fat-filter" aria-controls="fat-filter" aria-expanded="true">Show filter </button>
+      </div>
+    </div>
+    <!-- results -->
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m search-result" aria-live="polite" aria-atomic="true"></h2>
+      <!-- <p class="govuk-body govuk-!-margin-top-4">
+        No apprenticeship training courses for the selected filters.
+      </p> -->
+      <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/courses">Clear filters</a></p>
+          <dl class="app-establishment-list">
+      {% set type = "consignor"%}
+      {% for operator in data.establishments %}
+
+        <div class="app-establishment-list__row" data-content="{{operator.TradingName}}" data-postcode="{{operator.Postcode}}" data-number="{{operator.AppNo}}">
+          <dt class="app-establishment-list__key">
+            {{operator.TradingName}} ({{operator.AppNo}})
+          </dt>
+          <dd class="app-establishment-list__value">
+            <span class="govuk-visually-hidden">Address</span>
+            {{operator.Address1}},
+            {% if operator.Address2%}{{operator.Address2}},{% endif %}
+            {% if operator.Address3%}{{operator.Address3}},{% endif %}
+            {{operator.Town}},
+            {{operator.Postcode}}
+          </dd>
+          <dd class="app-establishment-list__value app-establishment-list__activities">
+            Activities:
+            {% for activity in operator.All_Activities%}
+                {{activity}} - Food,
+            {% endfor %}
+          </dd>
+          <dd class="app-establishment-list__action">
+            <a class="govuk-button govuk-button--secondary" href="#">
+              select <span class="govuk-visually-hidden"> {{operator.TradingName}} ({{operator.AppNo}})</span>
+            </a>
+          </dd>
+        </div>
+
+          {% endfor %}
+            </dl>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $(".operator-search-results").hide()
+    $(".operator-pane").hide()
+    $(".operator-search-filter").hide()
+    $('#operator-search-button').on("click", function() {
+
+      $(".app-establishment-list__row").hide()
+      if ($(".operator-search-results").hasClass("hidden")) {
+        $(".operator-search-results").removeClass("hidden")
+      }
+      $(".operator-search-results").show()
+      let q = $('#search-field-CONSIGNOR').val().toLowerCase()
+
+      $(".app-establishment-list__row").filter(function() {
+        var t = $(this).attr("data-content").toLowerCase()
+        var a = $(this).attr("data-number").toLowerCase()
+        var p = $(this).attr("data-postcode").toLowerCase()
+        console.log(t + " against " +q)
+        if ((q != "" && t.indexOf(q) > 0) || (q != "" && a.indexOf(q) >= 0)|| (q != "" && p.indexOf(q) >= 0)) {
+          console.log("returning")
+          return $(this)
+        }
+      }).show()
+      var count = $(".app-establishment-list__row:visible").length
+      var r
+      if (count == 1) {
+        r = count + " match found"
+
+      } else {
+        r = count + " matches found"
+      }
+      if (count > 0) {
+        console.log("should show filter and results")
+        $(".operator-search-filter").show()
+        $(".operator-search-results").show()
+
+      }
+      $(".search-result").text(r)
+
+    })
+
+
+
+  })
+</script>
+{% endblock%}

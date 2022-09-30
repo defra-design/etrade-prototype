@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or-exporter – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<form class="" action="../task-list" method="post">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl">Consignee or importer</h1>
+      <p class="govuk-body">Enter the details of the consignee or importer name and select the name and address of the natural or legal person to whom the consignment is intended in Northern Ireland or EU Member State.</p>
+      <div class="govuk-form-group app-find-establishment-card">
+        <p class="govuk-!-margin-bottom-0"><a href="./find-v2/start?searchLabel=consignee or importer&searchReturnURL=../consignee-or-importor-mini">Select consignee or importer</a></p>
+        <input type="hidden" name="manufaturingPlant_name" value="">
+        <input type="hidden" name="manufaturingPlant_address" value="">
+      </div>
+      <button class="govuk-button">Save and return</button>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $(".operator-search-results").hide()
+    $(".operator-pane").hide()
+    $(".operator-search-filter").hide()
+    $('#operator-search-button').on("click", function() {
+
+      $(".operator-pane").hide()
+      if ($(".operator-search-results").hasClass("hidden")) {
+        $(".operator-search-results").removeClass("hidden")
+      }
+      $(".operator-search-results").show()
+      let q = $('#search-field-CONSIGNOR').val().toLowerCase()
+
+      $(".operator-pane").filter(function() {
+        var t = $(this).attr("data-content").toLowerCase()
+        var a = $(this).attr("data-number").toLowerCase()
+        var p = $(this).attr("data-postcode").toLowerCase()
+        console.log(p + " against " +q)
+        if ((q != "" && t.indexOf(q) > 0) || (q != "" && a.indexOf(q) >= 0)|| (q != "" && p.indexOf(q) >= 0)) {
+          console.log("returning")
+          return $(this)
+        }
+      }).show()
+      var count = $(".operator-pane:visible").length
+      var r
+      if (count == 1) {
+        r = count + " match found"
+
+      } else {
+        r = count + " matches found"
+      }
+      if (count > 0) {
+        console.log("should show filter and results")
+        $(".operator-search-filter").show()
+        $(".operator-search-results").show()
+
+      }
+      $(".search-result").text(r)
+
+    })
+
+
+
+  })
+</script>
+{% endblock%}

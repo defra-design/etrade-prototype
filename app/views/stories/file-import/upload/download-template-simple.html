@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Download commodity data template - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+
+{% set ehcNumber = data.certificates[(data.certificate | makeNumber)].number or "test" %}
+<!-- TODO: make this more flexible / resilient -->
+{% set ehcTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_09082022.xlsx" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!--<span class="govuk-caption-xl">
+      Description of the goods
+    </span>-->
+    <h1 class="govuk-heading-xl">Download commodity data template for {{ ehcNumber }}</h1>
+    <p>This template was last updated with TRACES data on 13 June 2022. If you have a copy of the template from before this date, you'll need to download the latest template.</p>
+
+    <form action="#" method="post">
+      <div class="govuk-button-group">
+
+        <a href="{{ ehcTemplateDownloadPath }}" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+          Download latest template
+        </a>
+
+        <a href="./upload-template" class="govuk-link">Upload commodity data</a>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

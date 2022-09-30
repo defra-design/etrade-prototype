@@ -1,0 +1,299 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+{% set ehc = (data.certificate|makeNumber) or 0 %}
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-full">
+    <span class="govuk-caption-xl">{{ data.certificates[ehc].number or "EHC8331" }}</span>
+    <h1 class="govuk-heading-xl">Added {{data.addedCommodities | length}} {{commodityTitle}}</h1>
+    <p>You can add multiple commodites for this certificate by <a href="./upload/manage-imports">uploading a spreadsheet</a></p>
+    {% for commodity in data.addedCommodities %}
+    {% set cert = data.certificates[ehc]%}
+    {{commodityTemplate}}
+    <section class="app-summary-card govuk-!-margin-bottom-6">
+      <header class="app-summary-card__header">
+        <h2 class="app-summary-card__title" title="{{commodity.commodity_code}} - {{commodity.commodity_description}}">
+          <span class="govuk-tag">{{commodity.commodity_code}}</span>
+          {{commodity.NET_WEIGHT or "23"}} {{commodity.NET_WEIGHT_quatifier or "kilogram"}} -
+          {% if commodity.description %}
+            {{ commodity.description | truncate(100) }}
+          {% else %}
+            {{commodity.species or "Bison"}} - {{commodity.commodity_description | truncate(100)}}
+          {% endif %}
+        </h2>
+        <div class="app-summary-card__actions">
+
+          <ul class="app-summary-card__actions-list">
+
+
+            <li class="app-summary-card__actions-list-item ">
+              <a class="govuk-link" href="remove-commodity?id={{loop.index-1}}">
+                Remove<span class="govuk-visually-hidden"> commodity 4012</span>
+              </a>
+            </li>
+
+
+
+            <li class="app-summary-card__actions-list-item">
+              <a class="govuk-link" href="commodity?commodity={{commodity.type}}&change=yes&id={{loop.index-1}}">
+                Change<span class="govuk-visually-hidden"> commodity 4012</span>
+              </a>
+            </li>
+
+            <li class="app-summary-card__actions-list-item">
+              <a class="govuk-link" href="commodity?commodity={{commodity.type}}&copy=yes&id={{loop.index-1}}">
+                Copy <span class="govuk-visually-hidden"> commodity 4012</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="app-summary-card__body">
+        <style media="screen">
+          .app-summary-list--wide .govuk-summary-list__key{
+            width:40%;
+            min-width: 150px;
+            padding-top:0;
+          }
+          .app-summary-list--wide .govuk-summary-list__value{
+            width:60%;
+            padding-top:5px;
+          }
+
+        </style>
+            <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+              <div class="govuk-grid-row">
+              {% if commodityTemplate.batchNumber %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Batch Number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.batchNumber or '28081231'}}
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if cert.manufacturingPlant %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" >
+                <dt class="govuk-summary-list__key">
+                  Manufacturing plant:
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.MANUFACTURING_PLANT or "HELEN BILLINGHAM"}}
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if cert.coldStore %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Cold store
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.coldStore or "HELEN BILLINGHAM"}}
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if cert.dateOfCollection %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Date of collection
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.COLLECTION_PRODUCTION_DATE or "Not set"}}
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if cert.cuttingPlant %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Cutting plant
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.search-field-Cuttingplant or "HELEN BILLINGHAM"}}
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if cert.dateOfFreezing %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Date of freezing
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.dateOfFreezing or "1 June 2022"}}
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if cert.identificationMark %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Identification mark
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.identificationMark or "DD322DD"}}
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if cert.natureOfCommodity %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Nature of commodity
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.natureOfCommodity or "Something"}}
+                </dd>
+              </div>
+              {% endif %}
+
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Net weight
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.NET_WEIGHT or "23"}} {{commodity.NET_WEIGHT_quatifier or "kilogram"}}
+                </dd>
+
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Package count
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.PACKAGE_COUNT or "17"}} {{commodity.PACKAGE_COUNT_quatifier or "Bale, compressed"}}
+                </dd>
+
+              </div>
+
+              {% if cert["Plant / Establishment / Centre"] %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Plant / Establishment / Centre
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity["search-field-Plant/Establishment/Centre"] or "Plant center limited"}}
+                </dd>
+
+              </div>
+              {% endif %}
+
+              {% if cert.Slaughterhouse %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Slaughter house
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity["Slaughterhouse"] or "The slaughter house ltd"}}
+                </dd>
+
+              </div>
+
+              {% endif %}
+
+              {% if cert.treatmentType %}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Treatment type
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity["treatmentType"] or "Deboned"}}
+                </dd>
+
+              </div>
+
+              {% endif %}
+
+
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Species
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{commodity.species or "Bison"}}
+                </dd>
+
+              </div>
+
+              {% if cert.manufacturingPlant%}
+              <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                <dt class="govuk-summary-list__key">
+                  Premises of Origin
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                {{ commodity.premises_of_origin or "Telford"}}
+                </dd>
+
+              </div>
+              {% endif %}
+
+</div>
+            </dl>
+      </div>
+      </section>
+    {% endfor%}
+
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="select-commodities">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you want to add another commodity to this certificate?
+          </legend>
+          <div id="add-another-hint" class="govuk-hint">
+            <!-- You must tell us about all your directors. -->
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~select-commodities">
+              <label class="govuk-label govuk-radios__label" for="add-another">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~weight">
+              <label class="govuk-label govuk-radios__label" for="add-another-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

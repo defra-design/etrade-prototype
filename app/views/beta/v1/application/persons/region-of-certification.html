@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="../task-list" method="post">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">Persons involved</font>
+        </font>
+      </span>
+      <h1 class="govuk-heading-xl"> In which region will the certification take place? </h1>
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            <h1 class="govuk-fieldset__heading"> Certification region </h1>
+          </legend>
+          <div class="govuk-hint"> Select the region in which the certification will take place: </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification" name="regionOfCertification" type="radio" value="GB-ENG"><label class="govuk-label govuk-radios__label" for="region-of-certification">
+                England </label></div>
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification-2" name="regionOfCertification" type="radio" value="GB-SCT"><label class="govuk-label govuk-radios__label" for="region-of-certification-2">
+                Scotland </label></div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification-3" name="regionOfCertification" type="radio" value="GB-WLS"><label class="govuk-label govuk-radios__label" for="region-of-certification-3">
+                Wales </label></div>
+          </div>
+        </fieldset>
+      </div><button class="govuk-button">Save and return</button>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

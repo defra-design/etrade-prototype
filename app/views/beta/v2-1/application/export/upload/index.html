@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Upload commodity data - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+{% if query.error %}
+  {% set hasError = true %}
+{% else %}
+  {% set hasError = false %}
+{% endif %}
+
+{% if hasError %}
+  {% if query.error_trigger == "no_schema" %}
+    {% set errorMessage = "This prototype doesn't support uploading for that certificate. Please choose another, like EHC8361 or EHC8364." %}
+  {% elseif query.error_trigger == "not_template" %}
+    {% set errorMessage = "The spreadsheet you've uploaded doesn't appear to be a supported template. Please go back and then download and complete an up-to-date template before proceeding." %}
+  {% else %}
+    {% set errorMessage = "The file must not be larger than 10MB and must be an XLSX format." %}
+  {% endif %}
+{% endif %}
+
+<div id="progress-container" class="app-progress-container" role="region" aria-live="polite" tabindex="-1" aria-labelledby="progress">
+  <h2 id="progress" class="app-progress app-progress--hidden govuk-heading-l" role="progressbar">Upload file</h2>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if hasError %}
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#file-upload-1-error">{{ errorMessage }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+    <header>
+      <!--<span class="govuk-caption-xl">
+        Description of the goods
+      </span>-->
+      <h1 class="govuk-heading-xl">Upload commodity data from a spreadsheet for {{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</h1>
+    </header>
+    <p>The spreadsheet that you upload must:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>use the most recent template (the latest version was updated on 16 September 2022)</li>
+      <li>include no more than 100 rows of data</li>
+      <li>use no more than 15 different commodities</li>
+      <li>be no larger than 10MB</li>
+      <li>be a .XLSX file format</li>
+    </ul>
+
+    <form method="post" novalidate id="fileupload" enctype="multipart/form-data">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="upload-file">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Upload the spreadsheet
+          </legend>
+          <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file" aria-describedby="file-hint" data-form-template-id="template-file-upload" data-max-file-size-mb="10" data-access-code="-">
+        </fieldset>
+
+      </div>
+      <input type="hidden" name="error" value="no">
+      {% if query.v == "2" %}
+      <input type="hidden" name="version" value="2">
+      {% endif %}
+      <button id="file-uploader" class="govuk-button" type="submit" data-module="govuk-button">Upload file</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+   window.onload = function() {
+
+     let filename
+      var percentage = 0
+      var processing = 0
+      var timer
+
+  $("#file-uploader").on('click', function(e) {
+    e.preventDefault()
+    console.log('working on click')
+    let filename = $('#file-upload-1').val().split('\\').pop()
+    if (filename.toUpperCase().indexOf("XLSX") >= 0 || filename.toUpperCase().indexOf("XLS") >= 0) {
+      <!-- $('#fileupload').submit() -->
+      startUpload(e)
+    } else {
+      window.location.href = "?error=yes&error_type=file type&filename=" + filename;
+    }
+  })
+
+  function fileupload() {
+    console.log("working in fileupload")
+    if (percentage >= 100) {
+      $('.app-progress-percentage').attr('aria-hidden', 'true').addClass('app-hidden');
+      processing += 10
+      if (processing >= 100) {
+        clearInterval(timer);
+
+        if (filename == "empty_file.jpg") {
+          window.location.href = "uploads-v4?error=yes&error_type=empty";
+        } else {
+          $('#fileupload').submit()
+        }
+
+      } else {
+        $('.app-progress').html("Processing file");
+      }
+    } else {
+      percentage += 10
+      $('.app-progress').attr('aria-total', 'value');
+      $('.app-progress-percentage ').html(percentage + "% <span class='govuk-visually-hidden'>upload complete</span></p>");
+    }
+  }
+
+  function startUpload(e) {
+    e.preventDefault()
+    console.log("start uploading")
+    filename = $('#file-upload-1').val().split('\\').pop()
+    if (filename.toUpperCase().indexOf("XLSX") >= 0 || filename.toUpperCase().indexOf("XLS") >= 0 ) {
+      // $('#uploadStatus').attr('aria-hidden', 'false').attr('aria-hidden', 'false');
+      $('#progress').removeClass('app-progress--hidden').attr('aria-valuenow', '0').attr('aria-valuemin', '0').attr('aria-valuemax', '100').text("Uploading file");
+      $('.govuk-grid-row:first').attr('aria-hidden', 'true').addClass('app-hidden')
+      $('.govuk-error-summary').attr('aria-hidden', 'true').addClass('app-hidden');
+      $('#backButton').attr('aria-hidden', 'true').addClass('app-hidden');
+      $('#progress-container').prepend('<div class="app-progress-spinner"></div>')
+      $('#progress-container').append('<p class="govuk-body-l app-progress-percentage"><span class="percentage">0%</span> <span class="govuk-visually-hidden">complete</span></p>')
+      // $('#fileupload').submit()
+      timer = setInterval(fileupload, 100);
+    } else {
+      window.location.href = "?error=yes&error_type=file_type&filename=" + filename;
+    }
+  }
+}
+</script>
+{% endblock%}

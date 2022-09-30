@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or-exporter – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+  .operator-pane .operator-pane-body {
+    padding: 20px
+  }
+
+  .operator-pane .operator-pane-heading {
+    padding: 10px 20px;
+  }
+</style>
+{% endblock%}
+{% block content %}
+{% set id = query.id or "1" %}
+{% set consignor = data.establishments[id]%}
+<form class="" method="post">
+
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds">
+    {% if query.hasError %}
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#activity">Select a location type for this address</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+      <span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl">Consignee or importer</h1>
+      <p class="govuk-body">Search by company or importer name and select the name and address of the natural or legal person to whom the consignment is intended in Northern Ireland or EU Member State.</p>
+
+      <section>
+        <div class="operator-pane" data-content="{{operator.TradingName}}" data-postcode="{{operator.Postcode}}" data-number="{{operator.AppNo}}">
+          <div class="operator-pane-heading">
+            <h2 class="govuk-heading-s">Selected consignee or importer</h2>
+          </div>
+          <div class="operator-pane-body">
+            <p class='govuk-!-margin-bottom-0'><strong>{{consignor.TradingName}} ({{consignor.AppNo}})</strong></p>
+            <p>
+
+              {{consignor.Address1}}<br>
+              {% if consignor.Address2%}{{consignor.Address2}}<br>{% endif %}
+              {% if consignor.Address3%}{{consignor.Address3}}<br>{% endif %}
+              {{consignor.Town}}<br>
+              {{consignor.Postcode}}
+
+            </p>
+            {% set listOfItems = consignor.All_Activities%}
+            <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
+              <label class="govuk-label govuk-label" for="natureOfCommodity">Location type
+              </label>
+              <div class="govuk-hint" id="activity-hint">The location type will be sent to the border control agent and TRACES.</div>
+              {% if (consignor.All_Activities | length) == 1%}
+
+              <p><strong>{{consignor.All_Activities[0]}}</strong></p>
+              {% else %}
+
+              {% if query.hasError %}<div class="govuk-error-message">Select a location type for this address</div>{% endif %}
+              <select class="govuk-select {% if query.hasError %}govuk-select--error{% endif%}" id="activity" name="activity">
+                <option disabled="" value="" selected>Select location type</option>
+                {% if (listOfItems| length) > 0%}
+                {% for item in listOfItems%}
+                <option value="{{item}}">{{item}}</option>
+                {% endfor %}]
+                {% else %}
+                <option value="not set">Not set any species in JSON</option>
+                {% endif %}
+              </select>
+              {% endif %}
+
+            </div>
+
+
+            <p class="govuk-!-margin-bottom-0"><a role="button" class="govuk-link " href="{{query.back or 'consignee'}}?id={{query.id or '2'}}">Select a different consignee or importer</a></p>
+          </div>
+        </div>
+      </section><button class="govuk-button">Save and return</button>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+
+  })
+</script>
+{% endblock%}

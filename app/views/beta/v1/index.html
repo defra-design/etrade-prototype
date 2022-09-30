@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      Version 1
+      <p>This is updated from the initial version. <a href="../look-up-v2">View previous version 1</a>
+      <h2 class="govuk-heading-m">What changed</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Initial build</li>
+        <li>Adding manage commodites, not dynamic</li>
+      </ul>
+      <p>This version has not been tested yet</p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <h2 class="govuk-heading-m">Pages</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="dashboard">Dashboard</a></li>
+      </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="application/start">Start new application</a></li>
+        <li><a href="application/refernce">Reference number</a></li>
+        <li><a href="application/select-commodities">Select certificate</a></li>
+        <li><a href="application/manage-commodities">Manage certificate</a></li>
+        <li><a href="application/task-list">Task list</a></li>
+      </ul>
+  </div>
+  <div class="govuk-grid-column-one-thirds">
+    <h3 class="govuk-heading-s">How to use this prototype</h3>
+
+  </div>
+</div>
+
+{% endblock %}

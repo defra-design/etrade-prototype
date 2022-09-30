@@ -1,0 +1,323 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Processing uploaded commmodity data – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+
+{% set ehcNumber = data.certificates[(data.certificate | makeNumber)].number or "test" %}
+<!-- TODO: make this more flexible / resilient -->
+{% if query.v == "2" %}
+  {% set ehcErrorTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_09082022_with-errors-v2.xlsx" %}
+{% else %}
+  {% set ehcErrorTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_09082022_with-errors.xlsx" %}
+{% endif %}
+
+
+{% set upload1 = data.scheduleUploadProcessing[0]['upload-1'] %}
+{% set upload2 = data.scheduleUploadProcessing[0]['upload-2'] %}
+{% set currentRowIndex = 0 %}
+{% set upload1Length = upload1.length %}
+
+<!-- this isn't where this should be -->
+<style type="text/css">
+  #etrade-schedule-upload-progress-container {
+    background: #b1b4b6;
+    height: 20px;
+  }
+
+  #etrade-progress-schedule-upload-indicator {
+    background: #1d70b8 !important;
+    height: 20px;
+  }
+
+  /* // TODO: make this dynamic */
+  .etrade-progress-0 { width: 10px; }
+  .etrade-progress-1 { width: 12.5%; }
+  .etrade-progress-2 { width: 25%; }
+  .etrade-progress-3 { width: 37.5%; }
+  .etrade-progress-4 { width: 50%; }
+  .etrade-progress-5 { width: 62.5%; }
+  .etrade-progress-6 { width: 75%; }
+  .etrade-progress-7 { width: 87.5%; }
+  .etrade-progress-8 { width: 100%; }
+
+  .etrade-status-table { display: none; }
+  .etrade-error-details { display: none; }
+  #etrade-progress-error-details-enclosure { display: none; }
+
+  .in-progress { display: block; }
+  .complete { display: none; }
+
+  .etrade-warning-banner {
+    border-color: #f47738;
+    background-color: #f47738;
+  }
+
+  .etrade-warning-banner h2 {
+    color: #000000;
+  }
+
+  .etrade-status-table-failure {
+    color: #D4351C;
+  }
+
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!--<span class="govuk-caption-xl">
+      Description of the goods
+    </span>-->
+
+    <div class="complete">
+      <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Partial success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">Some commodity data could not be imported</p>
+          <p class="govuk-body">There are errors in {{ upload1[upload1Length-1].failure }} of {{ upload1Length }} rows. <a href="{{ ehcErrorTemplateDownloadPath }}">Download the failed records spreadsheet</a> to view the errors, and re-upload the commodity data once you've updated the data.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="in-progress">
+      <h1 class="govuk-heading-xl">Processing uploaded commodity data for {{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</h1>
+      <p>File uploaded on 23 August 2022 at 13:56. The uploaded data is being validated against TRACES system requirements. This may take a few minutes.</p>
+    </div>
+
+    <div class="complete">
+      <h1 class="govuk-heading-xl">Processing complete for {{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</h1>
+      <!--<p>File uploaded on 14 August 2022 at 13:56.</p>-->
+    </div>
+
+    <!-- Progress indicator -->
+    <div class="in-progress">
+      <div id="etrade-schedule-upload-progress" class="govuk-!-padding-bottom-2">
+        <div id="etrade-schedule-upload-progress-container">
+          <div id="etrade-progress-schedule-upload-indicator" class="etrade-progress-1" ></div>
+        </div>
+      </div>
+
+      <p class="govuk-body" id="etrade-schedule-upload-progress-count"><span id="etrade-schedule-upload-row-number">{{ currentRowIndex + 1 }}</span> of <span id="etrade-schedule-upload-row-count">{{ upload1Length }}</span> rows processed</p>
+    </div>
+
+<div class="in-progress">
+    <!-- Progress table -->
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Status</th>
+          <th scope="col" class="govuk-table__header">Number of rows</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body" id="status-table-0">
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Successfully added</td>
+          <td class="govuk-table__cell">{{ upload1[0].success }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Could not be added</td>
+          <td class="govuk-table__cell">{{ upload1[0].failure }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Still pending</td>
+          <td class="govuk-table__cell">{{ upload1Length - 1 }}</td>
+        </tr>
+      </tbody>
+
+      {% for item in upload1 %}
+      <tbody class="govuk-table__body etrade-status-table" id="status-table-{{ loop.index }}">
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell govuk-!-width-one-half">Successfully added</td>
+          <td class="govuk-table__cell">{{ item.success }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Could not be added</td>
+          <td class="govuk-table__cell etrade-status-table-failure">{{ item.failure }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Still pending</td>
+          <td class="govuk-table__cell">{{ upload1Length - loop.index }}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+
+    </table>
+</div>
+
+<div class="in-progresszz " style="display:none">
+    <details class="govuk-details" id="etrade-progress-error-details-enclosure" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          View error summary
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        {% for item in upload1 %}
+          {% if item.error.length %}
+        <table class="govuk-table etrade-error-details" id="etrade-progress-error-details-{{ loop.index }}">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Error description</th>
+              <th scope="col" class="govuk-table__header">Number of instances</th>
+            </tr>
+          </thead>
+              <tbody class="govuk-table__body">
+                {% for error in item.error %}
+                <tr class="govuk-table__row">
+                  <td scope="row" class="govuk-table__cell govuk-!-width-two-thirds">{{ error.description }}</td>
+                  <td class="govuk-table__cell">{{ error.count }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+
+        {% endif %}
+      {% endfor %}
+      </div>
+    </details>
+</div>
+
+<div class="complete">
+
+  <p class="govuk-body">The uploaded data has these errors:</p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Error description</th>
+          <th scope="col" class="govuk-table__header">Number of instances</th>
+        </tr>
+      </thead>
+          <tbody class="govuk-table__body">
+            {% for error in upload1[upload1Length - 1].error %}
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell govuk-!-width-two-thirds">{{ error.description }}</td>
+              <td class="govuk-table__cell">{{ error.count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+
+    <a href="{{ ehcErrorTemplateDownloadPath }}" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      Download failed records spreadsheet
+    </a>
+
+
+</div>
+
+
+    <!-- button should be enabled by default for non-Javascript users -->
+    <div class="in-progress">
+      <button disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" data-module="govuk-button">
+        Refresh
+      </button>
+    </div>
+
+    <div class="complete">
+
+        <form method="post" action="#">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading govuk-!-margin-top-5">
+                Do you want to upload another spreadsheet?
+              </h2>
+              <p class="govuk-body">Download the failed records spreadsheet to view the errors, and re-upload the commodity data once you've updated the data.</p>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-another-spreadsheet" name="upload-another-spreadsheet" type="radio" value="yes~../upload/re-upload-template">
+                <label class="govuk-label govuk-radios__label" for="upload-another-spreadsheet">
+                  Yes, upload another spreadsheet
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-another-spreadsheet-2" name="upload-another-spreadsheet" type="radio" value="no~../certificate-summary">
+                <label class="govuk-label govuk-radios__label" for="upload-another-spreadsheet-2">
+                  No, review the imported commodities
+                </label>
+              </div>
+
+            </div>
+
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+        </form>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+    var currentRowIndex = 0;
+
+    var govukIntervalTimer = 2500;
+    // var govukIntervalTimer = 100;
+
+    // TODO: make this dynamic
+    var maxRowIndex = 8;
+    updateInterval = setInterval(updateProcessingUI, govukIntervalTimer);
+
+    function updateProcessingUI() {
+
+      if (currentRowIndex < maxRowIndex) {
+
+        var element = document.getElementById("etrade-progress-schedule-upload-indicator");
+        // clear all classes
+        element.className = "";
+        element.classList.add("etrade-progress-" + (currentRowIndex+1));
+
+        document.getElementById("etrade-schedule-upload-row-number").innerHTML = currentRowIndex + 1;
+
+        $("#status-table-" + currentRowIndex).hide();
+        $("#status-table-" + (currentRowIndex + 1)).show();
+
+        $("#etrade-progress-error-details-" + currentRowIndex).hide();
+        $("#etrade-progress-error-details-" + (currentRowIndex + 1)).show();
+
+        // only show the error details if there are errors
+        if ($("#etrade-progress-error-details-" + (currentRowIndex + 1)).length) {
+          $("#etrade-progress-error-details-enclosure").show();
+        }
+
+        currentRowIndex++;
+      } else {
+        clearInterval(updateInterval);
+
+        // we're all done
+        $(".in-progress").hide();
+        $(".complete").show();
+      }
+
+    }
+
+
+  })
+</script>
+
+{% endblock%}

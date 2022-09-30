@@ -1,0 +1,213 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+
+
+{% block content %}
+
+  <!-- set the current certificate -->
+  {% set certID = data.currentCertID or 0 %}
+
+  <!-- set the current list idea, use the query currentCommodityID as default if possible -->
+  {% set commodityID = query.currentCommodityID or data.currentCommodityID or 0 %}
+  {% set commodityListID = query.commodityListID or data.commodityListID or 0 %}
+
+  <!-- IF Change Set the identification array location of the current commodity -->
+  {% set changeID = query.changeID or data.changeID or 0 %}
+  <!-- Set current cert  -->
+  {% set cert = data.addedEHC[certID]%}
+  {% set identification = cert.addedCommodities[commodityListID].identifications[changeID]%}
+  <!-- Set return URL for search establishment component -->
+  {% set returnURL = "../export/commodity"%}
+
+  <!-- Set variable to trigger different behaviour in search establishment component-->
+  {% set isCommodity = "yes" %}
+
+
+{% if data.copy == "yes"%}
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <!-- <h3 class="govuk-notification-banner__heading">
+          Copied commodity
+        </h3> -->
+        <p class="govuk-body">Commodity copied</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-xl">{{ cert.number or "test" }}</span>
+    <h1 class="govuk-heading-xl">{% if data.change %}Change{% else %}Add{% endif %} commodity data</h1>
+    <form method="post">
+      <input type="hidden" name="ehc" value="{{cert.number}}">
+      <input type="hidden" name="commodity_id" value="{{commodityID}}">
+      <input type="hidden" name="commodity_code" value="{{cert.commodities[commodityID].code}}">
+      <input type="hidden" name="commodity_description" value="{{cert.commodities[commodityID].title}}">
+      <div class="commodity-pane--body open" style="" id="commodity-details-panel">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <div class="identification-questions">
+              <section id="intro">
+                <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Commodity</h2>
+                <p><span class="govuk-tag">{{cert.commodities[commodityID].code}}</span> {{cert.commodities[commodityID].title}}
+                <p>
+              </section>
+              <section id="questions">
+                <div class="govuk-form-group"><label class="govuk-label" for="PRODUCT_DESCRIPTION-0-10410-31010000">Product description &nbsp;(Optional) </label>
+                  <input class="govuk-input" type="text" id="description" name="description" value="{% if data.change or data.copy %}{{identification.description}}{% endif %}">
+                </div>
+                {% if cert.batchNumber %}
+                <div class="govuk-form-group"><label class="govuk-label" for="BATCH_NUMBER-1-11711-020130">Batch number</label><input class="govuk-input" type="text" name="batchNumber" {% if data.change or data.copy %}value="{{cert.addedCommodities[commodityListID].identifications[changeID].batchNumber}}"{% endif %} id="BATCH_NUMBER-1-11711-020130"></div>
+                {% endif %}
+
+                {% if cert.manufacturingPlant %}
+                  {% set searchLabel = "Manufacturing plant"%}
+                  {% block searchManufaturePlant %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+                {% if cert.coldStore %}
+                  {% set searchLabel = "Cold store"%}
+                  {% block searchColdStore %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+                {% if cert.dateOfCollection %}
+                  <div class="govuk-form-group"><label class="govuk-label" for="COLLECTION_PRODUCTION_DATE-3-11711-020120">Date of collection/production <!----></label><!----><!----><!----><input class="govuk-input" type="datetime-local" name="COLLECTION_PRODUCTION_DATE" id="COLLECTION_PRODUCTION_DATE-3-11711-020120"><!----><!----></div>
+                {% endif %}
+
+                {% if cert.breed %}
+                  {% block breed %}{% include "./components/_breed.html" %}{% endblock %}
+                {% endif %}
+
+                {% if cert.cuttingPlant %}
+                  {% set searchLabel = "Cutting plant"%}
+                  {% block searchcuttingPlant %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+                {% if cert.dateOfFreezing %}
+                  <div class="govuk-form-group app-repeadable-holder">
+                    <label class="govuk-label" for="FREEZING_DATE-6-11711-020120">Date of freezing(Optional) </label><!----><!----><!----><!---->
+                    <div class="app-repeatable-section" id="repeatable-freezing-date">
+                      <div class="govuk-input__wrapper m-t-15">
+                        <input name="dateOfFreezing" class="govuk-input" type="datetime-local" id="FREEZING_DATE-6-11711-020120">
+                        <div class="govuk-input__suffix suffix__action" aria-hidden="true">
+                          <button class="govuk-button govuk-button--secondary add-repeatable-section" id="repeatable-add-freezing-date" data-target="repeatable-freezing-date" data-count="0"><span class="fas fa-plus"></span></button>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+
+                {% if cert.identificationMark %}
+                  <div class="govuk-form-group"><label class="govuk-label" for="IDENTIFICATION_MARK-7-11711-020120">Identification mark <!----></label><!----><!----><!----><input class="govuk-input" type="text" name="identificationMark" id="IDENTIFICATION_MARK-7-11711-020120" value="{% if data.change or data.copy %}{{identification.identificationMark}}{% endif %}"></div>
+                {% endif %}
+                {% if cert.natureOfCommodity and (cert.natureOfCommodity | length) > 0 %}
+                  {% block natureOfCommodity %}{% include "./components/_nature-of-commodity.html" %}{% endblock %}
+                {% endif %}
+
+                {% if cert.netWeight != "no"%}
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="NET_WEIGHT-3-10410-31010000">Net weight</label>
+                  <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8="">
+                    <input class="govuk-input" type="number" data-type="quantity" name="NET_WEIGHT" step="0.01" min="0" max="9999999" id="NET_WEIGHT-3-10410-31010000"
+                      value="{% if data.change or data.copy %}{{identification.NET_WEIGHT}}{% endif %}">
+                    <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8="">
+                      <select class="govuk-select" id="NET_WEIGHT-3-10410-31010000-units" name="NET_WEIGHT_quatifier" data-v-4e8f37a8="">
+                        <option disabled="" value="" data-v-4e8f37a8="" selected>Select a unit</option>
+                        <option value="gram" {% if (data.change or data.copy) and identification.NET_WEIGHT_quatifier == 'gram'%}selected{% endif %}>gram</option>
+                        <option value="kilogram" {% if (data.change or data.copy) and identification.NET_WEIGHT_quatifier == 'kilogram'%}selected{% endif %}>kilogram</option>
+                        <option value="kilotonne" {% if (data.change or data.copy) and identification.NET_WEIGHT_quatifier == 'kilotonne'%}selected{% endif %}>kilotonne</option>
+                        <option value="tonne (metric ton)" {% if (data.change or data.copy) and identification.NET_WEIGHT_quatifier ==  'tonne (metric ton)'%}selected{% endif %}>tonne (metric ton)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                 
+
+
+                {% if cert["Plant / Establishment / Centre"]%}
+                  {% set searchLabel = "Plant / Establishment / Centre"%}
+
+                  {% block searchplant %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+                {% if cert.Slaughterhouse %}
+                  {% set searchLabel = "Slaughter house"%}
+                  {% block searchSlaughterhouse %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+
+                {% block species %}{% include "./components/_species.html" %}{% endblock %}
+
+                {% if cert.treatmentType %}
+                    {% block treatmentType %}{% include "./components/_treatment-type.html" %}{% endblock %}
+                {% endif %}
+
+
+
+                {% if manufacturingPlant%}
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="Premises of Origin-5-10367-4101">Premises of Origin</label>
+                  <input class="govuk-input" type="text" id="Premises of Origin-5-10367-4101" name="premises_of_origin" value="{% if data.change=='yes' or data.copy%}{{cert.addedCommodities[query.id].premises_of_origin}}{% endif %}">
+                </div>
+                {% endif %}
+                <!---->
+                <!-- reset change values -->
+                <input type="hidden" name="change" value="">
+                <input type="hidden" name="changeID" value="">
+                <input type="hidden" name="commodityListID" value="">
+                <section id="actions">
+                  <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if data.change == "yes" %}Update{% else %}Add{% endif %} commodity</button>
+                </section>
+            </div>
+            <!---->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+    $('.add-repeatable-section').on('click',function(e){
+      e.preventDefault()
+      var count = $(this).attr("data-count")
+      var targetID = "#"+$(this).attr('data-target')
+      var section = $(targetID).html()
+
+      var blockID = $(section).attr("id")+count
+      var deleteButton = '<button class="govuk-button govuk-button--secondary"><span class="fas fa-trash-alt"></span></button>'
+
+
+      // var formID = section.find("input").attr("id")+count
+      $(section).attr("id",blockID)
+      console.log(blockID)
+      var s = $('.app-repeadable-holder').append(section)
+      var button = $('#'+blockID).find(".add-repeatable-section");
+      $(button).remove()
+      console.log($(button).html())
+
+      })
+  })
+</script>
+{% endblock%}

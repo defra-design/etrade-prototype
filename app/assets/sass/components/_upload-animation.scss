@@ -1,0 +1,66 @@
+.hide {
+  display: none;
+}
+
+#photo-label-text {
+  display: inline-block;
+  color: #fff;
+}
+
+.js-enabled .photo-choose-file {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+.photo-upload-label {
+  margin-bottom: 2px;
+}
+
+.app-progress-spinner {
+  border: 12px solid #DEE0E2;
+  border-radius: 50%;
+  border-top-color: #005EA5;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.app-hidden,
+.app-file-spinner--hidden,
+.app-progress--hidden {
+  display: none;
+}
+
+.app-progress-container {
+  text-align: center;
+}

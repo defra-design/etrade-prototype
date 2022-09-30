@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+<style media="screen">
+
+  .table-commodity-type{
+        calc(25%)
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+  }
+</style>
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-full">
+    <span class="govuk-caption-xl">
+      {{ data.certificates or "EHC8328" }}
+    </span>
+    <h1 class="govuk-heading-xl">Added {{data.addedCommodities | length}} {{commodityTitle}}</h1>
+    <table class="govuk-table">
+<caption class="govuk-table__caption govuk-table__caption--m">Dates and amounts</caption>
+<thead class="govuk-table__head">
+  <tr class="govuk-table__row">
+    <th scope="col" class="govuk-table__header">Product description</th>
+    <th scope="col" class="govuk-table__header">Manufacturing plant</th>
+    <th scope="col" class="govuk-table__header">Species</th>
+    <th scope="col" class="govuk-table__header">Net weight</th>
+    <th scope="col" class="govuk-table__header">Package count</th>
+    <th scope="col" class="govuk-table__header">Actions</th>
+  </tr>
+</thead>
+<tbody class="govuk-table__body">
+    {% for commodity in data.addedCommodities%}
+
+
+  <tr class="govuk-table__row">
+    <th scope="row" class="govuk-table__cell table-commodity-type table-commodity-type">{{commodity.type}}</th>
+    <td class="govuk-table__cell">{{commodity.natureOfProduct or  "Buffalo"}}</td>
+    <td class="govuk-table__cell">{{commodity.NET_WEIGHT or  "20"}} {{commodity.NET_WEIGHT_quatifier or "kilogram"}}</td>
+    <td class="govuk-table__cell">{{commodity.PACKAGE_COUNT or "20"}} {{commodity.PACKAGE_COUNT_quatifier or "Bags"}}</td>
+    <td class="govuk-table__cell">HELEN BILLINGHAM</td>
+    <td class="govuk-table__cell">{{commodity.description or "-"}}</td>
+    <td class="govuk-table__cell">
+      <ul class="govuk-list govuk-!-margin-bottom-0">
+        <li><a href="#">Copy</a></li>
+        <li><a href="#">Change</a></li>
+        <li><a href="#">Remove</a></li>
+    </ul>
+  </td>
+  </tr>
+
+
+    {% endfor%}
+  </tbody>
+  </table>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="select-commodities">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you want to add another commodity to this certificate?
+          </legend>
+          <div id="add-another-hint" class="govuk-hint">
+            <!-- You must tell us about all your directors. -->
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~select-commodities">
+              <label class="govuk-label govuk-radios__label" for="add-another">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~weight">
+              <label class="govuk-label govuk-radios__label" for="add-another-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    let string = "Want better search results? See our search tips".split(" ").splice(0,3).join(" ")
+    console.log(string)
+  })
+</script>
+{% endblock%}

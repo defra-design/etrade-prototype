@@ -1,0 +1,423 @@
+{
+  "number": "EHC8350",
+  "title": "Composite food products intended for human consumption to the European Union and Northern Ireland post 21 April 2021",
+  "batchNumber": "multiple",
+  "manufacturingPlant": "yes",
+  "coldStore": "yes",
+  "dateOfCollection": "multiple",
+  "Slaughterhouse": "yes",
+  "finalConsumerOption": "yes",
+  "finalConsumerOption": "yes",
+  "packageCount": "multiple",
+  "quantity": "multiple",
+  "netWeight": "multiple",
+  "quantiy": "multiple",
+  "natureOfCommodity": [
+    "Carcass_quarters",
+    "Carcass_side",
+    "Carcass_whole",
+    "Colostrum",
+    "Cuts",
+    "Dairy",
+    "Farmed stock",
+    "Fishery products",
+    "Meat products",
+    "Ovoproducts",
+    "Wild stock"
+  ],
+  "multiples": [
+    "natureOfCommodity", "treatmentType"
+  ],
+  "treatmentType": [
+    "A = 0 t°c",
+    "Animal by-products of category 1",
+    "Animal by-products of category 2",
+    "B = fo&gt;=3°",
+    "Bone in",
+    "C = t&gt;=80°",
+    "Chilled",
+    "Combined heat treatment",
+    "Cooked",
+    "D = t&gt;=70°c",
+    "Deboned",
+    "Dried",
+    "E = aw&lt;=0.93+ph&lt;=6",
+    "Eviscerated",
+    "F = t&gt;=65°c pv=40",
+    "Fresh", "Frozen",
+    "Homogenisation",
+    "In shell",
+    "Live",
+    "Matured",
+    "Minced",
+    "No thermal treatment",
+    "Otherwise processed",
+    "Pasteurisation",
+    "Plucked", "Prepared",
+    "Preserved",
+    "Processed",
+    "Raw milk",
+    "Roasted",
+    "Salted",
+    "Shelled",
+    "Single heat treatment",
+    "Skinned", "Smoked",
+    "Sterilisation",
+    "Treated",
+    "Uht",
+    "Ultrafiltration",
+    "Ultrasonication",
+    "Uneviscerated",
+    "Unplucked",
+    "Unskinned"
+  ],
+  "commodities": [{
+    "code": "1901",
+    "title": " Malt extract; food preparations of flour, groats, meal, starch or malt extract, not containing cocoa or containing less than 40|% by weight of cocoa calculated on a totally defatted basis, not elsewhere specified or included; food preparations of goods of headings|0401|to 0404, not containing cocoa or containing less than 5|% by weight of cocoa calculated on a totally defatted basis, not elsewhere specified or included"
+  }, {
+    "code": "1905",
+    "title": " Bread, pastry, cakes, biscuits and other bakers' wares, whether or not containing cocoa; communion wafers, empty cachets of a kind suitable for pharmaceutical use, sealing wafers, rice paper and similar products"
+  }, {
+    "code": "2004",
+    "title": " Other vegetables prepared or preserved otherwise than by vinegar or acetic acid, frozen, other than products of heading|2006"
+  }, {
+    "code": "2005",
+    "title": " Other vegetables prepared or preserved otherwise than by vinegar or acetic acid, not frozen, other than products of heading|2006"
+  }, {
+    "code": "151710",
+    "title": " Margarine, excluding liquid margarine"
+  }, {
+    "code": "151790",
+    "title": " other than 151710"
+  }, {
+    "code": "160100",
+    "title": " Sausages and similar products, of meat, meat offal or blood; food preparations based on these products"
+  }, {
+    "code": "160210",
+    "title": " Homogenised preparations"
+  }, {
+    "code": "160220",
+    "title": " Of liver of any animal"
+  }, {
+    "code": "160231",
+    "title": " Of turkeys"
+  }, {
+    "code": "160232",
+    "title": " Of fowls of the species Gallus domesticus"
+  }, {
+    "code": "160239",
+    "title": " of poultry of heading 0105 other than 160231; 160232"
+  }, {
+    "code": "160250",
+    "title": " Of bovine animals"
+  }, {
+    "code": "160290",
+    "title": " Other, including preparations of blood of any animal"
+  }, {
+    "code": "160300",
+    "title": " Extracts and juices of meat, fish or crustaceans, molluscs or other aquatic invertebrates"
+  }, {
+    "code": "190220",
+    "title": " Stuffed pasta, whether or not cooked or otherwise prepared"
+  }, {
+    "code": "190230",
+    "title": " Other pasta"
+  }, {
+    "code": "190240",
+    "title": " Couscous"
+  }, {
+    "code": "15171010",
+    "title": " Containing, by weight, more than 10|% but not more than 15|% of milkfats"
+  }, {
+    "code": "15171090",
+    "title": " other than 151710 10"
+  }, {
+    "code": "15179010",
+    "title": " Containing, by weight, more than 10|% but not more than 15|% of milkfats"
+  }, {
+    "code": "15179091",
+    "title": " Fixed vegetable oils, fluid, mixed"
+  }, {
+    "code": "15179093",
+    "title": " Edible mixtures or preparations of a kind used as mould-release preparations"
+  }, {
+    "code": "15179099",
+    "title": " other than 151790 10; 151790 91; 151790 93."
+  }, {
+    "code": "15180091",
+    "title": " Animal or vegetable fats and oils and their fractions, boiled, oxidised, dehydrated, sulphurised, blown, polymerised by heat in vacuum or in inert gas or otherwise chemically modified, excluding those of heading|1516"
+  }, {
+    "code": "15180095",
+    "title": " Inedible mixtures or preparations of animal or of animal and vegetable fats and oils and their fractions"
+  }, {
+    "code": "15180099",
+    "title": " other than 15180010; 15180031; 15180091; 15180095"
+  }, {
+    "code": "16029010",
+    "title": " Preparations of blood of any animal"
+  }, {
+    "code": "16029031",
+    "title": " Of game or rabbit"
+  }, {
+    "code": "16029051",
+    "title": " Containing meat or meat offal of domestic swine"
+  }, {
+    "code": "16029061",
+    "title": " Containing bovine meat or offal: Uncooked; mixtures of cooked meat or offal and uncooked meat or offal"
+  }, {
+    "code": "16029069",
+    "title": " Containing bovine meat or offal cooked."
+  }, {
+    "code": "16029091",
+    "title": " Of sheep"
+  }, {
+    "code": "16029095",
+    "title": " Of goats"
+  }, {
+    "code": "16029099",
+    "title": " of species not already listed in 160290"
+  }, {
+    "code": "160241",
+    "title": " Hams and cuts thereof"
+  }, {
+    "code": "160242",
+    "title": " Shoulders and cuts thereof"
+  }, {
+    "code": "160249",
+    "title": " other than 160241 and 160242"
+  }, {
+    "code": "16042005",
+    "title": " Preparations of surimi"
+  }, {
+    "code": "16042010",
+    "title": " Of salmon"
+  }, {
+    "code": "16042030",
+    "title": " Of salmonidae, other than salmon"
+  }, {
+    "code": "16042040",
+    "title": " Of anchovies"
+  }, {
+    "code": "16042050",
+    "title": " Of sardines, bonito, mackerel of the species Scomber scombrus and Scomber japonicus, fish of the species Orcynopsis unicolor"
+  }, {
+    "code": "16042070",
+    "title": " Of tunas, skipjack or other fish of the genus Euthynnus"
+  }, {
+    "code": "16042090",
+    "title": " fish other than 160420"
+  }, {
+    "code": "16051000",
+    "title": " Crab"
+  }, {
+    "code": "16053010",
+    "title": " Lobster meat, cooked, for the manufacture of lobster butter or of lobster pastes, pâtés, soups or sauces"
+  }, {
+    "code": "16053090",
+    "title": " Other"
+  }, {
+    "code": "16054000",
+    "title": " Other crustaceans"
+  }, {
+    "code": "17021100",
+    "title": " Containing by weight 99|% or more lactose, expressed as anhydrous lactose, calculated on the dry matter"
+  }, {
+    "code": "18069060",
+    "title": " Spreads containing cocoa"
+  }, {
+    "code": "19021100",
+    "title": " Containing eggs"
+  }, {
+    "code": "19022010",
+    "title": " Containing more than 20|% by weight of fish, crustaceans, molluscs or other aquatic invertebrates"
+  }, {
+    "code": "19022030",
+    "title": " Containing more than 20|% by weight of sausages and the like, of meat and meat offal of any kind, including fats of any kind or origin"
+  }, {
+    "code": "19022091",
+    "title": " Cooked"
+  }, {
+    "code": "19022099",
+    "title": " Other"
+  }, {
+    "code": "19023010",
+    "title": " Dried"
+  }, {
+    "code": "19023090",
+    "title": " Other"
+  }, {
+    "code": "19049010",
+    "title": " Obtained from rice"
+  }, {
+    "code": "16041100",
+    "title": " Salmon"
+  }, {
+    "code": "16041210",
+    "title": " Fillets, raw, merely coated with batter or breadcrumbs, whether or not pre-fried in oil, frozen"
+  }, {
+    "code": "16041291",
+    "title": " In airtight containers"
+  }, {
+    "code": "16041299",
+    "title": " other than 16041210; 16041291"
+  }, {
+    "code": "16041390",
+    "title": " sardinella and brisling or sprats,"
+  }, {
+    "code": "16041490",
+    "title": " Bonito (Sarda spp.)"
+  }, {
+    "code": "16041590",
+    "title": " Of the species Scomber australasicus"
+  }, {
+    "code": "16041600",
+    "title": " Anchovies"
+  }, {
+    "code": "16041700",
+    "title": " Eels"
+  }, {
+    "code": "16041800",
+    "title": " Shark fins"
+  }, {
+    "code": "16041910",
+    "title": " Salmonidae, other than salmon"
+  }, {
+    "code": "16041950",
+    "title": " Fish of the species Orcynopsis unicolor"
+  }, {
+    "code": "16041991",
+    "title": " Fillets, raw, merely coated with batter or breadcrumbs, whether or not pre-fried in oil, frozen other than 16041910; 160419 31; 160419 39; 160419 50"
+  }, {
+    "code": "16041992",
+    "title": " Cod (Gadus morhua, Gadus ogac, Gadus macrocephalus)"
+  }, {
+    "code": "16041993",
+    "title": " Coalfish (Pollachius virens)"
+  }, {
+    "code": "16041994",
+    "title": " Hake (Merluccius spp., Urophycis spp.)"
+  }, {
+    "code": "16041995",
+    "title": " Alaska pollack (Theragra chalcogramma) and pollack (Pollachius pollachius)"
+  }, {
+    "code": "16041997",
+    "title": " fish, not already listed in 160419"
+  }, {
+    "code": "16055100",
+    "title": " Oysters"
+  }, {
+    "code": "16055200",
+    "title": " Scallops, including queen scallops"
+  }, {
+    "code": "16055310",
+    "title": " In airtight containers"
+  }, {
+    "code": "16055390",
+    "title": " Other"
+  }, {
+    "code": "16055400",
+    "title": " Cuttlefish and squid"
+  }, {
+    "code": "16055500",
+    "title": " Octopus"
+  }, {
+    "code": "16055600",
+    "title": " Clams, cockles and arkshells"
+  }, {
+    "code": "16055700",
+    "title": " Abalone"
+  }, {
+    "code": "16055800",
+    "title": " Snails, other than sea snails"
+  }, {
+    "code": "16055900",
+    "title": " Other"
+  }, {
+    "code": "16056100",
+    "title": " Sea cucumbers"
+  }, {
+    "code": "16056200",
+    "title": " Sea urchins"
+  }, {
+    "code": "16056300",
+    "title": " Jellyfish"
+  }, {
+    "code": "16056900",
+    "title": " other than. 1605 61 00; 1605 62 00; 1605 63 00;"
+  }, {
+    "code": "16052110",
+    "title": " In immediate packings of a net content not exceeding 2|kg"
+  }, {
+    "code": "16052190",
+    "title": " other than. 1605 21 10"
+  }, {
+    "code": "16052900",
+    "title": " other than. 1605 21"
+  }, {
+    "code": "16041311",
+    "title": " In olive oil"
+  }, {
+    "code": "16041319",
+    "title": " not in olive oil"
+  }, {
+    "code": "16041441",
+    "title": " In vegetable oil"
+  }, {
+    "code": "16041446",
+    "title": " Fillets known as ‘loins’"
+  }, {
+    "code": "16041448",
+    "title": " other"
+  }, {
+    "code": "16041421",
+    "title": " In vegetable oil"
+  }, {
+    "code": "16041426",
+    "title": " Fillets known as ‘loins’"
+  }, {
+    "code": "16041428",
+    "title": " other"
+  }, {
+    "code": "16041431",
+    "title": " In vegetable oil"
+  }, {
+    "code": "16041436",
+    "title": " Fillets known as ‘loins’"
+  }, {
+    "code": "16041438",
+    "title": " other"
+  }, {
+    "code": "16041511",
+    "title": " Fillets"
+  }, {
+    "code": "16041519",
+    "title": " other than 16041511"
+  }, {
+    "code": "16041931",
+    "title": " Fillets known as ‘loins’"
+  }, {
+    "code": "16041939",
+    "title": " other than 16041931"
+  }, {
+    "code": "2104",
+    "title": " Soups and broths and preparations therefor; homogenised composite food preparations"
+  }, {
+    "code": "2202",
+    "title": " Waters, including mineral waters and aerated waters, containing added sugar or other sweetening matter or flavoured, and other non-alcoholic beverages, not including fruit or vegetable juices of heading|2009"
+  }, {
+    "code": "210500",
+    "title": " Ice cream and other edible ice, whether or not containing cocoa"
+  }, {
+    "code": "210610",
+    "title": " Protein concentrates and textured protein substances"
+  }, {
+    "code": "210690",
+    "title": " Other"
+  }, {
+    "code": "21039090",
+    "title": " Other"
+  }, {
+    "code": "20052020",
+    "title": " Thin slices, fried or baked, whether or not salted or flavoured, in airtight packings, suitable for immediate consumption"
+  }]
+}

@@ -1,0 +1,205 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or-exporter – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<form class="" action="../task-list" method="post">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl">Consignee or importer</h1>
+      <p class="govuk-body">Search by company or importer name and select the name and address of the natural or legal person to whom the consignment is intended in Northern Ireland or EU Member State.</p>
+      <h2 class="govuk-visually-hidden">Consignor search</h2>
+      <section>
+        <!---->
+        <div class="govuk-form-group"><label class="govuk-label" for="operator-search-country"> Country </label><select class="govuk-select full-width" id="operator-search-country">
+            <option value="AT">Austria</option>
+            <option value="BE">Belgium</option>
+            <option value="BG">Bulgaria</option>
+            <option value="HR">Croatia</option>
+            <option value="CY">Cyprus</option>
+            <option value="CZ">Czechia</option>
+            <option value="DK">Denmark</option>
+            <option value="EE">Estonia</option>
+            <option value="FI">Finland</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="GR">Greece</option>
+            <option value="HU">Hungary</option>
+            <option value="IE">Ireland</option>
+            <option value="IT">Italy</option>
+            <option value="LV">Latvia</option>
+            <option value="LT">Lithuania</option>
+            <option value="LU">Luxembourg</option>
+            <option value="MT">Malta</option>
+            <option value="NL">Netherlands (the)</option>
+            <option value="PL">Poland</option>
+            <option value="PT">Portugal</option>
+            <option value="RO">Romania</option>
+            <option value="SK">Slovakia</option>
+            <option value="SI">Slovenia</option>
+            <option value="ES">Spain</option>
+            <option value="SE">Sweden</option>
+            <option value="XI">United Kingdom - Northern Ireland</option>
+          </select>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="search-field-CONSIGNOR">Search for consignee
+          </label>
+          <div class="govuk-form-group govuk-!-margin-bottom-2">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend">
+      Search by
+    </legend>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland" checked>
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+          Approval number
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england" >
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          Name of consignee
+        </label>
+      </div>
+
+    </div>
+
+  </fieldset>
+</div>
+          <!-- <div class="govuk-hint">Search by approval number or name</div> -->
+          <div class="govuk-input__wrapper">
+            <input class="govuk-input" id="search-field-CONSIGNOR" spellcheck="false">
+            <div class="govuk-input__suffix operator-search-indicator no-bg"><button id="operator-search-button" class="govuk-button govuk-button--primary" type="button"> Search
+              </button></div>
+          </div>
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible operator-search-results">
+          <!-- <span class="govuk-caption-m operator-search-results">Search results</span> -->
+          <h2 class="govuk-heading-m search-result" aria-live="polite" aria-atomic="true"></h2> <!-- "<span class="search-result--query"></span>"  -->
+          <div class="govuk-form-group operator-search-filter"><label class="govuk-label" for="operator-search-filter-classification"> Filter by classification </label><select class="govuk-select" id="operator-search-filter-classification"
+              name="operator-search-filter-classification">
+              <option>None</option>
+              <option value="ANIMAL_EXPORTER">Animal exporter</option>
+              <option value="MEAT_PREPARATION_PLANT">Meat Preparation Plant</option>
+              <option value="ANIMAL_IMPORTER">Animal importer</option>
+              <option value="EXPORTER">Exporter</option>
+            </select>
+          </div>
+          </div>
+
+          {% set type = "consignor"%}
+          {% for operator in data.establishments %}
+          <div class="operator-pane" data-content="{{operator.TradingName}}" data-postcode="{{operator.Postcode}}" data-number="{{operator.AppNo}}">
+            <div class="operator-pane-heading">
+              <h4 class="govuk-heading-s">{{operator.TradingName}}</h4>
+            </div>
+            <div class="operator-pane-body">
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Approval number
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{operator.AppNo}}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Address
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                      {{operator.Address1}}<br>
+                      {% if operator.Address2%}{{operator.Address2}}<br>{% endif %}
+                      {% if operator.Address3%}{{operator.Address3}}<br>{% endif %}
+                      {{operator.Town}}<br>
+                      {{operator.Postcode}}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Valid activites
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <ul class="govuk-list">
+                      {% for activity in operator.All_Activities%}
+                      <li>
+                        {{activity}} - Food
+                      </li>
+                      {% endfor %}
+                    </ul>
+
+                  </dd>
+                </div>
+
+              </dl>
+              <a role="button" class="govuk-button govuk-button--secondary full-width" href="consignor-or-exporter-selected?id={{loop.index-1}}?back=-4"> Select this consignee</a>
+            </div>
+          </div>
+          {% endfor %}
+
+          <p class="govuk-body"> If you would like to cancel and keep your current selection, <a class="govuk-link" href="consignor-or-exporter-selected?id={{query.id or '1'}}" id="click"> click here </a></p>
+          <!---->
+      </section><button class="govuk-button">Save and return</button>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $(".operator-search-results").hide()
+    $(".operator-pane").hide()
+    $(".operator-search-filter").hide()
+    $('#operator-search-button').on("click", function() {
+
+      $(".operator-pane").hide()
+      if ($(".operator-search-results").hasClass("hidden")) {
+        $(".operator-search-results").removeClass("hidden")
+      }
+      $(".operator-search-results").show()
+      let q = $('#search-field-CONSIGNOR').val().toLowerCase()
+
+      $(".operator-pane").filter(function() {
+        var t = $(this).attr("data-content").toLowerCase()
+        var a = $(this).attr("data-number").toLowerCase()
+        var p = $(this).attr("data-postcode").toLowerCase()
+        console.log(p + " against " +q)
+        if ((q != "" && t.indexOf(q) > 0) || (q != "" && a.indexOf(q) >= 0)|| (q != "" && p.indexOf(q) >= 0)) {
+          console.log("returning")
+          return $(this)
+        }
+      }).show()
+      var count = $(".operator-pane:visible").length
+      var r
+      if (count == 1) {
+        r = count + " match found"
+
+      } else {
+        r = count + " matches found"
+      }
+      if (count > 0) {
+        console.log("should show filter and results")
+        $(".operator-search-filter").show()
+        $(".operator-search-results").show()
+
+      }
+      $(".search-result").text(r)
+
+    })
+
+
+
+  })
+</script>
+{% endblock%}

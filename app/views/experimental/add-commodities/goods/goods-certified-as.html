@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="../task-list" method="post">
+
+  <main class="govuk-main-wrapper" id="main-content" data-v-0c6ff6a7="">
+    <!---->
+    <!---->
+    <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+      <!---->
+    </div>
+    <section id="intro" data-v-563d6e59="">
+      <div class="govuk-grid-row" data-v-563d6e59="">
+        <div class="govuk-grid-column-two-thirds" data-v-563d6e59=""><span class="govuk-caption-xl"> Description of the goods </span>
+          <h1 class="govuk-heading-xl"> Goods Certified As </h1>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <p class="govuk-body" data-v-563d6e59=""> Select from the list below. State the intended use for the products in your application. </p>
+        </div>
+      </div>
+    </section>
+    <section id="form" data-v-563d6e59="">
+      <div class="govuk-grid-row" data-v-563d6e59="">
+        <div class="govuk-grid-column-two-thirds" data-v-563d6e59="">
+          <div class="govuk-form-group" data-v-563d6e59="">
+            <fieldset class="govuk-fieldset" data-v-563d6e59="">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-563d6e59=""><span class="govuk-fieldset__heading" id="search-certified-as-label" data-v-563d6e59=""> What are your goods certified as? </span></legend>
+              <!---->
+              <div class="govuk-form-group" data-v-563d6e59=""><input class="govuk-input" aria-labelledby="search-certified-as-label" id="search-goods-certified-as" type="text" placeholder="Search" data-v-563d6e59=""></div>
+              <div class="radio-pane-selection" tabindex="0" data-v-563d6e59="">
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-0" type="radio" class="govuk-visually-hidden" value="ANIMAL_FEEDINGSTUFF" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-0" data-v-563d6e59="">Animal feedingstuff</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-1" type="radio" class="govuk-visually-hidden" value="APPROVED_BODIES" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-1" data-v-563d6e59="">Approved bodies</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-2" type="radio" class="govuk-visually-hidden" value="ARTIFICIAL_REPRODUCTION" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-2" data-v-563d6e59="">Artifical reproduction</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-3" type="radio" class="govuk-visually-hidden" value="BREEDING_PRODUCTION" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-3" data-v-563d6e59="">Breeding/production</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-4" type="radio" class="govuk-visually-hidden" value="CANNING_INDUSTRY" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-4" data-v-563d6e59="">Canning industry</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-5" type="radio" class="govuk-visually-hidden" value="CIRCUS_EXHIBITION" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-5" data-v-563d6e59="">Circus/exhibition</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-6" type="radio" class="govuk-visually-hidden" value="FATTENING" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-6" data-v-563d6e59="">Fattening</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-7" type="radio" class="govuk-visually-hidden" value="FURTHER_PROCESS" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-7" data-v-563d6e59="">Further process</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-8" type="radio" class="govuk-visually-hidden" value="GAME_RESTOCKING" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-8" data-v-563d6e59="">Game restocking</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-9" type="radio" class="govuk-visually-hidden" value="HUMAN_CONSUMPTION" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-9" data-v-563d6e59="">Human consumption </label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-10" type="radio" class="govuk-visually-hidden" value="MANUFACTURE_OF_PETFOOD" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-10" data-v-563d6e59="">Manufacture of petfood</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-11" type="radio" class="govuk-visually-hidden" value="OTHER" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-11" data-v-563d6e59="">Other</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-12" type="radio" class="govuk-visually-hidden" value="PETFOOD" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-12" data-v-563d6e59="">Petfood</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-13" type="radio" class="govuk-visually-hidden" value="PETS" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-13" data-v-563d6e59="">Pets</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-14" type="radio" class="govuk-visually-hidden" value="PHARMACEUTICAL_USE" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-14" data-v-563d6e59="">Pharmaceutical use</label></div>
+                <div class="radio-pane-selection--item selected-goods-certified-as" data-v-563d6e59=""><input id="goods-certified-as-15" type="radio" class="govuk-visually-hidden" value="PRODUCTION_OF_PETFOOD" data-v-563d6e59=""><label
+                    class="govuk-label govuk-radios__label" for="goods-certified-as-15" data-v-563d6e59="">Production of petfood</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-16" type="radio" class="govuk-visually-hidden" value="QUARANTINE" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-16" data-v-563d6e59="">Quarantine</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-17" type="radio" class="govuk-visually-hidden" value="REGISTERED_EQUIDAE" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-17" data-v-563d6e59="">Registered equidae</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-18" type="radio" class="govuk-visually-hidden" value="RELAYING" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-18" data-v-563d6e59="">Relaying</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-19" type="radio" class="govuk-visually-hidden" value="SLAUGHTER" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-19" data-v-563d6e59="">Slaughter</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-20" type="radio" class="govuk-visually-hidden" value="TECHNICAL_USE" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-20" data-v-563d6e59="">Technical use</label></div>
+                <div class="radio-pane-selection--item" data-v-563d6e59=""><input id="goods-certified-as-21" type="radio" class="govuk-visually-hidden" value="TRADE_SAMPLES" data-v-563d6e59=""><label class="govuk-label govuk-radios__label"
+                    for="goods-certified-as-21" data-v-563d6e59="">Trade samples</label></div>
+              </div>
+            </fieldset>
+            <input type="hidden" name="goods-certified-as" id="hiddenValue" value="RELAYING">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="actions" data-v-563d6e59="">
+      <div class="govuk-grid-row" data-v-563d6e59="">
+        <div class="govuk-grid-column-two-thirds" data-v-563d6e59=""><button class="govuk-button" data-v-563d6e59="">Save and return</button></div>
+      </div>
+    </section>
+  </main>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $(".govuk-radios__label").on("click",function(e){
+      $(".selected-goods-certified-as").removeClass("selected-goods-certified-as")
+      $(this).closest(".radio-pane-selection--item").addClass("selected-goods-certified-as")
+
+    })
+
+  })
+</script>
+{% endblock%}

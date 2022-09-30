@@ -1,0 +1,297 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+  <!---->
+</div>
+<div class="govuk-grid-row" data-v-60e97bb5="" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-full" data-v-60e97bb5=""><span class="govuk-caption-xl"></span>
+    <h1 class="govuk-heading-xl">Apply for an export health certificate </h1>
+    <!---->
+    <!---->
+    <h2 class="govuk-heading-m sticky-heading" data-v-60e97bb5="">Application reference</h2>
+    <!-- <label class="govuk-label govuk-label--m" for="application-reference" data-v-60e97bb5=""> Application reference </label> -->
+    <dl class="govuk-summary-list" data-v-60e97bb5="">
+      <div class="govuk-summary-list__row" id="manage-commodities" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+
+        {{data.refernce or "Richard's certificate"}}</dt>
+        <dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+        <button class="govuk-button govuk-button--primary govuk-!-margin-bottom-0" data-v-60e97bb5="">Change</button>
+        </dd>
+      </div>
+      </dl>
+
+    <div class="intersection" data-v-60e97bb5=""></div>
+    <h2 class="govuk-heading-m sticky-heading" data-v-60e97bb5="">1. Description of the goods</h2>
+    <p class="govuk-body" data-v-60e97bb5=""> Add, modify and remove commodities and provide any required information. </p>
+    <dl class="govuk-summary-list" data-v-60e97bb5="">
+      <div class="govuk-summary-list__row" id="manage-commodities" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="/Export-health-certificate/9557fd12-3aa2-4420-8434-bee8007795f8/Manage-Commodities"
+            class="govuk-link" data-v-0a0d5507="">Manage commodities</a></dt>
+        <dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          <span class="govuk-tag govuk-tag--grey" data-v-6f277eba="">IN PROGRESS</span>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="goods-certified-as" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="./goods/goods-certified-as"
+            class="govuk-link" data-v-0a0d5507="">Goods certified as</a></dt>
+        <dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+        {% if data["goods-certified-as"] %}
+          <span class="govuk-tag" data-v-6f277eba="">COMPLETE</span>
+          {% else %}
+          <span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          {% endif %}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="container-number/seal-number" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a class="govuk-link" href="goods/container-deal-number">Container number/seal number</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+            {% if data.containerNumber %}
+            <span class="govuk-tag" data-v-6f277eba="">COMPLETE</span>
+            {% else %}
+            <span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+            {% endif %}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="purpose-of-export" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="./goods/purpose-of-export" class="govuk-link"
+            data-v-0a0d5507="">Purpose of export</a></dt>
+            <dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          {% if data.Purpose %}
+          <span class="govuk-tag" data-v-6f277eba="">COMPLETE</span>
+          {% else %}
+          <span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          {% endif %}
+        </dd>
+      </div>
+    </dl>
+    <div class="intersection" data-v-60e97bb5=""></div>
+    <h2 class="govuk-heading-m sticky-heading" data-v-60e97bb5="">2. Additional documents (optional)</h2>
+    <p class="govuk-body" data-v-60e97bb5=""> Upload packing lists, schedules and other supporting documents to attach to your application. </p>
+    <dl class="govuk-summary-list" data-v-60e97bb5="">
+      <div class="govuk-summary-list__row" id="accompanying-documents" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="./documents/accompanying-documents"
+            class="govuk-link" data-v-0a0d5507="">Accompanying documents</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          {% if data.file %}
+          <span class="govuk-tag" data-v-6f277eba="">COMPLETE</span>
+          {% else %}
+          <span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          {% endif %}
+          <!---->
+          <!---->
+          <!---->
+        </dd>
+      </div>
+    </dl>
+    <div class="intersection" data-v-60e97bb5=""></div>
+    <h2 class="govuk-heading-m sticky-heading" data-v-60e97bb5="">3. Persons involved</h2>
+    <p class="govuk-body" data-v-60e97bb5=""> Manage the persons involved with this application. </p>
+    <dl class="govuk-summary-list" data-v-60e97bb5="">
+      <div class="govuk-summary-list__row" id="consignor-or-exporter" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="./persons/consignor-or-exporter"
+            class="govuk-link" data-v-0a0d5507="">Consignor or Exporter</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          <!---->
+          <!----><span class="govuk-tag" data-v-6f277eba="">COMPLETE</span>
+          <!---->
+          <!---->
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="consignee-or-importer" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="./persons/Consignee-Or-Importer"
+            class="govuk-link">Consignee or Importer</a>
+          </dt>
+        <!----><dt class="govuk-summary-list__actions" style="width: 10%;">
+          <!---->
+
+        </dt>
+        <dd class="govuk-summary-list__actions">
+          {% if data.importerComplete %}
+          <span class="govuk-tag" data-v-6f277eba="">COMPLETE</span>
+          {% else %}
+          <span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          {% endif %}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="certifier" data-v-0a0d5507=""><dt class="govuk-summary-list__key">
+        <a href="./persons/certifier" class="govuk-link" >Certifier</a>
+      </dt>
+      <dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          {% if data.certifierComplete %}
+          <span class="govuk-tag" data-v-6f277eba="">COMPLETE</span>
+          {% else %}
+          <span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          {% endif %}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="region-of-certification" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="./persons/region-of-certification"
+            class="govuk-link" data-v-0a0d5507="">Region of certification</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          {% if data.regionOfCertification %}
+          <span class="govuk-tag" data-v-6f277eba="">COMPLETE</span>
+          {% else %}
+          <span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          {% endif %}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="responsible-for-load" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+
+        <a href="./transport/arrival-and-departure" class="govuk-link">Responsible for load</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          <!----><span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          <!---->
+          <!---->
+          <!---->
+        </dd>
+      </div>
+    </dl>
+    <h2 class="govuk-heading-m sticky-heading" data-v-60e97bb5="">4. Transport</h2>
+    <p class="govuk-body" data-v-60e97bb5=""> Manage the transport for this application. </p>
+    <dl class="govuk-summary-list" data-v-60e97bb5="">
+      <div class="govuk-summary-list__row" id="departure-and-arrival" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="./transport/arrival-and-departure"
+            class="govuk-link" data-v-0a0d5507="">Departure and arrival</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          <!----><span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          <!---->
+          <!---->
+          <!---->
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="place-of-origin" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="./transport/place-of-origin" class="govuk-link"
+            data-v-0a0d5507="">Place of origin</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          <!----><span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          <!---->
+          <!---->
+          <!---->
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="entry-border-control-post" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <a href="./transport/border-control-post"
+            class="govuk-link" data-v-0a0d5507="">Entry border control post</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          <!----><span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          <!---->
+          <!---->
+          <!---->
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="means-of-transport" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507=""><a href="/Export-health-certificate/9557fd12-3aa2-4420-8434-bee8007795f8/Means-Of-Transport"
+            class="govuk-link" data-v-0a0d5507="">Means of transport</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          <!----><span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          <!---->
+          <!---->
+          <!---->
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row" id="place-of-destination" data-v-0a0d5507=""><dt class="govuk-summary-list__key" data-v-0a0d5507=""><a href="/Export-health-certificate/9557fd12-3aa2-4420-8434-bee8007795f8/Place-Of-Destination"
+            class="govuk-link" data-v-0a0d5507="">Place of destination</a></dt>
+        <!----><dt class="govuk-summary-list__actions" data-v-0a0d5507="" style="width: 10%;">
+          <!---->
+        </dt>
+        <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+          <!----><span class="govuk-tag not-started" data-v-6f277eba="">NOT STARTED</span>
+          <!---->
+          <!---->
+          <!---->
+        </dd>
+      </div>
+    </dl>
+    <!---->
+    <!---->
+    <div data-v-60e97bb5="">
+      <h2 class="govuk-heading-m" data-v-60e97bb5=""> Review and submit your application </h2>
+      <p class="govuk-body" data-v-60e97bb5=""> Once you have completed all of the required sections, please review your answers and submit your application for processing by APHA and the selected certifier organisation. </p>
+      <details class="govuk-details preview" data-module="govuk-details" data-v-60e97bb5="">
+        <summary class="govuk-details__summary" data-v-60e97bb5=""><span class="govuk-details__summary-text" data-v-60e97bb5=""> Preview certificate </span></summary>
+        <div class="govuk-details__text" data-v-60e97bb5="">
+          <div class="govuk-summary-list" data-v-60e97bb5="">
+            <div class="govuk-summary-list__row" data-v-60e97bb5="">
+              <div class="govuk-summary-list__value" data-v-60e97bb5="">EHC8328 Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland</div>
+              <div class="govuk-summary-list__actions" data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5=""> Download<span class="govuk-visually-hidden" data-v-60e97bb5=""> name</span></a></div>
+            </div>
+          </div>
+        </div>
+      </details>
+      <div class="govuk-button-group" data-v-60e97bb5="">
+        <!---->
+      </div>
+      <!---->
+      <!---->
+      <details class="govuk-details" data-module="govuk-details" data-v-60e97bb5="">
+        <summary class="govuk-details__summary" data-v-60e97bb5=""><span class="govuk-details__summary-text" data-v-60e97bb5=""> Which tasks are left for me to complete? </span></summary>
+        <div class="govuk-details__text" data-v-60e97bb5="">
+          <ul class="govuk-list" data-v-60e97bb5="">
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Arrival and departure</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Manage commodities</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Goods certified as</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Container no seal no</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Consignee</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Responsible for load</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Certifier</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Region of certification</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Place of origin</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Border control post</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Means of transport</a></li>
+            <li data-v-60e97bb5=""><a class="govuk-link" href="#" data-v-60e97bb5="">Place of destination</a></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
