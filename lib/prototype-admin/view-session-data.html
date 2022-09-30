@@ -1,0 +1,107 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  View session data – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript: window.history.go(-1)"
+    })
+  }}
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-width">
+      <h1 class="govuk-heading-xl">
+        View session data
+      </h1>
+
+      {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+      {{ govukDetails({
+        summaryText: "data.certificates",
+        text: (data.certificates | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.currentCertID",
+        text: (data.currentCertID | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.establishments",
+        text: (data.establishments | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.scheduleUploadProcessing",
+        text: (data.scheduleUploadProcessing | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.has_multiple_certificates",
+        text: (data.has_multiple_certificates | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.listURL",
+        text: (data.listURL | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.certificate",
+        text: (data.certificate | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.start_from",
+        text: (data.start_from | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.addedEHC",
+        text: (data.addedEHC | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.additionalDocuments",
+        text: (data.additionalDocuments | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.originalCommodityCount",
+        text: (data.originalCommodityCount | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.addedCommodities",
+        text: (data.addedCommodities | dump )
+      }) }}
+
+
+
+
+
+      {{ govukDetails({
+        summaryText: "Everything",
+        text: (data | dump )
+      }) }}
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</form>
+
+{% endblock %}
