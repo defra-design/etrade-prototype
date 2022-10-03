@@ -6,30 +6,22 @@ session if a value doesn't already exist. This may be useful for testing
 journeys where users are returning or logging in to an existing application.
 
 ============================================================================
-
-Example usage:
-
-"full-name": "Sarah Philips",
-
-"options-chosen": [ "foo", "bar" ]
-
-============================================================================
-
 */
-var certs = require('./certs.json')
-  certs.push(require('./certs/_ehc8307.json'));
-  certs.push(require('./certs/_ehc8308.json'));
-  certs.push(require('./certs/_ehc8323.json'));
-  certs.push(require('./certs/_ehc8328.json'));
-  certs.push(require('./certs/_ehc8329.json'));
-  certs.push(require('./certs/_ehc8331.json'));
-  certs.push(require('./certs/_ehc8332.json'));
-  certs.push(require('./certs/_ehc8350.json'));
-  certs.push(require('./certs/_ehc8351.json'));
-  certs.push(require('./certs/_ehc8361.json'));
-  certs.push(require('./certs/_ehc8364.json'));
-  certs.push(require('./certs/_ehc8367.json'));
-  certs.push(require('./certs/_ehc8371.json'));
+
+// Get all certificates. Just need to add a new certificate .json file to the /data/certs/ folder.
+const fs = require('fs');
+const normalizedPath = require("path").join(__dirname, "./certs");
+var certs =[]
+fs.readdirSync(normalizedPath).forEach(function(file) {
+    //Checks if file is a JSON file.
+    var fileType = file.substring(file.length, file.lastIndexOf("."));
+    if (fileType == ".json"){
+    // loads the files
+    var d = require("./certs/" + file);
+    //pushes data to an array
+    certs.push(d)
+    }
+});
 
 var establishments = require('./establishments.json')
 var scheduleUploadProcessing = require('./schedule-upload-processing.json')
