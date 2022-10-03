@@ -9,6 +9,7 @@ require('./views/beta/v2/routes.js')(router);
 require('./views/beta/v2-1/routes.js')(router);
 require('./views/beta/v2-1/application/export/upload/routes.js')(router);
 require('./views/beta/v2-2/routes.js')(router);
+require('./views/beta/v2-2/application/export/upload/routes.js')(router);
 require('./views/experimental/routes.js')(router);
 require('./views/stories/accessiblity/routes.js')(router);
 require('./views/stories/file-import/routes.js')(router);

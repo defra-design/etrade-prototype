@@ -36,7 +36,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
   <div class="govuk-grid-column-three-quarters">
     <span class="govuk-caption-xl">{{ cert.number or "EHC8331" }}</span>
     <h1 class="govuk-heading-xl">Added {{count}} {{commodityTitle}}</h1>
-    <p>You can add multiple commodites for this certificate by <a href="./upload/manage-imports">uploading a spreadsheet</a></p>
+    <p>You can add multiple commodites for this certificate by <a href="./upload/">uploading a spreadsheet</a></p>
     <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span class="govuk-accordion__show-all-text">Show all sections</span></button></div>
     {% for commodity in cert.addedCommodities %}
     <h2 class="govuk-heading-s">{{commodity.code}} - <span class="govuk-!-font-weight-regular" title="{{commodity.title}}">{{commodity.title | truncate(125)}}</span></h2>
