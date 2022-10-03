@@ -32,22 +32,15 @@ Download commodity data template - eTrade – GOV.UK Prototype Kit
       If you do not use the most up-to-date version of the template, TRACES may be unable to accept your commodity data.
     </div>
     <p class="govuk-body">
+      <a href="#" class="govuk-link">Download template for EHC8329</a> (last updated on 2 October 2022)<br>
+      <a href="{{ ehcTemplateDownloadPath }}" class="govuk-link">Download template for {{ ehcNumber }}</a> (last updated on 23 September 2022)
+    </p>
+    <p class="govuk-body">
       Once you have entered your commodity data in the updated spreadsheet template, you can <a href="./">upload the spreadsheet</a>. You can enter up to 100 rows of data in each spreadsheet. If you want to enter more commodity data, you can upload multiple spreadsheets.
     </p>
-
-    <p class="govuk-body">The template for {{ ehcNumber }} was last updated on <strong>23 September 2022</strong>.</p>
-
-    <form action="#" method="post">
-      <div class="govuk-button-group">
-
-        <a href="{{ ehcTemplateDownloadPath }}" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
-          Download latest template
-        </a>
-
-        <a href="./" class="govuk-link">Upload commodity data</a>
-      </div>
-    </form>
-
+<!--
+    <a href="#" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">Upload commodity data</a>
+-->
   </div>
 </div>
 {% endblock %}

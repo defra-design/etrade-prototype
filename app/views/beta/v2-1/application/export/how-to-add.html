@@ -35,7 +35,7 @@ Home – GOV.UK Prototype Kit
         </span> -->
         <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--l">
-            Do you want to upload commodity data for {{data.certificates[ehc].number}} through a spreadsheet?
+            How do you want to enter commodity data for {{data.certificates[ehc].number}}?
           </legend>
 
           {% if query.error %}
@@ -51,7 +51,7 @@ Home – GOV.UK Prototype Kit
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="how-to-add-upload" name="how-to-add" type="radio" value="upload~./upload/download-template" aria-describedby="manually-adding-hint">
               <label class="govuk-label govuk-radios__label" for="how-to-add-upload">
-                Yes
+                By uploading a spreadsheet
               </label>
               <div id="manually-adding-hint" class="govuk-hint govuk-radios__hint">
                 You will need to use the updated template to ensure consistency with EU TRACES data.
@@ -60,7 +60,7 @@ Home – GOV.UK Prototype Kit
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="how-to-add-manually" name="how-to-add" type="radio" value="manually~select-commodities" aria-describedby="manually-adding-hint">
               <label class="govuk-label govuk-radios__label" for="how-to-add-manually">
-                No
+                By entering commodities individually
               </label>
               <!--<div id="manually-adding-hint" class="govuk-hint govuk-radios__hint">
                 This method may be quicker if you want to add data for up to 5 commodities.

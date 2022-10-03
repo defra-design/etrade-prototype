@@ -116,9 +116,9 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
           <p class="govuk-notification-banner__heading">Some commodity data could not be imported</p>
           <p class="govuk-body">
               {% if numberOfErrors == 1 %}
-                {{ totalRows }} rows of data were uploaded but only {{ (( totalRows | int ) - ( errorRowCount | int )) }} could be saved due to an error in one of the rows.
+                {{ totalRows }} rows of data were uploaded but {{ (( totalRows | int ) - ( errorRowCount | int )) }} could be saved due to errors.
               {% else %}
-                {{ totalRows }} rows of data were uploaded but only {{ (( totalRows | int ) - ( errorRowCount | int )) }} could be saved due to errors. There were a total of {{ numberOfErrors }} errors.
+                {{ totalRows }} rows of data were uploaded but {{ (( totalRows | int ) - ( errorRowCount | int )) }} were not saved due to errors.
               {% endif %}
           </p>
           <p class="govuk-body">
@@ -140,9 +140,9 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
           <p class="govuk-notification-banner__heading">No commodity data could be imported</p>
           <p class="govuk-body">
               {% if totalRows == 1 %}
-              Due to errors in the uploaded data, the data could not be saved.
+              Due to errors in the spreadsheet, we were unable to save the data you uploaded.
               {% else %}
-              {{ totalRows }} rows of data were uploaded, but due to errors, the data could not be saved.
+              Due to errors in the spreadsheet, we were unable to save the data you uploaded.
               {% endif %}
               <a href="{{ ehcErrorTemplateDownloadPath }}">Download the failed records spreadsheet</a> to view the errors, and re-upload the commodity data once you've updated the data.
             </p>
@@ -155,7 +155,7 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
 
     <div class="in-progress">
       <h1 class="govuk-heading-xl">Processing uploaded commodity data for {{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</h1>
-      <p>File uploaded on 23 August 2022 at 14:02. The uploaded data is being validated against TRACES system requirements. This may take a few minutes.</p>
+      <p>File uploaded on 23 August 2022 at 14:02. We are making sure that the data follows TRACES requirements &ndash; this may take a few minutes.</p>
     </div>
 
     <div class="complete">
@@ -213,9 +213,9 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
 
       <p class="govuk-error-message govuk-!-padding-top-5">
         {% if errorSummary.length == 1 %}
-        The uploaded data has the following error:
+        The uploaded data contains the following error:
         {% else %}
-        The uploaded data has errors:
+        The uploaded data contains errors:
         {% endif %}
       </p>
 
@@ -267,11 +267,11 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
             <td class="govuk-table__cell" id="status-success">0</td>
           </tr>
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">Could not be added</td>
+            <td scope="row" class="govuk-table__cell">Not added</td>
             <td class="govuk-table__cell" id="status-failure">0</td>
           </tr>
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">Still pending</td>
+            <td scope="row" class="govuk-table__cell">Pending</td>
             <td class="govuk-table__cell" id="status-pending">{{ totalRows }}</td>
           </tr>
         </tbody>
@@ -383,7 +383,7 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
     var currentPendingCount = totalRows;
 
     // var govukIntervalTimer = 2500;
-    var govukIntervalTimer = 250;
+    var govukIntervalTimer = 250  ;
 
     updateInterval = setInterval(updateProcessingUI, govukIntervalTimer);
 
