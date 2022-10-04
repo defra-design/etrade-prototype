@@ -14,12 +14,7 @@ Download commodity data template - eTrade – GOV.UK Prototype Kit
 {% endif %}
 
 {% set ehcNumber = data.certificates[(data.certificate | makeNumber)].number or "test" %}
-<!-- TODO: make this more flexible / resilient -->
-{% if ((ehcNumber == "EHC8361") or (ehcNumber == "EHC8364")) %}
-{% set ehcTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_21092022-v3.xlsx" %}
-{% else %}
-{% set ehcTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_09082022-v2.xlsx" %}
-{% endif %}
+{% set ehcTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template-v3.xlsx" %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">

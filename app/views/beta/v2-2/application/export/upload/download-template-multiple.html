@@ -14,12 +14,6 @@ Download commodity data template - eTrade – GOV.UK Prototype Kit
 {% endif %}
 
 {% set ehcNumber = data.certificates[(data.certificate | makeNumber)].number or "test" %}
-<!-- TODO: make this more flexible / resilient -->
-{% if ((ehcNumber == "EHC8361") or (ehcNumber == "EHC8364")) %}
-{% set ehcTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_21092022-v3.xlsx" %}
-{% else %}
-{% set ehcTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_09082022-v2.xlsx" %}
-{% endif %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -32,8 +26,10 @@ Download commodity data template - eTrade – GOV.UK Prototype Kit
       If you do not use the most up-to-date version of the template, TRACES may be unable to accept your commodity data.
     </div>
     <p class="govuk-body">
-      <a href="#" class="govuk-link">Download template for EHC8329</a> (last updated on 2 October 2022)<br>
-      <a href="{{ ehcTemplateDownloadPath }}" class="govuk-link">Download template for {{ ehcNumber }}</a> (last updated on 23 September 2022)
+
+      <a href="/public/ehc-templates/ehc8329-template-v3.xlsx" class="govuk-link">Download template for EHC8329</a> (last updated on 2 October 2022)<br>
+      <a href="/public/ehc-templates/ehc8361-template-v3.xlsx" class="govuk-link">Download template for EHC8361</a> (last updated on 23 September 2022)<br>
+      <a href="/public/ehc-templates/ehc8364-template-v3.xlsx" class="govuk-link">Download template for EHC8364</a> (last updated on 27 September 2022)<br>
     </p>
     <p class="govuk-body">
       Once you have entered your commodity data in the updated spreadsheet template, you can <a href="./">upload the spreadsheet</a>. You can enter up to 100 rows of data in each spreadsheet. If you want to enter more commodity data, you can upload multiple spreadsheets.
