@@ -24,6 +24,16 @@
     "Poephagus spp.",
     "Syncerus"
   ],
+  "schema": [
+    { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+    { "id": "productDescription", "title": "Description", "required" : "no", "type" : "string"},
+    { "id": "species", "title": "Species", "required" : "yes", "type" : "string", "error" : "Species name is invalid"},
+    { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "string", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+    { "id": "NET_WEIGHT", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+    { "id": "NET_WEIGHT_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+    { "id": "PACKAGE_COUNT", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+    { "id": "PACKAGE_COUNT_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"}
+  ],
   "commodities": [{
       "code": "4101",
       "title": " Raw hides and skins of bovine (including buffalo) or equine animals (fresh, or salted, dried, limed, pickled or otherwise preserved, but not tanned, parchment-dressed or further prepared), whether or not dehaired or split",
@@ -93,6 +103,30 @@
     {
       "code": "41012050",
       "title": "Dried or dry-salted",
+      "species": [
+        "Bibos spp.",
+        "Bison",
+        "Bison bison",
+        "Bos",
+        "Bos taurus",
+        "Bovidae",
+        "Bubalus",
+        "Bubalus bubalis",
+        "Equidae",
+        "Equus",
+        "Equus burchelli",
+        "Equus grevyi",
+        "Equus quagga",
+        "Equus zebra",
+        "Novibos spp.",
+        "Ovibos",
+        "Poephagus spp.",
+        "Syncerus"
+      ]
+    },
+    {
+      "code": "41015030",
+      "title": "Whole raw bovine hides and skins, of a weight over 16 kg, unit surface area n/o 2.6 sq m, pretanned but not further prepared",
       "species": [
         "Bibos spp.",
         "Bison",

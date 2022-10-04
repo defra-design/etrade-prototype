@@ -7,6 +7,19 @@
   "netWeight": "yes",
   "multiples": ["none"],
   "species": ["Aves", "Reptilia", "Pesca", "Suidae", "Otra mammalia", "Bovidae"],
+  "schema": [
+        { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+        { "id": "productDescription", "title": "Description", "required" : "no", "type" : "string"},
+        { "id": "species", "title": "Species", "required" : "yes", "type" : "string", "error" : "Species name is invalid"},
+        { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "string", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+        { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "string", "error" : "Batch number is required"},
+        { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "type" : "string", "error" : "Nature of commodity is a required field"},
+        { "id": "PACKAGE_COUNT", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+        { "id": "PACKAGE_COUNT_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
+        { "id": "coldStore", "title": "Cold store", "required" : "no", "type" : "string"},
+        { "id": "NET_WEIGHT", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+        { "id": "NET_WEIGHT_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"}
+      ],
   "commodities": [{
     "code": "3822",
     "title": " Diagnostic or laboratory reagents on a backing, prepared diagnostic or laboratory reagents whether or not on a backing, other than those of heading|3002|or 3006; certified reference materials"

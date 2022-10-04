@@ -71,6 +71,26 @@
     "Unplucked",
     "Unskinned"
   ],
+  "schema": [
+    { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+    { "id": "productDescription", "title": "Description", "required" : "no", "type" : "string"},
+    { "id": "coldStore", "title": "Cold store", "required" : "no", "type" : "string"},
+    { "id": "PACKAGE_COUNT", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+    { "id": "PACKAGE_COUNT_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
+    { "id": "QUANTITY", "title": "Quantity", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for quantity"},
+    { "id": "QUANTITY_UNIT", "title": "Quantity unit", "required" : "yes", "type" : "string", "error" : "Select a quantity unit from the list"},
+    { "id": "NET_WEIGHT", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+    { "id": "NET_WEIGHT_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+    { "id": "slaughterHouse", "title": "Slaughterhouse", "required" : "no", "type" : "string"},
+    { "id": "treatmentType", "title": "Treatment type", "required" : "yes", "type" : "string", "error" : "Select a valid treatment type from the list", "multiple" : "yes"},
+    { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "type" : "string", "error" : "Nature of commodity is a required field", "multiple" : "yes"},
+    { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "string", "error" : "Batch number is required"},
+    { "id": "finalConsumer", "title": "Final consumer", "required" : "yes", "type" : "string", "error" : "Select a valid response for Final consumer from the list"},
+    { "id": "dateOfProduction", "title": "Date of production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of production"},
+    { "id": "dateOfCollection", "title": "Date of collection", "required" : "no", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of collection"},
+    { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "string", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+    { "id": "dateOfCollectionProduction", "title": "Date of collection / production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of collection / production"}
+  ],
   "commodities": [{
     "code": "1901",
     "title": " Malt extract; food preparations of flour, groats, meal, starch or malt extract, not containing cocoa or containing less than 40|% by weight of cocoa calculated on a totally defatted basis, not elsewhere specified or included; food preparations of goods of headings|0401|to 0404, not containing cocoa or containing less than 5|% by weight of cocoa calculated on a totally defatted basis, not elsewhere specified or included"

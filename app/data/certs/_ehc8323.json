@@ -7,6 +7,19 @@
   "netWeight": "yes",
   "multiples": ["batchNumber", "species"],
   "species": ["Bubalus bubalus","Bos taurus","Ovis aries","Capra hircus"],
+  "schema": [
+    { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+    { "id": "productDescription", "title": "Description", "required" : "no", "type" : "string"},
+    { "id": "species", "title": "Species", "required" : "yes", "type" : "string", "error" : "Species name is invalid", "multiple": "yes"},
+    { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "type" : "string", "error" : "Nature of commodity is a required field"},
+    { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "string", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+    { "id": "NET_WEIGHT", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+    { "id": "NET_WEIGHT_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+    { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "string", "error" : "Batch number is required", "multiple": "yes"},
+    { "id": "PACKAGE_COUNT", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+    { "id": "PACKAGE_COUNT_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
+    { "id": "coldStore", "title": "Cold store", "required" : "yes", "type" : "string", "error" : "Enter a valid approval number for cold store"}
+  ],
   "commodities": [{
     "code": "230910",
     "title": "Dog or cat food, put up for retail sale",
