@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Select a certificate for your export - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <!-- <div class="govuk-grid-column-full" data-v-75a00750=""><span class="govuk-caption-xl"> Description of the goods
+
+    </span> -->
+    <div class="govuk-grid-column-two-thirds">
+    <!--<form class="" method="post" action="how-to-add">-->
+
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none" id="page-error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#search-and-list">Select a certificate</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <form class="" method="post">
+      <h1 class="govuk-heading-xl">Select a certificate for your export</h1>
+      <div class="govuk-form-group" id="search-and-list">
+        <p class="govuk-body"></p>
+        <label class="govuk-label" for="search-term">Search for certificate</label>
+        <div class="govuk-hint">Search by certificate number or name</div>
+        <input class="govuk-input" id="search-term" type="text">
+        <br>
+        <br>
+        <div class="govuk-radios" data-module="govuk-radios" id="certificate-radios">
+          {% for cert in data.certificates %}
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection{{loop.index}}" type="radio" data-target="EHC8328-commodities" value="{{loop.index-1}}">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection{{loop.index}}"><strong>{{cert.number}}</strong> {{cert.title}} ({{(cert.commodities | length)}} commodities) </label>
+          </div>
+          {% endfor%}
+        </div>
+        <div id="no-results" class="no-results govuk-!-font-size-19" style="display:none">
+          <p class="govuk-body govuk-!-font-weight-bold">There are no matching results.</p>
+          <p class="govuk-body">Improve your search results by:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>double-checking your spelling</li>
+            <li>using fewer keywords</li>
+            <li>searching for something less specific</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="govuk-form-group">
+        <div class="p-paginator p-component" modelvalue="1">
+
+              <button class="p-paginator-prev p-paginator-element p-link p-disabled" type="button" disabled=""><span class="p-sr-only"><i class="fa fa-chevron-left"></i></span><span
+              class="p-paginator-icon pi pi-angle-left"></span></button><span class="p-paginator-pages">
+                <button class="p-paginator-page p-paginator-element p-link p-highlight" type="button">1</button>
+                <button class="p-paginator-page p-paginator-element p-link" type="button">2</button>
+              <button class="p-paginator-page p-paginator-element p-link" type="button">3</button>
+              <button class="p-paginator-page p-paginator-element p-link" type="button">4</button>
+              <button class="p-paginator-page p-paginator-element p-link" type="button">5</button></span>
+              <button class="p-paginator-next p-paginator-element p-link" type="button"><span class="p-sr-only"><i
+                class="fa fa-chevron-right"></i></span><span class="p-paginator-icon pi pi-angle-right"></span></button>
+
+        </div>
+      </div>
+      {% if query.v == "2" %}
+      <input type="hidden" name="version" value="2">
+      {% endif %}
+      <div class="govuk-button-group" type="submit"><button class="govuk-button" id="add-export">Add to export</button>
+        <!---->
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $("#search-term").on("keyup", function() {
+
+      var value = $(this).val().toLowerCase();
+
+      $("#certificate-radios div").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        // if ($("#certificate-radios div").filter(":hidden").size()) {
+        if ($("#certificate-radios div.govuk-radios__item *:visible").length) {
+          // some results are still present
+          $("#no-results").hide();
+
+          // are some results being hidden
+          if (($("#certificate-radios div.govuk-radios__item *:visible").length) < ($("#certificate-radios div.govuk-radios__item").length)) {
+            $(".p-paginator").hide();
+          } else {
+            $(".p-paginator").show();
+          }
+        } else {
+          // all results being hidden
+          $(".p-paginator").hide();
+          $("#no-results").show();
+        }
+      });
+
+    });
+
+    $("#add-export").click(function() {
+      // show error message if nothing is selected
+      if ($("input:radio[name=certificate]:checked").length == 0) {
+        $("#search-and-list").addClass("govuk-form-group--error");
+        // $("#certificate-list").addClass("govuk-form-group--error");
+        $(".govuk-error-summary").show();
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#page-error-summary").offset().top
+        }, 20);
+        return false;
+      }
+    });
+
+  })
+</script>
+{% endblock%}

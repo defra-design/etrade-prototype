@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      Version 2.2 - With composites
+    </h1>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          What changed
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Added all new commodity journey</li>
+          <li>New schedule upload journey</li>
+          <li>New search for establishments journey</li>
+          <li>New additional documents journey</li>
+          <li>Improved create reference page</li>
+          <li>Improved "goods certified as" page</li>
+          <li>Improved task list with new section to continue to submit applicaiton</li>
+          <li>new start page</li>
+          <li>changed reposnible for load content <a href="https://dev.azure.com/defragovuk/DEFRA-EEHC/_boards/board/t/DEFRA-EEHC%20Team/Stories/?workitem=108654">Ticket: 108654</a></li>
+        </ul>
+      </div>
+
+    </details>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    <h2 class="govuk-heading-m">Pages</h2>
+    <h3 class="govuk-heading-s">New user</h3>
+    <ul class="govuk-list govuk-list--bullet">
+
+      <li><a href="../verify/gov-sign-in?loginReturnURL=/beta/v2-2/dashboard-no-applications">From login - new user</a></li>
+      <li><a href="dashboard-no-applications">Dashboard new user</a></li>
+    </ul>
+    <h3 class="govuk-heading-s">Existing user</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="../verify/gov-sign-in?loginReturnURL=/beta/v2-2/dashboard">From login - existing user</a></li>
+      <li><a href="dashboard">Dashboard existing user</a></li>
+    </ul>
+
+    <h3 class="govuk-heading-s">Application</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="application/start">Start new application</a></li>
+      <li><a href="application/create-refernce">Reference number</a></li>
+      <li><a href="application/export/select-certificates">Select certificate</a></li>
+      <li><a href="application/export/select-commodities">Select commodity</a></li>
+      <li><a href="application/task-list">Task list</a></li>
+      <li><a href="application/task-list?isComplete=yes">Task list with "review application" clickable</a></li>
+      <br>
+      <li><a href="application/check-your-answers">Check your answers</a></li>
+      <li><a href="application/review">Review and submit</a></li>
+      <li><a href="application/review">Application submited</a></li>
+    </ul>
+    <h3 class="govuk-heading-s">Other pages</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="copy/copy-application">Copy application</a></li>
+    </ul>
+  </div>
+  <div class="govuk-grid-column-one-thirds">
+    <h3 class="govuk-heading-m">Use this data</h3>
+    <ul class="govuk-list">
+      <li><strong>Estbalishment for commodities:</strong> <br>Dovecote Park Ltd (approval number 2045)</li>
+
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
