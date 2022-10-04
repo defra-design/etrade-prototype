@@ -83,6 +83,7 @@ module.exports = function(router) {
       var currentCommodityID = req.session.data.commodityListID || 0
       var identificationID = req.session.data.changeID || 0
       cert.addedCommodities[currentCommodityID].identifications[identificationID] = req.body
+      res.redirect(301, '/' + base_url + 'application/export/added-commodities-list?changed=yes&showAlert=yes');
     } else {
       var addedCommodities = cert.addedCommodities
       var commodityCode = cert.commodities[commodityID].code
@@ -90,7 +91,8 @@ module.exports = function(router) {
       var currentCommodity = getCommodityArray(addedCommodities, commodityCode)
       if (currentCommodity) {
         console.log("adding to existing commodity")
-        currentCommodity.identifications.unshift(req.body);
+        currentCommodity.identifications.push(req.body);
+        req.session.data.currentIdenticiationID=currentCommodity.identifications.length-1
       } else {
         // create new commoditity object
         console.log("Adding new commodity")
@@ -100,22 +102,15 @@ module.exports = function(router) {
           "identifications": []
         }
 
-        commodity.identifications.unshift(req.body);
-        addedCommodities.unshift(commodity)
+        commodity.identifications.push(req.body);
+        addedCommodities.push(commodity)
+        req.session.data.currentIdenticiationID=0
       }
-      // cert.addedCommodities[commodityCode]
+      res.redirect(301, '/' + base_url + 'application/export/added-commodities-list?new=yes');
 
-
-      // console.log(addedCommodities)
-
-      // check if commodity already added
-      // if(addedCommodities)
-      // console.log("addedEHC[certID] is: " + JSON.stringify(req.session.data.addedEHC[certID]));
-      // addedCommodities.unshift(req.body);
-      // req.session.data.addedCommodities.unshift(req.body);
     }
-    res.redirect(301, '/' + base_url + 'application/export/added-commodities-list');
-    // res.redirect(301, '/' + base_url + 'application/export/' + req.session.data.listURL);
+
+
   })
 
   router.post('/' + base_url + 'application/export/export/weight', function(req, res) {
