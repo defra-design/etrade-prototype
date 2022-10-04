@@ -1,9 +1,9 @@
 {% if cert.dateOfCollection == "multiple" %}
 <div class="govuk-form-group app-repeadable-holder" id="repeatable-collection-date-holder">
-  <label class="govuk-label" for="COLLECTION_PRODUCTION_DATE-3-11711-020120">Date of collection/production</label>
+  <label class="govuk-label" for="COLLECTION_DATE-3-11711-020120">Date of collection</label>
   <div class="app-repeatable-section" id="repeatable-collection-date">
     <div class="govuk-input__wrapper m-t-15">
-      <input name="dateOfFreezing" class="govuk-input" type="datetime-local" id="COLLECTION_PRODUCTION_DATE-3-11711-020120" name="COLLECTION_PRODUCTION_DATE">
+      <input name="dateOfCollection" class="govuk-input" type="datetime-local" id="COLLECTION_DATE-3-11711-020120" name="COLLECTION_DATE">
       <div class="govuk-input__suffix suffix__action no-border" aria-hidden="true">
         <button type="button" data-count="1" data-target="repeatable-collection-date" class="govuk-button govuk-button--secondary multi-data add-repeatable-section"><span class="fas fa-plus"></span>
         </button>
@@ -13,10 +13,8 @@
 </div>
 {% else %}
 <div class="govuk-form-group">
-  <label class="govuk-label" for="COLLECTION_PRODUCTION_DATE-3-11711-020120">Date of collection/production
-
-  </label>
-<input class="govuk-input" type="datetime-local" name="COLLECTION_PRODUCTION_DATE" id="COLLECTION_PRODUCTION_DATE-3-11711-020120">
+  <label class="govuk-label" for="COLLECTION_DATE-3-11711-020120">Date of collection</label>
+  <input class="govuk-input" type="datetime-local" name="COLLECTION_DATE" id="COLLECTION_DATE-3-11711-020120">
 
 </div>
 {% endif %}
