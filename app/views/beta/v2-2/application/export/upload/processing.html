@@ -39,11 +39,8 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
   <!-- no errors -->
 {% endif %}
 
-{% if ((ehcNumber == "8361") or (ehcNumber == "8364")) %}
-  {% set ehcErrorTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_09082022_with-errors-v3.xlsx" %}
-{% else %}
-  {% set ehcErrorTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template_09082022_with-errors-v2.xlsx" %}
-{% endif %}
+{% set ehcErrorTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template-v3-with-errors.xlsx" %}
+
 
 <!-- this isn't where this should be -->
 <style type="text/css">

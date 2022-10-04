@@ -1,0 +1,22 @@
+{% if cert.dateOfCollectionProduction == "multiple" %}
+<div class="govuk-form-group app-repeadable-holder" id="repeatable-collection-date-holder">
+  <label class="govuk-label" for="COLLECTION_PRODUCTION_DATE-3-11711-020120">Date of collection/production</label>
+  <div class="app-repeatable-section" id="repeatable-collection-date">
+    <div class="govuk-input__wrapper m-t-15">
+      <input name="dateOfCollectionProduction" class="govuk-input" type="datetime-local" id="COLLECTION_PRODUCTION_DATE-3-11711-020120" name="COLLECTION_PRODUCTION_DATE">
+      <div class="govuk-input__suffix suffix__action no-border" aria-hidden="true">
+        <button type="button" data-count="1" data-target="repeatable-collection-date" class="govuk-button govuk-button--secondary multi-data add-repeatable-section"><span class="fas fa-plus"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="govuk-form-group">
+  <label class="govuk-label" for="COLLECTION_PRODUCTION_DATE-3-11711-020120">Date of collection/production
+
+  </label>
+<input class="govuk-input" type="datetime-local" name="COLLECTION_PRODUCTION_DATE" id="COLLECTION_PRODUCTION_DATE-3-11711-020120">
+
+</div>
+{% endif %}

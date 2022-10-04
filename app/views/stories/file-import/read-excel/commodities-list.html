@@ -39,8 +39,8 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
               {% if commodity.description %}
               {{ commodity.productDescription | truncate(100) }}
               {% endif %}
-              {{commodity.NET_WEIGHT or "99"}} {{commodity.NET_WEIGHT_quatifier or "kilogram"}} -
-              {{commodity.PACKAGE_COUNT or "88"}} {{ commodity.PACKAGE_COUNT_quatifier or "box" }}
+              {{commodity.NET_WEIGHT or "99"}} {{commodity.NET_WEIGHT_UNIT or "kilogram"}} -
+              {{commodity.PACKAGE_COUNT or "88"}} {{ commodity.PACKAGE_COUNT_UNIT or "box" }}
               <!-- <button><span class="govuk-accordion__section-toggle" data-nosnippet=""><span class="govuk-accordion__section-toggle-focus"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span class="govuk-accordion__section-toggle-text">Show<span class="govuk-visually-hidden"> this section</span></span></span></span></button -->
             </dt>
             <dd class="govuk-summary-list__actions">
