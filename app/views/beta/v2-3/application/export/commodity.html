@@ -91,9 +91,17 @@ Home – GOV.UK Prototype Kit
               </section>
               <section id="questions">
 
-                <div class="govuk-form-group"><label class="govuk-label" for="PRODUCT_DESCRIPTION-0-10410-31010000">Product description &nbsp;(Optional) </label>
-                  <input class="govuk-input" type="text" id="description" name="description" value="{% if (data.change or data.copy) %}{{identification.description}}{% endif %}{% if query.updated == 'yes' %}{{data.description}}{% endif %}">
-                </div>
+
+                <ul class>
+                    {% for field in cert.schema %}
+                  <li> {{field.id}}</li>
+
+                    {% endfor%}
+                </ul>
+
+                {% if cert.productDescription %}
+                  {% block productDescription %}{% include "./components/_product-description.html" %}{% endblock %}
+                {% endif %}
 
 
 
@@ -138,28 +146,11 @@ Home – GOV.UK Prototype Kit
                 {% endif %}
 
                 {% if cert.dateOfFreezing %}
-                <div class="govuk-form-group app-repeadable-holder" id="repeatable-freezing-date-holder">
-                  <label class="govuk-label" for="FREEZING_DATE-6-11711-020120">Date of freezing(Optional) </label>
-                  <div class="app-repeatable-section" id="repeatable-freezing-date">
-                    <div class="govuk-input__wrapper m-t-15">
-                      <input name="dateOfFreezing" class="govuk-input" type="datetime-local" id="FREEZING_DATE-6-11711-020120">
-                      <div class="govuk-input__suffix suffix__action no-border" aria-hidden="true">
-                        <button type="button" data-count="1" data-target="repeatable-freezing-date" class="govuk-button govuk-button--secondary multi-data add-repeatable-section"><span class="fas fa-plus"></span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  {% block dateOfFreezing %}{% include "./components/_date-of-freezing.html" %}{% endblock %}
                 {% endif %}
 
                 {% if cert.identificationMark %}
-                <div class="govuk-form-group"><label class="govuk-label" for="IDENTIFICATION_MARK-7-11711-020120">Identification mark
-                    <!---->
-                  </label>
-                  <!---->
-                  <!---->
-                  <!----><input class="govuk-input" type="text" name="identificationMark" id="IDENTIFICATION_MARK-7-11711-020120">
-                </div>
+                {% block identificationMark %}{% include "./components/_identification-mark.html" %}{% endblock %}
                 {% endif %}
 
                 {% if cert.finalConsumerOption %}
@@ -181,24 +172,7 @@ Home – GOV.UK Prototype Kit
                 {% endif %}
 
                 {% if cert.quantiy %}
-                <div class="govuk-form-group app-repeadable-holder" id="repeatable-quantity-holder">
-                  <label class="govuk-label" for="QUANTITY-3-11930-151790">Quantity
-                  </label>
-                  <div class="app-repeatable-section" id="repeatable-quantity">
-                    <div class="govuk-input__wrapper m-b-15">
-                      <input class="govuk-input" type="number" data-type="quantity" name="QUANTITY" id="QUANTITY-3-11930-151790" data-v-0dd78fbf="">
-                      <div class="govuk-input__suffix suffix__action no-border" data-v-0dd78fbf=""><select class="govuk-select max-w-155" id="QUANTITY-3-11930-151790-units" data-v-0dd78fbf="">
-                          <option disabled="" value="" selected>Select a unit</option>
-                          <option value="H87" data-v-0dd78fbf="">PIECE</option>
-                        </select>
-                        {% if cert.quantiy == "multiple" %}
-                        <button type="button" data-count="1" data-target="repeatable-quantity" class="govuk-button govuk-button--secondary multi-data add-repeatable-section"><span class="fas fa-plus"></span>
-                        </button>
-                        {% endif %}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {% block quantity %}{% include "./components/_quantity.html" %}{% endblock %}
                 {% endif %}
 
                 {% block packageCount %}{% include "./components/_package-count.html" %}{% endblock %}
@@ -209,7 +183,6 @@ Home – GOV.UK Prototype Kit
 
                 {% block searchplant %}{% include "../find/_search_establishment.html" %}{% endblock %}
                 {% endif %}
-
 
 
                 {% if cert.species%}
