@@ -55,6 +55,18 @@ Home – GOV.UK Prototype Kit
       <li><a href="application/review">Review and submit</a></li>
       <li><a href="application/review">Application submited</a></li>
     </ul>
+    <h3 class="govuk-heading-s">Commodity data upload</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="application/export/how-to-add">Prompt user to ask if they want to use CDU</a></li>
+      <li><a href="application/export/upload/download-template">Template download page</a> (single template)</li>
+      <li><a href="application/export/upload/download-template-multiple">Template download page</a> (multiple templates)</li>
+      <li><a href="application/export/upload/">Template upload page</a></li>
+      <li><a href="application/export/upload/processing?totalRows=10&errorRowCount=0&numberOfErrors=0&fluffRows=8">Processing success - 10 rows, 0 errors</a></li>
+      <li><a href="application/export/upload/processing?totalRows=10&errorRowCount=1&numberOfErrors=2&fluffRows=8&errorRecord=2&errorMessage=Invalid%20selection%20for%20species&errorRecord=2&errorMessage=Commodity%20code%20could%20not%20be%20found">Processing partial success - 10 rows, 2 errors in 1 row</a></li>
+      <li><a href="application/export/upload/processing?totalRows=10&errorRowCount=1&numberOfErrors=2&fluffRows=8&errorRecord=2&errorMessage=Invalid%20selection%20for%20species&errorRecord=4&errorMessage=Commodity%20code%20could%20not%20be%20found">Processing partial success - 10 rows, 2 errors in 2 rows</a></li>
+      <li><a href="application/export/upload/processing?totalRows=4&errorRowCount=4&numberOfErrors=5&fluffRows=8&errorRecord=0&errorMessage=Species%20name%20is%20invalid&errorRecord=1&errorMessage=Missing%20identification%20mark&errorRecord=2&errorMessage=Select%20a%20package%20unit%20from%20the%20list&errorRecord=3&errorMessage=Select%20a%20net%20weight%20unit%20from%20the%20list&errorRecord=3&errorMessage=Commodity%20code%20is%20a%20required%20field">Processing failure - 4 rows, 5 errors in 4 rows</a></li>
+      <li><a href="application/export/upload/processing?totalRows=4&errorRowCount=4&numberOfErrors=15&fluffRows=8&errorRecord=0&errorMessage=Species%20name%20is%20invalid&errorRecord=0&errorMessage=Missing%20identification%20mark&errorRecord=0&errorMessage=Select%20a%20package%20unit%20from%20the%20list&errorRecord=0&errorMessage=Select%20a%20net%20weight%20unit%20from%20the%20list&errorRecord=1&errorMessage=Commodity%20code%20is%20a%20required%20field&errorRecord=1&errorMessage=Enter%20a%20whole%20number%20for%20package%20count&errorRecord=1&errorMessage=Net%20weight%20is%20a%20required%20field&errorRecord=1&errorMessage=Select%20a%20valid%20treatment%20type%20from%20the%20list&errorRecord=1&errorMessage=Enter%20a%20date%20in%20the%20format%20DD/MM/YYYY%20for%20Date%20of%20collection%20/%20production&errorRecord=2&errorMessage=Enter%20a%20valid%20approval%20number%20for%20cold%20store&errorRecord=2&errorMessage=Select%20a%20package%20unit%20from%20the%20list&errorRecord=2&errorMessage=Select%20a%20net%20weight%20unit%20from%20the%20list&errorRecord=2&errorMessage=Nature%20of%20commodity%20is%20a%20required%20field&errorRecord=2&errorMessage=Batch%20number%20is%20required&errorRecord=3&errorMessage=Manufacturing%20plant%20is%20a%20required%20field%20-%20please%20enter%20a%20valid%20approval%20number">Processing failure - 4 rows, 15 errors in 4 rows</a></li>
+    </ul>
     <h3 class="govuk-heading-s">Other pages</h3>
     <ul class="govuk-list govuk-list--bullet">
       <li><a href="copy/copy-application">Copy application</a></li>

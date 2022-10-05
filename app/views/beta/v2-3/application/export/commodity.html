@@ -115,7 +115,11 @@ Home – GOV.UK Prototype Kit
                 {% endif %}
 
                 {% if cert.dateOfCollection %}
-                  {% block dateOfCollectin %}{% include "./components/_date-of-collection.html" %}{% endblock %}
+                  {% block dateOfCollection %}{% include "./components/_date-of-production.html" %}{% endblock %}
+                {% endif %}
+
+                {% if cert.dateOfCollectionProduction %}
+                  {% block dateOfCollectionProduction %}{% include "./components/_date-of-collection-production.html" %}{% endblock %}
                 {% endif %}
 
                 {% if cert.treatmentType %}
