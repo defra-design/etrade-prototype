@@ -52,7 +52,7 @@ module.exports = function(router) {
       } else {
         // This commodity hasn't been added yet - adding now + identifications
         // console.log("This commodity (" + commodityCode + ") does not yet exist - creating it and adding " + identifications.length + " identifications to it");
-        commodity = {"code":commodityCode,"title":commodityTitle,"identifications":identifications};
+        commodity = {"code":commodityCode,"title":commodityTitle,"id":commodityID,"identifications":identifications};
         req.session.data.addedEHC[ehcIndex].addedCommodities.push(commodity);
       }
     }
