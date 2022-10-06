@@ -97,8 +97,14 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
           </h2>
         </div>
         <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">All commodity data was successfully imported</p>
-          <p class="govuk-body">{{ totalRows }} commodities were successfully imported.</p>
+          <p class="govuk-notification-banner__heading">Your commodity data was successfully imported</p>
+          <p class="govuk-body">
+            {% if totalRows == 1 %}
+              1 row of data was successfully imported.
+            {% else %}
+              {{ totalRows }} rows of data were successfully imported.
+            {% endif %}
+          </p>
         </div>
       </div>
     </div>
@@ -111,13 +117,9 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
           </h2>
         </div>
         <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">Some commodity data could not be imported</p>
+          <p class="govuk-notification-banner__heading">Some commodity data was not imported</p>
           <p class="govuk-body">
-              {% if numberOfErrors == 1 %}
-                {{ totalRows }} rows of data were uploaded but {{ (( totalRows | int ) - ( errorRowCount | int )) }} could be saved due to errors.
-              {% else %}
-                {{ totalRows }} rows of data were uploaded but {{ (( totalRows | int ) - ( errorRowCount | int )) }} were not saved due to errors.
-              {% endif %}
+              {{ totalRows }} rows of data were uploaded but {{ errorRowCount }} could not saved due to errors.
           </p>
           <p class="govuk-body">
               <a href="{{ ehcErrorTemplateDownloadPath }}">Download the failed records spreadsheet</a> to view the errors, and re-upload the commodity data once you've updated the data.
@@ -135,13 +137,9 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
           </h2>
         </div>
         <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">No commodity data could be imported</p>
+          <p class="govuk-notification-banner__heading">Your commodity data was not imported</p>
           <p class="govuk-body">
-              {% if totalRows == 1 %}
               Due to errors in the spreadsheet, we were unable to save the data you uploaded.
-              {% else %}
-              Due to errors in the spreadsheet, we were unable to save the data you uploaded.
-              {% endif %}
               <a href="{{ ehcErrorTemplateDownloadPath }}">Download the failed records spreadsheet</a> to view the errors, and re-upload the commodity data once you've updated the data.
             </p>
 
@@ -303,14 +301,14 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="what-next" name="what-next" type="radio" value="review~/beta/v2-2/application/export/added-commodities-list">
+              <input class="govuk-radios__input" id="what-next" name="what-next" type="radio" value="review~/beta/v2-3/application/export/added-commodities-list">
               <label class="govuk-label govuk-radios__label" for="what-next">
                 View saved commodities
               </label>
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="what-next-2" name="what-next" type="radio" value="upload~/beta/v2-2/application/export/upload/">
+              <input class="govuk-radios__input" id="what-next-2" name="what-next" type="radio" value="upload~/beta/v2-3/application/export/upload/">
               <label class="govuk-label govuk-radios__label" for="what-next-2">
                 Upload another spreadsheet
               </label>
@@ -429,7 +427,9 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
       $(".complete").show();
 
       if (errorRowCount) {
-        $("#upload-status-table").hide();
+        $("#upload-status-table").show();
+        $("#complete-error-summary").hide();
+        $("#partial-error-summary").hide();
       }
     }
 

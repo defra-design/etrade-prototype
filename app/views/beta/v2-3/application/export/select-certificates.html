@@ -6,8 +6,28 @@ Select a certificate for your export - eTrade – GOV.UK Prototype Kit
 {% block beforeContent %}
 {{super()}}
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+  .js-enabled .js-hidden{
+    display:none;
+  }
+</style>
 {% endblock%}
 {% block content %}
+<!-- allow for querystring override of displayMax for testing purposes -->
+{% if query.displayMax %}
+  {% set displayMax = query.displayMax | int %}
+{% else %}
+  {% set displayMax = data.displayMax %}
+{% endif %}
+
+{% set page = query.page-1 or 0 %}
+{% set min = displayMax*page %}
+{% if page == 0 %}
+{% set max = displayMax*(page+1) %}
+{% else %}
+{% set max = displayMax*(page+1)-1 %}
+{% endif %}
+
 <div class="govuk-grid-row">
   <!-- <div class="govuk-grid-column-full" data-v-75a00750=""><span class="govuk-caption-xl"> Description of the goods
 
@@ -38,10 +58,17 @@ Select a certificate for your export - eTrade – GOV.UK Prototype Kit
         <br>
         <div class="govuk-radios" data-module="govuk-radios" id="certificate-radios">
           {% for cert in data.certificates %}
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input " name="certificate" id="certificate-selection{{loop.index}}" type="radio" data-target="EHC8328-commodities" value="{{loop.index-1}}">
-            <label class="govuk-label govuk-radios__label" for="certificate-selection{{loop.index}}"><strong>{{cert.number}}</strong> {{cert.title}} ({{(cert.commodities | length)}} commodities) </label>
-          </div>
+            {% if loop.index >= min and loop.index <= max %}
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection{{loop.index}}" type="radio" data-target="EHC8328-commodities" value="{{loop.index-1}}">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection{{loop.index}}"><strong>{{cert.number}}</strong> {{cert.title}} ({{(cert.commodities | length)}} commodities) </label>
+              </div>
+            {% else %}
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection{{loop.index}}" type="radio" data-target="EHC8328-commodities" value="{{loop.index-1}}">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection{{loop.index}}"><strong>{{cert.number}}</strong> {{cert.title}} ({{(cert.commodities | length)}} commodities) </label>
+            </div>
+            {% endif %}
           {% endfor%}
         </div>
         <div id="no-results" class="no-results govuk-!-font-size-19" style="display:none">
@@ -56,24 +83,80 @@ Select a certificate for your export - eTrade – GOV.UK Prototype Kit
 
       </div>
 
+      {% if (data.certificates | length) >= displayMax  %}
       <div class="govuk-form-group">
-        <div class="p-paginator p-component" modelvalue="1">
+        {% set count = 0 %}
+        {% set pageNumber = 1 %}
+        {% set last = (((data.certificates | length) / displayMax)| round(0, "floor")+1)  %}
+        {% if (page+1) <= 3 %}
+          <!-- start sequence. set range to show if page is under 3 -->
+          {% set rangeMin = 1 %}
+          {% set rangeMax = 4 %}
+          {% set elipsis1 = page -1 %}
+          {% set elipsis2 = rangeMax+1 %}
+        {% elseif page+3 >= last %}
+        <!-- end sequence, show 3 before the last page-->
+          {% set rangeMin = (last-3) %}
+          {% set rangeMax = last %}
+          {% set elipsis1 = rangeMin -1 %}
+          {% set elipsis2 = last +3 %}
+        {% else %}
 
-              <button class="p-paginator-prev p-paginator-element p-link p-disabled" type="button" disabled=""><span class="p-sr-only"><i class="fa fa-chevron-left"></i></span><span
-              class="p-paginator-icon pi pi-angle-left"></span></button><span class="p-paginator-pages">
-                <button class="p-paginator-page p-paginator-element p-link p-highlight" type="button">1</button>
-                <button class="p-paginator-page p-paginator-element p-link" type="button">2</button>
-              <button class="p-paginator-page p-paginator-element p-link" type="button">3</button>
-              <button class="p-paginator-page p-paginator-element p-link" type="button">4</button>
-              <button class="p-paginator-page p-paginator-element p-link" type="button">5</button></span>
-              <button class="p-paginator-next p-paginator-element p-link" type="button"><span class="p-sr-only"><i
-                class="fa fa-chevron-right"></i></span><span class="p-paginator-icon pi pi-angle-right"></span></button>
+        <!-- middle sequence. This when you need to show 2 elipsis -->
+          {% set rangeMin = page %}
+          {% set rangeMax = page+2 %}
+          {% set elipsis1 = rangeMin-1 %}
+          {% set elipsis2 = rangeMax+1 %}
+        {% endif %}
+        <nav id="pagination" class="govuk-pagination" role="navigation" aria-label="results">
 
-        </div>
+
+          {% if query.page > 1 %}
+          <div class="govuk-pagination__prev">
+            <a class="govuk-link govuk-pagination__link" href="?page={{page}}&displayMax={{displayMax}}" rel="prev">
+              <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+              </svg>
+              <span class="govuk-pagination__link-title">Previous</span></a>
+          </div>
+          {% endif %}
+
+          <ul class="govuk-pagination__list">
+            {% for p in data.certificates %}
+
+              {% if (loop.index-1)  >= count %}
+
+              {% if pageNumber == 1 or (pageNumber >= rangeMin and pageNumber <= rangeMax) or pageNumber == last  %}
+              <li class="govuk-pagination__item {% if pageNumber == page+1 or (page==0 and pageNumber==1) %}govuk-pagination__item--current{%endif%}">
+                <a class="govuk-link govuk-pagination__link" href="?page={{pageNumber}}&displayMax={{displayMax}}" aria-label="Page {{pageNumber}}">
+                  {{pageNumber}}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if pageNumber == elipsis1 or pageNumber == elipsis2 %}
+                <li class="govuk-pagination__item govuk-pagination__item--ellipses">&ctdot;</li>
+              {% endif %}
+
+              {% set count = count+displayMax %}
+              {% set pageNumber = pageNumber+1%}
+
+              {% endif %}
+
+            {% endfor %}
+          </ul>
+          {% if page+1 != last %}
+          <div class="govuk-pagination__next">
+            <a class="govuk-link govuk-pagination__link" href="?page={{page+2}}&displayMax={{displayMax}}" rel="next"> <span class="govuk-pagination__link-title">Next</span> <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13"
+                width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg></a>
+          </div>
+          {% endif %}
+        </nav>
       </div>
-      {% if query.v == "2" %}
-      <input type="hidden" name="version" value="2">
       {% endif %}
+
       <div class="govuk-button-group" type="submit"><button class="govuk-button" id="add-export">Add to export</button>
         <!---->
       </div>
@@ -95,16 +178,17 @@ Select a certificate for your export - eTrade – GOV.UK Prototype Kit
         if ($("#certificate-radios div.govuk-radios__item *:visible").length) {
           // some results are still present
           $("#no-results").hide();
+          $("#pagination").hide();
 
           // are some results being hidden
           if (($("#certificate-radios div.govuk-radios__item *:visible").length) < ($("#certificate-radios div.govuk-radios__item").length)) {
-            $(".p-paginator").hide();
+            $("#pagination").hide();
           } else {
-            $(".p-paginator").show();
+            // $("#pagination").show();
           }
         } else {
           // all results being hidden
-          $(".p-paginator").hide();
+          $("#pagination").hide();
           $("#no-results").show();
         }
       });
