@@ -72,13 +72,11 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
         {% for identification in commodity.identifications %}
 
-
-
         <div class="govuk-summary-list__row govuk-accordion__section" id="c{{currentCommodityID}}-i{{loop.index-1}}">
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
             <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
               {% if query.changed=="yes" and data.commodityListID == currentCommodityID and loop.index-1 == data.changeID %} <strong class="govuk-tag govuk-tag--blue">Changed</strong>{% endif %}
-              {% if query.new=="yes" and data.commodityListID == currentCommodityID and loop.index-1 == data.currentIdenticiationID %} <strong class="govuk-tag govuk-tag--blue">New</strong>{% endif %}
+              {% if query.new=="yes" and data.currentCommodityID == commodity.id and loop.index-1 == data.currentIdenticiationID %} <strong class="govuk-tag govuk-tag--blue">New</strong>{% endif %}
               {% if identification.productDescription %}{{ identification.productDescription | truncate(100)}} - {% endif %}{{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}} - {{identification.packageCount or "23"}}
               {{identification.packageCount_UNIT or "Bag"}}
 

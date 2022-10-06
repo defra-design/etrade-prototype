@@ -49,11 +49,6 @@ Home – GOV.UK Prototype Kit
 <!-- Set variable to trigger different behaviour in search establishment component-->
 {% set isCommodity = "yes" %}
 
-<ul>
-  <li>commodityID = {{commodityID}}</li>
-  <li>commodityListID = {{commodityListID}}</li>
-  <li>changeID = {{changeID}}</li>
-</ul>
 {% if data.copy == "yes"%}
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-two-thirds">
@@ -83,6 +78,7 @@ Home – GOV.UK Prototype Kit
       <input type="hidden" name="commodity_id" value="{{commodityID}}">
       <input type="hidden" name="commodity_code" value="{{cert.commodities[commodityID].code}}">
       <input type="hidden" name="commodity_description" value="{{cert.commodities[commodityID].title}}">
+
 
       <div class="commodity-pane--body open" style="" id="commodity-details-panel">
         <div class="govuk-grid-row">
@@ -114,7 +110,7 @@ Home – GOV.UK Prototype Kit
                 <!-- reset change values -->
                 <input type="hidden" name="change" value="">
                 <input type="hidden" name="changeID" value="">
-                <input type="hidden" name="commodityListID" value="">
+                <input type="hidden" name="commodityListID" value="{{commodityID}}">
                 <section id="actions">
                   <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if data.change == "yes" %}Update{% else %}Add{% endif %} commodity</button>
                 </section>
