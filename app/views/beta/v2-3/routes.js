@@ -32,6 +32,7 @@ module.exports = function(router) {
       req.session.data.addedEHC.push(cert);
       //set the id of the current Certificate
       req.session.data.currentCertID = req.session.data.addedEHC.length - 1
+
     }
     res.redirect(301, '/' + base_url + 'application/export/how-to-add');
   })
@@ -44,6 +45,7 @@ module.exports = function(router) {
 
 
     req.session.data.currentCommodityID = req.body.commodityCode || 0
+    req.session.data.commodityListID = req.session.data.currentCommodityID
     req.session.data.change = "";
     req.session.data.copy = "";
     res.redirect(301, '/' + base_url + 'application/export/commodity');
@@ -96,6 +98,7 @@ module.exports = function(router) {
         let commodity = {
           "code": commodityCode,
           "title": commodityTitle,
+          "id": req.session.data.currentCommodityID,
           "identifications": []
         }
 
