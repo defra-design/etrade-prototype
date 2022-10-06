@@ -7,13 +7,10 @@ module.exports = function(router) {
 
   function isAlreadyAdded(a, v) {
     let r = a.find(element => {
-      console.log("CHECKING: " + element.number)
-      console.log("AGAINST: " + v)
       if (element.number === v) {
 
         return true;
       }
-      console.log("not found!")
       return false;
     });
     return r
