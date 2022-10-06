@@ -1,0 +1,270 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+  .govuk-input__suffix.suffix__action.no-border {
+    border-width: 0 !important;
+    background: transparent;
+  }
+
+  .suffix__action {
+    margin: 0;
+    padding: 0;
+  }
+
+  .suffix__action .govuk-button.multi-data,
+  .delete-button {
+    margin-left: 5px;
+  }
+
+  .max-w-155 {
+    max-width: 155px;
+  }
+</style>
+{% endblock%}
+
+
+{% block content %}
+
+<!-- set the current certificate -->
+{% set certID = data.currentCertID or 0 %}
+
+<!-- set the current list idea, use the query currentCommodityID as default if possible -->
+{% set commodityID = query.currentCommodityID or data.currentCommodityID or 0 %}
+{% set commodityListID = query.commodityListID or data.commodityListID or 0 %}
+
+<!-- IF Change Set the identification array location of the current commodity -->
+{% set changeID = query.changeID or data.changeID or 0 %}
+<!-- Set current cert  -->
+{% set cert = data.addedEHC[certID]%}
+{% set identification = cert.addedCommodities[commodityListID].identifications[changeID]%}
+<!-- Set return URL for search establishment component -->
+{% set returnURL = "../export/commodity"%}
+
+<!-- Set variable to trigger different behaviour in search establishment component-->
+{% set isCommodity = "yes" %}
+
+
+{% if data.copy == "yes"%}
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <!-- <h3 class="govuk-notification-banner__heading">
+          Copied commodity
+        </h3> -->
+        <p class="govuk-body">Commodity copied</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-xl">{{ cert.number or "test" }}</span>
+    <h1 class="govuk-heading-xl">{% if data.change %}Change{% else %}Add{% endif %} commodity data</h1>
+    <form method="post">
+      <input type="hidden" name="ehc" value="{{cert.number}}">
+      <input type="hidden" name="commodity_id" value="{{commodityID}}">
+      <input type="hidden" name="commodity_code" value="{{cert.commodities[commodityID].code}}">
+      <input type="hidden" name="commodity_description" value="{{cert.commodities[commodityID].title}}">
+
+      <div class="commodity-pane--body open" style="" id="commodity-details-panel">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <div class="identification-questions">
+              <section id="intro">
+                <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Commodity</h2>
+                <p><span class="govuk-tag">{{cert.commodities[commodityID].code}}</span> {{cert.commodities[commodityID].title}}
+                <p>
+              </section>
+              <section id="questions">
+
+
+                <ul class>
+                    {% for field in cert.schema %}
+                  <li> {{field.id}}</li>
+
+                    {% endfor%}
+                </ul>
+                <p>is production = {{"productDescription" | hasSchema(cert.schema)}}</p>
+
+                {% if "productDescription" | hasSchema(cert.schema) %}
+                  {% block productDescription %}{% include "./components/_product-description.html" %}{% endblock %}
+                {% endif %}
+
+
+
+
+
+                {% if "manufacturingPlant" | hasSchema(cert.schema)%}
+                {% set searchLabel = "Manufacturing plant" %}
+                {% block searchManufaturePlant %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "coldStore" | hasSchema(cert.schema) %}
+                {% set searchLabel = "Cold store"%}
+                {% set isOptional = "yes"%}
+                {% block searchColdStore %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+
+                {% if "slaughterHouse" | hasSchema(cert.schema) %}
+                {% set searchLabel = "Slaughter house"%}
+                {% block searchSlaughterhouse %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "dateOfCollection" | hasSchema(cert.schema) %}
+                  {% block dateOfCollection %}{% include "./components/_date-of-production.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "dateOfCollectionProduction" | hasSchema(cert.schema) %}
+                  {% block dateOfCollectionProduction %}{% include "./components/_date-of-collection-production.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "treatmentType" | hasSchema(cert.schema) %}
+                {% block treatmentType %}{% include "./components/_treatment-type.html" %}{% endblock %}
+                {% endif %}
+
+                  {% set isOptional = "no"%}
+
+                {% if "breed" | hasSchema(cert.schema) %}
+                {% block breed %}{% include "./components/_breed.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "cuttingPlant" | hasSchema(cert.schema) %}
+                {% set searchLabel = "Cutting plant"%}
+                {% block searchcuttingPlant %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "dateOfFreezing" | hasSchema(cert.schema) %}
+                  {% block dateOfFreezing %}{% include "./components/_date-of-freezing.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "identificationMark" | hasSchema(cert.schema) %}
+                {% block identificationMark %}{% include "./components/_identification-mark.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "finalConsumerOption" | hasSchema(cert.schema) %}
+                {% block finalConsumer %}{% include "./components/_final-consumer.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "batchNumber" | hasSchema(cert.schema) %}
+                  {% block batchNumber %}{% include "./components/_batch-number.html" %}{% endblock %}
+                {% endif %}
+
+                {% if ("natureOfCommodity" | hasSchema(cert.schema)) and (cert.natureOfCommodity | length) > 0 %}
+                {% block natureOfCommodity %}{% include "./components/_nature-of-commodity.html" %}{% endblock %}
+                {% endif %}
+
+
+
+                {% if "netWeight" | hasSchema(cert.schema) %}
+                {% block netWeight %}{% include "./components/_net-weight.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "quantiy" | hasSchema(cert.schema) %}
+                {% block quantity %}{% include "./components/_quantity.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "packageCount" | hasSchema(cert.schema) %}
+                {% block packageCount %}{% include "./components/_package-count.html" %}{% endblock %}
+                {% endif %}
+
+                {% if "plantEstablishmentCentre" | hasSchema(cert.schema) %}
+                  {% set searchLabel = "Plant / Establishment / Centre" %}
+                  {% block searchplant %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                {% endif %}
+
+
+                {% if "species" | hasSchema(cert.schema) %}
+                {% block species %}{% include "./components/_species.html" %}{% endblock %}
+                {% endif %}
+
+
+
+
+                {% if manufacturingPlant%}
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="Premises of Origin-5-10367-4101">Premises of Origin</label>
+                  <input class="govuk-input" type="text" id="Premises of Origin-5-10367-4101" name="premises_of_origin" value="{% if data.change=='yes' or data.copy%}{{cert.addedCommodities[query.id].premises_of_origin}}{% endif %}">
+                </div>
+                {% endif %}
+                <!---->
+                <!-- reset change values -->
+                <input type="hidden" name="change" value="">
+                <input type="hidden" name="changeID" value="">
+                <input type="hidden" name="commodityListID" value="">
+                <section id="actions">
+                  <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if data.change == "yes" %}Update{% else %}Add{% endif %} commodity</button>
+                </section>
+            </div>
+            <!---->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+    $('.add-repeatable-section').on('click', function(e) {
+      e.preventDefault()
+
+      var count = parseInt($(this).attr("data-count"))
+      var targetID = "#" + $(this).attr('data-target')
+      var section = $(targetID).clone(true, true)
+      var holderID = $(this).attr('data-target') + "-holder"
+
+      var blockID = $(section).attr("id") + count
+      var deleteButton = '<button data-target="' + blockID + '"class="govuk-button delete-button govuk-button--secondary"><span class="fas fa-trash-alt"></span></button>'
+
+      // var formID = section.find("input").attr("id")+count
+      $(section).attr("id", blockID).addClass("govuk-!-margin-top-2")
+        $(section).find('input').val('')
+          // incase it is a select
+        $(section).find('select').prop("selectedIndex", 0);
+
+
+      $("#" + holderID).append(section)
+      var button = $('#' + blockID).find(".add-repeatable-section");
+      $(button).replaceWith(deleteButton)
+
+
+      $(this).attr("data-count", count + 1)
+
+    })
+
+    $(document).on('click', '.delete-button', function(e) {
+      e.preventDefault();
+      var deleteTarget = $(this).attr('data-target')
+      $("#" + deleteTarget).remove()
+    });
+
+    // clicking to find an establishment clears all information on other fields we place all establishemts closer to the top. but sill have description.
+    $(".find-establishment-link").on("click",function(e){
+      e.preventDefault()
+      var description = $("#description").val()
+      var url=$(this).attr("href")+"&description="+description
+      $(location).prop('href', url)
+    })
+
+
+  })
+</script>
+{% endblock%}

@@ -26,7 +26,7 @@ Home – GOV.UK Prototype Kit
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
           <span class="govuk-tag govuk-!-margin-right-2" >{{commodity.commodity_code}}</span>
-          {{commodity.NET_WEIGHT or "23"}} {{commodity.NET_WEIGHT_UNIT or "kilogram"}} -
+          {{commodity.netWeight or "23"}} {{commodity.netWeight_UNIT or "kilogram"}} -
           {% if commodity.description %}
           {{ commodity.description | truncate(100) }}
           {% else %}

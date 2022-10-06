@@ -98,106 +98,24 @@ Home – GOV.UK Prototype Kit
 
                     {% endfor%}
                 </ul>
-
-                {% if cert.productDescription %}
-                  {% block productDescription %}{% include "./components/_product-description.html" %}{% endblock %}
-                {% endif %}
+                {% for field in cert.schema %}
+                  {% if field.type != "string" %}
 
 
 
-                {% if cert.manufacturingPlant %}
-                {% set searchLabel = "Manufacturing plant"%}
-                {% block searchManufaturePlant %}{% include "../find/_search_establishment.html" %}{% endblock %}
-                {% endif %}
+                    {% if field.type == "search" %}
+                      {% set isReqiuired = field.required %}
+                      {% set searchLabel = field.title %}
+                      {% set searchComponentID = field.id %}
+                      {% block searchComponentID %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                    {% else %}
+                    {% set componentID = field.id %}
+                    {% set component = "./components2/_"+field.id+".html" %}
+                      {% block  componentID %}{% include component %}{% endblock %}
+                    {% endif %}
+                  {% endif%}
+                {% endfor%}
 
-                {% if cert.coldStore %}
-                {% set searchLabel = "Cold store"%}
-                {% set isOptional = "yes"%}
-                {% block searchColdStore %}{% include "../find/_search_establishment.html" %}{% endblock %}
-                {% endif %}
-
-
-                {% if cert.Slaughterhouse %}
-                {% set searchLabel = "Slaughter house"%}
-                {% block searchSlaughterhouse %}{% include "../find/_search_establishment.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.dateOfCollection %}
-                  {% block dateOfCollection %}{% include "./components/_date-of-production.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.dateOfCollectionProduction %}
-                  {% block dateOfCollectionProduction %}{% include "./components/_date-of-collection-production.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.treatmentType %}
-                {% block treatmentType %}{% include "./components/_treatment-type.html" %}{% endblock %}
-                {% endif %}
-
-                  {% set isOptional = "no"%}
-
-                {% if cert.breed %}
-                {% block breed %}{% include "./components/_breed.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.cuttingPlant %}
-                {% set searchLabel = "Cutting plant"%}
-                {% block searchcuttingPlant %}{% include "../find/_search_establishment.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.dateOfFreezing %}
-                  {% block dateOfFreezing %}{% include "./components/_date-of-freezing.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.identificationMark %}
-                {% block identificationMark %}{% include "./components/_identification-mark.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.finalConsumerOption %}
-                {% block finalConsumer %}{% include "./components/_final-consumer.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.batchNumber %}
-                  {% block batchNumber %}{% include "./components/_batch-number.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.natureOfCommodity and (cert.natureOfCommodity | length) > 0 %}
-                {% block natureOfCommodity %}{% include "./components/_nature-of-commodity.html" %}{% endblock %}
-                {% endif %}
-
-
-
-                {% if cert.netWeight != "no"%}
-                {% block netWeight %}{% include "./components/_net-weight.html" %}{% endblock %}
-                {% endif %}
-
-                {% if cert.quantiy %}
-                {% block quantity %}{% include "./components/_quantity.html" %}{% endblock %}
-                {% endif %}
-
-                {% block packageCount %}{% include "./components/_package-count.html" %}{% endblock %}
-
-
-                {% if cert["Plant / Establishment / Centre"]%}
-                {% set searchLabel = "Plant / Establishment / Centre"%}
-
-                {% block searchplant %}{% include "../find/_search_establishment.html" %}{% endblock %}
-                {% endif %}
-
-
-                {% if cert.species%}
-                {% block species %}{% include "./components/_species.html" %}{% endblock %}
-                {% endif %}
-
-
-
-
-                {% if manufacturingPlant%}
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="Premises of Origin-5-10367-4101">Premises of Origin</label>
-                  <input class="govuk-input" type="text" id="Premises of Origin-5-10367-4101" name="premises_of_origin" value="{% if data.change=='yes' or data.copy%}{{cert.addedCommodities[query.id].premises_of_origin}}{% endif %}">
-                </div>
-                {% endif %}
                 <!---->
                 <!-- reset change values -->
                 <input type="hidden" name="change" value="">

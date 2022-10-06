@@ -24,7 +24,7 @@ Home – GOV.UK Prototype Kit
       </h1>
     </legend>
         <p><strong>{{commodity.commodity_code}}</strong> -
-        {{commodity.NET_WEIGHT or "23"}} {{commodity.NET_WEIGHT_UNIT or "kilogram"}} -
+        {{commodity.netWeight or "23"}} {{commodity.netWeight_UNIT or "kilogram"}} -
         {% if commodity.description %}
         {{ commodity.description | truncate(100) }}
         {% else %}

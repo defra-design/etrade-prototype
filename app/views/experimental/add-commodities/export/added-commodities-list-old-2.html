@@ -29,7 +29,7 @@ Home – GOV.UK Prototype Kit
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
             <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
               <strong>{{commodity.commodity_code}}</strong> -
-              {{commodity.NET_WEIGHT or "23"}} {{commodity.NET_WEIGHT_UNIT or "kilogram"}} -
+              {{commodity.netWeight or "23"}} {{commodity.netWeight_UNIT or "kilogram"}} -
               {% if commodity.description %}
               {{ commodity.description | truncate(100) }}
               {% else %}
@@ -171,7 +171,7 @@ Home – GOV.UK Prototype Kit
                     Net weight
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{commodity.NET_WEIGHT or "23"}} {{commodity.NET_WEIGHT_UNIT or "kilogram"}}
+                    {{commodity.netWeight or "23"}} {{commodity.netWeight_UNIT or "kilogram"}}
                   </dd>
 
                 </div>
@@ -181,7 +181,7 @@ Home – GOV.UK Prototype Kit
 
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{commodity.PACKAGE_COUNT or "17"}} {{commodity.PACKAGE_COUNT_UNIT or "Bale, compressed"}}
+                    {{commodity.packageCount or "17"}} {{commodity.packageCount_UNIT or "Bale, compressed"}}
                   </dd>
 
                 </div>

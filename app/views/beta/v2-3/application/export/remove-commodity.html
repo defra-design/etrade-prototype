@@ -31,7 +31,7 @@ Home – GOV.UK Prototype Kit
         <p>
           <strong>{{identification.commodity_code}}</strong> -
 
-        {{identification.NET_WEIGHT or "23"}} {{identification.NET_WEIGHT_quatifier or "kilogram"}} - {{identification.PACKAGE_COUNT or "23"}} {{identification.PACKAGE_COUNT_quatifier or "Bag"}} {% if identification.description %}- {{ identification.description | truncate(100)}}{% endif %}
+        {{identification.netWeight or "23"}} {{identification.netWeight_quatifier or "kilogram"}} - {{identification.packageCount or "23"}} {{identification.packageCount_quatifier or "Bag"}} {% if identification.description %}- {{ identification.description | truncate(100)}}{% endif %}
       </p>
     <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
       <div class="govuk-radios__item">

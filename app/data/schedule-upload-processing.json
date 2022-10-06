@@ -214,10 +214,10 @@
           "commodity_description": "Dried or dry-salted",
           "description": "Dry salted 1",
           "Manufacturingplant": "Riverways Farm (22028)",
-          "NET_WEIGHT": "2",
-          "NET_WEIGHT_UNIT": "kilogram",
-          "PACKAGE_COUNT": "5",
-          "PACKAGE_COUNT_UNIT": "Box"
+          "netWeight": "2",
+          "netWeight_UNIT": "kilogram",
+          "packageCount": "5",
+          "packageCount_UNIT": "Box"
         },
         {
           "ehc": "EHC8329",
@@ -226,10 +226,10 @@
           "commodity_description": "Of lambs",
           "description": "Lambs 3",
           "Manufacturingplant": "Riverways Farm (22028)",
-          "NET_WEIGHT": "27",
-          "NET_WEIGHT_UNIT": "kilogram",
-          "PACKAGE_COUNT": "4",
-          "PACKAGE_COUNT_UNIT": "Drum"
+          "netWeight": "27",
+          "netWeight_UNIT": "kilogram",
+          "packageCount": "4",
+          "packageCount_UNIT": "Drum"
         },
         {
           "ehc": "EHC8329",
@@ -238,10 +238,10 @@
           "commodity_description": "Of lambs",
           "description": "Lambs 2",
           "Manufacturingplant": "Riverways Farm (22028)",
-          "NET_WEIGHT": "27",
-          "NET_WEIGHT_UNIT": "kilogram",
-          "PACKAGE_COUNT": "4",
-          "PACKAGE_COUNT_UNIT": "Drum"
+          "netWeight": "27",
+          "netWeight_UNIT": "kilogram",
+          "packageCount": "4",
+          "packageCount_UNIT": "Drum"
         },
         {
           "ehc": "EHC8329",
@@ -250,10 +250,10 @@
           "commodity_description": "Of lambs",
           "description": "Lambs 1",
           "Manufacturingplant": "Riverways Farm (22028)",
-          "NET_WEIGHT": "27",
-          "NET_WEIGHT_UNIT": "kilogram",
-          "PACKAGE_COUNT": "4",
-          "PACKAGE_COUNT_UNIT": "Drum"
+          "netWeight": "27",
+          "netWeight_UNIT": "kilogram",
+          "packageCount": "4",
+          "packageCount_UNIT": "Drum"
         },
         {
           "ehc": "EHC8329",
@@ -262,10 +262,10 @@
           "commodity_description": "Wet-salted",
           "description": "Description 4",
           "Manufacturingplant": "Riverways Farm (22028)",
-          "NET_WEIGHT": "55",
-          "NET_WEIGHT_UNIT": "kilogram",
-          "PACKAGE_COUNT": "3",
-          "PACKAGE_COUNT_UNIT": "Case"
+          "netWeight": "55",
+          "netWeight_UNIT": "kilogram",
+          "packageCount": "3",
+          "packageCount_UNIT": "Case"
         }
 
     ],
@@ -277,10 +277,10 @@
         "commodity_description": "Wet-salted",
         "description": "Description 3",
         "Manufacturingplant": "Riverways Farm (22028)",
-        "NET_WEIGHT": "55",
-        "NET_WEIGHT_UNIT": "kilogram",
-        "PACKAGE_COUNT": "3",
-        "PACKAGE_COUNT_UNIT": "Case"
+        "netWeight": "55",
+        "netWeight_UNIT": "kilogram",
+        "packageCount": "3",
+        "packageCount_UNIT": "Case"
       },
       {
         "ehc": "EHC8329",
@@ -288,10 +288,10 @@
         "commodity_code": "41012030",
         "commodity_description": "Wet-salted",
         "description": "Description 2",
-        "NET_WEIGHT": "55",
-        "NET_WEIGHT_UNIT": "kilogram",
-        "PACKAGE_COUNT": "3",
-        "PACKAGE_COUNT_UNIT": "Case"
+        "netWeight": "55",
+        "netWeight_UNIT": "kilogram",
+        "packageCount": "3",
+        "packageCount_UNIT": "Case"
       },
       {
         "ehc": "EHC8329",
@@ -299,10 +299,10 @@
         "commodity_code": "41012030",
         "commodity_description": "Wet-salted",
         "description": "Description 1",
-        "NET_WEIGHT": "55",
-        "NET_WEIGHT_UNIT": "kilogram",
-        "PACKAGE_COUNT": "3",
-        "PACKAGE_COUNT_UNIT": "Case",
+        "netWeight": "55",
+        "netWeight_UNIT": "kilogram",
+        "packageCount": "3",
+        "packageCount_UNIT": "Case",
         "species": "not set"
       }
     ]

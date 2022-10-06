@@ -5,9 +5,8 @@
 <!-- Create a unique Idendifier so each new commodity added the establishment is not set -->
 <!-- isCommodity, commodityID and cert are set in the parent commodity page, if this is nested there.-->
 {% set id = id+"-"+cert.number+"-"+commodityID+"-"+commodityListID %}
-
 {% endif %}
-<label class="govuk-label" for="{{id}}">{{searchLabel}} {% if isOptional == "yes"%}(optional){% endif %}</label>
+<label class="govuk-label" for="{{id}}">{{searchLabel}} {% if isReqiuired == "no"%}(optional){% endif %}</label>
 {% if data["has_"+id] != "yes" or data.newCommodity == "yes" %}
   <div class="govuk-form-group app-find-establishment-card">
     {% set url = "start" %}

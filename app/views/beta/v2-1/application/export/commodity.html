@@ -122,17 +122,17 @@ Home – GOV.UK Prototype Kit
 
                 {% if cert.netWeight != "no"%}
                 <div class="govuk-form-group">
-                  <label class="govuk-label" for="NET_WEIGHT-3-10410-31010000">Net weight</label>
+                  <label class="govuk-label" for="netWeight-3-10410-31010000">Net weight</label>
                   <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8="">
-                    <input class="govuk-input" type="number" data-type="quantity" name="NET_WEIGHT" step="0.01" min="0" max="9999999" id="NET_WEIGHT-3-10410-31010000"
-                      value="{% if data.change or data.copy %}{{identification.NET_WEIGHT}}{% endif %}">
+                    <input class="govuk-input" type="number" data-type="quantity" name="netWeight" step="0.01" min="0" max="9999999" id="netWeight-3-10410-31010000"
+                      value="{% if data.change or data.copy %}{{identification.netWeight}}{% endif %}">
                     <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8="">
-                      <select class="govuk-select" id="NET_WEIGHT-3-10410-31010000-units" name="NET_WEIGHT_UNIT" data-v-4e8f37a8="">
+                      <select class="govuk-select" id="netWeight-3-10410-31010000-units" name="netWeight_UNIT" data-v-4e8f37a8="">
                         <option disabled="" value="" data-v-4e8f37a8="" selected>Select a unit</option>
-                        <option value="gram" {% if (data.change or data.copy) and identification.NET_WEIGHT_UNIT == 'gram'%}selected{% endif %}>gram</option>
-                        <option value="kilogram" {% if (data.change or data.copy) and identification.NET_WEIGHT_UNIT == 'kilogram'%}selected{% endif %}>kilogram</option>
-                        <option value="kilotonne" {% if (data.change or data.copy) and identification.NET_WEIGHT_UNIT == 'kilotonne'%}selected{% endif %}>kilotonne</option>
-                        <option value="tonne (metric ton)" {% if (data.change or data.copy) and identification.NET_WEIGHT_UNIT ==  'tonne (metric ton)'%}selected{% endif %}>tonne (metric ton)</option>
+                        <option value="gram" {% if (data.change or data.copy) and identification.netWeight_UNIT == 'gram'%}selected{% endif %}>gram</option>
+                        <option value="kilogram" {% if (data.change or data.copy) and identification.netWeight_UNIT == 'kilogram'%}selected{% endif %}>kilogram</option>
+                        <option value="kilotonne" {% if (data.change or data.copy) and identification.netWeight_UNIT == 'kilotonne'%}selected{% endif %}>kilotonne</option>
+                        <option value="tonne (metric ton)" {% if (data.change or data.copy) and identification.netWeight_UNIT ==  'tonne (metric ton)'%}selected{% endif %}>tonne (metric ton)</option>
                       </select>
                     </div>
                   </div>

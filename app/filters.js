@@ -17,6 +17,15 @@ module.exports = function(env) {
   //   }
   //   return n;
   // }
+  filters.hasSchema = function(t,s) {
+    var show = false
+    s.forEach(item => {
+        if(item.id == t){
+          show = true
+        }
+    })
+    return show
+  }
 
   filters.getCommodityCode = function(s) {
     var n = s
@@ -59,7 +68,7 @@ module.exports = function(env) {
   filters.plural = function(singluar,plural,count) {
 
     // thought it could be like possesive filter, but there are excepetions to the rules so just made it simple switch
-    
+
     if (count == 1){
       // return original value
       return singluar
