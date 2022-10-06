@@ -6,10 +6,10 @@
     <!---->
     <div class="govuk-radios govuk-radios--small govuk-radios--inline" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="FINAL_CONSUMER-9-11930-151790-1" name="FINAL_CONSUMER" type="radio" value="yes"><label class="govuk-label govuk-radios__label" for="FINAL_CONSUMER-9-11930-151790-1"> Yes </label>
+        <input class="govuk-radios__input" id="FINAL_CONSUMER-9-11930-151790-1" name="finalConsumer" type="radio" value="yes" {% if (data.change or data.copy) and (identification.finalConsumer == "yes") %} checked{% endif %}><label class="govuk-label govuk-radios__label" for="FINAL_CONSUMER-9-11930-151790-1"> Yes </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="FINAL_CONSUMER-9-11930-151790-2" name="FINAL_CONSUMER" type="radio" value="no">
+        <input class="govuk-radios__input" id="FINAL_CONSUMER-9-11930-151790-2" name="finalConsumer" type="radio" value="no" {% if (data.change or data.copy) and (identification.finalConsumer == "no") %} checked{% endif %}>
         <label class="govuk-label govuk-radios__label" for="FINAL_CONSUMER-9-11930-151790-2"> No </label>
       </div>
     </div>

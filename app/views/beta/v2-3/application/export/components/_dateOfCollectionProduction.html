@@ -16,7 +16,7 @@
   <label class="govuk-label" for="COLLECTION_PRODUCTION_DATE-3-11711-020120">Date of collection/production
 
   </label>
-<input class="govuk-input" type="datetime-local" name="COLLECTION_PRODUCTION_DATE" id="COLLECTION_PRODUCTION_DATE-3-11711-020120">
+<input class="govuk-input" type="datetime-local" name="dateOfCollectionProduction" id="COLLECTION_PRODUCTION_DATE-3-11711-020120" value="{% if (data.change or data.copy) %}{{identification.dateOfCollectionProduction.slice(0,16)}}{% endif %}{% if query.updated == 'yes' %}{{data.dateOfCollectionProduction.slice(0,16)}}{% endif %}">
 
 </div>
 {% endif %}

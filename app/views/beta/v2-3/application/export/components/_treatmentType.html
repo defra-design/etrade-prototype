@@ -45,6 +45,7 @@
 <div class="govuk-form-group">
   <label class="govuk-label" for="natureOfCommodity">Treatment type</label>
   <select class="govuk-select full-width" id="treatent-type" name="treatmentType">
+    <option disabled="" value="" {% if not (data.change or data.copy) %}selected{%endif%}>Select a treatment type</option>
     {% if (listOfSpecies| length) <= 20 %}
     <option disabled="" value="" ></option>
     {% endif %}
@@ -59,7 +60,7 @@
 </div>
 {% endif %}
 
-{% if (listOfSpecies| length) <= 20 and not "treatmentType" in  cert.multiples %}
+{% if (listOfSpecies| length) > 20 and not "treatmentType" in  cert.multiples %}
 <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
 <script type="text/javascript">
   window.addEventListener('load', function() {

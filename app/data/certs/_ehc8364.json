@@ -15,7 +15,7 @@
     "Aquarium",
     "Wild stock"
   ],
-  "finalConsumerOption": "yes",
+  "finalConsumer": "yes",
   "dateOfCollectionProduction": "single",
   "manufacturingPlant" : "yes",
   "sanitaryRegionOfOrigin" : "yes",
