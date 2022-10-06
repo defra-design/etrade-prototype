@@ -91,18 +91,8 @@ Home – GOV.UK Prototype Kit
               </section>
               <section id="questions">
 
-
-                <ul class>
-                    {% for field in cert.schema %}
-                  <li> {{field.id}}</li>
-
-                    {% endfor%}
-                </ul>
                 {% for field in cert.schema %}
                   {% if field.type != "string" %}
-
-
-
                     {% if field.type == "search" %}
                       {% set isReqiuired = field.required %}
                       {% set searchLabel = field.title %}
@@ -110,7 +100,7 @@ Home – GOV.UK Prototype Kit
                       {% block searchComponentID %}{% include "../find/_search_establishment.html" %}{% endblock %}
                     {% else %}
                     {% set componentID = field.id %}
-                    {% set component = "./components2/_"+field.id+".html" %}
+                    {% set component = "./components/_"+field.id+".html" %}
                       {% block  componentID %}{% include component %}{% endblock %}
                     {% endif %}
                   {% endif%}

@@ -286,7 +286,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
         {% endfor %}
       </dl>
 
-      <p class="govuk-!-margin-bottom-8"><a href="commodity?change=&copy=&commodityListID={{currentCommodityID}}" class="govuk-link--no-visited-state"><strong>Add another row with commodity code {{commodity.code}}<strong></a></p>
+      <p class="govuk-!-margin-bottom-8"><a href="commodity?change=&copy=&commodityListID={{currentCommodityID}}&changeID={{identification.commodity_id}}" class="govuk-link--no-visited-state"><strong>Add another row with commodity code {{commodity.code}}<strong></a></p>
 
       {% endfor %}
       <div class="govuk-grid-row">
