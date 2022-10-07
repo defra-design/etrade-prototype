@@ -1,0 +1,73 @@
+{% set listOfItems = cert.treatmentType%}
+
+{% if field.multiple =="yes" %}
+<div class="govuk-form-group app-repeadable-holder" id="repeatable-treatmentType-holder">
+
+  <label class="govuk-label" for="natureOfCommodity">Treatment type</label>
+  <div class="app-repeatable-section" id="repeatable-treatmentType">
+    <div class="govuk-input__wrapper m-t-15">
+      <select class="govuk-select full-width" id="treatent-type" name="treatmentType">s
+        <option disabled="" value="" selected></option>
+        {% for item in listOfItems%}
+        <option value="{{item}}" {% if (data.change=="yes" or data.copy=="yes") and (item==identification.treatmentType or item==identification.treatmentType[loop.index-1]) %}selected{% endif %}>{{item}}</option>
+        {% endfor %}]
+      </select>
+      <div class="govuk-input__suffix suffix__action no-border" aria-hidden="true">
+
+        <button type="button" data-count="1" data-target="repeatable-treatmentType" class="govuk-button govuk-button--secondary multi-data add-repeatable-section"><span class="fas fa-plus"></span>
+        </button>
+      </div>
+    </div>
+    <!-- Show extra added rows if its change or a copy -->
+    {% if (data.change=="yes" or data.copy=="yes") and identification.treatmentType | length > 1%}
+    {% for row in identification.treatmentType %}
+    <div class="app-repeatable-section govuk-!-margin-top-2" id="repeatable-treatmentType{{loop.index}}">
+    <div class="govuk-input__wrapper m-t-15">
+      <select class="govuk-select full-width" id="treatent-type" name="treatmentType">
+
+        <option disabled="" value=""></option>
+        {% for item in listOfItems%}
+        <option value="{{item}}" {% if (data.change=="yes" or data.copy=="yes") and item==identification.treatmentType[loop.index] %}selected{% endif %}>{{item}}</option>
+        {% endfor %}
+
+      </select>
+      <div class="govuk-input__suffix suffix__action no-border" aria-hidden="true">
+        <button data-target="repeatable-treatmentType{{loop.index}}" class="govuk-button delete-button govuk-button--secondary"><span class="fas fa-trash-alt"></span></button>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+
+    {% endif %}
+  </div>
+</div>
+{% else %}
+<div class="govuk-form-group">
+  <label class="govuk-label" for="natureOfCommodity">Treatment type</label>
+  <select class="govuk-select full-width" id="treatent-type" name="treatmentType">
+    <option disabled="" value="" {% if not (data.change or data.copy) %}selected{%endif%}>Select a treatment type</option>
+    {% if (listOfSpecies| length) <= 20 %}
+    <option disabled="" value="" ></option>
+    {% endif %}
+    {% if (listOfItems| length) > 0%}
+    {% for item in listOfItems%}
+    <option value="{{item}}" >{{item}}</option>
+    {% endfor %}]
+    {% else %}
+    <option value="not set">Not set any species in JSON</option>
+    {% endif %}
+  </select>
+</div>
+{% endif %}
+
+{% if (listOfSpecies| length) > 20 and not "treatmentType" in  cert.multiples %}
+<script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    element2 = document.querySelector('#treatent-type')
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: element2
+    })
+  })
+</script>
+{% endif %}

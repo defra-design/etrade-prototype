@@ -1,0 +1,316 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Processing additional uploaded commmodity data – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+
+{% set ehcString = query.ehcString %}
+{% set ehcNumber = ehcString.slice(3) %}
+
+{% set currentRowIndex = 0 %}
+
+{% set totalRows = query.totalRows %}
+{% set incompleteRowCount = query.incompleteRowCount %}
+{% set incompleteRecord = query.incompleteRecord %}
+{% set errorMessage = query.errorMessage %}
+{% set fluffRows = query.fluffRows %}
+{% set numberOfErrors = query.numberOfErrors %}
+
+<!-- prepare error summary data -->
+{% set errorSummary = [] %}
+{% if numberOfErrors == 1 %}
+  <!-- single error -->
+  {% set errorSummary = (errorSummary.push({ "row" : incompleteRecord, "message" : errorMessage }), errorSummary) %}
+{% elseif numberOfErrors > 1 %}
+  <!-- multiple errors -->
+  {% for error in incompleteRecord %}
+    {% set errorSummary = (errorSummary.push({ "row" : error, "message" : errorMessage[loop.index - 1] }), errorSummary) %}
+  {% endfor %}
+{% else %}
+  <!-- no errors -->
+{% endif %}
+
+{% set ehcErrorTemplateDownloadPath = "/public/ehc-templates/" + ehcNumber | lower + "-template-v3-with-errors.xlsx" %}
+
+<!-- this isn't where this should be -->
+<style type="text/css">
+  #etrade-schedule-upload-progress-container {
+    background: #b1b4b6;
+    height: 20px;
+  }
+
+  #etrade-progress-schedule-upload-indicator {
+    background: #1d70b8 !important;
+    height: 20px;
+    width: 1px;
+  }
+
+  .etrade-status-table { display: none; }
+  .etrade-error-details { display: none; }
+  #etrade-progress-error-details-enclosure { display: none; }
+
+  .in-progress { display: block; }
+  .complete { display: none; }
+
+  #status-incomplete {
+    color: orange;
+  }
+
+  .etrade-failure-banner {
+    border: 5px solid #d4351c;
+    background-color: #d4351c;
+  }
+
+  .etrade-warning-banner {
+    border: 5px solid #f47738;
+    background-color: #f47738;
+  }
+
+  .etrade-warning-banner h2 {
+    color: #000000;
+  }
+
+
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!--<span class="govuk-caption-xl">
+      Description of the goods
+    </span>-->
+
+    {% if incompleteRowCount == 0 %}
+    <div class="complete">
+      <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">Your commodity data was successfully imported</p>
+          <p class="govuk-body">
+            {% if totalRows == 1 %}
+              1 row of data was successfully imported.
+            {% else %}
+              {{ totalRows }} rows of data were successfully imported.
+            {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="complete">
+      <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Partial success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">Some commodity data is incomplete</p>
+          <p class="govuk-body">
+              {{ totalRows }} rows of data were uploaded and {{ incompleteRowCount }} rows have missing or incomplete required data.
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="in-progress">
+      <h1 class="govuk-heading-xl">Processing uploaded commodity data for {{ ehcString }}</h1>
+      <p>File uploaded on 23 August 2022 at 14:02. We are making sure that the data follows TRACES requirements &ndash; this may take a few minutes.</p>
+    </div>
+
+    <div class="complete">
+      <h1 class="govuk-heading-xl">Processing complete for {{ ehcString }}</h1>
+      <p>File uploaded on 14 August 2022 at 14:02.</p>
+    </div>
+
+    <!-- Progress indicator -->
+    <div class="in-progress">
+      <div id="etrade-schedule-upload-progress" class="govuk-!-padding-bottom-2">
+        <div id="etrade-schedule-upload-progress-container">
+          <div id="etrade-progress-schedule-upload-indicator" class="etrade-progress-1" ></div>
+        </div>
+      </div>
+
+      <p class="govuk-body" id="etrade-schedule-upload-progress-count"><span id="etrade-schedule-upload-row-number">0</span> of <span id="etrade-schedule-upload-row-count">{{ totalRows }}</span> rows processed</p>
+    </div>
+
+    <!-- Progress table -->
+    <div id="upload-status-table">
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-two-thirds"">Status</th>
+            <th scope="col" class="govuk-table__header">Number of rows</th>
+          </tr>
+        </thead>
+
+        <tbody class="govuk-table__body" id="status-table-x">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">Successfully added</td>
+            <td class="govuk-table__cell" id="status-success">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">Needs additional information</td>
+            <td class="govuk-table__cell" id="status-incomplete">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">Pending</td>
+            <td class="govuk-table__cell" id="status-pending">{{ totalRows }}</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+</div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="complete">
+
+      <form method="post" action="/stories/file-import/certificate-summary?iteration=2">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading govuk-!-margin-top-5">
+              What would you like to do next?
+            </h2>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="what-next" name="what-next" type="radio" value="review~/beta/v2-4/application/export/added-commodities-list">
+              <label class="govuk-label govuk-radios__label" for="what-next">
+                View saved commodities
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="what-next-2" name="what-next" type="radio" value="upload~/beta/v2-4/application/export/upload/">
+              <label class="govuk-label govuk-radios__label" for="what-next-2">
+                Upload another spreadsheet
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+    // scrape querystring
+    let queryParams = new URLSearchParams(window.location.search);
+
+    let totalRows = parseInt(queryParams.get("totalRows"));
+    var maxRowIndex = totalRows;
+
+    let incompleteRowCount = parseInt(queryParams.get("incompleteRowCount"));
+
+    // make an assumption that if incompleteRowCount > 1 then incompleteRecord will be an array; otherwise they are strings
+    let incompleteRecord = queryParams.getAll("incompleteRecord");
+
+    // store the error data in a useful place
+    let incompleteArray = Array.apply(null, Array(totalRows));
+
+    for (let x = 0; x < incompleteRecord.length; x++) {
+      let rowNumber = parseInt(incompleteRecord[x]);
+      incompleteArray[rowNumber] = true;
+    }
+    console.log(incompleteArray);
+
+    var currentRowIndex = 0;
+    var currentSuccessCount = 0;
+    var currentIncompleteCount = 0;
+    var currentPendingCount = totalRows;
+
+    // var govukIntervalTimer = 2500;
+    var govukIntervalTimer = 250  ;
+
+    updateInterval = setInterval(updateProcessingUI, govukIntervalTimer);
+
+    function updateProcessingUI() {
+
+      if (currentRowIndex < maxRowIndex) {
+
+        if (incompleteArray[currentRowIndex]) {
+          currentIncompleteCount++;
+        } else {
+          currentSuccessCount++;
+        }
+        currentPendingCount--;
+
+        // update progress bar width
+        document.getElementById("etrade-progress-schedule-upload-indicator").style.width = (((currentRowIndex+1) / maxRowIndex) * 100) + "%";
+
+        // update processing progress text
+        document.getElementById("etrade-schedule-upload-row-number").innerHTML = currentRowIndex + 1;
+
+        document.getElementById("status-success").innerHTML = currentSuccessCount; // currentRowIndex + 1;
+        document.getElementById("status-incomplete").innerHTML = currentIncompleteCount;
+        document.getElementById("status-pending").innerHTML = currentPendingCount; // maxRowIndex - currentRowIndex - 1;
+
+
+        $("#etrade-progress-error-details-" + currentRowIndex).hide();
+        $("#etrade-progress-error-details-" + (currentRowIndex + 1)).show();
+
+        // only show the error details if there are errors
+        if ($("#etrade-progress-error-details-" + (currentRowIndex + 1)).length) {
+          $("#etrade-progress-error-details-enclosure").show();
+        }
+
+        currentRowIndex++;
+      } else {
+        clearInterval(updateInterval);
+
+        // we're all done
+        showCompletedState();
+      }
+    }
+
+    function showCompletedState() {
+      $(".in-progress").hide();
+      $(".complete").show();
+
+      if (incompleteRowCount) {
+        $("#upload-status-table").show();
+        $("#complete-error-summary").hide();
+        $("#partial-error-summary").hide();
+      }
+    }
+
+  })
+</script>
+
+{% endblock%}

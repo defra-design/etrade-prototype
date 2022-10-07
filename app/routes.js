@@ -16,6 +16,9 @@ require('./views/beta/v2-2/application/export/upload/routes.js')(router);
 // version 2.3
 require('./views/beta/v2-3/routes.js')(router);
 require('./views/beta/v2-3/application/export/upload/routes.js')(router);
+// version 2.4
+require('./views/beta/v2-4/routes.js')(router);
+require('./views/beta/v2-4/application/export/upload/routes.js')(router);
 // experimental and other stories
 require('./views/experimental/routes.js')(router);
 require('./views/stories/accessiblity/routes.js')(router);

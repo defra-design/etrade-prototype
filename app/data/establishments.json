@@ -478,5 +478,16 @@
    "Postcode": "ML4 3LX",
    "Country": "Scotland",
    "All_Activities": ["Cold stores - Food GEN"]
+ },
+ {
+   "AppNo": "HA 015",
+   "TradingName": "DFDS Logistics Limited",
+   "Address1": "Middleton Avenue Strutherhill Industrial Estate",
+   "Address2": "Larkhall",
+   "Address3": "South Lanarkshire",
+   "Town": "Larkhall",
+   "Postcode": "ML9 2TL",
+   "Country": "Scotland",
+   "All_Activities": ["Cold stores - Food GEN"]
  }
 ]

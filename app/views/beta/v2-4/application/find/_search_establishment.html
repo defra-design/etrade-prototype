@@ -1,0 +1,45 @@
+{% set id = (searchLabel | removeWhiteSpace) or "Manufacturingplant"%}
+{% set id = searchComponentID or "manufacturingPlant" %}
+<!-- Commodity data needs to be stored differently to other page version of this search -->
+{% if isCommodity %}
+<!-- Create a unique Idendifier so each new commodity added the establishment is not set -->
+<!-- isCommodity, commodityID and cert are set in the parent commodity page, if this is nested there.-->
+{% set id = id+"-"+cert.number+"-"+commodityID+"-"+commodityListID %}
+{% endif %}
+-- {{ id }} -- <br>
+<label class="govuk-label" for="{{id}}">{{searchLabel}} {% if isRequired == "no"%}(optional){% endif %}</label>
+{% if data["has_"+id] != "yes" or data.newCommodity == "yes" %}
+  <!-- establishment has not been set -->
+  <div class="govuk-form-group app-find-establishment-card">
+    {% set url = "start" %}
+    {% if query.has_saved_orgs == "no" %}
+      {% set url = "results" %}
+    {% endif %}
+    <p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchLabel={{searchLabel}}&searchReturnURL={{returnURL or '../export/commodity'}}&searchID={{id}}&canSearchApprovalNumber=yes">Select a {{searchLabel | lower }}</a></p>
+  </div>
+
+{% else %}
+  <!-- establishment + activity has been set -- we can tell because there is a value stored in session data -->
+  <!-- for example selectedColdstore-EHC8350-6-6 with a value of 40 representing data.establishments[40], or Jackson ImmunoResearch ... -->
+  {% set org = data.establishments[data["selected"+id] or 0] %}
+  {% if ((data['activityFor' + id]) == "skip") %}
+    {% set skipped = true %}
+  {% else %}
+    {% set skipped = false %}
+  {% endif %}
+  <div class="govuk-form-group app-find-establishment-card">
+    <input type="hidden" id="{{id}}" name="{{id}}" value="{{data['selected'+id]}}">
+    <input type="hidden" id="{{(searchLabel | removeWhiteSpace)}}-basic" name="{{ searchComponentID }}" value="{{org.TradingName}}">
+    <input type="hidden" id="{{id}}-activity" name="{{id}}-activity" value="{% if skipped %}skip{% else %}{{org.All_Activities[(data['activityFor'+id] or 0)]}}{% endif %}">
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}} ({{org.AppNo}})</h3>
+    <p class="govuk-!-margin-bottom-2">{{org.Address1}},{% if org.Address2 !="" %} {{org.Address2}},{%endif%} {{org.Town}}, {{org.Postcode}}, {{org.Country}}<br>
+      {% if skipped %}
+        Activity: <strong>Not yet selected</strong>
+        <a href="../find/activity-select?updated=yes&has_{{ id }}=yes&id={{data['selected'+id] or 0}}&selected{{ id }}={{data['selected'+id] or 0}}&change=yes" class="govuk-link">Select an activity</a>
+      {% else %}
+        Activity: {{org.All_Activities[(data["activityFor"+id] or 0)]}}
+      {% endif %}
+    </p>
+    <p class="govuk-!-margin-bottom-0"><a href="../find/results?id={{data['selected'+id] or 0}}&change=yes&searchLabel={{searchLabel}}&searchID={{id}}&canSearchApprovalNumber=yes&searchReturnURL={{returnURL or '../export/commodity'}}">Select a different {{searchLabel | lower }}</a></p>
+  </div>
+{% endif %}
