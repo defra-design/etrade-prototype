@@ -1,0 +1,226 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+  @media (min-width: 48.0625em) {
+    .current-selection-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    .current-selection__title {
+      max-width: 80%;
+    }
+  }
+
+  .current-selection__actions button {
+    color: #fff;
+    background-color: #025ea5;
+    border-width: 0;
+  }
+
+  .current-selection__actions a:link,
+  .current-selection__actions a:visited {
+    color: #fff;
+  }
+  .current-selection__actions a:focus{
+    color: #000;
+  }
+
+  .govuk-input__suffix.suffix__action.no-border {
+    border-width: 0 !important;
+    background: transparent;
+  }
+
+  .suffix__action {
+    margin: 0;
+    padding: 0;
+  }
+
+  .suffix__action .govuk-button.multi-data,.delete-button {
+    margin-left: 5px;
+  }
+
+  .max-w-155 {
+    max-width: 155px;
+  }
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="SLAUGHTERHOUSE-5-11761-16029091">Slaughterhouse</label>
+      <div class="operator-search">
+        <div class="operator-search-dropdown">
+          <div>
+            <div class="">
+              <section>
+                <!---->
+                <div class="current-selection">
+                  <div class="current-selection--heading current-selection-card__header">
+                    <h3 class="govuk-heading-s heading current-selection__title"> Selected Slaughterhouse </h3>
+                    <div class="current-selection__actions">
+                      <a href="#" class="">Remove <span class="govuk-visually-hidden">slaughter house: Office at Willie's cacao</span></a>
+                      <!-- <button class="app-link-button"><span class="fas fa-trash-alt"></span></button> -->
+                    </div>
+                  </div>
+
+                  <div class="current-selection--body">
+                    <h4 class="govuk-heading-s">Office at Willie's cacao</h4>
+                    <div class="govuk-body">Langlands business park<br>
+                      <!---->
+                      <!----><span>Uffculme<br></span><span>Devon<br></span><span>South West England<br></span><span>England<br></span> EX15 <span><br>United Kingdom (GB) </span>
+                    </div><label class="govuk-label govuk-label" for="natureOfCommodity">Activity type</label>
+                    <div class="govuk-hint" id="activity-hint">The activity type will be sent to the border control agent and TRACES.</div>
+                    <div class="govuk-body">
+                      <h4 class="govuk-heading-s">Category 1 - Blood and blood products, excluding of equidae, for technical purposes other than feed for animals - Animal By-Products</h4>
+                    </div>
+                  </div>
+                  <div class="current-selection--action"><button class="govuk-button govuk-button--secondary full-width">Change selection</button></div>
+                </div>
+              </section>
+            </div><button class="govuk-button govuk-button--secondary pt-2"><span class="fas fa-plus"></span> Add another Slaughterhouse</button>
+          </div>
+        </div>
+      </div>
+      <!---->
+      <!---->
+      <!---->
+    </div>
+    <style media="screen">
+      .app-inline-group,{
+        display: table-row;
+      }
+
+      .app-inline-group--input{
+        width:45%;
+      }
+      .app-inline-group--quantifier{
+        width:45%;
+      }
+      .app-inline-group--action{
+        width:10%;
+      }
+      .app-inline-group--action,.app-inline-group--quantifier,.app-inline-group--input{
+        display: table-cell;
+      padding-right: 10px;
+      }
+      .app-inline-group--action .govuk-button{
+        margin:0;
+        vertical-align: baseline;
+      }
+      .w-45{
+        width:100%;
+      }
+    </style>
+    <div class="govuk-form-group ">
+
+      <label class="govuk-label" for="PACKAGE_COUNT-2-11761-16029091">Batch number
+        <!---->
+      </label>
+      <div class="app-inline-group">
+        <div class="app-inline-group--input" data-v-75319d39="">
+          <input class="govuk-input" type="number" data-type="quantity" name="PACKAGE_COUNT" id="PACKAGE_COUNT-2-11761-16029091">
+        </div>
+        <div class="app-inline-group--quantifier" >
+          <select class="govuk-select w-45" id="PACKAGE_COUNT-2-11761-16029091-units" data-v-75319d39="">
+              <option disabled="" value="" data-v-75319d39="">Select a unit</option>
+              <option value="BY" data-v-75319d39="">Board, in bundle/bunch/truss</option>
+              <option value="VL" data-v-75319d39="">Bulk, liquid</option>
+              <option value="BH" data-v-75319d39="">Bunch</option>
+              <option value="BE" data-v-75319d39="">Bundle</option>
+              <option value="CH" data-v-75319d39="">Chest</option>
+              <option value="OK" data-v-75319d39="">Block</option>
+              <option value="FB" data-v-75319d39="">Flexibag</option>
+              <option value="WA" data-v-75319d39="">Intermediate bulk container</option>
+              <option value="PA" data-v-75319d39="">Packet</option>
+              <option value="PT" data-v-75319d39="">Pot</option>
+              <option value="PO" data-v-75319d39="">Pouch</option>
+              <option value="SH" data-v-75319d39="">Sachet</option>
+              <option value="SA" data-v-75319d39="">Sack</option>
+              <option value="ST" data-v-75319d39="">Sheet</option>
+              <option value="SI" data-v-75319d39="">Skid</option>
+              <option value="TY" data-v-75319d39="">Tank, cylindrical</option>
+              <option value="NE" data-v-75319d39="">Unpacked or unpackaged</option>
+              <option value="8C" data-v-75319d39="">Bundle, wooden</option>
+              <option value="BA" data-v-75319d39="">Barrel</option>
+              <option value="BI" data-v-75319d39="">Bin</option>
+              <option value="BG" data-v-75319d39="">Bag</option>
+              <option value="BL" data-v-75319d39="">Bale, compressed</option>
+              <option value="GR" data-v-75319d39="">Receptacle, glass</option>
+              <option value="BX" data-v-75319d39="">Box</option>
+              <option value="VR" data-v-75319d39="">Bulk, solid, granular particles ("grains")</option>
+              <option value="CA" data-v-75319d39="">Can, rectangular</option>
+              <option value="CI" data-v-75319d39="">Canister</option>
+              <option value="CT" data-v-75319d39="">Carton</option>
+              <option value="CS" data-v-75319d39="">Case</option>
+              <option value="CK" data-v-75319d39="">Cask</option>
+              <option value="CF" data-v-75319d39="">Coffer</option>
+              <option value="CN" data-v-75319d39="">Container, not otherwise specified as transport equipment</option>
+              <option value="CR" data-v-75319d39="">Crate</option>
+              <option value="DR" data-v-75319d39="">Drum</option>
+              <option value="JR" data-v-75319d39="">Jar</option>
+              <option value="LZ" data-v-75319d39="">Logs, in bundle/bunch/truss</option>
+              <option value="LU" data-v-75319d39="">Lug</option>
+              <option value="QQ" data-v-75319d39="">Box, wooden, natural wood, with sift proof walls</option>
+              <option value="QP" data-v-75319d39="">Box, wooden, natural wood, ordinary</option>
+              <option value="PK" data-v-75319d39="">Package</option>
+              <option value="PL" data-v-75319d39="">Pail</option>
+              <option value="PX" data-v-75319d39="">Pallet</option>
+              <option value="LE" data-v-75319d39="">Luggage</option>
+              <option value="XD" data-v-75319d39="">Bag, plastics film</option>
+              <option value="QR" data-v-75319d39="">Box, plastic, expanded</option>
+              <option value="PJ" data-v-75319d39="">Punnet</option>
+              <option value="RT" data-v-75319d39="">Rednet</option>
+              <option value="TK" data-v-75319d39="">Tank, rectangular</option>
+              <option value="TT" data-v-75319d39="">Bag, tote</option>
+              <option value="PU" data-v-75319d39="">Tray pack</option>
+              <option value="TU" data-v-75319d39="">Tube</option>
+              <option value="VI" data-v-75319d39="">Vial</option>
+              <option value="8B" data-v-75319d39="">Crate, wooden</option>
+              <option value="IA" data-v-75319d39="">Package, display, wooden</option>
+              <option value="QH" data-v-75319d39="">Barrel, wooden, bung type</option>
+              <option value="QJ" data-v-75319d39="">Barrel, wooden, removable head</option>
+              <option value="EE" data-v-75319d39="">Case, with pallet base, wooden</option>
+            </select>
+        </div>
+        <div class="app-inline-group--action" data-v-75319d39="">
+          <button class="govuk-button govuk-button--secondary multi-data" data-v-75319d39=""><span class="fas fa-plus" data-v-75319d39=""></span></button>
+          <!---->
+        </div>
+      </div>
+
+
+
+
+      </div>
+      <div class="govuk-form-group ">
+
+        <label class="govuk-label" for="PACKAGE_COUNT-2-11761-16029091">Package count
+          <!---->
+        </label>
+        <div class="app-inline-group">
+          <div class="app-inline-group--input" data-v-75319d39="">
+            <input class="govuk-input" type="number" data-type="quantity" name="PACKAGE_COUNT" id="PACKAGE_COUNT-2-11761-16029091">
+          </div>
+          <div class="app-inline-group--action" data-v-75319d39="">
+            <button class="govuk-button govuk-button--secondary multi-data" data-v-75319d39=""><span class="fas fa-plus" data-v-75319d39=""></span></button>
+            <!---->
+          </div>
+        </div>
+
+
+
+
+        </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
