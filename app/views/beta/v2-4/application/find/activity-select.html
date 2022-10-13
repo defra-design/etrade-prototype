@@ -9,8 +9,20 @@ Consignor or-exporter – {{serviceName}} - GOV.UK
 {% endblock%}
 {% block content %}
 {% set id = query.id or "1" %}
-{% set operator = data.establishments[id]%}
-{% set activityToSearch = data.searchActivity or "not set"%}
+<!--{% set operator = data.establishments[id]%}-->
+<!--{% set activityToSearch = data.searchActivity or "not set"%}-->
+
+
+{% set addedEHC_certID = query.certId %}
+{% set addedEHC_addedCommoditiesId = query.addedCommoditiesId %}
+{% set addedEHC_identificationsId = query.identificationsId %}
+{% set addedEHC_establishmentType = query.establishmentType %}
+{% set addedEHC_establishmentIndex = query.establishmentIndex %}
+
+{% set cert = data.addedEHC[addedEHC_certID]%}
+{% set identification = cert.addedCommodities[addedEHC_addedCommoditiesId].identifications[addedEHC_identificationsId]%}
+{% set activityName = identification[addedEHC_establishmentType+'Activity'] %}
+{% set operator = data.establishments[addedEHC_establishmentIndex] %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -30,7 +42,8 @@ Consignor or-exporter – {{serviceName}} - GOV.UK
             {% for activity in operator.All_Activities %}
             <div class="govuk-radios__item">
 
-              <input class="govuk-radios__input" id="savedOrg{{loop.index}}" name="activityFor{{data.searchID}}" type="radio" {% if query.change and id == 0 %}checked{% endif %} value="{{loop.index-1}}~{{data.searchReturnURL or '../export/commodity'}}?has_{{data.searchID}}=yes{% if data.change == 'yes'%}&change=yes&id={{data.changeID}}&changeID={{data.changeID}}{%endif%}">
+              <!--<input class="govuk-radios__input" id="savedOrg{{loop.index}}" name="activityFor{{data.searchID}}" type="radio" {% if query.change and id == 0 %}checked{% endif %} value="{{loop.index-1}}~{{data.searchReturnURL or '../export/commodity'}}?has_{{data.searchID}}=yes{% if data.change == 'yes'%}&change=yes&id={{data.changeID}}&changeID={{data.changeID}}{%endif%}">-->
+              <input class="govuk-radios__input" id="savedOrg{{loop.index}}" name="activityName" type="radio" {% if activityName == activity  %}checked{% endif %} value="{{activity}}">
               <label class="govuk-label govuk-radios__label" for="savedOrg{{loop.index}}">
                 {{activity}}
                 <!-- - {% if activity=="Importer" or activity=="Exporter" or activity=="Terrestrial animal establishment" %}veterinary{%else%}food{% endif %}
@@ -40,7 +53,8 @@ Consignor or-exporter – {{serviceName}} - GOV.UK
             {% endfor%}
             <div class="govuk-radios__divider">or</div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="idk-skip" name="activityFor{{data.searchID}}" type="radio" value="skip~{{data.searchReturnURL or '../export/commodity'}}?has_{{data.searchID}}=yes{% if data.change == 'yes'%}&change=yes&id={{data.changeID}}&changeID={{data.changeID}}{%endif%}">
+              <!--<input class="govuk-radios__input" id="idk-skip" name="activityFor{{data.searchID}}" type="radio" value="skip~{{data.searchReturnURL or '../export/commodity'}}?has_{{data.searchID}}=yes{% if data.change == 'yes'%}&change=yes&id={{data.changeID}}&changeID={{data.changeID}}{%endif%}">-->
+              <input class="govuk-radios__input" id="idk-skip" name="activityName" type="radio" value="-1" {% if activityName == -1 %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="idk-skip">
                 I don't know / skip this for now
               </label>
@@ -51,6 +65,13 @@ Consignor or-exporter – {{serviceName}} - GOV.UK
       <button class="govuk-button" data-module="govuk-button">
         Continue
       </button>
+
+      <input type="hidden" name="addedEHC_certID" value="{{ addedEHC_certID }}">
+      <input type="hidden" name="addedEHC_addedCommoditiesId" value="{{ addedEHC_addedCommoditiesId }}">
+      <input type="hidden" name="addedEHC_identificationsId" value="{{ addedEHC_identificationsId }}">
+      <input type="hidden" name="addedEHC_establishmentType" value="{{ addedEHC_establishmentType }}">
+      <input type="hidden" name="addedEHC_establishmentIndex" value="{{ addedEHC_establishmentIndex }}">
+
     </form>
 
   </div>

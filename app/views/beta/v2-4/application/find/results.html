@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 
+{% set addedEHC_certID = query.certId %}
+{% set addedEHC_addedCommoditiesId = query.addedCommoditiesId %}
+{% set addedEHC_identificationsId = query.identificationsId %}
+{% set addedEHC_establishmentType = query.establishmentType %}
+
+{% set cert = data.addedEHC[addedEHC_certID]%}
+{% set identification = cert.addedCommodities[addedEHC_addedCommoditiesId].identifications[addedEHC_identificationsId]%}
+
+
 {% block pageTitle %}
 Find a manufacturing plant – {{serviceName}} - GOV.UK
 {% endblock %}
@@ -194,7 +203,7 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
       line-height: 1.3157894737;
     }
   }
-
+/*
   .app-establishment-list__row {
     border-bottom: 1px solid #b1b4b6;
     padding: 10px 0;
@@ -206,6 +215,7 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
     display: block;
     clear: both;
   }
+*/
 
   .app-establishment-list__key {
     font-weight: 700;
@@ -261,7 +271,7 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
 </style>
 {% set id = query.id or "1" %}
 {% set consignor = data.establishments[id]%}
-<form id="search" action="./results" method="get">
+<form id="search" method="post">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
       {% if query.hasError == 'yes'%}
@@ -330,34 +340,30 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
         </div>
         {% endif %}
 
-        <dl class="app-establishment-list">
+
+        <div class="govuk-radios" data-module="govuk-radios">
           {% set type = "consignor"%}
           {% for operator in data.establishments %}
-
-          <div class="app-establishment-list__row" data-content="{{operator.TradingName}}" data-postcode="{{operator.Postcode}}" data-number="{{operator.AppNo}}">
-            <dt class="app-establishment-list__key">
+          <div class="govuk-radios__item app-establishment-list__row" data-content="{{operator.TradingName}}" data-postcode="{{operator.Postcode}}" data-number="{{operator.AppNo}}">
+            <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="establishmentIndex" type="radio" value="{{ loop.index0 }}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
+            <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index0}}">
               {{operator.TradingName}} {% if operator.AppNo %}({{operator.AppNo}}){% endif %}
-            </dt>
-            <dd class="app-establishment-list__value">
-              <span class="govuk-visually-hidden">Address</span>
+              <br>
               {{operator.Address1}},
               {% if operator.Address2%}{{operator.Address2}},{% endif %}
               {% if operator.Address3%}{{operator.Address3}},{% endif %}
               {{operator.Town}},
               {{operator.Postcode}}
-            </dd>
-            <dd class="app-establishment-list__value app-establishment-list__activities">
+            </label>
+            <div id="establishmentIndex{{loop.index0 }}-hint" class="govuk-hint govuk-radios__hint">
+              <span class="govuk-visually-hidden">Address</span>
               Activities:
               {% for activity in operator.All_Activities%}{% if loop.index != 1 %}, {% endif %}{{activity}}{% endfor %}
-            </dd>
-            <dd class="app-establishment-list__action">
-              <a class="govuk-button govuk-button--secondary" href="{%if (operator.All_Activities | length) > 1 %}activity-select{%else%}{{data.searchReturnURL or '../commodity'}}{%endif%}?updated=yes&has_{{data.searchID}}=yes&id={{loop.index-1}}&selected{{data.searchID}}={{loop.index-1}}{% if data.change == 'yes'%}&change=yes{%endif%}">
-                Select <span class="govuk-visually-hidden"> {{operator.TradingName}} ({{operator.AppNo}})</span>
-              </a>
-            </dd>
+            </div>
           </div>
           {% endfor %}
-        </dl>
+        </div>
+
         {% if query.show_pagination %}
         <nav class="moj-pagination" aria-label="Pagination navigation">
 
@@ -394,6 +400,16 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
           </ul>
 
         </div>
+
+        <input type="hidden" name="addedEHC_certId" value="{{ addedEHC_certID }}">
+        <input type="hidden" name="addedEHC_addedCommoditiesId" value="{{ addedEHC_addedCommoditiesId }}">
+        <input type="hidden" name="addedEHC_identificationsId" value="{{ addedEHC_identificationsId }}">
+        <input type="hidden" name="addedEHC_establishmentType" value="{{ addedEHC_establishmentType }}">
+
+        <button type="submit" class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
+          Save and continue
+        </button>
+
       </div>
     </div>
 </form>
@@ -427,6 +443,8 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
       $("#results").show()
       $(".operator-filter-group").hide()
       $(".app-establishment-list__row").hide()
+      // $(".govuk-radios__item").hide()
+
       if ($(".operator-search-results").hasClass("hidden")) {
         $(".operator-search-results").removeClass("hidden")
       }
@@ -434,6 +452,8 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
       let q = $('#search-field-CONSIGNOR').val().toLowerCase()
 
       $(".app-establishment-list__row").filter(function() {
+      // $(".govuk-radios__item").filter(function() {
+
         var t = $(this).attr("data-content").toLowerCase()
         var a = $(this).attr("data-number").toLowerCase()
         var p = $(this).attr("data-postcode").toLowerCase()
@@ -442,6 +462,7 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
         }
       }).show()
       var count = $(".app-establishment-list__row:visible").length
+      // var count = $(".govuk-radios__item:visible").length
       var r
       if (count == 1) {
         r = count + " result for " + "<strong>" + q + "</strong> in <strong>United Kingdom</strong>" + filterText

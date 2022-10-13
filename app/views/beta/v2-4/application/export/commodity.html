@@ -38,10 +38,15 @@ Home – GOV.UK Prototype Kit
 {% set commodityID = query.currentCommodityID or data.currentCommodityID or 0 %}
 {% set commodityListID = query.commodityListID or data.commodityListID or 0 %}
 
+
 <!-- IF Change Set the identification array location of the current commodity -->
 {% set changeID = query.changeID or data.changeID or 0 %}
 <!-- Set current cert  -->
 {% set cert = data.addedEHC[certID]%}
+
+{% set commodityCode = cert.addedCommodities[commodityListID].code %}
+{% set commodityDescription = cert.addedCommodities[commodityListID].title %}
+
 {% set identification = cert.addedCommodities[commodityListID].identifications[changeID]%}
 <!-- Set return URL for search establishment component -->
 {% set returnURL = "../export/commodity"%}
@@ -72,12 +77,12 @@ Home – GOV.UK Prototype Kit
   <div class="govuk-grid-column-full">
 
     <span class="govuk-caption-xl">{{ cert.number or "test" }}</span>
-    <h1 class="govuk-heading-xl">{% if data.change %}Change{% else %}Add{% endif %} commodity data</h1>
+    <h1 class="govuk-heading-xl">{% if query.change %}Change{% else %}Add{% endif %} commodity data</h1>
     <form method="post">
       <input type="hidden" name="ehc" value="{{cert.number}}">
       <input type="hidden" name="commodity_id" value="{{commodityID}}">
-      <input type="hidden" name="commodity_code" value="{{cert.commodities[commodityID].code}}">
-      <input type="hidden" name="commodity_description" value="{{cert.commodities[commodityID].title}}">
+      <input type="hidden" name="commodity_code" value="{{commodityCode}}">
+      <input type="hidden" name="commodity_description" value="{{commodityDescription}}">
 
 
       <div class="commodity-pane--body open" style="" id="commodity-details-panel">
@@ -86,7 +91,7 @@ Home – GOV.UK Prototype Kit
             <div class="identification-questions">
               <section id="intro">
                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Commodity</h2>
-                <p><span class="govuk-tag">{{cert.commodities[commodityID].code}}</span> {{cert.commodities[commodityID].title}}
+                <p><span class="govuk-tag">{{commodityCode}}</span> {{commodityDescription}}
                 <p>
               </section>
               <section id="questions">
@@ -112,7 +117,7 @@ Home – GOV.UK Prototype Kit
                 <input type="hidden" name="changeID" value="">
                 <input type="hidden" name="commodityListID" value="{{commodityID}}">
                 <section id="actions">
-                  <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if data.change == "yes" %}Update{% else %}Add{% endif %} commodity</button>
+                  <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if query.change == "yes" %}Update{% else %}Add{% endif %} commodity</button>
                 </section>
             </div>
             <!---->

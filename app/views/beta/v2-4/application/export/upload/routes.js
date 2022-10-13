@@ -109,7 +109,7 @@ module.exports = function(router) {
 
               let cert = req.session.data.certificates[certID];
               let cert_number = cert.number;
-              console.log("cert.number is " + cert.number);
+              // console.log("cert.number is " + cert.number);
               let cert_title = cert.title;
               let cert_schema = cert.schema;
 
@@ -393,58 +393,66 @@ module.exports = function(router) {
                   for (let c = 0; c < cert_schema.length; c++ ) {
                       temp[cert_schema[c].id] = uploaded_data[uploadedDataRow][c];
 
-                      // check to see if a required field was left blank, OR
-                      // check if we have any searchable fields (e.g. establishments) that have been populated
-                      // since we can't have establishment activities in the spreadsheet, they should also be flagged as incomplete
-                      if (((cert_schema[c].required == "yes") && (uploaded_data[uploadedDataRow][c] == null)) || ((cert_schema[c].type == "search") && (cert_schema[c].required == "yes") && (uploaded_data[uploadedDataRow][c] != null))) {
-
-                        if (uploaded_data[uploadedDataRow][c] == null) {
-                            console.log("We've got an empty cell in a required field in row " + uploadedDataRow);
-                        } else {
-                          console.log("We have an establishment without an activity in row " + uploadedDataRow);
-                        }
-                        var incomplete = {};
+                      // check to see if a required field was left blank,
+                      if ((cert_schema[c].required == "yes") && (uploaded_data[uploadedDataRow][c] == null)) {
+                        console.log("We've got an empty cell in a required field in row " + (uploadedDataRow + rows_of_fluff));
+                        let incomplete = {};
                         incomplete['row'] = uploadedDataRow;
                         incomplete['id'] = cert_schema[c].id;
                         data_incomplete.push(incomplete);
                         isIncomplete = true;
                       }
 
-                      // check if this is a searchable field that has been populated - if it is, add the required parameters
-                      // e.g. Coldstore-EHC8361-14-14 = 35, Coldstore = "Swannington Farm to Fork", Coldstore-EHC8361-14-14-activity = skip
-                      // 14 = commodity code index within cert, 35 = establishment index within establishments.json
+                      // check if we have any searchable fields (e.g. establishments) that have been populated
                       if ((cert_schema[c].type == "search") && (uploaded_data[uploadedDataRow][c] != null)) {
-                        // looks like an establishment that needs an activity
-                        let establishment = getEstablishmentFromApprovalNumber(uploaded_data[uploadedDataRow][c]);
+                        // console.log("We have a searchable field with a non null value");
 
-                        // this is fragile and is dependent on commodity code being set before this line executes
-                        var tempCommodityIndex = getCommodityIndex(temp['commodity_code'], certID, cert);
+                        let establishmentType = cert_schema[c].id; // e.g. coldStore
 
-                        if (establishment.AppNo) {
-                          // console.log("In establishment");
-                          // console.log(establishment);
-                          // add establishment id
-                          temp[cert_schema[c].id + "-" + ehc_string + "-" + tempCommodityIndex + "-" + tempCommodityIndex] = getEstablishmentIndexFromApprovalNumber(establishment.AppNo); // TODO: find and add real establishment id
-                          // add establishment name
-                          temp[cert_schema[c].id] = establishment.TradingName; // TODO: add real establishment name
-                          // add activity name, or if there are multiple choices, just add 'skip'
-                          if (establishment.All_Activities.length == 1) {
-                            temp[cert_schema[c].id + "-" + ehc_string + "-" + tempCommodityIndex + "-" + tempCommodityIndex + "-activity"] = establishment.All_Activities[0];
-                          } else {
-                            temp[cert_schema[c].id + "-" + ehc_string + "-" + tempCommodityIndex + "-" + tempCommodityIndex + "-activity"] = "skip"; // TODO: find and add real establishment ID
-                          }
+                        // check to see if we have a matching establishment
+                        let establishmentApprovalNumber = uploaded_data[uploadedDataRow][c];
+                        let establishmentIndex = getEstablishmentIndexFromApprovalNumber(establishmentApprovalNumber);
+
+                        let establishmentDetails = getEstablishmentFromApprovalNumber(establishmentApprovalNumber);
+
+                        // TODO: validate the activity that is stored in the next column, so uploaded_data[uploadedDataRow][c+1]
+
+                        if (establishmentDetails.AppNo) {
+                          // since we have a match, store the establishment index
+                          // e.g. manufacturingPlant-activityId
+                          // console.log("Found a match for this approval number: " + establishmentDetails.AppNo + " - storing id value of " + establishmentIndex);
+                          temp[establishmentType+"-id"] = establishmentIndex;
                         } else {
-                          console.log("DOA");
+                          // we couldn't find the approval number - flag it as incomplete
+                          console.log("Could not find a matching approval number for " + uploaded_data[uploadedDataRow][c]);
+                          let incomplete = {};
+                          incomplete['row'] = uploadedDataRow;
+                          incomplete['id'] = cert_schema[c].id;
+                          data_incomplete.push(incomplete);
+                          isIncomplete = true;
                         }
 
                       }
 
+                    }
+
+                  // does this row have incomplete data?
+                  if (isIncomplete) {
+                    incompleteRowCount++;
+                    temp['incomplete'] = [];
+                    // which fields were incomplete for this row?
+                    for (let x = 0; x < data_incomplete.length; x++) {
+                      if (data_incomplete[x].row == uploadedDataRow) {
+                        temp['incomplete'].push(data_incomplete[x].id);
+                      }
+                    }
                   }
 
                   temp['ehc'] = "EHC" + ehc_number;
                   temp['commodity_id'] = getCommodityIndex(temp['commodity_code'], certID, cert);
                   temp['commodity_description'] = getCommodityDescription(temp['commodity_code'], certID, cert);
                   temp['isIncomplete'] = isIncomplete;
+
                   data_to_store.push(temp);
 
                 }
@@ -529,7 +537,7 @@ module.exports = function(router) {
                   incompleteString = incompleteString + "&incompleteRecord=" + data_incomplete[e].row;
                 }
 
-                res.redirect(301, '/' + base_url + 'upload/processing-with-incompletes?ehcString=' + cert_number + '&totalRows=' + rows_of_uploaded_data + "&incompleteRowCount=" + data_incomplete.length + "&fluffRows=" + rows_of_fluff + incompleteString);
+                res.redirect(301, '/' + base_url + 'upload/processing-with-incompletes?ehcString=' + cert_number + '&totalRows=' + rows_of_uploaded_data + "&incompleteRowCount=" + incompleteRowCount + "&totalIncompletes=" + data_incomplete.length + "&fluffRows=" + rows_of_fluff + incompleteString);
 
               } else {
                 console.log("We don't have a schema for this certificate");

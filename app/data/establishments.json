@@ -489,5 +489,49 @@
    "Postcode": "ML9 2TL",
    "Country": "Scotland",
    "All_Activities": ["Cold stores - Food GEN"]
+ },
+ {
+   "AppNo": "SA 102",
+   "TradingName": "Lerwick Fish Market",
+   "Address1": "Mair's Yard",
+   "Address2": "Lerwick",
+   "Address3": "Shetland Islands",
+   "Town": "Lerwick",
+   "Postcode": "ZE1 0PW",
+   "Country": "Scotland",
+   "All_Activities": ["Processing plant - Food FFP"]
+ },
+ {
+   "AppNo": "AA029",
+   "TradingName": "Colin Fraser Limited",
+   "Address1": "15 Raik Road",
+   "Address2": "Aberdeen",
+   "Address3": "Aberdeen",
+   "Town": "Aberdeen",
+   "Postcode": "AB11 5QL",
+   "Country": "Scotland",
+   "All_Activities": ["Processing plant - Food FFP"]
+ },
+ {
+   "AppNo": "AA087",
+   "TradingName": "A G D Duff and Partners Ltd",
+   "Address1": "2 Stell Road",
+   "Address2": "Aberdeen City",
+   "Address3": "Aberdeen",
+   "Town": "Aberdeen",
+   "Postcode": "AB11 5QR",
+   "Country": "Scotland",
+   "All_Activities": ["Processing plant - Food FFP"]
+ },
+ {
+   "AppNo": "AA107",
+   "TradingName": "Nolan Seafood (UK) Ltd",
+   "Address1": "Craigshaw Drive",
+   "Address2": "West Tullos Industrial Estate",
+   "Address3": "Aberdeen",
+   "Town": "Aberdeen",
+   "Postcode": "AB12 3AN",
+   "Country": "Scotland",
+   "All_Activities": ["Processing plant - Food FFP"]
  }
 ]
