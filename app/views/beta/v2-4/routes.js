@@ -60,21 +60,15 @@ module.exports = function(router) {
 
     // check to see if there are any commodities in addedCommodities
 
-    // get schema for this cert
     let cert = req.session.data.certificates[req.session.data.certificate];
-    let cert_schema = cert.schema;
-    let mock_data = {};
 
-    for (let c = 0; c < cert_schema.length; c++) {
-      console.log("Adding data: " + cert_schema[c].id);
-      mock_data[cert_schema[c].id] = null;
-    }
-    mock_data['ehc'] = cert.number;
-    mock_data['isIncomplete'] = true;
-    mock_data['incomplete'] = [];
+    // get schema for this cert
+    let cert_schema = getSchemaFromEhcNumber(req.session.data.certificates, cert.number);
+    let mock_data = createMockDataFromSchema(cert_schema, cert.number);
 
     function addCommodityAndIdentifications(certID, commodityID, identifications, ehcIndex) {
       console.log("In addCommodityAndIdentifications with params certID: " + certID + ", commodityID: " + commodityID + ", identifications: " + identifications + ", ehcIndex: " + ehcIndex);
+
       var commodityCode = req.session.data.certificates[certID].commodities[commodityID].code;
       var commodityTitle = req.session.data.certificates[certID].commodities[commodityID].title;
 
@@ -83,36 +77,48 @@ module.exports = function(router) {
       let arr = req.session.data.addedEHC[ehcIndex].addedCommodities;
       let obj = arr.find(o => o.code === commodityCode);
 
+      console.log(obj);
+
       if (obj) {
+        console.log("obj already exists");
+        console.log("identifications");
+        console.log(identifications);
+        obj.identifications.push(identifications);
         // if it already exists, don't create another one - just add the identifications to the existing one
-        // console.log("This commodity (" + commodityCode + ") already exists - adding " + identifications.length + " identifications to it");
+        /*
         for (x = 0; x < identifications.length; x++) {
           obj.identifications.push(identifications[x]);
-        }
+        }*/
       } else {
+        console.log("obj does not exist");
+
         // This commodity hasn't been added yet - adding now + identifications
-        // console.log("This commodity (" + commodityCode + ") does not yet exist - creating it and adding " + identifications.length + " identifications to it");
-        // commodity = {"code":commodityCode,"title":commodityTitle,"id":commodityID,"identifications":identifications};
         commodity = {"code":commodityCode,"title":commodityTitle,"id":commodityID,"identifications":[]};
+        // step 1 - add the commodity core data
         req.session.data.addedEHC[ehcIndex].addedCommodities.push(commodity);
-        req.session.data.addedEHC[ehcIndex].addedCommodities[0].identifications.push(identifications);
+        // step 2 - add the first identification
+        let lastIndex = req.session.data.addedEHC[ehcIndex].addedCommodities.length - 1;
+        req.session.data.addedEHC[ehcIndex].addedCommodities[lastIndex].identifications.push(identifications);
       }
     }
 
     addCommodityAndIdentifications(req.session.data.certificate, req.body.commodityCode, mock_data, addedEhcCertificateIndex);
 
-    let addedEHC_commodityIndex = getAddedEhcCommodityIndex(req.session.data.addedEHC, cert.number);
-    console.log("addedEHC_commodityIndex: " + addedEHC_commodityIndex);
-
-    // console.log("cert.commodities[" + req.body.commodityCode + "].code;")
     let commodityCode = cert.commodities[req.body.commodityCode].code;
-    console.log("109 - commodityCode: " + commodityCode);
+    let querystring = createCommoditiesQuerystring(req.session.data.addedEHC, cert.number, commodityCode);
 
-    let addedEHC_commodityListIndex = getAddedEhcCommodityListIndex(req.session.data.addedEHC, addedEHC_commodityIndex, commodityCode);
-    console.log("addedEHC_commodityListIndex: " + addedEHC_commodityListIndex);
+    res.redirect(301, '/' + base_url + 'application/export/commodity?' + querystring);
+  })
 
-    let addedEHC_lastIndex = getAddedEhcLastIndex(req.session.data.addedEHC, addedEHC_commodityIndex, addedEHC_commodityListIndex);
-    console.log("addedEHC_lastIndex: " + addedEHC_lastIndex);
+  function createCommoditiesQuerystring(addedEHC, ehcNumber, commodityCode) {
+    let addedEHC_commodityIndex = getAddedEhcCommodityIndex(addedEHC, ehcNumber);
+    // console.log("addedEHC_commodityIndex: " + addedEHC_commodityIndex);
+
+    let addedEHC_commodityListIndex = getAddedEhcCommodityListIndex(addedEHC, addedEHC_commodityIndex, commodityCode);
+    // console.log("addedEHC_commodityListIndex: " + addedEHC_commodityListIndex);
+
+    let addedEHC_lastIndex = getAddedEhcLastIndex(addedEHC, addedEHC_commodityIndex, addedEHC_commodityListIndex);
+    // console.log("addedEHC_lastIndex: " + addedEHC_lastIndex);
 
 
     let querystring = "&new=yes";
@@ -120,9 +126,10 @@ module.exports = function(router) {
     querystring += "&currentCommodityID=" + addedEHC_commodityIndex;
     querystring += "&commodityListID=" + addedEHC_commodityListIndex;
     querystring += "&changeID=" + addedEHC_lastIndex;
+    console.log("Returning querystring: " + querystring);
 
-    res.redirect(301, '/' + base_url + 'application/export/commodity?' + querystring);
-  })
+    return querystring;
+  }
 
   function getAddedEhcCommodityIndex(addedEHC, ehcNumber) {
     console.log("In getAddedEhcCommodityIndex with ehcNumber: " + ehcNumber);
@@ -162,28 +169,91 @@ module.exports = function(router) {
     return result
   }
 
-  router.get('/' + base_url + 'application/export/commodity', function(req, res) {
-    if (req.query.new == "yes" || req.query.copy == "yes") {
-      console.log("This is a new/copied commodity");
-
-      // do we have a changeID?
-      if (req.query.changeID) {
-        // leave it for now
-        // TODO: make sure that copy works
-      } else {
-        // create a new identification based on the schema for this entry and then redirect with the correct changeID
-
-        // load the schema for this EHC
-
-        // add a new entry into addedCommodities ... identifications
+  function getSchemaFromEhcNumber(certs, ehcNumber) {
+    console.log("In getSchemaFromEhcNumber with certs.length: " + certs.length + " and ehcNumber: " + ehcNumber);
+    let schema = [];
+    for (x = 0; x < certs.length; x++) {
+      if (certs[x].number == ehcNumber) {
+        schema = certs[x].schema;
       }
+    }
+    return schema;
+  }
 
+  function createMockDataFromSchema(schema, ehcNumber) {
+    console.log("In createMockDataFromSchema");
+    let mock = {};
+
+    for (let x = 0; x < schema.length; x++) {
+      mock[schema[x].id] = null;
+    }
+    mock['ehc'] = ehcNumber;
+    mock['isIncomplete'] = true;
+    mock['incomplete'] = [];
+
+    return mock;
+  }
+
+  router.get('/' + base_url + 'application/export/add-new-record', function(req, res) {
+    if (req.query.currentCommodityID  && req.query.commodityCode && req.query.ehcNumber) {
+
+      console.log("Creating a new record");
+      let currentCommodityID = req.query.currentCommodityID;
+      let commodityCode = req.query.commodityCode;
+      let ehcNumber = req.query.ehcNumber;
+
+      // create a new identification based on the supplied data
+      // load the schema for this EHC
+      let certs = req.session.data.certificates;
+      let schema = getSchemaFromEhcNumber(certs, ehcNumber);
+
+      // create mock data based on schema
+      let mock_data = createMockDataFromSchema(schema, ehcNumber);
+
+      // append this mock identification to the existing identifications array for this commodity
+      let ehcIndex = getAddedEhcCommodityIndex(req.session.data.addedEHC, ehcNumber);
+      let arr = req.session.data.addedEHC[ehcIndex].addedCommodities;
+      console.log("Incoming array of addedCommodities");
+      console.log(arr);
+      let obj = arr.find(o => o.code === commodityCode);
+      obj.identifications.push(mock_data);
+
+      // redirect to commodity for manual data entry
+      console.log("It worked. Redirect");
+      let querystring = createCommoditiesQuerystring(req.session.data.addedEHC, ehcNumber, commodityCode);
+      console.log("querystring");
+      console.log(" -----------------------------------------");
+      res.redirect(303, '/' + base_url + 'application/export/commodity?' + querystring);
 
     } else {
-      console.log("This is not new");
+      console.log("Missing key information");
+      res.render(base_url + 'application/export/added-commodities-list');
     }
 
-    res.render(base_url + 'application/export/commodity');
+  });
+
+  router.get('/' + base_url + 'application/export/copy-record', function(req, res) {
+    console.log("Copying a record");
+
+    let currentCommodityID = req.query.currentCommodityID;
+    let commodityListID = req.query.commodityListID;
+    let changeID = req.query.changeID;
+    let addedEHC = req.session.data.addedEHC;
+    let ehcNumber = req.query.ehcNumber;
+    let ehcIndex = getAddedEhcCommodityIndex(addedEHC, ehcNumber);
+
+    // create a new identification based on the content of the copied record
+    console.log("addedEHC[" + ehcIndex + "].addedCommodities[" + commodityListID + "].identifications[" + changeID + "];");
+    let identification = addedEHC[ehcIndex].addedCommodities[commodityListID].identifications[changeID];
+    let commodityCode = identification.commodity_code;
+
+    // append the new identification to the existing identifications array for this commodity
+    addedEHC[ehcIndex].addedCommodities[commodityListID].identifications.push(identification);
+
+    // redirect to commodity
+    let querystring = createCommoditiesQuerystring(addedEHC, ehcNumber, commodityCode);
+    res.redirect(303, '/' + base_url + 'application/export/commodity?' + querystring);
+
   });
 
   router.post('/' + base_url + 'application/export/commodity', function(req, res) {
@@ -256,13 +326,13 @@ module.exports = function(router) {
       let identification = req.session.data.addedEHC[certId].addedCommodities[addedCommoditiesId].identifications[identificationsId];
       let establishment = req.session.data.establishments[establishmentIndex];
 
-      // store the establishmentIndex
+      // store the establishment approval number and index
+      identification[establishmentType] = establishment.AppNo;
       identification[establishmentType+"-id"] = establishmentIndex;
 
       if (establishment.All_Activities.length == 1) {
         // select the index and redirect
-        identification[establishmentType+"-activityId"] = 0;
-        // http://localhost:3000/beta/v2-4/application/export/commodity?commodity=&change=yes&copy=&currentCommodityID=11&commodityListID=0&changeID=0
+        identification[establishmentType+"Activity"] = establishment.All_Activities[0];
         res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
       } else {
         // prompt the user to select an activity
@@ -278,7 +348,7 @@ module.exports = function(router) {
   })
 
   router.post('/' + base_url + 'application/find/activity-select', function(req, res) {
-console.log(req.body);
+    console.log("In router.post for .../activity-select with req.body: " + req.body);
     let certId = req.body.addedEHC_certID;
     let addedCommoditiesId = req.body.addedEHC_addedCommoditiesId;
     let identificationsId = req.body.addedEHC_identificationsId;
@@ -295,6 +365,7 @@ console.log(req.body);
       console.log("req.session.data.addedEHC[" + certId + "].addedCommodities[" + addedCommoditiesId + "].identifications[" + identificationsId + "];");
       let identification = req.session.data.addedEHC[certId].addedCommodities[addedCommoditiesId].identifications[identificationsId];
       identification[establishmentType+'Activity'] = activityName;
+      console.log(identification);
 
       // redirect
       // http://localhost:3000/beta/v2-4/application/export/commodity?commodity=&change=yes&copy=&currentCommodityID=111&commodityListID=2&changeID=0

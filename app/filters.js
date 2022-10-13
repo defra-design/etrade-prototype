@@ -215,6 +215,10 @@ module.exports = function(env) {
     })
     return newArray
   }
+
+  filters.randomNumberGenerator = function(number) {
+    return (Math.floor(Math.random() * number) + 1);
+  }
   // -------------------------------------------------------------------
   // keep the following line to return your filters to the app
   // -------------------------------------------------------------------
