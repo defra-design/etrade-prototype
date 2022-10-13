@@ -40,7 +40,7 @@ Home – GOV.UK Prototype Kit
 
 
 <!-- IF Change Set the identification array location of the current commodity -->
-{% set changeID = query.changeID or data.changeID or 0 %}
+{% set changeID = query.changeID %}
 <!-- Set current cert  -->
 {% set cert = data.addedEHC[certID]%}
 
@@ -77,7 +77,7 @@ Home – GOV.UK Prototype Kit
   <div class="govuk-grid-column-full">
 
     <span class="govuk-caption-xl">{{ cert.number or "test" }}</span>
-    <h1 class="govuk-heading-xl">{% if query.change %}Change{% else %}Add{% endif %} commodity data</h1>
+    <h1 class="govuk-heading-xl">{% if query.change and query.new %}Add{% else %}Change{% endif %} commodity data</h1>
     <form method="post">
       <input type="hidden" name="ehc" value="{{cert.number}}">
       <input type="hidden" name="commodity_id" value="{{commodityID}}">

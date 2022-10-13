@@ -419,7 +419,7 @@ module.exports = function(router) {
 
                         if (establishmentDetails.AppNo) {
                           // since we have a match, store the establishment index
-                          // e.g. manufacturingPlant-activityId
+                          // e.g. manufacturingPlantActivity
                           // console.log("Found a match for this approval number: " + establishmentDetails.AppNo + " - storing id value of " + establishmentIndex);
                           temp[establishmentType+"-id"] = establishmentIndex;
                         } else {
