@@ -166,7 +166,7 @@ Home – GOV.UK Prototype Kit
                 <input type="hidden" name="changeID" value="">
                 <input type="hidden" name="commodityListID" value="{{commodityID}}">
                 <section id="actions">
-                  <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if query.change == "yes" %}Update{% else %}Add{% endif %} commodity</button>
+                  <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if query.new == "yes" %}Add{% else %}Update{% endif %} commodity</button>
                 </section>
             </div>
             <!---->

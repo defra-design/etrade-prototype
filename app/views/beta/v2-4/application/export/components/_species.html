@@ -60,11 +60,10 @@
 <input type="hidden" value="{{initialSavedValue}}" name="defaultValue" id="defaultValue">
 {% else %}
 <div class="govuk-form-group">
-
   <label class="govuk-label" for="TAXON">Species</label>
 
   <select class="govuk-select govuk-!-width-two-thirds" id="TAXON" name="species">
-    <option disabled="" value="" {% if not (query.change ) %}selected{%endif%}>{% if (listOfSpecies| length) <= 10%}Select a taxonomy{% endif %}</option>
+    <option disabled="" value="" {% if not (identification.species) %}selected{%endif%}>{% if (listOfSpecies| length) <= 10%}Select a taxonomy{% endif %}</option>
     {% if (listOfSpecies| length) > 0%}
     {% for species in listOfSpecies%}
     <option value="{{species}}" {% if (query.change ) and (species == identification.species) %}selected{%endif%}>{{species}}</option>
