@@ -533,5 +533,16 @@
    "Postcode": "AB12 3AN",
    "Country": "Scotland",
    "All_Activities": ["Processing plant - Food FFP"]
+ },
+ {
+   "AppNo": "U1341318/ABP/OTHER",
+   "TradingName": "CC Moore & Co Ltd",
+   "Address1": "West Mill Farm Bait Centre",
+   "Address2": "West Mill Lane",
+   "Address3": "Stalbridge Sturminster Newton",
+   "Town": "Stalbridge",
+   "Postcode": "DT10 2RU",
+   "Country": "England",
+   "All_Activities": ["Category 3 - Animal By-Products ABP-COL"]
  }
 ]
