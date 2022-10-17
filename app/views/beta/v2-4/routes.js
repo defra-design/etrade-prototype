@@ -279,8 +279,14 @@ module.exports = function(router) {
       var identificationID = req.session.data.changeID || 0
 
       console.log("cert.addedCommodities[" + currentCommodityID + "].identifications[" + identificationID + "] = req.body");
-      cert.addedCommodities[currentCommodityID].identifications[identificationID] = req.body
-      res.redirect(301, '/' + base_url + 'application/export/added-commodities-list?changed=yes&showAlert=yes');
+      cert.addedCommodities[currentCommodityID].identifications[identificationID] = req.body;
+
+      if (req.query.new) {
+        res.redirect(301, '/' + base_url + 'application/export/added-commodities-list?changed=yes&showAlert=yes&new=yes');
+      } else {
+        res.redirect(301, '/' + base_url + 'application/export/added-commodities-list?changed=yes&showAlert=yes');
+      }
+
     } else {
       var addedCommodities = cert.addedCommodities
       var commodityCode = cert.commodities[commodityID].code

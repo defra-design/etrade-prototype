@@ -129,6 +129,9 @@ Home – GOV.UK Prototype Kit
       <input type="hidden" name="commodity_id" value="{{commodityID}}">
       <input type="hidden" name="commodity_code" value="{{commodityCode}}">
       <input type="hidden" name="commodity_description" value="{{commodityDescription}}">
+      {% if query.new %}
+      <input type="hidden" name="new" value="yes">
+      {% endif %}
 
 
       <div class="commodity-pane--body open" style="" id="commodity-details-panel">

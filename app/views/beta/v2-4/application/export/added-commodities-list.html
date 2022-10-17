@@ -82,7 +82,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       <div class="govuk-notification-banner__content">
         {% set identification = cert.addedCommodities[data.commodityListID].identifications[data.changeID] %}
 
-        <p class="govuk-body"><strong>Updated record</strong>:  {% if identification.productDescription %}{{ identification.productDescription | truncate(100)}} - {% endif %}{{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}} - {{identification.packageCount or "23"}}. &nbsp;<a class="govuk-notification-banner__link" href="#c{{data.commodityListID}}-i{{data.changeID}}">View in list</a></p>
+        <p class="govuk-body"><strong>{% if query.new %}Added{% else %}Updated{% endif %} record</strong>:  {% if identification.productDescription %}{{ identification.productDescription | truncate(100)}} - {% endif %}{{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}} - {{identification.packageCount or "23"}}. &nbsp;<a class="govuk-notification-banner__link" href="#c{{data.commodityListID}}-i{{data.changeID}}">View in list</a></p>
       </div>
     </div>
     {% endif %}
@@ -130,8 +130,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
         <div class="govuk-summary-list__row govuk-accordion__section" id="c{{currentCommodityID}}-i{{loop.index-1}}">
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
             <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
-              {% if query.changed=="yes" and data.commodityListID == currentCommodityID and loop.index-1 == data.changeID %} <strong class="govuk-tag govuk-tag--blue">Changed</strong>{% endif %}
-              {% if query.new=="yes" and data.currentCommodityID == commodity.id and loop.index-1 == data.currentIdenticiationID %} <strong class="govuk-tag govuk-tag--blue">New</strong>{% endif %}
+              {% if query.changed=="yes" and data.commodityListID == currentCommodityID and loop.index-1 == data.changeID %} <strong class="govuk-tag govuk-tag--blue">{% if query.new %}New{%else%}Changed{%endif%}</strong>{% endif %}
 
               {% if identification.isIncomplete %}<strong class="govuk-tag govuk-tag--orange">Incomplete data</strong><br>{% endif %}
 
