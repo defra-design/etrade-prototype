@@ -39,8 +39,39 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
 {% set commodityTitle =  "commodity"%}
 {% endif %}
 
+<!-- determine if any of these records have incompletes -->
+{% set incompleteRecordCount = 0 %}
+{% set incompleteRecordArray = [] %}
+{% set incompleteRecordDescriptionArray = [] %}
+{% for cert in cert.addedCommodities %}
+  {% set certLoop = loop %}
+  {% for ident in cert.identifications %}
+    {% if ident.isIncomplete == true %}
+      {% set incompleteRecordCount = incompleteRecordCount + 1 %}
+      {% set incompleteRecordArray = (incompleteRecordArray.push("c" + certLoop.index0 + "-i" + loop.index0), incompleteRecordArray) %}
+      {% if ident.productDescription %}
+        {% set incompleteRecordDescriptionArray = (incompleteRecordDescriptionArray.push(ident.productDescription), incompleteRecordDescriptionArray) %}
+      {% else %}
+        {% set incompleteRecordDescriptionArray = (incompleteRecordDescriptionArray.push("Record " + loop.index + " for commodity code " + ident.commodity_code), incompleteRecordDescriptionArray) %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<style>
+  .etrade-warning-banner {
+    border: 5px solid #f47738;
+    background-color: #f47738;
+  }
+
+  .etrade-warning-banner h2 {
+    color: #000000;
+  }
+</style>
+
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-three-quarters">
+
     {% if query.changed == "yes" %}
     <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
       <div class="govuk-notification-banner__header">
@@ -55,6 +86,30 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       </div>
     </div>
     {% endif %}
+
+    {% if incompleteRecordCount %}
+
+    <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Incomplete data
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">Some commodity data is incomplete</p>
+        <p class="govuk-body">
+          {{ incompleteRecordCount }} {% if incompleteRecordCount == 1 %}record has{% else %}records have{%endif%} missing or incomplete required data.
+        </p>
+        <ul class="govuk-list">
+        {% for record in incompleteRecordArray %}
+          <li><a class="govuk-link" href="#{{ record }}">{{ incompleteRecordDescriptionArray[loop.index0]}}</a></li>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% endif %}
+
+
     <span class="govuk-caption-xl">{{ cert.number or "EHC8331" }}</span>
     <h1 class="govuk-heading-xl">
       Added {{count}} {{recordsTitle}}
@@ -208,17 +263,18 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                   </div>
                   {% endif %}
 
-                  {% if cert.natureOfCommodity %}
+                  {% if cert.natureOfCommodity and identification.natureOfCommodity %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Nature of commodity
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {{identification.natureOfCommodity or "Something"}}
+                      {{identification.natureOfCommodity }}
                     </dd>
                   </div>
                   {% endif %}
 
+                  {% if identification.netWeight and identification.netWeight_UNIT %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Net weight
@@ -226,8 +282,10 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                     <dd class="govuk-summary-list__value">
                       {{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}}
                     </dd>
-
                   </div>
+                  {% endif %}
+
+                  {% if identification.packageCount and identification.packageCount_UNIT %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Package count
@@ -238,6 +296,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                     </dd>
 
                   </div>
+                  {% endif %}
 
                   {% if cert["Plant / Establishment / Centre"] %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">

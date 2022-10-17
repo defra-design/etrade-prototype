@@ -25,6 +25,15 @@ Home – GOV.UK Prototype Kit
   .max-w-155 {
     max-width: 155px;
   }
+
+  .etrade-warning-banner {
+    border: 5px solid #f47738;
+    background-color: #f47738;
+  }
+
+  .etrade-warning-banner h2 {
+    color: #000000;
+  }
 </style>
 {% endblock%}
 
@@ -54,7 +63,7 @@ Home – GOV.UK Prototype Kit
 <!-- Set variable to trigger different behaviour in search establishment component-->
 {% set isCommodity = "yes" %}
 
-{% if data.copy == "yes"%}
+{% if query.copy == "yes"%}
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-two-thirds">
     <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -73,6 +82,43 @@ Home – GOV.UK Prototype Kit
   </div>
 </div>
 {% endif %}
+
+{% if identification.isIncomplete and not query.new %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Incomplete data
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">Some commodity data is missing or incomplete</p>
+        <ul class="govuk-list">
+        {% for incompleteRecord in identification.incomplete %}
+          <!-- exclude Activity records like manufacturingPlantActivity -->
+
+            {% set incompleteLabel = "" %}
+            {% for field in cert.schema %}
+              {% if field.id == incompleteRecord %}
+                {% set incompleteLabel = field.title %}
+              {% endif %}
+            {% endfor %}
+
+            {% if incompleteRecord.slice(incompleteRecord.length-8,incompleteRecord.length) == "Activity" %}
+              <li><a class="govuk-link" href="#{{ incompleteRecord.slice(0,incompleteRecord.length-8) }}">{{ incompleteLabel }} </a></li>
+            {% else %}
+              <li><a class="govuk-link" href="#{{ incompleteRecord }}">{{ incompleteLabel }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-full">
 

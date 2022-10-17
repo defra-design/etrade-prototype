@@ -252,7 +252,7 @@ module.exports = function(router) {
 
     // redirect to commodity
     let querystring = createCommoditiesQuerystring(addedEHC, ehcNumber, commodityCode);
-    res.redirect(303, '/' + base_url + 'application/export/commodity?' + querystring);
+    res.redirect(303, '/' + base_url + 'application/export/commodity?' + querystring + '&copy=yes');
 
   });
 
@@ -330,9 +330,36 @@ module.exports = function(router) {
       identification[establishmentType] = establishment.AppNo;
       identification[establishmentType+"-id"] = establishmentIndex;
 
+      // remove this establishment type from the incomplete array (if present)
+      for (let x = 0; x < identification.incomplete.length; x++) {
+        if (identification.incomplete[x] == establishmentType) {
+          console.log("Deleting identification.incomplete at index: " + x);
+          // delete identification.incomplete[x]; // don't use this as it leaves a null rather than removing the item completely
+          identification.incomplete.splice(x, 1);
+        }
+      }
+
       if (establishment.All_Activities.length == 1) {
         // select the index and redirect
         identification[establishmentType+"Activity"] = establishment.All_Activities[0];
+
+
+        // remove the establishmentTypeActivity from identification.incomplete and check to see if is incomplete needs to be set to false
+        console.log("Attempting to remove this establishment from incomplete")
+        for (let x = 0; x < identification.incomplete.length; x++) {
+          console.log(identification.incomplete[x] + " -- " + establishmentType+"Activity");
+          if (identification.incomplete[x] == (establishmentType+"Activity")) {
+            console.log("Deleting identification.incomplete at index: " + x);
+            identification.incomplete.splice(x, 1);
+          }
+        }
+
+        // check to see if isIncomplete is correct
+        console.log("Checking isIncomplete status")
+        if (!identification.incomplete || (identification.incomplete.length == 0)) {
+          identification.isIncomplete = false;
+        }
+
         res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
       } else {
         // prompt the user to select an activity
@@ -366,6 +393,48 @@ module.exports = function(router) {
       let identification = req.session.data.addedEHC[certId].addedCommodities[addedCommoditiesId].identifications[identificationsId];
       identification[establishmentType+'Activity'] = activityName;
       console.log(identification);
+
+      if (activityName == -1) {
+        // if this activity isn't already in the incomplete array, add it
+        console.log("User skipped this question, so this item is incomplete");
+
+        let isInArray = false;
+        for (x = 0; x < identification.incomplete.length; x++) {
+          console.log(identification.incomplete[x] + " -- " + establishmentType+"Activity");
+          if (identification.incomplete[x] == establishmentType+"Activity") {
+            console.log("This item has already been flagged as incomplete");
+            isInArray = true;
+          }
+        }
+        if (!isInArray) {
+          console.log("Pushing " + establishmentType + "Activity into identification.incomplete");
+          identification.incomplete.push(establishmentType+"Activity");
+        }
+
+
+        // set isIncomplete to true
+        identification.isIncomplete = true
+      } else {
+        // remove this establishment type from the incomplete array (if present)
+        console.log("Attempting to remove this establishment from incomplete")
+        for (let x = 0; x < identification.incomplete.length; x++) {
+          console.log(identification.incomplete[x] + " -- " + establishmentType);
+          if (identification.incomplete[x] == (establishmentType+"Activity")) {
+            console.log("Deleting identification.incomplete at index: " + x);
+            identification.incomplete.splice(x, 1);
+          }
+        }
+
+        // check to see if isIncomplete is correct
+        console.log("Checking isIncomplete status")
+        if (!identification.incomplete || (identification.incomplete.length == 0)) {
+          identification.isIncomplete = false;
+        }
+
+      }
+
+
+
 
       // redirect
       // http://localhost:3000/beta/v2-4/application/export/commodity?commodity=&change=yes&copy=&currentCommodityID=111&commodityListID=2&changeID=0
