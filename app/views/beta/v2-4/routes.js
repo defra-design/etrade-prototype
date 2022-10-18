@@ -458,12 +458,14 @@ module.exports = function(router) {
 
   })
 
-  router.post('/' + base_url + 'application/export/export/weight', function(req, res) {
+  router.post('/' + base_url + 'application/export/weight', function(req, res) {
+    console.log("In post for application/export/weight");
     let cert = req.session.data.currentCertID || 0
     req.session.data.addedEHC[cert].weight = {
       "amount": req.body.GROSS_WEIGHT,
       "quantifier": req.body.GROSS_WEIGHT_quantifier
     }
+    
     if (req.session.data.has_multiple_certificates == 'yes') {
       res.redirect(301, '/' + base_url + 'application/export/added-certs');
     } else {
@@ -530,7 +532,7 @@ module.exports = function(router) {
     if (req.query.change == "yes") {
       res.redirect(301, '/' + base_url + 'application/task-list');
     } else {
-      res.redirect(301, '/' + base_url + 'application/export/select-certificates');
+      res.redirect(301, '/' + base_url + 'application/export/select-certificates?displayMax=10');
     }
   });
 
