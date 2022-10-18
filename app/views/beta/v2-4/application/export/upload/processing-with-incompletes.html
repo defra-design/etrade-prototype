@@ -128,12 +128,12 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
 
     <div class="in-progress">
       <h1 class="govuk-heading-xl">Processing uploaded commodity data for {{ ehcString }}</h1>
-      <p>File uploaded on 23 August 2022 at 14:02. We are making sure that the data follows TRACES requirements &ndash; this may take a few minutes.</p>
+      <p>File uploaded on 15 October 2022 at 10:02. We are making sure that the data follows TRACES requirements &ndash; this may take a few minutes.</p>
     </div>
 
     <div class="complete">
       <h1 class="govuk-heading-xl">Processing complete for {{ ehcString }}</h1>
-      <p>File uploaded on 14 August 2022 at 14:02.</p>
+      <p>File uploaded on 15 October 2022 at 10:02.</p>
     </div>
 
     <!-- Progress indicator -->
@@ -261,8 +261,11 @@ Processing additional uploaded commmodity data – GOV.UK Prototype Kit
     var currentIncompleteCount = 0;
     var currentPendingCount = totalRows;
 
-    var govukIntervalTimer = 2500;
-    // var govukIntervalTimer = 250  ;
+    if (location.host.slice(0,9) == "localhost") {
+      var govukIntervalTimer = 250;
+    } else {
+      var govukIntervalTimer = 2500;
+    }
 
     updateInterval = setInterval(updateProcessingUI, govukIntervalTimer);
 
