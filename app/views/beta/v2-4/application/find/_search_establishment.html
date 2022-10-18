@@ -15,34 +15,38 @@
   {% endfor %}
 {% endif %}
 
-<label class="govuk-label" for="{{id}}">
+<label class="govuk-label" for="{{id}}" id={{id}}>
   {% if isIncomplete %}<strong class="govuk-tag govuk-tag--orange">Incomplete data</strong><br>{% endif %}
   {{searchLabel}} {% if isRequired == "no"%}(optional){% endif %}
 </label>
 
 
-{% if establishmentIndex and establishmentActivity %}
+{% if establishmentIndex and establishmentActivity and (establishmentActivity != -1) %}
   <!-- Complete -->
   {% set org = data.establishments[establishmentIndex] %}
   <div class="govuk-form-group app-find-establishment-card">
     <input type="hidden" id="{{establishmentType}}" name="{{establishmentType}}" value="{{ establishmentApprovalNumber }}">
     <input type="hidden" id="{{establishmentType}}-id" name="{{establishmentType}}-id" value="{{ establishmentIndex }}">
-    <input type="hidden" id="{{establishmentType}}-activity" name="{{establishmentType}}-activityId" value="{{ establishmentActivityIndex }}">
+    <input type="hidden" id="{{establishmentType}}Activity" name="{{establishmentType}}Activity" value="{{ establishmentActivity }}">
     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}} ({{org.AppNo}})</h3>
     <p class="govuk-!-margin-bottom-2">{{org.Address1}},{% if org.Address2 !="" %} {{org.Address2}},{%endif%} {{org.Town}}, {{org.Postcode}}, {{org.Country}}<br>
-        Activity: {{org.All_Activities[(data["activityFor"+id] or 0)]}}
+        Activity: {{ establishmentActivity }}
     </p>
-    <p class="govuk-!-margin-bottom-0"><a href="../find/results?id={{data['selected'+id] or 0}}&change=yes&searchLabel={{searchLabel}}&searchID={{id}}&canSearchApprovalNumber=yes&searchReturnURL={{returnURL or '../export/commodity'}}">Select a different {{searchLabel | lower }}</a></p>
+    <p class="govuk-!-margin-bottom-0">
+      <!--<a href="../find/results?id={{data['selected'+id] or 0}}&change=yes&searchLabel={{searchLabel}}&searchID={{id}}&canSearchApprovalNumber=yes&searchReturnURL={{returnURL or '../export/commodity'}}">Select a different {{searchLabel | lower }}</a>-->
+      <a class="find-establishment-link" href="../find/results?searchReturnURL={{returnURL or '../export/commodity'}}&canSearchApprovalNumber=yes&certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}">Select a different {{searchLabel | lower }}</a>
+    </p>
   </div>
 
 
-{% elseif (establishmentIndex and not establishmentActivity) %}
+{% elseif establishmentIndex %}
+
   <!-- partially incomplete -->
   {% set org = data.establishments[establishmentIndex] %}
   <div class="govuk-form-group app-find-establishment-card">
     <input type="hidden" id="{{establishmentType}}" name="{{establishmentType}}" value="{{ establishmentApprovalNumber }}">
     <input type="hidden" id="{{establishmentType}}-id" name="{{establishmentType}}-id" value="{{ establishmentIndex }}">
-    <input type="hidden" id="{{establishmentType}}-activity" name="{{establishmentType}}-activityId" value="{{ establishmentActivityIndex }}">
+    <input type="hidden" id="{{establishmentType}}Activity" name="{{establishmentType}}Activity" value="{{ establishmentActivity }}">
     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}} ({{org.AppNo}})</h3>
     <p class="govuk-body">{{org.Address1}},{% if org.Address2 !="" %} {{org.Address2}},{%endif%} {{org.Town}}, {{org.Postcode}}, {{org.Country}}
       </p>
@@ -70,7 +74,7 @@
     {% if hasApprovalNumberError %}
 
     <p id="{{ establishmentType }}-error" class="govuk-error-message">
-      <span class="govuk-visually-hidden">Error:</span> The approval number you provided ({{ identification[establishmentType+"-approvalNumber"] }}) is invalid
+      <span class="govuk-visually-hidden">Error:</span> The approval number you provided ({{ establishmentApprovalNumber }}) is invalid
     </p>
     {% endif %}
     <!--<p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchLabel={{searchLabel}}&searchReturnURL={{returnURL or '../export/commodity'}}&searchID={{id}}&canSearchApprovalNumber=yes">Select a {{searchLabel | lower }}</a></p>-->

@@ -25,6 +25,15 @@ Home – GOV.UK Prototype Kit
   .max-w-155 {
     max-width: 155px;
   }
+
+  .etrade-warning-banner {
+    border: 5px solid #f47738;
+    background-color: #f47738;
+  }
+
+  .etrade-warning-banner h2 {
+    color: #000000;
+  }
 </style>
 {% endblock%}
 
@@ -40,7 +49,7 @@ Home – GOV.UK Prototype Kit
 
 
 <!-- IF Change Set the identification array location of the current commodity -->
-{% set changeID = query.changeID or data.changeID or 0 %}
+{% set changeID = query.changeID %}
 <!-- Set current cert  -->
 {% set cert = data.addedEHC[certID]%}
 
@@ -54,7 +63,7 @@ Home – GOV.UK Prototype Kit
 <!-- Set variable to trigger different behaviour in search establishment component-->
 {% set isCommodity = "yes" %}
 
-{% if data.copy == "yes"%}
+{% if query.copy == "yes"%}
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-two-thirds">
     <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -73,16 +82,56 @@ Home – GOV.UK Prototype Kit
   </div>
 </div>
 {% endif %}
+
+{% if identification.isIncomplete and not query.new %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Incomplete data
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">Some commodity data is missing or incomplete</p>
+        <ul class="govuk-list">
+        {% for incompleteRecord in identification.incomplete %}
+          <!-- exclude Activity records like manufacturingPlantActivity -->
+
+            {% set incompleteLabel = "" %}
+            {% for field in cert.schema %}
+              {% if field.id == incompleteRecord %}
+                {% set incompleteLabel = field.title %}
+              {% endif %}
+            {% endfor %}
+
+            {% if incompleteRecord.slice(incompleteRecord.length-8,incompleteRecord.length) == "Activity" %}
+              <li><a class="govuk-link" href="#{{ incompleteRecord.slice(0,incompleteRecord.length-8) }}">{{ incompleteLabel }} </a></li>
+            {% else %}
+              <li><a class="govuk-link" href="#{{ incompleteRecord }}">{{ incompleteLabel }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-full">
 
     <span class="govuk-caption-xl">{{ cert.number or "test" }}</span>
-    <h1 class="govuk-heading-xl">{% if query.change %}Change{% else %}Add{% endif %} commodity data</h1>
+    <h1 class="govuk-heading-xl">{% if query.change and query.new %}Add{% else %}Change{% endif %} commodity data</h1>
     <form method="post">
       <input type="hidden" name="ehc" value="{{cert.number}}">
       <input type="hidden" name="commodity_id" value="{{commodityID}}">
       <input type="hidden" name="commodity_code" value="{{commodityCode}}">
       <input type="hidden" name="commodity_description" value="{{commodityDescription}}">
+      {% if query.new %}
+      <input type="hidden" name="new" value="yes">
+      {% endif %}
 
 
       <div class="commodity-pane--body open" style="" id="commodity-details-panel">
@@ -117,7 +166,7 @@ Home – GOV.UK Prototype Kit
                 <input type="hidden" name="changeID" value="">
                 <input type="hidden" name="commodityListID" value="{{commodityID}}">
                 <section id="actions">
-                  <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if query.change == "yes" %}Update{% else %}Add{% endif %} commodity</button>
+                  <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if query.new == "yes" %}Add{% else %}Update{% endif %} commodity</button>
                 </section>
             </div>
             <!---->

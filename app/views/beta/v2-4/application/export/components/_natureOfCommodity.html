@@ -6,9 +6,9 @@
   <div class="app-repeatable-section" id="repeatable-nature-of">
     <div class="govuk-input__wrapper m-t-15">
       <select class="govuk-select full-width" id="natureOfCommodity" name="natureOfCommodity">
-        <option disabled="" value="" {% if not (data.change or data.copy) %}selected{%endif%}>Select a Nature of commodity</option>
+        <option disabled="" value="" {% if not (query.change) %}selected{%endif%}>Select a Nature of commodity</option>
         {% for item in listOfItems%}
-        <option value="{{item}}" {% if (data.change or data.copy) and (item==identification.natureOfCommodity) %}selected{%endif%}>{{item}}</option>
+        <option value="{{item}}" {% if (query.change) and ((item | lower) == (identification.natureOfCommodity | lower)) %}selected{%endif%}>{{item}}</option>
         {% endfor %}]
       </select>
       <div class="govuk-input__suffix suffix__action no-border" aria-hidden="true">
@@ -25,10 +25,10 @@
   <label class="govuk-label" for="natureOfCommodity">Nature of commodity
   </label>
   <select class="govuk-select full-width" id="natureOfCommodity" name="natureOfCommodity">
-    <option disabled="" value="" {% if not (data.change or data.copy) %}selected{%endif%}>Select a nature of commodity</option>
+    <option disabled="" value="" {% if not (query.change) or (identification.natureOfCommodity == null) %}selected{%endif%}>Select a nature of commodity</option>
     {% if (listOfItems| length) > 0%}
     {% for item in listOfItems%}
-    <option value="{{item}}" {% if (data.change or data.copy) and (item==identification.natureOfCommodity) %}selected{%endif%}>{{item}}</option>
+    <option value="{{item}}" {% if (query.change) and ((item | lower) == (identification.natureOfCommodity | lower)) %}selected{%endif%}>{{item}}</option>
     {% endfor %}]
     {% else %}
     <option value="not set">Not set any species in JSON</option>
@@ -37,7 +37,7 @@
 </div>
 {% endif %}
 
-{% if (listOfItems | length) >= 20 %}
+{% if (listOfItems | length) >= 30 %}
 <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
 <script type="text/javascript">
   window.addEventListener('load', function() {

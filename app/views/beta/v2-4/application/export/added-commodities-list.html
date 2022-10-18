@@ -39,8 +39,39 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
 {% set commodityTitle =  "commodity"%}
 {% endif %}
 
+<!-- determine if any of these records have incompletes -->
+{% set incompleteRecordCount = 0 %}
+{% set incompleteRecordArray = [] %}
+{% set incompleteRecordDescriptionArray = [] %}
+{% for cert in cert.addedCommodities %}
+  {% set certLoop = loop %}
+  {% for ident in cert.identifications %}
+    {% if ident.isIncomplete == true %}
+      {% set incompleteRecordCount = incompleteRecordCount + 1 %}
+      {% set incompleteRecordArray = (incompleteRecordArray.push("c" + certLoop.index0 + "-i" + loop.index0), incompleteRecordArray) %}
+      {% if ident.productDescription %}
+        {% set incompleteRecordDescriptionArray = (incompleteRecordDescriptionArray.push(ident.productDescription), incompleteRecordDescriptionArray) %}
+      {% else %}
+        {% set incompleteRecordDescriptionArray = (incompleteRecordDescriptionArray.push("Record " + loop.index + " for commodity code " + ident.commodity_code), incompleteRecordDescriptionArray) %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<style>
+  .etrade-warning-banner {
+    border: 5px solid #f47738;
+    background-color: #f47738;
+  }
+
+  .etrade-warning-banner h2 {
+    color: #000000;
+  }
+</style>
+
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-three-quarters">
+
     {% if query.changed == "yes" %}
     <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
       <div class="govuk-notification-banner__header">
@@ -51,16 +82,46 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       <div class="govuk-notification-banner__content">
         {% set identification = cert.addedCommodities[data.commodityListID].identifications[data.changeID] %}
 
-        <p class="govuk-body"><strong>Updated record</strong>:  {% if identification.productDescription %}{{ identification.productDescription | truncate(100)}} - {% endif %}{{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}} - {{identification.packageCount or "23"}}. &nbsp;<a class="govuk-notification-banner__link" href="#c{{data.commodityListID}}-i{{data.changeID}}">View in list</a></p>
+        <p class="govuk-body"><strong>{% if query.new %}Added{% else %}Updated{% endif %} record</strong>:  {% if identification.productDescription %}{{ identification.productDescription | truncate(100)}} - {% endif %}{{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}} - {{identification.packageCount or "23"}}. &nbsp;<a class="govuk-notification-banner__link" href="#c{{data.commodityListID}}-i{{data.changeID}}">View in list</a></p>
       </div>
     </div>
     {% endif %}
+
+    {% if incompleteRecordCount %}
+
+    <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Incomplete data
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">Some commodity data is incomplete</p>
+        <p class="govuk-body">
+          {{ incompleteRecordCount }} {% if incompleteRecordCount == 1 %}record has{% else %}records have{%endif%} missing or incomplete required data.
+        </p>
+        {% if incompleteRecordCount <= 5 %}
+        <ul class="govuk-list">
+        {% for record in incompleteRecordArray %}
+          <li><a class="govuk-link" href="#{{ record }}">{{ incompleteRecordDescriptionArray[loop.index0]}}</a></li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    {% endif %}
+
+
     <span class="govuk-caption-xl">{{ cert.number or "EHC8331" }}</span>
     <h1 class="govuk-heading-xl">
       Added {{count}} {{recordsTitle}}
       {%if cert.addedCommodities | length > 1%} for {{cert.addedCommodities | length}} {{commodityTitle}}{% endif %}
     </h1>
+    <!--
     <p>You can add multiple commodities for this certificate by <a href="./upload/">uploading a spreadsheet</a></p>
+    -->
+
     <!-- Removed the accordian controls for now. Want to test to see if they are needed -->
     <!-- <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
           class="govuk-accordion__show-all-text">Show all sections</span></button></div> -->
@@ -75,8 +136,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
         <div class="govuk-summary-list__row govuk-accordion__section" id="c{{currentCommodityID}}-i{{loop.index-1}}">
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
             <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
-              {% if query.changed=="yes" and data.commodityListID == currentCommodityID and loop.index-1 == data.changeID %} <strong class="govuk-tag govuk-tag--blue">Changed</strong>{% endif %}
-              {% if query.new=="yes" and data.currentCommodityID == commodity.id and loop.index-1 == data.currentIdenticiationID %} <strong class="govuk-tag govuk-tag--blue">New</strong>{% endif %}
+              {% if query.changed=="yes" and data.commodityListID == currentCommodityID and loop.index-1 == data.changeID %} <strong class="govuk-tag govuk-tag--blue">{% if query.new %}New{%else%}Changed{%endif%}</strong>{% endif %}
 
               {% if identification.isIncomplete %}<strong class="govuk-tag govuk-tag--orange">Incomplete data</strong><br>{% endif %}
 
@@ -99,8 +159,11 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                   </a>
                 </li>
                 <li class="govuk-summary-list__actions-list-item">
+
+                  <!--<a class="govuk-link govuk-link--no-visited-state"
+                    href="commodity?commodity={{identification.type}}&copy=yes&change=&currentCommodityID={{identification.commodity_id}}&commodityListID={{currentCommodityID}}&changeID={{loop.index-1}}">-->
                   <a class="govuk-link govuk-link--no-visited-state"
-                    href="commodity?commodity={{identification.type}}&copy=yes&change=&currentCommodityID={{identification.commodity_id}}&commodityListID={{currentCommodityID}}&changeID={{loop.index-1}}">
+                    href="copy-record?ehcNumber={{ cert.number }}&currentCommodityID={{identification.commodity_id}}&commodityListID={{ currentCommodityID }}&changeID={{ loop.index-1 }}&random={{ 100000 | randomNumberGenerator }}">
                     Copy<span class="govuk-visually-hidden"> commodity 4012</span>
                   </a>
                 </li>
@@ -128,7 +191,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
             <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
               <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
                 <div class="govuk-grid-row">
-                  {% if cert.batchNumber %}
+                  {% if identification.batchNumber %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Batch Number
@@ -139,29 +202,29 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                   </div>
                   {% endif %}
 
-                  {% if cert.manufacturingPlant %}
+                  {% if identification.manufacturingPlant %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Manufacturing plant:
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {{identification.manufacturingPlant or "HELEN BILLINGHAM"}}
+                      {{identification.manufacturingPlant}}
                     </dd>
                   </div>
                   {% endif %}
 
-                  {% if cert.coldStore %}
+                  {% if identification.coldStore %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Cold store
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {{identification.coldStore or "HELEN BILLINGHAM"}}
+                      {{identification.coldStore}}
                     </dd>
                   </div>
                   {% endif %}
 
-                  {% if cert.dateOfCollection %}
+                  {% if identification.dateOfCollection %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Date of collection
@@ -172,18 +235,31 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                   </div>
                   {% endif %}
 
-                  {% if cert.cuttingPlant %}
+                  {% if identification.dateOfCollectionProduction %}
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half">
+                    <dt class="govuk-summary-list__key">
+                      Date of collection/production
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{identification.dateOfCollectionProduction | getDateFromExcel }}
+                    </dd>
+                  </div>
+                  {% endif %}
+
+
+
+                  {% if identification.search-field-Cuttingplant %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Cutting plant
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {{identification.search-field-Cuttingplant or "HELEN BILLINGHAM"}}
+                      {{identification.search-field-Cuttingplant }}
                     </dd>
                   </div>
                   {% endif %}
 
-                  {% if cert.dateOfFreezing %}
+                  {% if identification.dateOfFreezing %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Date of freezing
@@ -194,7 +270,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                   </div>
                   {% endif %}
 
-                  {% if cert.identificationMark %}
+                  {% if identification.identificationMark %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Identification mark
@@ -205,17 +281,18 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                   </div>
                   {% endif %}
 
-                  {% if cert.natureOfCommodity %}
+                  {% if identification.natureOfCommodity and identification.natureOfCommodity %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Nature of commodity
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {{identification.natureOfCommodity or "Something"}}
+                      {{identification.natureOfCommodity }}
                     </dd>
                   </div>
                   {% endif %}
 
+                  {% if identification.netWeight and identification.netWeight_UNIT %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Net weight
@@ -223,8 +300,10 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                     <dd class="govuk-summary-list__value">
                       {{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}}
                     </dd>
-
                   </div>
+                  {% endif %}
+
+                  {% if identification.packageCount and identification.packageCount_UNIT %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Package count
@@ -235,8 +314,9 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                     </dd>
 
                   </div>
+                  {% endif %}
 
-                  {% if cert["Plant / Establishment / Centre"] %}
+                  {% if identification["Plant / Establishment / Centre"] %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Plant / Establishment / Centre
@@ -248,7 +328,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                   </div>
                   {% endif %}
 
-                  {% if cert.Slaughterhouse %}
+                  {% if identification.Slaughterhouse %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Slaughter house
@@ -261,7 +341,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
 
                   {% endif %}
 
-                  {% if cert.treatmentType %}
+                  {% if identification.treatmentType %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Treatment type
@@ -274,7 +354,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
 
                   {% endif %}
 
-                  {% if cert.finalConsumer %}
+                  {% if identification.finalConsumer %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Final consumer
@@ -284,10 +364,9 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                     </dd>
 
                   </div>
-
                   {% endif %}
 
-
+                  {% if identification.species %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Species
@@ -297,6 +376,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                     </dd>
 
                   </div>
+                  {% endif %}
 
 
 
@@ -307,7 +387,8 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
         </div>
         {% endfor %}
       </dl>
-      <p class="govuk-!-margin-bottom-8"><a href="commodity?change=&copy=&currentCommodityID={{commodity.id}}&new=yes" class="govuk-link--no-visited-state"><strong>Add another record for {{commodity.code}}<strong></a></p>
+      <!--<p class="govuk-!-margin-bottom-8"><a href="commodity?change=&copy=&currentCommodityID={{commodity.id}}&new=yes" class="govuk-link--no-visited-state"><strong>Add another record for {{commodity.code}}<strong></a></p>-->
+      <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID={{commodity.id}}&commodityCode={{ commodity.code }}&ehcNumber={{ cert.number }}&random={{ 100000 | randomNumberGenerator }}" class="govuk-link--no-visited-state"><strong>Add another record for {{commodity.code}}<strong></a></p>
 
       {% endfor %}
       <div class="govuk-grid-row">

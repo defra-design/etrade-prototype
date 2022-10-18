@@ -533,5 +533,38 @@
    "Postcode": "AB12 3AN",
    "Country": "Scotland",
    "All_Activities": ["Processing plant - Food FFP"]
+ },
+ {
+   "AppNo": "U1341318/ABP/OTHER",
+   "TradingName": "CC Moore & Co Ltd",
+   "Address1": "West Mill Farm Bait Centre",
+   "Address2": "West Mill Lane",
+   "Address3": "Stalbridge Sturminster Newton",
+   "Town": "Stalbridge",
+   "Postcode": "DT10 2RU",
+   "Country": "England",
+   "All_Activities": ["Category 3 - Animal By-Products ABP-COL"]
+ },
+ {
+   "AppNo": "NO 006",
+   "TradingName": "Blackmore Vale Farm Cream Ltd",
+   "Address1": "Wincombe Lane",
+   "Address2": "Shaftesbury",
+   "Address3": "Dorset",
+   "Town": "Shaftesbury",
+   "Postcode": "SP7 8QD",
+   "Country": "England",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "2837",
+   "TradingName": "The Blackmore Vale Butchery",
+   "Address1": "Unit 1a Hardings Business Centre",
+   "Address2": "Bowbridge",
+   "Address3": "Henstridge",
+   "Town": "Bowbridge",
+   "Postcode": "BA8 0TF",
+   "Country": "England",
+   "All_Activities": ["Cold Stores", "Re-wrapping Establishment", "Minced Meat Plant", "Meat Preparation Plant", "Cutting Plant", "Processing Plant"]
  }
 ]

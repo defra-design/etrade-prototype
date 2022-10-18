@@ -45,7 +45,7 @@
 <div class="govuk-form-group">
   <label class="govuk-label" for="natureOfCommodity">Treatment type</label>
   <select class="govuk-select full-width" id="treatent-type" name="treatmentType">
-    <option disabled="" value="" {% if not (data.change or data.copy) %}selected{%endif%}>Select a treatment type</option>
+    <option disabled="" value="" {% if not (identification.treatmentType) %}selected{%endif%}>Select a treatment type</option>
     {% if (listOfSpecies| length) <= 20 %}
     <option disabled="" value="" ></option>
     {% endif %}

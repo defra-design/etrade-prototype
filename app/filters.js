@@ -106,7 +106,7 @@ module.exports = function(env) {
   }
 
   filters.getDateFromExcel = function(excelDateString) {
-    var months = ["January", "February", "March", "April", "May", "June",
+    var months = ["", "January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
     ];
     var day = excelDateString.substring(8,10);
@@ -214,6 +214,10 @@ module.exports = function(env) {
       newArray.push(object[key])
     })
     return newArray
+  }
+
+  filters.randomNumberGenerator = function(number) {
+    return (Math.floor(Math.random() * number) + 1);
   }
   // -------------------------------------------------------------------
   // keep the following line to return your filters to the app

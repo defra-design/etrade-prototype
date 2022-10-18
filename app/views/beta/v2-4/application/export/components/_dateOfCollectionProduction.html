@@ -18,16 +18,6 @@
     type="datetime-local"
     name="dateOfCollectionProduction"
     id="COLLECTION_PRODUCTION_DATE-3-11711-020120"
-    value="
-      {% if (data.change or data.copy) %}
-        {% if identification.dateOfCollectionProduction.length >= 16 %}
-          {{identification.dateOfCollectionProduction.slice(0,16)}}
-        {% else %}
-          {{ identification.dateOfCollectionProduction }}
-        {% endif %}
-        {% if query.updated == 'yes' %}
-          {{data.dateOfCollectionProduction.slice(0,16)}}
-        {% endif %}
-      {% endif %}">
+    value="{% if (query.change or query.copy) %}{% if identification.dateOfCollectionProduction.length >= 16 %}{{identification.dateOfCollectionProduction.slice(0,16)}}{% else %}{{ identification.dateOfCollectionProduction }}{% endif %}{% if query.updated == 'yes' %}{{data.dateOfCollectionProduction.slice(0,16)}}{% endif %}{% endif %}">
 </div>
 {% endif %}

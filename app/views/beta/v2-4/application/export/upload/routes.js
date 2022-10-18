@@ -419,7 +419,7 @@ module.exports = function(router) {
 
                         if (establishmentDetails.AppNo) {
                           // since we have a match, store the establishment index
-                          // e.g. manufacturingPlant-activityId
+                          // e.g. manufacturingPlantActivity
                           // console.log("Found a match for this approval number: " + establishmentDetails.AppNo + " - storing id value of " + establishmentIndex);
                           temp[establishmentType+"-id"] = establishmentIndex;
                         } else {
@@ -432,6 +432,18 @@ module.exports = function(router) {
                           isIncomplete = true;
                         }
 
+                      } else if (cert_schema[c].multiple === "yes") {
+                        console.log("Found a multiple: " + cert_schema[c].id + " -- " + temp[cert_schema[c].id]);
+                        // split previously stored value for this field into an array
+                        stringArray = temp[cert_schema[c].id].split(",");
+                        // remove extraneous spaces
+
+                        for (x = 0; x < stringArray.length; x++) {
+                          stringArray[x] = stringArray[x].trim();
+                        }
+
+                        // console.log("stringArray[0]: " + stringArray[0]);
+                        temp[cert_schema[c].id] = stringArray;
                       }
 
                     }
