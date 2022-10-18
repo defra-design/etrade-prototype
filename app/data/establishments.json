@@ -566,5 +566,16 @@
    "Postcode": "BA8 0TF",
    "Country": "England",
    "All_Activities": ["Cold Stores", "Re-wrapping Establishment", "Minced Meat Plant", "Meat Preparation Plant", "Cutting Plant", "Processing Plant"]
+ },
+ {
+   "AppNo": "OF 020",
+   "TradingName": "Noble Foods",
+   "Address1": "Cotswold Farm",
+   "Address2": "Standlake",
+   "Address3": "Oxfordshire",
+   "Town": "Standlake",
+   "Postcode": "OX29 7RB",
+   "Country": "England",
+   "All_Activities": ["Egg-packing Centre", "Liquid Egg Plant"]
  }
 ]
