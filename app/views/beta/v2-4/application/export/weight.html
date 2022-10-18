@@ -14,7 +14,7 @@ Home – GOV.UK Prototype Kit
 {% endif %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form method="post" action="{% if data.has_multiple_certificates == 'yes'%}added-certs{%else%}../task-list{% endif %}">
+    <form method="post">
       <div class="govuk-form-group">
         <span class="govuk-caption-xl">
           <span class="govuk-caption-xl">{{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</span>
@@ -33,11 +33,11 @@ Home – GOV.UK Prototype Kit
               <input class="govuk-input" type="number" data-type="quantity" name="GROSS_WEIGHT"  {% if query.change=='yes' %}value="{{data.GROSS_WEIGHT}}"{%endif%} step="0.01" min="0" max="9999999" id="netWeight-3-10410-31010000"
                 data-v-4e8f37a8="">
               <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8=""><select class="govuk-select" id="netWeight-3-10410-31010000-units" name="GROSS_WEIGHT_quantifier">
-                  <option disabled="" value="" data-v-4e8f37a8="" {% if not data.GROSS_WEIGHT_quantifier %}selected{%endif%}>Select a unit</option>
-                  <option value="GRM" data-v-4e8f37a8="" {% if data.GROSS_WEIGHT_quantifier =="GRM" and query.change=='yes' %}selected{%endif%}>grams</option>
-                  <option value="KGM" data-v-4e8f37a8="" {% if data.GROSS_WEIGHT_quantifier=="KGM" and query.change=='yes' %}selected{%endif%}>kilogram</option>
-                  <option value="KTN" data-v-4e8f37a8="" {% if data.GROSS_WEIGHT_quantifier=="KTN" and query.change=='yes' %}selected{%endif%}>kilotonne</option>
-                  <option value="TNE" data-v-4e8f37a8="" {% if data.GROSS_WEIGHT_quantifier=="TNE" and query.change=='yes' %}selected{%endif%}>tonne (metric ton)</option>
+                  <option disabled="" value="" {% if not data.GROSS_WEIGHT_quantifier %}selected{%endif%}>Select a unit</option>
+                  <option value="gram" {% if data.GROSS_WEIGHT_quantifier =="gram" and query.change=='yes' %}selected{%endif%}>gram</option>
+                  <option value="kilogram" {% if data.GROSS_WEIGHT_quantifier=="kilogram" and query.change=='yes' %}selected{%endif%}>kilogram</option>
+                  <option value="kilotonne" {% if data.GROSS_WEIGHT_quantifier=="kilotonne" and query.change=='yes' %}selected{%endif%}>kilotonne</option>
+                  <option value="tonne (metric ton)" {% if data.GROSS_WEIGHT_quantifier=="tonne (metric ton)" and query.change=='yes' %}selected{%endif%}>tonne (metric ton)</option>
                 </select></div>
             </div>
           </div>
