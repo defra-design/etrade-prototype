@@ -115,7 +115,10 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       Added {{count}} {{recordsTitle}}
       {%if cert.addedCommodities | length > 1%} for {{cert.addedCommodities | length}} {{commodityTitle}}{% endif %}
     </h1>
+    <!--
     <p>You can add multiple commodities for this certificate by <a href="./upload/">uploading a spreadsheet</a></p>
+    -->
+    
     <!-- Removed the accordian controls for now. Want to test to see if they are needed -->
     <!-- <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
           class="govuk-accordion__show-all-text">Show all sections</span></button></div> -->
@@ -196,24 +199,24 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                   </div>
                   {% endif %}
 
-                  {% if cert.manufacturingPlant %}
+                  {% if identification.manufacturingPlant %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Manufacturing plant:
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {{identification.manufacturingPlant or "HELEN BILLINGHAM"}}
+                      {{identification.manufacturingPlant}}
                     </dd>
                   </div>
                   {% endif %}
 
-                  {% if cert.coldStore %}
+                  {% if identification.coldStore %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Cold store
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {{identification.coldStore or "HELEN BILLINGHAM"}}
+                      {{identification.coldStore}}
                     </dd>
                   </div>
                   {% endif %}
@@ -229,13 +232,13 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                   </div>
                   {% endif %}
 
-                  {% if cert.cuttingPlant %}
+                  {% if cert.search-field-Cuttingplant %}
                   <div class="govuk-summary-list__row govuk-grid-column-one-half">
                     <dt class="govuk-summary-list__key">
                       Cutting plant
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {{identification.search-field-Cuttingplant or "HELEN BILLINGHAM"}}
+                      {{identification.search-field-Cuttingplant }}
                     </dd>
                   </div>
                   {% endif %}
