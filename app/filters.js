@@ -106,7 +106,7 @@ module.exports = function(env) {
   }
 
   filters.getDateFromExcel = function(excelDateString) {
-    var months = ["January", "February", "March", "April", "May", "June",
+    var months = ["", "January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
     ];
     var day = excelDateString.substring(8,10);
