@@ -21,7 +21,7 @@ require('./views/beta/v2-4/routes.js')(router);
 require('./views/beta/v2-4/application/export/upload/routes.js')(router);
 // experimental and other stories
 require('./views/experimental/routes.js')(router);
-require('./views/stories/accessiblity/routes.js')(router);
+require('./views/stories/routes.js')(router);
 require('./views/stories/file-import/routes.js')(router);
 require('./views/stories/file-import/read-excel/routes.js')(router);
 require('./views/tools/routes.js')(router);
