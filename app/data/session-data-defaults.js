@@ -25,8 +25,10 @@ fs.readdirSync(normalizedPath).forEach(function(file) {
 
 var establishments = require('./establishments.json')
 var scheduleUploadProcessing = require('./schedule-upload-processing.json')
+var accounts = require('./accounts.json')
 module.exports = {
   "certificates" : certs,
+  "accounts": accounts,
   "currentCertID": 0,
   "establishments" : establishments,
   "scheduleUploadProcessing": scheduleUploadProcessing,
