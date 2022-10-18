@@ -1,7 +1,7 @@
 {
     "number": "EHC8468",
     "manufacturingPlant": "yes",
-    "title": "Blood products not intended for human consumption that could be used as feed material intended for dispatch to, or transit through, the European Union and Northern Ireland",
+    "title": "Dairy products intended for human consumption that are required to undergo a pasteurisation treatment to the European Union and Northern Ireland",
     "natureOfCommodity": ["Cheese fondues","Colostrum","Composite products","consumption","Dairy","ovoproducts","Egg products for HC","Gelatine/collagen for HC","HC, preserved at ambient temperature","HC, preserved at frozen/chilled temperature","Highly refined products for HC","HTST simple","HTST,Sterilisation,UHT","human consumption","milk based products","Raw material for HC gelatine/collagen","Raw material for processing of gelatine and collagen","Raw milk","Rendered fat for HC","UHT"],
     "treatmentType" : ["A = 0 T°C","Animal by-products of category 1","Animal by-products of category 2","B = Fo>=3°","bone in","C = T>=80°","Chilled","Combined heat treatment","cooked","D = T>=70°C","deboned","dried","E = Aw<=0.93+Ph<=6","eviscerated","F = T>=65°C pv=40","Fresh","frozen","Homogenisation","In shell","Live","matured","minced","No thermal treatment","Otherwise processed","pasteurisation","Plucked","prepared","preserved","processed","Raw milk","Roasted","salted","shelled","sterilisation","Single heat treatment","Skinned","smoked","Treated","UHT","Ultrafiltration","Ultrasonication","uneviscerated","Unplucked","unskinned"],
     "batchNumber": "yes",
