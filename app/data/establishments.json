@@ -587,8 +587,8 @@
    "Town": "London",
    "Postcode": "SW8",
    "Country": "England",
-   "All_Activities": ["Processing Plant"]
- }, 
+   "All_Activities": ["Processing Plant", "Cold Store"]
+ },
  {
    "AppNo": "FG 041",
    "TradingName": "Gourmet House",
@@ -598,7 +598,7 @@
    "Town": "London",
    "Postcode": "SW8",
    "Country": "England",
-   "All_Activities": ["Processing Plant"]
+   "All_Activities": ["Processing Plant", "Cold Store"]
  }
 
 ]
