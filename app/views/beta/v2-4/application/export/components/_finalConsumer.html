@@ -1,8 +1,12 @@
+{% set finalConsumerIsRequired = true %}
+{% for schema in cert.schema %}
+  {% if schema.id == "finalConsumer" and schema.required == "no" %}
+    {% set finalConsumerIsRequired = false %}
+  {% endif %}
+{% endfor %}
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-      <label">Final consumer &nbsp;(Optional) </label>
-    </legend>
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xs">Final consumer {% if not finalConsumerIsRequired %}&nbsp;(optional){% endif %}
     <!---->
     <div class="govuk-radios govuk-radios--small govuk-radios--inline" data-module="govuk-radios">
       <div class="govuk-radios__item">

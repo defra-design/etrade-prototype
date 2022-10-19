@@ -18,8 +18,10 @@
         </button>
       </div>
     </div>
+
     <!-- Show extra added rows if its change or a copy -->
-    {% if (data.change=="yes" or data.copy=="yes") and identification.treatmentType | length > 1%}
+    {% if (query.change=="yes" or data.copy=="yes") and identification.treatmentType | length > 1%}
+
     {% for row in identification.treatmentType %}
     <div class="app-repeatable-section govuk-!-margin-top-2" id="repeatable-treatmentType{{loop.index}}">
     <div class="govuk-input__wrapper m-t-15">
@@ -51,8 +53,8 @@
     {% endif %}
     {% if (listOfItems| length) > 0%}
     {% for item in listOfItems%}
-    <option value="{{item}}" >{{item}}</option>
-    {% endfor %}]
+    <option value="{{item}}" {%if identification.treatmentType == item %}selected{% endif %} >{{item}}</option>
+    {% endfor %}
     {% else %}
     <option value="not set">Not set any species in JSON</option>
     {% endif %}

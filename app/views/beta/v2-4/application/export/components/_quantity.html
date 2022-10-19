@@ -1,10 +1,17 @@
+{% set quantityIsRequired = true %}
+{% for schema in cert.schema %}
+  {% if schema.id == "quantity" and schema.required == "no" %}
+    {% set quantityIsRequired = false %}
+  {% endif %}
+{% endfor %}
+
 <div class="govuk-form-group app-repeadable-holder" id="repeatable-quantity-holder">
-  <label class="govuk-label" for="QUANTITY-3-11930-151790">Quantity
+  <label class="govuk-label" for="QUANTITY-3-11930-151790">Quantity {% if not quantityIsRequired %}(optional){% endif %}
   </label>
   <div class="app-repeatable-section" id="repeatable-quantity">
     <div class="govuk-input__wrapper m-b-15">
-      <input class="govuk-input" type="number" data-type="quantity" name="QUANTITY" id="QUANTITY-3-11930-151790" data-v-0dd78fbf="">
-      <div class="govuk-input__suffix suffix__action no-border" data-v-0dd78fbf=""><select class="govuk-select max-w-155" id="QUANTITY-3-11930-151790-units" data-v-0dd78fbf="">
+      <input class="govuk-input" type="number" data-type="quantity" name="quantity" id="QUANTITY-3-11930-151790" data-v-0dd78fbf="">
+      <div class="govuk-input__suffix suffix__action no-border" data-v-0dd78fbf=""><select class="govuk-select max-w-155" id="QUANTITY-3-11930-151790-units" name="quantity_unit">
           <option disabled="" value="" selected>Select a unit</option>
           <option value="H87" data-v-0dd78fbf="">PIECE</option>
         </select>
