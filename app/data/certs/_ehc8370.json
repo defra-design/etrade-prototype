@@ -1,0 +1,44 @@
+{
+    "number": "EHC8370",
+    "manufacturingPlant": "yes",
+    "title": "Fresh meat, excluding mechanically separated meat, of domestic porcine animals to the European Union and Northern Ireland",
+    "natureOfCommodity": [],
+    "treatmentType" : [],
+    "batchNumber": "yes",
+    "netWeight": "yes",
+    "multiples": null,
+    "species": ["Sus scrofa domesticus","Suidae"],
+    "schema": [
+      { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+      { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
+      { "id": "species", "title": "Species", "required" : "yes", "type" : "text", "error" : "Species name is invalid"},
+      { "id": "coldStore", "title": "Cold store", "required" : "no", "type" : "search"},
+      { "id": "coldStoreActivity", "title": "Cold store activity", "required" : "no", "type" : "string"},
+      { "id": "identificationMark", "title": "Identification mark", "required" : "yes", "type" : "text", "error" : "Identification mark is a required field"},
+      { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+      { "id": "packageCount_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
+      { "id": "netWeight", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+      { "id": "netWeight_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+      { "id": "slaughterhouse", "title": "Slaughterhouse", "required" : "yes", "type" : "search", "error" : "Slaughterhouse is a required field - please enter a valid approval number"},
+      { "id": "slaughterhouseActivity", "title": "Slaughterhouse activity", "required" : "yes", "type" : "string", "error" : "Slaughterhouse activity is a required field - please select a valid activity"},
+
+      { "id": "treatmentType", "title": "Treatment type", "required" : "yes", "type" : "dropdown", "error" : "Select a valid treatment type from the list"},
+      { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "dropdown" : "string", "error" : "Nature of commodity is a required field"},
+
+      { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "text", "error" : "Batch number is required"},
+      { "id": "finalConsumer", "title": "Final consumer", "required" : "no", "type" : "radio"},
+      { "id": "dateOfCollectionProduction", "title": "Date of collection / production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of collection / production"},
+      { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+      { "id": "manufacturingPlantActivity", "title": "Manufacturing plant activity", "required" : "yes", "type" : "string", "error" : "Manufacturing plant activity is a required field - please select a valid activity"},
+      { "id": "plantEstablishmentCentre", "title": "Plant / establishment / centre", "required" : "yes", "type" : "search", "error" : "Plant / establishment / centre is a required field - please enter a valid approval number"},
+      { "id": "plantEstablishmentCentreActivity", "title": "Plant / establishment / centre activity", "required" : "yes", "type" : "string", "error" : "Plant / establishment / centre activity is a required field - please select a valid activity"},
+      { "id": "dateOfFreezing", "title": "Date of freezing", "required" : "no", "type": "excel_date"},
+      { "id": "freezingDateRange", "title": "Freezing date range", "required" : "no", "type": "text"},
+      { "id": "cuttingPlant", "title": "Cutting plant", "required" : "yes", "type" : "search", "error" : "Cutting plant is a required field - please enter a valid approval number"},
+      { "id": "cuttingPlantActivity", "title": "Cutting plant activity", "required" : "yes", "type" : "string", "error" : "Cutting plant activity is a required field - please select a valid activity"},
+      { "id": "quantity", "title": "Quantity", "required" : "no", "type" : "decimal"},
+      { "id": "quantity_UNIT", "title": "Quantity unit", "required" : "no", "type" : "string"}
+
+    ],
+    "commodities": [{"code":"1501","title":" Pig fat (including lard) and poultry fat, other than that of heading|0209|or 1503"},{"code":"04109000","title":" Other"},{"code":"02063000","title":" Of swine, fresh or chilled"},{"code":"02091090","title":" Pig fat, other than that of subheading 0209|10|11|or 0209|10|19"},{"code":"05040000","title":" Guts, bladders and stomachs of animals (other than fish), whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"},{"code":"15011090","title":" for human consumption."},{"code":"15012090","title":" for human consumption."},{"code":"02031110","title":" Of domestic swine"},{"code":"02032110","title":" Of domestic swine"},{"code":"02064100","title":" Livers"},{"code":"02064900","title":" Other than livers,"},{"code":"02091011","title":" Fresh, chilled, frozen, salted or in brine"},{"code":"02091019","title":" Dried or smoked"},{"code":"02031211","title":" Hams and cuts thereof"},{"code":"02031219","title":" Shoulders and cuts thereof"},{"code":"02031955","title":" Boneless"},{"code":"02031959","title":" Other than 02031911; 02031913; 02031915; 02031955"},{"code":"02031911","title":" Fore-ends and cuts thereof"},{"code":"02031913","title":" Loins and cuts thereof, with bone in"},{"code":"02031915","title":" Bellies (streaky) and cuts thereof"},{"code":"02032211","title":" Hams and cuts thereof"},{"code":"02032219","title":" Shoulders and cuts thereof"},{"code":"02032911","title":" Fore-ends and cuts thereof"},{"code":"02032913","title":" Loins and cuts thereof, with bone in"},{"code":"02032915","title":" Bellies (streaky) and cuts thereof"},{"code":"02032955","title":" Boneless"},{"code":"02032959","title":" Other than 02032911; 02032913; 02032915; 02032955;"}]
+  }
