@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#select-org-error-message">Select an organisation you want to manage</a>
+      </li>
+    </ul>
+  </div>
+</div>
+    <h1 class="govuk-heading-xl" id="select-org-title">
+
+    </h1>
+  <form class="" method="post">  <div class="govuk-form-group govuk-form-group--error">
+      <fieldset class="govuk-fieldset" aria-describedby="govuk-error-message select-org-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+     <h1 class="govuk-fieldset__heading">
+        Which organisation do you want to manage EHC applicaitons for?
+     </h1>
+   </legend>
+   <p id="select-org-error-message" class="govuk-error-message">
+<span class="govuk-visually-hidden">Error:</span> Select an organisation you want to manage
+</p>
+   <p class="govuk-hint" id="select-org-hint">You will be able to switch between different organisations after siging in.</p>
+   <p>{{account | length}} organisations{% if individual=="yes" %} and 1 individual account{% endif %}</p>
+        {% set showType = "no" %}
+        {% if (fullAccount.exporter | length > 0 and fullAccount.certifier | length > 0) or individual == "yes"%}
+        {% set showType = "yes" %}
+        {% endif %}
+
+        <div class="govuk-radios" data-module="govuk-radios">
+
+          {% for ac in account %}
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="select-org-{{loop.index}}" name="org" type="radio" value="{{ac.company}}~{% if ac.type =='certifier'%}https://www.figma.com/proto/l3MMeJ9NJCJfmIgtEioFcr/E-certs?node-id=589%3A938&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=8%3A754{% else %}./dashboard{% endif %}">
+            <label class="govuk-label govuk-radios__label" for="select-org-{{loop.index}}">
+              {% if showType == "yes" %}
+              <strong style="text-transform: capitalize;">{{ac.company | lower}}</strong>
+              {% else%}
+              <span style="text-transform: capitalize;">{{ac.company | lower}}</span>
+              {% endif %}{% if showType == "yes"%} - {% if ac.type=="certifier" %}certifier{% else %}exporter{% endif %}{% endif %}
+            </label>
+          </div>
+          {% endfor %}
+          {% if individual == "yes" %}
+          {% if showType=="yes" and fullAccount.exporter | length > 1%}<div class="govuk-radios__divider">or</div>{% endif %}
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="org-name" name="org" type="radio" value="{{data.accounts[data.currentAccountID].name}}~./dashboard">
+            <label class="govuk-label govuk-radios__label" for="org-name">
+              <strong style="text-transform: capitalize;">{{name}}</strong> - individual account
+            </label>
+          </div>
+          {% endif %}
+
+        </div>
+
+      </fieldset>
+    </div>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Cant find your organisation?
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        Your organisation must be approved before you can manage EHC applications for it. This might take up to 48 hours. To set up a new organisation, send an email to <a href="mailto:info@alpha.gov.uk">info@alpha.gov.uk</a>
+      </div>
+    </details>
+    <button class="govuk-button">Continue</button>
+    </form>
+  </div>
+
+</div>
+{% endblock %}

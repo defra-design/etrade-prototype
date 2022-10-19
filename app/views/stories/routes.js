@@ -38,6 +38,10 @@ module.exports = function(router) {
   }
   router.post('/' + base_url + 'continue-as/config', function(req, res) {
     req.session.data.currentAccountID = req.query.currentAccountID || "0"
+
+    if(req.body.user_id.includes("5555")){
+        res.redirect(301, '/' + base_url + 'continue-as/accounts-mixed-long');
+    }
     if(req.body.user_id.includes("7777")){
         res.redirect(301, '/' + base_url + 'continue-as/cannot-access');
     }
@@ -61,11 +65,11 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'continue-as/accounts-mixed');
   })
 
-  router.get('/' + base_url + 'continue-as/accounts-mixed', function(req, res) {
+  router.get('/' + base_url + 'continue-as/accounts-mixed*', function(req, res) {
     var accountID = req.query.id || req.session.data.currentAccountID || 0
     console.log(accountID)
     var account = getAccounts(req.session.data.accounts[accountID])
-    res.render(base_url + 'continue-as/accounts-mixed',{
+    res.render(base_url + 'continue-as/accounts-mixed'+req.params[0],{
       "account" : account,
       "name" : req.session.data.accounts[accountID].name,
       "individual" : req.session.data.accounts[accountID].individual,
@@ -73,6 +77,7 @@ module.exports = function(router) {
       "query": req.query
     });
   });
+
 
 
 }

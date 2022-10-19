@@ -1,0 +1,476 @@
+[
+  {
+    "company": "Xplor Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Zuvy Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Bolax Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Collaire Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Nimon Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Netbook Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Recrisys Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Talkola Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Rockabye Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Xinware Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Plasmox Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Goko Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Photobin Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Inventure Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Melbacor Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Exoteric Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Gonkle Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Incubus Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Opticon Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Typhonica Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Marqet Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Zaggle Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Orbaxter Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Applideck Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Comveyor Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Shadease Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Filodyne Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Qiao Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Isologics Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Vitricomp Ltd",
+    "type": "Exporter"
+  }, {
+    "company": "Microluxe Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Portico Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Brainquil Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Quailcom Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Zillanet Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Aquamate Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Equicom Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Aquafire Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Yurture Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Mondicil Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Zanymax Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Insurety Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Ecolight Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Nspire Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Sulfax Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Orboid Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Norsup Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Quizka Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Genesynk Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Intrawear Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Bizmatic Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Stelaecor Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Gonkle Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Hometown Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Temorak Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Eargo Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Songlines Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Papricut Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Suretech Ltd",
+    "type": "Exporter"
+  },
+  {
+   "company": "Isonus Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Dognost Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Biohab Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Noralex Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Enersave Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Geekwagon Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Autograte Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Freakin Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Perkle Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Vortexaco Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Oatfarm Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Senmao Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Pheast Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Enjola Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Sensate Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Quantasis Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Anarco Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Dancity Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Viasia Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Cinaster Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Talae Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Turnling Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Junipoor Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Orbixtar Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Isodrive Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Imageflow Ltd",
+   "type": "Certifier"
+ },
+ {
+   "company": "Yogasm Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Circum Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Qualitex Ltd",
+   "type": "Exporter"
+ },
+ {
+   "company": "Dymi Ltd",
+   "type": "Certifier"
+ },{
+    "company": "Solgan Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Entality Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Gadtron Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Golistic Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Coash Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Kozgene Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Comvoy Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Ecosys Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Hivedom Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Keeg Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Nurali Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Pharmex Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Entogrok Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Deminimum Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Prowaste Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Verbus Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Recognia Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Geeknet Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Terascape Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Avit Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Euron Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Steeltab Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Qualitern Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Mantro Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Buzzopia Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Lyria Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Zomboid Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Ovolo Ltd",
+    "type": "Certifier"
+  },
+  {
+    "company": "Overfork Ltd",
+    "type": "Exporter"
+  },
+  {
+    "company": "Medifax Ltd",
+    "type": "Exporter"
+  }
+]
