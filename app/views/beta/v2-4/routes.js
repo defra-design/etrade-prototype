@@ -337,13 +337,18 @@ module.exports = function(router) {
       identification[establishmentType+"-id"] = establishmentIndex;
 
       // remove this establishment type from the incomplete array (if present)
-      for (let x = 0; x < identification.incomplete.length; x++) {
-        if (identification.incomplete[x] == establishmentType) {
-          console.log("Deleting identification.incomplete at index: " + x);
-          // delete identification.incomplete[x]; // don't use this as it leaves a null rather than removing the item completely
-          identification.incomplete.splice(x, 1);
+      if (identification.incomplete) {
+        for (let x = 0; x < identification.incomplete.length; x++) {
+          if (identification.incomplete[x] == establishmentType) {
+            console.log("Deleting identification.incomplete at index: " + x);
+            // delete identification.incomplete[x]; // don't use this as it leaves a null rather than removing the item completely
+            identification.incomplete.splice(x, 1);
+          }
         }
-      }
+       } else {
+         identification.incomplete = [];
+       }
+
 
       if (establishment.All_Activities.length == 1) {
         // select the index and redirect
@@ -403,6 +408,10 @@ module.exports = function(router) {
       if (activityName == -1) {
         // if this activity isn't already in the incomplete array, add it
         console.log("User skipped this question, so this item is incomplete");
+
+        if (!identification.incomplete) {
+          identification.incomplete = [];
+        }
 
         let isInArray = false;
         for (x = 0; x < identification.incomplete.length; x++) {
@@ -465,7 +474,7 @@ module.exports = function(router) {
       "amount": req.body.GROSS_WEIGHT,
       "quantifier": req.body.GROSS_WEIGHT_quantifier
     }
-    
+
     if (req.session.data.has_multiple_certificates == 'yes') {
       res.redirect(301, '/' + base_url + 'application/export/added-certs');
     } else {

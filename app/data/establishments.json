@@ -588,7 +588,7 @@
    "Postcode": "SW8",
    "Country": "England",
    "All_Activities": ["Processing Plant"]
- }, 
+ },
  {
    "AppNo": "FG 041",
    "TradingName": "Gourmet House",
@@ -599,6 +599,17 @@
    "Postcode": "SW8",
    "Country": "England",
    "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "2060",
+   "TradingName": "Karro Foods Ltd T/A Malton Bacon Factory",
+   "Address1": "Hugden Way",
+   "Address2": "Norton Grove Industrial Estate",
+   "Address3": "Malton",
+   "Town": "Malton",
+   "Postcode": "YO17 9HG",
+   "Country": "England",
+   "All_Activities": ["Processing Plant", "Category 3", "Cutting Plant", "Slaughterhouse", "Meat Preparation Plant", "Minced Meat Plant"]
  }
 
 ]

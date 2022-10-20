@@ -1,5 +1,12 @@
+{% set dateOfFreezingIsRequired = true %}
+{% for schema in cert.schema %}
+  {% if schema.id == "dateOfFreezing" and schema.required == "no" %}
+    {% set dateOfFreezingIsRequired = false %}
+  {% endif %}
+{% endfor %}
+
 <div class="govuk-form-group app-repeadable-holder" id="repeatable-freezing-date-holder">
-  <label class="govuk-label" for="FREEZING_DATE-6-11711-020120">Date of freezing(Optional) </label>
+  <label class="govuk-label" for="FREEZING_DATE-6-11711-020120">Date of freezing {% if not dateOfFreezingIsRequired %}&nbsp;(optional){% endif %}</label>
   <div class="app-repeatable-section" id="repeatable-freezing-date">
     <div class="govuk-input__wrapper m-t-15">
       <input name="dateOfFreezing" class="govuk-input" type="datetime-local" id="FREEZING_DATE-6-11711-020120">
