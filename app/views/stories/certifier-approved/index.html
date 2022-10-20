@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      116712: select roles where user has more than one role</h1>
+      <p>
+        Ticket: <a href="https://dev.azure.com/defragovuk/DEFRA-EEHC/_workitems/edit/116712">116712</a>
+      </p>
+      <h2 class="govuk-heading-m">Account numbers</h2>
+      <p>Use the following numbers on the gateway login page:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><strong>0000</strong> - 1 account and can access service</li>
+        <li><strong>1111</strong> - Multiple certerfier only accounts</li>
+        <li><strong>2222</strong> - Multiple certerfier and exporter</li>
+        <li><strong>3333</strong> - Individual, certifier and exporter accounts</li>
+        <li><strong>4444</strong> - 1 certifier and 1 individual</li>
+        <li><strong>5555</strong> - Very long list (autocomplete)</li>
+        <li><strong>6666</strong> - Not approved: Certifier with 1 account</li>
+        <li><strong>7777</strong> - No account: 1 account but not associated with etrade</li>
+      </ul>
+
+      <p>This version has not been tested yet</p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="gov-sign-in">Sign in page</a></li>
+        <p></p>
+        <li><a href="accounts-mixed?id=0">Certifier (only) account with multiple accounts</a></li>
+        <li><a href="accounts-mixed?id=1">Multiple certfifier and exporter accounts</a></li>
+        <li><a href="accounts-mixed?id=2">Individual account with certifier and exporter accounts </a></li>
+        <li><a href="accounts-mixed-with-error">Select account with error</a></li>
+        <p><br>For accounts which have large amount (25+) of organsiations use accessibility autocomplete</p>
+        <li><a href="accounts-mixed-long">Account more that 25 organisations has multiple roles (autocomplet)</a></li>
+      </ul>
+      <h3 class="govuk-heading-s">Single org or indiviudal account and account doesnt have access to ETrade</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="not-approved">Not approved - single certifier account</a></li>
+        <li><a href="cannot-access">Cannot access - not signed up to e-trade</a></li>
+
+
+      </ul>
+  </div>
+
+</div>
+
+{% endblock %}

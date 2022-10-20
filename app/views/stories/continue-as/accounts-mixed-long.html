@@ -27,7 +27,7 @@ Home – GOV.UK Prototype Kit
 
 
             <label class="govuk-label" for="account">Organisation</label>
-            <p class="govuk-hint" id="account-hint">Start typing, then select a country from the list</p>
+            <p class="govuk-hint" id="account-hint">Start typing, then select an organisation from the list</p>
             <select class="govuk-select govuk-!-width-two-thirds" id="account" name="account" aria-discribedby="account-hint">
               <option disabled="" value="" selected>Select an organisation</option>
               {% for account in data.accounts_long %}
@@ -46,7 +46,10 @@ Home – GOV.UK Prototype Kit
           </span>
         </summary>
         <div class="govuk-details__text">
-          Your organisation must be approved before you can manage EHC applications for it. This might take up to 48 hours. To set up a new organisation, send an email to <a href="mailto:info@alpha.gov.uk">info@alpha.gov.uk</a>
+          <p>Your organisation must be approved before you can manage EHC applications for it. It can take up to 48 hours to approve new organsiations.</p>
+          <p>If you need to talk to someone about your access to this service, <a href="https://www.gov.uk/guidance/get-an-export-health-certificate#if-you-need-help">contact APHA or DAERA</a></p>
+
+
         </div>
       </details>
       <button class="govuk-button" id="organisation-select-button">Continue</button>
