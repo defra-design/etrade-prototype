@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+  .certifier-result {
+    margin: 1em 0;
+    background-color: #fff;
+}
+.certifier-result .certifier-result--heading {
+    padding: 0.5em;
+    background-color: #1f70b8;
+}
+.certifier-result .certifier-result--heading .govuk-heading-s {
+    margin: 0;
+    color: #fff;
+}
+.certifier-result .certifier-result--body {
+    padding: 0.5em;
+    border: 4px solid #1f70b8;
+}
+.certifier-result .govuk-button {
+    margin: 0;
+}
+.certifier-result--not-approved .certifier-result--heading{
+      background-color: #505a5f;
+}
+.certifier-result--not-approved  .certifier-result--heading .govuk-heading-s{
+  color: #ffffff;
+}
+.certifier-result--not-approved .certifier-result--body {
+    border: 4px solid #505a5f;
+}
+</style>
+
+  <section id="intro" data-v-9bbd6bdc="">
+    <div class="govuk-grid-row" data-v-9bbd6bdc="">
+      <div class="govuk-grid-column-two-thirds" data-v-9bbd6bdc=""><span class="govuk-caption-xl">Persons involved</span>
+        <h1 class="govuk-heading-xl"> Certifier </h1>
+        <!---->
+        <!---->
+        <!---->
+        <p class="govuk-body" data-v-9bbd6bdc="">This is the certifying officers organisation who is authorised by Defra to sign the official certificate.</p>
+        <h2 class="govuk-visually-hidden" data-v-9bbd6bdc="">Certifier search</h2>
+      </div>
+    </div>
+  </section>
+  <section id="form" aria-live="polite" data-v-9bbd6bdc="">
+    <div class="govuk-grid-row" data-v-9bbd6bdc="">
+      <div class="govuk-grid-column-two-thirds" data-v-9bbd6bdc="">
+        <div class="new-certifier-selection" data-v-9bbd6bdc="">
+          <div class="govuk-form-group" data-v-9bbd6bdc="">
+            <fieldset class="govuk-fieldset" data-v-9bbd6bdc="">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-9bbd6bdc="">
+                <h1 class="govuk-fieldset__heading" data-v-9bbd6bdc=""> Which certificate will this person/organisation certify? </h1>
+              </legend>
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-v-9bbd6bdc="">
+                <div class="govuk-checkboxes__item" data-v-9bbd6bdc=""><input class="govuk-checkboxes__input" id="certificate-0" type="checkbox" value="11802" data-v-9bbd6bdc=""><label class="govuk-label govuk-checkboxes__label" for="certificate-0"
+                    data-v-9bbd6bdc="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</label></div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-form-group" data-v-9bbd6bdc="">
+            <h1 class="govuk-label-wrapper" data-v-9bbd6bdc=""><label class="govuk-label govuk-label--m" for="search-field" id="search-field-label" data-v-9bbd6bdc=""> Search for a certifier </label></h1>
+            <div id="search-field-hint" class="govuk-hint" data-v-9bbd6bdc="">Search by name or postcode.</div><input class="govuk-input" id="search-field" type="text" aria-labelledby="search-field-label" aria-describedby="search-field-hint"
+              placeholder="Type here" data-v-9bbd6bdc="">
+          </div>
+          <div data-v-9bbd6bdc="">
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" data-v-9bbd6bdc=""><span class="govuk-caption-m" data-v-9bbd6bdc="">Search results</span>
+            <h2 class="govuk-heading-m" data-v-9bbd6bdc="">8 results found</h2>
+            <div class="certifier-result" data-v-9bbd6bdc="">
+              <div class="certifier-result--heading" data-v-9bbd6bdc="">
+                <h3 class="govuk-heading-s" data-v-9bbd6bdc="">ABC ACCOUNTANCY &amp; MARKETING SERVICES LTD Hornbeam House CW1 6GJ </h3>
+              </div>
+              <div class="certifier-result--body" data-v-9bbd6bdc="">
+                <p class="govuk-body" data-v-9bbd6bdc="">ABC ACCOUNTANCY &amp; MARKETING SERVICES LTD</p>
+                <details class="govuk-details" data-module="govuk-details" data-v-9bbd6bdc="">
+                  <summary class="govuk-details__summary" data-v-9bbd6bdc=""><span class="govuk-details__summary-text" data-v-9bbd6bdc=""> View address for this certifier </span></summary>
+                  <div class="govuk-details__text" data-v-9bbd6bdc="">
+
+                  </div>
+                </details><button class="govuk-button govuk-button--secondary full-width" data-v-9bbd6bdc="">Select this certifier</button>
+              </div>
+            </div>
+            <div class="certifier-result" data-v-9bbd6bdc="">
+              <div class="certifier-result--heading" data-v-9bbd6bdc="">
+                <h3 class="govuk-heading-s" data-v-9bbd6bdc="">COMP SEC SERVICES LIMITED 4 Lymn road NG4 4EA </h3>
+              </div>
+              <div class="certifier-result--body" data-v-9bbd6bdc="">
+                <p class="govuk-body" data-v-9bbd6bdc="">COMP SEC SERVICES LIMITED</p>
+                <details class="govuk-details" data-module="govuk-details" data-v-9bbd6bdc="">
+                  <summary class="govuk-details__summary" data-v-9bbd6bdc=""><span class="govuk-details__summary-text" data-v-9bbd6bdc=""> View address for this certifier </span></summary>
+                  <div class="govuk-details__text" data-v-9bbd6bdc="">
+                    <p class="govuk-body" data-v-9bbd6bdc="">4 Lymn road<br data-v-9bbd6bdc=""> test<br data-v-9bbd6bdc=""> test<br data-v-9bbd6bdc=""> NG4 4EA</p>
+                  </div>
+                </details><button class="govuk-button govuk-button--secondary full-width" data-v-9bbd6bdc="">Select this certifier</button>
+              </div>
+            </div>
+            <div class="certifier-result certifier-result--not-approved" data-v-9bbd6bdc="">
+              <div class="certifier-result--heading" data-v-9bbd6bdc="">
+                <h3 class="govuk-heading-s" data-v-9bbd6bdc="">G A A CONSULTANCY SERVICES LIMITED 23 beaumont road ca24rg </h3>
+              </div>
+              <div class="certifier-result--body" data-v-9bbd6bdc="">
+                <p class="govuk-body" data-v-9bbd6bdc="">G A A CONSULTANCY SERVICES LIMITED</p>
+                <details class="govuk-details" data-module="govuk-details" data-v-9bbd6bdc="">
+                  <summary class="govuk-details__summary" data-v-9bbd6bdc=""><span class="govuk-details__summary-text" data-v-9bbd6bdc=""> View address for this certifier </span></summary>
+                  <div class="govuk-details__text" data-v-9bbd6bdc="">
+                    <p class="govuk-body" data-v-9bbd6bdc="">23 beaumont road<br data-v-9bbd6bdc=""> carlisle<br data-v-9bbd6bdc=""> carlisle<br data-v-9bbd6bdc=""> ca24rg</p>
+                  </div>
+                </details>
+                <p class="govuk-body"> This certifier has not been approved and cannot be selected</p>
+              </div>
+            </div>
+            <div class="certifier-result certifier-result--not-approved" data-v-9bbd6bdc="">
+              <div class="certifier-result--heading" data-v-9bbd6bdc="">
+                <h3 class="govuk-heading-s" data-v-9bbd6bdc="">Lobster vets inc (Your account)</h3>
+              </div>
+              <div class="certifier-result--body" data-v-9bbd6bdc="">
+                <p class="govuk-body" data-v-9bbd6bdc="">Lobster vets inc</p>
+                <details class="govuk-details" data-module="govuk-details" data-v-9bbd6bdc="">
+                  <summary class="govuk-details__summary" data-v-9bbd6bdc=""><span class="govuk-details__summary-text" data-v-9bbd6bdc=""> View address for this certifier </span></summary>
+                  <div class="govuk-details__text" data-v-9bbd6bdc="">
+                    <p class="govuk-body" data-v-9bbd6bdc="">12<br data-v-9bbd6bdc=""> Curzon Park South<br data-v-9bbd6bdc=""> Curzon Park South<br data-v-9bbd6bdc=""> CH4 8AB</p>
+                  </div>
+                </details>
+                <p class="govuk-body">You cannot inspect and certify your own exports.</p>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="actions" data-v-9bbd6bdc="">
+    <div class="govuk-grid-row" data-v-9bbd6bdc="">
+      <div class="govuk-grid-column-two-thirds" data-v-9bbd6bdc="">
+        <!---->
+        <div data-v-9bbd6bdc="">
+          <p class="govuk-body" data-v-9bbd6bdc=""><a class="govuk-link" href="#" data-v-9bbd6bdc="">Cancel selection</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
