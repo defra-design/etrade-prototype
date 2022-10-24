@@ -435,7 +435,7 @@ module.exports = function(router) {
                       } else if (cert_schema[c].multiple === "yes") {
                         console.log("Found a multiple: " + cert_schema[c].id + " -- " + temp[cert_schema[c].id]);
                         // split previously stored value for this field into an array
-                        stringArray = temp[cert_schema[c].id].split(",");
+                        stringArray = temp[cert_schema[c].id].toString().split(",");
                         // remove extraneous spaces
 
                         for (x = 0; x < stringArray.length; x++) {
