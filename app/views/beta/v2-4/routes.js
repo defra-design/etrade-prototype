@@ -545,5 +545,52 @@ module.exports = function(router) {
     }
   });
 
+  router.get('/' + base_url + 'application/export/download-data-as-spreadsheet', function(req, res) {
+    console.log("In routes.js for download-data-as-spreadsheet");
+
+    // get data from addedEHC[0]
+    let addedEHC = req.session.data.addedEHC[0];
+
+    // make sure we have valid data
+    if (addedEHC) {
+      // if we have valid data, grab it and build out the structure
+      console.log("We have good data");
+
+      let required = [];
+      let columnHeadings = [];
+      for (let x = 0; x < addedEHC.schema.length; x++) {
+        if (addedEHC.schema[x].required == "Yes") {
+          required.push("Required");
+        } else {
+          required.push("Optional");
+        }
+
+        columnHeadings.push(addedEHC.schema[x].title);
+      }
+
+      // TODO: add logo
+      // TODO: add EHC name and description in b1
+        // addedEHC.number, addedEHC.title
+      // TODO: add row of required/optional
+        // TODO: style required/optional
+        // addedEHC.schema[x].required == "yes" || "no"
+      // TODO: add row of column headings
+        // TODO: style column headings
+        // addedEHC.schema[x].title
+      // TODO: add each row of data, for now, ignoring data type
+        // TODO: add data types
+        // TODO: highlight incompletes
+      // TODO: save file
+      // TODO: send file to browser for download
+      // TODO: close browser tab
+    } else {
+      // if we don't have valid data, spit out dummy data instead
+      console.log("We don't have good data");
+    }
+
+
+
+  });
+
 
 }
