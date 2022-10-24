@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-We've made some changes to the service - eTrade – GOV.UK Prototype Kit
+Download data - eTrade – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -20,6 +20,14 @@ We've made some changes to the service - eTrade – GOV.UK Prototype Kit
       <li>an Excel file that matches our styling</li>
       <li>an Excel file that matches our styling and has drop-down menus</li>
     </ul>
+
+    <h2>addedEHC[0]</h2>
+    <h3>{{ data.addedEHC[0].number }}</h3>
+    <h4>{{ data.addedEHC[0].title }}</h4>
+    <h4>Schema</h4>
+    {{ data.addedEHC[0].schema | dump }}
+    <h4>Data</h4>
+    {{ data.addedEHC[0].addedCommodities | dump }}
 
     <form class="" action="" method="post">
       <div class="govuk-form-group" method="submit">
