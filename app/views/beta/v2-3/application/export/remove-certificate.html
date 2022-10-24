@@ -32,10 +32,16 @@ Home – GOV.UK Prototype Kit
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Commodities added
+      Records added
     </dt>
     <dd class="govuk-summary-list__value">
-      {{(certificate.addedCommodities|length) or '2'}}
+      {% set commodityCount = 0%}
+      {% for c in certificate.addedCommodities %}
+      {% for i in c.identifications %}
+      {% set commodityCount = commodityCount+1 %}
+      {% endfor%}
+      {% endfor%}
+      {{commodityCount or '2'}}
     </dd>
   </div>
 </dl>
