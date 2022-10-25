@@ -552,10 +552,7 @@ module.exports = function(router) {
     // but hopefully this is reliable enough for now
 
       // TODO: add each row of data, for now, ignoring data type
-        // TODO: add data types
         // TODO: highlight incompletes
-        // TODO: convert multiple arrays into comma delimited lists
-
 
 
     let certID = req.session.data.currentCertID || 0;
@@ -634,11 +631,19 @@ module.exports = function(router) {
             let cell = {};
             // console.log("Adding a cell with the value: " + addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id]);
 
-            // short term hack to not have an array of values within a cell for multiples
+            // handle multiples that may enter as arrays
             if (ehcSchema[z].multiple == "yes") {
-              cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id][0];
+              cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id].toString();
             } else {
               cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id];
+            }
+
+            if (ehcSchema[z].type == "decimal") {
+              cell['type'] = Number;
+
+              cell['value'] = Number(addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id]);
+            } else {
+              cell['type'] = String;
             }
 
             row.push(cell);
