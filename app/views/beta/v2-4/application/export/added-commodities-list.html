@@ -118,6 +118,9 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       Added {{count}} {{recordsTitle}}
       {%if cert.addedCommodities | length > 1%} for {{cert.addedCommodities | length}} {{commodityTitle}}{% endif %}
     </h1>
+
+    <p class="govuk-body"><a href="download/generate-data-spreadsheet?random={{ 100000 | randomNumberGenerator }}" class="govuk-link">Download data as spreadsheet</a></p>
+
     <!--
     <p>You can add multiple commodities for this certificate by <a href="./upload/">uploading a spreadsheet</a></p>
     -->
@@ -394,10 +397,6 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <form method="post" action="select-commodities">
-
-            <a href="download-data-as-spreadsheet" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Download data as spreadsheet</a>
-            <br>
-            <br>
 
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">

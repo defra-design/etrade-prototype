@@ -1,6 +1,6 @@
 module.exports = function(router) {
   // Load helper functions
-
+  const writeXlsxFile = require('write-excel-file/node');
 
   // CHANGE VERSION each time you create a new version
   const base_url = "beta/v2-4/"
@@ -545,52 +545,177 @@ module.exports = function(router) {
     }
   });
 
-  router.get('/' + base_url + 'application/export/download-data-as-spreadsheet', function(req, res) {
-    console.log("In routes.js for download-data-as-spreadsheet");
+  router.get('/' + base_url + 'application/export/download/generate-data-spreadsheet', function(req, res) {
+    console.log("In routes.js for generate-data-spreadsheet");
+    // every time this page loads, we generate a spreadsheet for download
+    // this is inefficient and possibly causes problems in a multi-user environment
+    // but hopefully this is reliable enough for now
 
-    // get data from addedEHC[0]
-    let addedEHC = req.session.data.addedEHC[0];
-
-    // make sure we have valid data
-    if (addedEHC) {
-      // if we have valid data, grab it and build out the structure
-      console.log("We have good data");
-
-      let required = [];
-      let columnHeadings = [];
-      for (let x = 0; x < addedEHC.schema.length; x++) {
-        if (addedEHC.schema[x].required == "Yes") {
-          required.push("Required");
-        } else {
-          required.push("Optional");
-        }
-
-        columnHeadings.push(addedEHC.schema[x].title);
-      }
-
-      // TODO: add logo
-      // TODO: add EHC name and description in b1
-        // addedEHC.number, addedEHC.title
-      // TODO: add row of required/optional
-        // TODO: style required/optional
-        // addedEHC.schema[x].required == "yes" || "no"
-      // TODO: add row of column headings
-        // TODO: style column headings
-        // addedEHC.schema[x].title
       // TODO: add each row of data, for now, ignoring data type
         // TODO: add data types
         // TODO: highlight incompletes
-      // TODO: save file
-      // TODO: send file to browser for download
-      // TODO: close browser tab
+        // TODO: convert multiple arrays into comma delimited lists
+
+
+
+    let certID = req.session.data.currentCertID || 0;
+    let addedEHC = req.session.data.addedEHC[0];
+
+    if (addedEHC) {
+      console.log("We have data at addedEHC[0]")
+
+      let ehcString = addedEHC.number;
+      console.log("ehcString: " + ehcString);
+      let ehcNumber = ehcString.substring(3,7); // e.g. 8361
+      console.log("ehcNumber: " + ehcNumber);
+      let ehcNumberWithHyphen = "EHC-" + ehcNumber;
+      console.log("ehcNumberWithHyphen: " + ehcNumberWithHyphen);
+      let ehcTitle = addedEHC.title;
+      let filename = ehcString + "-data-template.xlsx";
+
+      // console.log(ehcNumber + " -- " + ehcTitle);
+
+      let ehcSchema = addedEHC.schema;
+      let requiredHeading = [];
+      let columnHeading = [];
+
+      // populate values for required/optional and column title columns
+      for (let x = 0; x < ehcSchema.length; x++) {
+        if (ehcSchema[x].required == "yes") {
+          requiredHeading.push("Required");
+        } else {
+          requiredHeading.push("Optional");
+        }
+        columnHeading.push(ehcSchema[x].title);
+      }
+
+      let excelRequiredRow = [];
+      for (let x = 0; x < requiredHeading.length; x++) {
+        let row = {};
+        row['value'] = requiredHeading[x];
+        row['backgroundColor'] = '#EEEBE2';
+        if (requiredHeading[x] == "Required") {
+          row['fontWeight'] = 'bold';
+          row['color'] = '#FF0000';
+        } else {
+          row['fontStyle'] = 'italic';
+          row['color'] = '#000000';
+        }
+        row['width'] = 100;
+
+        excelRequiredRow.push(row);
+      }
+
+      let excelHeaderRow = [];
+      for (let x = 0; x < columnHeading.length; x++) {
+        let row = {};
+        row['value'] = columnHeading[x];
+        row['fontWeight'] = 'bold';
+        row['color'] = '#FFFFFF';
+        row['backgroundColor'] = '#000000';
+        excelHeaderRow.push(row);
+      }
+
+      let excelDataRows = [];
+
+      // for every item within the addedCommodities array
+      for (let x = 0; x < addedEHC.addedCommodities.length; x++) {
+
+        // for every item within the addedCommodities[x].identifications array
+        for (let y = 0; y < addedEHC.addedCommodities[x].identifications.length; y++) {
+
+          let row = [];
+          // console.log("Starting a new row");
+
+          // for every item within the schema
+          for (let z = 0; z < ehcSchema.length; z++) {
+
+            // store a row with cells that match the schema --> don't just add everything in the identification because there is junk in there
+            let cell = {};
+            // console.log("Adding a cell with the value: " + addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id]);
+
+            // short term hack to not have an array of values within a cell for multiples
+            if (ehcSchema[z].multiple == "yes") {
+              cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id][0];
+            } else {
+              cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id];
+            }
+
+            row.push(cell);
+          }
+
+          // console.log("Adding row to excelDataRows");
+          // console.log(row);
+
+          excelDataRows.push(row);
+        }
+
+      }
+
+      // add header rows
+      excelDataRows.unshift(excelHeaderRow);
+      excelDataRows.unshift(excelRequiredRow);
+
+      // add 6 row placeholder for image and EHC name/title
+      let specialHeaderRow = [
+        {
+          value: '',
+          rowSpan: 6,
+        },
+        {
+          value: ehcNumberWithHyphen + ": " + ehcTitle,
+          rowSpan: 6,
+          span: ehcSchema.length -1,
+          fontWeight: 'bold',
+          alignVertical: 'center',
+          wrap: true
+        }
+      ]
+      let specialHeaderRow2 = [ null, null ];
+      let specialHeaderRow3 = [ null, null ];
+      let specialHeaderRow4 = [ null, null ];
+      let specialHeaderRow5 = [ null, null ];
+      let specialHeaderRow6 = [ null, null ];
+
+
+      excelDataRows.unshift(specialHeaderRow6);
+      excelDataRows.unshift(specialHeaderRow5);
+      excelDataRows.unshift(specialHeaderRow4);
+      excelDataRows.unshift(specialHeaderRow3);
+
+      excelDataRows.unshift(specialHeaderRow2);
+      excelDataRows.unshift(specialHeaderRow);
+
+      let excelFilePath = './public/data/uploads/excel.xlsx';
+      let writeFilePath = './public/data/uploads/' + filename;
+
+      writeXlsxFile(excelDataRows, {
+        filePath: writeFilePath
+      })
+      console.log("Passed writing excelData to " + writeFilePath);
+
+      // res.download(excelFilePath);
+      /*
+      res.download(excelFilePath, 'spreadsheet.xlsx', function(err){
+        if (err) {
+          console.log("Error : " + err);
+        } else {
+          console.log("No errors");
+        }
+
+      });
+      */
+      // console.log(excelData);
+      res.redirect(307, '/' + base_url + 'application/export/download/download-data-spreadsheet.html');
+
     } else {
-      // if we don't have valid data, spit out dummy data instead
-      console.log("We don't have good data");
+      console.log("No commodity data available");
     }
 
 
-
   });
+
+
 
 
 }
