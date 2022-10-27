@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="" method="post">  <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="select-org-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+       <h1 class="govuk-fieldset__heading">
+          Which organisation do you want to manage EHC applicaitons for?
+       </h1>
+     </legend>
+
+     <p class="govuk-hint" id="select-org-hint">You will be able to switch between different organisations after siging in.</p>
+     <p>4 organisations and 1 individual account</p>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="select-org-1" name="org" type="radio" {% if data.account == 'Anavir Ltd'%}checked{% endif %} value="Anavir Ltd~./dashboard-exporter?account=Anavir Ltd">
+              <label class="govuk-label govuk-radios__label" for="select-org-1">
+                <strong style="text-transform: capitalize;">Anavir ltd</strong>
+                 - exporter
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="select-org-2" name="org" type="radio" {% if data.account=='Isosure trading Ltd'%}checked{% endif %} value="Isosure trading Ltd~./dashboard-exporter?account=Isosure trading Ltd">
+              <label class="govuk-label govuk-radios__label" for="select-org-2">
+
+                <strong style="text-transform: capitalize;">Isosure Trading Ltd</strong>
+                 - exporter
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="select-org-3" name="org" type="radio" value="Isosure trading Ltd~./dashboard-certifier?account=Isosure trading Ltd"">
+              <label class="govuk-label govuk-radios__label" for="select-org-3">
+
+                <strong style="text-transform: capitalize;">Isosure trading Ltd</strong>
+                 - certifier
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="select-org-4" name="org" type="radio" value="ZILLADYNE LTD~./dashboard-certifier?account=Zilladyne Ltd">
+              <label class="govuk-label govuk-radios__label" for="select-org-4">
+
+                <strong style="text-transform: capitalize;">zilladyne ltd</strong>
+                 - certifier
+              </label>
+            </div>
+
+
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="org-name" name="org" type="radio" value="Richard Hatton~./dashboard-exporter?account=Richard Hatton">
+              <label class="govuk-label govuk-radios__label" for="org-name">
+                <strong style="text-transform: capitalize;">Richard Hatton</strong> - individual account
+              </label>
+            </div>
+
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Cant find your organisation?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Your organisation must be approved before you can manage EHC applications for it. It can take up to 48 hours to approve new organsiations.</p>
+
+
+
+        </div>
+      </details>
+      <button class="govuk-button">Continue</button>
+      </form>
+  </div>
+
+</div>
+{% endblock%}
