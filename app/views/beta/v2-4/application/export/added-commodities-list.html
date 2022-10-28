@@ -66,6 +66,15 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
     font-weight: bold;
     }
 
+    .etrade-warning-banner {
+      border: 5px solid #f47738;
+      background-color: #f47738;
+    }
+
+    .etrade-warning-banner h2 {
+      color: #000000;
+    }
+
 </style>
 {% endblock%}
 
@@ -113,17 +122,6 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
     {% endif %}
   {% endfor %}
 {% endfor %}
-
-<style>
-  .etrade-warning-banner {
-    border: 5px solid #f47738;
-    background-color: #f47738;
-  }
-
-  .etrade-warning-banner h2 {
-    color: #000000;
-  }
-</style>
 
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-three-quarters">
@@ -206,7 +204,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
         {% endif %}
       {% endfor %}
     <!-- set the location of the commodity in the full commodity list. This needs improving -->
-    <div class="app-accordion {% if hasIncompleteRecord %}hasIncompleteRecord{% endif %}" id="accordion-default-{{loop.index}}">
+    <div class="commodity-accordion app-accordion {% if hasIncompleteRecord %}hasIncompleteRecord{% endif %}" id="accordion-default-{{loop.index}}">
 
       <h2 class="govuk-heading-s commodity-group-label">{{commodity.code}} - <span class="govuk-!-font-weight-regular" title="{{commodity.title}}">{{commodity.title | truncate(125)}}</span></h2>
       {% set currentCommodityID = loop.index-1 %}
@@ -214,7 +212,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
         {% for identification in commodity.identifications %}
 
-        <div class="govuk-summary-list__row govuk-accordion__section {% if identification.isIncomplete %}incomplete{% endif %}" id="c{{currentCommodityID}}-i{{loop.index-1}}">
+        <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section {% if identification.isIncomplete %}incomplete{% endif %}" id="c{{currentCommodityID}}-i{{loop.index-1}}">
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
             <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
               {% if query.changed=="yes" and data.commodityListID == currentCommodityID and loop.index-1 == data.changeID %} <strong class="govuk-tag govuk-tag--blue">{% if query.new %}New{%else%}Changed{%endif%}</strong>{% endif %}
@@ -469,9 +467,11 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       });
 
       function showIncompleteRecords() {
-        $("#accordion-default div.govuk-summary-list__row").hide();
-        $("#accordion-default div.govuk-summary-list__row.incomplete").show();
-        $(".app-accordion").hide();
+        $(".commodity-accordion-row").hide();
+        $(".commodity-accordion-row.incomplete").show();
+
+        $(".commodity-accordion").hide();
+
         $(".hasIncompleteRecord").show();
 
         $("button.navButton").removeClass("active");
@@ -479,7 +479,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       }
 
       function showAllRecords() {
-        $("#accordion-default div.govuk-summary-list__row").show();
+        $(".commodity-accordion-row").show();
         $(".app-accordion").show();
 
         $("button.navButton").removeClass("active");
