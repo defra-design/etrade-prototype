@@ -324,23 +324,30 @@ module.exports = function(router) {
 
   function writeBodyDataToSchema(schema, body) {
     console.log("Writing data based on schema");
+    /*
     console.log(schema);
     console.log("------");
     console.log(body);
     console.log("------");
+    */
     let data = {};
     data['incomplete'] = [];
     data['isIncomplete'] = false;
     for (let x = 0; x < schema.length; x++) {
-      console.log(schema[x]);
-      data[schema[x].id] = body[schema[x].id];
+      // console.log(schema[x]);
+      if (body[schema[x].id]) {
+        data[schema[x].id] = body[schema[x].id];
+      } else {
+        data[schema[x].id] = null;
+      }
+
       if ((schema[x].required == "yes") && (!body[schema[x].id])) {
         data['incomplete'].push(schema[x].id);
         data['isIncomplete'] = true;
       }
     }
 
-    console.log(data);
+    // console.log(data);
     return data;
   }
 
@@ -660,7 +667,13 @@ module.exports = function(router) {
 
             // handle multiples that may enter as arrays
             if (ehcSchema[z].multiple == "yes") {
-              cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id].toString();
+              
+              if (addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id] === null) {
+                cell['value'] = "";
+              } else {
+                cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id].toString();
+              }
+
             } else {
               cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id];
             }
