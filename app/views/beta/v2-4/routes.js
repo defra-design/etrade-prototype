@@ -279,7 +279,9 @@ module.exports = function(router) {
       var identificationID = req.session.data.changeID || 0
 
       console.log("cert.addedCommodities[" + currentCommodityID + "].identifications[" + identificationID + "] = req.body");
-      cert.addedCommodities[currentCommodityID].identifications[identificationID] = req.body;
+
+      // cert.addedCommodities[currentCommodityID].identifications[identificationID] = req.body;
+      cert.addedCommodities[currentCommodityID].identifications[identificationID] = writeBodyDataToSchema(cert.schema, req.body);
 
       if (req.query.new) {
         res.redirect(301, '/' + base_url + 'application/export/added-commodities-list?changed=yes&showAlert=yes&new=yes');
@@ -306,7 +308,9 @@ module.exports = function(router) {
           "identifications": []
         }
 
-        commodity.identifications.push(req.body);
+        // commodity.identifications.push(req.body);
+        commodity.identifications.push(writeBodyDataToSchema(cert.schema, req.body));
+
         addedCommodities.push(commodity)
         req.session.data.currentIdenticiationID=0
       }
@@ -316,6 +320,29 @@ module.exports = function(router) {
 
 
   })
+
+
+  function writeBodyDataToSchema(schema, body) {
+    console.log("Writing data based on schema");
+    console.log(schema);
+    console.log("------");
+    console.log(body);
+    console.log("------");
+    let data = {};
+    data['incomplete'] = [];
+    data['isIncomplete'] = false;
+    for (let x = 0; x < schema.length; x++) {
+      console.log(schema[x]);
+      data[schema[x].id] = body[schema[x].id];
+      if ((schema[x].required == "yes") && (!body[schema[x].id])) {
+        data['incomplete'].push(schema[x].id);
+        data['isIncomplete'] = true;
+      }
+    }
+
+    console.log(data);
+    return data;
+  }
 
   router.post('/' + base_url + 'application/find/results', function(req, res) {
 
