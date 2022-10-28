@@ -1,6 +1,6 @@
 module.exports = function(router) {
   // Load helper functions
-
+  const writeXlsxFile = require('write-excel-file/node');
 
   // CHANGE VERSION each time you create a new version
   const base_url = "beta/v2-4/"
@@ -20,10 +20,7 @@ module.exports = function(router) {
     let id = req.body.certificate || 0;
     let cert = req.session.data.certificates[id];
 
-
     // check if its already selected
-
-
 
     if (!isAlreadyAdded(req.session.data.addedEHC, cert.number)) {
       // create a new array to hold the commodity data
@@ -36,8 +33,20 @@ module.exports = function(router) {
       req.session.data.currentCommodityID = id;
 
     }
+
+    if (req.session.data.hasSeenCduInterstitial) {
+      res.redirect(301, '/' + base_url + 'application/export/how-to-add');
+    } else {
+      req.session.data.hasSeenCduInterstitial = true;
+      res.redirect(301, '/' + base_url + 'application/export/cdu-interstitial');
+    }
+
+  })
+
+  router.post('/' + base_url + 'application/export/cdu-interstitial', function(req, res) {
     res.redirect(301, '/' + base_url + 'application/export/how-to-add');
   })
+
   router.post('/' + base_url + 'application/export/how-to-add', function(req, res) {
     res.redirect(301, '/' + base_url + 'application/export/how-to-add?error=true');
   })
@@ -279,7 +288,9 @@ module.exports = function(router) {
       var identificationID = req.session.data.changeID || 0
 
       console.log("cert.addedCommodities[" + currentCommodityID + "].identifications[" + identificationID + "] = req.body");
-      cert.addedCommodities[currentCommodityID].identifications[identificationID] = req.body;
+
+      // cert.addedCommodities[currentCommodityID].identifications[identificationID] = req.body;
+      cert.addedCommodities[currentCommodityID].identifications[identificationID] = writeBodyDataToSchema(cert.schema, req.body);
 
       if (req.query.new) {
         res.redirect(301, '/' + base_url + 'application/export/added-commodities-list?changed=yes&showAlert=yes&new=yes');
@@ -306,7 +317,9 @@ module.exports = function(router) {
           "identifications": []
         }
 
-        commodity.identifications.push(req.body);
+        // commodity.identifications.push(req.body);
+        commodity.identifications.push(writeBodyDataToSchema(cert.schema, req.body));
+
         addedCommodities.push(commodity)
         req.session.data.currentIdenticiationID=0
       }
@@ -316,6 +329,36 @@ module.exports = function(router) {
 
 
   })
+
+
+  function writeBodyDataToSchema(schema, body) {
+    console.log("Writing data based on schema");
+    /*
+    console.log(schema);
+    console.log("------");
+    console.log(body);
+    console.log("------");
+    */
+    let data = {};
+    data['incomplete'] = [];
+    data['isIncomplete'] = false;
+    for (let x = 0; x < schema.length; x++) {
+      // console.log(schema[x]);
+      if (body[schema[x].id]) {
+        data[schema[x].id] = body[schema[x].id];
+      } else {
+        data[schema[x].id] = null;
+      }
+
+      if ((schema[x].required == "yes") && (!body[schema[x].id])) {
+        data['incomplete'].push(schema[x].id);
+        data['isIncomplete'] = true;
+      }
+    }
+
+    // console.log(data);
+    return data;
+  }
 
   router.post('/' + base_url + 'application/find/results', function(req, res) {
 
@@ -544,6 +587,189 @@ module.exports = function(router) {
       res.redirect(301, '/' + base_url + 'application/export/select-certificates?displayMax=10');
     }
   });
+
+  router.get('/' + base_url + 'application/export/download/generate-data-spreadsheet', function(req, res) {
+    console.log("In routes.js for generate-data-spreadsheet");
+    // every time this page loads, we generate a spreadsheet for download
+    // this is inefficient and possibly causes problems in a multi-user environment
+    // but hopefully this is reliable enough for now
+
+      // TODO: add each row of data, for now, ignoring data type
+        // TODO: highlight incompletes
+
+
+    let certID = req.session.data.currentCertID || 0;
+    let addedEHC = req.session.data.addedEHC[0];
+
+    if (addedEHC) {
+      console.log("We have data at addedEHC[0]")
+
+      let ehcString = addedEHC.number;
+      console.log("ehcString: " + ehcString);
+      let ehcNumber = ehcString.substring(3,7); // e.g. 8361
+      console.log("ehcNumber: " + ehcNumber);
+      let ehcNumberWithHyphen = "EHC-" + ehcNumber;
+      console.log("ehcNumberWithHyphen: " + ehcNumberWithHyphen);
+      let ehcTitle = addedEHC.title;
+      let filename = ehcString + "-data-template.xlsx";
+
+      // console.log(ehcNumber + " -- " + ehcTitle);
+
+      let ehcSchema = addedEHC.schema;
+      let requiredHeading = [];
+      let columnHeading = [];
+
+      // populate values for required/optional and column title columns
+      for (let x = 0; x < ehcSchema.length; x++) {
+        if (ehcSchema[x].required == "yes") {
+          requiredHeading.push("Required");
+        } else {
+          requiredHeading.push("Optional");
+        }
+        columnHeading.push(ehcSchema[x].title);
+      }
+
+      let excelRequiredRow = [];
+      for (let x = 0; x < requiredHeading.length; x++) {
+        let row = {};
+        row['value'] = requiredHeading[x];
+        row['backgroundColor'] = '#EEEBE2';
+        if (requiredHeading[x] == "Required") {
+          row['fontWeight'] = 'bold';
+          row['color'] = '#FF0000';
+        } else {
+          row['fontStyle'] = 'italic';
+          row['color'] = '#000000';
+        }
+        row['width'] = 100;
+
+        excelRequiredRow.push(row);
+      }
+
+      let excelHeaderRow = [];
+      for (let x = 0; x < columnHeading.length; x++) {
+        let row = {};
+        row['value'] = columnHeading[x];
+        row['fontWeight'] = 'bold';
+        row['color'] = '#FFFFFF';
+        row['backgroundColor'] = '#000000';
+        excelHeaderRow.push(row);
+      }
+
+      let excelDataRows = [];
+
+      // for every item within the addedCommodities array
+      for (let x = 0; x < addedEHC.addedCommodities.length; x++) {
+
+        // for every item within the addedCommodities[x].identifications array
+        for (let y = 0; y < addedEHC.addedCommodities[x].identifications.length; y++) {
+
+          let row = [];
+          // console.log("Starting a new row");
+
+          // for every item within the schema
+          for (let z = 0; z < ehcSchema.length; z++) {
+
+            // store a row with cells that match the schema --> don't just add everything in the identification because there is junk in there
+            let cell = {};
+            // console.log("Adding a cell with the value: " + addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id]);
+
+            // handle multiples that may enter as arrays
+            if (ehcSchema[z].multiple == "yes") {
+
+              if (addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id] === null) {
+                cell['value'] = "";
+              } else {
+                cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id].toString();
+              }
+
+            } else {
+              cell['value'] = addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id];
+            }
+
+            if (ehcSchema[z].type == "decimal") {
+              cell['type'] = Number;
+
+              cell['value'] = Number(addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id]);
+            } else {
+              cell['type'] = String;
+            }
+
+            row.push(cell);
+          }
+
+          // console.log("Adding row to excelDataRows");
+          // console.log(row);
+
+          excelDataRows.push(row);
+        }
+
+      }
+
+      // add header rows
+      excelDataRows.unshift(excelHeaderRow);
+      excelDataRows.unshift(excelRequiredRow);
+
+      // add 6 row placeholder for image and EHC name/title
+      let specialHeaderRow = [
+        {
+          value: '',
+          rowSpan: 6,
+        },
+        {
+          value: ehcNumberWithHyphen + ": " + ehcTitle,
+          rowSpan: 6,
+          span: ehcSchema.length -1,
+          fontWeight: 'bold',
+          alignVertical: 'center',
+          wrap: true
+        }
+      ]
+      let specialHeaderRow2 = [ null, null ];
+      let specialHeaderRow3 = [ null, null ];
+      let specialHeaderRow4 = [ null, null ];
+      let specialHeaderRow5 = [ null, null ];
+      let specialHeaderRow6 = [ null, null ];
+
+
+      excelDataRows.unshift(specialHeaderRow6);
+      excelDataRows.unshift(specialHeaderRow5);
+      excelDataRows.unshift(specialHeaderRow4);
+      excelDataRows.unshift(specialHeaderRow3);
+
+      excelDataRows.unshift(specialHeaderRow2);
+      excelDataRows.unshift(specialHeaderRow);
+
+      let excelFilePath = './public/data/uploads/excel.xlsx';
+      let writeFilePath = './public/data/uploads/' + filename;
+
+      writeXlsxFile(excelDataRows, {
+        filePath: writeFilePath
+      })
+      console.log("Passed writing excelData to " + writeFilePath);
+
+      // res.download(excelFilePath);
+      /*
+      res.download(excelFilePath, 'spreadsheet.xlsx', function(err){
+        if (err) {
+          console.log("Error : " + err);
+        } else {
+          console.log("No errors");
+        }
+
+      });
+      */
+      // console.log(excelData);
+      res.redirect(307, '/' + base_url + 'application/export/download/download-data-spreadsheet.html');
+
+    } else {
+      console.log("No commodity data available");
+    }
+
+
+  });
+
+
 
 
 }
