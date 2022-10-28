@@ -20,10 +20,7 @@ module.exports = function(router) {
     let id = req.body.certificate || 0;
     let cert = req.session.data.certificates[id];
 
-
     // check if its already selected
-
-
 
     if (!isAlreadyAdded(req.session.data.addedEHC, cert.number)) {
       // create a new array to hold the commodity data
@@ -36,8 +33,20 @@ module.exports = function(router) {
       req.session.data.currentCommodityID = id;
 
     }
+
+    if (req.session.data.hasSeenCduInterstitial) {
+      res.redirect(301, '/' + base_url + 'application/export/how-to-add');
+    } else {
+      req.session.data.hasSeenCduInterstitial = true;
+      res.redirect(301, '/' + base_url + 'application/export/cdu-interstitial');
+    }
+
+  })
+
+  router.post('/' + base_url + 'application/export/cdu-interstitial', function(req, res) {
     res.redirect(301, '/' + base_url + 'application/export/how-to-add');
   })
+
   router.post('/' + base_url + 'application/export/how-to-add', function(req, res) {
     res.redirect(301, '/' + base_url + 'application/export/how-to-add?error=true');
   })
@@ -667,7 +676,7 @@ module.exports = function(router) {
 
             // handle multiples that may enter as arrays
             if (ehcSchema[z].multiple == "yes") {
-              
+
               if (addedEHC.addedCommodities[x].identifications[y][ehcSchema[z].id] === null) {
                 cell['value'] = "";
               } else {
