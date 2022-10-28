@@ -154,6 +154,26 @@ Manage commodity data – GOV.UK Prototype Kit
                       {% block searchComponentID %}{% include "../find/_search_establishment.html" %}{% endblock %}
                     {% else %}
                     {% set componentID = field.id %}
+
+
+                    <!-- check to see if this field is incomplete -->
+                    {% if identification['isIncomplete'] %}
+                      {% set isIncomplete = false %}
+                      {% for fieldType in identification['incomplete'] %}
+                        {% if fieldType == componentID %}
+                          {% set isIncomplete = true %}
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+
+                    {% if isIncomplete %}
+                    <label class="govuk-label" for="{{field.id}}" id={{field.id}}>
+                      <strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>
+                    </label>
+                    {% endif %}
+
+
+
                     {% set component = "./components/_"+field.id+".html" %}
                       {% block  componentID %}{% include component %}{% endblock %}
                     {% endif %}
