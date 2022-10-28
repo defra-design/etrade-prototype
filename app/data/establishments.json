@@ -610,6 +610,149 @@
    "Postcode": "YO17 9HG",
    "Country": "England",
    "All_Activities": ["Processing Plant", "Category 3", "Cutting Plant", "Slaughterhouse", "Meat Preparation Plant", "Minced Meat Plant"]
+ },
+ {
+   "AppNo": "AA117",
+   "TradingName": "Skateraw Fisheries",
+   "Address1": "Old Ford Road",
+   "Address2": "Aberdeen",
+   "Address3": "Aberdeen",
+   "Town": "Aberdeen",
+   "Postcode": "AB11 5RL",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "AA140",
+   "TradingName": "Skateraw Fisheries",
+   "Address1": "18 South Esplanade West",
+   "Address2": "Aberdeen",
+   "Address3": "Aberdeen",
+   "Town": "Aberdeen",
+   "Postcode": "AB11 9AA",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "AD 093",
+   "TradingName": "Islay Crab Exports Limited",
+   "Address1": "The Shellfish Factory",
+   "Address2": "Glenegedale",
+   "Address3": "Isle of Islay, Argyll",
+   "Town": "Argyll and Bute",
+   "Postcode": "PA42 7AS",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "BB006",
+   "TradingName": "MJ French Fish (t/a Jack Taylor)",
+   "Address1": "West Shore Road Industrial Estate",
+   "Address2": "Fraserburgh",
+   "Address3": "Aberdeenshire",
+   "Town": "Fraserburgh",
+   "Postcode": "AB43 9LG",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "BB010",
+   "TradingName": "Seafood Sourcing Ltd.",
+   "Address1": "Harbour Road",
+   "Address2": "Fraserburgh",
+   "Address3": "Aberdeenshire",
+   "Town": "Fraserburgh",
+   "Postcode": "AB43 9TD",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "BB025",
+   "TradingName": "Enterfoods",
+   "Address1": "8 RECLAIMED GROUND HARBOUR ROAD",
+   "Address2": "Fraserburgh",
+   "Address3": "Aberdeenshire",
+   "Town": "Fraserburgh",
+   "Postcode": "AB43",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "BB027",
+   "TradingName": "Whitelink Seafoods Ltd",
+   "Address1": "Maxwell Place",
+   "Address2": "Fraserburgh",
+   "Address3": "Aberdeenshire",
+   "Town": "Fraserburgh",
+   "Postcode": "AB43 9SX",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "BB055",
+   "TradingName": "McConnell Seafoods Ltd",
+   "Address1": "Unit 9",
+   "Address2": "Volum Street",
+   "Address3": "Peterhead",
+   "Town": "Peterhead",
+   "Postcode": "AB42 1TZ",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "EB 007",
+   "TradingName": "J K Thomson",
+   "Address1": "Units 1-8 Eskmills Park",
+   "Address2": "Musselburgh",
+   "Address3": "East Lothian",
+   "Town": "Musselburgh",
+   "Postcode": "EH21",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "GA 050",
+   "TradingName": "Marine Products Scotland",
+   "Address1": "25 Mossend Lane",
+   "Address2": "Glasgow",
+   "Address3": "Glasgow City",
+   "Town": "Glasgow",
+   "Postcode": "G33 4DD",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "GA 108",
+   "TradingName": "Scot West Shellfish Ltd",
+   "Address1": "Block E Unit 5",
+   "Address2": "130 Blochairn Road",
+   "Address3": "Glasgow City",
+   "Town": "Glasgow",
+   "Postcode": "G21 2DU",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "KD 008",
+   "TradingName": "Scotprime Seafoods Ltd",
+   "Address1": "11 Whitfield Drive",
+   "Address2": "Ayr",
+   "Address3": "South Ayrshire",
+   "Town": "Ayr",
+   "Postcode": "KA8 9RZ",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "KD 040",
+   "TradingName": "Caladero Scotland Ltd",
+   "Address1": "Unit 1, Freeport, Shawfarm Road",
+   "Address2": "Prestwick",
+   "Address3": "South Ayrshire",
+   "Town": "Prestwick",
+   "Postcode": "KA9 2TR",
+   "Country": "Scotland",
+   "All_Activities": ["Processing Plant"]
  }
 
 ]
