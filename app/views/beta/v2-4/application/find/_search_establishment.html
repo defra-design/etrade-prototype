@@ -16,7 +16,7 @@
 {% endif %}
 
 <label class="govuk-label" for="{{id}}" id={{id}}>
-  {% if isIncomplete %}<strong class="govuk-tag govuk-tag--orange">Incomplete data</strong><br>{% endif %}
+  {% if isIncomplete %}<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>{% endif %}
   {{searchLabel}} {% if isRequired == "no"%}(optional){% endif %}
 </label>
 

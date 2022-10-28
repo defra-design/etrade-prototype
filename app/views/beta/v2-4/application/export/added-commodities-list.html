@@ -39,6 +39,33 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
     color: #000000;
   }
 
+    .navButtonGroup {
+    margin-bottom: 1rem;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    }
+
+    .navButton {
+    background: transparent;
+    border: none;
+    }
+
+    .tab-link.active, .tab-link.focus {
+    border-bottom: 4px solid #1e70b8!important;
+    color: #1e70b8;
+    }
+    .tab-link {
+    padding-bottom: 2px;
+    color: #1e70b8;
+    cursor: pointer;
+    text-decoration: none;
+    }
+
+    .navButton.active {
+    font-weight: bold;
+    }
+
 </style>
 {% endblock%}
 
@@ -126,6 +153,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       </div>
       <div class="govuk-notification-banner__content">
         <p class="govuk-notification-banner__heading">Some commodity data is incomplete</p>
+        <!--
         <p class="govuk-body">
           {{ incompleteRecordCount }} {% if incompleteRecordCount == 1 %}record has{% else %}records have{%endif%} missing or incomplete required data.
         </p>
@@ -136,6 +164,10 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
         {% endfor %}
         </ul>
         {% endif %}
+        -->
+        {% if incompleteRecordCount < count %}
+        <p class="govuk-body"><a href="#navButtonGroup" id="shortcutToIncompleteRecords">Show only incomplete record{%if incompleteRecordCount > 1 %}s{%endif%}</a></p>
+        {% endif %}
       </div>
     </div>
 
@@ -143,48 +175,29 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
 
 
     <span class="govuk-caption-xl">{{ cert.number or "EHC8331" }}</span>
-    <h1 class="govuk-heading-xl">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
       Added {{count}} {{recordsTitle}}
       {%if cert.addedCommodities | length > 1%} for {{cert.addedCommodities | length}} {{commodityTitle}}{% endif %}
     </h1>
 
-    {% if incompleteRecordCount %}
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-          <h1 class="govuk-fieldset__heading">
-            Filter
-          </h1>
-        </legend>
-        <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="incomplete-filter" name="incomplete-filter" type="radio" value="all-records" checked>
-            <label class="govuk-label govuk-radios__label" for="incomplete-filter">
-              Display all records
-            </label>
-          </div>
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="incomplete-filter-2" name="incomplete-filter" type="radio" value="incomplete-only">
-            <label class="govuk-label govuk-radios__label" for="incomplete-filter-2">
-              Only show records with incomplete data ({{incompleteRecordCount}})
-            </label>
-          </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <!--<h2 class="govuk-heading-m">Download commodity data</h2>-->
+        <div class="govuk-inset-text">
+          <a href="download/generate-data-spreadsheet?random={{ 100000 | randomNumberGenerator }}" class="govuk-link">Download commodity data in a spreadsheet</a> if you would like to make bulk changes or re-use this data in another EHC application.
         </div>
-      </fieldset>
+      </div>
     </div>
+
+    {% if incompleteRecordCount and (incompleteRecordCount < count) %}
+
+    <div class="navButtonGroup" id="navButtonGroup">
+      <button id="navButtonAllRecords" type="button" role="button" aria-label="all-records" class="navButton active govuk-link govuk-!-font-size-19 govuk-!-margin-right-7 tab-link"><span class="govuk-visually-hidden">Click to display content for </span>All records</button>
+      <button id="navButtonIncompleteOnly" type="button" role="button" aria-label="incomplete-only" data-label="incomplete-only" class="navButton govuk-link govuk-!-font-size-19 govuk-!-margin-right-7 tab-link"><span class="govuk-visually-hidden">Click to display content only for </span>Incomplete records ({{ incompleteRecordCount }})</button>
+    </div>
+
     {% endif %}
 
-    <p class="govuk-body"><a href="download/generate-data-spreadsheet?random={{ 100000 | randomNumberGenerator }}" class="govuk-link">Download data as spreadsheet</a></p>
-    <br>
-    <br>
-
-    <!--
-    <p>You can add multiple commodities for this certificate by <a href="./upload/">uploading a spreadsheet</a></p>
-    -->
-
-    <!-- Removed the accordian controls for now. Want to test to see if they are needed -->
-    <!-- <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
-          class="govuk-accordion__show-all-text">Show all sections</span></button></div> -->
     {% for commodity in cert.addedCommodities %}
       {% set hasIncompleteRecord = false %}
       {% for ids in commodity.identifications %}
@@ -273,7 +286,28 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                       </dt>
                       <dd class="govuk-summary-list__value">
                         {% if schemaItem.type == "excel_date" %}
-                          {{ (identification[schemaItem.id] | getDateFromExcel) or "No value" }}
+                          {% if identification[schemaItem.id] %}
+                            {{ (identification[schemaItem.id] | getDateFromExcel) }}
+                          {% else %}
+                            No value
+                          {% endif %}
+                        {% elseif schemaItem.type == "search" %}
+                          <!-- find establishment TradingName from approval number -->
+                          {% set establishments = data.establishments %}
+                          {% set establishmentName = "" %}
+                          {% for establishment in establishments %}
+                            {% if establishment.AppNo == identification[schemaItem.id] %}
+                              {% set establishmentName = establishment.TradingName %}
+                            {% endif %}
+                          {% endfor %}
+
+                          {% if establishmentName %}
+                            {{ establishmentName }} ({{ identification[schemaItem.id] }})
+                          {% elseif identification[schemaItem.id] %}
+                            Cannot find establishment for approval number {{ identification[schemaItem.id] }}
+                          {% else %}
+                            Establishment number not provided
+                          {% endif %}
                         {% else %}
                           {{ identification[schemaItem.id] or "No value" }}
                         {% endif %}
@@ -292,8 +326,10 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       </div>
 
       {% endfor %}
+
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+
           <form method="post" action="select-commodities">
 
             <div class="govuk-form-group">
@@ -412,21 +448,45 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
 
       })
 
-      $('input[type=radio][name="incomplete-filter"]').change(function() {
-
-        if (this.value == 'incomplete-only') {
-          $("#accordion-default div.govuk-summary-list__row").hide();
-          $("#accordion-default div.govuk-summary-list__row.incomplete").show();
-          $(".app-accordion").hide();
-          $(".hasIncompleteRecord").show();
-
+      $('button.navButton').click(function() {
+        if ($(this).attr('aria-label') == 'incomplete-only') {
+          showIncompleteRecords();
         } else {
-          $("#accordion-default div.govuk-summary-list__row").show();
-          $(".app-accordion").show();
+          showAllRecords();
         }
-
-
       });
+
+      $('#shortcutToIncompleteRecords').click(function() {
+        showIncompleteRecords();
+      });
+
+      $('input[type=radio][name="incomplete-filter"]').change(function() {
+        if (this.value == 'incomplete-only') {
+          showIncompleteRecords();
+        } else {
+          showAllRecords();
+        }
+      });
+
+      function showIncompleteRecords() {
+        $("#accordion-default div.govuk-summary-list__row").hide();
+        $("#accordion-default div.govuk-summary-list__row.incomplete").show();
+        $(".app-accordion").hide();
+        $(".hasIncompleteRecord").show();
+
+        $("button.navButton").removeClass("active");
+        $("#navButtonIncompleteOnly").addClass("active");
+      }
+
+      function showAllRecords() {
+        $("#accordion-default div.govuk-summary-list__row").show();
+        $(".app-accordion").show();
+
+        $("button.navButton").removeClass("active");
+        $("#navButtonAllRecords").addClass("active");
+      }
+
+
 
     })
   </script>
