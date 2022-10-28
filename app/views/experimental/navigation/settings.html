@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent%}
+{% set navType = (data.navType or query.navType or "navigation")+".html" %}
+{% include "./_"+navType %}
+<a href="javascript:history.back()" class="govuk-back-link">Return to your applications</a>
+{% endblock%}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
+    <h1 class="govuk-heading-xl"> Settings </h1>
+    <span class="govuk-caption-l"></span>
+    <h2 class="govuk-heading-m">Account</h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"> Name </dt>
+        <dd class="govuk-summary-list__value">Bill Shoggins</dd>
+      </div>
+      <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"> Organisation </dt>
+        <dd class="govuk-summary-list__value">{{data.account or "Anavir Ltd"}}</dd>
+      </div>
+      <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"> Email </dt>
+        <dd class="govuk-summary-list__value">bill.shoggins@{{(data.account or "Anavir Ltd") | removeWhiteSpace}}.com</dd>
+      </div>
+    </dl>
+    <ul class="govuk-list">
+      <li><a href="notifications" class="govuk-link">Notification preferences</a></li>
+      <li><a class="govuk-link" href="https://www.ete.access.service.gov.uk/profile/mIgZJqVU44oe6uLxK2x6oMVNoXGVIj" target="_blank" rel="noopener">Manage your government gateway account</a></li>
+      <li><a class="govuk-link" href="https://www.ete.access.service.gov.uk/groupprofile/mIgZJqVU44oe6uLxK2x6oMVNoXGVIj" target="_blank" rel="noopener">Manage your group government gateway account</a></li>
+      <li><a href="#" class="govuk-link">Account delegations and permissions</a></li>
+    </ul>
+  </div>
+</div>
+
+
+{% endblock%}
+
+{% block footer %}
+
+<div class="govuk-width-container ">
+
+
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+</div>
+{{super()}}
+{% endblock %}

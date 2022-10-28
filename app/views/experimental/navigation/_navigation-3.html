@@ -1,0 +1,85 @@
+
+<nav id="app-navigation" class="app-navigation js-app-navigation govuk-clearfix app-navigation--active app-navigation--small app-navigation--no-background" role="navigation" aria-labelledby="app-navigation-heading">
+  <h2 class="govuk-visually-hidden" id="app-navigation-heading">Menu</h2>
+  <ul class="app-navigation__list app-width-container">
+    <li class="app-navigation__list-item " style="">
+      <span class="govuk-visually-hidden">Organisation: </span>{{data.account or "Anavir Ltd"}} &nbsp;
+      {% if data.accountType != "single"%}
+      <!-- <span class="govuk-hint">({{role or "exporter"}})</span> -->
+      <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-navigation__link js-app-navigation__link" href="./account?currentAccount=0">Change organisation</a>
+      {% endif %}
+    </li>
+
+    <li class="app-navigation__list-item " style="float:right;">
+      <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-navigation__link js-app-navigation__link" href="#">
+        Sign out
+      </a>
+    </li>
+    <li class="app-navigation__list-item " style="float:right;">
+      <a id="setting-item" class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-navigation__link js-app-navigation__link" href="#">
+        <span class="dropdown-toggle" style="    text-underline-offset: 0.1em;"> Settings</span>
+      </a>
+      <style media="screen">
+        .subnav-menu {
+          position: absolute;
+          min-width:200px;
+          background:#fff;
+          border:1px solid #b1b4b6;
+          padding:0 20px;
+          margin-left:-20px;
+          -webkit-box-shadow: 0px 4px 4px 4px rgba(0,0,0,0.05);
+box-shadow: 0px 4px 4px 4px rgba(0,0,0,0.05);
+        }
+        .subnav-menu.js-hidden{
+          display:none;
+        }
+      </style>
+      <div id="subnav-menu-settings" class="subnav-menu" style="display:none;">
+        <nav class="app-subnav" aria-labelledby="app-subnav-heading">
+          <h2 class="govuk-visually-hidden" id="app-subnav-heading">Pages in this section</h2>
+          <ul class="app-subnav__section">
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="./settings">Account settings</a>
+            </li>
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="./notifications">Notification preferences</a>
+            </li>
+            {% if  role == "certifier"%}
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="#">Certifier signature</a>
+            </li>
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="#">MAS reimbursement</a>
+            </li>
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="#">MAS invoices</a>
+            </li>
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="#">MAS Profiles</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </li>
+    <li class="app-navigation__list-item" style="float:right;">
+      <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-navigation__link js-app-navigation__link" href="dashboard-{{type or 'exporter'}}">
+        Home
+      </a>
+    </li>
+  </ul>
+</nav>
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $('#setting-item').on('click',function(e){
+      e.preventDefault();
+      if($('#subnav-menu-settings').is(":visible")){
+          $('#subnav-menu-settings').hide()
+      }else{
+        $('#subnav-menu-settings').show()
+      }
+
+    })
+
+  })
+</script>

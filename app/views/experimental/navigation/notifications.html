@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent%}
+{% set navType = (data.navType or query.navType or "navigation")+".html" %}
+{% include "./_"+navType %}
+<a href="javascript:history.back()" class="govuk-back-link">Return to your applications</a>
+{% endblock%}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
+
+      <h2 class="govuk-caption-l">Setttings</h2>
+      <h1 class="govuk-heading-xl">Notification preferences</h1>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <!---->
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading"> How would you like to be notified? </h1>
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="notify-preference" type="radio" value="email" name="notifications"><label class="govuk-label govuk-radios__label" for="notify-preference"> Email </label>
+              <div id="notify-preference-hint" class="govuk-hint govuk-radios__hint"> Select this option if you want to be notified by the system via email. </div>
+            </div>
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="notify-preference-2" type="radio" value="sms"  name="notifications"><label class="govuk-label govuk-radios__label" for="notify-preference-2"> SMS </label>
+              <div id="notify-preference-2-hint" class="govuk-hint govuk-radios__hint"> Select this option if you want to be notified by the system via SMS. </div>
+            </div>
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="notify-preference-3" type="radio" value="emailsms"  name="notifications"><label class="govuk-label govuk-radios__label" for="notify-preference-3"> Email and SMS </label>
+              <div id="notify-preference-3-hint" class="govuk-hint govuk-radios__hint"> Select this option if you want to be notified by the system via email and SMS. </div>
+            </div>
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="notify-preference-4" type="radio" value="none"  name="notifications"><label class="govuk-label govuk-radios__label" for="notify-preference-4"> I don't wish to be notified </label>
+              <div id="notify-preference-4-hint" class="govuk-hint govuk-radios__hint"> Select this option if you do not want to be notified by the system. </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <!---->
+      <!----><button class="govuk-button">Save my preferences</button>
+    </div>
+  </div>
+{% endblock%}
