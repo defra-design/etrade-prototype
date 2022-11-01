@@ -28,6 +28,7 @@ var scheduleUploadProcessing = require('./schedule-upload-processing.json')
 var accounts = require('./accounts.json')
 var accounts_long = require('./accounts-long-list.json')
 module.exports = {
+  "account": "Isosure Trading Ltd",
   "certificates" : certs,
   "accounts": accounts,
   "accounts_long": accounts_long,
