@@ -5,6 +5,16 @@ module.exports = function(router) {
   // CHANGE VERSION each time you create a new version
 
   const base_url = "stories/"
+  router.post('/' + base_url + 'onboarding/certifier-account', function(req, res) {
+    if(req.body.spNumber.charAt(0) == "9"){
+      res.redirect(301, '/' + base_url + 'onboarding/not-found');
+    }else if(req.body.spNumber == "" && req.body.certifierAccountType == "ov"){
+      res.redirect(301, '/' + base_url + 'onboarding/certifier-account?has_error=yes');
+    }else{
+      res.redirect(301, '/' + base_url + 'onboarding/signature');
+    }
+
+  })
 
   router.post('/' + base_url + 'accessiblity/goods-certified-as*', function(req, res) {
 
@@ -78,6 +88,61 @@ module.exports = function(router) {
     });
   });
 
+  router.post('/' + base_url + 'onboarding/gov-sign-in', function(req, res) {
+    req.session.data.currentAccountID = req.body.user_id || "0000";
+    req.session.data.isExporterApproved = "";
+    var isApproved = false;
+    var account = req.body.user_id || "0000";
 
+    if(req.body.user_id.includes("0000")){
+        req.session.data.isCertifier = "no"
+        req.session.data.isExporter = "yes"
+        req.session.data.accountType = "single"
+        req.session.data.hasMultipleAccounts="no"
+
+    }else if(req.body.user_id.includes("1111")){
+      req.session.data.isCertifier = "yes"
+      req.session.data.isExporter = "no"
+      req.session.data.accountType = "multiple"
+      req.session.data.hasMultipleAccounts="yes"
+    }
+    else if(req.body.user_id.includes("2222")){
+      req.session.data.isCertifier = "yes"
+      req.session.data.isExporter = "yes"
+      req.session.data.accountType = "multiple"
+      req.session.data.hasMultipleAccounts="yes"
+    }else if(req.body.user_id.includes("9999")){
+      req.session.data.isCertifier = "no"
+      req.session.data.isExporter = "no"
+      req.session.data.accountType = "single"
+      req.session.data.hasMultipleAccounts="no"
+      res.redirect(301, '/' + base_url + 'onboarding/cannot-access');
+    }else{
+      res.redirect(301, '/' + base_url + 'onboarding/not-approved');
+    }
+
+    if(req.session.data.approvedAccounts.includes(account)){
+      if(req.session.data.hasMultipleAccounts == "no"){
+          //just for now go to exporter dashbaord
+          res.redirect(301, '/' + base_url + 'onboarding/dashboard-exporter-original');
+      }else{
+          res.redirect(301, '/' + base_url + 'onboarding/accounts');
+      }
+
+    }else{
+        if(req.session.data.isExporter == "yes"){
+          req.session.data.approvedAccounts.push(req.session.data.currentAccountID)
+        }
+        res.redirect(301, '/' + base_url + 'onboarding/start');
+    }
+
+
+
+  })
+
+  router.post('/' + base_url + 'onboarding/signature', function(req, res) {
+    req.session.data.approvedAccounts.push(req.session.data.currentAccountID)
+    res.redirect(301, '/' + base_url + 'onboarding/confirmation');
+  })
 
 }

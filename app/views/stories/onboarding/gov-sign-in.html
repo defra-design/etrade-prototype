@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-column-two-thirds" id="skip-target">
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+       <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Keeping your information secure</h2>
+       </div>
+       <div class="govuk-notification-banner__content">
+        <p class="govuk-body">Do not share your Government Gateway user ID and password with anyone else.</p>
+       </div>
+      </div>
+      <h1 class="govuk-heading-xl">Sign in using Government Gateway</h1>
+      <form  method="POST" id="loginForm">
+
+       <div class="govuk-form-group"><label for="user_id" class="govuk-label" aria-describedby="user_id-hint">Government Gateway user ID</label>
+        <div class="govuk-hint" id="user_id-hint">
+         This could be up to 12 characters.
+        </div> <input type="text" name="user_id" id="user_id" class="govuk-input govuk-!-width-one-half" value="" maxlength="22" aria-describedby="user_id-hint" autocomplete="username">
+       </div>
+       <div class="govuk-form-group"><label for="password" class="govuk-label">Password</label> <input type="password" name="password" id="password" class="govuk-input govuk-!-width-three-quarters" autocomplete="current-password">
+       </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button" id="continue" formnovalidate="">Sign in</button>
+      </form>
+      <div class="govuk-body">
+        <a class="govuk-link" id="no-account" href="gateway/email" data-ga="">Create sign in details</a>
+      </div>
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">Problems signing in</h2>
+      <ul class="govuk-list">
+       <li><a class="govuk-link" href="/login/forgot-password" id="forgotten-password" data-ga="Sign-In:Forgot-Password:DEFRA">I have forgotten my password</a></li>
+       <li><a class="govuk-link" href="/login/forgot-userid" id="forgotten-user-id" data-ga="Sign-In:Forgot-User-Id:DEFRA">I have forgotten my Government Gateway user ID</a></li>
+       <li><a class="govuk-link" href="/login/forgot-userid-password" id="forgotten-user-id-password" data-ga="Sign-In:Forgot-User-Id-And-Password:DEFRA">I have forgotten my Government Gateway user ID and password</a></li>
+      </ul>
+     </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+  </div>
+</div>
+{% endblock %}

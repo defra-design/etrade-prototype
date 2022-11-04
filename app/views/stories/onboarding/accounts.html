@@ -5,14 +5,14 @@ Home – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
+{% include "./_style.html" %}
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form class="" method="post">
-      <div class="govuk-form-group">
+    <form class="" method="post">  <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="select-org-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
        <h1 class="govuk-fieldset__heading">
@@ -21,50 +21,60 @@ Home – GOV.UK Prototype Kit
      </legend>
 
      <p class="govuk-hint" id="select-org-hint">You will be able to switch between different organisations after siging in.</p>
-     <p>4 organisations and 1 individual account</p>
+     <p>{% if data.isCertifier == "yes" and data.isExporter == "yes"%}4{%else%}2{%endif%} organisations</p>
           <div class="govuk-radios" data-module="govuk-radios">
+            {% if data.isExporter == "yes"%}
+            {% set ExporterURL =  "./not-approved-exporter" %}
+            {% if data.accountApprovedRole == "both" or data.accountApprovedRole == "exporter" %}
+            {% set ExporterURL =  "./dashboard-exporter-original" %}
+            {% endif %}
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-org-1" name="org" type="radio" {% if data.account == 'Anavir Ltd'%}checked{% endif %} value="Anavir Ltd~./dashboard-exporter-original?account=Anavir Ltd">
+              <input class="govuk-radios__input" id="select-org-1" name="org" type="radio" {% if data.account == 'Anavir Ltd'%}checked{% endif %} value="Anavir Ltd~./{{ExporterURL}}?account=Anavir Ltd">
               <label class="govuk-label govuk-radios__label" for="select-org-1">
                 <strong style="text-transform: capitalize;">Anavir ltd</strong>
-                 - exporter
+                 {% if data.isCertifier == "yes"%}- exporter{% endif %}
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-org-2" name="org" type="radio" {% if data.account=='Isosure Trading Ltd'%}checked{% endif %} value="Isosure Trading Ltd~./dashboard-exporter-original?account=Isosure Trading Ltd">
+              <input class="govuk-radios__input" id="select-org-2" name="org" type="radio" {% if data.account=='Isosure trading Ltd'%}checked{% endif %} value="Isosure trading Ltd~./{{ExporterURL}}?account=Isosure trading Ltd">
               <label class="govuk-label govuk-radios__label" for="select-org-2">
 
                 <strong style="text-transform: capitalize;">Isosure Trading Ltd</strong>
-                 - exporter
+                 {% if data.isCertifier == "yes"%}- exporter{% endif %}
               </label>
             </div>
-
+            {% endif %}
+            {% if data.isCertifier == "yes"%}
+            {% set certifierURL =  "./certifier-account" %}
+            {% if data.accountApprovedRole == "both" or data.accountApprovedRole == "certifier"  %}
+            {% set certifierURL =  "./dashboard-certifier-original" %}
+            {% endif %}
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-org-3" name="org" type="radio" {% if data.account=='Isosure trading Ltd'%}checked{% endif %} value="Isosure trading Ltd~./dashboard-certifier-original?account=Isosure trading Ltd"">
+              <input class="govuk-radios__input" id="select-org-3" name="org" type="radio" value="Isosure trading Ltd~./{{certifierURL}}?account=Isosure trading Ltd&isExporterApproved=yes">
               <label class="govuk-label govuk-radios__label" for="select-org-3">
 
                 <strong style="text-transform: capitalize;">Isosure trading Ltd</strong>
-                 - certifier
+                 {% if data.isExporter == "yes" %}- certifier{% endif %}
               </label>
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-org-4" name="org" type="radio" {% if data.account=='Zilladyne Ltd'%}checked{% endif %} value="Zilladyne Ltd~./dashboard-certifier-original?account=Zilladyne Ltd">
+              <input class="govuk-radios__input" id="select-org-4" name="org" type="radio" value="ZILLADYNE LTD~./{{certifierURL}}?account=Zilladyne Ltd&isExporterApproved=yes">
               <label class="govuk-label govuk-radios__label" for="select-org-4">
 
                 <strong style="text-transform: capitalize;">zilladyne ltd</strong>
-                 - certifier
+                 {% if data.isExporter == "yes" %}- certifier{% endif %}
               </label>
             </div>
+            {% endif %}
 
-
-            <div class="govuk-radios__divider">or</div>
+            <!-- <div class="govuk-radios__divider">or</div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="org-name" name="org" type="radio" value="Richard Hatton~./dashboard-exporter?account=Richard Hatton">
               <label class="govuk-label govuk-radios__label" for="org-name">
                 <strong style="text-transform: capitalize;">Richard Hatton</strong> - individual account
               </label>
-            </div>
+            </div> -->
 
 
           </div>
@@ -79,7 +89,7 @@ Home – GOV.UK Prototype Kit
           </span>
         </summary>
         <div class="govuk-details__text">
-          <p>Your organisation must be approved before you can manage EHC applications for it. It can take up to 48 hours to approve new organsiations.</p>
+          <p>if you aren't able to see an expected certifier organisation, it may be that some of your organisations may not be approved as certifiers in the eHCO service. This could be because they are not approved for inspection - please <a href="mailto:contact@exports@apha.gov.uk" > APHA for support </a> </p>
 
 
 

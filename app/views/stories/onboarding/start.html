@@ -1,0 +1,72 @@
+{% extends "layout-with-navigation-only-signout.html" %}
+
+{% block pageTitle %}
+Request approval - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent%}
+{% include "./_style.html" %}
+{% endblock%}
+
+{% block content %}
+
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl"></span>
+
+    <h2 class="govuk-heading-xl">Request access to <span style="white-space: nowrap;">E-certification</span> for EHC's</h2>
+
+    <p class="govuk-body">
+      You will need to request approval before you can use this new service.</p>
+      <p>Once approved you will be able to use any account you already use on Export Health Certificates Online (ECHO).</p>
+    <p>It can take up to 48 hours to approve your account.</p>
+
+    {% if data.isCertifier=="yes" and data.isExporter=="yes" %}
+        <form class=""  method="post">
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      What role do you want to request access for?
+    </legend>
+    <p>You have organsiations which are as both exporter and certifier</p>
+
+
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accountRole" name="accountApprovedRole" type="radio" value="exporter~confirmation">
+        <label class="govuk-label govuk-radios__label" for="accountRole">
+          As an exporter
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accountRole-2" name="accountApprovedRole" type="radio" value="certifier~certifier-account">
+        <label class="govuk-label govuk-radios__label" for="accountRole-2">
+          As a certifier
+        </label>
+      </div>
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accountRole-3" name="accountApprovedRole" type="radio" value="both~certifier-account">
+        <label class="govuk-label govuk-radios__label" for="accountRole-3">
+          Both
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+    <p><button type="submit" class="govuk-button">Continue</button></p>
+      </form>
+    {% elseif data.isCertifier =="yes" and data.exporter != "yes"%}
+    <form class=""  action="certifier-account" method="get">
+      <input type="hidden" name="accountApprovedRole" value="certifier">
+      <p><button type="submit" class="govuk-button">Continue</button></p>
+    </form>
+
+    {% else %}
+    <p><a href="./confirmation" class="govuk-button">Request access</a></p>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

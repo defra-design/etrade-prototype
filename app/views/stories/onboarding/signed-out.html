@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Signed out</h1>
+
+            <p class="govuk-body">
+                You have been signed out of "E-Certification for EHC's" and it is now safe to close your browser.<br>
+                If you would like to sign back in to this service, click the sign in button below.
+            </p>
+
+            <a class="govuk-button" href="gov-sign-in">
+                Return to sign in
+            </a>
+
+    <!-- <p><a href="#">Return to sign in</a></p> -->
+  </div>
+
+</div>
+
+{% endblock %}

@@ -34,6 +34,8 @@ module.exports = {
   "accounts_long": accounts_long,
   "currentCertID": 0,
   "establishments" : establishments,
+  "approvedAccounts" :[],
+  "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,
   "has_multiple_certificates": "yes",
   "listURL": "added-commodities-list",

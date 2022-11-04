@@ -1,0 +1,35 @@
+{% extends "layout-with-navigation-only-signout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent%}
+{% include "./_style.html" %}
+{% endblock%}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Request sent
+          </h1>
+        </div>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+        <p class="govuk-body">
+          Once you have been appoved you will be able to sign in to your usual accounts
+        </p>
+        <p>It can take upto 48 hours to approve accounts</p>
+        {{data.isExporterApproved}}
+        {% if query.continue=="yes" or data.isExporterApproved == "yes"%}
+          <p><a class="govuk-button" href="accounts?exporterApprovalSent=yes">Continue</a></p>
+        {% else %}
+        <p><a href="signed-out">Sign out</a></p>
+        {% endif %}
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,11 +1,7 @@
-{% extends "layout-with-navigation.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
 Home – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block beforeContent %}
-{% include "./_style.html" %}
 {% endblock %}
 
 {% block content %}
@@ -705,7 +701,6 @@ Home – GOV.UK Prototype Kit
     </div>
   </div>
 {% endblock %}
-
 {% block pageScripts %}
 <script type="text/javascript">
   window.addEventListener('load', function() {

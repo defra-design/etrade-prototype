@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent%}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form id="profile_form" name="profileForm" method="POST">
+    <h1 class="govuk-heading-xl">Certifier Signature</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <p class="govuk-body">Please use the box below to supply your signature</p>
+        <div><canvas height="250" width="379" style="touch-action: none; border:1px solid #ccc;"></canvas>
+          <div><button type="button" class="govuk-button govuk-button--secondary" data-module="govuk-button">Clear</button></div>
+        </div>
+      </div>
+
+        <div class="govuk-grid-column-one-half">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Name</dt>
+              <dd class="govuk-summary-list__value">
+                <p class="govuk-body">{{data.userName}}</p>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Profile</dt>
+              <dd class="govuk-summary-list__value">
+                <p class="govuk-body"><a href="#" target="_blank">https://www.ete.access.service.gov.uk/profile/mIgZJqVU44oe6uLxK2x6oMVNoXGVIj</a></p>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Email</dt>
+              <dd class="govuk-summary-list__value">
+                <p class="govuk-body">etradeautocertst@naveencse37.33mail.com</p>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key" id="spnv-label"> SP or NV <br> Identification number </dt>
+              <dd class="govuk-summary-list__value">
+                <p>{{data.spNumber or "80382423"}}</p>
+                <!-- <p class="govuk-body"><input type="text" aria-labelledby="spnv-label" class="govuk-input"></p>
+                <p><input type="button" class="govuk-button full-width" value="Save changes"></p> -->
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+
+    </div>
+    <button class="govuk-button" type="submit" name="button" href="confirmation">Confirm and send request</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
