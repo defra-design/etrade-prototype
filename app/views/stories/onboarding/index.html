@@ -6,22 +6,41 @@ Before your start - eTrade – GOV.UK Prototype Kit
 
 {% block content %}
 
-<div class="govuk-grid-row" data-v-0c6ff6a7="">
-  <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
+{% extends "layout.html" %}
 
-    <h2 class="govuk-heading-xl">Request access</h2>
-    <p class="govuk-body">
-      Make sure you have details of your export. You will need to enter detailed information including:
-    </p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>the type of certificate you are applying for</li>
-      <li>the commodity group, weight and quantity of the goods you want to export</li>
-      <li>the addresses and approval numbers for the exporter, importer and certifier</li>
-      <li>the planned departure and arrival times and locations</li>
-      <li>the method of transport and border control post</li>
-    </ul>
-    <p><a href="./create-reference" class="govuk-button">Continue</a></p>
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      Onboarding</h1>
+
+      <h2 class="govuk-heading-m">Account numbers</h2>
+      <p>Use the following numbers on the gateway login page:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><strong>0000</strong> - Exporter with 1 account</li>
+        <li><strong>1111</strong> - Certifier only, with 2 accounts</li>
+        <li><strong>2222</strong> - Certifier and exporter, with 2 accounts for each</li>
+        <li><strong>9999</strong> - No account associated with ECHO</li>
+      </ul>
+
+      <p>This version has not been tested yet</p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="gov-sign-in">Sign in page</a></li>
+      </ul>
   </div>
+
 </div>
+
+{% endblock %}
+
 
 {% endblock %}
