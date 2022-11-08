@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Before your start - eTrade – GOV.UK Prototype Kit
+Onboarding - eTrade – GOV.UK Prototype Kit
 {% endblock %}
 
 
@@ -22,10 +22,41 @@ Before your start - eTrade – GOV.UK Prototype Kit
         <li><strong>2222</strong> - Certifier and exporter, with 2 accounts for each</li>
         <li><strong>9999</strong> - No account associated with ECHO</li>
       </ul>
+      <h2 class="govuk-heading-m"><a href="gov-sign-in">Sign in page</a></h2>
       <p>This version has not been tested yet</p>
       <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <h3 class="govuk-heading-s">First time signing in</h3>
+      <p>Request access landing page</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="gov-sign-in">Sign in page</a></li>
+        <li><a href="start?isCertifier=no&isExporter=yes">Request access for single role (exporter)</a></li>
+        <li><a href="start?isCertifier=yes&isExporter=no">Request access for single role (certifier)</a> - continue button</li>
+        <li><a href="start?isCertifier=yes&isExporter=yes">Request access for dual role (certifier and exporter)</a></li>
+      </ul>
+      <p>Other onboarding pages (first time). If there are other pages in the current flow they should remain the same.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="certifier-account?isCertifier=yes&isExporter=yes">What type of account (for certifier only)</a> - Page content change only</li>
+        <li><a href="confirmation?isCertifier=yes&isExporter=yes">Request sent confirmation (exporter and certifer)</a> </li>
+      </ul>
+
+      <p><strong>Subsiquent sign in</strong></p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="accounts?isCertifier=yes&isExporter=no&accountApprovedRole=certifier">One role but multiple organisations</a> (approved)</li>
+        <li><a href="accounts?isCertifier=yes&isExporter=yes&accountApprovedRole=both">Both roles with multiple organisations</a> (approved)</li>
+      </ul>
+      <p>More scenaros are in the <a href="#">organisation switcher story</a></p>
+      <p>If user has both ceftifier and exporter but only one role is approved</p>
+        <ul class="govuk-list govuk-list--bullet">
+      <li><a href="accounts?isCertifier=yes&isExporter=yes&accountApprovedRole=exporter">Only exporter approved</a> - select a certifier account</li>
+      <li><a href="accounts?isCertifier=yes&isExporter=yes&accountApprovedRole=certifier">Only certifer approved</a> - select a exporter account</li>
+      <li><a href="certifier-account?isCertifier=no&isExporter=yes&accountApprovedRole=exporter&isExporterApproved=yes">Certifer needs to be approved</a> - if exporter accounts are approved</li>
+      <li><a href="not-approved-exporter?isCertifier=yes&isExporter=no&accountApprovedRole=certifier">Exporter needs to be approved</a> - if certifier accounts are approved</li>
+      <li><a href="confirmation?isCertifier=yes&isExporter=yes&accountApprovedRole=both&continue=yes&isExporterApproved=yes">Request sent confirmation (second time)</a> - Continue button</li>
+      </ul>
+      <p>If user has both roles, has an approved exporter account and <strong>has requested a certifier access</strong> but its not been approved yet. We will show "not approved yet" screen when trying to access the not approved acc.</p>
+        <ul class="govuk-list govuk-list--bullet">
+      <li><a href="accounts?isCertifier=yes&isExporter=yes&accountApprovedRole=certifier&awaitingApproval=exporter">Exporter awaiting approval, but certifier already approved</li>
+
       </ul>
   </div>
 

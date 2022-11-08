@@ -10,31 +10,16 @@ Home – GOV.UK Prototype Kit
 {% endblock%}
 
 {% block content %}
-    {% if query.showNotification == "yes"%}
-    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-      <div class="govuk-notification-banner__header">
-        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          Success
-        </h2>
-      </div>
-      <div class="govuk-notification-banner__content">
-        <h3 class="govuk-notification-banner__heading">
-         Successfully sent request for your exporter account
-        </h3>
-
-      </div>
-    </div>
-    {% endif %}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Confirm your details</h1>
       {% if query.isExporterApproved == "yes" %}
-        <p>You are not approved for this organination. You will need to request access to use this account.</p>
-      {% endif %}
+        <p>You are not approved to access this service as a certifer. You will need to request access to use this account.</p>
+      {% else%}
         <p class="govuk-body">
           We need to confirm a few details about your account before you can use the system.
         </p>
-
+      {% endif %}
         <form class="" method="post">
 
 

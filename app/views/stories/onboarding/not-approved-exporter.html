@@ -1,11 +1,13 @@
-{% extends "layout.html" %}
+{% extends "layout-with-navigation-only-signout.html" %}
 
 {% block pageTitle %}
 Home – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block content %}
-
+{% block beforeContent%}
+{% include "./_style.html" %}
+{% endblock%}
+{% block content%}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 

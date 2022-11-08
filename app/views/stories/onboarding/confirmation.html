@@ -24,8 +24,7 @@ Home – GOV.UK Prototype Kit
           Once the account is appoved you will be able to sign in to access your organisations.
         </p>
         <p>It can take upto 48 hours to approve accounts</p>
-        {{data.isExporterApproved}}
-        {% if query.continue=="yes" or data.isExporterApproved == "yes"%}
+        {% if query.continue=="yes" or data.isExporterApproved == "yes" %}
           <p><a class="govuk-button" href="accounts?exporterApprovalSent=yes">Continue</a></p>
         {% else %}
         <p><a class="govuk-button" href="signed-out">Sign out</a></p>
