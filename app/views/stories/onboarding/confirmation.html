@@ -5,6 +5,7 @@ Home – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent%}
+<div class="govuk-phase-banner full-width" role="alert"><!----><!----><p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag">beta</strong><span class="govuk-phase-banner__text">This is a new service - your <a href="https://defragroup.eu.qualtrics.com/jfe/form/SV_cSnlTGq2c54UxjE" class="govuk-link" rel="noreferrer noopener" target="_blank">feedback (opens in a new tab)</a> will help us to improve it.</span></p></div>
 {% include "./_style.html" %}
 {% endblock%}
 
@@ -20,14 +21,14 @@ Home – GOV.UK Prototype Kit
 
         <h2 class="govuk-heading-m">What happens next</h2>
         <p class="govuk-body">
-          Once you have been appoved you will be able to sign in to your usual accounts
+          Once the account is appoved you will be able to sign in to access your organisations.
         </p>
         <p>It can take upto 48 hours to approve accounts</p>
         {{data.isExporterApproved}}
         {% if query.continue=="yes" or data.isExporterApproved == "yes"%}
           <p><a class="govuk-button" href="accounts?exporterApprovalSent=yes">Continue</a></p>
         {% else %}
-        <p><a href="signed-out">Sign out</a></p>
+        <p><a class="govuk-button" href="signed-out">Sign out</a></p>
         {% endif %}
       </div>
     </div>

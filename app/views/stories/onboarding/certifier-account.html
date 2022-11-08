@@ -5,6 +5,7 @@ Home – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent%}
+<div class="govuk-phase-banner full-width" role="alert"><!----><!----><p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag">beta</strong><span class="govuk-phase-banner__text">This is a new service - your <a href="https://defragroup.eu.qualtrics.com/jfe/form/SV_cSnlTGq2c54UxjE" class="govuk-link" rel="noreferrer noopener" target="_blank">feedback (opens in a new tab)</a> will help us to improve it.</span></p></div>
 {% include "./_style.html" %}
 {% endblock%}
 
@@ -41,7 +42,7 @@ Home – GOV.UK Prototype Kit
   <fieldset class="govuk-fieldset" aria-describedby="certifierAccountType-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        What type of user are you?
+        What type of account do you have?
       </h1>
     </legend>
 
@@ -58,7 +59,7 @@ Home – GOV.UK Prototype Kit
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
         <div class="govuk-form-group">
           <label class="govuk-label" for="certifierAccountType-by-email">
-            SP number
+            Enter your SP number
           </label>
           <input class="govuk-input govuk-!-width-one-third" id="certifierAccountType-by-email" name="spNumber" type="text" spellcheck="false" autocomplete="email" value="">
         </div>
