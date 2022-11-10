@@ -56,7 +56,7 @@ Home – GOV.UK Prototype Kit
             {% set certifierURL =  "./not-approved-certifier" %}
             {% if data.accountApprovedRole == "both" or data.accountApprovedRole == "certifier"  %}
             {% set certifierURL =  "./dashboard-certifier-original" %}
-            {% elseif query.certifierApprovalSent == "yes"%}
+            {% elseif data.awaitingApproval == "certifier"%}
             {% set certifierURL =  "./not-approved?continue=yes" %}
             {% endif %}
 
