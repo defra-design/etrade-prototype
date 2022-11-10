@@ -13,13 +13,12 @@ Request approval - eTrade – GOV.UK Prototype Kit
 
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-xl"></span>
 
-    <h2 class="govuk-heading-xl">Request access to <span style="white-space: nowrap;">E-certification</span> for EHC's</h2>
+    <h1 class="govuk-heading-xl">You do not have access to this service.</h1>
 
     <p class="govuk-body">
-      You will need to request approval before you can use this new service.</p>
-      <p>Once approved you will be able to use any account you already use on Export Health Certificates Online (ECHO).</p>
+      You will need to request access before you can use this new service.</p>
+      <p>Once your account is approved, you'll have access to the same accounts you used in the previous service.</p>
     <p>It can take up to 48 hours to approve your account.</p>
 
     {% if data.isCertifier=="yes" and data.isExporter=="yes" %}
@@ -36,13 +35,13 @@ Request approval - eTrade – GOV.UK Prototype Kit
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="accountRole" name="accountApprovedRole" type="radio" value="exporter~confirmation">
         <label class="govuk-label govuk-radios__label" for="accountRole">
-          As an exporter
+          Exporter
         </label>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="accountRole-2" name="accountApprovedRole" type="radio" value="certifier~certifier-account">
         <label class="govuk-label govuk-radios__label" for="accountRole-2">
-          As a certifier
+          Certifier
         </label>
       </div>
       <div class="govuk-radios__divider">or</div>

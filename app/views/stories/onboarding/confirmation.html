@@ -21,11 +21,13 @@ Home – GOV.UK Prototype Kit
 
         <h2 class="govuk-heading-m">What happens next</h2>
         <p class="govuk-body">
-          Once the account is appoved you will be able to sign in to access your organisations.
+          Once the account is approved, you'll be able manage export health certificates for any organisation you could access in the previous service.
         </p>
-        <p>It can take upto 48 hours to approve accounts</p>
+        <p>It may take up to 48 hours for your account to be approved.</p>
         {% if query.continue=="yes" or data.isExporterApproved == "yes" %}
           <p><a class="govuk-button" href="accounts?exporterApprovalSent=yes">Continue</a></p>
+          {% elseif query.continue=="yes" or data.isCertiferApproved == "yes" %}
+          <p><a class="govuk-button" href="accounts?certifierApprovalSent=yes">Continue</a></p>
         {% else %}
         <p><a class="govuk-button" href="signed-out">Sign out</a></p>
         {% endif %}

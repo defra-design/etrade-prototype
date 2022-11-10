@@ -19,7 +19,7 @@ Home – GOV.UK Prototype Kit
       <p>Your account has not been approved to use this service. This may take up to 48 hours.</p>
       <!-- <p>If you have just signed up it can take up to 48 hours to become active</p> -->
       <!-- <p>If you need to talk to someone about your access to this service, <a href="https://www.gov.uk/guidance/get-an-export-health-certificate#if-you-need-help">contact APHA or DAERA</a></p> -->
-      {% if query.awaitingApproval %}
+      {% if query.awaitingApproval or query.continue == "yes" %}
       <p><a href="accounts" class="govuk-button">Select a different organisation</a></p>
       {% else %}
       <p><a href="signed-out" class="govuk-button">Sign out</a></p>

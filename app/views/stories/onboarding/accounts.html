@@ -34,8 +34,11 @@ Home – GOV.UK Prototype Kit
             {% set ExporterURL =  "./not-approved" %}
             <input type="hidden" name="awaitingApproval" value="exporter">
             {% endif %}
+            {% if query.exporterApprovalSent == "yes"%}
+            {% set ExporterURL =  "./not-approved" %}
+            {% endif %}
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-org-1" name="org" type="radio" {% if data.account == 'Anavir Ltd'%}checked{% endif %} value="Anavir Ltd~./{{ExporterURL}}?account=Anavir Ltd{%if query.awaitingApproval=='exporter'%}&awaitingApproval=exporter{%endif%}">
+              <input class="govuk-radios__input" id="select-org-1" name="org" type="radio" {% if data.account == 'Anavir Ltd'%}checked{% endif %} value="Anavir Ltd~./{{ExporterURL}}?account=Anavir Ltd{%if query.awaitingApproval=='exporter'%}&awaitingApproval=exporter{%endif%}{% if query.exporterApprovalSent == 'yes'%}&continue=yes{% endif %}">
               <label class="govuk-label govuk-radios__label" for="select-org-1">
                 <strong style="text-transform: capitalize;">Anavir ltd</strong>
                  {% if data.isCertifier == "yes"%}- exporter{% endif %}
@@ -50,10 +53,13 @@ Home – GOV.UK Prototype Kit
             </div>
             {% endif %}
             {% if data.isCertifier == "yes"%}
-            {% set certifierURL =  "./certifier-account" %}
+            {% set certifierURL =  "./not-approved-certifier" %}
             {% if data.accountApprovedRole == "both" or data.accountApprovedRole == "certifier"  %}
             {% set certifierURL =  "./dashboard-certifier-original" %}
+            {% elseif query.certifierApprovalSent == "yes"%}
+            {% set certifierURL =  "./not-approved?continue=yes" %}
             {% endif %}
+
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="select-org-3" name="org" type="radio" value="Isosure trading Ltd~./{{certifierURL}}?account=Isosure trading Ltd&isExporterApproved=yes">
               <label class="govuk-label govuk-radios__label" for="select-org-3">
@@ -94,8 +100,9 @@ Home – GOV.UK Prototype Kit
           </span>
         </summary>
         <div class="govuk-details__text">
-          <p>Only organisations that are not approved to use EHCO do not have access this service.</p>
-          <p>For example, this could be because they are not approved for inspection - please <a href="mailto:contact@exports@apha.gov.uk" > APHA for support </a> </p>
+          <p>Only organisations approved for the previous service are currenlty able to access this new service. You can <a href="mailto:contact@exports@apha.gov.uk" >contact APHA for support </a> in setting up an organisation.</p>
+          <!-- <p>Only organisations that are not approved to use EHCO do not have access this service.</p>
+          <p>For example, this could be because they are not approved for inspection - please <a href="mailto:contact@exports@apha.gov.uk" > APHA for support </a> </p> -->
 
 
 

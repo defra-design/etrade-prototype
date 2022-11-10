@@ -49,8 +49,8 @@ Onboarding - eTrade – GOV.UK Prototype Kit
         <ul class="govuk-list govuk-list--bullet">
       <li><a href="accounts?isCertifier=yes&isExporter=yes&accountApprovedRole=exporter">Only exporter approved</a> - select a certifier account</li>
       <li><a href="accounts?isCertifier=yes&isExporter=yes&accountApprovedRole=certifier">Only certifer approved</a> - select a exporter account</li>
-      <li><a href="certifier-account?isCertifier=no&isExporter=yes&accountApprovedRole=exporter&isExporterApproved=yes">Certifer needs to be approved</a> - if exporter accounts are approved</li>
-      <li><a href="not-approved-exporter?isCertifier=yes&isExporter=no&accountApprovedRole=certifier">Exporter needs to be approved</a> - if certifier accounts are approved</li>
+      <li><a href="not-approved-certifier?isCertifier=yes&isExporter=yes&accountApprovedRole=exporter&continue=yes">Certifer needs to be approved</a> - if exporter accounts are approved</li>
+      <li><a href="not-approved-exporter?isCertifier=yes&isExporter=yes&accountApprovedRole=certifier&continue=yes">Exporter needs to be approved</a> - if certifier accounts are approved</li>
       <li><a href="confirmation?isCertifier=yes&isExporter=yes&accountApprovedRole=both&continue=yes&isExporterApproved=yes">Request sent confirmation (second time)</a> - Continue button</li>
       </ul>
       <p>If user has both roles, has an approved exporter account and <strong>has requested a certifier access</strong> but its not been approved yet. We will show "not approved yet" screen when trying to access the not approved acc.</p>

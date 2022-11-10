@@ -6,12 +6,13 @@ module.exports = function(router) {
 
   const base_url = "stories/"
   router.post('/' + base_url + 'onboarding/certifier-account', function(req, res) {
+    var canContinue = req.query.continue || "no"
     if(req.body.spNumber.charAt(0) == "9"){
       res.redirect(301, '/' + base_url + 'onboarding/not-found');
     }else if(req.body.spNumber == "" && req.body.certifierAccountType == "ov"){
       res.redirect(301, '/' + base_url + 'onboarding/certifier-account?has_error=yes');
     }else{
-      res.redirect(301, '/' + base_url + 'onboarding/signature');
+      res.redirect(301, '/' + base_url + 'onboarding/signature?continue='+canContinue);
     }
 
   })
@@ -141,8 +142,9 @@ module.exports = function(router) {
   })
 
   router.post('/' + base_url + 'onboarding/signature', function(req, res) {
+    var canContinue = req.query.continue || "no"
     req.session.data.approvedAccounts.push(req.session.data.currentAccountID)
-    res.redirect(301, '/' + base_url + 'onboarding/confirmation');
+    res.redirect(301, '/' + base_url + 'onboarding/confirmation?continue='+canContinue);
   })
 
 }
