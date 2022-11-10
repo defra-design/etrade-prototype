@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="../task-list" method="post">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl">Responsible for load (optional)</h1>
+      <p class="govuk-body">This is the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
+      {% set searchLabel = "Organisation responsible for load"%}
+      {% set returnURL = "../persons/load"%}
+      {% set has_saved_orgs = "yes"%}
+      {% block searchConsignee %}{% include "../find/_search_establishment.html" %}{% endblock %}
+      <button class="govuk-button">Continue</button>
+    </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}
