@@ -5,78 +5,107 @@ Home – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent%}
-<div class="govuk-phase-banner full-width" role="alert"><!----><!----><p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag">beta</strong><span class="govuk-phase-banner__text">This is a new service - your <a href="https://defragroup.eu.qualtrics.com/jfe/form/SV_cSnlTGq2c54UxjE" class="govuk-link" rel="noreferrer noopener" target="_blank">feedback (opens in a new tab)</a> will help us to improve it.</span></p></div>
+
+<div class="govuk-phase-banner full-width" role="alert">
+  <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag">beta</strong><span class="govuk-phase-banner__text">This is a new service - your <a href="https://defragroup.eu.qualtrics.com/jfe/form/SV_cSnlTGq2c54UxjE" class="govuk-link" rel="noreferrer noopener" target="_blank">feedback (opens in a new tab)</a> will help us to improve it.</span></p>
+</div>
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% include "./_style.html" %}
 {% endblock%}
 
 {% block content %}
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">Confirm your details</h1>
-      {% if query.isExporterApproved == "yes" %}
-        <p>You are not approved to access this service as a certifer. You will need to request access to use this account.</p>
-      {% else%}
-        <p class="govuk-body">
-          We need to confirm a few details about your account before you can use the system.
-        </p>
-      {% endif %}
-        <form class="" method="post">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if query.hasError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
 
-
-        <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="certifierAccountType-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h1 class="govuk-fieldset__heading">
-        What type of account do you have?
-      </h1>
-    </legend>
-
-    <div id="certifierAccountType-hint" class="govuk-hint">
-      Select one option.
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        {% if query.errorType == "empty"%}
+        <li>
+          <a href="#spNumber-error">Enter your SP number</a>
+        </li>
+        {% else %}
+        <li>
+          <a href="#postcode-input">Select the type of account you want to reqest access to</a>
+        </li>
+        {% endif %}
+      </ul>
     </div>
-    <div class="govuk-radios" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact" name="certifierAccountType" type="radio" value="ov" data-aria-controls="conditional-contact" {% if query.retry %}checked{% endif %}>
-        <label class="govuk-label govuk-radios__label" for="contact">
-          Certifiying official veterinarian (OV)
-        </label>
-      </div>
-      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="certifierAccountType-by-email">
-            Enter your SP number
-          </label>
-          <input class="govuk-input govuk-!-width-one-third" id="certifierAccountType-by-email" name="spNumber" type="text" spellcheck="false" autocomplete="email" value="">
-        </div>
-      </div>
-
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="certifierAccountType-2" name="certifierAccountType" type="radio" value="FCCO" data-aria-controls="conditional-certifierAccountType-2">
-        <label class="govuk-label govuk-radios__label" for="certifierAccountType-2">
-            Food Competent certifiying officer (FCCO)
-        </label>
-      </div>
-
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="certifierAccountType-3" name="certifierAccountType" type="radio" value="administrative" data-aria-controls="conditional-certifierAccountType-3">
-        <label class="govuk-label govuk-radios__label" for="certifierAccountType-3">
-          Administrative staff member
-        </label>
-      </div>
-
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="certifierAccountType-3" name="certifierAccountType" type="radio" value="CSO" data-aria-controls="conditional-certifierAccountType-3">
-        <label class="govuk-label govuk-radios__label" for="certifierAccountType-3">
-          Certifiying Support Officer (CSO)
-        </label>
-      </div>
-    </div>
-
-  </fieldset>
+  </div>
 </div>
-  <button class="govuk-button">Continue</button>
-  </form>
+{% endif %}
+    <form class="" method="post">
+      <div class="govuk-form-group {% if query.hasError and query.errorType=='notSelected' %}govuk-form-group--error{% endif %}">
+        <fieldset class="govuk-fieldset" aria-describedby="certifierAccountType-hint {% if query.hasError and query.errorType=='notSelected' %}certifierAccountType-error{% endif %}">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              What type of account do you want to request access to?
+            </h1>
+          </legend>
+          <!-- <p class="govuk-body">
+                We need to confirm a few details about your account before you can use the system.
+              </p> -->
+          <div id="certifierAccountType-hint" class="govuk-hint">
+            Select one option.
+          </div>
+          {% if query.hasError and query.errorType=='notSelected' %}
+          <p id="certifierAccountType-error" class="govuk-error-message">
+  <span class="govuk-visually-hidden">Error:</span> Select the type of account you want to reqest access to
+  </p>
+  {% endif%}
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contact" name="certifierAccountType" type="radio" value="ov" data-aria-controls="conditional-contact" {% if query.retry %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="contact">
+                Official veterinarian (OV)
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+              <div class="govuk-form-group {% if query.hasError and query.errorType=='empty' %} govuk-form-group--error{% endif %}">
+                <label class="govuk-label" for="certifierAccountType-by-email">
+                  Enter your SP number
+                </label>
+                {% if query.hasError and query.errorType=='empty'%}
+                <p id="spNumber-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> Enter your SP number
+                </p>
+                {% endif %}
+                <input class="govuk-input govuk-!-width-one-third {% if query.hasError and query.errorType=='empty' %} govuk-form-input--error{% endif %}" id="certifierAccountType-by-email" name="spNumber" type="text" spellcheck="false"
+                  autocomplete="email" value="" aria-describedby="spNumber-error">
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="certifierAccountType-2" name="certifierAccountType" type="radio" value="FCCO" data-aria-controls="conditional-certifierAccountType-2">
+              <label class="govuk-label govuk-radios__label" for="certifierAccountType-2">
+                Food Competent Certifiying Officer (FCCO)
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="certifierAccountType-3" name="certifierAccountType" type="radio" value="CSO" data-aria-controls="conditional-certifierAccountType-3">
+              <label class="govuk-label govuk-radios__label" for="certifierAccountType-3">
+                Certification Support Officer (CSO)
+              </label>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="certifierAccountType-3" name="certifierAccountType" type="radio" value="administrative" data-aria-controls="conditional-certifierAccountType-3">
+              <label class="govuk-label govuk-radios__label" for="certifierAccountType-3">
+                Administrative staff member
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
       </div>
-    </div>
+      <button class="govuk-button">Continue</button>
+    </form>
+  </div>
+</div>
 
 {% endblock %}

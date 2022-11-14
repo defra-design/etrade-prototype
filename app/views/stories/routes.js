@@ -7,10 +7,16 @@ module.exports = function(router) {
   const base_url = "stories/"
   router.post('/' + base_url + 'onboarding/certifier-account', function(req, res) {
     var canContinue = req.query.continue || "no"
+    console.log("req.body.certifierAccount = "+req.body.certifierAccountType)
+    if(req.body.spNumber == "" && req.body.certifierAccountType == "ov"){
+      res.redirect(301, '/' + base_url + 'onboarding/certifier-account?hasError=yes&errorType=empty&retry=yes');
+    }
+    if(!req.body.certifierAccountType){
+      res.redirect(301, '/' + base_url + 'onboarding/certifier-account?hasError=yes&errorType=notSelected');
+    }
+
     if(req.body.spNumber.charAt(0) == "9"){
       res.redirect(301, '/' + base_url + 'onboarding/not-found');
-    }else if(req.body.spNumber == "" && req.body.certifierAccountType == "ov"){
-      res.redirect(301, '/' + base_url + 'onboarding/certifier-account?has_error=yes');
     }else{
       res.redirect(301, '/' + base_url + 'onboarding/signature?continue='+canContinue);
     }

@@ -4,8 +4,9 @@
 Home – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent%}]
+{% block beforeContent%}
 <div class="govuk-phase-banner full-width" role="alert"><!----><!----><p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag">beta</strong><span class="govuk-phase-banner__text">This is a new service - your <a href="https://defragroup.eu.qualtrics.com/jfe/form/SV_cSnlTGq2c54UxjE" class="govuk-link" rel="noreferrer noopener" target="_blank">feedback (opens in a new tab)</a> will help us to improve it.</span></p></div>
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% include "./_style.html" %}
 {% endblock%}
 
@@ -16,9 +17,10 @@ Home – GOV.UK Prototype Kit
 
     <h1 class="govuk-heading-xl">Record not found</h1>
 
-    <p>The record for SP number <strong>{{data.spNumber or '2342342'}}</strong> was not found or did not match with your account name <strong>Bill Schoggins</strong></p>
-    <p></p>
-    <p>Contact us if you think this is correct or <a href="certifier-account?retry=yes">enter a different SP number</a>.</p>
+    <p>The record for SP number <strong>{{data.spNumber or '2342342'}}</strong> was not found or did not match with your account name, <strong>Bill Schoggins</strong>.</p>
+    <p class="govuk-body govuk-!-margin-bottom-6">Contact us if you think this is correct.</p>
+
+    <p><a class="govuk-button" href="certifier-account?retry=yes">Enter a different SP number</a></p>
 
     <!-- <p><a href="#">Return to sign in</a></p> -->
   </div>
