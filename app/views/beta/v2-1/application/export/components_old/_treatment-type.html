@@ -1,0 +1,32 @@
+{% if cert.treatmentType | length > 0 %}
+{% set listOfItems = cert.treatmentType %}
+{% else %}
+{% set listOfItems = cert.commodities[commodityID].treatmentType %}
+{% endif %}
+
+<div class="govuk-form-group"><label class="govuk-label" for="natureOfCommodity">Treatment type
+  </label><select class="govuk-select full-width" id="treatent-type" name="treatmentType">
+    {% if (listOfSpecies| length) <= 10 %}
+    <option disabled="" value="" {% if not identification.treatmentType %}selected{%endif%}>Select a Treatment type</option>
+    {% endif %}
+    {% if (listOfItems| length) > 0%}
+    {% for item in listOfItems%}
+    <option value="{{item}}" {% if identification.treatmentType == item %}selected{%endif%}>{{item}}</option>
+    {% endfor %}]
+    {% else %}
+    <option value="not set">Not set any species in JSON</option>
+    {% endif %}
+  </select>
+</div>
+
+{% if (listOfSpecies| length) > 10 %}
+<script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    element2 = document.querySelector('#treatent-type')
+    accessibleAutocomplete.enhanceSelectElement({
+        selectElement: element2
+    })
+  })
+</script>
+{% endif %}

@@ -1,0 +1,25 @@
+{% set id = (searchLabel | removeWhiteSpace) or "Manufacturingplant"%}
+
+
+<label class="govuk-label" for="{{id}}">{{searchLabel}}</label>
+{% if data["has_"+id] != "yes" %}
+<div class="govuk-form-group app-find-establishment-card">
+  {% set url = "start" %}
+  {% if query.has_saved_orgs == "no" %}
+    {% set url = "results" %}
+  {% endif %}
+  <p class="govuk-!-margin-bottom-0"><a href="./find-v2/{{url}}?searchLabel={{searchLabel}}&searchReturnURL=../commodity&searchID={{id}}&canSearchApprovalNumber=yes">Select a {{searchLabel | lower }}</a></p>
+</div>
+{% else %}
+
+{% set org = data.establishments[data["selected"+id] or 0] %}
+
+<div class="govuk-form-group app-find-establishment-card">
+  <input type="hidden" id="{{id}}" name="{{id}}" value="{{org.TradingName}} ({{org.AppNo}})">
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}} ({{org.AppNo}})</h3>
+  <p class="govuk-!-margin-bottom-2">{{org.Address1}},{% if org.Address2 !="" %} {{org.Address2}},{%endif%} {{org.Town}}, {{org.Postcode}}, {{org.Country}}<br>
+    Activity: {{org.All_Activities[(data.activity or 0)]}}
+  </p>
+  <p class="govuk-!-margin-bottom-0"><a href="../export/find-v2/start?id={{query.id}}&change=yes&searchLabel=manufacturing plant&searchActivity=Mince Meat Establishment&canSearchApprovalNumber=yes">Select a different {{searchLabel | lower }}</a></p>
+</div>
+{% endif %}
