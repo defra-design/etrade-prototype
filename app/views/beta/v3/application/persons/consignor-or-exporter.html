@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="../task-list" method="post">
+
+  <!---->
+  <!---->
+  <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+    <!---->
+  </div>
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl">Consignor or exporter </h1>
+      <!---->
+      <!---->
+      <!---->
+      <p class="govuk-body">This is the natural or legal person dispatching the consignment. The consignor selected must be located in Great Britain.
+
+
+      </p>
+      {% set searchLabel = "Consignor or exporter"%}
+      {% set returnURL = "../persons/consgnor-or-exporter"%}
+      <div class="govuk-form-group app-find-establishment-card">
+  <input type="hidden" id="Manufacturingplant" name="Manufacturingplant" value="Moy Park Ltd (56932)">
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Moy Park Ltd (56932)</h3>
+  <p class="govuk-!-margin-bottom-2">8 Willow Road, Bready, Strabane, County Tyrone, BT82, Northern Ireland<br>
+    Activity: Exporter
+  </p>
+  <p class="govuk-!-margin-bottom-0"><a href="./find-v2/start?id=&change=yes&searchLabel={{searchLabel}}&searchActivity={{searchLabel}}&canSearchApprovalNumber=no">Select a different {{searchLabel}}</a></p>
+</div>
+<button class="govuk-button">Continue</button>
+      </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

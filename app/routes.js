@@ -20,6 +20,10 @@ require('./views/beta/v2-3/application/export/upload/routes.js')(router);
 require('./views/beta/v2-4/routes.js')(router);
 require('./views/beta/v2-4/application/export/upload/routes.js')(router);
 require('./views/beta/v2-4/write-excel/routes.js')(router);
+// version 3
+require('./views/beta/v3/routes.js')(router);
+require('./views/beta/v3/application/export/upload/routes.js')(router);
+require('./views/beta/v3/write-excel/routes.js')(router);
 // experimental and other stories
 require('./views/experimental/routes.js')(router);
 require('./views/stories/routes.js')(router);
