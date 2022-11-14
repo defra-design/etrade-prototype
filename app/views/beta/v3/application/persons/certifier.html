@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="../task-list" method="post">
+  <!---->
+  <!---->
+  <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+    <!---->
+  </div>
+  <section id="intro" data-v-2c6e5fd0="">
+    <div class="govuk-grid-row" data-v-2c6e5fd0="">
+      <div class="govuk-grid-column-two-thirds" data-v-2c6e5fd0=""><span class="govuk-caption-xl">Persons involved</span>
+        <h1 class="govuk-heading-xl"> Certifier </h1>
+        <!---->
+        <!---->
+        <!---->
+        <p class="govuk-body" data-v-2c6e5fd0=""> Search for and select the certifying officers organisation who is authorised by Defra to sign the official certificate. </p>
+        <h2 class="govuk-visually-hidden" data-v-2c6e5fd0="">Certifier search</h2>
+      </div>
+    </div>
+  </section>
+  <section id="form" data-v-2c6e5fd0="">
+    <div class="govuk-grid-row" data-v-2c6e5fd0="">
+      <div class="govuk-grid-column-two-thirds" data-v-2c6e5fd0="">
+        <div class="current-certifier-selection" data-v-2c6e5fd0="">
+          <div class="certifier-selection selection-not-made" data-v-2c6e5fd0="">
+            <div class="certifier-selection--heading" data-v-2c6e5fd0=""><span class="govuk-caption-m" data-v-2c6e5fd0="">Certifier for</span>
+              <h3 class="govuk-heading-m" data-v-2c6e5fd0="">EHC8328 Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland</h3>
+            </div>
+            <div class="certifier-selection--body" data-v-2c6e5fd0="">
+              <div class="certifier-selection--no-selection" data-v-2c6e5fd0="">
+                <p class="govuk-body" data-v-2c6e5fd0=""> You have not yet chosen a certifier for this certificate. </p>
+              </div>
+            </div>
+            <div class="certifier-selection--actions" data-v-2c6e5fd0="">
+              <div class="certifier-selection--action" data-v-2c6e5fd0=""><button class="govuk-button govuk-button--secondary m-0" data-v-2c6e5fd0="">Select a certifier</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- // for prototype -->
+  <input type=hidden name="certifierComplete" value="yes">
+
+  <section class="actions" data-v-2c6e5fd0="">
+    <div class="govuk-grid-row" data-v-2c6e5fd0="">
+      <div class="govuk-grid-column-two-thirds" data-v-2c6e5fd0="">
+        <!---->
+        <!---->
+      </div>
+    </div>
+  </section>
+
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}
