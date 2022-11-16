@@ -15,10 +15,10 @@ Home – GOV.UK Prototype Kit
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Record not found</h1>
+    <h1 class="govuk-heading-xl">SP number not found</h1>
 
-    <p>The record for SP number <strong>{{data.spNumber or '2342342'}}</strong> was not found or did not match with your account name, <strong>Bill Schoggins</strong>.</p>
-    <p class="govuk-body govuk-!-margin-bottom-6">Contact us if you think this is correct.</p>
+    <p><strong>{{data.spNumber or '2342342'}}</strong> is not the SP number associated with the account for <strong>Bill Schoggins</strong>.</p>
+    <p class="govuk-body govuk-!-margin-bottom-6">If you think this is the correct number for this account, contact Improve International for help with your SP number.</p>
 
     <p><a class="govuk-button" href="certifier-account?retry=yes">Enter a different SP number</a></p>
 
