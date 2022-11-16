@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Home – GOV.UK Prototype Kit
+Responsible for load – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -9,18 +9,40 @@ Home – GOV.UK Prototype Kit
 {% endblock%}
 {% block content %}
 
+<style>
+  .find-establishment-link {
+    padding: 30px;
+    background: #f3f2f1;
+  }
+
+  .govuk-summary-list__actions {
+    padding-right: 30px;
+  }
+
+  .govuk-summary-list__row {
+    border: none;
+  }
+</style>
+
 
 <form class="" action="../task-list" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
       <h1 class="govuk-heading-xl">Responsible for load</h1>
-      <!---->
-      <!---->
-      <!---->
       <p class="govuk-body">Enter the country and address of the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
-      {% set searchLabel = "Organisation responsible for load"%}
-      {% set returnURL = "../persons/load"%}
-      {% block searchConsignee %}{% include "../find/_search_establishment.html" %}{% endblock %}
+
+      {% if data.person['load'] %}
+        {% set establishmentIndex = data.person['load'] %}
+        {% set org = data.establishments[establishmentIndex] %}
+
+        {% set removeLink = "./remove?who=load&redirect=load" %}
+        {% block traderAddress %}{% include "./trader-address.html" %}{% endblock %}
+
+      {% else %}
+        <p class="govuk-!-margin-bottom-10 find-establishment-link">
+          <a href="./load/find" class="govuk-link govuk-link--no-visited-state">Select an organisation responsible for load</a>
+        </p>
+      {% endif %}
       <button class="govuk-button">Continue</button>
     </div>
   </div>

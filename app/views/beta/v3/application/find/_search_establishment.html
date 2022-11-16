@@ -28,13 +28,23 @@
     <input type="hidden" id="{{establishmentType}}" name="{{establishmentType}}" value="{{ establishmentApprovalNumber }}">
     <input type="hidden" id="{{establishmentType}}-id" name="{{establishmentType}}-id" value="{{ establishmentIndex }}">
     <input type="hidden" id="{{establishmentType}}Activity" name="{{establishmentType}}Activity" value="{{ establishmentActivity }}">
-    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}} ({{org.AppNo}})</h3>
-    <p class="govuk-!-margin-bottom-2">{{org.Address1}},{% if org.Address2 !="" %} {{org.Address2}},{%endif%} {{org.Town}}, {{org.Postcode}}, {{org.Country}}<br>
-        Activity: {{ establishmentActivity }}
+
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}}</h3>
+    <p class="govuk-body">
+      {{org.Address1}}<br>
+      {% if org.Address2 !="" %} {{org.Address2}}<br>{%endif%}
+      {% if org.Address3 !="" %} {{ org.Address3 }}<br>{%endif%}
+      {{org.Town}}, {{org.Postcode}}<br>
+      {{org.Country}}<br>
+      <br>
+      Approval number: {{ org.AppNo }}<br>
+      Activity: {{ establishmentActivity}}
     </p>
+
     <p class="govuk-!-margin-bottom-0">
+      <a href="#">Remove</a> | <a href="#">Change activity</a>
       <!--<a href="../find/results?id={{data['selected'+id] or 0}}&change=yes&searchLabel={{searchLabel}}&searchID={{id}}&canSearchApprovalNumber=yes&searchReturnURL={{returnURL or '../export/commodity'}}">Select a different {{searchLabel | lower }}</a>-->
-      <a class="find-establishment-link" href="../find/results?searchReturnURL={{returnURL or '../export/commodity'}}&canSearchApprovalNumber=yes&certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}">Select a different {{searchLabel | lower }}</a>
+      <!--<a class="find-establishment-link" href="../find/results?searchReturnURL={{returnURL or '../export/commodity'}}&canSearchApprovalNumber=yes&certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}">Select a different {{searchLabel | lower }}</a>-->
     </p>
   </div>
 
@@ -47,10 +57,16 @@
     <input type="hidden" id="{{establishmentType}}" name="{{establishmentType}}" value="{{ establishmentApprovalNumber }}">
     <input type="hidden" id="{{establishmentType}}-id" name="{{establishmentType}}-id" value="{{ establishmentIndex }}">
     <input type="hidden" id="{{establishmentType}}Activity" name="{{establishmentType}}Activity" value="{{ establishmentActivity }}">
-    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}} ({{org.AppNo}})</h3>
-    <p class="govuk-body">{{org.Address1}},{% if org.Address2 !="" %} {{org.Address2}},{%endif%} {{org.Town}}, {{org.Postcode}}, {{org.Country}}
-      </p>
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}}</h3>
     <p class="govuk-body">
+      {{org.Address1}}<br>
+      {% if org.Address2 !="" %} {{org.Address2}}<br>{%endif%}
+      {% if org.Address3 !="" %} {{ org.Address3 }}<br>{%endif%}
+      {{org.Town}}, {{org.Postcode}}<br>
+      {{org.Country}}
+    </p>
+    <p class="govuk-body">
+      Approval number: ({{org.AppNo}})<br>
       Activity: <strong>Not yet selected</strong><br>
       <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&establishmentIndex={{ establishmentIndex }}" class="govuk-link">Select an activity</a>
     </p>
