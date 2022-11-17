@@ -17,11 +17,12 @@ Home – GOV.UK Prototype Kit
         <fieldset class="govuk-fieldset" aria-describedby="select-org-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
        <h1 class="govuk-fieldset__heading">
-          Which organisation do you want to manage EHC applicaitons for?
+          Which organisation do you want to manage EHC applications for?
        </h1>
      </legend>
 
-     <p class="govuk-hint" id="select-org-hint">You will be able to switch between different organisations after siging in.</p>
+     <p class="govuk-hint" id="select-org-hint">You will be able to switch between different organisations after signing in.
+</p>
      <p>{% if data.isCertifier == "yes" and data.isExporter == "yes"%}4{%else%}2{%endif%} organisations</p>
           <div class="govuk-radios" data-module="govuk-radios">
             {% if data.isExporter == "yes"%}
@@ -29,7 +30,6 @@ Home – GOV.UK Prototype Kit
             {% if data.accountApprovedRole == "both" or data.accountApprovedRole == "exporter" %}
             {% set ExporterURL =  "./dashboard-exporter-original" %}
             {% endif %}
-
             {% if query.awaitingApproval=="exporter"%}
             {% set ExporterURL =  "./not-approved" %}
             <input type="hidden" name="awaitingApproval" value="exporter">
@@ -96,7 +96,8 @@ Home – GOV.UK Prototype Kit
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            Cant find your organisation?
+            Can't find your organisation?
+
           </span>
         </summary>
         <div class="govuk-details__text">

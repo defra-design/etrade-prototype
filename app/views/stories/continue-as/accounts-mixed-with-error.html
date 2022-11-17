@@ -32,14 +32,14 @@ Home – GOV.UK Prototype Kit
       <fieldset class="govuk-fieldset" aria-describedby="govuk-error-message select-org-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
      <h1 class="govuk-fieldset__heading">
-        Which organisation do you want to manage EHC applicaitons for?
+        Which organisation do you want to manage EHC applications for?
      </h1>
    </legend>
    <p id="select-org-error-message" class="govuk-error-message">
 <span class="govuk-visually-hidden">Error:</span> Select an organisation you want to manage applicaitons for
 </p>
-   <p class="govuk-hint" id="select-org-hint">You will be able to switch between different organisations after siging in.</p>
-   <p>{{account | length}} organisations{% if individual=="yes" %} and 1 individual account{% endif %}</p>
+   <p class="govuk-hint" id="select-org-hint">You will be able to switch between different organisations after signing in.</p>
+   <p class="govuk-body">{{account | length}} organisations{% if individual=="yes" %} and 1 individual account{% endif %}</p>
         {% set showType = "no" %}
         {% if (fullAccount.exporter | length > 0 and fullAccount.certifier | length > 0) or individual == "yes"%}
         {% set showType = "yes" %}
@@ -77,12 +77,13 @@ Home – GOV.UK Prototype Kit
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
-          Cant find your organisation?
+          Can't find your organisation?
+
         </span>
       </summary>
       <div class="govuk-details__text">
-        <p>Your organisation must be approved before you can manage EHC applications for it. It can take up to 48 hours to approve new organsiations.</p>
-        
+        <p>Only organisations approved for the previous service are currently able to access the new service.</p>
+
 
 
       </div>
