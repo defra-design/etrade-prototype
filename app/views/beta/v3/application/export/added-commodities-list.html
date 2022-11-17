@@ -142,7 +142,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
     {% endif %}
 
     {% if incompleteRecordCount %}
-
+<!--
     <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
       <div class="govuk-notification-banner__header">
         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -151,24 +151,12 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       </div>
       <div class="govuk-notification-banner__content">
         <p class="govuk-notification-banner__heading">Some commodity data is incomplete</p>
-        <!--
-        <p class="govuk-body">
-          {{ incompleteRecordCount }} {% if incompleteRecordCount == 1 %}record has{% else %}records have{%endif%} missing or incomplete required data.
-        </p>
-        {% if incompleteRecordCount <= 5 %}
-        <ul class="govuk-list">
-        {% for record in incompleteRecordArray %}
-          <li><a class="govuk-link" href="#{{ record }}">{{ incompleteRecordDescriptionArray[loop.index0]}}</a></li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-        -->
         {% if incompleteRecordCount < count %}
         <p class="govuk-body"><a href="#navButtonGroup" id="shortcutToIncompleteRecords">Show only incomplete record{%if incompleteRecordCount > 1 %}s{%endif%}</a></p>
         {% endif %}
       </div>
     </div>
-
+-->
     {% endif %}
 
 
@@ -217,7 +205,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
             <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
               {% if query.changed=="yes" and data.commodityListID == currentCommodityID and loop.index-1 == data.changeID %} <strong class="govuk-tag govuk-tag--blue">{% if query.new %}New{%else%}Changed{%endif%}</strong>{% endif %}
 
-              {% if identification.isIncomplete %}<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>{% endif %}
+              <!--{% if identification.isIncomplete %}<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>{% endif %}-->
 
               {% if identification.productDescription %}{{ identification.productDescription | truncate(100)}} - {% endif %}{{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}} - {{identification.packageCount or "23"}}
               {{identification.packageCount_UNIT or "Bag"}}

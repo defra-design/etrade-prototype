@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Find a place of destination – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form id="search" method="post" action="find">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+      <h1 class="govuk-heading-xl">Find an organisation responsible for the load</h1>
+      <p class="govuk-body">Enter the country and address of the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="country-of-destination">Country</label>
+        <select class="govuk-select full-width" id="country-of-destination">
+          <option selected>Select a country</option>
+          <option value="AT">Austria</option>
+          <option value="BE">Belgium</option>
+          <option value="BG">Bulgaria</option>
+          <option value="HR">Croatia</option>
+          <option value="CY">Cyprus</option>
+          <option value="CZ">Czechia</option>
+          <option value="DK">Denmark</option>
+          <option value="EE">Estonia</option>
+          <option value="FI">Finland</option>
+          <option value="FR">France</option>
+          <option value="DE">Germany</option>
+          <option value="GR">Greece</option>
+          <option value="HU">Hungary</option>
+          <option value="IE">Ireland</option>
+          <option value="IT">Italy</option>
+          <option value="LV">Latvia</option>
+          <option value="LT">Lithuania</option>
+          <option value="LU">Luxembourg</option>
+          <option value="MT">Malta</option>
+          <option value="NL">Netherlands (the)</option>
+          <option value="PL">Poland</option>
+          <option value="PT">Portugal</option>
+          <option value="RO">Romania</option>
+          <option value="SK">Slovakia</option>
+          <option value="SI">Slovenia</option>
+          <option value="ES">Spain</option>
+          <option value="SE">Sweden</option>
+          <option value="XI">United Kingdom - Northern Ireland</option>
+        </select>
+      </div>
+
+      {% set includeApprovalNumberSearch = false %}
+      {% set orgSearchLabel = "Responsible for load organisation name" %}
+      {% block organisationSearch %}{% include "../../persons/organisationSearchAndResults.html" %}{% endblock %}
+
+    </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}

@@ -1,7 +1,7 @@
 <div class="govuk-form-group">
-  <label class="govuk-label" for="operator-search-country">Country of {{(data.searchLabel or 'manufacturing plant') | lower}}</label>
+  <label class="govuk-label" for="operator-search-country">Country {%if establishmentTypeLabel%} of {{establishmentTypeLabel}}{%endif%}</label>
   <select class="govuk-select" id="operator-search-country" name="country">
-    <option value="Any">Any</option>
+    <option value="Any" {%if defaultCountry == "Any"%}selected{%endif%}>Select a country</option>
     <option value="AF">Afghanistan</option>
     <option value="AX">Åland Islands</option>
     <option value="AL">Albania</option>
@@ -228,7 +228,7 @@
     <option value="UG">Uganda</option>
     <option value="UA">Ukraine</option>
     <option value="AE">United Arab Emirates (the)</option>
-    <option value="GB" {% if data.country =="GB" or query.presetCountry != "no" %}selected{% endif %}>United Kingdom</option>
+    <option value="GB" {% if defaultCountry == "GB" %}selected{% endif %}>United Kingdom</option>
     <option value="XI">United Kingdom - Northern Ireland</option>
     <option value="UM">United States Minor Outlying Islands (the)</option>
     <option value="US">United States of America (the)</option>

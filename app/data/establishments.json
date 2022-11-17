@@ -7,7 +7,7 @@
     "Address3": "",
     "Town": "Devon",
     "Postcode": "EX17 3BZ",
-    "Country": "England",
+    "Country": "United Kingdom",
     "All_Activities": ["Category 3 - Animal By-Products"]
   },
   {
@@ -18,7 +18,7 @@
     "Address3": "",
     "Town": "Ashford",
     "Postcode": "TN24 0LU",
-    "Country": "England",
+    "Country": "United Kingdom",
     "All_Activities": ["Processing Plant"]
   },
   {
@@ -29,7 +29,7 @@
     "Address3": "",
     "Town": "Worksop",
     "Postcode": "S81 7AY",
-    "Country": "England",
+    "Country": "United Kingdom",
     "All_Activities": ["Processing Plant"]
   },
   {
@@ -40,7 +40,7 @@
     "Address3": "",
     "Town": "Pontefract",
     "Postcode": "WF8 3DD",
-    "Country": "England",
+    "Country": "United Kingdom",
     "All_Activities": ["Cold Store - food GEN", "Cutting Plant - food PM", "Mince Meat Establishment - food MM","Processing Plant - food MPP", "Slaughterhouse - food PM","Meat Preparation Establishment - food MM"]
   },
   {
@@ -51,7 +51,7 @@
     "Address3": "",
     "Town": "Wolverhampton",
     "Postcode": "WV8 1XE",
-    "Country": "England",
+    "Country": "United Kingdom",
     "All_Activities": ["Cutting Plant", "Mince Meat Establishment"]
   },
   {
@@ -62,7 +62,7 @@
     "Address3": "",
     "Town": "Lincoln",
     "Postcode": "LN6 5TX",
-    "Country": "England",
+    "Country": "United Kingdom",
     "All_Activities": ["Cutting Plant (Red)", "Slaughterhouse (Red)","Processing Plant (Meat)"]
   },
 
@@ -74,7 +74,7 @@
    "Address3": "",
    "Town": "Twyford",
    "Postcode": "RG10 9RY",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -85,7 +85,7 @@
    "Address3": "",
    "Town": "Smethwick",
    "Postcode": "B66 1RB",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -96,7 +96,7 @@
    "Address3": "Rosebery Venue",
    "Town": "London",
    "Postcode": "N17 9SR",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -107,7 +107,7 @@
    "Address3": "Newby Wiske",
    "Town": "Northallerton",
    "Postcode": "DL7 9ER",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -118,7 +118,7 @@
    "Address3": "",
    "Town": "Canterbury",
    "Postcode": "CT4 7NE",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -129,7 +129,7 @@
    "Address3": "Middlemarch Business Park",
    "Town": "Coventry",
    "Postcode": "CV3 4AD",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -140,7 +140,7 @@
    "Address3": "",
    "Town": "Penrith",
    "Postcode": "CA10 1NB",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -151,7 +151,7 @@
    "Address3": "Sayerland",
    "Town": "Polegate",
    "Postcode": "BN26 6QN",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -162,7 +162,7 @@
    "Address3": "",
    "Town": "Bexhill-on-Sea",
    "Postcode": "TN39 3UR",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -173,7 +173,7 @@
    "Address3": "",
    "Town": "London",
    "Postcode": "EC4A 4BD",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -206,7 +206,7 @@
    "Address3": "Wainwright Road",
    "Town": "Bexhill-on-Sea",
    "Postcode": "TN39 3UR",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -217,7 +217,7 @@
    "Address3": "",
    "Town": "Enfield",
    "Postcode": "EN3 7TY",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment","Slaughter house"]
  },
  {
@@ -228,7 +228,7 @@
    "Address3": "Pylle",
    "Town": "Shepton Mallet",
    "Postcode": "BA4 6TA",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -239,7 +239,7 @@
    "Address3": "Toddington",
    "Town": "Cheltenham",
    "Postcode": "GL54 5EB",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -250,7 +250,7 @@
    "Address3": "Rushyford",
    "Town": "Ferryhill",
    "Postcode": "DL17 0LJ",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -261,7 +261,7 @@
    "Address3": "Salvington Road",
    "Town": "Worthing",
    "Postcode": "BN13 2JP",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -272,7 +272,7 @@
    "Address3": "",
    "Town": "Saffron Walden",
    "Postcode": "CB11 3AQ",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -283,7 +283,7 @@
    "Address3": "Ford Road",
    "Town": "Arundel",
    "Postcode": "BN18 0BF",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -294,7 +294,7 @@
    "Address3": "",
    "Town": "Poole",
    "Postcode": "BH12 4NU",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -305,7 +305,7 @@
    "Address3": "Rawmarsh Road",
    "Town": "Rotherham",
    "Postcode": "S60 1RU",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -316,7 +316,7 @@
    "Address3": "",
    "Town": "Stockport",
    "Postcode": "SK4 1PQ",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -327,7 +327,7 @@
    "Address3": "",
    "Town": "Erith",
    "Postcode": "DA18 4AA",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -338,7 +338,7 @@
    "Address3": "",
    "Town": "Norwich",
    "Postcode": "NR4 6DG",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -349,7 +349,7 @@
    "Address3": "",
    "Town": "Doncaster",
    "Postcode": "DN4",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Category 3"]
  },
  {
@@ -360,7 +360,7 @@
    "Address3": "",
    "Town": "Ongar",
    "Postcode": "CM5 0DU",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -371,7 +371,7 @@
    "Address3": "Woolwich",
    "Town": "London",
    "Postcode": "SE28 0FN",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -382,7 +382,7 @@
    "Address3": "",
    "Town": "White Roding",
    "Postcode": "CM6 1RP",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
  },
  {
@@ -393,7 +393,7 @@
    "Address3": "Swannington",
    "Town": "Norwich",
    "Postcode": "NR9 5NN",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Re-Wrapping and repackaging establishment"]
  },
  {
@@ -404,7 +404,7 @@
    "Address3": "",
    "Town": "Woolwich",
    "Postcode": "SE18 6AP",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Re-Wrapping and repackaging establishment"]
  },
  {
@@ -415,7 +415,7 @@
    "Address3": "Roundswell Business Park",
    "Town": "Barnstaple",
    "Postcode": "EX31 3TD",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store", "Cutting Plant", "Meat Preparation Establishment"]
  },
  {
@@ -426,7 +426,7 @@
    "Address3": "Walthamstow",
    "Town": "London",
    "Postcode": "E17 6BH",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cutting Plant"]
  },
  {
@@ -437,7 +437,7 @@
    "Address3": "",
    "Town": "Long Melford",
    "Postcode": "CO10 9EH",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Store",
    "Cutting Plant",
    "Mince Meat Establishment"]
@@ -465,7 +465,7 @@
    "Address3": "Aberdeenshire",
    "Town": "Mintlaw",
    "Postcode": "AB42",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Dispatch centre - Food LBM, Processing plant - Food FFP"]
  },
  {
@@ -476,7 +476,7 @@
    "Address3": "North Lanarkshire",
    "Town": "Bellshill",
    "Postcode": "ML4 3LX",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold stores - Food GEN"]
  },
  {
@@ -487,7 +487,7 @@
    "Address3": "South Lanarkshire",
    "Town": "Larkhall",
    "Postcode": "ML9 2TL",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold stores - Food GEN"]
  },
  {
@@ -498,7 +498,7 @@
    "Address3": "Shetland Islands",
    "Town": "Lerwick",
    "Postcode": "ZE1 0PW",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing plant - Food FFP"]
  },
  {
@@ -509,7 +509,7 @@
    "Address3": "Aberdeen",
    "Town": "Aberdeen",
    "Postcode": "AB11 5QL",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing plant - Food FFP"]
  },
  {
@@ -520,7 +520,7 @@
    "Address3": "Aberdeen",
    "Town": "Aberdeen",
    "Postcode": "AB11 5QR",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing plant - Food FFP"]
  },
  {
@@ -531,7 +531,7 @@
    "Address3": "Aberdeen",
    "Town": "Aberdeen",
    "Postcode": "AB12 3AN",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing plant - Food FFP"]
  },
  {
@@ -542,7 +542,7 @@
    "Address3": "Stalbridge Sturminster Newton",
    "Town": "Stalbridge",
    "Postcode": "DT10 2RU",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Category 3 - Animal By-Products ABP-COL"]
  },
  {
@@ -553,7 +553,7 @@
    "Address3": "Dorset",
    "Town": "Shaftesbury",
    "Postcode": "SP7 8QD",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -564,7 +564,7 @@
    "Address3": "Henstridge",
    "Town": "Bowbridge",
    "Postcode": "BA8 0TF",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Cold Stores", "Re-wrapping Establishment", "Minced Meat Plant", "Meat Preparation Plant", "Cutting Plant", "Processing Plant"]
  },
  {
@@ -575,7 +575,7 @@
    "Address3": "Oxfordshire",
    "Town": "Standlake",
    "Postcode": "OX29 7RB",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Egg-packing Centre", "Liquid Egg Plant"]
  },
  {
@@ -586,7 +586,7 @@
    "Address3": "London",
    "Town": "London",
    "Postcode": "SW8",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -597,7 +597,7 @@
    "Address3": "London",
    "Town": "London",
    "Postcode": "SW8",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -608,7 +608,7 @@
    "Address3": "Malton",
    "Town": "Malton",
    "Postcode": "YO17 9HG",
-   "Country": "England",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant", "Category 3", "Cutting Plant", "Slaughterhouse", "Meat Preparation Plant", "Minced Meat Plant"]
  },
  {
@@ -619,7 +619,7 @@
    "Address3": "Aberdeen",
    "Town": "Aberdeen",
    "Postcode": "AB11 5RL",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -630,7 +630,7 @@
    "Address3": "Aberdeen",
    "Town": "Aberdeen",
    "Postcode": "AB11 9AA",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -641,7 +641,7 @@
    "Address3": "Isle of Islay, Argyll",
    "Town": "Argyll and Bute",
    "Postcode": "PA42 7AS",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -652,7 +652,7 @@
    "Address3": "Aberdeenshire",
    "Town": "Fraserburgh",
    "Postcode": "AB43 9LG",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -663,7 +663,7 @@
    "Address3": "Aberdeenshire",
    "Town": "Fraserburgh",
    "Postcode": "AB43 9TD",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -674,7 +674,7 @@
    "Address3": "Aberdeenshire",
    "Town": "Fraserburgh",
    "Postcode": "AB43",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -685,7 +685,7 @@
    "Address3": "Aberdeenshire",
    "Town": "Fraserburgh",
    "Postcode": "AB43 9SX",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -696,7 +696,7 @@
    "Address3": "Peterhead",
    "Town": "Peterhead",
    "Postcode": "AB42 1TZ",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -707,7 +707,7 @@
    "Address3": "East Lothian",
    "Town": "Musselburgh",
    "Postcode": "EH21",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -718,7 +718,7 @@
    "Address3": "Glasgow City",
    "Town": "Glasgow",
    "Postcode": "G33 4DD",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -729,7 +729,7 @@
    "Address3": "Glasgow City",
    "Town": "Glasgow",
    "Postcode": "G21 2DU",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -740,7 +740,7 @@
    "Address3": "South Ayrshire",
    "Town": "Ayr",
    "Postcode": "KA8 9RZ",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  },
  {
@@ -751,7 +751,7 @@
    "Address3": "South Ayrshire",
    "Town": "Prestwick",
    "Postcode": "KA9 2TR",
-   "Country": "Scotland",
+   "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
  }
 

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Home – GOV.UK Prototype Kit
+Consignee or importer – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -9,18 +9,40 @@ Home – GOV.UK Prototype Kit
 {% endblock%}
 {% block content %}
 
+<style>
+  .find-establishment-link {
+    padding: 30px;
+    background: #f3f2f1;
+  }
+
+  .govuk-summary-list__actions {
+    padding-right: 30px;
+  }
+
+  .govuk-summary-list__row {
+    border: none;
+  }
+</style>
 
 <form class="" action="../task-list" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
       <h1 class="govuk-heading-xl">Consignee or importer</h1>
-      <!---->
-      <!---->
-      <!---->
-      <p class="govuk-body">This is the natural or legal person to whom the consignment is intended in Northern Ireland or EU Member State. </p>
-      {% set searchLabel = "Consignee or importer"%}
-      {% set returnURL = "../persons/consignee-or-importer"%}
-      {% block searchConsignee %}{% include "../find/_search_establishment.html" %}{% endblock %}
+      <p class="govuk-body">This is the organisation that will receive this consignment. They must be located in either Northern Ireland or the EU.</p>
+
+        {% if data.person['consignee'] %}
+          {% set establishmentIndex = data.person['consignee'] %}
+          {% set org = data.establishments[establishmentIndex] %}
+
+          {% set removeLink = "./remove?who=consignee&redirect=consignee-or-importer" %}
+          {% block traderAddress %}{% include "./trader-address.html" %}{% endblock %}
+
+        {% else %}
+          <p class="govuk-!-margin-bottom-10 find-establishment-link">
+            <a href="./consignee/find" class="govuk-link govuk-link--no-visited-state">Select a consignee or importer</a>
+          </p>
+        {% endif %}
+
       <button class="govuk-button">Continue</button>
     </div>
   </div>

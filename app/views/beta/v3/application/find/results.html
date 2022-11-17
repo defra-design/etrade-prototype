@@ -5,6 +5,20 @@
 {% set addedEHC_identificationsId = query.identificationsId %}
 {% set addedEHC_establishmentType = query.establishmentType %}
 
+{% if query.establishmentType == "manufacturingPlant" %}
+  {% set establishmentTypeLabel = "manufacturing plant" %}
+{% elseif query.establishmentType == "coldStore" %}
+  {% set establishmentTypeLabel = "cold store" %}
+{% elseif query.establishmentType == "slaughterHouse" %}
+  {% set establishmentTypeLabel = "slaughterhouse" %}
+{% elseif query.establishmentType == "cuttingPlant" %}
+  {% set establishmentTypeLabel = "cutting plant" %}
+{% elseif query.establishmentType == "plantEstablishmentCentre" %}
+  {% set establishmentTypeLabel = "plant / establishment / centre" %}
+{% else %}
+  {% set establishmentTypeLabel = "operator" %}
+{% endif %}
+
 {% set cert = data.addedEHC[addedEHC_certID]%}
 {% set identification = cert.addedCommodities[addedEHC_addedCommoditiesId].identifications[addedEHC_identificationsId]%}
 
@@ -263,11 +277,7 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
     display: none;
   }
 
-  .operator-filter-group label {
-    display: inline-block;
-    margin-right: 10px;
 
-  }
 </style>
 {% set id = query.id or "1" %}
 {% set consignor = data.establishments[id]%}
@@ -295,25 +305,66 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
         </div>
       </div>
       {% endif %}
-      <h1 class="govuk-heading-xl">Search for a {{(data.searchLabel or 'manufacturing plant') | lower}}</h1>
+      <h1 class="govuk-heading-xl">Find a {{establishmentTypeLabel}}</h1>
 
       {% block countryOfOrigin %}{% include "./_country-of-origin-select.html" %}{% endblock %}
 
       <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
-        {% set approvalNumberText = "Search by approval number or "%}
-        {% if data.canSearchApprovalNumber == "no"%}
-        {% set approvalNumberText = "Search by"%}
+
+        {% if data.canSearchApprovalNumber == "no" %}
+          <label class="govuk-label">Search by organisation name</label>
+          <div id="organisation-search-hint" class="govuk-hint govuk-radios__hint">
+            Partial company names (e.g. Examplefood) may return better results than full company names (e.g. Examplefood Company Partners Ltd).
+          </div>
+        {% else %}
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Search for organisation
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sign-in" name="search-type" type="radio" value="approval-number" aria-describedby="sign-in-item-hint" checked>
+              <label class="govuk-label govuk-radios__label" for="sign-in">
+                Search by approval number
+              </label>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                <p class="govuk-hint">Enter the organisation’s approval number. For example AB123, BC&nbsp;001 or XZ-2892-830.</p>
+                <div id="approval-number-search-group">
+                  <input class="govuk-input govuk-input--width-20" id="search-field-approval-number" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}">
+                  <button id="operator-search-button" class="govuk-button app-button--search" type="button">Search</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sign-in-2" name="search-type" type="radio" value="organisation-name" aria-describedby="sign-in-2-item-hint">
+              <label class="govuk-label govuk-radios__label" for="sign-in-2">
+                Search by organisation name
+              </label>
+              <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+                <p class="govuk-hint">You will see more search results if you search for part of the organisation name, rather than the full name.</p>
+                <div id="organisation-name-search-group" style="display:none">
+                  <input class="govuk-input govuk-input--width-20" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}">
+                  <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+        </div>
+
         {% endif %}
-        <label class="govuk-label">{{approvalNumberText}} the {{(data.searchLabel or 'manufacturing plant') | lower}} name</label>
         {% if query.hasError and "empty" in query.errorType%}
         <p id="national-insurance-number-error" class="govuk-error-message">
           <span class="govuk-visually-hidden">Error:</span> Enter an approval number or the {{(data.searchLabel or 'manufacturing plant') | lower}} name
         </p>
         {% endif %}
-        <input class="govuk-input govuk-input--width-20" id="search-field-CONSIGNOR" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}">
-        <button id="operator-search-button" class="govuk-button app-button--search" type="button"> Search
-          <!---->
-        </button>
+
       </div>
 
 
@@ -321,25 +372,6 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
       <div id="results" {% if query.q %}data-trigger="yes" {% endif %}>
         <p class="govuk-heading-s  govuk-!-font-weight-regular"><span class="search-result" aria-live="polite" aria-atomic="true"></span> &nbsp;<a class="govuk-link" href="./results">Reset search</a></p>
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-        {% if query.show_filter !="no" %}
-        <div class="govuk-form-group operator-filter-group">
-          <label class="govuk-label" for="operator-search-filter-classification"> Filter by location type</label>
-          <select class="govuk-select govuk-input--width-20" id="operator-search-filter-classification" name="operator-search-filter-classification">
-            <option>Any</option>
-            <option value="EGG_PACKING_CENTRE">Egg-packing Centre</option>
-            <option value="Cold Stores">Cold Stores</option>
-            <option value="Minced Meat Plant">Minced Meat Plant</option>
-            <option value="MEAT_PREPARATION_PLANT">Meat Preparation Plant</option>
-            <option value="PROCESSING_PLANT">Processing Plant</option>
-            <option value="LIQUID_EGG_PLANT">Liquid Egg Plant</option>
-            <option value="CATEGORY_3">Category 3</option>
-            <option value="ESTABLISHMENT">Establishment</option>
-            <option value="CUTTING_PLANT">Cutting Plant</option>
-            <option value="SLAUGHTER_HOUSE">Slaughterhouse</option>
-          </select>
-        </div>
-        {% endif %}
-
 
         <div class="govuk-radios" data-module="govuk-radios">
           {% set type = "consignor"%}
@@ -347,16 +379,15 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
           <div class="govuk-radios__item app-establishment-list__row" data-content="{{operator.TradingName}}" data-postcode="{{operator.Postcode}}" data-number="{{operator.AppNo}}">
             <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="establishmentIndex" type="radio" value="{{ loop.index0 }}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
             <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index0}}">
-              {{operator.TradingName}} {% if operator.AppNo %}({{operator.AppNo}}){% endif %}
-              <br>
-              {{operator.Address1}},
-              {% if operator.Address2%}{{operator.Address2}},{% endif %}
-              {% if operator.Address3%}{{operator.Address3}},{% endif %}
-              {{operator.Town}},
-              {{operator.Postcode}}
+              <strong>{{operator.TradingName}}</strong><br>
+              {{operator.Address1}},<br>
+              {% if operator.Address2%}{{operator.Address2}}<br>{% endif %}
+              {% if operator.Address3%}{{operator.Address3}}<br>{% endif %}
+              {{operator.Town}}, {{operator.Postcode}}<br>
+              {{operator.Country}}
             </label>
             <div id="establishmentIndex{{loop.index0 }}-hint" class="govuk-hint govuk-radios__hint">
-              <span class="govuk-visually-hidden">Address</span>
+              {% if operator.AppNo %}Approval number: {{operator.AppNo}}<br>{% endif %}
               Activities:
               {% for activity in operator.All_Activities%}{% if loop.index != 1 %}, {% endif %}{{activity}}{% endfor %}
             </div>
@@ -394,9 +425,9 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
         <div class="no-results-block">
           <p class="govuk-body"><strong>Improve your search results by:</strong></p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>removing filters</li>
-            <li>double-checking your spelling</li>
-            <li>searching for a different location type</li>
+            <li>making sure you’ve entered the approval number correctly</li>
+            <li>removing ‘GB’ from the approval number, if you included it</li>
+            <li>searching for part of the organisation name, instead of the full name</li>
           </ul>
 
         </div>
@@ -406,7 +437,7 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
         <input type="hidden" name="addedEHC_identificationsId" value="{{ addedEHC_identificationsId }}">
         <input type="hidden" name="addedEHC_establishmentType" value="{{ addedEHC_establishmentType }}">
 
-        <button type="submit" class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
+        <button id="save-and-continue" type="submit" class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
           Save and continue
         </button>
 
@@ -421,94 +452,73 @@ Find a manufacturing plant – {{serviceName}} - GOV.UK
 {% block pageScripts %}
 <script type="text/javascript">
   window.addEventListener('load', function() {
-    var filterText = ""
-    if ($("#results").attr("data-trigger") == "yes") {
-      showResults($('#operator-search-button'))
-    }
-    $('#operator-search-filter-classification').on("change", function() {
 
-      var t = $(this).find(":selected").text()
-      if (t == "Any") {
-        filterText = ""
-      } else {
-        filterText = " as <strong>" + t.toLowerCase() + "</strong>"
-      }
-      showResults($('#operator-search-button'))
+    $('#operator-search-button').on("click", function() {
+      var approvalNumberSearchString = $("#search-field-approval-number").val();
+      searchEstablishments("approvalNumber", approvalNumberSearchString);
+      return false;
     })
 
-    $(".operator-search-results").hide()
-    $(".operator-pane").hide()
+    $('#organisation-search-button').on("click", function() {
+      var organisationNameSearchString = $("#search-field-organisation-name").val();
+      searchEstablishments("organisationName", organisationNameSearchString);
+      return false;
+    })
 
-    function showResults(btn) {
-      $("#results").show()
-      $(".operator-filter-group").hide()
-      $(".app-establishment-list__row").hide()
-      // $(".govuk-radios__item").hide()
+    function searchEstablishments(searchType, searchString) {
 
-      if ($(".operator-search-results").hasClass("hidden")) {
-        $(".operator-search-results").removeClass("hidden")
+      $("#results").show();
+      $(".app-establishment-list__row").hide();
+
+      let q = searchString.toLowerCase();
+
+      if (searchType == "approvalNumber") {
+        $(".app-establishment-list__row").filter(function() {
+          var a = $(this).attr("data-number").toLowerCase()
+          if (q != "" && a.indexOf(q) >= 0) {
+            return $(this)
+          }
+        }).show()
+      } else {
+        // must be an organisation name search
+        $(".app-establishment-list__row").filter(function() {
+          var t = $(this).attr("data-content").toLowerCase()
+          if (q != "" && t.indexOf(q) >= 0) {
+            return $(this)
+          }
+        }).show()
       }
-      $(".operator-search-results").show()
-      let q = $('#search-field-CONSIGNOR').val().toLowerCase()
 
-      $(".app-establishment-list__row").filter(function() {
-      // $(".govuk-radios__item").filter(function() {
-
-        var t = $(this).attr("data-content").toLowerCase()
-        var a = $(this).attr("data-number").toLowerCase()
-        var p = $(this).attr("data-postcode").toLowerCase()
-        if ((q != "" && t.indexOf(q) >= 0) || (q != "" && a.indexOf(q) >= 0) || (q != "" && p.indexOf(q) >= 0)) {
-          return $(this)
-        }
-      }).show()
       var count = $(".app-establishment-list__row:visible").length
-      // var count = $(".govuk-radios__item:visible").length
       var r
       if (count == 1) {
-        r = count + " result for " + "<strong>" + q + "</strong> in <strong>United Kingdom</strong>" + filterText
-
+        r = count + " result for " + "<strong>" + q + "</strong> in <strong>United Kingdom</strong>";
       } else {
-        r = count + " results for " + "<strong>" + q + "</strong> in <strong>United Kingdom</strong>" + filterText
+        r = count + " results for " + "<strong>" + q + "</strong> in <strong>United Kingdom</strong>";
       }
       if (count > 0) {
-        $(".operator-filter-group").show()
-        $(".operator-search-results").show()
         $(".no-results-block").hide()
         $(".moj-pagination").show()
-
+        $("#save-and-continue").show();
       } else {
         $(".no-results-block").show()
+        $("#save-and-continue").hide();
       }
-
       $(".search-result").html(r)
     }
 
-    function validateForm() {
-
-      var c = $('#operator-search-filter-classification');
-      var q = $('#search-field-CONSIGNOR')
-      var errorString = "?hasError=yes"
-      var hasError = false
-      if (q.val() == "") {
-        hasError = true
-        errorString += "&errorType=empty"
+    /* Radio button toggles */
+    $('input[name=search-type]').on("change", function() {
+      if (this.value == 'organisation-name') {
+        $('#approval-number-search-group').hide();
+        $('#organisation-name-search-group').show();
+      } else {
+        $('#approval-number-search-group').show();
+        $('#organisation-name-search-group').hide();
       }
-      if (c.val() == "") {
-        hasError = true
-        errorString += "&errorType=noCountry"
-      }
-      if (hasError) {
-        window.open('./results' + errorString)
-      }
-      return true
-    }
-    $('#operator-search-button').on("click", function(e) {
-      validateForm()
-      showResults(this)
+    });
 
-    })
-
-
+    $(".operator-pane").hide()
 
   })
 </script>

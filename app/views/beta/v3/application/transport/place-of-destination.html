@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Home – GOV.UK Prototype Kit
+Place of destination – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -9,53 +9,42 @@ Home – GOV.UK Prototype Kit
 {% endblock%}
 {% block content %}
 
+<style>
+  .find-establishment-link {
+    padding: 30px;
+    background: #f3f2f1;
+  }
+
+  .govuk-summary-list__actions {
+    padding-right: 30px;
+  }
+
+  .govuk-summary-list__row {
+    border: none;
+  }
+</style>
+
 
 <form class="" action="../task-list" method="post">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"> Transport </span>
       <h1 class="govuk-heading-xl"> Place of destination </h1>
-      <!---->
-      <!---->
-      <!---->
+
       <p class="govuk-body">This is where the commodities are sent for final unloading.</p>
-      <div class="govuk-form-group"><label class="govuk-label" for="country-of-destination"> Country of destination </label>
-        <!----><select class="govuk-select full-width" id="country-of-destination">
-          <option value="AT">Austria</option>
-          <option value="BE">Belgium</option>
-          <option value="BG">Bulgaria</option>
-          <option value="HR">Croatia</option>
-          <option value="CY">Cyprus</option>
-          <option value="CZ">Czechia</option>
-          <option value="DK">Denmark</option>
-          <option value="EE">Estonia</option>
-          <option value="FI">Finland</option>
-          <option value="FR">France</option>
-          <option value="DE">Germany</option>
-          <option value="GR">Greece</option>
-          <option value="HU">Hungary</option>
-          <option value="IE">Ireland</option>
-          <option value="IT">Italy</option>
-          <option value="LV">Latvia</option>
-          <option value="LT">Lithuania</option>
-          <option value="LU">Luxembourg</option>
-          <option value="MT">Malta</option>
-          <option value="NL">Netherlands (the)</option>
-          <option value="PL">Poland</option>
-          <option value="PT">Portugal</option>
-          <option value="RO">Romania</option>
-          <option value="SK">Slovakia</option>
-          <option value="SI">Slovenia</option>
-          <option value="ES">Spain</option>
-          <option value="SE">Sweden</option>
-          <option value="XI">United Kingdom - Northern Ireland</option>
-        </select>
-      </div>
 
-      {% set searchLabel = "Place of destination"%}
-      {% set returnURL = "../transport/place-of-destination"%}
-      {% block searchdestination %}{% include "../find/_search_establishment.html" %}{% endblock %}
+      {% if data.person['destination'] %}
+        {% set establishmentIndex = data.person['destination'] %}
+        {% set org = data.establishments[establishmentIndex] %}
 
-      <button class="govuk-button">Save and return</button>
+        {% set removeLink = "./remove?who=destination&redirect=place-of-destination" %}
+        {% block traderAddress %}{% include "../persons/trader-address.html" %}{% endblock %}
+      {% else %}
+        <p class="govuk-!-margin-bottom-10 find-establishment-link">
+          <a href="./place-of-destination/find">Select a place of destination</a>
+        </p>
+      {% endif %}
+
+      <button class="govuk-button">Continue</button>
     </div>
   </div>
 </form>

@@ -1,5 +1,19 @@
 {% extends "layout.html" %}
 
+{% if query.establishmentType == "manufacturingPlant" %}
+  {% set establishmentTypeLabel = "manufacturing plant" %}
+{% elseif query.establishmentType == "coldStore" %}
+  {% set establishmentTypeLabel = "cold store" %}
+{% elseif query.establishmentType == "slaughterHouse" %}
+  {% set establishmentTypeLabel = "slaughterhouse" %}
+{% elseif query.establishmentType == "cuttingPlant" %}
+  {% set establishmentTypeLabel = "cutting plant" %}
+{% elseif query.establishmentType == "plantEstablishmentCentre" %}
+  {% set establishmentTypeLabel = "plant / establishment / centre" %}
+{% else %}
+  {% set establishmentTypeLabel = "operator" %}
+{% endif %}
+
 {% block pageTitle %}
 Consignor or-exporter – {{serviceName}} - GOV.UK
 {% endblock %}
@@ -26,13 +40,26 @@ Consignor or-exporter – {{serviceName}} - GOV.UK
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">Which activity do you want to send to TRACES?</h1>
+    <h1 class="govuk-heading-xl">Find a {{ establishmentTypeLabel }}
+      <br>
+      <span class="govuk-caption-xl">Select an activity</span>
+    </h1>
 
-    <div class="margin-top-30">
-      <p class="govuk-body" lang="en">
-        Select a activity that is associated with <strong>{{operator.TradingName}}</strong>
-      </p>
-    </div>
+    <p class="govuk-body" lang="en">
+      <strong>{{operator.TradingName}}</strong> performs mutliple activites. Select the most relevant activity for the commodity you're adding.
+    </p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Help with adding activities
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        If you cannot see a relevant activity for the commodity you’re adding, contact your importer.
+      </div>
+    </details>
+
 
     <form method="post" novalidate="">
       <div class="govuk-form-group">
@@ -41,29 +68,17 @@ Consignor or-exporter – {{serviceName}} - GOV.UK
           <div class="govuk-radios" data-module="govuk-radios">
             {% for activity in operator.All_Activities %}
             <div class="govuk-radios__item">
-
-              <!--<input class="govuk-radios__input" id="savedOrg{{loop.index}}" name="activityFor{{data.searchID}}" type="radio" {% if query.change and id == 0 %}checked{% endif %} value="{{loop.index-1}}~{{data.searchReturnURL or '../export/commodity'}}?has_{{data.searchID}}=yes{% if data.change == 'yes'%}&change=yes&id={{data.changeID}}&changeID={{data.changeID}}{%endif%}">-->
               <input class="govuk-radios__input" id="savedOrg{{loop.index}}" name="activityName" type="radio" {% if activityName == activity  %}checked{% endif %} value="{{activity}}">
               <label class="govuk-label govuk-radios__label" for="savedOrg{{loop.index}}">
                 {{activity}}
-                <!-- - {% if activity=="Importer" or activity=="Exporter" or activity=="Terrestrial animal establishment" %}veterinary{%else%}food{% endif %}
-                -->
               </label>
             </div>
             {% endfor%}
-            <div class="govuk-radios__divider">or</div>
-            <div class="govuk-radios__item">
-              <!--<input class="govuk-radios__input" id="idk-skip" name="activityFor{{data.searchID}}" type="radio" value="skip~{{data.searchReturnURL or '../export/commodity'}}?has_{{data.searchID}}=yes{% if data.change == 'yes'%}&change=yes&id={{data.changeID}}&changeID={{data.changeID}}{%endif%}">-->
-              <input class="govuk-radios__input" id="idk-skip" name="activityName" type="radio" value="-1" {% if activityName == -1 %}checked{% endif %}>
-              <label class="govuk-label govuk-radios__label" for="idk-skip">
-                I don't know / skip this for now
-              </label>
-            </div>
           </div>
         </fieldset>
       </div>
       <button class="govuk-button" data-module="govuk-button">
-        Continue
+        Save and continue
       </button>
 
       <input type="hidden" name="addedEHC_certID" value="{{ addedEHC_certID }}">
