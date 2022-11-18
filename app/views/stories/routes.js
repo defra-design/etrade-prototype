@@ -7,17 +7,37 @@ module.exports = function(router) {
   const base_url = "stories/"
   router.post('/' + base_url + 'onboarding/certifier-account', function(req, res) {
     var canContinue = req.query.continue || "no"
+    let code
     console.log("req.body.certifierAccount = "+req.body.certifierAccountType)
-    if(req.body.spNumber == "" && req.body.certifierAccountType == "ov"){
-      res.redirect(301, '/' + base_url + 'onboarding/certifier-account?hasError=yes&errorType=empty&retry=yes');
+    switch (req.body.certifierAccountType) {
+      case "SP":
+        code = req.body.spNumber;
+        break;
+      case "NV":
+        code = req.body.nvNumber;
+        break;
+      case "CSO":
+        code = req.body.csoNumber;
+        break;
+      default:
+        code = ""
+
     }
+
     if(!req.body.certifierAccountType){
       res.redirect(301, '/' + base_url + 'onboarding/certifier-account?hasError=yes&errorType=notSelected');
     }
 
-    if(req.body.spNumber.charAt(0) == "9"){
+    if(code == "" && req.body.certifierAccountType != "administrative"){
+      res.redirect(301, '/' + base_url + 'onboarding/certifier-account?hasError=yes&errorType=empty&retry=yes&accountType='+req.body.certifierAccountType);
+    }
+    if(code.charAt(0) == "9"){
       res.redirect(301, '/' + base_url + 'onboarding/not-found');
-    }else{
+    }
+    if(code.charAt(0) == "0"){
+      res.redirect(301, '/' + base_url + 'onboarding/not-approved-as-certifier');
+    }
+    else{
       res.redirect(301, '/' + base_url + 'onboarding/signature?continue='+canContinue);
     }
 

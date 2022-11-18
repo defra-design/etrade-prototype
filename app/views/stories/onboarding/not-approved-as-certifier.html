@@ -15,12 +15,10 @@ Home – GOV.UK Prototype Kit
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     {% set type = data.certifierAccountType or "SP number" %}
-    <h1 class="govuk-heading-xl">{{type}} not found</h1>
+    <h1 class="govuk-heading-xl">Your account is not authorised to use this service</h1>
 
-    <p><strong>{{data.spNumber or '2342342'}}</strong> is not the {{type}} number associated with the account for <strong>Bill Schoggins</strong>.</p>
-    <p class="govuk-body govuk-!-margin-bottom-6">If you think this is the correct number for this account, contact Improve International for help with your {{type}}.</p>
+    <p>Refer to your Improve International training dashboard for details on how to use this service.</p>
 
-    <p><a class="govuk-button" href="certifier-account?retry=yes">Enter a different {{type}}</a></p>
 
     <!-- <p><a href="#">Return to sign in</a></p> -->
   </div>

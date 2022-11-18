@@ -27,7 +27,7 @@ Home – GOV.UK Prototype Kit
       <ul class="govuk-list govuk-error-summary__list">
         {% if query.errorType == "empty"%}
         <li>
-          <a href="#spNumber-error">Enter your SP number</a>
+          <a href="#spNumber-error">Enter your {{query.accountType or "SP" }} number</a>
         </li>
         {% else %}
         <li>
@@ -60,38 +60,68 @@ Home – GOV.UK Prototype Kit
   {% endif%}
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="contact" name="certifierAccountType" type="radio" value="ov" data-aria-controls="conditional-contact" {% if query.retry %}checked{% endif %}>
+              <input class="govuk-radios__input" id="contact" name="certifierAccountType" type="radio" value="SP" data-aria-controls="conditional-OV" {% if query.retry and query.accountType=="SP" %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="contact">
                 Official veterinarian (OV)
               </label>
             </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
-              <div class="govuk-form-group {% if query.hasError and query.errorType=='empty' %} govuk-form-group--error{% endif %}">
-                <label class="govuk-label" for="certifierAccountType-by-email">
-                  Enter your SP number
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-OV">
+              <div class="govuk-form-group {% if query.hasError and query.errorType=='empty' and query.accountType == 'SP'%} govuk-form-group--error{% endif %}">
+                <label class="govuk-label" for="certifierAccountType-OV">
+                  What is your SP number?
                 </label>
-                {% if query.hasError and query.errorType=='empty' %}
+                {% if query.hasError and query.errorType=='empty' and query.accountType == 'SP' %}
                 <p id="spNumber-error" class="govuk-error-message">
                   <span class="govuk-visually-hidden">Error:</span> Enter your SP number
                 </p>
                 {% endif %}
-                <input class="govuk-input govuk-!-width-one-third {% if query.hasError and query.errorType=='empty' %} govuk-form-input--error{% endif %}" id="certifierAccountType-by-email" name="spNumber" type="text" spellcheck="false"
+                <input class="govuk-input govuk-!-width-one-third {% if query.hasError and query.errorType=='empty' and query.accountType == 'SP'%}govuk-input--error{% endif %}" id="certifierAccountType-OV" name="spNumber" type="text" spellcheck="false"
                   autocomplete="email" value="" aria-describedby="spNumber-error">
               </div>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="certifierAccountType-2" name="certifierAccountType" type="radio" value="FCCO" data-aria-controls="conditional-certifierAccountType-2">
-              <label class="govuk-label govuk-radios__label" for="certifierAccountType-2">
+              <input class="govuk-radios__input" id="certifierAccountType-FCCO-number" name="certifierAccountType" type="radio" value="NV" data-aria-controls="conditional-FCOO" {% if query.retry and query.accountType=="NV" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="certifierAccountType-FCCO-number">
                 Food Competent Certifiying Officer (FCCO)
               </label>
             </div>
 
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-FCOO">
+              <div class="govuk-form-group {% if query.hasError and query.errorType=='empty' and query.accountType == 'NV'%} govuk-form-group--error{% endif %}">
+                <label class="govuk-label" for="certifierAccountType-NV-number">
+                  What is your NV number?
+                </label>
+                {% if query.hasError and query.errorType=='empty' and query.accountType == 'NV' %}
+                <p id="spNumber-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> Enter your NV number
+                </p>
+                {% endif %}
+                <input class="govuk-input govuk-!-width-one-third {% if query.hasError and query.errorType=='empty' and query.accountType == 'NV'%}govuk-input--error{% endif %}" id="certifierAccountType-NV-number" name="nvNumber" type="text" spellcheck="false"
+                  autocomplete="email" value="" aria-describedby="spNumber-error" {% if query.hasError and query.errorType=='empty' and query.accountType == 'CSO' %}aria-describedby="nvNumber-error"{% endif%}>
+              </div>
+            </div>
+
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="certifierAccountType-3" name="certifierAccountType" type="radio" value="CSO" data-aria-controls="conditional-certifierAccountType-3">
+              <input class="govuk-radios__input" id="certifierAccountType-3" name="certifierAccountType" type="radio" value="CSO" data-aria-controls="conditional-CSO" {% if query.retry and query.accountType=="CSO" %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="certifierAccountType-3">
                 Certification Support Officer (CSO)
               </label>
             </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-CSO">
+              <div class="govuk-form-group {% if query.hasError and query.errorType=='empty' and query.accountType == 'CSO'%} govuk-form-group--error{% endif %}">
+                <label class="govuk-label" for="certifierAccountType-CSO-number">
+                  What is your CSO number?
+                </label>
+                {% if query.hasError and query.errorType=='empty' and query.accountType == 'CSO' %}
+                <p id="spNumber-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> Enter your CSO number
+                </p>
+                {% endif %}
+                <input class="govuk-input govuk-!-width-one-third {% if query.hasError and query.errorType=='empty' and query.accountType == 'CSO'%}govuk-input--error{% endif %}" id="certifierAccountType-CSO-number" name="csoNumber" type="text" spellcheck="false"
+                  autocomplete="email" value="" {% if query.hasError and query.errorType=='empty' and query.accountType == 'CSO' %}aria-describedby="csoNumber-error"{% endif%}>
+              </div>
+            </div>
+
             <div class="govuk-radios__divider">or</div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="certifierAccountType-3" name="certifierAccountType" type="radio" value="administrative" data-aria-controls="conditional-certifierAccountType-3">
