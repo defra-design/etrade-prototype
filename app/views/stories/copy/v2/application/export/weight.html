@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post">
+      <div class="govuk-form-group">
+        <span class="govuk-caption-xl">
+          <span class="govuk-caption-xl">{{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</span>
+        </span>
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--xl">
+            What is the total weight of the commodities in this certificate?
+          </legend>
+          <div id="add-another-hint" class="govuk-hint">
+            This is the combined weight of the commodities and their containers.
+          </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="netWeight-3-10410-31010000">Total weight amount
+            </label>
+            <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8="">
+              <input class="govuk-input" type="number" data-type="quantity" name="GROSS_WEIGHT"  {% if query.change=='yes' %}value="{{data.GROSS_WEIGHT}}"{%endif%} step="0.01" min="0" max="9999999" id="netWeight-3-10410-31010000"
+                data-v-4e8f37a8="">
+              <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8=""><select class="govuk-select" id="netWeight-3-10410-31010000-units" name="GROSS_WEIGHT_quantifier">
+                  <option disabled="" value="" {% if not data.GROSS_WEIGHT_quantifier %}selected{%endif%}>Select a unit</option>
+                  <option value="gram" {% if data.GROSS_WEIGHT_quantifier =="gram" and query.change=='yes' %}selected{%endif%}>gram</option>
+                  <option value="kilogram" {% if data.GROSS_WEIGHT_quantifier=="kilogram" and query.change=='yes' %}selected{%endif%}>kilogram</option>
+                  <option value="kilotonne" {% if data.GROSS_WEIGHT_quantifier=="kilotonne" and query.change=='yes' %}selected{%endif%}>kilotonne</option>
+                  <option value="tonne (metric ton)" {% if data.GROSS_WEIGHT_quantifier=="tonne (metric ton)" and query.change=='yes' %}selected{%endif%}>tonne (metric ton)</option>
+                </select></div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

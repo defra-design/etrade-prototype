@@ -1,0 +1,3 @@
+<div class="govuk-form-group"><label class="govuk-label" for="PRODUCT_DESCRIPTION-0-10410-31010000">Product description &nbsp;(optional) </label>
+  <input class="govuk-input" type="text" id="productDescription" name="productDescription" value="{% if (data.change or data.copy) %}{{identification.productDescription}}{% endif %}{% if query.updated == 'yes' %}{{data.productDescription}}{% endif %}">
+</div>

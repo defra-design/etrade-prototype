@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {% endif %}Create a reference – E-Certification for EHC's - GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form  id="copy" method="post" novalidate action="{% if query.hasMultipleEHC %}task-list-no-certificate{% else %}check-your-answers{% endif %}"><!-- Form routing is handled in app/stories/accessiblity/routes.js -->
+  <section id="questions" data-v-01948390="">
+    <div class="govuk-grid-row" data-v-01948390="">
+      <div class="govuk-grid-column-two-thirds" data-v-01948390="">
+        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+              <div class="govuk-notification-banner__header">
+                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                  Success
+                </h2>
+              </div>
+              <div class="govuk-notification-banner__content">
+                <p class="govuk-body"><strong>Copied application GBXIBN4522</strong></p>
+              </div>
+            </div>
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl govuk-!-margin-bottom-6">
+
+      <h1 class="govuk-fieldset__heading">
+        Do you want to copy the commodity data?
+      </h1>
+    </legend>
+    {% if data.hasUpdateToEHC == "yes" %}
+    <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+    <strong class="govuk-warning-text__text">
+      <span class="govuk-warning-text__assistive">Warning</span>
+      This certificate was updated on 3 November 2022. You may have to update answers.
+    </strong></div>
+    {% endif %}
+
+    {% if data.hasMultipleEHC == "yes" %}
+
+
+
+    <p></p>
+    <p>
+      You can copy:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>8 records for 5 commodities for EHC8361</li>
+      <li>12 records for 2 commodities for EHC8364</li>
+    </ul>
+    {% else %}
+    <p>
+      You can copy all 8 records for 7 commodities for EHC8361.
+    </p>
+    {% endif  %}
+
+    <!-- <p>If you copy commodites you can manage your them before submiting your application</p> -->
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        {% set nextpage = "commodities"%}
+        {% if data.hasUpdateToEHC == "yes"%}
+        {% set nextpage = "commodities-with-incomoplete"%}
+        {% endif %}
+        {% if data.hasMultipleEHC == "yes"%}
+        {% set nextpage = "added-certs"%}
+        {% endif %}
+        <input class="govuk-radios__input" id="WillCopyCommodities" name="WillCopyCommodities" type="radio" value="email~{{nextpage}}">
+        <label class="govuk-label govuk-radios__label" for="WillCopyCommodities">
+          Yes, copy all the commodity data
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="WillCopyCommodities-2" name="WillCopyCommodities" type="radio" value="phone~select-certificates" data-aria-controls="conditional-contact-2">
+        <label class="govuk-label govuk-radios__label" for="WillCopyCommodities-2">
+          No, remove all commodity data
+        </label>
+      </div>
+    </div>
+    <input type="hidden" name="showNotification" value="yes">
+  </fieldset>
+</div>
+
+
+
+    <button role="button" id="copy-button" type="submit" class="govuk-button" data-v-01948390="" >Create copy</button>
+
+      </div>
+    </div>
+  </section>
+
+
+
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    var timer;
+    var timeTaken = 1;
+
+    function validate() {
+
+      timeTaken += 1
+      if (timeTaken == 4) {
+        clearInterval(timer);
+        $('#copy').submit()
+      }
+    }
+    $('#copy-button').on('click', function(e) {
+      e.preventDefault()
+      $(this).text("Creating copy")
+      $(this).prepend('<span class="fas fa-spinner fa-spin" data-v-e8e27fc8=""></span>')
+      $(this).attr("disabled", "disabled")
+      timer = setInterval(validate, 1000);
+    })
+  })
+</script>
+{% endblock %}

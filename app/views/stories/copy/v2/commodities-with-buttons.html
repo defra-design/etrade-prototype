@@ -1,0 +1,1993 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+<style media="screen">
+  .app-accordion .govuk-accordion__controls {
+    display: none;
+  }
+
+  .govuk-summary-list__row.isIncomplete {
+    border-left: 4px solid #d4351c;
+    margin-top: 10px;
+  }
+
+  .govuk-summary-list__row.isIncomplete dt {
+    padding-top: 5px;
+    color: #d4351c;
+  }
+
+  .govuk-summary-list__row.isIncomplete dd {
+    /*color: #d4351c;*/
+  }
+
+  .govuk-grid-column-one-half.isIncomplete {
+    padding-left: 11px;
+  }
+
+  .govuk-tag--small {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+
+  .govuk-summary-list__key span.optional {
+    font-weight: normal;
+    color: #000000;
+  }
+
+  .navButtonGroup {
+    margin-bottom: 1rem;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+  }
+
+  .navButton {
+    background: transparent;
+    border: none;
+  }
+
+  .tab-link.active,
+  .tab-link.focus {
+    border-bottom: 4px solid #1e70b8 !important;
+    color: #1e70b8;
+  }
+
+  .tab-link {
+    padding-bottom: 2px;
+    color: #1e70b8;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .navButton.active {
+    font-weight: bold;
+  }
+
+  .etrade-warning-banner {
+    border: 5px solid #f47738;
+    background-color: #f47738;
+  }
+
+  .etrade-warning-banner h2 {
+    color: #000000;
+  }
+  .action-group{
+    margin-left: auto;
+    direction: rtl;
+    flex-direction: row-reverse;
+  display: flex;
+  justify-content: flex-end;
+  }
+  .pushLeft{
+    margin-right: auto;
+    margin-left:0;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+  {% if data.showNotification == "yes" %}
+  <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+    <div class="govuk-notification-banner__header">
+      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+        Success
+      </h2>
+    </div>
+    <div class="govuk-notification-banner__content">
+      <p class="govuk-body"><strong>Copied application GBXIBN4522</strong></p>
+    </div>
+  </div>
+  {% endif %}
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-three-quarters">
+      <span class="govuk-caption-xl">EHC8361</span>
+      <h1 class="govuk-heading-xl">{% if not query.change %}
+        Review the 8 records for 7 commodities
+        {% else %}
+        Added 8 records for 7 commodities
+        {% endif %}
+      </h1>
+        <div class="govuk-button-group action-group govuk-!-margin-bottom-6">
+          <div class="govuk-accordion__controls pushLeft"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
+                class="govuk-accordion__show-all-text">Show all sections</span></button></div>
+
+
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Remove all records
+          </button>
+
+
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Export data as XLSX
+          </button>
+        </div>
+    
+
+      <p class="govuk-body">
+        <a href="download/generate-data-spreadsheet?random=31235" class="govuk-link">Download commodity data in a spreadsheet</a> if you would like to make bulk changes or re-use this data in another EHC application.
+      </p>
+
+      <!-- set the location of the commodity in the full commodity list. This needs improving -->
+      <div class="commodity-accordion app-accordion " id="accordion-default-1">
+
+        <h2 class="govuk-heading-s commodity-group-label">03022130 - <span class="govuk-!-font-weight-regular" title=" Atlantic halibut (Hippoglossus hippoglossus)"> Atlantic halibut (Hippoglossus hippoglossus)</span></h2>
+        <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+          <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c0-i0">
+            <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+              <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+                Description - Line 16 - 11 kilogram - 1
+                Box
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                <ul class="govuk-summary-list__actions-list">
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=0&amp;removeID=0">
+                      Remove<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=107&amp;commodityListID=0&amp;changeID=0">
+                      Change<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8361&amp;currentCommodityID=107&amp;commodityListID=0&amp;changeID=0&amp;random=80963">
+                      Copy<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <dd class="govuk-summary-list__value">
+              <div class="govuk-accordion__section-heading">
+                <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                  <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                    <span class="govuk-accordion__section-heading-text-focus">
+                      <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                      <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                        <span class="govuk-accordion__section-toggle-focus">
+                          <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                          <span class="govuk-accordion__section-toggle-text">
+                            Show details<span class="govuk-visually-hidden"> for this record</span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Commodity code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        03022130
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Description <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Description - Line 16
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Species
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Hippoglossus hippoglossus
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        DFDS Logistics Limited (HA 015)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store activity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Cold Stores
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Identification mark
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        1
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Box
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        11
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        kilogram
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Treatment type
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Chilled
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Nature of commodity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Wild stock
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Batch number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Final consumer <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Date of collection / production
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        12 September 2022
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        Lerwick Fish Market (SA 102)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant activity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Processing Plant
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity unit <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                  </div>
+                </dl>
+              </div>
+            </dd>
+          </div>
+          <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c0-i1">
+            <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+              <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+                Description - Line 15 - 8 kilogram - 1
+                Box
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                <ul class="govuk-summary-list__actions-list">
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=0&amp;removeID=1">
+                      Remove<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=107&amp;commodityListID=0&amp;changeID=1">
+                      Change<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8361&amp;currentCommodityID=107&amp;commodityListID=0&amp;changeID=1&amp;random=62401">
+                      Copy<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <dd class="govuk-summary-list__value">
+              <div class="govuk-accordion__section-heading">
+                <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                  <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                    <span class="govuk-accordion__section-heading-text-focus">
+                      <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                      <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                        <span class="govuk-accordion__section-toggle-focus">
+                          <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                          <span class="govuk-accordion__section-toggle-text">
+                            Show details<span class="govuk-visually-hidden"> for this record</span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Commodity code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        03022130
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Description <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Description - Line 15
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Species
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Hippoglossus hippoglossus
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        DFDS Logistics Limited (HA 015)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store activity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Cold Stores
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Identification mark
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        1
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Box
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        8
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        kilogram
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Treatment type
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Chilled
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Nature of commodity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Wild stock
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Batch number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Final consumer <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Date of collection / production
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        12 September 2022
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        Lerwick Fish Market (SA 102)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant activity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Processing Plant
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity unit <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                  </div>
+                </dl>
+              </div>
+            </dd>
+          </div>
+        </dl>
+        <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID=107&amp;commodityCode=03022130&amp;ehcNumber=EHC8361&amp;random=17594" class="govuk-link--no-visited-state"><strong>Add another record for 03022130</strong></a></p>
+      </div>
+      <!-- set the location of the commodity in the full commodity list. This needs improving -->
+      <div class="commodity-accordion app-accordion " id="accordion-default-2">
+        <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
+              class="govuk-accordion__show-all-text">Show all sections</span></button></div>
+        <h2 class="govuk-heading-s commodity-group-label">03022200 - <span class="govuk-!-font-weight-regular" title=" Plaice (Pleuronectes platessa)"> Plaice (Pleuronectes platessa)</span></h2>
+        <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+          <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c1-i0">
+            <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+              <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+                Description - Line 9 - 45 kilogram - 1
+                Box
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                <ul class="govuk-summary-list__actions-list">
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=1&amp;removeID=0">
+                      Remove<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=109&amp;commodityListID=1&amp;changeID=0">
+                      Change<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8361&amp;currentCommodityID=109&amp;commodityListID=1&amp;changeID=0&amp;random=44003">
+                      Copy<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <dd class="govuk-summary-list__value">
+              <div class="govuk-accordion__section-heading">
+                <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                  <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                    <span class="govuk-accordion__section-heading-text-focus">
+                      <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                      <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                        <span class="govuk-accordion__section-toggle-focus">
+                          <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                          <span class="govuk-accordion__section-toggle-text">
+                            Show details<span class="govuk-visually-hidden"> for this record</span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Commodity code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        03022200
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Description <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Description - Line 9
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Species
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Pleuronectes platessa
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        DFDS Logistics Limited (HA 015)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store activity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Cold Stores
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Identification mark
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        LW2000
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        1
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Box
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        45
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        kilogram
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Treatment type
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Chilled
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Nature of commodity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Wild stock
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Batch number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        LW2000
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Final consumer <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Date of collection / production
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        12 September 2022
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        Lerwick Fish Market (SA 102)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant activity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Processing Plant
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity unit <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                  </div>
+                </dl>
+              </div>
+            </dd>
+          </div>
+        </dl>
+        <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID=109&amp;commodityCode=03022200&amp;ehcNumber=EHC8361&amp;random=264" class="govuk-link--no-visited-state"><strong>Add another record for 03022200</strong></a></p>
+      </div>
+      <!-- set the location of the commodity in the full commodity list. This needs improving -->
+      <div class="commodity-accordion app-accordion " id="accordion-default-3">
+        <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
+              class="govuk-accordion__show-all-text">Show all sections</span></button></div>
+        <h2 class="govuk-heading-s commodity-group-label">03022980 - <span class="govuk-!-font-weight-regular" title=" Other"> Other</span></h2>
+        <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+          <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c2-i0">
+            <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+              <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+                Description - Line 17 - 25 kilogram - 1
+                Box
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                <ul class="govuk-summary-list__actions-list">
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=2&amp;removeID=0">
+                      Remove<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=113&amp;commodityListID=2&amp;changeID=0">
+                      Change<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8361&amp;currentCommodityID=113&amp;commodityListID=2&amp;changeID=0&amp;random=81562">
+                      Copy<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <dd class="govuk-summary-list__value">
+              <div class="govuk-accordion__section-heading">
+                <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                  <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                    <span class="govuk-accordion__section-heading-text-focus">
+                      <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                      <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                        <span class="govuk-accordion__section-toggle-focus">
+                          <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                          <span class="govuk-accordion__section-toggle-text">
+                            Show details<span class="govuk-visually-hidden"> for this record</span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Commodity code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        03022980
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Description <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Description - Line 17
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Species
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Microstomus kitt
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        DFDS Logistics Limited (HA 015)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store activity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Cold Stores
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Identification mark
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        1
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Box
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        25
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        kilogram
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Treatment type
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Chilled
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Nature of commodity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Wild stock
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Batch number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Final consumer <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Date of collection / production
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        12 September 2022
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        Lerwick Fish Market (SA 102)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant activity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Processing Plant
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity unit <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                  </div>
+                </dl>
+              </div>
+            </dd>
+          </div>
+        </dl>
+        <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID=113&amp;commodityCode=03022980&amp;ehcNumber=EHC8361&amp;random=63686" class="govuk-link--no-visited-state"><strong>Add another record for 03022980</strong></a></p>
+      </div>
+      <!-- set the location of the commodity in the full commodity list. This needs improving -->
+      <div class="commodity-accordion app-accordion " id="accordion-default-4">
+        <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
+              class="govuk-accordion__show-all-text">Show all sections</span></button></div>
+        <h2 class="govuk-heading-s commodity-group-label">03025110 - <span class="govuk-!-font-weight-regular" title=" Of the species Gadus morhua"> Of the species Gadus morhua</span></h2>
+        <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+          <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c3-i0">
+            <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+              <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+                Description - Line 13 - 45 kilogram - 1
+                Box
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                <ul class="govuk-summary-list__actions-list">
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=3&amp;removeID=0">
+                      Remove<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=23&amp;commodityListID=3&amp;changeID=0">
+                      Change<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8361&amp;currentCommodityID=23&amp;commodityListID=3&amp;changeID=0&amp;random=90504">
+                      Copy<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <dd class="govuk-summary-list__value">
+              <div class="govuk-accordion__section-heading">
+                <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                  <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                    <span class="govuk-accordion__section-heading-text-focus">
+                      <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                      <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                        <span class="govuk-accordion__section-toggle-focus">
+                          <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                          <span class="govuk-accordion__section-toggle-text">
+                            Show details<span class="govuk-visually-hidden"> for this record</span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Commodity code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        03025110
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Description <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Description - Line 13
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Species
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Gadus morhua
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        DFDS Logistics Limited (HA 015)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store activity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Cold Stores
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Identification mark
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        1
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Box
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        45
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        kilogram
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Treatment type
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Chilled
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Nature of commodity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Wild stock
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Batch number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Final consumer <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Date of collection / production
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        12 September 2022
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        Lerwick Fish Market (SA 102)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant activity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Processing Plant
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity unit <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                  </div>
+                </dl>
+              </div>
+            </dd>
+          </div>
+        </dl>
+        <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID=23&amp;commodityCode=03025110&amp;ehcNumber=EHC8361&amp;random=90440" class="govuk-link--no-visited-state"><strong>Add another record for 03025110</strong></a></p>
+      </div>
+      <!-- set the location of the commodity in the full commodity list. This needs improving -->
+      <div class="commodity-accordion app-accordion " id="accordion-default-5">
+        <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
+              class="govuk-accordion__show-all-text">Show all sections</span></button></div>
+        <h2 class="govuk-heading-s commodity-group-label">03025200 - <span class="govuk-!-font-weight-regular" title=" Haddock (Melanogrammus aeglefinus)"> Haddock (Melanogrammus aeglefinus)</span></h2>
+        <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+          <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c4-i0">
+            <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+              <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+                Description - Line 10 - 135 kilogram - 3
+                Box
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                <ul class="govuk-summary-list__actions-list">
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=4&amp;removeID=0">
+                      Remove<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=25&amp;commodityListID=4&amp;changeID=0">
+                      Change<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8361&amp;currentCommodityID=25&amp;commodityListID=4&amp;changeID=0&amp;random=91437">
+                      Copy<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <dd class="govuk-summary-list__value">
+              <div class="govuk-accordion__section-heading">
+                <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                  <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                    <span class="govuk-accordion__section-heading-text-focus">
+                      <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                      <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                        <span class="govuk-accordion__section-toggle-focus">
+                          <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                          <span class="govuk-accordion__section-toggle-text">
+                            Show details<span class="govuk-visually-hidden"> for this record</span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Commodity code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        03025200
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Description <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Description - Line 10
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Species
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Melanogrammus aeglefinus
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        DFDS Logistics Limited (HA 015)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store activity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Cold Stores
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Identification mark
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        LW2000
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        3
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Box
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        135
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        kilogram
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Treatment type
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Chilled
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Nature of commodity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Wild stock
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Batch number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        LW2000
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Final consumer <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Date of collection / production
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        12 September 2022
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        Lerwick Fish Market (SA 102)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant activity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Processing Plant
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity unit <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                  </div>
+                </dl>
+              </div>
+            </dd>
+          </div>
+        </dl>
+        <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID=25&amp;commodityCode=03025200&amp;ehcNumber=EHC8361&amp;random=71044" class="govuk-link--no-visited-state"><strong>Add another record for 03025200</strong></a></p>
+      </div>
+      <!-- set the location of the commodity in the full commodity list. This needs improving -->
+      <div class="commodity-accordion app-accordion " id="accordion-default-6">
+        <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
+              class="govuk-accordion__show-all-text">Show all sections</span></button></div>
+        <h2 class="govuk-heading-s commodity-group-label">03025300 - <span class="govuk-!-font-weight-regular" title=" Coalfish (Pollachius virens)"> Coalfish (Pollachius virens)</span></h2>
+        <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+          <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c5-i0">
+            <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+              <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+                Description - Line 18 - 45 kilogram - 1
+                Box
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                <ul class="govuk-summary-list__actions-list">
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=5&amp;removeID=0">
+                      Remove<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=26&amp;commodityListID=5&amp;changeID=0">
+                      Change<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8361&amp;currentCommodityID=26&amp;commodityListID=5&amp;changeID=0&amp;random=72683">
+                      Copy<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <dd class="govuk-summary-list__value">
+              <div class="govuk-accordion__section-heading">
+                <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                  <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                    <span class="govuk-accordion__section-heading-text-focus">
+                      <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                      <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                        <span class="govuk-accordion__section-toggle-focus">
+                          <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                          <span class="govuk-accordion__section-toggle-text">
+                            Show details<span class="govuk-visually-hidden"> for this record</span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Commodity code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        03025300
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Description <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Description - Line 18
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Species
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Pollachius virens
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        DFDS Logistics Limited (HA 015)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store activity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Cold Stores
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Identification mark
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        1
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Box
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        45
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        kilogram
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Treatment type
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Chilled
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Nature of commodity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Wild stock
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Batch number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Final consumer <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Date of collection / production
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        12 September 2022
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        Lerwick Fish Market (SA 102)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant activity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Processing Plant
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity unit <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                  </div>
+                </dl>
+              </div>
+            </dd>
+          </div>
+        </dl>
+        <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID=26&amp;commodityCode=03025300&amp;ehcNumber=EHC8361&amp;random=86047" class="govuk-link--no-visited-state"><strong>Add another record for 03025300</strong></a></p>
+      </div>
+      <!-- set the location of the commodity in the full commodity list. This needs improving -->
+      <div class="commodity-accordion app-accordion " id="accordion-default-7">
+        <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
+              class="govuk-accordion__show-all-text">Show all sections</span></button></div>
+        <h2 class="govuk-heading-s commodity-group-label">03025419 - <span class="govuk-!-font-weight-regular" title=" Other"> Other</span></h2>
+        <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+          <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c6-i0">
+            <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+              <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+                Description - Line 14 - 140 kilogram - 4
+                Box
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                <ul class="govuk-summary-list__actions-list">
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=6&amp;removeID=0">
+                      Remove<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=105&amp;commodityListID=6&amp;changeID=0">
+                      Change<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8361&amp;currentCommodityID=105&amp;commodityListID=6&amp;changeID=0&amp;random=16625">
+                      Copy<span class="govuk-visually-hidden"> this record</span>
+                    </a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+            <dd class="govuk-summary-list__value">
+              <div class="govuk-accordion__section-heading">
+                <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                  <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                    <span class="govuk-accordion__section-heading-text-focus">
+                      <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                      <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                        <span class="govuk-accordion__section-toggle-focus">
+                          <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                          <span class="govuk-accordion__section-toggle-text">
+                            Show details<span class="govuk-visually-hidden"> for this record</span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Commodity code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        03025419
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Description <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Description - Line 14
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Species
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Merluccius merluccius
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        DFDS Logistics Limited (HA 015)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Cold store activity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Cold Stores
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Identification mark
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        4
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Package count unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Box
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        140
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Net weight unit
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        kilogram
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Treatment type
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Chilled
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Nature of commodity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Wild stock
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Batch number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        2873447
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Final consumer <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Date of collection / production
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        12 September 2022
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <!-- find establishment TradingName from approval number -->
+                        Lerwick Fish Market (SA 102)
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Manufacturing plant activity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Processing Plant
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                      <dt class="govuk-summary-list__key">
+                        Quantity unit <span class="optional">(optional)</span>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        No value
+                      </dd>
+                    </div>
+                  </div>
+                </dl>
+              </div>
+            </dd>
+          </div>
+        </dl>
+        <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID=105&amp;commodityCode=03025419&amp;ehcNumber=EHC8361&amp;random=41078" class="govuk-link--no-visited-state"><strong>Add another record for 03025419</strong></a></p>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form method="post" action="select-commodities">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Do you want to add another commodity to this certificate?
+                </legend>
+                <div id="add-another-hint" class="govuk-hint">
+                  <!-- You must tell us about all your directors. -->
+                </div>
+                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~select-commodities?change=&amp;copy=">
+                    <label class="govuk-label govuk-radios__label" for="add-another">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~weight?originalCommodityCount=7&amp;change=&amp;copy=">
+                    <label class="govuk-label govuk-radios__label" for="add-another-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  {% block pageScripts %}
+  <script type="text/javascript">
+    window.addEventListener('load', function() {
+      $('#edit').on('click', function() {
+        $('body').addClass("app-edit-mode")
+        $('.govuk-button').attr("type", "button").prepend('<span class="app-edit-stopper" contenteditable="false">&nbsp;</span>')
+        $('body').append('<div class="app-editing-mode"><div class="govuk-width-container"><a href="#" class="app-stop-editing">Stop editing</a></div></div>')
+        $('#main-content').attr("contenteditable", "true")
+      })
+      $('body').on('click', '.app-stop-editing', function(e) {
+        e.preventDefault()
+        $('.app-edit-stopper').remove()
+        $('body').removeClass("app-edit-mode")
+        $('.govuk-button').attr("type", "submit")
+        $('#main-content').attr("contenteditable", "false")
+        $('.app-editing-mode').remove()
+      })
+    })
+  </script>
+  <script type="text/javascript">
+    window.addEventListener('load', function() {
+      var controls =
+        '<div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span class="govuk-accordion__show-all-text">Show all sections</span></button></div>'
+      var accordion = $('.app-accordion')
+      if ($('.govuk-accordion__section').length > 1) {
+        accordion.prepend(controls)
+      }
+      var showAllBtn = $('.govuk-accordion__show-all')
+      var showDetails = $('.govuk-accordion__section-button')
+
+      function showSection(b, t, a = "") {
+        var txt = (a) ? "Hide all sections" : "Hide details";
+        var label = (a) ? ".govuk-accordion__show-all-text" : ".govuk-accordion__section-toggle-text";
+        $(b).attr('aria-expanded', "true")
+        $(b).find(".govuk-accordion-nav__chevron").removeClass("govuk-accordion-nav__chevron--down")
+        if (!$(t).hasClass("govuk-accordion__section--expanded")) {
+          $(t).addClass('govuk-accordion__section--expanded')
+        }
+        $(t).find(label).text(txt)
+        if (a) {
+          var eb = $(t).find(".govuk-accordion__section-button")
+          console.log(eb)
+          showSection(eb, t)
+        }
+      }
+
+      function hideSection(b, t, a = false) {
+        var txt = (a) ? "Show all sections" : "Show details";
+        var label = (a) ? ".govuk-accordion__show-all-text" : ".govuk-accordion__section-toggle-text";
+        $(b).attr('aria-expanded', "false")
+        $(b).find(".govuk-accordion-nav__chevron").addClass("govuk-accordion-nav__chevron--down")
+        $(t).removeClass('govuk-accordion__section--expanded')
+        $(t).find(label).text(txt)
+        if (a) {
+          var eb = $(t).find(".govuk-accordion__section-button")
+          console.log(eb)
+          hideSection(eb, t)
+        }
+      }
+      showDetails.on('click', function(e) {
+        e.preventDefault()
+        console.log("working")
+        var section = $(this).closest('.govuk-accordion__section');
+        if ($(this).attr('aria-expanded') == 'false') {
+          // $(this).attr('aria-expanded',"true")
+          showSection(this, section)
+        } else {
+          hideSection(this, section)
+        }
+      })
+      showAllBtn.on('click', function(e) {
+        e.preventDefault()
+        var section = $('.govuk-accordion__section')
+        if ($(this).attr('aria-expanded') == 'false') {
+          // $(this).attr('aria-expanded',"true")
+          showSection(this, section, true)
+        } else {
+          hideSection(this, section, true)
+        }
+      })
+      $('button.navButton').click(function() {
+        if ($(this).attr('aria-label') == 'incomplete-only') {
+          showIncompleteRecords();
+        } else {
+          showAllRecords();
+        }
+      });
+      $('#shortcutToIncompleteRecords').click(function() {
+        showIncompleteRecords();
+      });
+      $('input[type=radio][name="incomplete-filter"]').change(function() {
+        if (this.value == 'incomplete-only') {
+          showIncompleteRecords();
+        } else {
+          showAllRecords();
+        }
+      });
+
+      function showIncompleteRecords() {
+        $(".commodity-accordion-row").hide();
+        $(".commodity-accordion-row.incomplete").show();
+        $(".commodity-accordion").hide();
+        $(".hasIncompleteRecord").show();
+        $("button.navButton").removeClass("active");
+        $("#navButtonIncompleteOnly").addClass("active");
+      }
+
+      function showAllRecords() {
+        $(".commodity-accordion-row").show();
+        $(".app-accordion").show();
+        $("button.navButton").removeClass("active");
+        $("#navButtonAllRecords").addClass("active");
+      }
+    })
+  </script>
+  {% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Copy a certificate v1.1</h1>
+
+    <h2 class="govuk-heading-m">What changed</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Removed the functionality to copy the same certificate upto 100 times</li>
+      <li>Flow update, now copy journey takes user to the task list intead of back to the dashboard</li>
+      <li>Changing the reference is now done on a seperate page</li>
+      <li>Removed disabled checkboxes for sections that cannot be copied</li>
+    </ul>
+    <p>This version has not been tested yet</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    <h2 class="govuk-heading-m">Pages</h2>
+    <ul class="govuk-list">
+      <li><a href="dashboard?newVersion=no">Dashboard</a> - press 'show' to reveal copy button</li>
+      <li><a href="copy-application?newVersion=no">Copy application</a> - updated</li>
+      <li><a href="create-reference?newVersion=no">Create reference </a> - new to this journey</li>
+      <li><a href="task-list?newVersion=no">Task list </a> - new design <br><br></li>
+      <li><a href="copy-application?newVersion=yes">Copy application - certificte has been changed</a></li>
+      <li><a href="task-list-no-certificate?newVersion=yes">Task list with not commmodites coppied</a></li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}
