@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {% endif %}Create a reference – E-Certification for EHC's - GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form method="get" novalidate action="create-reference">
+  <!-- Form routing is handled in app/stories/accessiblity/routes.js -->
+  <div class="govuk-grid-row" data-v-7899b5ce="" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Copy application</h1>
+      {% block summary %}{% include "../components/_summary.html" %}{% endblock%}
+
+      {% if data.hasUpdateToEHC == "yes" %}
+      <div class="govuk-warning-text">
+    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Warning</span>
+        This certificate was updated on 3 November 2022. You may have to update answers.
+      </strong></div>
+      {% endif %}
+
+      <div class="govuk-form-group">
+<fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+    <h1 class="govuk-fieldset__heading">
+      Do you want to copy everything in the original application?
+    </h1>
+  </legend>
+
+
+  <p>Copy what is in the original certificate and make any changes before submiting.</p>
+  <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Information that cannot be copied
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <p>The following sections cannot be copied and need to be entered manually.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Container number/seal number</li>
+      <li>Accompanying document</li>
+      <li>Means of transport</li>
+      <li>Arrival and Departure</li>
+    </ul>
+  </div>
+</details>
+  <div class="govuk-radios" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="WillCopyCommodities" name="copyall" type="radio" value="yes">
+      <label class="govuk-label govuk-radios__label" for="WillCopyCommodities">
+        Yes
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="WillCopyCommodities-2" name="copyall" type="radio" value="no~select-copy-info" data-aria-controls="conditional-contact-2">
+      <label class="govuk-label govuk-radios__label" for="WillCopyCommodities-2">
+        No, I want to select what to copy
+      </label>
+    </div>
+  </div>
+  <input type="hidden" name="showNotification" value="yes">
+</fieldset>
+</div>
+
+      <!-- <div class="alert-pane alert-pane--information" data-v-7899b5ce="">
+        <div class="alert-pane--heading" data-v-7899b5ce=""><span class="fas fa-info-circle" data-v-7899b5ce=""></span> Information </div> Please fill the 'Accompanying documents', 'Certifier' and 'Arrival and Departure' section manually.
+      </div> -->
+      <button class="govuk-button" data-v-7899b5ce="">Continue</button>
+    </div>
+  </div>
+
+
+</form>
+{% endblock %}

@@ -51,4 +51,5 @@ module.exports = {
   "currentCommodityID": 0,
   "displayMax": 30,
   "paginationMax": 3,
+  "manualSelection": ["not-selected"]
 }

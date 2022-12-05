@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+  .govuk-table-s{
+    font-size: 16px
+  }
+</style>
+<div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Your saved addresses</h1>
+      <a href="add-new-address" class="govuk-button">Add new address</a>
+      <form method="get" novalidate="">
+
+              <div class="search-wrapper govuk-form-group">
+                <label for="search-applications" class="govuk-label">Search by name, approval number, reference number, or country </label>
+
+                <div class="search-input-wrapper">
+                  <input type="search" value="" id="search-applications" name="search" title="Search" class="govuk-input">
+
+                  <div class="search-input-submit-wrapper">
+                    <button type="submit" class="search-submit">Search</button>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </form>
+            </div>
+              <div class="govuk-grid-column-full">
+                <p class="govuk-body">{{data.establishments | length}} adderesses</p>
+      <table class="govuk-table govuk-table-s">
+  <thead class="govuk-table__head">
+
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col" id="select-all"></th>
+      <th scope="col" class="govuk-table__header">Name</th>
+      <th scope="col" class="govuk-table__header">Adddress</th>
+      <th scope="col" class="govuk-table__header">Approval Number</th>
+      <th scope="col" class="govuk-table__header">Activity</th>
+      <th scope="col" class="govuk-table__header">Ref</th>
+    </tr>
+
+  </thead>
+  <tbody class="govuk-table__body">
+    {% for operator in data.establishments %}
+    {% set  activityCount = (operator.All_Activities | length) +1%}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell" rowspan="{{activityCount}}">
+        <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+          <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+          <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+            <span class="govuk-visually-hidden">Select {{TradingName}}</span>
+          </label>
+        </div>
+      </td>
+
+      <td class="govuk-table__cell" rowspan="{{activityCount}}">{{operator.TradingName}}</td>
+      <td class="govuk-table__cell" rowspan="{{activityCount}}">{{operator.Address1}}{% if operator.Address2 != ""  %}, {{operator.Address2}}{%endif%}, {{operator.Town}}, {{operator.Postcode}},{{operator.Country}}</td>
+      <td class="govuk-table__cell" rowspan="{{activityCount}}">{{operator.AppNo}}</td>
+      <td class="govuk-table__cell" >{{operator.All_Activities[0]}}</td>
+      <td class="govuk-table__cell" >A000{{loop.index}}</td>
+    </tr>
+    {% for activity in operator.All_Activities %}
+    {% if loop.index != 0%}
+    <tr class="govuk-table__row">
+
+      <td class="govuk-table__cell">{{activity}}</td>
+      <td scope="row" class="govuk-table__header">A000{{loop.index}}</td>
+
+    </tr>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>
+
+  </div>
+</div>
+
+{% endblock %}

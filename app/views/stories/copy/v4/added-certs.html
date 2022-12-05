@@ -5,41 +5,14 @@ Home – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-<style media="screen">
-    .app-summary-card--error {
-          border-left: 5px solid #d4351c;
-    }
-    .etrade-warning-banner {
-      border: 5px solid #d4351c;
-      background-color: #d4351c;
-    }
 
-</style>
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-two-thirds">
-
-    <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-      <div class="govuk-notification-banner__header">
-        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          Incomplete data
-        </h2>
-      </div>
-      <div class="govuk-notification-banner__content">
-        <p class="govuk-notification-banner__heading">Some commodity data is incomplete</p>
-        <p>This certificate was updated on 3 November 2022. You have to update answers for 5 records.</p>
-        <!--
-      <p class="govuk-body">
-        10 records have missing or incomplete required data.
-      </p>
-      -->
-        <p class="govuk-body"><a href="#navButtonGroup" id="shortcutToIncompleteRecords">Show only incomplete records</a></p>
-      </div>
-    </div>
-    <h1 class="govuk-heading-xl">{% if data.hasMultipleEHC%}Review{% else %}Added{% endif %}  2 certificates</h1>
+    <h1 class="govuk-heading-xl">{% if data.hasMultipleEHC%}Review 2 certificates{% else %}Added 1 certificate {% endif %}</h1>
 
 
 
-    <section class="app-summary-card govuk-!-margin-bottom-6  app-summary-card--error">
+    <section class="app-summary-card govuk-!-margin-bottom-6">
       <header class="app-summary-card__header">
 
         <h2 class="app-summary-card__title">
@@ -73,12 +46,8 @@ Home – GOV.UK Prototype Kit
             </dt>
             <dd class="govuk-summary-list__value">
               8
-              <p id="passport-issued-error" class="govuk-error-message" style="font-size:16px;">
-    <span class="govuk-visually-hidden">Error:</span> 5 records are incomplete
-    </p>
             </dd>
-
-            <dd class="govuk-summary-list__actions" style="width: 10%;">
+            <dd class="govuk-summary-list__actions" style="width: 40%;">
               <!-- change url depends if there is any commodites added. -->
 
               <a class="govuk-link govuk-link--no-visited-state" href="commodities">
@@ -193,7 +162,7 @@ Home – GOV.UK Prototype Kit
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~check-your-answers?showNotification=no">
+              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~./application/check-your-answers?showNotification=no">
               <label class="govuk-label govuk-radios__label" for="add-another-2">
                 No
               </label>

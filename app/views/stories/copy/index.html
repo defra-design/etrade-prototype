@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Copy a certificate improvements</h1>
+      <h2 class="govuk-heading-m">Version 1</h2>
+      <p>Based on improvements to the current journey. After copy user is taken to the task list. User cannot copy if ther is an updated EHC</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="./v1/dashboard?newVersion=no">Dashboard</a> - press 'show' to reveal copy button</li>
+        <li><a href="./v1/copy-application?newVersion=no">Copy application</a> - updated</li>
+        <li><a href="./v1/create-reference?newVersion=no">Create reference </a> - new to this journey</li>
+        <li><a href="./v1/task-list?newVersion=no">Task list </a> - new design <br><br></li>
+        <li><a href="./v1/copy-application?newVersion=yes">Copy application - certificte has been changed</a></li>
+        <li><a href="./v1/task-list-no-certificate?newVersion=yes">Task list with not commmodites coppied</a></li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Version 2</h2>
+      <p>User can only select to copy the commodity data or not. This version also contains incomplete version of the commodity data, if there is a new verison of the EHC and it has invalidated the original. </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="./v2/dashboard?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no">Start from dashbaord - No updates</a></li>
+        <li><a href="./v2/dashboard?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no">Start from dashbaord - EHC updated</a></li>
+        <li><a href="./v2/dashboard?hasMultipleEHC=yes&hasUpdateToEHC=no&showWeight=no">Start from dashbaord - has multiple EHCS</a></li>
+      </ul>
+      <h2 class="govuk-heading-m">Version 3</h2>
+      <p>Same as above but skips the copy commodity quesion and allows to remove all from the commodity review page. </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="./v3/dashboard?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no">Start from dashbaord</a></li>
+          <li><a href="./v3/dashboard?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no">Review commodities with remove all button</a></li>
+        </ul>
+
+        <h2 class="govuk-heading-m">Version 4</h2>
+        <p>Contains summary of application to copy, and allows user an simpler add all vs selecting manually</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="./v4/dashboard?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no">Start from dashbaord - No updates</a></li>
+            <li><a href="./v4/dashboard?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no">Start from dashbaord - EHC updated</a></li>
+            <li><a href="./v4/dashboard?hasMultipleEHC=yes&hasUpdateToEHC=no&showWeight=no">Start from dashbaord - has multiple EHCS</a></li>
+          </ul>
+
+
+  </div>
+</div>
+
+{% endblock %}

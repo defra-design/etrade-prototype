@@ -5,13 +5,9 @@ Home – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
-<!--   -->
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
 {% block content %}
-
-<div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
-  <!---->
-</div>
 <div class="govuk-grid-row" data-v-60e97bb5="" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-two-thirds" data-v-60e97bb5="">
     <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -21,10 +17,10 @@ Home – GOV.UK Prototype Kit
         </h2>
       </div>
       <div class="govuk-notification-banner__content">
-        <p class="govuk-body"><strong>Copied application GBXIBN4522. </strong> <br>You must enter your new commoditiy data before managing the rest of the coppied application.</p>
-
+        <p class="govuk-body"><strong>Copied application GBXIBN4522</strong></p>
       </div>
     </div>
+
     <span class="govuk-caption-xl"></span>
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Apply for an export health certificate</h1>
     <!---->
@@ -36,14 +32,14 @@ Home – GOV.UK Prototype Kit
         <dt class="govuk-summary-list__key" data-v-0a0d5507="">
           Application reference
         <dt class="govuk-summary-list__value" data-v-0a0d5507="">
-          {{data.reference or "XI2934BUL3"}}
+          {{data.UserReference or "GBXIBN4522"}}
         </dt>
         <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
           <a href="create-reference-2">Change</a>
         </dd>
       </div>
     </dl>
-    <p>You have to complete all 14 sections.</p>
+    <p>You have completed 10 of 14 sections.</p>
     <a href="#goods-certified-as" class="govuk-skip-link govuk-!-bottom-4 " data-module="govuk-skip-link">Skip next task to complete</a>
     <ol class="app-task-list">
       <li>
@@ -57,25 +53,35 @@ Home – GOV.UK Prototype Kit
                 Manage commodities
               </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="manage-commodities-status">Not started</strong>
+            <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./goods/goods-certified-as" aria-describedby="goods-certified-status">
                 Goods certified as
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="container-deal-number-status">Cannot start yet</strong>
+          <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
+
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./goods/container-deal-number" aria-describedby="container-deal-number-status">
                 Container number/seal numbers
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="container-deal-number-status">Cannot start yet</strong>
+
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="container-deal-number-status">Not started</strong>
+
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./goods/purpose-of-export" aria-describedby="purpose-of-export-status">
                 Purpose of export
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="purpose-of-export-status">Cannot start yet</strong>
+
+            <strong class="govuk-tag app-task-list__tag" id="purpose-of-export-status">Completed</strong>s
 
           </li>
 
@@ -90,12 +96,19 @@ Home – GOV.UK Prototype Kit
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./documents/accompanying-documents" aria-describedby="accompanying-documents-status">
                 Accompanying documents
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="accompanying-documents-status">Cannot start yet</strong>
+            {% if data.file %}
+            <strong class="govuk-tag app-task-list__tag" id="accompanying-documents-status">1 uploaded</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="accompanying-documents-status">0 uploaded</strong>
+            {% endif %}
           </li>
         </ul>
       </li>
+
       <li>
         <h2 class="app-task-list__section">
           <span class="app-task-list__section-number">3. </span> Persons involved
@@ -103,34 +116,44 @@ Home – GOV.UK Prototype Kit
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./persons/consignor-or-exporter" aria-describedby="consignor-or-exporter-status">
                 Consignor or Exporter
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="consignee-or-importer-status">Cannot start yet</strong>
+            <strong class="govuk-tag app-task-list__tag" id="consignor-or-exporter-status">Completed</strong>
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./persons/consignee-or-importer" aria-describedby="consignee-or-importer-status">
                 Consignee or Importer
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="consignee-or-importer-status">Cannot start yet</strong>
+          <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./persons/certifier" aria-describedby="certifier-status">
                 Certifier
-            </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="certifier-status">Cannot start yet</strong>
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-                Region of certification
+              </a>
             </span>
 
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="region-of-certification-status">Cannot start yet</strong>
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="certifier-status">Not started</strong>
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-                Responsible for load
+              <a href="./persons/region-of-certification" aria-describedby="region-of-certification-status">
+                Region of certification
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id=" arrival-and-departure-status">Cannot start yet</strong>
+          <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./transport/arrival-and-departure" aria-describedby="arrival-and-departure-status">
+                Responsible for load
+              </a>
+            </span>
+            <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
           </li>
         </ul>
       </li>
@@ -141,34 +164,43 @@ Home – GOV.UK Prototype Kit
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./transport/arrival-and-departure" aria-describedby="arrival-and-departure-status">
                 Departure and arrival
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="arrival-and-departure-status">Cannot start yet</strong>
+<strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./transport/place-of-origin" aria-describedby="place-of-origin-status">
                 Place of origin
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Cannot start yet</strong>
+            <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./transport/border-control-post" aria-describedby="border-control-post-status">
                 Entry border control post
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="border-control-post-status">Cannot start yet</strong>
+            <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="./transport/means-of-transport" aria-describedby="means-of-transport-status">
                 Means of transport
+              </a>
             </span>
-            Not <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="ready-to-apply-status">Cannot start yet</strong>
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="means-of-transport-status">Not started</strong>
           </li>
           <li class="app-task-list__item">
-            <span class="app-task-list__task-name" aria-describedby="place-of-destination-status">
-
+            <span class="app-task-list__task-name">
+              <a href="./transport/place-of-destination" aria-describedby="place-of-destination-status">
                 Place of destination
+              </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="ready-to-apply-status">Cannot start yet</strong>
+            <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
           </li>
         </ul>
       </li>

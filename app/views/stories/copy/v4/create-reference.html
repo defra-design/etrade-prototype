@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {% endif %}Create a reference – E-Certification for EHC's - GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+{% set nextpage = "commodities"%}
+{% if data.hasUpdateToEHC == "yes" and (data.copyall == "yes"or "commodites" in data.manualSelection) %}
+{% set nextpage = "commodities-with-incomplete"%}
+{% endif %}
+{% if data.hasMultipleEHC == "yes" and (data.copyall == "yes"or ("commodites" in data.manualSelection or "commodites1" in data.manualSelection )) %}
+{% set nextpage = "added-certs"%}
+{% endif %}
+{% if data.copyall == "no" and ("commodites" not in data.manualSelection or "commodites1" not in data.manualSelection  ) %}
+{% set nextpage = "./application/check-your-answers"%}
+{% endif %}
+
+<form  id="copy" method="post" action="{{nextpage}}" novalidate><!-- Form routing is handled in app/stories/accessiblity/routes.js -->
+  <section id="intro" data-v-01948390="">
+    <div class="govuk-grid-row" data-v-01948390="">
+      <div class="govuk-grid-column-two-thirds" data-v-01948390="">
+        {% if query.has_error %}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              {% if query.error_type == "length"%}
+              <li>
+                <a href="#reference-error">Your reference must be 20 characters or less</a>
+              </li>
+              {% else %}
+              <li>
+                <a href="#reference-error">Enter your reference</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+        <span class="govuk-caption-xl">Copy application GBXIBN4522</span>
+        <h1 class="govuk-heading-xl">Create a new reference</h1>
+      </div>
+    </div>
+  </section>
+  <section id="questions" data-v-01948390="">
+    <div class="govuk-grid-row" data-v-01948390="">
+      <div class="govuk-grid-column-two-thirds" data-v-01948390="">
+        <div id="ref-label" class="govuk-body" data-v-01948390="">Enter a new reference to help you identify this Export Health Certificate(s) application within the service. This reference is for your own use and will not appear on any final
+          certificate(s).
+        </div>
+        <div class="govuk-form-group {% if query.has_error %}govuk-form-group--error{% endif %}" data-v-01948390="">
+
+            <label class="govuk-label" for="ref">Your reference</label>
+            <p id="reference-hint" class="govuk-hint">References can be up to 20 letters or numbers in length.</p>
+            {% if query.has_error %}
+            <p id="reference-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span>
+                {% if query.error_type == "length"%}
+                Your reference must be 20 characters or less
+                {% endif %}
+                {% if query.error_type == "empty"%}
+                Enter your reference
+                {% endif %}
+            </p>
+            {% endif %}
+        <input class="govuk-input govuk-input--width-20" id="ref"  aria-describedby="reference-hint" name="UserReference" type="text" max="20" required="" data-v-01948390="" >
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="m-t-15" id="actions" data-v-01948390="">
+    <div class="govuk-grid-row" data-v-01948390="">
+      <div class="govuk-grid-column-two-thirds" data-v-01948390="">
+        <button role="button" id="copy-button"type="submit" class="govuk-button" data-v-01948390="">Create copy</button>
+      </div>
+    </div>
+  </section>
+
+
+</form>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    var timer;
+    var timeTaken = 1;
+
+    function validate() {
+
+      timeTaken += 1
+      if (timeTaken == 4) {
+        clearInterval(timer);
+        $('#copy').submit()
+      }
+    }
+    $('#copy-button').on('click', function(e) {
+      e.preventDefault()
+      $(this).text("Creating copy")
+      $(this).prepend('<span class="fas fa-spinner fa-spin" data-v-e8e27fc8=""></span> &nbsp;')
+      $(this).attr("disabled", "disabled")
+      timer = setInterval(validate, 1000);
+    })
+  })
+</script>
+{% endblock %}
