@@ -27,8 +27,16 @@
       </div>
       {% endif %}
 
+      <p>The following sections cannot be copied and need to be entered manually.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        {% if query.newVersion =="yes" %}<li>Manage commodities</li>{%endif%}
+        <li>Container number/seal number</li>
+        <li>Accompanying document</li>
+        <li>Means of transport</li>
+        <li>Arrival and Departure</li>
+      </ul>
       <!-- <p class="govuk-body" data-v-7899b5ce="">Select all sections you want to copy.</p> -->
-      <p class="">You will need to complete {% if query.newVersion =="yes" %}'Manage commodities',{%endif%}'Accompanying documents', 'Certifier', 'Means of transport' and 'Arrival and Departure' sections manually.</p>
+
       <div class="govuk-form-group" data-v-7899b5ce="">
         <div class="govuk-checkboxes govuk-checkboxes--small" data-v-7899b5ce="">
           <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="select-all" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="select-all" data-v-7899b5ce=""> Select
@@ -40,7 +48,7 @@
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-7899b5ce="">
             <h1 class="govuk-fieldset__heading" data-v-7899b5ce=""> Description of the goods </h1>
           </legend>
-          <p>{% if query.newVersion =="yes" %}'Manage commodities' and {% endif%}'Container number/seal number' sections cannot be coppied</p>
+
 
           <div class="govuk-checkboxes govuk-checkboxes--small" data-v-7899b5ce="">
             {% if query.newVersion !="yes" %}
@@ -88,7 +96,7 @@
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-7899b5ce="">
             <h1 class="govuk-fieldset__heading" data-v-7899b5ce=""> Transport </h1>
           </legend>
-          <p>'Arrival and departure' and 'Means of transport' cannot be coppied.</p>
+
           <div class="govuk-checkboxes govuk-checkboxes--small" data-v-7899b5ce="">
 
             <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="transport-p-o-r" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="transport-p-o-r"
