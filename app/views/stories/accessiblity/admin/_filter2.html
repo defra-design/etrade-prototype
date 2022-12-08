@@ -1,0 +1,91 @@
+<div class="govuk-button-group govuk-!-margin-bottom-0">
+
+
+  <button id="show-filter" class="govuk-button govuk-button--secondary filter-button" data-module="govuk-button" data-toggle="collapse" aria-controls="filter-panel" aria-expanded="false"><span class="filter-button--text"> Show filter </span></button>
+<a class="govuk-link clear-filter" href="#">Clear all filters</a></div>
+
+        <div id="filter-panel" class="govuk-form-group filter-panel">
+          <fieldset class="govuk-fieldset">
+            <div class="filter-panel--header">
+
+
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s filter-panel--heading">
+                <h2 class="pull-left govuk-fieldset__heading"> Filter by Country </h2>
+
+              </legend>
+
+            </div>
+
+            <div class="govuk-checkboxes govuk-checkboxes--small filter-row" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="DE" name="country" type="checkbox" value="DE"><label class="govuk-label govuk-checkboxes__label filter-label" for="DE"><span class="country-flag-wrapper"><span class="flag f-de normal-flag" data-v-8720a308="" style="background-image: url(&quot;/img/flags.1147a273.png&quot;);"></span> Germany <span class="count">2</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="FR" name="country" type="checkbox" value="FR"><label class="govuk-label govuk-checkboxes__label filter-label" for="FR"><span class="country-flag-wrapper"><span class="flag f-fr normal-flag" data-v-8720a308="" style="background-image: url(&quot;/img/flags.1147a273.png&quot;);"></span> France <span class="count">7</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="IE" name="country" type="checkbox" value="IE"><label class="govuk-label govuk-checkboxes__label filter-label" for="IE"><span class="country-flag-wrapper"><span class="flag f-ie normal-flag" data-v-8720a308="" style="background-image: url(&quot;/img/flags.1147a273.png&quot;);"></span> Ireland <span class="count">3</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="NL" name="country" type="checkbox" value="NL"><label class="govuk-label govuk-checkboxes__label filter-label" for="NL"><span class="country-flag-wrapper"><span class="flag f-nl normal-flag" data-v-8720a308="" style="background-image: url(&quot;/img/flags.1147a273.png&quot;);"></span> Netherlands <span class="count">2</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="SE" name="country" type="checkbox" value="SE"><label class="govuk-label govuk-checkboxes__label filter-label" for="SE"><span class="country-flag-wrapper"><span class="flag f-se normal-flag" data-v-8720a308="" style="background-image: url(&quot;/img/flags.1147a273.png&quot;);"></span> Sweden <span class="count">1</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="XI" name="country" type="checkbox" value="XI"><label class="govuk-label govuk-checkboxes__label filter-label" for="XI"><span class="country-flag-wrapper"><span class="flag f-gb normal-flag" data-v-8720a308="" style="background-image: url(&quot;/img/flags.1147a273.png&quot;);"></span> Northern Ireland <span class="count">545</span></span></label></div>
+            </div>
+          </fieldset>
+  <p class="govuk-!-margin-top-4 govuk-!-margin-bottom-2"><a class="govuk-link filter-panel--close-button" href="#" data-toggle="collapse" aria-expanded="true" aria-controls="filter-panel">Hide filter</a></p>
+        </div>
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+    let total = $(".govuk-checkboxes__input").length
+
+    function toggleView(t){
+      if($(t).is(":visible")){
+        $(t).hide()
+      }else{
+        $(t).show()
+      }
+    }
+    function toggleText(t){
+    if($(t).parent().attr("aria-expanded")=="true"){
+        $(t).text("Hide filter")
+      }else{
+        $(t).text("Show filter")
+      }
+    }
+    function toggleAriaCode(t){
+      if($(t).attr("aria-expanded")=="true"){
+        return "false"
+      }else{
+        return "true"
+      }
+    }
+
+    $("button[data-toggle='collapse']").on("click", function(){
+      var t = "#"+$(this).attr('aria-controls')
+      $(this).attr('aria-expanded',toggleAriaCode($(this)))
+      toggleView(t)
+      toggleText($('.filter-button--text'))
+    })
+
+    $(".filter-panel--close-button").on("click",function(){
+      var t = "#"+$(this).attr('aria-controls')
+      $("button[data-toggle='collapse']").attr('aria-expanded',toggleAriaCode($(this)))
+      toggleView(t)
+      toggleText($('.filter-button--text'))
+    })
+
+    $(".clear-filter").on('click', function(){
+      $('.js-selected-counter').remove()
+      $('.filter-count').remove()
+      $('.govuk-checkboxes__input').prop('checked', false)
+    })
+
+  $(".govuk-checkboxes__input").on("click",function(e){
+
+    $('.js-selected-counter').remove()
+    $('.filter-count').remove()
+    var count = $('.govuk-checkboxes__input:checked').length
+    if($('.govuk-checkboxes__input:checked').length > 0){
+        $('#show-filter').append('<span class="filter-count govuk-tag">'+count+'<span class="govuk-visually-hidden">selected</span></span>')
+        $('.filter-panel--heading').append('<div class="app-c-option-select__selected-counter js-selected-counter">'+count+' selected</div>')
+    }
+
+  })
+  })
+
+
+</script>

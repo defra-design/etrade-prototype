@@ -21,6 +21,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/find-establishment";
 @import "components/font-awesome";
 @import "components/importing-files";
+@import "components/multi-select";
 @import "components/navigation";
 @import "components/option-select";
 @import "components/operator-pane";
@@ -33,7 +34,7 @@ $govuk-assets-path: '/govuk/assets/';
 
 
 @import "components/upload-animation";
-
+@import "components/admin";
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 .govuk-button--search {
     background-color: #005ea5;

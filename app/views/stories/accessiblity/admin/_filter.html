@@ -1,0 +1,136 @@
+
+<style media="screen">
+  .app-c-option-select__container {
+    position: relative;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+.gem-c-checkboxes__list {
+    padding-left: 0;
+    margin: 0;
+  }
+  .js-enabled .app-c-option-select__heading {
+    position: relative;
+    padding: 10px 8px 5px 43px;
+}
+</style>
+<div class="app-c-option-select js-collapsible closed" data-module="option-select" data-input-aria-controls="wrapper" data-option-select-module-started="true">
+  <h2 class="app-c-option-select__heading js-container-heading">
+    <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="false" id="option-select-title-list-of-options-with-aria-controls" aria-controls="list_of_countries">Filter by country</button>
+    <div class="app-c-option-select__selected-counter js-selected-counter">1 selected</div>
+    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false">
+      <path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path>
+    </svg>
+    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false">
+      <path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path>
+    </svg>
+  </h2>
+  <div role="group" aria-labelledby="option-select-title-list-of-options-with-aria-controls" class="app-c-option-select__container js-options-container" id="list_of_countries" tabindex="-1" style="height: 143px;">
+    <div class="app-c-option-select__container-inner js-auto-height-inner">
+
+      <div id="checkboxes-24fef492" class="gem-c-checkboxes govuk-form-group govuk-checkboxes--small" data-module="gem-checkboxes govuk-checkboxes" data-gem-checkboxes-module-started="true" data-govuk-checkboxes-module-started="true">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">List of options (with aria controls)</legend>
+          <ul class="govuk-checkboxes gem-c-checkboxes__list">
+            <li class="govuk-checkboxes__item" data-v-7899b5ce="">
+              <input class="govuk-checkboxes__input" id="select-all" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="select-all"> Select
+                all </label></li>
+            <li class="govuk-checkboxes__item">
+              <input type="checkbox" name="with_aria-control_set[]" id="britain" value="britain" class="govuk-checkboxes__input"><label for="britain" class="govuk-label govuk-checkboxes__label">Britain</label>
+
+            </li>
+            <li class="govuk-checkboxes__item">
+              <input type="checkbox" name="with_aria-control_set[]" id="france" value="france" class="govuk-checkboxes__input"><label for="france" class="govuk-label govuk-checkboxes__label">France</label>
+
+
+            </li>
+            <li class="govuk-checkboxes__item">
+              <input type="checkbox" name="with_aria-control_set[]" id="spain" value="spain" class="govuk-checkboxes__input"><label for="spain" class="govuk-label govuk-checkboxes__label">Spain</label>
+
+
+            </li>
+            <li class="govuk-checkboxes__item">
+              <input type="checkbox" name="with_aria-control_set[]" id="germany" value="germany" class="govuk-checkboxes__input"><label for="Germany" class="govuk-label govuk-checkboxes__label">Germany</label>
+
+
+            </li>
+            <li class="govuk-checkboxes__item">
+              <input type="checkbox" name="with_aria-control_set[]" id="portugal" value="portugal" class="govuk-checkboxes__input"><label for="portugal" class="govuk-label govuk-checkboxes__label">Portugal</label>
+
+
+            </li>
+            <li class="govuk-checkboxes__item">
+              <input type="checkbox" name="with_aria-control_set[]" id="cyprus" value="cyprus" class="govuk-checkboxes__input"><label for="cyprus" class="govuk-label govuk-checkboxes__label">Cyprus</label>
+
+
+            </li>
+            <li class="govuk-checkboxes__item">
+              <input type="checkbox" name="with_aria-control_set[]" id="italy" value="italy" class="govuk-checkboxes__input"><label for="italy" class="govuk-label govuk-checkboxes__label">Italy</label>
+
+
+            </li>
+            <li class="govuk-checkboxes__item">
+              <input type="checkbox" name="with_aria-control_set[]" id="croatia" value="croatia" class="govuk-checkboxes__input"><label for="croatia" class="govuk-label govuk-checkboxes__label">Croatia</label>
+
+
+            </li>
+            <li class="govuk-checkboxes__item">
+              <input type="checkbox" name="with_aria-control_set[]" id="sweden" value="sweden" class="govuk-checkboxes__input"><label for="sweden" class="govuk-label govuk-checkboxes__label">Sweden</label>
+
+
+            </li>
+
+          </ul>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    let total = $(".govuk-checkboxes__input").length
+  $('.app-c-option-select__button').on('click',function(e){
+    e.preventDefault()
+
+    var menu=$(this).attr('aria-controls')
+      console.log('menu '+menu)
+    var container = $(this).parent().parent()
+
+    if(container.hasClass("js-opened")){
+      container.removeClass("js-opened")
+      container.addClass("js-closed")
+    }else{
+      container.addClass("js-opened")
+      container.removeClass("js-closed")
+    }
+    $(this).attr('aria-expanded', toggleAriaCode($(this)))
+
+  })
+  function toggleAriaCode(t){
+    console.log($(t).attr("aria-expanded"))
+    if($(t).attr("aria-expanded")=="true"){
+      return "false"
+    }else{
+      return "true"
+    }
+  }
+  $(".govuk-checkboxes__input").on("click",function(e){
+    if($(this).attr('id') != "select-all"){
+      $('#select-all').prop('checked', false)
+      if($('.govuk-checkboxes__input:checked').length == total-1){
+        $('#select-all').prop('checked', true)
+      }
+    }
+      $('.js-selected-counter').remove()
+    var count = $('.govuk-checkboxes__input:checked').length
+    if($('.govuk-checkboxes__input:checked').length > 0){
+        $('.app-c-option-select__button').parent().append('<div class="app-c-option-select__selected-counter js-selected-counter">'+count+' selected</div>')
+    }
+
+  })
+  })
+
+
+</script>

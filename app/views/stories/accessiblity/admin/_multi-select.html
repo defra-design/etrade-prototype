@@ -1,0 +1,103 @@
+
+<div id="card-brand__container" class="multi-select">
+  <button type="button" class="multi-select-title" id="card-brand" aria-expanded="false">
+    <div><span class="govuk-visually-hidden">Currently selected: </span><span class="multi-select-current-selections">All brands</span></div>
+  </button>
+  <div role="group" aria-labelledby="option-select-title-brand" class="multi-select-dropdown" id="list-of-sectors-brand" style="visibility: hidden;">
+    <div class="multi-select-dropdown-inner-container govuk-checkboxes" style="max-height: 340px;">
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input govuk-!-font-size-16" name="brand" value="" id="el-46816" type="checkbox">
+        <label for="el-46816" class="govuk-label govuk-checkboxes__label govuk-!-font-size-16 multi-select-label-brand">All brands</label>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input govuk-!-font-size-16" name="brand" value="visa" id="el-40867" type="checkbox">
+        <label for="el-40867" class="govuk-label govuk-checkboxes__label govuk-!-font-size-16 multi-select-label-brand">Visa</label>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input govuk-!-font-size-16" name="brand" value="master-card" id="el-46861" type="checkbox">
+        <label for="el-46861" class="govuk-label govuk-checkboxes__label govuk-!-font-size-16 multi-select-label-brand">Mastercard</label>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input govuk-!-font-size-16" name="brand" value="american-express" id="el-66384" type="checkbox">
+        <label for="el-66384" class="govuk-label govuk-checkboxes__label govuk-!-font-size-16 multi-select-label-brand">American Express</label>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input govuk-!-font-size-16" name="brand" value="diners-club" id="el-10530" type="checkbox">
+        <label for="el-10530" class="govuk-label govuk-checkboxes__label govuk-!-font-size-16 multi-select-label-brand">Diners Club</label>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input govuk-!-font-size-16" name="brand" value="discover" id="el-10954" type="checkbox">
+        <label for="el-10954" class="govuk-label govuk-checkboxes__label govuk-!-font-size-16 multi-select-label-brand">Discover</label>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input govuk-!-font-size-16" name="brand" value="jcb" id="el-66144" type="checkbox">
+        <label for="el-66144" class="govuk-label govuk-checkboxes__label govuk-!-font-size-16 multi-select-label-brand">JCB</label>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input govuk-!-font-size-16" name="brand" value="unionpay" id="el-82539" type="checkbox">
+        <label for="el-82539" class="govuk-label govuk-checkboxes__label govuk-!-font-size-16 multi-select-label-brand">Union Pay</label>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input govuk-!-font-size-16" name="brand" value="maestro" id="el-33361" type="checkbox">
+        <label for="el-33361" class="govuk-label govuk-checkboxes__label govuk-!-font-size-16 multi-select-label-brand">Maestro</label>
+      </div>
+
+    </div>
+    <div class="multi-select-dropdown-close-area"></div>
+  </div>
+</div>
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    let total = $(".govuk-checkboxes__input").length
+  $('.app-c-option-select__button').on('click',function(e){
+    e.preventDefault()
+
+    var menu=$(this).attr('aria-controls')
+      console.log('menu '+menu)
+    var container = $(this).parent().parent()
+
+    if(container.hasClass("js-opened")){
+      container.removeClass("js-opened")
+      container.addClass("js-closed")
+    }else{
+      container.addClass("js-opened")
+      container.removeClass("js-closed")
+    }
+    $(this).attr('aria-expanded', toggleAriaCode($(this)))
+
+  })
+  function toggleAriaCode(t){
+    console.log($(t).attr("aria-expanded"))
+    if($(t).attr("aria-expanded")=="true"){
+      return "false"
+    }else{
+      return "true"
+    }
+  }
+  $(".govuk-checkboxes__input").on("click",function(e){
+    if($(this).attr('id') != "select-all"){
+      $('#select-all').prop('checked', false)
+      if($('.govuk-checkboxes__input:checked').length == total-1){
+        $('#select-all').prop('checked', true)
+      }
+    }
+      $('.js-selected-counter').remove()
+    var count = $('.govuk-checkboxes__input:checked').length
+    if($('.govuk-checkboxes__input:checked').length > 0){
+        $('.app-c-option-select__button').parent().append('<div class="app-c-option-select__selected-counter js-selected-counter">'+count+' selected</div>')
+    }
+
+  })
+  })
+
+
+</script>
