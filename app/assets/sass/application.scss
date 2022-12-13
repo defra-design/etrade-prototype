@@ -32,6 +32,8 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/summary-list-accordion";
 @import "components/tools";
 
+@import "components/flag";
+
 
 @import "components/upload-animation";
 @import "components/admin";
@@ -462,6 +464,9 @@ strong.input-description {
 .app-button--search:hover{
   background-color: #003078;
 }
+.app-button--search[disabled]:hover {
+  background: #003078;
+}
 
 .app-summary-card__body {
   .app-summary-list--small {
@@ -473,4 +478,8 @@ strong.input-description {
   .govuk-summary-list__key {
     padding-bottom: 0;
   }
+}
+
+.certficate-subtable thead {
+    background: #f3f2f1;
 }
