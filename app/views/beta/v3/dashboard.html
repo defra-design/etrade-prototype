@@ -1,10 +1,118 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Home – GOV.UK Prototype Kit
+Dashboard – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
+
+<style type="text/css">
+.p-dropdown {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+.p-dropdown-clear-icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -.5rem;
+}
+.p-dropdown-trigger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+}
+.p-dropdown-label {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    width: 1%;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.p-dropdown-label-empty {
+    overflow: hidden;
+    visibility: hidden;
+}
+input.p-dropdown-label  {
+    cursor: default;
+}
+.p-dropdown .p-dropdown-panel {
+    min-width: 100%;
+}
+.p-dropdown-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.p-dropdown-items-wrapper {
+    overflow: auto;
+}
+.p-dropdown-item {
+    cursor: pointer;
+    font-weight: normal;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+.p-dropdown-item-group {
+    cursor: auto;
+}
+.p-dropdown-items {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.p-dropdown-filter {
+    width: 100%;
+}
+.p-dropdown-filter-container {
+    position: relative;
+}
+.p-dropdown-filter-icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -.5rem;
+}
+.p-fluid .p-dropdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.p-fluid .p-dropdown .p-dropdown-label {
+    width: 1%;
+}
+
+.govuk-button--blue {
+  background: #005ea5;
+  color: #ffffff;
+}
+
+.govuk-button--blue:hover {
+  background: #002c82;
+}
+</style>
+
+
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
       <h1 class="govuk-heading-xl"> Your Applications </h1>
@@ -470,7 +578,82 @@ Home – GOV.UK Prototype Kit
                     <td align="right" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262="" id="78BB19F1D77D4B9"><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+
+          <tr data-v-5f726ce5="" id="78BB19F1D77D4B9-expand" style="display:none">
+            <td class="govuk-table__cell" colspan="8" data-v-5f726ce5="">
+              <div class="certficate-subtable govuk-inset-text" data-v-5f726ce5="">
+                <table class="govuk-table" data-v-5f726ce5="">
+                  <thead class="govuk-table__head" data-v-5f726ce5="">
+                    <tr class="govuk-table__row" data-v-5f726ce5="">
+                      <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">&nbsp;Certificate Name</span>
+                      </th>
+                      <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">Certifier</span>
+                      </th>
+                      <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">SP/NV</span>
+                      </th>
+                      <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">Status</span>
+                      </th>
+                      <th scope="col" class="govuk-table__header download-header" data-v-5f726ce5="" style="width:150px;">
+                        <span class="small-text" data-v-5f726ce5="">Download</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body" data-v-5f726ce5="">
+                    <tr class="govuk-table__row" data-v-5f726ce5="">
+                      <td class="govuk-table__cell" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span>
+                      </td>
+                      <td class="govuk-table__cell" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">test user</span>
+                      </td>
+                      <td class="govuk-table__cell" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">190537</span>
+                      </td>
+                      <td class="govuk-table__cell" data-v-5f726ce5="">
+                        <div class="d-inline-flex" data-v-5f726ce5="">
+                          <div data-v-5f726ce5="">
+                            <span class="govuk-tag AcceptedByTraces" data-v-5f726ce5="">Successful Sync with Traces</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="govuk-table__cell nowrap" data-v-5f726ce5="">
+                        <div data-v-5f726ce5="">
+                          <div class="p-dropdown p-component p-inputwrapper p-inputwrapper-filled mr-2" data-v-5f726ce5="">
+                            <div class="p-hidden-accessible">
+                              <input type="text" readonly="" aria-haspopup="true" aria-expanded="false">
+                            </div>
+                            <span class="p-dropdown-label p-inputtext">English</span>
+                            <div class="p-dropdown-trigger" role="button" aria-haspopup="listbox" aria-expanded="false">
+                              <span class="p-sr-only">Show dropdown</span>
+                              <span class="p-dropdown-trigger-icon pi pi-chevron-down"></span>
+                            </div>
+                          </div>
+
+<button class="govuk-button govuk-button--blue" title="Download certificate"><span class="fas fa-file-download" data-v-5f726ce5=""></span></button>
+<a href="./view-certificate" role="button" draggable="false" class="govuk-button" data-module="govuk-button" title="View certificate">
+  <span class="fas fa-qrcode" data-v-5f726ce5=""></span></a>
+
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="govuk-button-group pull-right" data-v-5f726ce5="">
+                <!--
+                <a href="#" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">View certificate</a>
+                <a href="#" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">Download certificate (pdf)</a>
+                -->
+                <a href="/Export-health-certificate/bab39dd0-f35b-4a99-bdca-39837307753c" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">View application</a>
+                <a href="/bab39dd0-f35b-4a99-bdca-39837307753c/Copy-Application" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">Copy application</a>
+              </div>
             </td>
           </tr>
           <!---->
@@ -706,11 +889,12 @@ Home – GOV.UK Prototype Kit
   window.addEventListener('load', function() {
     var subtable = '<tr data-v-0d2a5cfc="" id="subtable"><td class="govuk-table__cell" colspan="8" data-v-0d2a5cfc=""><div class="certficate-subtable govuk-inset-text" data-v-0d2a5cfc=""><table class="govuk-table" data-v-0d2a5cfc=""><thead class="govuk-table__head" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> &nbsp;Certificate Name </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Certifier </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> SP/NV </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Status </span></th><!----></tr></thead><tbody class="govuk-table__body" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><!----></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""></span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><div class="d-inline-flex" data-v-0d2a5cfc=""><!----><!----></div></td><!----></tr></tbody></table></div><div class="govuk-button-group pull-right" data-v-0d2a5cfc=""><!----><!----><a href="#" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> View application </a><a href="copy/copy-application" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> Copy application </a><!----><!----><a class="govuk-button govuk-button--warning" href="#" data-toggle="modal" data-target="#confirmRemoveModal" data-v-0d2a5cfc=""> Delete application </a></div><!----></td></tr>'
     $('.show-subtable').on('click',function(e){
+      /*
         e.preventDefault()
         var row = $(this).closest(".govuk-table__row")
         $('#subtable').remove()
         row.after(subtable)
-
+      */
     })
     $('.govuk-button[data-toggle]').on("click",function() {
       if(!$(".filter-container").hasClass("collapse")){
@@ -723,6 +907,11 @@ Home – GOV.UK Prototype Kit
       } else {
         $(t).addClass("collapse")
       }
+    })
+
+    $('#78BB19F1D77D4B9').on("click", function() {
+      $('#78BB19F1D77D4B9-expand').show();
+      return false;
     })
 
   })
