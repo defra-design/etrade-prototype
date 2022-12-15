@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How do you want to enter commodity data – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+{% set ehc = (data.certificate|makeNumber) or 0 %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if query.error %}
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#select-a-choice">Select how you would like to add commodity data</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+    <form method="post">
+      <div class="govuk-form-group {% if query.error %} govuk-form-group--error{%endif%}">
+        <!-- <span class="govuk-caption-xl">
+          {{ data.certificates or "EHC8328" }}
+        </span> -->
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--l">
+            How do you want to enter commodity data for {{data.certificates[ehc].number}}?
+          </legend>
+
+          {% if query.error %}
+          <p id="select-a-choice" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select how you would like to add commodity data
+          </p>
+          {% endif %}
+          <!-- <div id="add-another-hint" class="govuk-hint">
+          We have calculated this by adding together the net weight of every commodity you’ve added.
+          </div> -->
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-to-add-upload" name="how-to-add" type="radio" value="upload~./upload/download-template" aria-describedby="manually-adding-hint">
+              <label class="govuk-label govuk-radios__label" for="how-to-add-upload">
+                Upload a spreadsheet
+              </label>
+              <div id="manually-adding-hint" class="govuk-hint govuk-radios__hint">
+                You will need to use our spreadsheet template to ensure consistency with EU TRACES data – you can download the template on the next page.
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-to-add-manually" name="how-to-add" type="radio" value="manually~select-commodities">
+              <label class="govuk-label govuk-radios__label" for="how-to-add-manually">
+                Enter commodities individually
+              </label>
+              <!--<div id="manually-adding-hint" class="govuk-hint govuk-radios__hint">
+                This method may be quicker if you want to add data for up to 5 commodities.
+              </div>-->
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}
