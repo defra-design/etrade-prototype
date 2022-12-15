@@ -358,6 +358,14 @@ module.exports = function(router) {
         data['incomplete'].push(schema[x].id);
         data['isIncomplete'] = true;
       }
+
+      // support search type (establishments)
+      if (schema[x].type == "search") {
+        console.log("Schema type is search: " + schema[x].id);
+        // in addition to the main item, also look for its companions (e.g. manufacturingPlant-id, manufacturingPlantActivity)
+        data[schema[x].id+'-id'] = body[schema[x].id+'-id'];
+        data[schema[x].id+'Activity'] = body[schema[x].id+'Activity'];
+      }
     }
 
     // console.log(data);
@@ -510,6 +518,28 @@ module.exports = function(router) {
       // save the value
       // redirect
 
+
+  })
+
+  // this is a virtual page - it doesn't really exist, it just serves as an action for removing an establishment
+  router.get('/' + base_url + 'application/find/remove-establishment', function(req, res) {
+    console.log("In post for find/remove-establishment");
+
+    // which establishment type?
+    // which commodity?
+    let certID = req.query.certID;
+    let commodityListID = req.query.commodityListID;
+    let changeID = req.query.changeID;
+    let establishmentType = req.query.establishmentType;
+
+    let identification = req.session.data.addedEHC[certID].addedCommodities[commodityListID].identifications[changeID];
+    console.log(identification);
+
+    identification[establishmentType] = null;
+    identification[establishmentType+'Activity'] = null;
+    identification[establishmentType+'-id'] = null;
+
+    res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + commodityListID + '&changeID=' + changeID);
 
   })
 
