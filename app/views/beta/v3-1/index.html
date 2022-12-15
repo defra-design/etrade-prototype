@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Version 3 Summary – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      Version 3.1
+    </h1>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          What changed
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Single certificate journey</li>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Removed certificate summary page from journey</li>
+              <li>Navigate user directly to task list after they say they don't want to add more commodities</li>
+              <li>Make gross weight a distinct step, reachable from the task list</li>
+              <li>Remove support for multiple certificates on the certifier search/selection page</li>
+              <li>Updated certifer search page to look/feel like operator search</li>
+            </ul>
+          <li>Removed CDU journey</li>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Removed CDU intro interstitial page</li>
+            <li>Removed CDU question page</li>
+            <li>Removed reference to upload on commodity page</li>
+          </ul>
+          <li>Changed "Manage commodities" to "Commodities" on task list page</li>
+        </ul>
+      </div>
+    </details>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    <h2 class="govuk-heading-m">Pages</h2>
+    <h3 class="govuk-heading-s">New user</h3>
+    <ul class="govuk-list govuk-list--bullet">
+
+      <li><a href="../verify/gov-sign-in?loginReturnURL=/beta/v3-1/dashboard-no-applications">From login - new user</a></li>
+      <li><a href="dashboard-no-applications">Dashboard new user</a></li>
+    </ul>
+    <h3 class="govuk-heading-s">Existing user</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="../verify/gov-sign-in?loginReturnURL=/beta/v3-1/dashboard">From login - existing user</a></li>
+      <li><a href="dashboard">Dashboard existing user</a></li>
+    </ul>
+
+    <h3 class="govuk-heading-s">Application</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="application/start">Start new application</a></li>
+      <li><a href="application/create-reference">Reference number</a></li>
+      <li><a href="application/export/select-certificates?displayMax=10">Select certificate</a></li>
+    </ul>
+
+    <h3 class="govuk-heading-s">Task list</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="application/task-list">Task list</a></li>
+    </ul>
+
+  </div>
+  <div class="govuk-grid-column-one-thirds">
+    <!--
+    <h3 class="govuk-heading-m">Use this data</h3>
+    <ul class="govuk-list">
+      <li><strong>Estbalishment for commodities:</strong> <br>Dovecote Park Ltd (approval number 2045)</li>
+
+    </ul>
+    -->
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Find an organisation responsible for the load – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form id="search" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+      <h1 class="govuk-heading-xl">Find an organisation responsible for the load</h1>
+      <p class="govuk-body">Enter the country and address of the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
+
+      {% set defaultCountry = "Any" %}
+      {% block countryOfOrigin %}{% include "../../find/_country-of-origin-select.html" %}{% endblock %}
+
+      {% set includeApprovalNumberSearch = false %}
+      {% set orgSearchLabel = "Responsible for load organisation name" %}
+      {% block organisationSearch %}{% include "../organisationSearchAndResults.html" %}{% endblock %}
+
+    </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}

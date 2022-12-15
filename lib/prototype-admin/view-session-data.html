@@ -40,6 +40,11 @@
       }) }}
 
       {{ govukDetails({
+        summaryText: "data.certifiers",
+        text: (data.certifiers | dump )
+      }) }}
+
+      {{ govukDetails({
         summaryText: "data.scheduleUploadProcessing",
         text: (data.scheduleUploadProcessing | dump )
       }) }}
@@ -82,6 +87,11 @@
       {{ govukDetails({
         summaryText: "data.addedCommodities",
         text: (data.addedCommodities | dump )
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "data.person",
+        text: (data.person | dump )
       }) }}
 
 

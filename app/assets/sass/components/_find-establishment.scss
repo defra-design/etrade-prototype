@@ -2,3 +2,15 @@
   background-color: #f3f2f1;
   padding: govuk-spacing(5);
 }
+
+.app-find-establishment-card .app-find-establishment-details {
+  display: inline-block;
+  width: 66%;
+}
+
+.app-find-establishment-card .app-find-establishment-actions {
+  display: inline-block;
+  width: 33%;
+  text-align: right;
+  vertical-align: top;
+}

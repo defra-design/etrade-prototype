@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or exporter – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<style>
+  .find-establishment-link {
+    padding: 30px;
+    background: #f3f2f1;
+  }
+
+  .govuk-summary-list__actions {
+    padding-right: 30px;
+  }
+
+  .govuk-summary-list__row {
+    border: none;
+  }
+</style>
+
+<form class="" action="../task-list" method="post">
+
+  <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+
+  </div>
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl">Consignor or exporter </h1>
+      <p class="govuk-body">This is the natural or legal person dispatching the consignment. The consignor selected must be located in Great Britain.</p>
+      {% set searchLabel = "Consignor or exporter"%}
+      {% set returnURL = "../persons/consgnor-or-exporter"%}
+      <div class="govuk-form-group">
+
+        {% if data.person['consignor'] %}
+          {% set establishmentIndex = data.person['consignor'] %}
+          {% set org = data.establishments[establishmentIndex] %}
+
+          {% set removeLink = "./remove?who=consignor&redirect=consignor-or-exporter" %}
+          {% block traderAddress %}{% include "./trader-address.html" %}{% endblock %}
+
+        {% else %}
+          <p class="govuk-!-margin-bottom-10 find-establishment-link">
+            <a href="./consignor/find" class="govuk-link govuk-link--no-visited-state">Select a consignor or exporter</a>
+          </p>
+        {% endif %}
+
+      </div>
+
+
+
+
+
+
+
+<button class="govuk-button">Continue</button>
+      </div>
+  </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}
