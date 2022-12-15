@@ -33,15 +33,15 @@
               Do you want to copy everything in the original application?
             </h1>
           </legend>
-          <p>Copy what is in the original certificate and make any changes before submiting.</p>
+          <p>Copy everything in the and the original application and make any changes before submiting.</p>
           <details class="govuk-details" data-module="govuk-details">
             <summary class="govuk-details__summary">
               <span class="govuk-details__summary-text">
-                Information that cannot be copied
+                Information that you cannot copy
               </span>
             </summary>
             <div class="govuk-details__text">
-              <p>The following sections cannot be copied and need to be entered manually.</p>
+              <p>You cannot coppy the following sections:</p>
               <ul class="govuk-list govuk-list--bullet">
                 <li>Container number/seal number</li>
                 <li>Accompanying document</li>
@@ -55,6 +55,7 @@
 
               </ul>
               {% endif %}
+              <p>You will need to enter information for these sections manually.</p>
             </div>
           </details>
           <div class="govuk-radios" data-module="govuk-radios">
@@ -67,7 +68,7 @@
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="WillCopyCommodities-2" name="copyall" type="radio" value="no~select-copy-info" data-aria-controls="conditional-contact-2">
               <label class="govuk-label govuk-radios__label" for="WillCopyCommodities-2">
-                No, I want to select what to copy
+                No, I want to select which sections to copy
               </label>
             </div>
           </div>

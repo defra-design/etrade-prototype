@@ -753,6 +753,17 @@
    "Postcode": "KA9 2TR",
    "Country": "United Kingdom",
    "All_Activities": ["Processing Plant"]
+ },
+ {
+   "AppNo": "MN 100",
+   "TradingName": "Exton Foods",
+   "Address1": "Units 5 and 6 Caldey Road",
+   "Address2": "",
+   "Address3": "",
+   "Town": "Manchester",
+   "Postcode": "M23 9GE",
+   "Country": "United Kingdom",
+   "All_Activities": ["Processing plant - food (MPP)","Establishment - food (FOOD-OTH)"]
  }
 
 ]

@@ -12,8 +12,8 @@
 <form method="get" novalidate action="create-reference">
   <!-- Form routing is handled in app/stories/accessiblity/routes.js -->
   <div class="govuk-grid-row" data-v-7899b5ce="" data-v-0c6ff6a7="">
-    <div class="govuk-grid-column-two-thirds" data-v-7899b5ce=""><span class="govuk-caption-xl">Copy application GBXIBN4522</span>
-      <h1 class="govuk-heading-xl">Select what you want to copy from certificate {{query.reference or "GBXIBN4522"}}</h1>
+    <div class="govuk-grid-column-two-thirds" data-v-7899b5ce="">
+      <h1 class="govuk-heading-xl">Which sections do you want to copy from certificte {{query.reference or "GBXIBN4522"}}?</h1>
       {% if query.newVersion =="yes" %}
       <!-- // just for prototyping to trigger diffeerent journey -->
       <input type="hidden" name="newVersion" value="yes">
@@ -29,21 +29,29 @@
 
       <p class="govuk-body" data-v-7899b5ce="">Select all sections you want to copy. </p>
       <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-          4 sections cannot be coppied
-        </span>
-      </summary>
-      <div class="govuk-details__text">
-        <p>The following sections cannot be copied and need to be entered manually. This is becasue they are either not in the original application or they change per application.</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Container number/seal number</li>
-          <li>Accompanying document</li>
-          <li>Means of transport</li>
-          <li>Arrival and Departure</li>
-        </ul>
-      </div>
-    </details>
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Information that you cannot copy
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You cannot coppy the following sections:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Container number/seal number</li>
+            <li>Accompanying document</li>
+            <li>Means of transport</li>
+            <li>Arrival and Departure</li>
+          </ul>
+          {% if data.isDraft=="yes" %}
+          <p>The following blank sections in the original will not be coppied.</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Entry border control post</li>
+
+          </ul>
+          {% endif %}
+          <p>You will need to enter information for these sections manually.</p>
+        </div>
+      </details>
 
     <div class="govuk-form-group" data-v-7899b5ce="">
       <div class="govuk-checkboxes govuk-checkboxes--small" data-v-7899b5ce="">

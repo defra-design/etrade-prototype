@@ -4,7 +4,7 @@
       Serial No.
     </dt>
     <dd class="govuk-summary-list__value">
-      A60AEE39D250462
+      {{data.appID or 'A60AEE39D250462'}}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -12,7 +12,7 @@
       Reference
     </dt>
     <dd class="govuk-summary-list__value">
-      GBXIBN4522
+      {{data.reference or "GBXIBN4522"}}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -20,7 +20,7 @@
       Cerificate
     </dt>
     <dd class="govuk-summary-list__value">
-      <p class="govuk-body"><span title="Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland">EHC8361</span> <br>8 records for 5 commodities.<br> Gross weight of 321 kilograms.</p>
+      <p class="govuk-body"><span title="Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland">EHC{{ data.ehc or '8361'}}</span> <br>{{data.recordsCount or 12}} {{ "record" | plural("records", data.records | length ) }} for {{data.commodityCount or 2}} {{ "commodity" | plural("commodities", data.commodityCount | length ) }}<br> Gross weight of {{data.grossweight or "321"}} kilograms.</p>
       {% if data.hasMultipleEHC == "yes"%}
       <p class="govuk-body govuk-!-margin-bottom-4"><span title="Live bivalve molluscs, echinoderms, tunicates, marine gastropods and products from these animals intended for human consumption to the European Union and Northern Ireland">EHC8364</span> <br>12 records for 2 commodities.<br> Gross weight of 5 tonnes.</p>
       {% endif %}
@@ -31,7 +31,15 @@
       Consignee or Importer
     </dt>
     <dd class="govuk-summary-list__value">
+        {% if data.accountName == "extons"%}
+        Exton Foods (Manchester, M23 9GE)
+        {% elseif data.accountName == "foyle"%}
+        FOYLE MELTON MOWBRAY (Melton, LE14)
+        {% elseif data.accountName == "gregs"%}
+        ACME LTD (Dungannon, BT71)
+        {% else %}
         Moy Park Dungannon (Dungannon, BT71)
+        {% endif %}
         <br>Northern Irealand
     </dd>
   </div>

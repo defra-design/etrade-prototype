@@ -107,19 +107,21 @@ Home – GOV.UK Prototype Kit
         </div>
         <div class="govuk-notification-banner__content">
           <p class="govuk-notification-banner__heading">Some commodity data is incomplete</p>
-          <p>This certificate was updated on 3 November 2022. You have to update answers for 10 records.</p>
+          <p>EHC8364 was updated on 3 November 2022, so you'll need to enter commodity data for 10 records.</p>
           <!--
         <p class="govuk-body">
           10 records have missing or incomplete required data.
         </p>
         -->
-          <p class="govuk-body"><a href="#navButtonGroup" id="shortcutToIncompleteRecords">Show only incomplete records</a></p>
+          <p class="govuk-body"><a href="#navButtonGroup" class="shortcutToIncompleteRecords">Show only incomplete records</a></p>
         </div>
       </div>
-      <span class="govuk-caption-xl">EHC8364</span>
-      <h1 class="govuk-heading-xl ">
-        Review 12 records
-        for 2 commodities
+      <span class="govuk-caption-xl">EHC8384</span>
+      <h1 class="govuk-heading-xl">{% if not query.change %}
+        Review commodities for EHC8361
+        {% else %}
+        Added 12 records for 2 commodities
+        {% endif %}
       </h1>
 
 
@@ -129,8 +131,11 @@ Home – GOV.UK Prototype Kit
         <button id="navButtonIncompleteOnly" type="button" role="button" aria-label="incomplete-only" data-label="incomplete-only" class="navButton govuk-link govuk-!-font-size-19 govuk-!-margin-right-7 tab-link"><span
             class="govuk-visually-hidden">Click to display content only for </span>Incomplete records (10)</button>
       </div>
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      
+      <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
       <!-- set the location of the commodity in the full commodity list. This needs improving -->
+      <div class="govuk-accordion__controls margin-b"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
+            class="govuk-accordion__show-all-text">Show all sections</span></button></div>
       <div class="commodity-accordion app-accordion hasIncompleteRecord" id="accordion-default-1" style="display: block;">
         <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
               class="govuk-accordion__show-all-text">Show all sections</span></button></div>
@@ -2476,10 +2481,14 @@ Home – GOV.UK Prototype Kit
           showAllRecords();
         }
       });
-
-      $('#shortcutToIncompleteRecords').click(function() {
+      $('body').on('click', '.shortcutToIncompleteRecords', function() {
         showIncompleteRecords();
       });
+      $('body').on('click', '.shortcutToAllRecords', function(e) {
+        e.preventDefault()
+        showAllRecords();
+      });
+
 
       $('input[type=radio][name="incomplete-filter"]').change(function() {
         if (this.value == 'incomplete-only') {
@@ -2499,6 +2508,7 @@ Home – GOV.UK Prototype Kit
 
         $("button.navButton").removeClass("active");
         $("#navButtonIncompleteOnly").addClass("active");
+        $("#recordCount").html("10 incomplete records for 1 commodities. <a href='#' class='shortcutToAllRecords govuk-link--no-visited-state'>Show all records</a>")
       }
 
       function showAllRecords() {
@@ -2507,6 +2517,7 @@ Home – GOV.UK Prototype Kit
 
         $("button.navButton").removeClass("active");
         $("#navButtonAllRecords").addClass("active");
+          $("#recordCount").html("12 records for 2 commodities")
       }
 
 

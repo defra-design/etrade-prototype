@@ -12,7 +12,7 @@
 
 {% set nextpage = "commodities"%}
 {% if data.hasUpdateToEHC == "yes" and (data.copyall == "yes"or "commodites" in data.manualSelection) %}
-{% set nextpage = "commodities-with-incomplete"%}
+{% set nextpage = "commodities"%}
 {% endif %}
 {% if data.hasMultipleEHC == "yes" and (data.copyall == "yes"or ("commodites" in data.manualSelection or "commodites1" in data.manualSelection )) %}
 {% set nextpage = "added-certs"%}
@@ -45,7 +45,7 @@
           </div>
         </div>
         {% endif %}
-        <span class="govuk-caption-xl">Copy application GBXIBN4522</span>
+        <span class="govuk-caption-xl">Copy application {{data.reference or "GBXIBN4522"}}</span>
         <h1 class="govuk-heading-xl">Create a new reference</h1>
       </div>
     </div>
@@ -53,8 +53,8 @@
   <section id="questions" data-v-01948390="">
     <div class="govuk-grid-row" data-v-01948390="">
       <div class="govuk-grid-column-two-thirds" data-v-01948390="">
-        <div id="ref-label" class="govuk-body" data-v-01948390="">Enter a new reference to help you identify this Export Health Certificate(s) application within the service. This reference is for your own use and will not appear on any final
-          certificate(s).
+        <div id="ref-label" class="govuk-body" data-v-01948390="">Enter a new reference to help you identify this application. The reference will not appear on any final
+          certificate.
         </div>
         <div class="govuk-form-group {% if query.has_error %}govuk-form-group--error{% endif %}" data-v-01948390="">
 

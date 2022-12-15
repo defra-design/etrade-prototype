@@ -1,0 +1,107 @@
+<div class="commodity-accordion app-accordion " id="accordion-default-1">
+
+  <h2 class="govuk-heading-s section-header" data-v-367f2bfa="">020220 - <span class="govuk-!-font-weight-regular" data-v-367f2bfa="">Other cuts with bone in</span></h2>
+  <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+    <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c0-i0">
+      <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+        <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key" data-v-367f2bfa="">
+          {% if data.hasUpdateToEHC == "yes" and data.updatedCommodity_0 != "yes" %}<span class="govuk-tag govuk-tag--red">Incomplete data</span>{% endif %}
+          {% if data.updatedCommodity_0 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span> {% endif %} {% if data.updatedCommodity_0 == "yes"%}{{ data.netWeight }}{% else %}10000{% endif %} kilogram -
+          {% if data.updatedCommodity_0 == "yes"%}{{ data.packageCount }}{% else %}1000{% endif %} Bag, plastics film</dt>
+        <dd class="govuk-summary-list__actions">
+          <ul class="govuk-summary-list__actions-list">
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=0&amp;removeID=0">
+                Remove<span class="govuk-visually-hidden"> this record</span>
+              </a>
+            </li>
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=020220&change=yes&amp;copy=&commodity_id=0{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}&showIncompleteData=yes{% endif %}">
+                Change<span class="govuk-visually-hidden"> this record</span>
+              </a>
+            </li>
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="copy-record?commodity=&change=yes&amp;copy=&commodity_id=0">
+                Copy<span class="govuk-visually-hidden"> this record</span>
+              </a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+      <dd class="govuk-summary-list__value">
+        <div class="govuk-accordion__section-heading">
+          <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+            <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+              <span class="govuk-accordion__section-heading-text-focus">
+                <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                  <span class="govuk-accordion__section-toggle-focus">
+                    <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                    <span class="govuk-accordion__section-toggle-text">
+                      Show details<span class="govuk-visually-hidden"> for this record</span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+          <dl class="govuk-summary-list govuk-summary-list--no-border app-summary-list--small app-summary-list--wide" data-v-367f2bfa="">
+            <div class="govuk-grid-row" data-v-367f2bfa="">
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Product description: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa=""></dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Cold store: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">FOYLE MELTON MOWBRAY</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Identification mark: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">GB2077</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Package count: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}1000 Bag, plastics film{% endif%}</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key " >Net weight: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}10000 kilogram{% endif%}</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Slaughterhouse: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">FOYLE MELTON MOWBRAY</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Treatment type: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">Bone in</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Nature of commodity: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">Carcass_quarters</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Batch number: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}19-10-2022{% endif%}</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Final consumer: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">No</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Date of collection/production: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}October 20th 2022, 2:16:00 pm{% endif%}</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Manufacturing plant: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">FOYLE MELTON MOWBRAY</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Plant / Establishment / Centre: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">FOYLE MELTON MOWBRAY</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Date of freezing: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">No date entered</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Date of Freezing range: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">No date entered</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-grid-column-one-half" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Species: </dt>
+                <dd class="govuk-summary-list__value" data-v-367f2bfa="">Bos taurus</dd>
+              </div>
+            </div>
+          </dl>
+        </div>
+      </dd>
+    </div>
+  </dl>
+  <p class="govuk-!-margin-bottom-8"><a href="commodity?new=yes&commodityCode=020220&commodityDescription=Other cuts with bone in" class="govuk-link--no-visited-state"><strong>Add another record for 020220</strong></a></p>
+</div>
