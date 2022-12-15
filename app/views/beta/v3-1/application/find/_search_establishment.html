@@ -45,7 +45,10 @@
 
     <div class="app-find-establishment-actions">
       <p class="govuk-!-margin-0">
-        <a href="#">Remove</a> | <a href="#">Change activity</a>
+        <a href="../find/remove-establishment?certID={{ certID }}&commodityListID={{ commodityListID }}&changeID={{ commodityID }}&establishmentType={{ establishmentType }}">Remove</a>
+        {% if data.establishments[establishmentIndex].All_Activities.length > 1 %}
+         | <a href="#">Change activity</a>
+         {% endif %}
       </p>
     </div>
   </div>
