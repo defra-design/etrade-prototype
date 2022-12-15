@@ -13,7 +13,7 @@
   <!-- Form routing is handled in app/stories/accessiblity/routes.js -->
   <div class="govuk-grid-row" data-v-7899b5ce="" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds" data-v-7899b5ce="">
-      <h1 class="govuk-heading-xl">Which sections do you want to copy from certificte {{query.reference or "GBXIBN4522"}}?</h1>
+      <h1 class="govuk-heading-xl">Which sections do you want to copy from certificte {{data.reference or "GBXIBN4522"}}?</h1>
       {% if query.newVersion =="yes" %}
       <!-- // just for prototyping to trigger diffeerent journey -->
       <input type="hidden" name="newVersion" value="yes">
@@ -71,7 +71,7 @@
             <div class="govuk-checkboxes__item" data-v-7899b5ce="">
               <input value="commodities" class="govuk-checkboxes__input" id="organisation-2" type="checkbox" data-v-7899b5ce="" name="manualSelection">
               <label class="govuk-label govuk-checkboxes__label" for="organisation-2"
-                data-v-7899b5ce="" >Manage commodities - 8 records for 5 commodities</label></div>
+                data-v-7899b5ce="" >Commodities - {{data.recordsCount or 12}} {{ "record" | plural("records", data.records | length ) }}{% if data.records | length > 1 %} for {{data.commodityCount or 2}} {{ "commodity" | plural("commodities", data.commodityCount | length ) }}{% endif %}</label></div>
                 {% endif %}
             <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="organisation-89" type="checkbox" data-v-7899b5ce="" name="manualSelection"><label class="govuk-label govuk-checkboxes__label" for="organisation-89"
                 data-v-7899b5ce="" value="Goods certified as"> Goods certified as </label></div>

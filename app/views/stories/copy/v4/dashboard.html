@@ -298,7 +298,13 @@ table .certficate-subtable td{
             </td>
           </tr>
           <!---->
-          <tr class="subrow" id="nested-row-draft"><td class="govuk-table__cell" colspan="8" data-v-0d2a5cfc=""><div class="certficate-subtable govuk-inset-text" data-v-0d2a5cfc=""><table class="govuk-table" data-v-0d2a5cfc=""><thead class="govuk-table__head" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> &nbsp;Certificate Name </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Certifier </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> SP/NV </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Status </span></th><!----></tr></thead><tbody class="govuk-table__body" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><!----></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""></span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><div class="d-inline-flex" data-v-0d2a5cfc=""><!----><!----></div></td><!----></tr></tbody></table></div><div class="govuk-button-group pull-right" data-v-0d2a5cfc=""><!----><!----><a href="#" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> View application </a><a href="copy-application" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> Copy application </a><!----><!----><a class="govuk-button govuk-button--warning" href="#" data-toggle="modal" data-target="#confirmRemoveModal" data-v-0d2a5cfc=""> Delete application </a></div><!----></td></tr>
+          <tr class="subrow" id="nested-row-draft"><td class="govuk-table__cell" colspan="8" data-v-0d2a5cfc=""><div class="certficate-subtable govuk-inset-text" data-v-0d2a5cfc=""><table class="govuk-table" data-v-0d2a5cfc=""><thead class="govuk-table__head" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> &nbsp;Certificate Name </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Certifier </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> SP/NV </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Status </span></th><!----></tr></thead><tbody class="govuk-table__body" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc="">{% if data.ehc == "8468"%}
+          <strong>EHC8468</strong> - Dairy products intended for human consumption that are required to undergo a pasteurisation treatment to the European Union and Northern Ireland
+          {% elseif data.ehc == "8368"%}
+          <strong>EHC8368</strong> - Fresh meat intended for human consumption, excluding mechanically separated meat, of domestic bovine animals to the European Union and Northern Ireland
+          {% else %}
+          <strong>EHC8361</strong> - Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland
+          {% endif  %}</span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><!----></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""></span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><div class="d-inline-flex" data-v-0d2a5cfc=""><!----><!----></div></td><!----></tr></tbody></table></div><div class="govuk-button-group pull-right" data-v-0d2a5cfc=""><!----><!----><a href="#" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> View application </a><a href="copy-application" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> Copy application </a><!----><!----><a class="govuk-button govuk-button--warning" href="#" data-toggle="modal" data-target="#confirmRemoveModal" data-v-0d2a5cfc=""> Delete application </a></div><!----></td></tr>
         </tbody>
         <!-- DRAFT END -->
 
@@ -307,7 +313,7 @@ table .certficate-subtable td{
           <tr class="govuk-table__row" data-v-19f29262="">
             <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/2e05aab9-7e11-4112-a955-1ac8ac078dc8" class="govuk-link" data-v-19f29262=""><span class="small-text"
                   data-v-19f29262="">C8D519C5<br data-v-19f29262=""> 9A3C4FA</span></a></td>
-            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">{{data.reference or "GB-213212-XR"}}</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">{{data.ref2 or "GB-213212-XR"}}</span></td>
             <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">{{data.accountName or "etrad euser"}}</span></td>
             <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262="">
               <span class="small-text" data-v-19f29262="">XI</span>
@@ -369,8 +375,8 @@ table .certficate-subtable td{
         <tbody class="govuk-table__body" data-v-19f29262="">
           <tr class="govuk-table__row" data-v-19f29262="">
             <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/2e05aab9-7e11-4112-a955-1ac8ac078dc8" class="govuk-link" data-v-19f29262=""><span class="small-text"
-                  data-v-19f29262="">C8D519C5<br data-v-19f29262=""> 9A3C4FA</span></a></td>
-            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Richards certicate</span></td>
+                  data-v-19f29262="">BB643FS<br data-v-19f29262=""> 9A3C4FA</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">{{data.ref3 or "GB021C323"}}</span></td>
             <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">{{data.accountName or "etrad euser"}}</span></td>
             <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262="">
               <span class="small-text" data-v-19f29262="">XI</span>
@@ -414,7 +420,7 @@ table .certficate-subtable td{
                     <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-target="nested-row-success-1"><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-target="nested-row-success-2"><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -452,6 +458,7 @@ table .certficate-subtable td{
     var subtable = '<tr data-v-0d2a5cfc="" id="subtable"><td class="govuk-table__cell" colspan="8" data-v-0d2a5cfc=""><div class="certficate-subtable govuk-inset-text" data-v-0d2a5cfc=""><table class="govuk-table" data-v-0d2a5cfc=""><thead class="govuk-table__head" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> &nbsp;Certificate Name </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Certifier </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> SP/NV </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Status </span></th><!----></tr></thead><tbody class="govuk-table__body" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><!----></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""></span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><div class="d-inline-flex" data-v-0d2a5cfc=""><!----><!----></div></td><!----></tr></tbody></table></div><div class="govuk-button-group pull-right" data-v-0d2a5cfc=""><!----><!----><a href="#" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> View application </a><a href="copy-application" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> Copy application </a><!----><!----><a class="govuk-button govuk-button--warning" href="#" data-toggle="modal" data-target="#confirmRemoveModal" data-v-0d2a5cfc=""> Delete application </a></div><!----></td></tr>'
     $('.show-subtable').on('click',function(e){
         e.preventDefault()
+        $('.subrow').hide()
         var t = '#'+$(this).attr("data-target")
         if($(t).is(":visible")){
           $(t).hide()
