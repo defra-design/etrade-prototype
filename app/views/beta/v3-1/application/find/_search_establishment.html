@@ -47,7 +47,7 @@
       <p class="govuk-!-margin-0">
         <a href="../find/remove-establishment?certID={{ certID }}&commodityListID={{ commodityListID }}&changeID={{ commodityID }}&establishmentType={{ establishmentType }}">Remove</a>
         {% if data.establishments[establishmentIndex].All_Activities.length > 1 %}
-         | <a href="#">Change activity</a>
+         | <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ commodityID }}&establishmentType={{ establishmentType }}&establishmentIndex={{ establishmentIndex }}">Change activity</a>
          {% endif %}
       </p>
     </div>
