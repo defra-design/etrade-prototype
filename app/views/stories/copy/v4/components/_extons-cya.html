@@ -1,10 +1,9 @@
-HELLOP
 <h2 class="govuk-heading-m" data-v-e8e27fc8="">Description of the goods</h2>
 <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8="">Certificate</div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">EHC8468 - Dairy products intended for human consumption that are required to undergo a pasteurisation treatment to the European Union and Northern Ireland</div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""></div>
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8="">Commodities</div>
@@ -14,18 +13,23 @@ HELLOP
         Required
       </strong>
       {% else %}
-      <p class="govuk-body"><strong title="Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland">EHC8361</strong> <br>8 records for 5 commodities.<br> Gross weight of 321 kilograms.</p>
+      <p class="govuk-body">8 records for 5 commodities</p>
       {% endif%}
     </div>
     {% if data.copyall == "no" and ("commodities" not in data.manualSelection and "commodites1" not in data.manualSelection) and data.commoditiesAdded != "yes"  %}
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="select-certificates" class="govuk-link" data-v-e8e27fc8=""> Add </a></div>
     {% else %}
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="added-certs" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="../commodities?change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
     {% endif %}
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
+    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Gross weight</div>
+    <div class="govuk-summary-list__value" data-v-e8e27fc8=""><span class="certified-goods" data-v-e8e27fc8="">{{data.GROSS_WEIGHT or data.grossweight or "45"}} {{data.GROSS_WEIGHT_quantifier or "kilograms"}}</span></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+  </div>
+  <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Goods certified as </div>
-    <div class="govuk-summary-list__value" data-v-e8e27fc8=""><span class="certified-goods" data-v-e8e27fc8="">animal feedingstuff</span></div>
+    <div class="govuk-summary-list__value" data-v-e8e27fc8=""><span class="certified-goods" data-v-e8e27fc8="">Human Consumption</span></div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
@@ -36,8 +40,8 @@ HELLOP
         Required
       </strong>
       {% else %}
-      Container - {{data.containerNumber or "BICU1234567"}} <br>
-      SealNumber - {{data.sealNumber}}
+      Container - {{data.containerNumber}} <br>
+      SealNumber - {{data.sealNumber or "s2092645"}}
       {% endif %}
     </div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="container-deal-number?showNotification=no" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
@@ -65,14 +69,14 @@ HELLOP
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Consignor or Exporter </div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-      <div data-v-e8e27fc8="">Bradford Hide Company Ltd <span class="ml-1" data-v-e8e27fc8="">(Bradford, BD1)</span></div>
+      <div data-v-e8e27fc8="">Exton Foods (Manchester, M23 9GE)</div>
     </div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Consignor-Or-Exporter" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Consignee or Importer </div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-      <div data-v-e8e27fc8="">Moy Park Dungannon <span class="ml-1" data-v-e8e27fc8="">(Dungannon, BT71)</span></div>
+      <div data-v-e8e27fc8="">Deli Lites Ireland Ltd <span class="ml-1" data-v-e8e27fc8="">(Warrenpoint, BT34 3FN)</span></div>
     </div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Consignee-Or-Importer" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
@@ -80,8 +84,7 @@ HELLOP
     <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Certifier </div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
       <div data-v-e8e27fc8="">
-        <p data-v-e8e27fc8="">Avalon Equine Vets 14 West High Road BA12 7FE &nbsp; (Avalon Equine Vets)</p>
-        <p data-v-e8e27fc8="">chicha 12 test aa11aa &nbsp; (chicha)</p>
+        <p data-v-e8e27fc8="">Nantwich Farm Vets LLP, Nantwich. GL6 ODD</p>
       </div>
     </div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Certifier" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
@@ -96,7 +99,7 @@ HELLOP
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Responsible for load </div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-      <div data-v-e8e27fc8="">MOY PARK Ltd <span class="ml-1" data-v-e8e27fc8="">(Craigavon, BT63)</span></div>
+    <div data-v-e8e27fc8="">McConaghy Refrigerated Distribution ltd <span class="ml-1" data-v-e8e27fc8="">(Ballymoney, BT53 8AT)</span></div>
     </div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Operator" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
@@ -112,8 +115,8 @@ HELLOP
       </strong>
       {% else %}
       <div data-v-e8e27fc8="">
-            <p data-v-e8e27fc8="">Arrival - 18 Aug 2022 11:38</p>
-            <p data-v-e8e27fc8="">Departure - 16 Aug 2022 11:38</p>
+            <p data-v-e8e27fc8="">Arrival - 16 Dec 2022 11:38</p>
+            <p data-v-e8e27fc8="">Departure - 17 Dec 2022 15:38</p>
           </div>
       {% endif  %}
     </div>
@@ -124,9 +127,8 @@ HELLOP
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
       <div data-v-e8e27fc8="">
         <p data-v-e8e27fc8="">United Kingdom (GB)</p>
-        <p data-v-e8e27fc8="">Region - GB-1</p>
-        <p data-v-e8e27fc8="">Dispatch - MOY PARK LTD (Sleaford, NG34)</p>
-        <p data-v-e8e27fc8="">Loading - MOY PARK LTD (Sleaford, NG34)</p>
+        <p data-v-e8e27fc8="">Dispatch - Exton Foods (Manchester, M23 9GE)</p>
+        <p data-v-e8e27fc8="">Loading - Exton Foods (Manchester, M23 9GE)</p>
       </div>
     </div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Origin" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
@@ -134,7 +136,7 @@ HELLOP
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Entry border control post </div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-      <div data-v-e8e27fc8="">Belfast Port - BCC <span class="ml-1" data-v-e8e27fc8="">(UNLO Code: GBBEL)</span></div>
+      <div data-v-e8e27fc8="">Belsfast Port - DAERA <span class="ml-1" data-v-e8e27fc8="">(UNLO Code: XIBEL1)</span></div>
     </div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Border-Control-Post" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
@@ -147,9 +149,9 @@ HELLOP
       </strong>
       {% else %}
       <div data-v-e8e27fc8="">
-            <p data-v-e8e27fc8="">Condition- Frozen</p>
+            <p data-v-e8e27fc8="">Condition- Chilled</p>
             <div data-v-e8e27fc8="">
-              <p data-v-e8e27fc8="">Railway <span class="ml-1" data-v-e8e27fc8="">(Identifier - 343452345)</span></p>
+              <p data-v-e8e27fc8="">Road <span class="ml-1" data-v-e8e27fc8="">(Vehicle - UNKNOWN), Trailer - UNKNOWN, Country - GB, ITD - UNKNOWN)</span></p>
               <!---->
               <!---->
               <!---->
@@ -162,7 +164,7 @@ HELLOP
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8="">Place of destination </div>
-    <div class="govuk-summary-list__value" data-v-e8e27fc8=""><span data-v-e8e27fc8="">Thiry Ben (Linter, 3350)</span></div>
+    <div class="govuk-summary-list__value" data-v-e8e27fc8="">Deli Lites Ireland Ltd (Warrenpoint, BT34 3FN)</div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Place-Of-Destination" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
 </div>

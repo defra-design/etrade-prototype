@@ -1,21 +1,12 @@
 <div class="commodity-accordion app-accordion " id="accordion-default-1"><div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span class="govuk-accordion__show-all-text">Show all sections</span></button></div>
-
       <h2 class="govuk-heading-s commodity-group-label">0406 - <span class="govuk-!-font-weight-regular" title="Cheese and curd">Cheese and curd</span></h2>
-
-
       <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
-
-
         <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c0-i0">
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
-            <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
-
-
-              <!---->
-
-              Sliced Emmental - 1344 kilogram - 224
-              Case, with pallet base, wooden
-            </dt>
+            <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key" data-v-367f2bfa="">
+              {% if data.hasUpdateToEHC == "yes" and data.updatedCommodity_0 != "yes" %}<span class="govuk-tag govuk-tag--red">Incomplete data</span>{% endif %}
+              {% if data.updatedCommodity_0 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span> Sliced Emmental {% endif %} {% if data.updatedCommodity_0 == "yes"%}{{ data.netWeight }}{% else %}1344{% endif %} kilogram -
+              {% if data.updatedCommodity_0 == "yes"%}{{ data.packageCount }}{% else %}224{% endif %} Case, with pallet base, wooden</dt>
             <dd class="govuk-summary-list__actions">
               <ul class="govuk-summary-list__actions-list">
                 <li class="govuk-summary-list__actions-list-item">
@@ -24,7 +15,7 @@
                   </a>
                 </li>
                 <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodityCode=04067">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=0406&change=yes&amp;copy=&commodity_id=0{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}&showIncompleteData=yes{% endif %}">
                     Change<span class="govuk-visually-hidden"> this record</span>
                   </a>
                 </li>
@@ -33,7 +24,6 @@
                     Copy<span class="govuk-visually-hidden"> this record</span>
                   </a>
                 </li>
-
               </ul>
             </dd>
           </div>
@@ -55,738 +45,175 @@
                 </span>
               </button>
             </div>
-
             <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
               <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
                 <div class="govuk-grid-row">
-
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Commodity code
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           0406
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Description  <span class="optional">(optional)</span>
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Sliced Emmental
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Species
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Bos taurus
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Cold store  <span class="optional">(optional)</span>
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           <!-- find establishment TradingName from approval number -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             Exton Foods (MN 100)
-
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Cold store activity  <span class="optional">(optional)</span>
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Processing plant - food (MPP)
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Identification mark
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           N/A
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Package count
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           224
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Package count unit
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Case, with pallet base, wooden
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Net weight
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           1344
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Net weight unit
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           kilogram
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Treatment type
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           pasteurisation
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Nature of commodity
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Dairy
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Batch number
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           31.01.2023
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Final consumer  <span class="optional">(optional)</span>
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           yes
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Date of collection / production
                       </dt>
                       <dd class="govuk-summary-list__value">
-
-
                             14 November 2022
-
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Manufacturing plant
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           <!-- find establishment TradingName from approval number -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             Exton Foods (MN 100)
-
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Manufacturing plant activity
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Establishment - food (FOOD-OTH)
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Plant / establishment / centre
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           <!-- find establishment TradingName from approval number -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             Exton Foods (MN 100)
-
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Plant / establishment / centre activity
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Establishment - food (FOOD-OTH)
-
                       </dd>
                     </div>
-
-
                 </div>
               </dl>
             </div>
           </dd>
         </div>
-
-
         <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c0-i1">
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
-            <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
-
-              <!---->
-
-              Sliced Chedder - 672 kilogram - 112
-              Case
-            </dt>
+            <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key" data-v-367f2bfa="">
+              {% if data.hasUpdateToEHC == "yes" and data.updatedCommodity_1 != "yes" %}<span class="govuk-tag govuk-tag--red">Incomplete data</span>{% endif %}
+              {% if data.updatedCommodity_1 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span> Sliced Chedder {% endif %} {% if data.updatedCommodity_1 == "yes"%}{{ data.netWeight }}{% else %}672{% endif %} kilogram -
+              {% if data.updatedCommodity_1 == "yes"%}{{ data.packageCount }}{% else %}112{% endif %} cases</dt>
             <dd class="govuk-summary-list__actions">
               <ul class="govuk-summary-list__actions-list">
                 <li class="govuk-summary-list__actions-list-item">
@@ -795,7 +222,7 @@
                   </a>
                 </li>
                 <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=&amp;commodityListID=0&amp;changeID=1">
+                  <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=0406&change=yes&amp;copy=&commodity_id=1{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_1 != 'yes' %}&showIncompleteData=yes{% endif %}">
                     Change<span class="govuk-visually-hidden"> this record</span>
                   </a>
                 </li>
@@ -804,7 +231,6 @@
                     Copy<span class="govuk-visually-hidden"> this record</span>
                   </a>
                 </li>
-
               </ul>
             </dd>
           </div>
@@ -826,728 +252,169 @@
                 </span>
               </button>
             </div>
-
             <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
               <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
                 <div class="govuk-grid-row">
-
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Commodity code
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           0406
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Description  <span class="optional">(optional)</span>
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Sliced Chedder
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Species
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Bos taurus
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Cold store  <span class="optional">(optional)</span>
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           <!-- find establishment TradingName from approval number -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             Exton Foods (MN 100)
-
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Cold store activity  <span class="optional">(optional)</span>
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Establishment - food (FOOD-OTH)
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Identification mark
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           n/a
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Package count
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           112
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Package count unit
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Case
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Net weight
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           672
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Net weight unit
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           kilogram
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Treatment type
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           pasteurisation
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Nature of commodity
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Dairy
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Batch number
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           31.01.2023
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Final consumer  <span class="optional">(optional)</span>
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           yes
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Date of collection / production
                       </dt>
                       <dd class="govuk-summary-list__value">
-
-
                             14 November 2022
-
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Manufacturing plant
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           <!-- find establishment TradingName from approval number -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             Exton Foods (MN 100)
-
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Manufacturing plant activity
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Establishment - food (FOOD-OTH)
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Plant / establishment / centre
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           <!-- find establishment TradingName from approval number -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             Exton Foods (MN 100)
-
-
                       </dd>
                     </div>
-
-
-
-
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Plant / establishment / centre activity
                       </dt>
                       <dd class="govuk-summary-list__value">
-
                           Processing plant - food (MPP)
-
                       </dd>
                     </div>
-
-
                 </div>
               </dl>
             </div>
           </dd>
         </div>
-
       </dl>
-      <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID=5&amp;commodityCode=0406&amp;ehcNumber=EHC8468&amp;random=97364" class="govuk-link--no-visited-state"><strong>Add another record for 0406</strong></a></p>
+      <p class="govuk-!-margin-bottom-8"><a href="commodity?new=yes&commodityCode=0406&commodityDescription=Cheese and curd" class="govuk-link--no-visited-state"><strong>Add another record for 0406</strong></a></p>
       </div>
