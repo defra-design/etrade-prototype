@@ -53,7 +53,7 @@ Check your answers – GOV.UK Prototype Kit
           {% endif %}
           {% if data.addedContainer != "yes" %}<li class="task"><a class="govuk-link--no-visited-state" href="container-deal-number?showNotification=no">Container number/seal number</a></li>{% endif %}
           {% if data.addedArrivalDepartDate != "yes" %}<li class="task" ><a class="govuk-link--no-visited-state" href="arrival-and-departure?showNotification=no">Departure and arrival</a></li>{% endif %}
-          {% if data.addedTransport != "yes" %}<li class="task"><a class="govuk-link--no-visited-state" href="means-of-transport?showNotification=no">Means of transport</a></li>{% endif %}
+          {% if data.addedTransport != "yes" and data.accountName != "foyle"%}<li class="task"><a class="govuk-link--no-visited-state" href="means-of-transport?showNotification=no">Means of transport</a></li>{% endif %}
         </ul>
       </div>
 

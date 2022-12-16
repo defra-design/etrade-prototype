@@ -39,7 +39,7 @@
           <ul class="govuk-list govuk-list--bullet">
             <li>Container number/seal number</li>
             <li>Accompanying document</li>
-            <li>Means of transport</li>
+            {% if data.accountName != "foyle" %}<li>Means of transport</li>{% endif %}
             <li>Arrival and Departure</li>
           </ul>
           {% if data.isDraft=="yes" %}
