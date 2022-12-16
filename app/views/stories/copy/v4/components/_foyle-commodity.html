@@ -90,14 +90,18 @@
                 <!--<a class="find-establishment-link" href="../find/results?searchReturnURL=../export/commodity&canSearchApprovalNumber=yes&certId=0&addedCommoditiesId=0&identificationsId=0&establishmentType=coldStore">Select a different cold store</a>-->
               </p>
             </div>
+            <p class="govuk-body"><a href="/Export-health-certificate/a9432823-93de-44b3-b899-a31ca5b1e863/Commodities/Questions/28f3bf80-67e8-42d2-b50b-5abbd9690b88/Establishment" class="govuk-link"> Add another cold store</a></p>
             {% endif %}
             <!-- check to see if this field is incomplete -->
             <div class="govuk-form-group"><label class="govuk-label" for="IDENTIFICATION_MARK-7-11711-020120">Identification mark
                 <!---->
               </label>
-              <!---->
-              <!---->
-              <!----><input class="govuk-input" type="text" name="identificationMark" id="IDENTIFICATION_MARK-7-11711-020120" value="{% if data.new != 'yes'%}n/a{% endif %}">
+              <div class="govuk-input__wrapper">
+
+
+              <input class="govuk-input" type="text" name="identificationMark" id="IDENTIFICATION_MARK-7-11711-020120" value="{% if data.new != 'yes'%}n/a{% endif %}">
+              <button class="govuk-button govuk-button--secondary"><span class="fas fa-plus"></span><span class="govuk-visually-hidden"> Add another Identification mark</span></button>
+              </div>
             </div>
             <!-- check to see if this field is incomplete -->
             <div class="govuk-form-group">
@@ -198,6 +202,7 @@
                 <!--<a class="find-establishment-link" href="../find/results?searchReturnURL=../export/commodity&canSearchApprovalNumber=yes&certId=0&addedCommoditiesId=0&identificationsId=0&establishmentType=plantEstablishmentCentre">Select a different plant / establishment / centre</a>-->
               </p>
             </div>
+            <p class="govuk-body"><a href="/Export-health-certificate/a9432823-93de-44b3-b899-a31ca5b1e863/Commodities/Questions/28f3bf80-67e8-42d2-b50b-5abbd9690b88/Establishment" class="govuk-link"> Add another slaughterhouse</a></p>
             {% endif %}
             <!-- check to see if this field is incomplete -->
             <div class="govuk-form-group">
@@ -284,7 +289,11 @@
             <!-- SINGLES -->
             <div class="govuk-form-group">
               <label class="govuk-label" for="BATCH_NUMBER-1-11711-020130" id="batchNumber">{% if data.showIncompleteData == 'yes' %}<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>{% endif %}Batch number</label>
+              <div class="govuk-input__wrapper">
+
               <input class="govuk-input" type="text" name="batchNumber" id="BATCH_NUMBER-1-11711-020130" {% if data.new != 'yes' and data.showIncompleteData != 'yes'%} value="14-12-22" {% endif %}>
+              <div class="govuk-input__suffix suffix__action" aria-hidden="true"><button class="govuk-button govuk-button--secondary"><span class="fas fa-plus"></span><span class="govuk-visually-hidden"> Add another Batch number</span></button><!----></div>
+              </div>
             </div>
             <!-- check to see if this field is incomplete -->
             <div class="govuk-form-group">
@@ -307,7 +316,11 @@
             <!-- check to see if this field is incomplete -->
             <div class="govuk-form-group">
               <label class="govuk-label" for="COLLECTION_PRODUCTION_DATE-3-11711-020120" id=dateOfCollectionProduction>{% if data.showIncompleteData == 'yes' %}<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>{% endif %}Date of collection/production</label>
-              <input class="govuk-input" type="datetime-local" name="dateOfCollectionProduction" id="COLLECTION_PRODUCTION_DATE-3-11711-020120" {% if data.new != 'yes' and data.showIncompleteData != 'yes'%} value="2022-11-14T11:28:00" {% endif %}>
+              <div class="govuk-input__wrapper m-t-15">
+                  <input class="govuk-input" type="datetime-local" name="dateOfCollectionProduction" id="COLLECTION_PRODUCTION_DATE-3-11711-020120" {% if data.new != 'yes' and data.showIncompleteData != 'yes'%} value="2022-11-14T11:28:00" {% endif %}>
+                <button class="govuk-button govuk-button--secondary"><span class="fas fa-plus"></span><span class="govuk-visually-hidden"> Add another Date of collection/production</span></button>
+              </div>
+
             </div>
             <!-- check to see if this record ... or it's activity companion (e.g. coldStoreActivity) is incomplete -->
             <label class="govuk-label" for="manufacturingPlant" id="manufacturingPlant">
@@ -338,6 +351,7 @@
                 <!--<a class="find-establishment-link" href="../find/results?searchReturnURL=../export/commodity&canSearchApprovalNumber=yes&certId=0&addedCommoditiesId=0&identificationsId=0&establishmentType=manufacturingPlant">Select a different manufacturing plant</a>-->
               </p>
             </div>
+            <p class="govuk-body"><a href="/Export-health-certificate/a9432823-93de-44b3-b899-a31ca5b1e863/Commodities/Questions/28f3bf80-67e8-42d2-b50b-5abbd9690b88/Establishment" class="govuk-link"> Add another manufacturing plant</a></p>
             {% endif %}
             <!-- check to see if this record ... or it's activity companion (e.g. coldStoreActivity) is incomplete -->
             <label class="govuk-label" for="plantEstablishmentCentre" id="plantEstablishmentCentre">
@@ -368,6 +382,7 @@
                 <!--<a class="find-establishment-link" href="../find/results?searchReturnURL=../export/commodity&canSearchApprovalNumber=yes&certId=0&addedCommoditiesId=0&identificationsId=0&establishmentType=plantEstablishmentCentre">Select a different plant / establishment / centre</a>-->
               </p>
             </div>
+            <p class="govuk-body"><a href="/Export-health-certificate/a9432823-93de-44b3-b899-a31ca5b1e863/Commodities/Questions/28f3bf80-67e8-42d2-b50b-5abbd9690b88/Establishment" class="govuk-link"> Add another  plant / establishment / centre</a></p>
             {% endif %}
 
 
