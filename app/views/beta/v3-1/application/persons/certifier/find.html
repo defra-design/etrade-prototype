@@ -324,11 +324,30 @@ Find a certifier – {{serviceName}} - GOV.UK
 <script type="text/javascript">
   window.addEventListener('load', function() {
 
+    var timer;
+    var timeTaken = 1;
+
     $('#certifier-search-button').on("click", function() {
-      var certifierSearchString = $("#certifier-search").val();
-      searchEstablishments("certifier", certifierSearchString);
+
+      $(this).text(" Searching ...")
+      $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
+      $(this).attr("disabled","disabled")
+      timer = setInterval(updateCertifierSearchButton, 1000);
       return false;
     })
+
+    function updateCertifierSearchButton (){
+      timeTaken+=1
+      if(timeTaken == 2){
+        clearInterval(timer);
+        $('#certifier-search-button').text("Search");
+        $('#certifier-search-button').removeAttr("disabled");
+        var certifierSearchString = $("#certifier-search").val();
+        searchEstablishments("certifier", certifierSearchString);
+        $('#results').show();
+        timeTaken = 1;
+      }
+    }
 
 
     function searchEstablishments(searchType, searchString) {
