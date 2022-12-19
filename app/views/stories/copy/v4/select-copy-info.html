@@ -71,7 +71,7 @@
             <div class="govuk-checkboxes__item" data-v-7899b5ce="">
               <input value="commodities" class="govuk-checkboxes__input" id="organisation-2" type="checkbox" data-v-7899b5ce="" name="manualSelection">
               <label class="govuk-label govuk-checkboxes__label" for="organisation-2"
-                data-v-7899b5ce="" >Commodities - {{data.recordsCount or 12}} {{ "record" | plural("records", data.records | length ) }}{% if data.records | length > 1 %} for {{data.commodityCount or 2}} {{ "commodity" | plural("commodities", data.commodityCount | length ) }}{% endif %}</label></div>
+                data-v-7899b5ce="" >Commodities - {{data.recordsCount or 12}} {{ "record" | plural("records", data.recordsCount) }}{% if data.recordsCount | length > 1 %} for {{data.commodityCount or 2}} {{ "commodity" | plural("commodities", data.commodityCount | length ) }}{% endif %}</label></div>
                 {% endif %}
             <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="organisation-89" type="checkbox" data-v-7899b5ce="" name="manualSelection"><label class="govuk-label govuk-checkboxes__label" for="organisation-89"
                 data-v-7899b5ce="" value="Goods certified as"> Goods certified as </label></div>
