@@ -4,9 +4,16 @@
     <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section " id="c0-i0">
       <div class="govuk-summary-list__row-group govuk-accordion__section-header">
         <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key" data-v-367f2bfa="">
-          {% if data.hasUpdateToEHC == "yes" and data.updatedCommodity_0 != "yes" %}<span class="govuk-tag govuk-tag--red">Incomplete data</span>{% endif %}
-          {% if data.updatedCommodity_0 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span> {% endif %} {% if data.updatedCommodity_0 == "yes"%}{{ data.netWeight }}{% else %}19452{% endif %} kilogram -
-          {% if data.updatedCommodity_0 == "yes"%}{{ data.packageCount }}{% else %}240{% endif %} bulk</dt>
+          {% if data.hasUpdateToEHC == "yes" and data.updatedCommodity_0 != "yes" %}<span class="govuk-tag govuk-tag--red">Incomplete data</span>
+          1 - Bos taurus (no weight or package count set)
+          {% else %}
+          {% if data.updatedCommodity_0 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span> {% endif %}
+
+          {% if data.updatedCommodity_0 == "yes"%}{{ data.netWeight }}{% else %}10000{% endif %} kilogram -
+          {% if data.updatedCommodity_0 == "yes"%}{{ data.packageCount }}{% else %}1000{% endif %} bulk
+          {% endif %}
+
+          </dt>
         <dd class="govuk-summary-list__actions">
           <ul class="govuk-summary-list__actions-list">
             <li class="govuk-summary-list__actions-list-item">
@@ -15,7 +22,7 @@
               </a>
             </li>
             <li class="govuk-summary-list__actions-list-item">
-              <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=020110&change=yes&amp;copy=&commodity_id=0{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}&showIncompleteData=yes{% endif %}">
+              <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=020110&change=yes&new=no&amp;copy=&commodity_id=0{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}&showIncompleteData=yes{% endif %}">
                 Change<span class="govuk-visually-hidden"> this record</span>
               </a>
             </li>

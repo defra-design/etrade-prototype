@@ -9,15 +9,17 @@
 {% endblock%}
 {% block content %}
 
+<p>{{"commodities" not in data.manualSelection }}</p>
 
 {% set nextpage = "commodities"%}
-{% if data.hasUpdateToEHC == "yes" and (data.copyall == "yes"or "commodites" in data.manualSelection) %}
+{% if data.hasUpdateToEHC == "yes" and (data.copyall == "yes"or "commodities" in data.manualSelection) %}
 {% set nextpage = "commodities"%}
 {% endif %}
-{% if data.hasMultipleEHC == "yes" and (data.copyall == "yes"or ("commodites" in data.manualSelection or "commodites1" in data.manualSelection )) %}
+{% if data.hasMultipleEHC == "yes" and (data.copyall == "yes"or ("commodities" in data.manualSelection or "commodites1" in data.manualSelection )) %}
 {% set nextpage = "added-certs"%}
 {% endif %}
-{% if data.copyall == "no" and ("commodites" not in data.manualSelection or "commodites1" not in data.manualSelection  ) %}
+{% if data.copyall == "no" and "commodities" not in data.manualSelection %}
+<p>this one</p>
 {% set nextpage = "./application/check-your-answers"%}
 {% endif %}
 
@@ -76,6 +78,9 @@
       </div>
     </div>
   </section>
+  <input type="hidden" name="new" value="=no">
+  <input type="hidden" name="updatedCommodity_0" value="no">
+  <input type="hidden" name="updatedCommodity_1" value="no">
   <section class="m-t-15" id="actions" data-v-01948390="">
     <div class="govuk-grid-row" data-v-01948390="">
       <div class="govuk-grid-column-two-thirds" data-v-01948390="">

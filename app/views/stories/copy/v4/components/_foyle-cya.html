@@ -17,7 +17,7 @@
       {% endif%}
     </div>
     {% if data.copyall == "no" and ("commodities" not in data.manualSelection and "commodites1" not in data.manualSelection) and data.commoditiesAdded != "yes"  %}
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="select-certificates" class="govuk-link" data-v-e8e27fc8=""> Add </a></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="select-commodities?showNotification=no" class="govuk-link" data-v-e8e27fc8=""> Add </a></div>
     {% else %}
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="../commodities?change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
     {% endif %}

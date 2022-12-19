@@ -5,7 +5,7 @@
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
             <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key" data-v-367f2bfa="">
               {% if data.hasUpdateToEHC == "yes" and data.updatedCommodity_0 != "yes" %}<span class="govuk-tag govuk-tag--red">Incomplete data</span>{% endif %}
-              {% if data.updatedCommodity_0 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span> Sliced Emmental {% endif %} {% if data.updatedCommodity_0 == "yes"%}{{ data.netWeight }}{% else %}1344{% endif %} kilogram -
+              {% if data.updatedCommodity_0 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span>  {% endif %} Sliced Emmental - {% if data.updatedCommodity_0 == "yes"%}{{ data.netWeight }}{% else %}1344{% endif %} kilogram -
               {% if data.updatedCommodity_0 == "yes"%}{{ data.packageCount }}{% else %}224{% endif %} Case, with pallet base, wooden</dt>
             <dd class="govuk-summary-list__actions">
               <ul class="govuk-summary-list__actions-list">
@@ -15,7 +15,7 @@
                   </a>
                 </li>
                 <li class="govuk-summary-list__actions-list-item">
-                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=0406&change=yes&amp;copy=&commodity_id=0{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}&showIncompleteData=yes{% endif %}">
+                    <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=0406&description=Sliced Emmental&change=yes&new=no&copy=&commodity_id=0{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}&showIncompleteData=yes{% endif %}">
                     Change<span class="govuk-visually-hidden"> this record</span>
                   </a>
                 </li>
@@ -97,46 +97,18 @@
                           N/A
                       </dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Package count
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          224
-                      </dd>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa=""> Package count: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}224 cases{% endif%}</dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Package count unit
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          Case, with pallet base, wooden
-                      </dd>
+
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa=""> Net weight: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}1344 kilograms{% endif%}</dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Net weight
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          1344
-                      </dd>
+
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Treatment type: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}Pasteurisation{% endif%}</dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Net weight unit
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          kilogram
-                      </dd>
-                    </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Treatment type
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          pasteurisation
-                      </dd>
-                    </div>
+
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Nature of commodity
@@ -145,14 +117,10 @@
                           Dairy
                       </dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Batch number
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          31.01.2023
-                      </dd>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Batch number: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}31.01.2023{% endif%}</dd>
                     </div>
+
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Final consumer  <span class="optional">(optional)</span>
@@ -161,14 +129,10 @@
                           yes
                       </dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Date of collection / production
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                            14 November 2022
-                      </dd>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Date of collection / production: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}14 November 2022{% endif%}</dd>
                     </div>
+
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Manufacturing plant
@@ -212,7 +176,7 @@
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
             <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key" data-v-367f2bfa="">
               {% if data.hasUpdateToEHC == "yes" and data.updatedCommodity_1 != "yes" %}<span class="govuk-tag govuk-tag--red">Incomplete data</span>{% endif %}
-              {% if data.updatedCommodity_1 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span> Sliced Chedder {% endif %} {% if data.updatedCommodity_1 == "yes"%}{{ data.netWeight }}{% else %}672{% endif %} kilogram -
+              {% if data.updatedCommodity_1 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span> {% endif %} Sliced Chedder - {% if data.updatedCommodity_1 == "yes"%}{{ data.netWeight }}{% else %}672{% endif %} kilogram -
               {% if data.updatedCommodity_1 == "yes"%}{{ data.packageCount }}{% else %}112{% endif %} cases</dt>
             <dd class="govuk-summary-list__actions">
               <ul class="govuk-summary-list__actions-list">
@@ -222,7 +186,7 @@
                   </a>
                 </li>
                 <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=0406&change=yes&amp;copy=&commodity_id=1{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_1 != 'yes' %}&showIncompleteData=yes{% endif %}">
+                  <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=0406&description=Sliced Emmental&change=yes&new=no&copy=&commodity_id=1{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_1 != 'yes' %}&showIncompleteData=yes{% endif %}">
                     Change<span class="govuk-visually-hidden"> this record</span>
                   </a>
                 </li>
@@ -304,46 +268,19 @@
                           n/a
                       </dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Package count
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          112
-                      </dd>
+
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Package count: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}112 cases{% endif%}</dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Package count unit
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          Case
-                      </dd>
+
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Net weight: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}672 kilogram{% endif%}</dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Net weight
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          672
-                      </dd>
+
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Treatment type: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}Pasteurisation{% endif%}</dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Net weight unit
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          kilogram
-                      </dd>
-                    </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Treatment type
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          pasteurisation
-                      </dd>
-                    </div>
+
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Nature of commodity
@@ -352,14 +289,11 @@
                           Dairy
                       </dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Batch number
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          31.01.2023
-                      </dd>
+
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">Batch number: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}31.01.2023{% endif%}</dd>
                     </div>
+
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
                         Final consumer  <span class="optional">(optional)</span>
@@ -368,13 +302,8 @@
                           yes
                       </dd>
                     </div>
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half ">
-                      <dt class="govuk-summary-list__key">
-                        Date of collection / production
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                            14 November 2022
-                      </dd>
+                    <div class="govuk-summary-list__row govuk-grid-column-one-half {% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}isIncomplete{% endif %}" data-v-367f2bfa=""><dt class="govuk-summary-list__key" data-v-367f2bfa="">  Date of collection / production: </dt>
+                      <dd class="govuk-summary-list__value" data-v-367f2bfa="">{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}<span class="">No value</span>{% else %}14 November 2022{% endif%}</dd>
                     </div>
                     <div class="govuk-summary-list__row govuk-grid-column-one-half ">
                       <dt class="govuk-summary-list__key">
