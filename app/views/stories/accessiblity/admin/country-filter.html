@@ -9,8 +9,16 @@ Home – GOV.UK Prototype Kit
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">Applications</h1>
-    {% block fileter %}{% include "./_filter2.html" %}{% endblock%}
 
+      <div class="govuk-form-group" id="search-and-list">
+        <p class="govuk-body"></p>
+        <label class="govuk-label" for="search-term">Search for application</label>
+        <div class="govuk-hint">Search by serial number, certificate number or name</div>
+        <input class="govuk-input govuk-!-width-two-thirds" id="search-term" type="search">
+    </div>
+
+    {% block fileter %}{% include "./_filter2.html" %}{% endblock%}
+    <p id="results" aria-live="polite"><span id="results-count">1,300</span> applications <span id="results-filters"></span></p>
     <div class="govuk-grid-row home-list">
 
         <div class="p-datatable p-component p-datatable-responsive-stack" data-scrollselectors=".p-datatable-wrapper" pv_id_1="">
@@ -273,3 +281,59 @@ Home – GOV.UK Prototype Kit
 </script>
 
 {% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+    var delay
+    $('#search-term').on("keyup",function(){
+      updateSearch()
+
+    })
+    $('#search-term').on('search' ,function(){
+      updateSearch()
+
+    })
+
+    $(".govuk-checkboxes__input").on("click",function(e){
+      updateSearch()
+    })
+    $("#clearSearch").on("click",function(e){
+      e.preventDefault()
+      $("#search-term").val("")
+      updateSearch()
+    })
+    function updateSearch(){
+      count=0
+      var searchQuery = ""
+      if ( $('#search-term').val().length > 0 ){
+        count+=$('#search-term').val().length
+        searchQuery += "matching <strong>"+$('#search-term').val()+"</strong>"
+      }
+
+      if ($('.govuk-checkboxes__input:checked').length > 0 ){
+        searchQuery+=" with "
+        $('.govuk-checkboxes__input:checked').each(function(i, obj) {
+          searchQuery+="<strong>"+$(obj).val()+"</strong>"
+          if(i+1 < $('.govuk-checkboxes__input:checked').length){
+            count+=1
+            if(i+1 == $('.govuk-checkboxes__input:checked').length-1){
+              searchQuery+=" and "
+            }else{
+                searchQuery+=", "
+            }
+
+          }
+        });
+      }
+      if(count > 0 ){
+         $('#results-count').text(Math.round(1300/(count+2)))
+    }else{
+        $('#results-count').text(1300)
+      }
+
+      $('#results-filters').html(searchQuery)
+    }
+})
+</script>
+{% endblock%}
