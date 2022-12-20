@@ -70,6 +70,8 @@ Check your answers – GOV.UK Prototype Kit
       {% block foylecya %}{% include "../components/_foyle-cya.html"%}{% endblock%}
       {% elseif data.accountName == "extons" %}
        {% block extonscya %}{% include "../components/_extons-cya.html"%}{% endblock%}
+       {% elseif data.accountName == "greggs" %}
+        {% block greggscya %}{% include "../components/_greggs-cya.html"%}{% endblock%}
       {% else %}
       {% block basiccya %}{% include "../components/_basic-cya"%}{% endblock%}
       {% endif %}

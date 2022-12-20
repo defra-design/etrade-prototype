@@ -16,7 +16,7 @@
           {% if data.updatedCommodity_0 == "yes"%}<span class="govuk-tag govuk-tag--blue">updated</span> {% endif %}
             Breakfast sausauge -
           {% if data.updatedCommodity_0 == "yes"%}{{ data.netWeight_0 or 34}}{% else %}34{% endif %} kilogram -
-          {% if data.updatedCommodity_0 == "yes"%}{{ data.packageCount_0 or 33 }}{% else %}33{% endif %} Pacakges
+          {% if data.updatedCommodity_0 == "yes"%}{{ data.packageCount_0 or 33 }}{% else %}33{% endif %} packages
           {% endif %}
 
         </dt>
@@ -29,7 +29,7 @@
               </a>
             </li>
             <li class="govuk-summary-list__actions-list-item">
-              <a class="govuk-link govuk-link--no-visited-state" href="commodity?productTitle=Breakfast sausage&commodity=160100&description=Sausages and similar products, of meat, meat offal or blood; food preparations based on these products&change=yes&new=no&amp;copy=&commodity_id=0&packageCount={{data.packageCount_0 or 33}}&netWeight={{data.netWeight_0 or 34}}&productTitle=breakfast sausage{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}&showIncompleteData=yes{% endif %}">
+              <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=160100&description=Sausages and similar products, of meat, meat offal or blood; food preparations based on these products&change=yes&new=no&amp;copy=&commodity_id=0&packageCount={{data.packageCount_0 or 33}}&netWeight={{data.netWeight_0 or 34}}&productTitle=breakfast sausage{% if data.hasUpdateToEHC == 'yes' and data.updatedCommodity_0 != 'yes' %}&showIncompleteData=yes{% endif %}">
                 Change<span class="govuk-visually-hidden"> this record</span>
               </a>
             </li>
