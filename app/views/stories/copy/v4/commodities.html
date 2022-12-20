@@ -115,7 +115,7 @@ Home – GOV.UK Prototype Kit
       </div>
       <div class="govuk-notification-banner__content">
         <p class="govuk-notification-banner__heading">Some commodity data is incomplete</p>
-        <p>EHC8364 was updated on 3 November 2022, so you'll need to enter commodity data for {{data.recordsCount or 12}} record{% if data.recordsCount != 1 %}s{% endif %}.</p>
+        <p>EHC{{data.ehc}} was updated on 3 November 2022, so you'll need to enter commodity data for {{data.recordsCount or 12}} record{% if data.recordsCount != 1 %}s{% endif %}.</p>
         <!--
       <p class="govuk-body">
         10 records have missing or incomplete required data.
@@ -146,6 +146,10 @@ Home – GOV.UK Prototype Kit
     <div class="govuk-accordion__controls margin-b"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
           class="govuk-accordion__show-all-text">Show all sections</span></button></div>
      {% block extonslist %}{% include "./components/_extons-list.html"%}{% endblock%}
+     {% elseif data.accountName == "greggs" %}
+     <div class="govuk-accordion__controls margin-b"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
+           class="govuk-accordion__show-all-text">Show all sections</span></button></div>
+      {% block greggslist %}{% include "./components/_greggs-list.html"%}{% endblock%}
     {% else %}
     <div class="govuk-accordion__controls margin-b"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span
           class="govuk-accordion__show-all-text">Show all sections</span></button></div>
