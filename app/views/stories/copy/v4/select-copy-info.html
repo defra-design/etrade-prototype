@@ -35,11 +35,11 @@
           </span>
         </summary>
         <div class="govuk-details__text">
-          <p>You cannot coppy the following sections:</p>
+          <p>You cannot copy the following sections:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>Container number/seal number</li>
             <li>Accompanying document</li>
-            <li>Means of transport</li>
+            {% if data.accountName != "foyle" %}<li>Means of transport</li>{% endif %}
             <li>Arrival and Departure</li>
           </ul>
           {% if data.isDraft=="yes" %}
@@ -71,7 +71,7 @@
             <div class="govuk-checkboxes__item" data-v-7899b5ce="">
               <input value="commodities" class="govuk-checkboxes__input" id="organisation-2" type="checkbox" data-v-7899b5ce="" name="manualSelection">
               <label class="govuk-label govuk-checkboxes__label" for="organisation-2"
-                data-v-7899b5ce="" >Commodities - {{data.recordsCount or 12}} {{ "record" | plural("records", data.records | length ) }}{% if data.records | length > 1 %} for {{data.commodityCount or 2}} {{ "commodity" | plural("commodities", data.commodityCount | length ) }}{% endif %}</label></div>
+                data-v-7899b5ce="" >Commodities - {{data.recordsCount or 12}} {{ "record" | plural("records", data.recordsCount) }}{% if data.recordsCount | length > 1 %} for {{data.commodityCount or 2}} {{ "commodity" | plural("commodities", data.commodityCount | length ) }}{% endif %}</label></div>
                 {% endif %}
             <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="organisation-89" type="checkbox" data-v-7899b5ce="" name="manualSelection"><label class="govuk-label govuk-checkboxes__label" for="organisation-89"
                 data-v-7899b5ce="" value="Goods certified as"> Goods certified as </label></div>

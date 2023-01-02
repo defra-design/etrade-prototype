@@ -49,11 +49,11 @@ Check your answers – GOV.UK Prototype Kit
 
         <ul class="govuk-list">
           {% if data.copyall == "no" and ("commodities" not in data.manualSelection and "commodites1" not in data.manualSelection)  %}
-          {% if data.commoditiesAdded != "yes" %}<li class="task"><a class="govuk-link--no-visited-state" href="select-certificate?showNotification=no">Add commodities</a></li>{% endif %}
+          {% if data.commoditiesAdded != "yes" %}<li class="task"><a class="govuk-link--no-visited-state" href="select-commodities?showNotification=no">Add commodities</a></li>{% endif %}
           {% endif %}
           {% if data.addedContainer != "yes" %}<li class="task"><a class="govuk-link--no-visited-state" href="container-deal-number?showNotification=no">Container number/seal number</a></li>{% endif %}
           {% if data.addedArrivalDepartDate != "yes" %}<li class="task" ><a class="govuk-link--no-visited-state" href="arrival-and-departure?showNotification=no">Departure and arrival</a></li>{% endif %}
-          {% if data.addedTransport != "yes" %}<li class="task"><a class="govuk-link--no-visited-state" href="means-of-transport?showNotification=no">Means of transport</a></li>{% endif %}
+          {% if data.addedTransport != "yes" and data.accountName != "foyle"%}<li class="task"><a class="govuk-link--no-visited-state" href="means-of-transport?showNotification=no">Means of transport</a></li>{% endif %}
         </ul>
       </div>
 
@@ -70,6 +70,8 @@ Check your answers – GOV.UK Prototype Kit
       {% block foylecya %}{% include "../components/_foyle-cya.html"%}{% endblock%}
       {% elseif data.accountName == "extons" %}
        {% block extonscya %}{% include "../components/_extons-cya.html"%}{% endblock%}
+       {% elseif data.accountName == "greggs" %}
+        {% block greggscya %}{% include "../components/_greggs-cya.html"%}{% endblock%}
       {% else %}
       {% block basiccya %}{% include "../components/_basic-cya"%}{% endblock%}
       {% endif %}

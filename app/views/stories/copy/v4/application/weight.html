@@ -17,7 +17,7 @@ Home – GOV.UK Prototype Kit
     <form method="post" action="{% if data.hasMultipleEHC == 'yes'%}../added-certs{%else%}./check-your-answers{% endif %}">
       <div class="govuk-form-group">
         <span class="govuk-caption-xl">
-          <span class="govuk-caption-xl">{{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</span>
+          <span class="govuk-caption-xl">EHC{{data.ehc or 8361}}</span>
         </span>
         <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--xl">

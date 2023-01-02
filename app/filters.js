@@ -68,7 +68,7 @@ module.exports = function(env) {
   filters.plural = function(singluar,plural,count) {
 
     // thought it could be like possesive filter, but there are excepetions to the rules so just made it simple switch
-
+    console.log(count)
     if (count == 1){
       // return original value
       return singluar
