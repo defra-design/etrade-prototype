@@ -2,10 +2,11 @@
     background-color: #f3f2f1;
     padding: 1.5rem;
 }
+/*
 .js-enabled .filter-panel{
     display:none;
 }
-
+*/
 .filter-button{
   line-height:1.26315;
 }
@@ -16,6 +17,14 @@
       font-size: 1rem !important;
       line-height: 1.25 !important;
   }
+}
+
+.filter-label .count {
+  background-color: #fff;
+  border-radius: 10px;
+  margin-left: 5px;
+  padding: 2px 5px;
+  font-size: 10px
 }
 
 
@@ -74,3 +83,7 @@
     -ms-flex-item-align: auto;
     align-self: auto;
     }
+
+.filter-row .govuk-radios__label {
+  padding-left: 40px;
+}

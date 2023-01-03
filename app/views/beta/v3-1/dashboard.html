@@ -108,6 +108,10 @@ input.p-dropdown-label  {
 .govuk-button--blue:hover {
   background: #002c82;
 }
+
+.govuk-fieldset__legend {
+  width:100%;
+}
 </style>
 
 
@@ -243,6 +247,9 @@ input.p-dropdown-label  {
                   for="status-15">In Progress with APHA<span class="count">0</span></label></div>
               <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-16" name="status" type="checkbox" value="WithCertifier"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-16">In
                   Progress with Certifier<span class="count">0</span></label></div>
+                  <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-21" name="status" type="checkbox" value="WithCertifier"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-21">Pending Replacement<span class="count">0</span></label></div>
+                  <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-22" name="status" type="checkbox" value="WithCertifier"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-22">Replaced<span class="count">0</span></label></div>
+                  <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-23" name="status" type="checkbox" value="WithCertifier"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-23">Replacement<span class="count">0</span></label></div>
               <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-17" name="status" type="checkbox" value="ReturnedToExporter"><label class="govuk-label govuk-checkboxes__label filter-label"
                   for="status-17">Returned by Certifier<span class="count">0</span></label></div>
               <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-18" name="status" type="checkbox" value="Submitted"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-18">Submitted
@@ -318,7 +325,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -371,7 +378,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -424,7 +431,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -475,7 +482,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -526,7 +533,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -578,7 +585,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262="" id="78BB19F1D77D4B9"><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262="" id="78BB19F1D77D4B9"><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
 
@@ -706,7 +713,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -757,7 +764,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -809,7 +816,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -860,7 +867,7 @@ input.p-dropdown-label  {
                     <td align="right" data-v-19f29262=""><span class="govuk-tag Submitted" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Submitted to Certifier</span></span></td>
                   </tr>
                 </table>
-              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
             </td>
           </tr>
           <!---->
@@ -887,15 +894,20 @@ input.p-dropdown-label  {
 {% block pageScripts %}
 <script type="text/javascript">
   window.addEventListener('load', function() {
-    var subtable = '<tr data-v-0d2a5cfc="" id="subtable"><td class="govuk-table__cell" colspan="8" data-v-0d2a5cfc=""><div class="certficate-subtable govuk-inset-text" data-v-0d2a5cfc=""><table class="govuk-table" data-v-0d2a5cfc=""><thead class="govuk-table__head" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> &nbsp;Certificate Name </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Certifier </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> SP/NV </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Status </span></th><!----></tr></thead><tbody class="govuk-table__body" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><!----></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""></span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><div class="d-inline-flex" data-v-0d2a5cfc=""><!----><!----></div></td><!----></tr></tbody></table></div><div class="govuk-button-group pull-right" data-v-0d2a5cfc=""><!----><!----><a href="#" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> View application </a><a href="copy/copy-application" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> Copy application </a><!----><!----><a class="govuk-button govuk-button--warning" href="#" data-toggle="modal" data-target="#confirmRemoveModal" data-v-0d2a5cfc=""> Delete application </a></div><!----></td></tr>'
-    $('.show-subtable').on('click',function(e){
-      /*
-        e.preventDefault()
-        var row = $(this).closest(".govuk-table__row")
-        $('#subtable').remove()
-        row.after(subtable)
-      */
+
+
+    $('.app-toggle-link').on('click', function(e) {
+      e.preventDefault()
+      let targetID = '#' + $(this).attr('data-target')
+      let target = $(targetID)
+      if (target.is(":visible")) {
+        target.hide()
+      } else {
+        target.show()
+      }
+
     })
+
     $('.govuk-button[data-toggle]').on("click",function() {
       if(!$(".filter-container").hasClass("collapse")){
         $(".filter-container").addClass("collapse")
@@ -912,6 +924,16 @@ input.p-dropdown-label  {
     $('#78BB19F1D77D4B9').on("click", function() {
       $('#78BB19F1D77D4B9-expand').show();
       return false;
+    })
+
+    var subtable = '<tr data-v-0d2a5cfc="" id="subtable"><td class="govuk-table__cell" colspan="8" data-v-0d2a5cfc=""><div class="certficate-subtable govuk-inset-text" data-v-0d2a5cfc=""><table class="govuk-table" data-v-0d2a5cfc=""><thead class="govuk-table__head" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> &nbsp;Certificate Name </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Certifier </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> SP/NV </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Status </span></th><!----></tr></thead><tbody class="govuk-table__body" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><!----></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""></span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><div class="d-inline-flex" data-v-0d2a5cfc=""><!----><!----></div></td><!----></tr></tbody></table></div><div class="govuk-button-group pull-right" data-v-0d2a5cfc=""><!----><!----><a href="#" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> View application </a><a href="copy/copy-application" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> Copy application </a><!----><!----><a class="govuk-button govuk-button--warning" href="#" data-toggle="modal" data-target="#confirmRemoveModal" data-v-0d2a5cfc=""> Delete application </a></div><!----></td></tr>'
+    $('.show-subtable').on('click',function(e){
+      /*
+        e.preventDefault()
+        var row = $(this).closest(".govuk-table__row")
+        $('#subtable').remove()
+        row.after(subtable)
+      */
     })
 
   })
