@@ -94,9 +94,10 @@
         text: (data.person | dump )
       }) }}
 
-
-
-
+      {{ govukDetails({
+        summaryText: "data.transport",
+        text: (data.transport | dump )
+      }) }}
 
       {{ govukDetails({
         summaryText: "Everything",

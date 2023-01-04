@@ -224,9 +224,10 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
                 Place of origin
               </a>
             </span>
-            {% if data.person.dispatch and data.person.loading %}
+
+            {% if data.transport.dispatch and data.transport.loading and data.transport['region-of-origin'] %}
               <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
-            {% elseif data.person.dispatch or data.person.loading %}
+            {% elseif data.transport.dispatch or data.transport.loading or data.transport['region-of-origin'] or data.transport['sub-region-of-origin'] %}
               <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="place-of-origin-status">In Progress</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
@@ -266,7 +267,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
                 Place of destination
               </a>
             </span>
-            {% if data.person.destination %}
+            {% if data.transport.destination %}
               <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
@@ -285,13 +286,13 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             {% if data.person.destination or query.isComplete == "yes" %}
             <span class="app-task-list__task-name">
               <a href="./check-your-answers" aria-describedby="check-your-answers-status">
-                Review and submit applictaion
+                Review and submit application
               </a>
             </span>
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
             {% else %}
             <span class="app-task-list__task-name" aria-describedby="ready-to-apply-status">
-                Review and submit applictaion
+                Review and submit application
             </span>
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="ready-to-apply-status">Cannot start yet</strong>
             {% endif %}
