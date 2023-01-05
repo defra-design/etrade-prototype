@@ -46,8 +46,26 @@ module.exports = function(router) {
 
     const establishmentIndex = req.body.establishmentIndex;
 
-    req.session.data.person['destination'] = establishmentIndex;
+    console.log("Storing req.session.data.transport['destination'] with value " + establishmentIndex);
+
+    req.session.data.transport['destination'] = establishmentIndex;
     res.redirect(301, '/' + base_url + 'transport/place-of-destination');
+  })
+
+  router.post('/' + base_url + 'transport/place-of-origin', function(req, res) {
+    console.log("In transport/place-of-origin");
+
+    const country = req.body.country;
+    const roo = req.body.regionOfOrigin;
+    const sroo = req.body.subRegionOfOrigin;
+
+    console.log("Saving transport data " + country + ", " + roo + ", " + sroo);
+
+    req.session.data.transport['country'] = country;
+    req.session.data.transport['region-of-origin'] = roo;
+    req.session.data.transport['sub-region-of-origin'] = sroo;
+
+    res.redirect(301, '/' + base_url + "task-list");
   })
 
   router.post('/' + base_url + "transport/place-of-origin/dispatch", function(req, res) {
@@ -55,7 +73,7 @@ module.exports = function(router) {
 
     const establishmentIndex = req.body.establishmentIndex;
 
-    req.session.data.person['dispatch'] = establishmentIndex;
+    req.session.data.transport['dispatch'] = establishmentIndex;
     res.redirect(301, '/' + base_url + 'transport/place-of-origin');
   })
 
@@ -64,7 +82,7 @@ module.exports = function(router) {
 
     const establishmentIndex = req.body.establishmentIndex;
 
-    req.session.data.person['loading'] = establishmentIndex;
+    req.session.data.transport['loading'] = establishmentIndex;
     res.redirect(301, '/' + base_url + 'transport/place-of-origin');
   })
 
@@ -84,5 +102,6 @@ module.exports = function(router) {
     delete req.session.data.person[person];
     res.redirect(301, '/' + base_url + "transport/" + redirect + "?deleted=yes&who=" + person);
   })
+
 
 }

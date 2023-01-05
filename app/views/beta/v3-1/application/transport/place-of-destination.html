@@ -32,8 +32,8 @@ Place of destination – GOV.UK Prototype Kit
 
       <p class="govuk-body">This is where the commodities are sent for final unloading.</p>
 
-      {% if data.person['destination'] %}
-        {% set establishmentIndex = data.person['destination'] %}
+      {% if data.transport['destination'] %}
+        {% set establishmentIndex = data.transport['destination'] %}
         {% set org = data.establishments[establishmentIndex] %}
 
         {% set removeLink = "./remove?who=destination&redirect=place-of-destination" %}
