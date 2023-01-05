@@ -15,7 +15,7 @@
 {% endif %}
 
 {% block pageTitle %}
-Consignor or-exporter – {{serviceName}} - GOV.UK
+Select an activity – {{serviceName}} - GOV.UK
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -31,12 +31,24 @@ Consignor or-exporter – {{serviceName}} - GOV.UK
 {% set addedEHC_addedCommoditiesId = query.addedCommoditiesId %}
 {% set addedEHC_identificationsId = query.identificationsId %}
 {% set addedEHC_establishmentType = query.establishmentType %}
+{% set addedEHC_establishmentApprovalNumber = query.establishmentApprovalNumber %}
 {% set addedEHC_establishmentIndex = query.establishmentIndex %}
 
 {% set cert = data.addedEHC[addedEHC_certID]%}
 {% set identification = cert.addedCommodities[addedEHC_addedCommoditiesId].identifications[addedEHC_identificationsId]%}
 {% set activityName = identification[addedEHC_establishmentType+'Activity'] %}
-{% set operator = data.establishments[addedEHC_establishmentIndex] %}
+
+{% set operator = null %}
+{% if addedEHC_establishmentIndex %}
+  {% set operator = data.establishments[addedEHC_establishmentIndex] %}
+{% else %}
+  {% for establishment in data.establishments %}
+    {% if establishment.AppNo == addedEHC_establishmentApprovalNumber %}
+      {% set operator = establishment %}
+    {% endif %}
+  {% endfor %}
+
+{% endif %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -45,7 +57,7 @@ Consignor or-exporter – {{serviceName}} - GOV.UK
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
           <h1 class="govuk-fieldset__heading">
-            Select a manufacturing plant activity
+            Select a {{ establishmentTypeLabel }} activity
           </h1>
         </legend>
 
@@ -85,7 +97,6 @@ Consignor or-exporter – {{serviceName}} - GOV.UK
       <input type="hidden" name="addedEHC_addedCommoditiesId" value="{{ addedEHC_addedCommoditiesId }}">
       <input type="hidden" name="addedEHC_identificationsId" value="{{ addedEHC_identificationsId }}">
       <input type="hidden" name="addedEHC_establishmentType" value="{{ addedEHC_establishmentType }}">
-      <input type="hidden" name="addedEHC_establishmentIndex" value="{{ addedEHC_establishmentIndex }}">
 
     </form>
 
