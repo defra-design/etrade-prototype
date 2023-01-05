@@ -11,66 +11,113 @@ Copy – GOV.UK Prototype Kit
 
     <h1 class="govuk-heading-xl">
       Copy a certificate improvements</h1>
-      <h2 class="govuk-heading-m">Testing versions (December 2022)</h2>
-      <p>Based on version 4</p>
-      <ul class="govuk-list">
-        <li><a href="./v4/start?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&accountName=extons&recordsCount=2&commodityCount=1&ehc=8468&grossweight=1681&reference=DL-49071-VK&ref2=DL-49890-VK&ref3=CA-58875-VK">Extons copy EHC8468 (happy path)</a></li>
-        <li><a href="./v4/start?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&accountName=extons&recordsCount=2&commodityCount=1&ehc=8468&grossweight=1681&reference=DL-49071-VK&ref2=DL-49890-VK&ref3=CA-58875-VK">Extons copy EHC8468 (has missing data)</a></li>
-        <br>
-        <li><a href="./v4/start?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&accountName=foyle&recordsCount=1&commodityCount=1&ehc=8368&grossweight=1000&reference=Melton load 1 20th11&ref2=Melton load 1 14th11&ref3=Melton load 2 09th11">Foyle copy EHC8368 (happy path)</a></li>
-        <li><a href="./v4/start?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&accountName=foyle&recordsCount=1&commodityCount=1&ehc=8368&grossweight=1000&reference=Melton load 1 20th11&ref2=Melton load 1 14th11&ref3=Melton load 2 09th11">Foyle copy EHC8368 (has missing data)</a></li>
-        <br>
-        <li><a href="./v4/start?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&accountName=greggs&recordsCount=4&commodityCount=2&ehc=8384&grossweight=52&reference=Meat8384&ref2=Meat8384&ref3=Meat8384">Greggs copy EHC8368 (happy path)</a></li>
-        <li><a href="./v4/start?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&accountName=greggs&recordsCount=4&commodityCount=2&ehc=8384&grossweight=52&reference=Meat8384&ref2=Meat8384&ref3=Meat8384">Greggs copy EHC8368 (has missing data)</a></li>
-        <br>
-      </ul>
-      <h2 class="govuk-heading-m">Version 1</h2>
-      <p>Based on improvements to the current journey. After copy user is taken to the task list. User cannot copy if ther is an updated EHC</p>
+    <h2 class="govuk-heading-m">Testing versions (December 2022)</h2>
+    <p>Based on version 4</p>
+    <ul class="govuk-list">
+      <li><a href="./v4/start?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&accountName=extons&recordsCount=2&commodityCount=1&ehc=8468&grossweight=1681&reference=DL-49071-VK&ref2=DL-49890-VK&ref3=CA-58875-VK">Extons copy EHC8468 (happy path)</a>
+      </li>
+      <li><a href="./v4/start?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&accountName=extons&recordsCount=2&commodityCount=1&ehc=8468&grossweight=1681&reference=DL-49071-VK&ref2=DL-49890-VK&ref3=CA-58875-VK">Extons copy EHC8468 (has missing
+          data)</a></li>
+      <br>
+      <li><a href="./v4/start?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&accountName=foyle&recordsCount=1&commodityCount=1&ehc=8368&grossweight=1000&reference=Melton load 1 20th11&ref2=Melton load 1 14th11&ref3=Melton load 2 09th11">Foyle copy
+          EHC8368 (happy path)</a></li>
+      <li><a href="./v4/start?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&accountName=foyle&recordsCount=1&commodityCount=1&ehc=8368&grossweight=1000&reference=Melton load 1 20th11&ref2=Melton load 1 14th11&ref3=Melton load 2 09th11">Foyle
+          copy EHC8368 (has missing data)</a></li>
+      <br>
+      <li><a href="./v4/start?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&accountName=greggs&recordsCount=4&commodityCount=2&ehc=8384&grossweight=52&reference=Meat8384&ref2=Meat8384&ref3=Meat8384">Greggs copy EHC8368 (happy path)</a></li>
+      <li><a href="./v4/start?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&accountName=greggs&recordsCount=4&commodityCount=2&ehc=8384&grossweight=52&reference=Meat8384&ref2=Meat8384&ref3=Meat8384">Greggs copy EHC8368 (has missing data)</a>
+      </li>
+      <br>
+    </ul>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="./v1/dashboard?newVersion=no">Dashboard</a> - press 'show' to reveal copy button</li>
-        <li><a href="./v1/copy-application?newVersion=no">Copy application</a> - updated</li>
-        <li><a href="./v1/create-reference?newVersion=no">Create reference </a> - new to this journey</li>
-        <li><a href="./v1/task-list?newVersion=no">Task list </a> - new design <br><br></li>
-        <li><a href="./v1/copy-application?newVersion=yes">Copy application - certificte has been changed</a></li>
-        <li><a href="./v1/task-list-no-certificate?newVersion=yes">Task list with not commmodites coppied</a></li>
-      </ul>
 
-      <h2 class="govuk-heading-m">Version 2</h2>
-      <p>User can only select to copy the commodity data or not. This version also contains incomplete version of the commodity data, if there is a new verison of the EHC and it has invalidated the original. </p>
+    <h2 class="govuk-heading-m">Version 4</h2>
+    <p>Contains summary of application to copy, and allows user an simpler add all vs selecting manually</p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="./v2/dashboard?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no">Start from dashbaord - No updates</a></li>
-        <li><a href="./v2/dashboard?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no">Start from dashbaord - EHC updated</a></li>
-        <li><a href="./v2/dashboard?hasMultipleEHC=yes&hasUpdateToEHC=no&showWeight=no">Start from dashbaord - has multiple EHCS</a></li>
-      </ul>
-      <h2 class="govuk-heading-m">Version 3</h2>
-      <p>Same as above but skips the copy commodity quesion and allows to remove all from the commodity review page. </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="./v4/dashboard?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no">Start from dashbaord - No updates</a></li>
+      <li><a href="./v4/dashboard?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no">Start from dashbaord - EHC updated</a></li>
+      <li><a href="./v4/dashboard?hasMultipleEHC=yes&hasUpdateToEHC=no&showWeight=no">Start from dashbaord - has multiple EHCS</a></li>
+    </ul>
+    <h3 class="govuk-heading-s">Pages</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="./v4/copy-application?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no">Copy application page</a></li>
+      <li><a href="./v4/copy-application?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&isDraft=no">Copy application page - with TRACES update to EHC</a></li>
+      <li><a href="./v4/select-copy-info?copyall=yes&showNotification=yes&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no">What do you want to copy</a></li>
+      <li><a href="./v4/create-reference?copyall=yes&showNotification=yes&?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no">Create reference</a></li>
+      <li><a href="./v4/commodities?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no">Review commodities</a></li>
+      <li><a href="./v4/commodities-with-incomplete?showNotification=no&hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&data.addedTransport=no">Review commodities - with
+          incomplete data</a></li>
+      <li><a href="./v4/application/check-your-answers?showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=yes&addedContainer=no&addedArrivalDepartDate=no&data.addedTransport=no">Check your answers - with
+          mini task list</a>. This page contains multiple changes to this page which need further discussion.</li>
+      <li><a href="./v4/application/check-your-answers?showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&data.addedTransport=no">Check your answers, if no
+          commdities have been added</a></li>
+    </ul>
+    <h3 class="govuk-heading-s">Errors</h3>
+    <p>If a user tries to continiue from the commodity review page and there is incomplete commodites we need to show an error.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a
+          href="./v4/commodities-errors?showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&addedTransport=no&netWeight=&packageCount=&dateOfCollectionProduction=">Update
+          commodity page - with incomplete fields</a></li>
+
+    </ul>
+    <p>Partially completed commodity page should still behave as normal if a user attempts to continue without completeing empty fields.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a
+          href="./v4/commodity-error?showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&addedTransport=no&netWeight=&packageCount=&dateOfCollectionProduction=">Update
+          commodity page - with incomplete fields</a> (click the green button to trigger the validation error)</li>
+      <li><a
+          href="./v4/commodity-error?hasError=yes&errorType=packageCount,netWeight,dateOfCollectionProduction&showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&addedTransport=no&netWeight=&packageCount=&dateOfCollectionProduction=">Update
+          commodity page - with errors</a></li>
+    </ul>
+    <p>Check your answeres with posts need to show validation errors if sections are not complete</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a
+          href="./v4/application/check-your-answers-error?showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&addedTransport=no&netWeight=&packageCount=&dateOfCollectionProduction=">Update
+          Check your answers page - with requred fields</a> (click the green button to trigger the validation error)</li>
+      <li><a
+          href="./v4/application/check-your-answers-error?hasError=yes&errorType=packageCount,netWeight,dateOfCollectionProduction&showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&addedTransport=no&netWeight=&packageCount=&dateOfCollectionProduction=">Update
+          Check your answers page- with errors</a></li>
+    </ul>
+
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Archived versions (3)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <h2 class="govuk-heading-m">Version 1</h2>
+        <p>Based on improvements to the current journey. After copy user is taken to the task list. User cannot copy if ther is an updated EHC</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="./v1/dashboard?newVersion=no">Dashboard</a> - press 'show' to reveal copy button</li>
+          <li><a href="./v1/copy-application?newVersion=no">Copy application</a> - updated</li>
+          <li><a href="./v1/create-reference?newVersion=no">Create reference </a> - new to this journey</li>
+          <li><a href="./v1/task-list?newVersion=no">Task list </a> - new design <br><br></li>
+          <li><a href="./v1/copy-application?newVersion=yes">Copy application - certificte has been changed</a></li>
+          <li><a href="./v1/task-list-no-certificate?newVersion=yes">Task list with not commmodites coppied</a></li>
+        </ul>
+
+        <h2 class="govuk-heading-m">Version 2</h2>
+        <p>User can only select to copy the commodity data or not. This version also contains incomplete version of the commodity data, if there is a new verison of the EHC and it has invalidated the original. </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="./v2/dashboard?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no">Start from dashbaord - No updates</a></li>
+          <li><a href="./v2/dashboard?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no">Start from dashbaord - EHC updated</a></li>
+          <li><a href="./v2/dashboard?hasMultipleEHC=yes&hasUpdateToEHC=no&showWeight=no">Start from dashbaord - has multiple EHCS</a></li>
+        </ul>
+        <h2 class="govuk-heading-m">Version 3</h2>
+        <p>Same as above but skips the copy commodity quesion and allows to remove all from the commodity review page. </p>
 
         <ul class="govuk-list govuk-list--bullet">
           <li><a href="./v3/dashboard?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no">Start from dashbaord</a></li>
           <li><a href="./v3/dashboard?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no">Review commodities with remove all button</a></li>
         </ul>
-
-        <h2 class="govuk-heading-m">Version 4</h2>
-        <p>Contains summary of application to copy, and allows user an simpler add all vs selecting manually</p>
-
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a href="./v4/dashboard?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no">Start from dashbaord - No updates</a></li>
-            <li><a href="./v4/dashboard?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no">Start from dashbaord - EHC updated</a></li>
-            <li><a href="./v4/dashboard?hasMultipleEHC=yes&hasUpdateToEHC=no&showWeight=no">Start from dashbaord - has multiple EHCS</a></li>
-          </ul>
-          <h3 class="govuk-heading-s">Pages</h3>
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a href="./v4/copy-application?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no">Copy application page</a></li>
-            <li><a href="./v4/copy-application?hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&isDraft=no">Copy application page - with TRACES update to EHC</a></li>
-            <li><a href="./v4/select-copy-info?copyall=yes&showNotification=yes&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no">What do you want to copy</a></li>
-            <li><a href="./v4/create-reference?copyall=yes&showNotification=yes&?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no">Create reference</a></li>
-            <li><a href="./v4/commodities?hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no">Review commodities</a></li>
-            <li><a href="./v4/commodities-with-incomplete?showNotification=no&hasUpdateToEHC=yes&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&data.addedTransport=no">Review commodities - with incomplete data</a></li>
-            <li><a href="./v4/application/check-your-answers?showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=yes&addedContainer=no&addedArrivalDepartDate=no&data.addedTransport=no">Check your answers - with mini task list</a>. This page contains multiple changes to this page which need further discussion.</li>
-            <li><a href="./v4/application/check-your-answers?showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&data.addedTransport=no">Check your answers, if no commdities have been added</a></li>
-          </ul>
+      </div>
+    </details>
 
 
   </div>

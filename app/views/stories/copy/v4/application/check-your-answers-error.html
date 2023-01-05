@@ -19,16 +19,30 @@ Check your answers – GOV.UK Prototype Kit
 </style>
 <div class="ehc-summary" data-v-e8e27fc8="">
   <div class="govuk-grid-row" data-v-e8e27fc8="">
+
     <div class="govuk-grid-column-three-quarters" data-v-e8e27fc8="">
-      {% if data.showNotification == "yes" %}
-      <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Success
+      {% if query.hasError %}
+      <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
           </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-body"><strong>Copied application GBXIBN4522</strong></p>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+
+              <li><a class="govuk-link" href="#containerNumber-error">Enter a container number or seal number</a></li>
+
+              <!-- exclude Activity records like manufacturingPlantActivity -->
+
+              <li><a class="govuk-link" href="#arrivalDepartDate-error">Enter the departure and arrival dates
+</a></li>
+
+
+              <li><a class="govuk-link" href="#meansOfTransport-error">Enter a means of transport</a></li>
+
+
+            </ul>
+          </div>
         </div>
       </div>
       {% endif %}
@@ -44,6 +58,8 @@ Check your answers – GOV.UK Prototype Kit
 
 </style>
 
+  {% if not query.hasError %}
+
       <div class="govuk-inset-text app-inset-text--warning">
         <h2 class="govuk-heading-m"><span id="remainingTasks">3 sections</span> need to be completed before submiting</h2>
 
@@ -56,7 +72,7 @@ Check your answers – GOV.UK Prototype Kit
           {% if data.addedTransport != "yes" and data.accountName != "foyle"%}<li class="task"><a class="govuk-link--no-visited-state" href="means-of-transport?showNotification=no">Means of transport</a></li>{% endif %}
         </ul>
       </div>
-
+      {% endif %}
       <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
         <div class="govuk-summary-list__row" data-v-e8e27fc8="">
           <div class="govuk-summary-list__key" data-v-e8e27fc8="">Application Reference</div>
@@ -129,7 +145,7 @@ Check your answers – GOV.UK Prototype Kit
       if (timeTaken == 8) {
         clearInterval(timer);
 
-        window.location.href="./review"
+        window.location.href="./check-your-answers-error?hasError=yes"
       }
     }
     $('#validate').on('click', function(e) {

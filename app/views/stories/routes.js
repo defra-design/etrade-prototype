@@ -173,4 +173,31 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'onboarding/confirmation?continue='+canContinue);
   })
 
+  // COPY
+  router.post('/' + base_url + 'copy/*/commodity-error', function(req, res) {
+    var errors = []
+    var hasErrors = false
+    console.log(req.body.dateOfCollectionProduction)
+    if(req.body.packageCount == ""){
+      hasErrors=true
+      errors.push("packageCount")
+    }
+    if (req.body.netWeight == "" ){
+      hasErrors=true
+      errors.push("netWeight")
+    }
+    if ( req.body.dateOfCollectionProduction == ""){
+      errors.push("dateOfCollectionProduction")
+      hasErrors=true
+    }
+
+    if (hasErrors){
+      res.redirect(301, '/' + base_url + 'copy/'+req.params[0]+'/commodity-error?hasError=yes&errorType='+errors);
+    }
+    else{
+      res.redirect(301, '/' + base_url + 'copy/'+req.params[0]+'/commodities');
+    }
+
+  })
+  
 }
