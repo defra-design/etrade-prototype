@@ -2,8 +2,8 @@
 
 {% set establishmentType = id %}
 {% set establishmentApprovalNumber = identification[establishmentType] %}
-{% set establishmentIndex = identification[establishmentType+"-id"] %}
 {% set establishmentActivity = identification[id+"Activity"] %}
+{% set establishmentIndex = null %}
 
 <!-- check to see if this record ... or it's activity companion (e.g. coldStoreActivity) is incomplete -->
 {% if identification['isIncomplete'] %}
@@ -15,18 +15,25 @@
   {% endfor %}
 {% endif %}
 
+<!-- get the org info for later -->
+{% set org = null %}
+{% for establishment in data.establishments %}
+  {% if establishment.AppNo == establishmentApprovalNumber %}
+    {% set org = establishment %}
+    {% set establishmentIndex = loop.index0 %}
+  {% endif %}
+{% endfor %}
+
 <label class="govuk-label" for="{{id}}" id={{id}}>
   {% if isIncomplete %}<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>{% endif %}
   {{searchLabel}} {% if isRequired == "no"%}(optional){% endif %}
 </label>
 
 
-{% if establishmentIndex and establishmentActivity and (establishmentActivity != -1) %}
+{% if establishmentApprovalNumber and establishmentActivity and (establishmentActivity != -1) %}
   <!-- Complete -->
-  {% set org = data.establishments[establishmentIndex] %}
   <div class="govuk-form-group app-find-establishment-card">
     <input type="hidden" id="{{establishmentType}}" name="{{establishmentType}}" value="{{ establishmentApprovalNumber }}">
-    <input type="hidden" id="{{establishmentType}}-id" name="{{establishmentType}}-id" value="{{ establishmentIndex }}">
     <input type="hidden" id="{{establishmentType}}Activity" name="{{establishmentType}}Activity" value="{{ establishmentActivity }}">
 
     <div class="app-find-establishment-details">
@@ -45,7 +52,7 @@
 
     <div class="app-find-establishment-actions">
       <p class="govuk-!-margin-0">
-        <a href="../find/remove-establishment?certID={{ certID }}&commodityListID={{ commodityListID }}&changeID={{ commodityID }}&establishmentType={{ establishmentType }}">Remove</a>
+        <a href="../find/remove-establishment?certID={{ certID }}&commodityListID={{ commodityListID }}&changeID={{ commodityID }}&establishmentType={{ establishmentType }}&random={{ 100000 | randomNumberGenerator }}">Remove</a>
         {% if data.establishments[establishmentIndex].All_Activities.length > 1 %}
          | <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ commodityID }}&establishmentType={{ establishmentType }}&establishmentIndex={{ establishmentIndex }}">Change activity</a>
          {% endif %}
@@ -54,27 +61,32 @@
   </div>
 
 
-{% elseif establishmentIndex %}
+{% elseif establishmentApprovalNumber %}
 
   <!-- partially incomplete -->
-  {% set org = data.establishments[establishmentIndex] %}
   <div class="govuk-form-group app-find-establishment-card">
     <input type="hidden" id="{{establishmentType}}" name="{{establishmentType}}" value="{{ establishmentApprovalNumber }}">
-    <input type="hidden" id="{{establishmentType}}-id" name="{{establishmentType}}-id" value="{{ establishmentIndex }}">
     <input type="hidden" id="{{establishmentType}}Activity" name="{{establishmentType}}Activity" value="{{ establishmentActivity }}">
-    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}}</h3>
-    <p class="govuk-body">
-      {{org.Address1}}<br>
-      {% if org.Address2 !="" %} {{org.Address2}}<br>{%endif%}
-      {% if org.Address3 !="" %} {{ org.Address3 }}<br>{%endif%}
-      {{org.Town}}, {{org.Postcode}}<br>
-      {{org.Country}}
-    </p>
-    <p class="govuk-body">
-      Approval number: ({{org.AppNo}})<br>
-      Activity: <strong>Not yet selected</strong><br>
-      <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&establishmentIndex={{ establishmentIndex }}" class="govuk-link">Select an activity</a>
-    </p>
+    <div class="app-find-establishment-details">
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}}</h3>
+      <p class="govuk-body">
+        {{org.Address1}}<br>
+        {% if org.Address2 !="" %} {{org.Address2}}<br>{%endif%}
+        {% if org.Address3 !="" %} {{ org.Address3 }}<br>{%endif%}
+        {{org.Town}}, {{org.Postcode}}<br>
+        {{org.Country}}
+      </p>
+      <p class="govuk-body">
+        Approval number: ({{org.AppNo}})<br>
+        Activity: <strong>Not yet selected</strong><br>
+      </p>
+    </div>
+
+    <div class="app-find-establishment-actions">
+      <p class="govuk-!-margin-0">
+        <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&establishmentApprovalNumber={{ establishmentApprovalNumber }}" class="govuk-link">Select an activity</a>
+      </p>
+    </div>
 
   </div>
 

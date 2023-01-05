@@ -421,7 +421,7 @@ module.exports = function(router) {
                           // since we have a match, store the establishment index
                           // e.g. manufacturingPlantActivity
                           // console.log("Found a match for this approval number: " + establishmentDetails.AppNo + " - storing id value of " + establishmentIndex);
-                          temp[establishmentType+"-id"] = establishmentIndex;
+                          // temp[establishmentType+"-id"] = establishmentIndex;
                         } else {
                           // we couldn't find the approval number - flag it as incomplete
                           console.log("Could not find a matching approval number for " + uploaded_data[uploadedDataRow][c]);

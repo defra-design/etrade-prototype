@@ -375,9 +375,8 @@ module.exports = function(router) {
       let identification = req.session.data.addedEHC[certId].addedCommodities[addedCommoditiesId].identifications[identificationsId];
       let establishment = req.session.data.establishments[establishmentIndex];
 
-      // store the establishment approval number and index
+      // store the establishment approval number 
       identification[establishmentType] = establishment.AppNo;
-      identification[establishmentType+"-id"] = establishmentIndex;
 
       // remove this establishment type from the incomplete array (if present)
       if (identification.incomplete) {
@@ -506,6 +505,29 @@ module.exports = function(router) {
       // save the value
       // redirect
 
+
+  })
+
+  // this is a virtual page - it doesn't really exist, it just serves as an action for removing an establishment
+  router.get('/' + base_url + 'application/find/remove-establishment', function(req, res) {
+    console.log("In routes.js for find/remove-establishment");
+
+    // which establishment type?
+    // which commodity?
+    let certID = req.query.certID;
+    let commodityListID = req.query.commodityListID;
+    let changeID = req.query.changeID;
+    let establishmentType = req.query.establishmentType;
+
+    console.log(certID, commodityListID, changeID, establishmentType);
+
+    let identification = req.session.data.addedEHC[certID].addedCommodities[commodityListID].identifications[changeID];
+    console.log(identification);
+
+    identification[establishmentType] = null;
+    identification[establishmentType+'Activity'] = null;
+
+    res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + commodityListID + '&changeID=' + changeID);
 
   })
 

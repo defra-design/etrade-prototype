@@ -362,8 +362,8 @@ module.exports = function(router) {
       // support search type (establishments)
       if (schema[x].type == "search") {
         console.log("Schema type is search: " + schema[x].id);
-        // in addition to the main item, also look for its companions (e.g. manufacturingPlant-id, manufacturingPlantActivity)
-        data[schema[x].id+'-id'] = body[schema[x].id+'-id'];
+        // in addition to the main item, also look for its companion (e.g. manufacturingPlantActivity)
+        // data[schema[x].id+'-id'] = body[schema[x].id+'-id'];
         data[schema[x].id+'Activity'] = body[schema[x].id+'Activity'];
       }
     }
@@ -387,9 +387,8 @@ module.exports = function(router) {
       let identification = req.session.data.addedEHC[certId].addedCommodities[addedCommoditiesId].identifications[identificationsId];
       let establishment = req.session.data.establishments[establishmentIndex];
 
-      // store the establishment approval number and index
+      // store the establishment approval number 
       identification[establishmentType] = establishment.AppNo;
-      identification[establishmentType+"-id"] = establishmentIndex;
 
       // remove this establishment type from the incomplete array (if present)
       if (identification.incomplete) {
@@ -537,7 +536,6 @@ module.exports = function(router) {
 
     identification[establishmentType] = null;
     identification[establishmentType+'Activity'] = null;
-    identification[establishmentType+'-id'] = null;
 
     res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + commodityListID + '&changeID=' + changeID);
 
