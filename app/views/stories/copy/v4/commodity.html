@@ -2,6 +2,11 @@
 {% block pageTitle %}
 Home – GOV.UK Prototype Kit
 {% endblock %}
+
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
 {% block content %}
 {% if data.accountName == "extons" %}
 {% block extonsCommodity %}{% include "./components/_extons-commodity.html"%}{% endblock%}
