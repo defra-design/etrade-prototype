@@ -2,6 +2,12 @@
 {% block pageTitle %}
 Home – GOV.UK Prototype Kit
 {% endblock %}
+
+{% block beforeContent %}
+{{super()}}
+<a href="commodities?showNotification=no" class="govuk-back-link">Back</a>
+{% endblock%}
+
 {% block content %}
 <div class="govuk-grid-row">
 
