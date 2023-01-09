@@ -27,11 +27,11 @@ Home – GOV.UK Prototype Kit
           {{data.reference or "XI2934BUL3"}}
         </dt>
         <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
-          <a href="create-reference-2">Change</a>
+          <a href="create-reference-2">Change <span class="govuk-visually-hidden">Application reference</span></a>
         </dd>
       </div>
     </dl>
-    <p>You have completed 14 of 14 sections. You can now <a href="#sready-to-apply">submit your application</a></p>
+    <p>You have completed 14 of 14 sections. You can now <a href="#ready-to-apply">review and submit applictaion</a></p>
     <a href="#ready-to-apply" class="govuk-skip-link govuk-!-bottom-4 " data-module="govuk-skip-link">Skip next task to complete</a>
     <ol class="app-task-list">
       <li>
@@ -46,6 +46,14 @@ Home – GOV.UK Prototype Kit
               </a>
             </span>
             <strong class="govuk-tag app-task-list__tag" id="goods-certified-status">Completed</strong>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./goods/goods-certified-as" aria-describedby="grossweight">
+                Gross weight
+              </a>
+            </span>
+            <strong class="govuk-tag app-task-list__tag" id="grossweight">Completed</strong>
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
@@ -197,7 +205,7 @@ Home – GOV.UK Prototype Kit
         <h2 class="app-task-list__section">
           <span class="app-task-list__section-number">5. </span>Apply
         </h2>
-
+        <p class="app-task-list_help-text">Once you have completed all required sections, review your answers and submit your application.</p>
         <ul class="app-task-list__items">
           <li class="app-task-list__item" id="ready-to-apply">
             <span class="app-task-list__task-name" aria-describedby="ready-to-apply-status">
