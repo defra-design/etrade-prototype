@@ -60,16 +60,16 @@ Uploaded documents – {{serviceName}} – GOV.UK
           <legend class="govuk-fieldset__legend govuk-fieldset__legend" data-v-133877c6="">How will the consignment be stored during transport?</legend>
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" id="purpose" data-v-133877c6="">
             <div class="govuk-radios__item purpose" data-v-133877c6="">
-              <input class="govuk-radios__input" id="conditions-Chilled" name="conditions" type="radio" value="Chilled" {% if data.conditions == "Chilled" %}checked{% endif %}>
+              <input class="govuk-radios__input" id="conditions-Chilled" name="conditions" type="radio" value="Chilled" {% if query.change=="yes" and transportDetails.conditions == "Chilled" %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label"
                 for="conditions-Chilled" data-v-133877c6="">Chilled storage</label></div>
             <!---->
             <div class="govuk-radios__item purpose" data-v-133877c6="">
-              <input class="govuk-radios__input" id="conditions-Ambient" name="conditions" type="radio" value="Ambient" {% if data.conditions == "Ambient" %}checked{% endif %}>
+              <input class="govuk-radios__input" id="conditions-Ambient" name="conditions" type="radio" value="Ambient" {% if query.change=="yes" and transportDetails.conditions == "Ambient" %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label"
                 for="conditions-Ambient" data-v-133877c6="">Ambient storage</label></div>
             <div class="govuk-radios__item purpose" data-v-133877c6="">
-              <input class="govuk-radios__input" id="conditions-Frozen" name="conditions" type="radio" value="Frozen" {% if data.conditions == "Frozen" %}checked{% endif %}>
+              <input class="govuk-radios__input" id="conditions-Frozen" name="conditions" type="radio" value="Frozen" {% if query.change=="yes" and transportDetails.conditions == "Frozen" %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label"  for="conditions-Frozen">Frozen storage</label></div>
           </div>
         </fieldset>
