@@ -375,7 +375,7 @@ module.exports = function(router) {
       let identification = req.session.data.addedEHC[certId].addedCommodities[addedCommoditiesId].identifications[identificationsId];
       let establishment = req.session.data.establishments[establishmentIndex];
 
-      // store the establishment approval number 
+      // store the establishment approval number
       identification[establishmentType] = establishment.AppNo;
 
       // remove this establishment type from the incomplete array (if present)

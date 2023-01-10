@@ -457,7 +457,13 @@ strong.input-description {
     background-color: #005ea5;
     color: #fff;
     box-shadow: 0 2px 0 #000;
+    margin-top:10px;
     margin-bottom:0;
+}
+@media (min-width: 40.0625em){
+  .app-button--search{
+    margin-top:0;
+  }
 }
 .app-button--search:hover{
   background-color: #003078;

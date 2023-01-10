@@ -145,7 +145,7 @@ Check your answers – GOV.UK Prototype Kit
       if (timeTaken == 8) {
         clearInterval(timer);
 
-        window.location.href="./check-your-answers-error?hasError=yes"
+        window.location.href="./check-your-answers-error?hasError=yes&errorType=packageCount,netWeight,dateOfCollectionProduction&showNotification=no&hasUpdateToEHC=no&hasMultipleEHC=no&showWeight=no&isDraft=no&commoditiesAdded=no&addedContainer=no&addedArrivalDepartDate=no&addedTransport=no&netWeight=&packageCount=&dateOfCollectionProduction="
       }
     }
     $('#validate').on('click', function(e) {
@@ -155,7 +155,7 @@ Check your answers – GOV.UK Prototype Kit
       $(this).attr("disabled", "disabled")
       $("#eleapsed-time").show()
       $("#eleapsed-time").text("Elapsed time : 0 secs")
-      timer = setInterval(validate, 1000);
+      timer = setInterval(validate, 800);
     })
   })
 </script>
