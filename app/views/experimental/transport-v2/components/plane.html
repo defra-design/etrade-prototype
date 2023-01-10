@@ -1,0 +1,9 @@
+
+<div class="govuk-form-group" data-v-6d4fc99b="">
+  <label class="govuk-label" for="flight-number-1" data-v-6d4fc99b=""> Flight number </label>
+  <input class="govuk-input govuk-!-width-one-third" maxlength="30" id="flight-number-1" data-v-6d4fc99b="" name="identifier" value="{% if transportDetails %}{{transportDetails.identifier}}{% endif %}">
+</div>
+<div class="govuk-form-group" data-v-6d4fc99b="">
+  <label class="govuk-label" for="international-transport-document-1" data-v-6d4fc99b=""> International transport document (Optional) </label>
+  <input class="govuk-input govuk-!-width-three-quarters" maxlength="30" id="international-transport-document-1" data-v-6d4fc99b="" name="ITD" {% if transportDetails %}{{transportDetails.ITD}}{% endif %}>
+</div>

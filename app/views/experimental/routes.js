@@ -73,7 +73,7 @@ module.exports = function(router) {
   })
 
   router.post('/' + base_url + 'attachments/uploads*', function(req, res) {
-    req.session.data.additionalDocuments.push(req.body)
+    console.log("This is was called in:" + base_url);req.session.data.additionalDocuments.push(req.body);
     // reset the session information
     res.redirect(301, '/' + base_url + 'attachments/added-documents');
   })
@@ -103,9 +103,9 @@ module.exports = function(router) {
 
   router.post('/' + base_url + 'transport/transport-details', function(req, res) {
     if(req.query.change){
-      req.session.data.transport[req.query.id] = req.body
+      req.session.data.transportList[req.query.id] = req.body
     }else{
-        req.session.data.transport.push(req.body);
+        req.session.data.transportList.push(req.body);
     }
 
       res.redirect(301, '/' + base_url + 'transport/added-transport');
@@ -113,10 +113,31 @@ module.exports = function(router) {
 
   router.post('/' + base_url + 'transport/remove', function(req, res) {
     if(req.body.remove_document == "yes"){
-      req.session.data.transport.splice(req.query.id,1);
+      req.session.data.transportList.splice(req.query.id,1);
         res.redirect(301, '/' + base_url + 'transport/added-transport?removed=yes');
     }else{
       res.redirect(301, '/' + base_url + 'transport/added-transport');
+    }
+
+
+  })
+
+  router.post('/' + base_url + 'transport-v2/transport-details', function(req, res) {
+    if(req.query.change){
+      req.session.data.transportList[req.query.id] = req.body
+    }else{
+        req.session.data.transportList.push(req.body);
+    }
+
+      res.redirect(301, '/' + base_url + 'transport-v2/added-transport');
+  })
+
+  router.post('/' + base_url + 'transport-v2/remove', function(req, res) {
+    if(req.body.remove_document == "yes"){
+      req.session.data.transportList.splice(req.query.id,1);
+        res.redirect(301, '/' + base_url + 'transport-v2/added-transport?removed=yes');
+    }else{
+      res.redirect(301, '/' + base_url + 'transport-v2/added-transport');
     }
 
 

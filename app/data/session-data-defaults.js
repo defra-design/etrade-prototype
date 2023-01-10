@@ -47,7 +47,7 @@ module.exports = {
   "start_from": "select-certificates-no-tabs",
   "addedEHC" : [],
   "additionalDocuments" : [],
-  "transport": [],
+  "transportList": [],
   "originalCommodityCount": 0,
   "addedCommodities" : [],
   "currentCertID" : 0,

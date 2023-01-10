@@ -552,7 +552,7 @@ module.exports = function(router) {
   });
 
   router.post('/' + base_url + 'application/attachments/uploads*', function(req, res) {
-    req.session.data.additionalDocuments.push(req.body)
+    console.log("This is was called in:" + base_url);req.session.data.additionalDocuments.push(req.body);
     // reset the session information
     res.redirect(301, '/' + base_url + 'application/attachments/added-documents');
   });

@@ -387,7 +387,7 @@ module.exports = function(router) {
       let identification = req.session.data.addedEHC[certId].addedCommodities[addedCommoditiesId].identifications[identificationsId];
       let establishment = req.session.data.establishments[establishmentIndex];
 
-      // store the establishment approval number 
+      // store the establishment approval number
       identification[establishmentType] = establishment.AppNo;
 
       // remove this establishment type from the incomplete array (if present)
@@ -585,7 +585,7 @@ module.exports = function(router) {
   });
 
   router.post('/' + base_url + 'application/attachments/uploads*', function(req, res) {
-    req.session.data.additionalDocuments.push(req.body)
+    console.log("This is was called in:" + base_url);req.session.data.additionalDocuments.push(req.body);
     // reset the session information
     res.redirect(301, '/' + base_url + 'application/attachments/added-documents');
   });
