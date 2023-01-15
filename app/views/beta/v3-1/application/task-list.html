@@ -225,9 +225,9 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
               </a>
             </span>
 
-            {% if data.transport.dispatch and data.transport.loading and data.transport['region-of-origin'] %}
+            {% if data.transport.dispatch and data.transport.loading and data.transport.country %}
               <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
-            {% elseif data.transport.dispatch or data.transport.loading or data.transport['region-of-origin'] or data.transport['sub-region-of-origin'] %}
+            {% elseif data.transport.dispatch or data.transport.loading or data.transport.country or data.transport['region-of-origin'] or data.transport['sub-region-of-origin'] %}
               <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="place-of-origin-status">In Progress</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>

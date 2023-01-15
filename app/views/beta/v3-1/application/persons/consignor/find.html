@@ -13,6 +13,20 @@ Find a consignor or exporter – {{serviceName}} - GOV.UK
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+
+            <li id="operator-search-country-error-summary" style="display:none"><a href="#operator-search-country">A country must be selected</a></li>
+            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
+
+          </ul>
+        </div>
+      </div>
+
       <h1 class="govuk-heading-xl">Find a consignor or exporter</h1>
       <p class="govuk-body">This is the organisation that will send this consignment. They must be located in Great Britain.</p>
 

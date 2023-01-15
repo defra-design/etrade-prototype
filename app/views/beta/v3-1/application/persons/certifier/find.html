@@ -13,21 +13,37 @@ Find a certifier – {{serviceName}} - GOV.UK
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+
+            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
+
+          </ul>
+        </div>
+      </div>
 
 
-        <div class="govuk-form-group">
+
+        <div class="govuk-form-group" id="govuk-form-group-organisation-name">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--xl" for="certifier-search">
               Search for a certifier
             </label>
           </h1>
           <p class="govuk-body">Search for and select the certifying officers organisation who is authorised by Defra to sign the official certificate.</p>
+          <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
+            <span class="govuk-visually-hidden">Error:</span> Organisation name cannot be blank
+          </p>
           <div id="certifier-search-hint" class="govuk-hint">
             You may use the name or postcode
           </div>
 
           <div id="certifier-search-group">
-            <input class="govuk-input govuk-input--width-20" id="certifier-search" spellcheck="false" name="certifier" type="search" placeholder="" value="{{query.q}}">
-            <button id="certifier-search-button" class="govuk-button app-button--search" type="button">Search</button>
+            <input class="govuk-input govuk-input--width-20" id="search-field-organisation-name" spellcheck="false" name="certifier" type="search" placeholder="" value="{{query.q}}">
+            <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
           </div>
 
         </div>
@@ -327,22 +343,48 @@ Find a certifier – {{serviceName}} - GOV.UK
     var timer;
     var timeTaken = 1;
 
-    $('#certifier-search-button').on("click", function() {
+    $('#organisation-search-button').on("click", function() {
 
-      $(this).text(" Searching ...")
-      $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
-      $(this).attr("disabled","disabled")
-      timer = setInterval(updateCertifierSearchButton, 1000);
+      // validate that a search string was provided
+      var hasError = false;
+      var hasOrganisationNameError = false;
+
+      if ($("#search-field-organisation-name").val().trim().length == 0) {
+        hasOrganisationNameError = true;
+        hasError = true;
+        $("#govuk-form-group-organisation-name").addClass("govuk-form-group--error");
+        $("#search-field-organisation-name-error").show();
+        $("#search-field-organisation-name-error-summary").show();
+        $("#search-field-organisation-name").addClass(".govuk-input--error");
+
+      } else {
+        $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
+        $("#search-field-organisation-name-error").hide();
+        $("#search-field-organisation-name-error-summary").hide();
+        $("#search-field-organisation-name").removeClass(".govuk-input--error");
+      }
+
+      if (hasError) {
+        $(".govuk-error-summary").show();
+      } else {
+        $(".govuk-error-summary").hide();
+        $(this).text(" Searching ...")
+        $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
+        $(this).attr("disabled","disabled")
+        timer = setInterval(updateOperatorSearchButton, 1000);
+      }
+
+
       return false;
     })
 
-    function updateCertifierSearchButton (){
+    function updateOperatorSearchButton (){
       timeTaken+=1
       if(timeTaken == 2){
         clearInterval(timer);
-        $('#certifier-search-button').text("Search");
-        $('#certifier-search-button').removeAttr("disabled");
-        var certifierSearchString = $("#certifier-search").val();
+        $('#organisation-search-button').text("Search");
+        $('#organisation-search-button').removeAttr("disabled");
+        var certifierSearchString = $("#search-field-organisation-name").val();
         searchEstablishments("certifier", certifierSearchString);
         $('#results').show();
         timeTaken = 1;
