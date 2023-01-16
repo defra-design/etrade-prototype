@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+View certificate – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .export-health-certificate {
+    border: 4px solid #005ea5;
+    background: #005ea5;
+    color: #ffffff;
+    padding: 0;
+  }
+
+  .export-health-certificate h2 {
+    color: #ffffff;
+    margin: 10px;
+  }
+
+  .export-health-certificate--body {
+    background: #ffffff;
+    color: #000000;
+    padding: 20px 10px 10px 10px;
+    font-family: GDS Transport;
+  }
+
+
+    .govuk-accordion__section-header .govuk-summary-list__row{
+      display: block;
+
+    }
+    .govuk-summary-list__actions,
+    .govuk-summary-list__key {
+      padding: 0 !important;
+      margin: 0;
+    }
+
+    .govuk-summary-list__value {
+      padding: 0;
+      margin: 0;
+    }
+
+    .govuk-summary-list__key, .govuk-summary-list__value {
+      display: block;
+      width: 100%;
+    }
+
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Export health certificates</span>
+      View certificate
+    </h1>
+
+    <p class="govuk-body">Expand the pane below to view the certificate associated with this application.</p>
+
+
+    <div class="export-health-certificate open" data-v-9c936afc="">
+      <h2 class="govuk-heading-s">Sanitary certificate (EU IMPORT - Veterinary Certificate to EU)</h2>
+      <div class="export-health-certificate--body" data-v-9c936afc="">
+
+        <div class="govuk-grid-row" data-v-9c936afc="">
+          <div class="govuk-grid-column-two-thirds" data-v-9c936afc="">
+            <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                <div class="govuk-grid-row">
+                    <div class="govuk-summary-list__row  govuk-grid-column-full">
+                      <dt class="govuk-summary-list__key">
+                        IMSOC reference
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          IMPORT.EU.GB.2022.0000683
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row govuk-grid-column-full ">
+                      <dt class="govuk-summary-list__key">
+                        Issued on
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          December 12th 2022, 3:03:23 pm
+                      </dd>
+                    </div>
+
+
+
+
+                    <div class="govuk-summary-list__row govuk-grid-column-full">
+                      <dt class="govuk-summary-list__key">
+                        Status
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          Issued (EU Import certificate is validated)
+                      </dd>
+                    </div>
+
+
+
+
+
+
+                </div>
+              </dl>
+
+
+
+          </div>
+          <div class="govuk-grid-column-one-third" data-v-9c936afc="">
+            <img alt="Certificate QR Code" src="/public/images/govuk-qr-code.png" width="159" height="159" data-v-9c936afc="">
+          </div>
+        </div>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" data-v-9c936afc="">
+        <div class="govuk-grid-row" data-v-9c936afc="">
+          <div class="govuk-grid-column-full" data-v-9c936afc="">
+            <p class="govuk-body">You may download this certificate as a PDF by selecting a langauge from the list below and clicking the "Download" button.</p>
+
+            <div class="export-health-certificate--download m-t-15" data-v-9c936afc="">
+              <strong data-v-9c936afc="" class="govuk-body">Language</strong>
+              <br data-v-9c936afc="">
+              <div class="govuk-form-group m-0" data-v-9c936afc="">
+                <label class="govuk-label hidden" for="language" data-v-9c936afc="">Language</label>
+                <div class="govuk-input__wrapper" data-v-9c936afc="">
+                  <select class="govuk-select govuk-!-width-one-half" id="language" data-v-9c936afc="">
+                    <option value="BG" data-v-9c936afc="">Bulgarian</option>
+                    <option value="HR" data-v-9c936afc="">Croatian</option>
+                    <option value="CS" data-v-9c936afc="">Czech</option>
+                    <option value="DA" data-v-9c936afc="">Danish</option>
+                    <option value="NL" data-v-9c936afc="">Dutch</option>
+                    <option value="EN" data-v-9c936afc="" selected>English</option>
+                    <option value="ET" data-v-9c936afc="">Estonian</option>
+                    <option value="FI" data-v-9c936afc="">Finnish</option>
+                    <option value="FR" data-v-9c936afc="">French</option>
+                    <option value="DE" data-v-9c936afc="">German</option>
+                    <option value="EL" data-v-9c936afc="">Greek</option>
+                    <option value="HU" data-v-9c936afc="">Hungarian</option>
+                    <option value="IT" data-v-9c936afc="">Italian</option>
+                    <option value="LV" data-v-9c936afc="">Latvian</option>
+                    <option value="LT" data-v-9c936afc="">Lithuanian</option>
+                    <option value="MT" data-v-9c936afc="">Maltese</option>
+                    <option value="PL" data-v-9c936afc="">Polish</option>
+                    <option value="PT" data-v-9c936afc="">Portuguese</option>
+                    <option value="RO" data-v-9c936afc="">Romanian</option>
+                    <option value="SK" data-v-9c936afc="">Slovak</option>
+                    <option value="SL" data-v-9c936afc="">Slovene</option>
+                    <option value="ES" data-v-9c936afc="">Spanish</option>
+                    <option value="SV" data-v-9c936afc="">Swedish</option>
+                  </select>
+
+                </div>
+              </div>
+            </div>
+
+            <button class="govuk-button">Download this certificate</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="govuk-grid-column-one-thirds">
+    <!--
+    <h3 class="govuk-heading-m">Use this data</h3>
+    <ul class="govuk-list">
+      <li><strong>Estbalishment for commodities:</strong> <br>Dovecote Park Ltd (approval number 2045)</li>
+
+    </ul>
+    -->
+  </div>
+</div>
+
+{% endblock %}

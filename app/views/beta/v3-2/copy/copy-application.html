@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {% endif %}Create a reference – E-Certification for EHC's - GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form method="get" novalidate action="create-reference">
+  <!-- Form routing is handled in app/stories/accessiblity/routes.js -->
+  <div class="govuk-grid-row" data-v-7899b5ce="" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds" data-v-7899b5ce=""><span class="govuk-caption-xl"></span>
+      <h1 class="govuk-heading-xl">Copy export health certificate {{query.reference or "GBXIBN4522"}}</h1>
+      {% if query.newVersion %}
+      <!-- // just for prototyping to trigger diffeerent journey -->
+      <input type="hidden" name="newVersion" value="yes">
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          A newer version of 6969EHC was released on 3 May 2022, you will need to re-input any commodity information
+        </strong>
+      </div>
+      {% endif %}
+
+      <p class="govuk-body" data-v-7899b5ce="">Select all sections you want to copy.</p>
+      <p class="">You will need to complete {% if query.newVersion %}'Manage commodities',{%endif%}'Accompanying documents', 'Certifier', 'Means of transport' and 'Arrival and Departure' sections manually.</p>
+      <div class="govuk-form-group" data-v-7899b5ce="">
+        <div class="govuk-checkboxes govuk-checkboxes--small" data-v-7899b5ce="">
+          <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="select-all" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="select-all" data-v-7899b5ce=""> Select
+              all </label></div>
+        </div>
+      </div>
+      <div class="govuk-form-group" data-v-7899b5ce="">
+        <fieldset class="govuk-fieldset" data-v-7899b5ce="">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-7899b5ce="">
+            <h1 class="govuk-fieldset__heading" data-v-7899b5ce=""> Description of the goods </h1>
+          </legend>
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-v-7899b5ce="">
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="organisation" type="checkbox" data-v-7899b5ce="" {% if query.newVersion %}disabled=""{% endif %}><label class="govuk-label govuk-checkboxes__label" for="organisation" data-v-7899b5ce="">
+                Manage commodities </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="organisation-2" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="organisation-2"
+                data-v-7899b5ce=""> Goods certified as </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="organisation-3" type="checkbox" disabled="" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="organisation-3"
+                data-v-7899b5ce=""> Container number/seal number </label></div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group" data-v-7899b5ce="">
+        <fieldset class="govuk-fieldset" data-v-7899b5ce="">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-7899b5ce="">
+            <h1 class="govuk-fieldset__heading" data-v-7899b5ce=""> Additional documents (optional) </h1>
+          </legend>
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-v-7899b5ce="">
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="organisation6" type="checkbox" disabled="" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="organisation6"
+                data-v-7899b5ce=""> Accompanying documents </label></div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group" data-v-7899b5ce="">
+        <fieldset class="govuk-fieldset" data-v-7899b5ce="">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-7899b5ce="">
+            <h1 class="govuk-fieldset__heading" data-v-7899b5ce=""> Persons involved </h1>
+          </legend>
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-v-7899b5ce="">
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="persons-consignor" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="persons-consignor"
+                data-v-7899b5ce=""> Consignor or Exporter </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="persons-consignee" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="persons-consignee"
+                data-v-7899b5ce=""> Consignee or Importer </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="persons-operator" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="persons-operator"
+                data-v-7899b5ce=""> Operator responsible for the consignment </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="persons-certifier" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="persons-certifier"
+                data-v-7899b5ce=""> Certifier </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="persons-certifier" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="persons-certifier"
+                data-v-7899b5ce=""> Region of certification </label></div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group" data-v-7899b5ce="">
+        <fieldset class="govuk-fieldset" data-v-7899b5ce="">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" data-v-7899b5ce="">
+            <h1 class="govuk-fieldset__heading" data-v-7899b5ce=""> Transport </h1>
+          </legend>
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-v-7899b5ce="">
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="transport-a-and-d" type="checkbox" disabled="" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="transport-a-and-d"
+                data-v-7899b5ce=""> Arrival and departure </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="transport-p-o-r" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="transport-p-o-r"
+                data-v-7899b5ce=""> Place of origin </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="transport-b-c-p" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="transport-b-c-p"
+                data-v-7899b5ce=""> Border control post </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="transport-m-o-t" type="checkbox" disabled="" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="transport-m-o-t"
+                data-v-7899b5ce=""> Means of transport </label></div>
+            <div class="govuk-checkboxes__item" data-v-7899b5ce=""><input class="govuk-checkboxes__input" id="transport-p-o-d" type="checkbox" data-v-7899b5ce=""><label class="govuk-label govuk-checkboxes__label" for="transport-p-o-d"
+                data-v-7899b5ce=""> Place of destination </label></div>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- <div class="alert-pane alert-pane--information" data-v-7899b5ce="">
+        <div class="alert-pane--heading" data-v-7899b5ce=""><span class="fas fa-info-circle" data-v-7899b5ce=""></span> Information </div> Please fill the 'Accompanying documents', 'Certifier' and 'Arrival and Departure' section manually.
+      </div> -->
+      <button class="govuk-button" data-v-7899b5ce="">Continue</button>
+    </div>
+  </div>
+
+
+</form>
+{% endblock %}
