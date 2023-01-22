@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+
+{% block content %}
+
+<style>
+  .download-a-document-image {
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin-right: 20px;
+}
+.download-a-document {
+    margin-bottom: 40px;
+}
+</style>
+
+    <div class="ehc-summary">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h1 class="govuk-heading-l">Check your answers after submitting your application</h1>
+          <p class="govuk-body"><strong>Application Reference - </strong>rh-test-application</p>
+          <h2 class="govuk-heading-m">1. Description of the goods</h2>
+          <div class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Certificate </div>
+              <div class="govuk-summary-list__value">
+                EHC8328 Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland
+
+              </div>
+              <div class="govuk-summary-list__actions"></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Commodities </div>
+              <div class="govuk-summary-list__value"><span class="certified-goods">3 records for 2 commodities</span></div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Gross weight </div>
+              <div class="govuk-summary-list__value"><span class="certified-goods">350 KG</span></div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Goods certified as </div>
+              <div class="govuk-summary-list__value"><span class="certified-goods">animal feedingstuff</span></div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Container number/seal number (optional) </div>
+              <div class="govuk-summary-list__value">
+                <div>
+                  <p><span>Container - BICU1234567</span><span class="ml-3"> Seal - </span></p>
+                  <p><span>Container - BICU1234564</span><span class="ml-3"> Seal - </span></p>
+                  <p><span>Container - BICU1234563</span><span class="ml-3"> Seal - </span></p>
+                </div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Container-Seal-Number" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Purpose of export </div>
+              <div class="govuk-summary-list__value">
+                <div>Internal market <span class="ml-1"></span></div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Purpose-Of-Export" class="govuk-link"> </a></div>
+            </div>
+          </div>
+          <h2 class="govuk-heading-m">2. Additional documents (optional)</h2>
+          <div class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Accompanying documents </div>
+              <div class="govuk-summary-list__value">
+                <div>Not completed</div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Accompanying-Documents" class="govuk-link"> </a></div>
+            </div>
+          </div>
+          <h2 class="govuk-heading-m">3. Persons involved</h2>
+          <div class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Consignor or Exporter </div>
+              <div class="govuk-summary-list__value">
+                <div>Bradford Hide Company Ltd <span class="ml-1">(Bradford, BD1)</span></div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Consignor-Or-Exporter" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Consignee or Importer </div>
+              <div class="govuk-summary-list__value">
+                <div>Moy Park Dungannon <span class="ml-1">(Dungannon, BT71)</span></div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Consignee-Or-Importer" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Certifier </div>
+              <div class="govuk-summary-list__value">
+                <div>
+                  <p>Avalon Equine Vets 14 West High Road BA12 7FE &nbsp; (Avalon Equine Vets)</p>
+                  <p>chicha 12 test aa11aa &nbsp; (chicha)</p>
+                </div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Certifier" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Region of certification </div>
+              <div class="govuk-summary-list__value">
+                <div>England</div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Region-of-certification" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Responsible for load </div>
+              <div class="govuk-summary-list__value">
+                <div>MOY PARK Ltd <span class="ml-1">(Craigavon, BT63)</span></div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Operator" class="govuk-link"> </a></div>
+            </div>
+          </div>
+          <h2 class="govuk-heading-m">4. Transport</h2>
+          <div class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Departure and arrival </div>
+              <div class="govuk-summary-list__value">
+                <div>
+                  {% if data.transport['departure-and-arrival'] == 'skipped' %}
+                  <strong class="govuk-tag govuk-tag--red">Question skipped</strong>
+                  {% else %}
+                  <p>Arrival - 18 Aug 2022 11:38</p>
+                  <p>Departure - 16 Aug 2022 11:38</p>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Arrival-And-Departure" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Place of origin </div>
+              <div class="govuk-summary-list__value">
+                <div>
+                  <p>United Kingdom (GB)</p>
+                  <p>Region - GB-1</p>
+                  <p>Dispatch - MOY PARK LTD (Sleaford, NG34)</p>
+                  <p>Loading - MOY PARK LTD (Sleaford, NG34)</p>
+                </div>
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Origin" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Entry border control post </div>
+              <div class="govuk-summary-list__value">
+                {% if data.transport['border-control-post'] == 'skipped' %}
+                <strong class="govuk-tag govuk-tag--red">Question skipped</strong>
+                {% else %}
+                <div>Belfast Port - BCC <span class="ml-1">(UNLO Code: GBBEL)</span></div>
+                {% endif %}
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Border-Control-Post" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Means of transport </div>
+              <div class="govuk-summary-list__value">
+                {% if data.transport['means-of-transport'] == 'skipped' %}
+                <strong class="govuk-tag govuk-tag--red">Question skipped</strong>
+                {% else %}
+                <div>
+                  <p>Condition- Frozen</p>
+                  <div>
+                    <p>Railway <span class="ml-1">(Identifier - 343452345)</span></p>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Means-Of-Transport" class="govuk-link"> </a></div>
+            </div>
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__key"> Place of destination </div>
+              <div class="govuk-summary-list__value"><span>Thiry Ben (Linter, 3350)</span></div>
+              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Place-Of-Destination" class="govuk-link"> </a></div>
+            </div>
+          </div>
+
+
+          <p class="download-a-document">
+          <span class="download-a-document-image"><img class="" src="/public/images/icon-file-download.png" alt="your answers in a specimen certificate"><span class="govuk-visually-hidden">File download</span></span>
+          <strong><a href="/public/images/ehc-2849ehc-3.1.pdf" target="_blank" data-qa-id="Link-PreviewCertificate" class="govuk-link">EHC{{data.ehc or "8361"}}: Preview the answers in a specimen certificate</a> (PDF, 23KB)
+            <br>(opens in a new tab)</strong>
+          </p>
+
+          <h2 class="govuk-heading-m"> Submitted to certifier </h2>
+          <p class="govuk-body"> This application was submitted to your certifier at 5:57pm on 20 January 2023.
+          <div>
+            <a href="dashboard" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+              Return to dashboard
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}
