@@ -6,6 +6,18 @@ Check your answers – GOV.UK Prototype Kit
 
 {% block content %}
 
+<style>
+  .download-a-document-image {
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin-right: 20px;
+}
+.download-a-document {
+    margin-bottom: 40px;
+}
+</style>
+
     <div class="ehc-summary" data-v-e8e27fc8="">
       <div class="govuk-grid-row" data-v-e8e27fc8="">
         <div class="govuk-grid-column-full" data-v-e8e27fc8="">
@@ -167,6 +179,14 @@ Check your answers – GOV.UK Prototype Kit
               <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Place-Of-Destination" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
             </div>
           </div>
+
+
+          <p class="download-a-document">
+          <span class="download-a-document-image"><img class="" src="/public/images/icon-file-download.png" alt="your answers in a specimen certificate"><span class="govuk-visually-hidden">File download</span></span>
+          <strong><a href="/public/images/ehc-2849ehc-3.1.pdf" target="_blank" data-qa-id="Link-PreviewCertificate" class="govuk-link">EHC{{data.ehc or "8361"}}: Preview the answers in a specimen certificate</a> (PDF, 23KB)
+            <br>(opens in a new tab)</strong>
+          </p>
+
           <h2 class="govuk-heading-m" data-v-e8e27fc8=""> Submit to certifier </h2>
           <p class="govuk-body" data-v-e8e27fc8=""> Once you've entered all the information you can, you can review your answers and submit the application to your certifier.
           <div data-v-e8e27fc8="">
