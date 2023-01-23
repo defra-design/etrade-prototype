@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      Adding commodites redesign
+      </h1>
+      <!-- <p>This is updated from the initial version. <a href="../look-up-v2">View previous version 1</a> -->
+      <!-- <h2 class="govuk-heading-m">What changed</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Initial build</li>
+        <li>Adding manage commodites, not dynamic</li>
+      </ul> -->
+      <p>This version has not been tested yet</p>
+      <form class="" method="post">
+
+
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Version
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live" name="has_multiple_certificates" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          Multiple certificates
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-2" name="has_multiple_certificates" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+          One certificate per application
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+  </div>
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Start page
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="startFrom-select-certificates-no-tabs" name="start_from" type="radio" value="export/select-certificates-no-tabs" checked>
+        <label class="govuk-label govuk-radios__label" for="startFrom-select-certificates-no-tabs">
+          Select a certificate - no tabs - only certificate search
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="startFrom-select-certificates" name="start_from" type="radio" value="export/select-certificates" >
+        <label class="govuk-label govuk-radios__label" for="startFrom-select-certificates">
+          Select a certificate - with tabs
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="startFrom-dashbaord" name="start_from" type="radio" value="dashboard" >
+        <label class="govuk-label govuk-radios__label" for="startFrom-dashbaord">
+          Dashboard
+        </label>
+      </div>
+
+    </div>
+
+  </fieldset>
+
+</div>
+<div class="govuk-form-group">
+<fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+    <h1 class="govuk-fieldset__heading">
+      How the added commodities are displayed
+    </h1>
+  </legend>
+  <div class="govuk-radios" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="listtype3" name="listURL" type="radio" value="added-commodities-list" checked>
+      <label class="govuk-label govuk-radios__label" for="listtype3">
+        Summarised list
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="listtype1" name="listURL" type="radio" value="added-commodities" >
+      <label class="govuk-label govuk-radios__label" for="listtype1">
+        Summary card
+      </label>
+    </div>
+
+
+
+  </div>
+
+</fieldset>
+
+</div>
+  <button type="submit" class="govuk-button" name="button">Continue</button>
+    </form>
+      <!-- <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <h2 class="govuk-heading-m">Pages</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="dashboard">Dashboard</a></li>
+      </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="application/start">Start new application</a></li>
+        <li><a href="application/refernce">Reference number</a></li>
+        <li><a href="application/select-commodities">Select certificate</a></li>
+        <li><a href="application/manage-commodities">Manage certificate</a></li>
+        <li><a href="application/task-list">Task list</a></li>
+      </ul> -->
+  </div>
+  <!-- <div class="govuk-grid-column-one-thirds">
+    <h3 class="govuk-heading-s">How to use this prototype</h3>
+
+  </div> -->
+</div>
+
+{% endblock %}

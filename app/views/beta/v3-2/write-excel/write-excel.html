@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Download data - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
+    <h1 class="govuk-heading-xl">write-excel-file Proof of Concept</h1>
+    <!---->
+    <!---->
+    <!---->
+    <p class="govuk-body">Testing to see if we can generate:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>a vanilla Excel file with static data</li>
+      <li>a vanilla Excel file with dynamic data (JSON from a spreadsheet)</li>
+      <li>a styled Excel file</li>
+      <li>an Excel file that matches our styling</li>
+      <li>an Excel file that matches our styling and has drop-down menus</li>
+    </ul>
+
+    <h2>addedEHC[0]</h2>
+    <h3>{{ data.addedEHC[0].number }}</h3>
+    <h4>{{ data.addedEHC[0].title }}</h4>
+    <h4>Schema</h4>
+    {{ data.addedEHC[0].schema | dump }}
+    <h4>Data</h4>
+    {{ data.addedEHC[0].addedCommodities | dump }}
+
+    <form class="" action="" method="post">
+      <div class="govuk-form-group" method="submit">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            What type of file do you want to generate?
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="which-service" name="which_service" type="radio" value="etrade~./application/start">
+                <label class="govuk-label govuk-radios__label" for="which-service">
+                  Yes
+                </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="which-service-2" name="which_service" type="radio" value="echo~https://exports-defra.herokuapp.com/beta/v8/core/dashboard">
+              <label class="govuk-label govuk-radios__label" for="which-service-2">
+                No, I want to use the previous EHC application service
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" name="button" class="govuk-button">Continue</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
