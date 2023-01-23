@@ -46,6 +46,39 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'application/export/select-commodities');
 
   })
+  //used setting the EHC when skipping the certificate selection page
+  router.get('/' + base_url + 'application/export/set-certificate', function(req, res) {
+    let cn = req.query.certificate || 0;
+    // find certtificate based on EHC number
+    let id = arr.find(o => o.number === cn );
+    let cert = id;
+
+    // check if its already selected
+
+    if (!isAlreadyAdded(req.session.data.addedEHC, cert.number)) {
+      // create a new array to hold the commodity data
+      cert.addedCommodities = []
+      // Add the cert to the array
+      req.session.data.addedEHC.push(cert);
+      //set the id of the current Certificate
+      req.session.data.currentCertID = req.session.data.addedEHC.length - 1;
+
+      req.session.data.currentCommodityID = id;
+
+    }
+
+    // temporarily removing CDU journey
+    /*
+    if (req.session.data.hasSeenCduInterstitial) {
+      res.redirect(301, '/' + base_url + 'application/export/how-to-add');
+    } else {
+      req.session.data.hasSeenCduInterstitial = true;
+      res.redirect(301, '/' + base_url + 'application/export/cdu-interstitial');
+    }
+    */
+    res.redirect(301, '/' + base_url + 'application/export/select-commodities');
+
+  })
 
   router.post('/' + base_url + 'application/export/cdu-interstitial', function(req, res) {
     res.redirect(301, '/' + base_url + 'application/export/how-to-add');
@@ -58,6 +91,7 @@ module.exports = function(router) {
   router.post('/' + base_url + 'application/export/select-commodities', function(req, res) {
     // set the current commodity ID
     console.log("in router.post for select-commodities");
+    console.log(req.session.data.currentCommodityID)
     req.session.data.currentCommodityID = req.body.commodityCode || 0
     req.session.data.commodityListID = req.session.data.currentCommodityID
     req.session.data.change = "";

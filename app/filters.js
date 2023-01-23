@@ -17,29 +17,55 @@ module.exports = function(env) {
   //   }
   //   return n;
   // }
-  filters.hasSchema = function(t,s) {
+  filters.showHide = function(obj, text) {
+    var query = text.split();
+    for (key in obj) {
+      for (var v = 0; v < query.length; v++) {
+        if (obj[key].indexOf(query[v]) != -1) {
+          return "show";
+        }
+      }
+    }
+    return "hide";
+  }
+  filters.increase = function(num) {
+        return num+=1;
+
+  }
+  filters.removeText = function(s,t) {
+        return s.replace(t,'')
+
+  }
+  filters.getCode = function(text) {
+
+    var regex = /[\d]{4}/g
+    var newtext = text.match(regex)
+    return newtext
+  }
+
+  filters.hasSchema = function(t, s) {
     var show = false
     s.forEach(item => {
-        if(item.id == t){
-          show = true
-        }
+      if (item.id == t) {
+        show = true
+      }
     })
     return show
   }
 
   filters.getCommodityCode = function(s) {
     var n = s
-    var marker = s.indexOf("-")-1;
-    if(marker!=-1){
+    var marker = s.indexOf("-") - 1;
+    if (marker != -1) {
       var n = s.slice(0, marker);
     }
     return n;
   }
 
-  filters.truncate = function(s,c) {
+  filters.truncate = function(s, c) {
     console.log(s)
-    if(s.length > c){
-      return  s.slice(0, c)+"..."
+    if (s.length > c) {
+      return s.slice(0, c) + "..."
     }
     return s;
   }
@@ -58,21 +84,21 @@ module.exports = function(env) {
     if (i == "s") {
       return str + "'";
     } else if (i == "y") {
-      let ns =  str.slice(0, -1)
+      let ns = str.slice(0, -1)
       return ns + "ies";
     } else {
       return str + "'s";
     }
   }
 
-  filters.plural = function(singluar,plural,count) {
+  filters.plural = function(singluar, plural, count) {
 
     // thought it could be like possesive filter, but there are excepetions to the rules so just made it simple switch
     console.log(count)
-    if (count == 1){
+    if (count == 1) {
       // return original value
       return singluar
-    }else{
+    } else {
       // return plural value
       return plural
     }
@@ -109,25 +135,33 @@ module.exports = function(env) {
     var months = ["", "January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
     ];
-    var day = excelDateString.substring(8,10);
-    var monthIndex = parseInt(excelDateString.substring(5,7));
+    var day = excelDateString.substring(8, 10);
+    var monthIndex = parseInt(excelDateString.substring(5, 7));
     var month = months[monthIndex];
-    var year = excelDateString.substring(0,4);
+    var year = excelDateString.substring(0, 4);
     // return "16/08/2022";
     return day + " " + month + " " + year;
   }
 
   filters.getFileName = function(txt) {
     return txt.substr(txt.lastIndexOf('.') + 1);
-
   }
-
   filters.formatCode = function(text) {
     return JSON.stringify(text, undefined, 2);
   }
 
   filters.removeWhiteSpace = function(text) {
     return text.replace(/\s/g, '')
+  }
+
+  filters.hasDuplicateEHC = function(t,arr) {
+      result = false
+      for (var i = 0; i < arr.length; i++) {
+        if(t == arr[i].EHC ){
+          result = true
+        }
+      }
+      return result
   }
 
   filters.addToListComplete = function(list, data, completePrefix) {

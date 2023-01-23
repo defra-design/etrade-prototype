@@ -45,16 +45,15 @@ router.get('/clear-data', function(req, res) {
   req.session.data = {}
   return res.redirect(301, req.query.url);
 })
+
 // Adding "query" to every page. This is a bit of a hack may look at different inplementation.
 // in nunjkucks you can call {{query[key]}}
+
 router.get('*', function(req, res) {
   let path = req.params[0]
   let pathEnd = path.slice(-1)
   let newPath = path.substring(1)
-  // console.log("EHC data --------")
-  // console.log(req.session.data.addedEHC)
-  // console.log("")
-  // console.log(req.session.data.addedEHC[0].addedCommodities)
+
   if (path == "/") {
     // top home page
     path = "index"

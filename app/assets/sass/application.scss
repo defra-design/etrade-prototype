@@ -17,6 +17,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/autocomplete";
 
 @import "components/certificate";
+@import "components/defra-filter";
 @import "components/filter-panel";
 @import "components/find-establishment";
 @import "components/font-awesome";
@@ -27,6 +28,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/operator-pane";
 @import "components/pagination";
 @import "components/radio-pane";
+@import "components/responsive-tables";
 @import "components/search";
 @import "components/summary-card";
 @import "components/summary-list-accordion";

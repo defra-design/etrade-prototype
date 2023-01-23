@@ -1,7 +1,6 @@
 module.exports = function(router) {
   // Load helper functions
 
-
   // CHANGE VERSION each time you create a new version
 
   const base_url = "stories/"
@@ -199,5 +198,5 @@ module.exports = function(router) {
     }
 
   })
-  
+
 }
