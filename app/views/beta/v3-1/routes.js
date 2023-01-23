@@ -48,12 +48,20 @@ module.exports = function(router) {
   })
   //used setting the EHC when skipping the certificate selection page
   router.get('/' + base_url + 'application/export/set-certificate', function(req, res) {
-    let cn = req.query.certificate || 0;
+    let cn = "EHC"+ (req.query.ehc || "8530");
+    var id = 0
+    //set a default certificate
+    var cert = req.session.data.certificates[0]
     // find certtificate based on EHC number
-    let id = arr.find(o => o.number === cn );
-    let cert = id;
+    let obj = req.session.data.certificates.find((o, i) => {
+      if(o.number == cn ){
+        cert = o
+        id=i
+      }
 
-    // check if its already selected
+    });
+
+
 
     if (!isAlreadyAdded(req.session.data.addedEHC, cert.number)) {
       // create a new array to hold the commodity data
@@ -64,7 +72,7 @@ module.exports = function(router) {
       req.session.data.currentCertID = req.session.data.addedEHC.length - 1;
 
       req.session.data.currentCommodityID = id;
-
+      req.session.data.certificate = id
     }
 
     // temporarily removing CDU journey

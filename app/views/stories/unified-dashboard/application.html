@@ -58,7 +58,7 @@ Copy – GOV.UK Prototype Kit
           EHC
         </dt>
         <dd class="govuk-summary-list__value">
-          {{app.EHC}}
+          {{app.EHC}}EHC
           <br>
           {{app.cert_info}}
         </dd>
@@ -85,7 +85,7 @@ Copy – GOV.UK Prototype Kit
           Certifier
         </dt>
         <dd class="govuk-summary-list__value">
-          {{app.certifier}}
+          {{app.certifier or "VetsforPets Ltds"}}
         </dd>
       </div>
 
@@ -108,7 +108,7 @@ Copy – GOV.UK Prototype Kit
 
       <li><a class="govuk-link govuk-link--no-visited-state" href="certificate/check-your-progress?certificate=ehc2849">Edit and submit this application</a></li>
 
-      <li><a class="govuk-link govuk-link--no-visited-state" href="clone?id=4&amp;is_group=">Clone as new application</a></li>
+      <li><a class="govuk-link govuk-link--no-visited-state" href="clone?id=4&amp;is_group=">Copy as new application</a></li>
 
       <li><a class="govuk-link govuk-link--no-visited-state" href="delete">Delete this application</a></li>
 

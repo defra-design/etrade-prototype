@@ -102,14 +102,16 @@
 	"name": "Ann Cooper",
 	"exporter": "GLUKGLUK LTD",
 	"importer": "KAGE LTD",
-	"destination": "UAE",
-	"EHC": "2849",
-	"cert_info": "Permanently export horses to the United Arab Emirates (UAE)",
+	"destination": "Northen Ireland",
+	"EHC": "8305",
+	"cert_info": "Processed pet food other than canned pet food to, or transit through, the European Union and Northern Ireland",
 	"certificate": "19/11/350505",
-	"status": "processing",
-	"tag": "blue",
+	"status": "Successful sync with TRACES",
+	"tag": "green",
 	"submitDate": "30 Apr 2020",
-	"reference": "PO 24477 UAE"
+	"reference": "PO 24477 PET",
+	"inEU": "yes",
+	"type":"digital"
 }, {
 	"_id": "5ebdac9116e395b03467b8fb",
 	"index": 31,

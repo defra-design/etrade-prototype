@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Copy – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent%}
+<a href="application?id={{query.id}}" class="govuk-back-link">Back</a>
+{% endblock%}
+
+{% block content %}
+{% set app = data.applications[query.id]%}
+<!-- get a list of certs -->
+<div class="govuk-grid-row" data-v-7899b5ce="" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-tag">Digital certificate</span>
+      <h1 class="govuk-heading-xl">Copy application</h1>
+      <dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Serial No.
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{app.applicationID}}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Reference
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{app.reference}}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Cerificate
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <p class="govuk-body"><span title="Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland">{{app.EHC}}EHC</span> <br>12 records for 2 commodities<br> Gross weight of 321 kilograms.</p>
+
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Consignee or Importer
+    </dt>
+    <dd class="govuk-summary-list__value">
+
+        Moy Park Dungannon (Dungannon, BT71)
+
+        <br>{{app.destination}}
+    </dd>
+  </div>
+</dl>
+
+
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+            <h1 class="govuk-fieldset__heading">
+              Do you want to copy everything in the original application?
+            </h1>
+          </legend>
+          <p>Copy everything in the original application and make any changes before submitting.</p>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Information that you cannot copy
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p>You cannot copy the following sections:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Container number/seal number</li>
+                <li>Accompanying document</li>
+                <li>Means of transport</li>
+                <li>Arrival and Departure</li>
+              </ul>
+
+              <p>You will need to enter information for these sections manually.</p>
+            </div>
+          </details>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="WillCopyCommodities" name="copyall" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="WillCopyCommodities">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="WillCopyCommodities-2" name="copyall" type="radio" value="no~select-copy-info" data-aria-controls="conditional-contact-2">
+              <label class="govuk-label govuk-radios__label" for="WillCopyCommodities-2">
+                No, I want to select which sections to copy
+              </label>
+            </div>
+          </div>
+          <input type="hidden" name="showNotification" value="yes">
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-v-7899b5ce="">Continue</button>
+    </div>
+  </div>
+{% endblock %}

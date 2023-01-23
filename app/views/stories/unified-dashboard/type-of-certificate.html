@@ -33,7 +33,7 @@ You can use either service to apply for an EHC to Northern Ireland or the EU.
       </legend>
       <div class="govuk-radios" data-module="govuk-radios">
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+          <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~/beta/v3-1/application/export/set-certificate?ehc={{data.selectedCertificate or '8350' }}">
           <label class="govuk-label govuk-radios__label" for="where-do-you-live">
             Digital EHC (new)
           </label>
@@ -42,7 +42,7 @@ You can use either service to apply for an EHC to Northern Ireland or the EU.
         </div>
         </div>
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+          <input class="govuk-radios__input" id="where-do-you-live-2" name="typeOfCertificate" type="radio" value="paper~https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc{{data.selectedCertificate or '8350' }}">
           <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
              Paper EHC
           </label>

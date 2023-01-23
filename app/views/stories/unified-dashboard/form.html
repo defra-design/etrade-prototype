@@ -489,10 +489,15 @@ GOV.UK Prototype Kit
   {% set n = cert.number | removeText("EHC") %}
   {% set eehcCertificates = (eehcCertificates.push(n), eehcCertificates) %}
   {% endfor %}
-{% set forwardURL = 'https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc'+query.cert_code %}
-{% if query.code in eehcCertificates %}
-{% set forwardURL = '/beta/v3-1/set-certificate?url=application/create-reference&cert='+query.code %}
-{% endif %}
+
+  {% set forwardURL = 'https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc'+query.cert_code %}
+  {% if query.cert_code in eehcCertificates %}
+  {% if data.firstTime == "no" %}
+    {% set forwardURL = '/stories/unified-dashboard/digital-or-paper?selectedCertificate='+query.cert_code%}
+  {% else %}
+    {% set forwardURL = '/stories/unified-dashboard/type-of-certificate?selectedCertificate='+query.cert_code %}
+    {% endif %}
+  {% endif %}
 
 <!-- Not set up yet, but will need to set the next page based on existing and new users -->
 {% set next = '/beta/verify/gov-sign-in?loginReturnURL='+forwardURL%}
