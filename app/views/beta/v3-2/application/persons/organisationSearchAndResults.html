@@ -97,6 +97,18 @@
         {% for activity in operator.All_Activities%}{% if loop.index != 1 %}, {% endif %}{{activity}}{% endfor %}
       </div>
       {% endif %}
+
+      {% if showActivites %}
+      <div id="establishmentIndex{{loop.index0 }}-hint" class="govuk-hint govuk-radios__hint">
+        {% if operator.All_Activities.length == 1 %}
+        Activity:
+        {% else %}
+        Activities:
+        {% endif %}
+        {% for activity in operator.All_Activities%}{% if loop.index != 1 %}, {% endif %}{{activity}}{% endfor %}
+      </div>
+      {% endif %}
+
     </div>
     {% endfor %}
   </div>

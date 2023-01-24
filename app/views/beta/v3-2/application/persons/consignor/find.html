@@ -34,6 +34,7 @@ Find a consignor or exporter – {{serviceName}} - GOV.UK
       {% block countryOfOrigin %}{% include "../../find/_country-of-origin-select.html" %}{% endblock %}
 
       {% set includeApprovalNumberSearch = false %}
+      {% set showActivites = true %}
       {% set orgSearchLabel = "Consignor or exporter name" %}
       {% block organisationSearch %}{% include "../organisationSearchAndResults.html" %}{% endblock %}
 
