@@ -72,7 +72,7 @@
 	"tag": "blue",
 	"submitDate": "15 May 2020",
 	"inEU": "no",
-	"type": "Crown gold paper",
+	"type": "Crown gold",
 	"reference": "PO 69166 AUS"
 
 }, {
@@ -111,7 +111,7 @@
 	"submitDate": "30 Apr 2020",
 	"reference": "PO 24477 PET",
 	"inEU": "yes",
-	"type":"digital"
+	"type":"Digital"
 }, {
 	"_id": "5ebdac9116e395b03467b8fb",
 	"index": 31,
