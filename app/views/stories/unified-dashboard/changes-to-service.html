@@ -1,0 +1,44 @@
+{% set serviceName = "Apply for an export health certificate"%}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Changes to the service - Apply for an Export health certificate - GOVUK
+{% endblock %}
+
+{% block beforeContent%}
+{% block navigation %}{% include './_navigation.html' %}{% endblock %}
+<a href="recent-certificates" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+<!-- get a list of certs -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Changes to the way you can apply for certificates to the EU</h1>
+
+      <p class="govuk-body" lang="en">
+        To make sure all export data is consistent with the EU’s trade and control expert system (TRACES), we’ve made some changes to how you apply for an export health certificate (EHC) to the EU and Northern Ireland.
+      </p>
+      <p>You will be able to create digital certificates for the EU and Northern Ireland. If you apply for a digital EHC, your:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>certifiers and importers will no longer need to use paper copies of EHCs</li>
+        <li>commodity data will be consistent with border control post requirements</li>
+      </ul>
+      <p>To learn more, you can read about the changes to <a href="#">how you apply for an EHC.</a></p>
+      <p>
+You can use either service to apply for an EHC to Northern Ireland or the EU.
+</p>
+      <form method="post" novalidate="" action="https://defra-ehco-prototype.herokuapp.com/beta/v8/core/dashboard">
+
+        <input type="hidden" name="firstTime" value="no">
+        <button class="govuk-button" data-module="govuk-button">
+          Confirm and continue
+        </button>
+      </form>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}

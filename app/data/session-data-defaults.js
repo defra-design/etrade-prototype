@@ -29,6 +29,7 @@ var accounts = require('./accounts.json')
 var accounts_long = require('./accounts-long-list.json')
 var certifiers = require('./certifiers.json')
 var applications = require('./applications.json')
+var applicationsPaper = require('./applications-paper.json')
 var forms = require('./forms.json')
 module.exports = {
   "account": "Isosure Trading Ltd",
@@ -40,6 +41,7 @@ module.exports = {
   "establishments" : establishments,
   "certifiers" : certifiers,
   "applications": applications,
+  "applicationsPaper": applicationsPaper,
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,

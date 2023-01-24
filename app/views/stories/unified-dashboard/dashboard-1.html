@@ -170,14 +170,14 @@ Your applications - EEHC - GOVUK
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">Your applications</h1>
-      <a class="govuk-button" href="recent-certificates" style="display: inline-block;">Start a new application</a>
+      <a class="govuk-button" href="recent-certificates?isSignedIn=yes" style="display: inline-block;">Start a new application</a>
     </div>
   </div>
 
   {% block filterBar %}{% include "./_filter-bar.html" %}{% endblock %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      {% block filter %}{% include "./_filter-content-block.html" %}{% endblock %}
+      {% block filter %}{% include "./_filter-content-block-2.html" %}{% endblock %}
     </div>
     <div class="govuk-grid-column-full">
       <div class="filter-tag--wrapper govuk-!-margin-bottom-6" data-module="track-click">
@@ -210,6 +210,12 @@ Your applications - EEHC - GOVUK
               </tr>
             </thead>
             <tbody>
+
+              {% set list =  data.applications %}
+              {% if data.listType == "paper" %}
+                {% set list =  data.applicationsPaper %}
+              {% endif %}
+
               {% for app in data.applications %}
               {% set link = "https://defra-ehco-prototype.herokuapp.com/beta/v8/core/application?id="+(loop.index-1) %}
               {% if app.type == 'Digital'%}
