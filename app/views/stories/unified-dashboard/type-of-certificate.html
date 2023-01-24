@@ -1,12 +1,15 @@
+{% set serviceName = "Apply for an export health certificate"%}
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Copy – GOV.UK Prototype Kit
+Changes to the service - Apply for an Export health certificate - GOVUK
 {% endblock %}
 
 {% block beforeContent%}
+{% block navigation %}{% include './_navigation.html' %}{% endblock %}
 <a href="recent-certificates" class="govuk-back-link">Back</a>
-{% endblock%}
+{% endblock %}
+
 {% block content %}
 <!-- get a list of certs -->
 <div class="govuk-grid-row">

@@ -1,12 +1,14 @@
+{% set serviceName = "Apply for an export health certificate"%}
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Copy – GOV.UK Prototype Kit
+Copy an application- Apply for an Export health certificate - GOVUK
 {% endblock %}
 
 {% block beforeContent%}
-<a href="application?id={{query.id}}" class="govuk-back-link">Back</a>
-{% endblock%}
+{% block navigation %}{% include './_navigation.html' %}{% endblock %}
+<a href="recent-certificates" class="govuk-back-link">Back</a>
+{% endblock %}
 
 {% block content %}
 {% set app = data.applications[query.id]%}
