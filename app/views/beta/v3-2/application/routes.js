@@ -19,7 +19,44 @@ module.exports = function(router) {
     const establishmentIndex = req.body.establishmentIndex;
 
     req.session.data.person['consignor'] = establishmentIndex;
-    res.redirect(301, '/' + base_url + 'persons/consignor-or-exporter');
+
+    // check if the establishment has multiple activities
+    if (req.session.data.establishments[establishmentIndex].All_Activities.length == 1) {
+      req.session.data.person['consignorActivity'] = 0;
+      res.redirect(301, '/' + base_url + 'persons/consignor/default');
+    } else {
+      res.redirect(301, '/' + base_url + 'persons/consignor/activity?establishmentIndex=' + establishmentIndex);
+    }
+
+
+  })
+
+  router.post('/' + base_url + "persons/consignor/default", function(req, res) {
+    console.log("In consignor/default.html");
+
+    const defaultConsignor = req.body['default-consignor'];
+
+    if (defaultConsignor) {
+      res.redirect(301, '/' + base_url + 'persons/consignor-or-exporter');
+    } else {
+      res.redirect(301, '/' + base_url + 'persons/consignor/default?hasError=true');
+    }
+
+  })
+
+  router.post('/' + base_url + "persons/consignor/activity", function(req, res) {
+    console.log("In consignor/activity.html");
+
+    const consignorActivity = req.body.activityIndex;
+    const establishmentIndex = req.body.establishmentIndex;
+
+    if (consignorActivity) {
+      req.session.data.person['consignorActivity'] = consignorActivity;
+      res.redirect(301, '/' + base_url + 'persons/consignor/default');
+    } else {
+      res.redirect(301, '/' + base_url + 'persons/consignor/activity?hasError=true&establishmentIndex=' + establishmentIndex);
+    }
+
   })
 
   router.post('/' + base_url + "persons/certifier/find", function(req, res) {

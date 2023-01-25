@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Default consignor – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form id="search" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" {% if query.hasError %}{%else%} style="display:none"{%endif%}>
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+
+            <li id="operator-search-country-error-summary"><a href="#question">Select whether you'd like to save this as a default activity</a></li>
+
+          </ul>
+        </div>
+      </div>
+
+
+
+
+      <form method="post" novalidate>
+          <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
+            <fieldset class="govuk-fieldset">
+              <legend id="question" class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading govuk-heading-xl">
+                  Save this as your default consignor and activity?
+                </h1>
+
+              </legend>
+              <p class="govuk-body">Saving this as the default organisation and activity for future applications.</p>
+              {% if query.hasError %}
+              <p id="where-do-you-live-error" class="govuk-error-message"><span class="govuk-visually-hidden">Error:</span> Select whether you'd like to save this as a default activity</p>
+              {% endif %}
+              <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="default-consignor" name="default-consignor" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="default-consignor">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="default-consignor-2" name="default-consignor" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="default-consignor-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+
+    </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
