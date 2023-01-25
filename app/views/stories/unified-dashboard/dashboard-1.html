@@ -11,6 +11,7 @@ Your applications - EEHC - GOVUK
 {% block content %}
 
 {% set list =  data["applications_"+data.unifiedTestinigUser] %}
+
 {% if data.listType == "both" %}
   {% set list =  data.applications %}
 {% endif %}

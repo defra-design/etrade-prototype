@@ -91,8 +91,34 @@
                   Commodity list to JSON
                 </a>
               </li>
+              <li class="govuk-footer__inline-list-item">
+
+              </li>
 
           </ul>
+          <form id="updateUserForm"  method="post">
+            <div class="govuk-form-group">
+        <label class="govuk-label" for="sort">
+          User
+        </label>
+        <select class="govuk-select" id="selectUser" name="unifiedTestinigUser">
+          <option value="paper" {% if data.unifiedTestinigUser == "paper" %}selected{% endif %}>General</option>
+          <option value="tiptree" {% if data.unifiedTestinigUser == "tiptree" %}selected{% endif %}>Tiptree Logistics</option>
+          <option value="dynamite" {% if data.unifiedTestinigUser == "dynamite" %}selected{% endif %}>Dynamite baits</option>
+          <option value="both" {% if data.unifiedTestinigUser == "both" or data.listType == "both" %}selected{% endif %}>With both digital and paper</option>
+        </select>
+        <input type="hidden"  id="listType" name="listType" value="{{data.unifiedTestinigUser}}">
+      </div>
+          </form>
+          <script>
+            window.addEventListener('load', function() {
+              $('#selectUser').change(function(){
+                var data= $(this).val();
+                $('#listType').val(data);;
+                $('#updateUserForm').submit()
+              });
+            })
+          </script>
 <!--
       <h2 class="govuk-heading-s">Populated EHC templates</h2>
 

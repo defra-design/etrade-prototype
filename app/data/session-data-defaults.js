@@ -31,6 +31,8 @@ var certifiers = require('./certifiers.json')
 var applications = require('./applications.json')
 var applications_paper = require('./applications-paper.json')
 var applications_tiptree = require('./applications-tiptree.json')
+var applications_dynamite = require('./applications-dynamite.json')
+
 var forms = require('./forms.json')
 module.exports = {
   "account": "Isosure Trading Ltd",
@@ -44,6 +46,8 @@ module.exports = {
   "applications": applications,
   "applications_paper": applications_paper,
   "applications_tiptree": applications_tiptree,
+  "applications_dynamite": applications_dynamite,
+  "unifiedTestinigUser": "dynamite",
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,
@@ -56,7 +60,6 @@ module.exports = {
   "additionalDocuments" : [],
   "transportList": [],
   "originalCommodityCount": 0,
-  "unifiedTestinigUser": "tiptree",
   "addedCommodities" : [],
   "currentCertID" : 0,
   "currentCommodityID": 0,

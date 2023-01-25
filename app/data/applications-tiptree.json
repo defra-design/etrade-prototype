@@ -71,7 +71,7 @@
 	"certificate": "19/2/194689",
 	"status": "processing",
 	"tag": "blue",
-	"submitDate": "16 January 2023",
+	"submitDate": "16 Jan 2023",
 	"reference": "IT 36790 735",
 	"isEU": "yes",
 	"type":"White paper"
@@ -90,7 +90,7 @@
 	"certificate": "19/11/350532",
 	"status": "dispatched",
 	"tag": "turquoise",
-	"submitDate": "8 January 2023",
+	"submitDate": "8 Jan 2023",
 	"reference": "SP 24477 23",
 	"isEU": "yes",
 	"type":"White paper"
@@ -109,7 +109,7 @@
 	"certificate": "19/8/495381",
 	"status": "dispatched",
 	"tag": "turquoise",
-	"submitDate": "1 January 2023",
+	"submitDate": "1 Jan 2023",
 	"reference": "GR 23905 32",
 	"isEU": "yes",
 	"type":"White paper"
@@ -279,7 +279,7 @@
     "certificate": "19/11/588624",
     "status": "completed",
     "tag": "green",
-    "submitDate": "2016-07-26",
+    "submitDate": "2 Feb 2020",
     "reference": "FR 18891 121",
 		"isEU": "yes",
 		"type": "White paper"
@@ -299,7 +299,7 @@
     "certificate": "20/5/661100",
     "status": "completed",
     "tag": "green",
-    "submitDate": "2020-01-21",
+    "submitDate": "31 Jan 2020",
     "reference": "XI 74394 322",
 		"isEU": "yes",
 		"type": "White paper"
@@ -319,7 +319,7 @@
     "certificate": "20/3/272867",
     "status": "completed",
     "tag": "green",
-    "submitDate": "2018-03-22",
+    "submitDate": "3 Jan 2020",
     "reference": "SP 38224 554",
 		"isEU": "yes",
 		"type": "White paper"
@@ -339,7 +339,7 @@
     "certificate": "19/6/377237",
     "status": "completed",
     "tag": "green",
-    "submitDate": "2014-09-21",
+    "submitDate": "14 Dec 2019",
     "reference": "FR 38774 345",
 		"isEU": "yes",
 		"type": "White paper"
