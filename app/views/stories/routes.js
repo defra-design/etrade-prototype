@@ -172,7 +172,7 @@ module.exports = function(router) {
 
   router.post('/' + base_url + 'unified-dashboard/export-destination', function(req, res) {
 
-    if(req.body.country == "France" || req.body.country == "Germany" || req.body.country == "Ireland" || req.body.country == "Northern Ireland"){
+    if(req.body.country == "France" || req.body.country == "Denmark" || req.body.country == "Germany" || req.body.country == "Ireland" || req.body.country == "Northern Ireland"){
       res.redirect(301, '/' + base_url + 'unified-dashboard/select-certificate');
     }
     res.redirect(301, '/' + base_url + 'unified-dashboard/form-finder?destination_country='+req.body.country);
