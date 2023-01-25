@@ -33,23 +33,23 @@ You can use either service to apply for an EHC to Northern Ireland or the EU.
         <div class="govuk-form-group">
     <fieldset class="govuk-fieldset">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      What EHC format do you want to apply for?
+      Do you want to try creating a new digital certificate for this EHC?
       </legend>
       <div class="govuk-radios" data-module="govuk-radios">
         <div class="govuk-radios__item">
           <!-- <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~/beta/v3-1/application/export/set-certificate?ehc={{data.selectedCertificate or '8350' }}"> -->
-          <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~./start">
+          <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~./start?id={{query.id}}">
           <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-            Digital EHC (new)
+            Yes
           </label>
           <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
             You can download a QR code to scan at the border post.
         </div>
         </div>
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="where-do-you-live-2" name="typeOfCertificate" type="radio" value="paper~https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc{{data.selectedCertificate or '8350' }}">
+          <input class="govuk-radios__input" id="where-do-you-live-2" name="typeOfCertificate" type="radio" value="paper~https://defra-ehco-prototype.herokuapp.com/beta/v8/core/clone?id={{query.id or '8350' }}">
           <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-             Paper EHC
+             No, continue to copy this paper certificate
           </label>
           <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
             You will need to print out a copy to accompnay your shipment.

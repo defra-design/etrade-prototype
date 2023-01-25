@@ -18,29 +18,12 @@ Copy – GOV.UK Prototype Kit
     <fieldset class="govuk-fieldset">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
         <h1 class="govuk-fieldset__heading">
-          Is this export for the EU or Northern Ireland?
+          What country are you exporting to?
       </h1>
 
       </legend>
 
-      <div class="govuk-radios" data-module="govuk-radios">
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="typeOfCertificate" name="isEUCertificate" type="radio" value="yes~{% if data.firstTime != 'no' %}type-of-certificate{% else %}digital-or-paper{% endif %}">
-          <label class="govuk-label govuk-radios__label" for="typeOfCertificate">
-          Yes
-          </label>
-
-        </div>
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="typeOfCertificate-2" name="isEUCertificate" type="radio" value="no~./form-finder" data-aria-contols="conditional-certificates">
-          <label class="govuk-label govuk-radios__label" for="typeOfCertificate-2">
-             No
-          </label>
-        </div>
-        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-certificates">
-          <p class="govuk-body">You will be taken to form finder. Some certificates are not currently available to apply for online</p>
-        </div>
-      </div>
+      {% block countrySelect %}{% include './_country-of-origin.html'%}{% endblock%}
     </fieldset>
   </div>
         <button class="govuk-button" data-module="govuk-button">

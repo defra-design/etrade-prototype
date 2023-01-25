@@ -10,6 +10,10 @@ Your applications - EEHC - GOVUK
 {% endblock %}
 {% block content %}
 
+{% set list =  data["applications_"+data.unifiedTestinigUser] %}
+{% if data.listType == "both" %}
+  {% set list =  data.applications %}
+{% endif %}
   <style>
     main {
       padding-top: 0px !important;
@@ -211,15 +215,19 @@ Your applications - EEHC - GOVUK
             </thead>
             <tbody>
 
-              {% set list =  data.applications %}
-              {% if data.listType == "paper" %}
-                {% set list =  data.applicationsPaper %}
-              {% endif %}
 
-              {% for app in data.applications %}
+
+              {% for app in list %}
+
               {% set link = "https://defra-ehco-prototype.herokuapp.com/beta/v8/core/application?id="+(loop.index-1) %}
+              {% set copyLink = "https://defra-ehco-prototype.herokuapp.com/beta/v8/core/clone?id="+(loop.index-1) %}
               {% if app.type == 'Digital'%}
               {% set link = "application?id="+(loop.index-1) %}
+              {% set copyLink = "copy-application?id="+(loop.index-1) %}
+              {% else %}
+              {% if app.isEU == "yes" %}
+              {% set copyLink = "changes-to-service-copy?id="+(loop.index-1) %}
+              {% endif %}
               {% endif %}
               <tr class="govuk-table__row result">
                 <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
@@ -257,7 +265,7 @@ Your applications - EEHC - GOVUK
                   </div>
                 </td>
                 <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
-                  <a href="copy-application?id={{loop.index-1}}" class="govuk-link govuk-link--no-visited-state">Copy</a>
+                  <a href="{{copyLink}}" class="govuk-link govuk-link--no-visited-state">Copy</a>
                 </td>
               </tr>
               {% endfor %}

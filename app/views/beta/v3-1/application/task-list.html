@@ -40,10 +40,11 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
+
+            {% if (data.addedEHC | length) > 0%}
             <span class="app-task-list__task-name">
               <a aria-describedby="manage-commodities-status" href="./export/added-commodities-list" class="govuk-link">Commodities</a>
             </span>
-            {% if (data.addedEHC | length) > 0%}
             {% set commodityCount = 0%}
             {% for cert in data.addedEHC %}
             {% for c in cert.addedCommodities %}
@@ -54,7 +55,10 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             {% endfor%}
             <strong class="govuk-tag app-task-list__tag " id="manage-commodities-status">{{commodityCount}} {% if commodityCount == 1 %}record{% else %}records{%endif%} added</strong>
             {% else %}
-            <strong class="govuk-tag app-task-list__tag govuk-tag--blue" id="manage-commodities-status">In progress</strong>
+            <span class="app-task-list__task-name">
+              <a aria-describedby="manage-commodities-status" href="./export/select-commodities" class="govuk-link">Commodities</a>
+            </span>
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="gross-weight-status">Not started</strong>
             {% endif %}
           </li>
           <li class="app-task-list__item">

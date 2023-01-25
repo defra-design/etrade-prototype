@@ -7,15 +7,20 @@ Which certificate do you want to apply for - Apply for an Export health certific
 
 {% block beforeContent%}
 {% block navigation %}{% include './_navigation.html' %}{% endblock %}
-<a href="recent-certificates" class="govuk-back-link">Back</a>
+<a href="dashboard-1" class="govuk-back-link">Return to your applications</a>
 {% endblock %}
 
 {% block content %}
+
+{% set list =  data["applications_"+data.unifiedTestinigUser] %}
+{% if data.listType == "both" %}
+  {% set list =  data.applications %}
+{% endif %}
 <!-- get a list of certs -->
 {% set eehcCertificates = [] %}
-  {% for cert in data.applications %}
+  {% for cert in list %}
   {% set n = cert.EHC  %}
-  {% if not n | hasDuplicateEHC(eehcCertificates) %}
+  {% if not n | hasDuplicate(eehcCertificates) %}
   {% set obj = {'EHC':n, 'title': cert.cert_info,'EU':cert.inEU } %}
   {% set eehcCertificates = (eehcCertificates.push(obj), eehcCertificates) %}
   {% endif %}
@@ -47,6 +52,7 @@ Which certificate do you want to apply for - Apply for an Export health certific
             {% endfor %}
             <div class="govuk-radios__divider">or</div>
             <div class="govuk-radios__item">
+                <!-- <input class="govuk-radios__input" id="certificate-different" name="selectedCertificate" type="radio" value="different~./form-finder" aria-controls="conditional-certificates" aria-expanded="false"> -->
               <input class="govuk-radios__input" id="certificate-different" name="selectedCertificate" type="radio" value="different~./export-destination" aria-controls="conditional-certificates" aria-expanded="false">
               <label class="govuk-label govuk-radios__label" for="certificate-different">
                 a different certificate

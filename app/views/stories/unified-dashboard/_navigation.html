@@ -2,7 +2,7 @@
   <h2 class="govuk-visually-hidden" id="app-navigation-heading">Menu</h2>
   <ul class="app-navigation__list app-width-container">
     <li class="app-navigation__list-item ">
-      <span class="govuk-visually-hidden">Organisation: </span>{{data.account or "Anavir Ltd"}} &nbsp;
+      <span class="govuk-visually-hidden">Organisation: </span>{{data.unifiedTestinigUser | capitalize or "Anavir"}} &nbsp;
       {% if data.typeAccount != "single"%}
         <!-- <span class="govuk-hint">({{role or "exporter"}})</span> -->
         <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-navigation__link js-app-navigation__link"

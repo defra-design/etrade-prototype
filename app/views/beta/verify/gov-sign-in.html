@@ -24,28 +24,6 @@ GOV.UK Prototype Kit
        </div>
 
         <button type="submit" class="govuk-button" data-module="govuk-button" id="continue" formnovalidate="">Sign in</button>
-       <script nonce="">sendGaEventOnClick('continue', 'Sign-In:Sign-In:DEFRA');</script>
-       <script nonce="">
-            (function(){
-                var form = document.getElementById('loginForm');
-
-                var submitButton = form.querySelector('#continue');
-                submitButton.disabled = true;
-                var timeout = setTimeout(function(){submitButton.disabled = false;}, 5000);
-
-                // don't allow form submissions until device profile is ready
-                onDeviceProfile(function(deviceProfile) {
-                    submitButton.disabled = false;
-                    clearTimeout(timeout);
-                });
-
-                form.addEventListener('submit', function() {
-                    onDeviceProfile(function(deviceProfile) {
-                       form.profile.value = deviceProfile;
-                    });
-                });
-            })();
-        </script>
       </form>
       <div class="govuk-body">
         <a class="govuk-link" id="no-account" href="gateway/email" data-ga="">Create sign in details</a>

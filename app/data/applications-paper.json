@@ -116,13 +116,14 @@
 	"exporter": "DATAGENE LTD",
 	"importer": "NEBULEAN LTD",
 	"destination": "France",
-	"EHC": "6969",
+	"EHC": "8350",
 	"PDF" : "ehc-6969ehc-8.1.pdf",
 	"cert_info": "Export dairy and dairy products to Australia",
 	"certificate": "20/9/705633",
-	"status": "UNSUCCESSFUL SYNC WITH TRACES",
-	"tag": "red",
-	"type": "",
+	"status": "Complete",
+	"tag": "Green",
+	"isEU": "yes",
+	"type": "White paper",
 	"submitDate": "17 Feb 2020",
 	"reference": "PO 88751 france"
 }, {

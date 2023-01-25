@@ -15,7 +15,7 @@ $govuk-assets-path: '/govuk/assets/';
 //components
 
 @import "components/autocomplete";
-
+@import "components/location-autocomplete";
 @import "components/certificate";
 @import "components/defra-filter";
 @import "components/filter-panel";

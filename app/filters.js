@@ -154,14 +154,20 @@ module.exports = function(env) {
     return text.replace(/\s/g, '')
   }
 
-  filters.hasDuplicateEHC = function(t,arr) {
+  filters.hasDuplicate = function(t,arr,key) {
+      var k = key || "EHC"
       result = false
       for (var i = 0; i < arr.length; i++) {
-        if(t == arr[i].EHC ){
+        if(t == arr[i][k] ){
           result = true
         }
       }
       return result
+  }
+
+  filters.sort = function(arr) {
+
+      return arr.sort()
   }
 
   filters.addToListComplete = function(list, data, completePrefix) {

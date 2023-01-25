@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+
 
 {% set serviceName = "Apply for an export health certificate"%}
 {% extends "layout.html" %}
@@ -23,7 +23,7 @@ Your applications - EEHC - GOVUK
     <fieldset class="govuk-fieldset">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
         <h1 class="govuk-fieldset__heading">
-      What type of EU certificate do you want to apply for?
+      What EHC format do you want to apply for?
       </h1>
 
       </legend>
@@ -34,8 +34,6 @@ Your applications - EEHC - GOVUK
           </span>
         </summary>
         <div class="govuk-details__text">
-
-
             <p class="govuk-body" lang="en">
               To make sure all export data is consistent with the EU’s trade and control expert system (TRACES), we’ve made some changes to how you apply for an export health certificate (EHC).
             </p>
@@ -45,19 +43,18 @@ Your applications - EEHC - GOVUK
               <li>commodity data will be consistent with border control post requirements</li>
             </ul>
             <p>To learn more, you can read about the changes to <a href="#">how you apply for an EHC.</a></p>
-">
           You can use either service to apply for an EHC to Northern Ireland or the EU.
         </div>
       </details>
 
       <div class="govuk-radios" data-module="govuk-radios">
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="typeOfCertificate" name="typeOfCertificate" type="radio" value="england~/beta/v3-1/application/export/set-certificate?ehc={{data.selectedCertificate or '8350' }}">
+          <input class="govuk-radios__input" id="typeOfCertificate" name="typeOfCertificate" type="radio" value="england~./start">
           <label class="govuk-label govuk-radios__label" for="typeOfCertificate">
             Digital EHC (new)
           </label>
           <div id="typeOfCertificate-hint" class="govuk-hint govuk-radios__hint">
-            Paperless certificate, you will recieve a QR code which will link to TRACES
+            You can download a QR code to scan at the border post.
         </div>
         </div>
         <div class="govuk-radios__item">
@@ -66,7 +63,7 @@ Your applications - EEHC - GOVUK
              Paper EHC
           </label>
           <div id="typeOfCertificate-2-hint" class="govuk-hint govuk-radios__hint">
-            You will need to print out version of the certificate to accompany your shipment
+            You will need to print out a copy to accompnay your shipment.
         </div>
         </div>
       </div>

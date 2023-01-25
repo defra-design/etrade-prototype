@@ -162,8 +162,6 @@ module.exports = function(router) {
         res.redirect(301, '/' + base_url + 'onboarding/start');
     }
 
-
-
   })
 
   router.post('/' + base_url + 'onboarding/signature', function(req, res) {
@@ -172,6 +170,13 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'onboarding/confirmation?continue='+canContinue);
   })
 
+  router.post('/' + base_url + 'unified-dashboard/export-destination', function(req, res) {
+
+    if(req.body.country == "France" || req.body.country == "Germany" || req.body.country == "Ireland" || req.body.country == "Northern Ireland"){
+      res.redirect(301, '/' + base_url + 'unified-dashboard/select-certificate');
+    }
+    res.redirect(301, '/' + base_url + 'unified-dashboard/form-finder?destination_country='+req.body.country);
+  })
   // COPY
   router.post('/' + base_url + 'copy/*/commodity-error', function(req, res) {
     var errors = []

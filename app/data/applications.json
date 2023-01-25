@@ -83,7 +83,7 @@
 	"name": "Cecelia Benson",
 	"exporter": "",
 	"importer": "HARMONEY",
-	"destination": "China",
+	"destination": "Croatia",
 	"EHC": "7006",
 	"PDF" : "ehc-7006ehc-3.0.pdf",
 	"cert_info": "Export pig meat from Great Britain to China",
@@ -91,7 +91,7 @@
 	"status": "certifier action",
 	"tag": "purple",
 	"submitDate": "16 May 2020",
-	"reference": "PO 36790 CH",
+	"reference": "PO 36790 323",
 	"inEU": "no",
 	"type":"Crown gold"
 }, {
@@ -311,15 +311,17 @@
 	"name": "Frank Harper",
 	"exporter": "DATAGENE LTD",
 	"importer": "NEBULEAN LTD",
-	"destination": "Australia",
-	"EHC": "6969",
+	"destination": "France",
+	"EHC": "8350",
 "PDF" : "ehc-6969ehc-8.1.pdf",
-	"cert_info": "Export dairy and dairy products to Australia",
+	"cert_info": "Composite food products intended for human consumption to the European Union and Northern Ireland post 21 April 2021",
 	"certificate": "20/9/705421",
 	"status": "completed",
-	"tag": "grey",
-	"submitDate": "17 Feb 2020",
-	"reference": "PO 345345 SJS"
+	"tag": "green",
+	"submitDate": "17 Feb 2022",
+	"reference": "PO 345345 FRA",
+	"isEU": "yes",
+	"type": "White paper"
 },  {
     "_id": "5ed5093a9083b9efae62bc06",
     "index": 20,
