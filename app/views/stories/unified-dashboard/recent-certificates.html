@@ -21,7 +21,7 @@ Which certificate do you want to apply for - Apply for an Export health certific
   {% for cert in list %}
   {% set n = cert.EHC  %}
   {% if not n | hasDuplicate(eehcCertificates) %}
-  {% set obj = {'EHC':n, 'title': cert.cert_info,'EU':cert.inEU } %}
+  {% set obj = {'EHC':n, 'title': cert.cert_info,'EU':cert.isEU } %}
   {% set eehcCertificates = (eehcCertificates.push(obj), eehcCertificates) %}
   {% endif %}
   {% endfor %}
