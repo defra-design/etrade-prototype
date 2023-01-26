@@ -27,8 +27,8 @@ Find a place of destination – {{serviceName}} - GOV.UK
         </div>
       </div>
 
-      <h1 class="govuk-heading-xl">Find an organisation responsible for the load</h1>
-      <p class="govuk-body">Enter the country and address of the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
+      <h1 class="govuk-heading-l">Find a place of destination</h1>
+      <p class="govuk-body">This is the final destination of the consignment.</p>
 
       <div class="govuk-form-group" id="operator-search-country-form-group">
         <label class="govuk-label" for="operator-search-country">Country</label>
@@ -69,7 +69,7 @@ Find a place of destination – {{serviceName}} - GOV.UK
       </div>
 
       {% set includeApprovalNumberSearch = false %}
-      {% set orgSearchLabel = "Responsible for load organisation name" %}
+      {% set orgSearchLabel = "Place of destination name" %}
       {% block organisationSearch %}{% include "../../persons/organisationSearchAndResults.html" %}{% endblock %}
 
     </div>
