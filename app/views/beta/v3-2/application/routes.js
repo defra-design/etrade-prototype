@@ -136,7 +136,7 @@ module.exports = function(router) {
     const person = req.query.who;
     const redirect = req.query.redirect;
 
-    delete req.session.data.person[person];
+    delete req.session.data.transport[person];
     res.redirect(301, '/' + base_url + "transport/" + redirect + "?deleted=yes&who=" + person);
   })
 
