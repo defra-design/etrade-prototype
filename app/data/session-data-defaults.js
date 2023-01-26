@@ -33,7 +33,8 @@ var applications = require('./applications.json')
 var applications_paper = require('./applications-paper.json')
 var applications_tiptree = require('./applications-tiptree.json')
 var applications_dynamite = require('./applications-dynamite.json')
-
+var applications_yora = require('./applications-yora.json')
+var applications_pickstock = require('./applications-pickstock.json')
 var forms = require('./forms.json')
 module.exports = {
   "account": "Isosure Trading Ltd",
@@ -49,7 +50,9 @@ module.exports = {
   "applications_paper": applications_paper,
   "applications_tiptree": applications_tiptree,
   "applications_dynamite": applications_dynamite,
-  "unifiedTestinigUser": "dynamite",
+  "applications_yora": applications_yora,
+  "applications_pickstock": applications_pickstock,
+  "unifiedTestinigUser": "yora",
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,
