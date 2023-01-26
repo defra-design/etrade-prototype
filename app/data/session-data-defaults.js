@@ -28,6 +28,7 @@ var scheduleUploadProcessing = require('./schedule-upload-processing.json')
 var accounts = require('./accounts.json')
 var accounts_long = require('./accounts-long-list.json')
 var certifiers = require('./certifiers.json')
+var globalCertificate = require('./global-certificate.json')
 var applications = require('./applications.json')
 var applications_paper = require('./applications-paper.json')
 var applications_tiptree = require('./applications-tiptree.json')
@@ -41,6 +42,7 @@ module.exports = {
   "forms": forms,
   "accounts_long": accounts_long,
   "currentCertID": 0,
+  "globalCertificate": globalCertificate,
   "establishments" : establishments,
   "certifiers" : certifiers,
   "applications": applications,
