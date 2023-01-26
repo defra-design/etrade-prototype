@@ -47,7 +47,7 @@ module.exports = {
   "applications_paper": applications_paper,
   "applications_tiptree": applications_tiptree,
   "applications_dynamite": applications_dynamite,
-  "unifiedTestinigUser": "tiptree",
+  "unifiedTestinigUser": "dynamite",
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,
