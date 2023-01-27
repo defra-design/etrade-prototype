@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Apply for a green lane certificate to Northern Ireland
+      </h1>
+      <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-8" data-v-60e97bb5="">
+        <div class="govuk-summary-list__row" id="manage-commodities" data-v-0a0d5507="">
+          <dt class="govuk-summary-list__key" data-v-0a0d5507="">
+            Application reference
+          <dt class="govuk-summary-list__value" data-v-0a0d5507="">
+            {{data.UserReference or "XI2934BUL3"}}
+          </dt>
+          <dd class="govuk-summary-list__actions" data-v-0a0d5507="">
+            <a href="create-reference?change=yes">Change</a>
+          </dd>
+        </div>
+      </dl>
+      <p>You have completed 3 of 14 sections.</p>
+
+      <a href="#goods-certified-as" class="govuk-skip-link govuk-!-bottom-4 " data-module="govuk-skip-link">Skip next task to complete</a>
+      <ol class="app-task-list">
+
+      {% for group in data.globalCertificate %}
+
+      <li>
+      <h2 class="app-task-list__section">
+        <span class="app-task-list__section-number">{{loop.index}}. </span> {{group.taskGroupTitle}}
+      </h2>
+      <ul class="app-task-list__items">
+        {% for task in group.tasks %}
+        <li class="app-task-list__item">
+          <span class="app-task-list__task-name">
+            {% if task.status != "cannot start yet" %}
+            <a href="page?pageID={{task.page}}&currentTaskID={{task.taskID}}" aria-describedby="{{task.page}}">
+              {{task.taskTitle}}
+            </a>
+            {% else %}
+              {{task.taskTitle}}
+            {% endif %}
+          </span>
+          <strong class="govuk-tag {% if task.status=='not started'%}govuk-tag--grey {% endif %}app-task-list__tag" id="{{task.page}}">{{task.status}}</strong>
+        </li>
+        {% endfor %}
+      </ul>
+      </li>
+      {% endfor %}
+
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">{{data.globalCertificate | length +1 }}. </span>Apply
+          </h2>
+          <p class="app-task-list_help-text">Once you've entered all the information you can, you can review your answers and submit the application to your certifier.</p>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="./check-your-answers" aria-describedby="check-your-answers-status">
+                  Check and sign application
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
+            </li>
+            <li class="app-task-list__item">
+              {% if data.transport.destination or (query.isComplete == "yes") %}
+              <span class="app-task-list__task-name">
+                <a href="./check-your-answers" aria-describedby="check-your-answers-status">
+                  Review and submit application
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
+              {% else %}
+              <span class="app-task-list__task-name" aria-describedby="ready-to-apply-status">
+                  Review and submit application
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="ready-to-apply-status">Cannot start yet</strong>
+              {% endif %}
+
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+{% endblock %}

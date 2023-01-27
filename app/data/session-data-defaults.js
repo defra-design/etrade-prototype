@@ -52,7 +52,7 @@ module.exports = {
   "applications_dynamite": applications_dynamite,
   "applications_yora": applications_yora,
   "applications_pickstock": applications_pickstock,
-  "unifiedTestinigUser": "yora",
+  "unifiedTestinigUser": "pickstock",
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,

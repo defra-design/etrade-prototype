@@ -58,7 +58,6 @@ router.get('*', function(req, res) {
   let path = req.params[0]
   let pathEnd = path.slice(-1)
   let newPath = path.substring(1)
-
   if (path == "/") {
     // top home page
     path = "index"

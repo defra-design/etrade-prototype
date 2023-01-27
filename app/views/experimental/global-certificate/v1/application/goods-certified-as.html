@@ -1,4 +1,16 @@
+{% extends "layout.html" %}
 
+{% block pageTitle %}
+{% if query.has_error %}Error: {%endif%} Goods Certified As - E-Certification for EHC's - GOV UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<div class="govuk-grid-row" data-v-563d6e59="">
+  <div class="govuk-grid-column-two-thirds" data-v-563d6e59="">
     {% if query.has_error %}
     <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
       <h2 class="govuk-error-summary__title" id="error-summary-title">
@@ -13,12 +25,12 @@
       </div>
     </div>
     {% endif %}
-    <span class="govuk-caption-xl"> Description of the goods </span>
+    <span class="govuk-caption-xl">Export details</span>
     <h1 class="govuk-heading-xl">
       What are your goods certified as?
     </h1>
     <p id="certified-as-hint" class="govuk-body">State the intended use for the products in your application.</p>
-    <form method="post" novalidate>
+    <form method="post" novalidate action="origin-of-product">
       <div class="govuk-form-group ">
       <label for="search-goods-certified-as" class="govuk-label">Search for goods certification</label>
       <input class="govuk-input" aria-describedby="showing-count" id="search-goods-certified-as" type="text">
@@ -96,14 +108,25 @@
             </div>
         </fieldset>
       </div>
-      <section id="actions" data-v-563d6e59="">
-        <div class="govuk-grid-row" data-v-563d6e59="">
-          <div class="govuk-grid-column-two-thirds" data-v-563d6e59=""><button class="govuk-button" data-v-563d6e59="">Save and continue</button></div>
-        </div>
-      </section>
+      <div class="govuk-button-group">
+        <!-- to update state  -->
+        <input type="hidden" name="exportdetailsStatus" value="in progress">
+        <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+        <a href="../task-list" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>
+      </div>
+
+
     </form>
 
 
+  </div>
+  </div>
+    <!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+    <!-- // -->
+
+    {% endblock %}
+    {% block pageScripts %}
     <script type="text/javascript">
       window.addEventListener('load', function() {
         $("#search-goods-certified-as").on("input", function() {
@@ -145,3 +168,4 @@
         })
       })
     </script>
+    {% endblock%}

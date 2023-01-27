@@ -1,0 +1,18 @@
+{% set status = 'not started' %}
+{% if canStartTask == 'no' %}
+{% set status = "cannot start yet "%}
+{% elseif data[''+(taskID | removeWhiteSpace)+'Status'] == "complete" %}
+{% set status = "complete "%}
+{% elseif data[''+(taskID | removeWhiteSpace)+'Status'] == "in progress" %}
+{% set status = "in progress"%}
+{% endif %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <!-- This is a proper task list with multiple steps. maybe think of using {{taskID | convertToPageID}} if its individual task -->
+    <a href="application/{{firstPage}}?taskID={{taskID | removeWhiteSpace}}" aria-describedby="{{taskID | removeWhiteSpace}}-status">
+      {{taskID | capitalize}}
+    </a>
+  </span>
+
+  <strong class="govuk-tag {% if status == 'not started' or status == 'cannot start yet' %} govuk-tag--grey {% endif %}{% if status == 'in progress' %} govuk-tag--blue {% endif %} app-task-list__tag" id="{{taskID | removeWhiteSpace}}-status">{{status}}</strong>
+</li>
