@@ -35,6 +35,8 @@ var applications_tiptree = require('./applications-tiptree.json')
 var applications_dynamite = require('./applications-dynamite.json')
 var applications_yora = require('./applications-yora.json')
 var applications_pickstock = require('./applications-pickstock.json')
+var applications_holmesterne = require('./applications-holmesterne.json')
+
 var forms = require('./forms.json')
 module.exports = {
   "account": "Isosure Trading Ltd",
@@ -52,7 +54,8 @@ module.exports = {
   "applications_dynamite": applications_dynamite,
   "applications_yora": applications_yora,
   "applications_pickstock": applications_pickstock,
-  "unifiedTestinigUser": "pickstock",
+  "applications_holmesterne": applications_holmesterne,
+  "unifiedTestinigUser": "holmesterne",
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,

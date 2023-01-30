@@ -107,6 +107,7 @@
           <option value="dynamite" {% if data.unifiedTestinigUser == "dynamite" %}selected{% endif %}>Dynamite baits</option>
           <option value="dynamite" {% if data.unifiedTestinigUser == "yora" %}selected{% endif %}>Yora Pets</option>
           <option value="dynamite" {% if data.unifiedTestinigUser == "pickstock" %}selected{% endif %}>Pickstock Foods</option>
+          <option value="dynamite" {% if data.unifiedTestinigUser == "holmesterne" %}selected{% endif %}>Holmesterne Farm Co</option>
           <option value="both" {% if data.unifiedTestinigUser == "both" or data.listType == "both" %}selected{% endif %}>With both digital and paper</option>
         </select>
         <input type="hidden"  id="listType" name="listType" value="{{data.unifiedTestinigUser}}">
