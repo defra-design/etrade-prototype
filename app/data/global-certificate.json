@@ -1,0 +1,91 @@
+[
+
+	{
+		"taskGroupID": 0,
+		"taskGroupTitle": "Export details",
+		"taskGroupFolder": "export",
+		"tasks": [{
+				"taskID": 0,
+				"taskTitle": "Goods certified as",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "goods-certified-as"
+			},
+			{
+				"taskID": 1,
+				"taskTitle": "Consignor or exporter ",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "consignor"
+			},
+			{
+				"taskID": 2,
+				"taskTitle": "Place of origin",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "place-of-origin"
+			},
+			{
+				"taskID": 3,
+				"taskTitle": "Competent authority",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "competent-authority"
+			}
+		]
+	},
+	{
+		"taskGroupID": 1,
+		"taskGroupTitle": "Import details",
+		"taskGroupFolder": "import",
+		"tasks": [{
+				"taskID": 0,
+				"taskTitle": "Consignee or importer",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "importer"
+			},
+			{
+				"taskID": 1,
+				"taskTitle": "Place of dipatch",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "place-of-origin"
+			},
+			{
+				"taskID": 2,
+				"taskTitle": "Operator resposible for consignment",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "responsible-for-consignment"
+			},
+			{
+				"taskID": 3,
+				"taskTitle": "Point of entry into Northern Ireland. ",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "point-of-entry"
+			}
+		]
+	},
+	{
+		"taskGroupID": 2,
+		"taskGroupTitle": "Transport details",
+		"taskGroupFolder": "import",
+		"tasks": [{
+				"taskID": 0,
+				"taskTitle": "Means of transport",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "means-of-transport"
+			},
+			{
+				"taskID": 1,
+				"taskTitle": "Continer or seal number",
+				"dependantOn": "",
+				"status": "not started",
+				"page": "place-of-dispatch"
+			}
+		]
+	}
+]

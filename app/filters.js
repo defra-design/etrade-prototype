@@ -153,7 +153,10 @@ module.exports = function(env) {
   filters.removeWhiteSpace = function(text) {
     return text.replace(/\s/g, '')
   }
-
+  filters.convertToPageID = function(text) {
+    return text.replace(/\s/g, '-')
+  }
+  
   filters.hasDuplicate = function(t,arr,key) {
       var k = key || "EHC"
       result = false
