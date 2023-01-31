@@ -17,16 +17,26 @@ module.exports = function(router) {
     console.log("In consignor/find.html");
 
     const establishmentIndex = req.body.establishmentIndex;
+    const country = req.body.country;
 
-    req.session.data.person['consignor'] = establishmentIndex;
+    if (establishmentIndex) {
+        req.session.data.person['consignor'] = establishmentIndex;
 
-    // check if the establishment has multiple activities
-    if (req.session.data.establishments[establishmentIndex].All_Activities.length == 1) {
-      req.session.data.person['consignorActivity'] = 0;
-      res.redirect(301, '/' + base_url + 'persons/consignor/default');
+        // check if the establishment has multiple activities
+        if (req.session.data.establishments[establishmentIndex].All_Activities.length == 1) {
+          req.session.data.person['consignorActivity'] = 0;
+          res.redirect(301, '/' + base_url + 'persons/consignor/default');
+        } else {
+          res.redirect(301, '/' + base_url + 'persons/consignor/activity?establishmentIndex=' + establishmentIndex);
+        }
+
     } else {
-      res.redirect(301, '/' + base_url + 'persons/consignor/activity?establishmentIndex=' + establishmentIndex);
+      res.redirect(301, '/' + base_url + 'persons/consignor/find?hasError=true&country=' + country);
     }
+
+
+
+
 
 
   })

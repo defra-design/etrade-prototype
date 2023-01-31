@@ -70,10 +70,13 @@
 
 
 <!-- results -->
-<div id="results" {% if query.q %}data-trigger="yes" {% endif %}>
+<div class="govuk-form-group" id="results" {% if query.q %}data-trigger="yes" {% endif %}>
   <p class="govuk-heading-s  govuk-!-font-weight-regular">
     <span class="search-result" aria-live="polite" aria-atomic="true"></span>
     <!--&nbsp;<a class="govuk-link" href="./results">Reset search</a>-->
+    </p>
+    <p id="results-error" class="govuk-error-message" style="display:none">
+      <span class="govuk-visually-hidden">Error:</span> Select an organisation
     </p>
   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
@@ -439,6 +442,21 @@
       }
     }
 
+    $('#save-and-continue').on("click", function() {
+      // make sure that we have a selected result
+
+      if ($("input[name=establishmentIndex]:checked").val() === undefined ) {
+        $("#results").addClass("govuk-form-group--error");
+        $("#results-error").show();
+        $("#results-error-summary").show();
+        return false;
+      } else {
+        $("#results").removeClass("govuk-form-group--error");
+        $("#results-error").hide();
+        $("#results-error-summary").hide();
+      }
+    });
+
     $('#operator-search-button').on("click", function() {
 
       // validate that 1) a country was selected and 2) a search string was provided
@@ -473,9 +491,9 @@
       }
 
       if (hasError) {
-        $(".govuk-error-summary").show();
+        $("#general-error-summary").show();
       } else {
-        $(".govuk-error-summary").hide();
+        $("#general-error-summary").hide();
 
         $(this).text(" Searching ...")
         $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
@@ -523,9 +541,9 @@
       }
 
       if (hasError) {
-        $(".govuk-error-summary").show();
+        $("#general-error-summary").show();
       } else {
-        $(".govuk-error-summary").hide();
+        $("#general-error-summary").hide();
         $('#results').hide();
         $(this).text(" Searching ...")
         $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
