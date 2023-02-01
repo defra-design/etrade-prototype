@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set id = query.id or 0 %}
+{% set t  = data.transportList[id] %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Are you sure you want to remove this means of transport?
+            </h1>
+          </legend>
+          <p><strong>{{(t.typeOfTransport | capitalize) or "Plane"}} </strong> - {{t.identifier | upper or '92394234'}}</p>
+          <!-- Hidden field for prototyping routing can be found in app/views/experimental/routes.js -->
+          <input type="hidden" name="id" value="{{id}}">
+
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="removeFile" name="remove_document" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="removeFile">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="removeFile-2" name="remove_document" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="removeFile-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

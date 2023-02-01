@@ -13492,14 +13492,14 @@
       ]
     },
     "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
+      "canonical": true,
+      "canonical-mask": 1,
       "display-name": true,
       "stable-name": true
     },
     "names": {
       "cy": false,
-      "en-GB": "Northern Ireland"
+      "en-GB": "Northern Ireland (United Kingdom)"
     }
   },
   "nym:Northern Marianas": {

@@ -17,3 +17,6 @@
 
   <strong class="govuk-tag {% if status == 'not started' or status == 'cannot start yet' %} govuk-tag--grey {% endif %}{% if status == 'in progress' %} govuk-tag--blue {% endif %} app-task-list__tag" id="{{taskID | removeWhiteSpace}}-status">{{status}}</strong>
 </li>
+{% if status == 'completed' %}
+{% set completed = completed.push((taskID | removeWhiteSpace)+'Status')%}
+{% endif %}

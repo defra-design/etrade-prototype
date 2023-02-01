@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Uploaded documents – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<style media="screen">
+  .attachment .attachment-thumb {
+    display: block;
+    width: 99px;
+    height: 140px;
+    background: #fff;
+    outline: 5px solid rgba(11, 12, 12, 0.1);
+    box-shadow: 0 2px 2px rgb(11 12 12 / 40%);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .attachment .attachment-thumb span {
+    padding-top: 50px;
+  }
+
+  .spreadsheet td,
+  .spreadsheet th {
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #bfc1c3;
+  }
+
+  .spreadsheet thead th {
+    border-bottom-width: 0px;
+  }
+
+  .spreadsheet .table-field-index,
+  .spreadsheet th {
+    background: #f8f8f8;
+    font-weight: 700;
+    text-align: center;
+  }
+</style>
+{% if query.change == "yes" and query.id %}
+{% set transportDetails = data.transportList[query.id] %}
+{% endif %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form id="form" method="post">
+      <!---->
+      <div class="govuk-form-group" data-v-133877c6="">
+        <fieldset class="govuk-fieldset" data-v-133877c6="">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl" data-v-133877c6="">{{data.transportType or "Road vehicle"}} details</legend>
+          {% set type = (data.transportType|removeWhiteSpace)|lower or  'roadvehicle'%}
+          {% block transport %}{% include "../components/"+type+".html" %}{% endblock %}
+        </fieldset>
+      </div>
+      
+      <input type="hidden" name="typeOfTransport" value="{{data.transportType or 'Plane'}}">
+      <button class="govuk-button" data-v-133877c6="">Add means of transport</button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

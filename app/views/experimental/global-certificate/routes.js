@@ -101,22 +101,22 @@ module.exports = function(router) {
 
   })
 
-  router.post('/' + base_url + '*/transport-details', function(req, res) {
+  router.post('/' + base_url + 'transport/transport-details', function(req, res) {
     if(req.query.change){
       req.session.data.transportList[req.query.id] = req.body
     }else{
         req.session.data.transportList.push(req.body);
     }
 
-      res.redirect(301, '/' + base_url + req.params[0] +'/added-transport');
+      res.redirect(301, '/' + base_url + 'transport/added-transport');
   })
 
-  router.post('/' + base_url + 'transport/remove', function(req, res) {
+  router.post('/' + base_url + '*/remove', function(req, res) {
     if(req.body.remove_document == "yes"){
       req.session.data.transportList.splice(req.query.id,1);
-        res.redirect(301, '/' + base_url + 'transport/added-transport?removed=yes');
+        res.redirect(301, '/' + base_url + req.params + '/added-transport?removed=yes');
     }else{
-      res.redirect(301, '/' + base_url + 'transport/added-transport');
+      res.redirect(301, '/' + base_url + req.params + '/added-transport');
     }
 
 
@@ -146,7 +146,7 @@ module.exports = function(router) {
 
   router.post('/' + base_url + 'global-certificate/*/export-destination', function(req, res) {
     console.log(req.body.country+'.')
-    if(req.body.country == "France" || req.body.country == "Denmark" || req.body.country == "Germany" || req.body.country == "Ireland" || req.body.country == "Northern Ireland"){
+    if(req.body.country == "France" || req.body.country == "GB" || req.body.country == "Any"|| req.body.country == "Denmark" || req.body.country == "Germany" || req.body.country == "Ireland" || req.body.country == "Northern Ireland"){
       res.redirect(301, '/' + base_url + 'unified-dashboard/select-certificate');
     }
     res.redirect(301, '/' + base_url + 'global-certificate/'+req.params[0]+'/form-finder?destination_country='+req.body.country);

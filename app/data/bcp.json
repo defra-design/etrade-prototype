@@ -1,0 +1,40 @@
+[{
+		"destination": "Northern Ireland",
+		"ICO": "XI",
+		"ports": [{
+			"name": "Belfast Port - BCC",
+			"id": "XIBEL1-BCC",
+			"address": "Belfast City Council, 5 Corry Place, Belfast Harbour Estate, BT3 9HY",
+			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+		}, {
+			"name": "Belfast Port - DAERA",
+			"id": "XIBEL1-DAERA",
+			"address": "DAERA Office,Cargo Centre,Belfast International Airport,Belfast,BT29 4AB",
+			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+		}, {
+			"name": "Belfast International Airport - DAERA",
+			"id": "XIBEL4",
+			"address": "Belfast City Council, 5 Corry Place, Belfast Harbour Estate, BT3 9HY",
+			"categories": ["POA-NHC-NT", "POA-NHC-T(CH)"]
+		}, {
+			"name": "Larne Harbour - DAERA",
+			"id": "XILAR1-DAERA",
+			"address": "Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Redlands Road, Larne Harbour, BT40 1AX",
+			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+		}, {
+			"name": "Larne Harbour - MEA",
+			"id": "XILAR1-MEA",
+			"address": "Mid and East Antrim Borough Council, Shed 66, Redlands Road Larne Harbour, BT40 1AX",
+			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+		}, {
+			"name": "Foyle Port - DAERA",
+			"id": "XIWPT1-DAERA",
+			"address": "Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Portal Inspection Office, Warrenpoint Port, BT34 3JR",
+			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+		}]
+
+
+
+	}
+
+]

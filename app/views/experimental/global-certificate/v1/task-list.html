@@ -9,7 +9,7 @@ Home – GOV.UK Prototype Kit
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Apply for a green lane certificate to Northern Ireland
+        Apply for a EHC9999 to Northern Ireland
       </h1>
       <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-8" data-v-60e97bb5="">
         <div class="govuk-summary-list__row" id="manage-commodities" data-v-0a0d5507="">
@@ -23,7 +23,7 @@ Home – GOV.UK Prototype Kit
           </dd>
         </div>
       </dl>
-      <p>You have completed 3 of 14 sections.</p>
+      <p>You have completed 3 of 4 sections.</p>
 
       <a href="#goods-certified-as" class="govuk-skip-link govuk-!-bottom-4 " data-module="govuk-skip-link">Skip next task to complete</a>
       <ol class="app-task-list">
@@ -33,6 +33,7 @@ Home – GOV.UK Prototype Kit
           <span class="app-task-list__section-number">1. </span> Prepare application
         </h2>
         <ul class="app-task-list__items">
+          {% set completed = []%}
           <!-- Export details -->
           {% set taskID = "about the goods" %}
           {% set firstPage = "goods-certified-as" %}
@@ -40,16 +41,16 @@ Home – GOV.UK Prototype Kit
 
           <!-- Import details -->
           {% set taskID = "import details" %}
-          {% set firstPage = "goods-certified-as" %}
+          {% set firstPage = "border-control" %}
           {% block importDetails %}{% include './components/_task-list-item.html' %}{% endblock %}
 
           <!-- Import details -->
           {% set taskID = "transportaion of the goods" %}
-          {% set firstPage = "goods-certified-as" %}
+          {% set firstPage = "conditions" %}
           {% block transportDetails %}{% include './components/_task-list-item.html' %}{% endblock %}
+
         </ul>
       </li>
-
       <li>
         <h2 class="app-task-list__section">
           <span class="app-task-list__section-number">2. </span>Certification
@@ -57,13 +58,19 @@ Home – GOV.UK Prototype Kit
         <p class="app-task-list_help-text">You will need to add a electronic signature to self certify the goods.</p>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
-            {% if data.transport.destination or (query.isComplete == "yes") %}
+            {% if completed | length == 3 or (query.isComplete == "yes") %}
             <span class="app-task-list__task-name">
-              <a href="./check-your-answers" aria-describedby="check-your-answers-status">
+              <a href="./application/certificatation?taskID=certification" aria-describedby="check-your-answers-status">
                 Check and sign certification
               </a>
             </span>
+            {% if data.certificationStatus == "completed"%}
+            {% set completed = completed.push('certificationStatus')%}
+            <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
+            {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
+              {% endif  %}
+
             {% else %}
             <span class="app-task-list__task-name" aria-describedby="ready-to-apply-status">
                 Review and submit application
@@ -74,8 +81,6 @@ Home – GOV.UK Prototype Kit
           </li>
         </ul>
       </li>
-
-
         <li>
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">3. </span>Apply
@@ -83,7 +88,8 @@ Home – GOV.UK Prototype Kit
           <p class="app-task-list_help-text">Once you've entered all the information you can, you can review your answers and submit the application.</p>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
-              {% if data.transport.destination or (query.isComplete == "yes") %}
+
+              {% if completed == 4  or (query.isComplete == "yes") %}
               <span class="app-task-list__task-name">
                 <a href="./check-your-answers" aria-describedby="check-your-answers-status">
                   Review and submit application

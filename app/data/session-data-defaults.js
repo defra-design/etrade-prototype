@@ -36,7 +36,7 @@ var applications_dynamite = require('./applications-dynamite.json')
 var applications_yora = require('./applications-yora.json')
 var applications_pickstock = require('./applications-pickstock.json')
 var applications_holmesterne = require('./applications-holmesterne.json')
-
+var bcp = require('./bcp.json')
 var forms = require('./forms.json')
 module.exports = {
   "account": "Isosure Trading Ltd",
@@ -46,6 +46,7 @@ module.exports = {
   "accounts_long": accounts_long,
   "currentCertID": 0,
   "globalCertificate": globalCertificate,
+  "bcp": bcp,
   "establishments" : establishments,
   "certifiers" : certifiers,
   "applications": applications,
