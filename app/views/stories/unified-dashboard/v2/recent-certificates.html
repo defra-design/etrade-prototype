@@ -1,0 +1,74 @@
+{% set serviceName = "Apply for an export health certificate"%}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which certificate do you want to apply for - Apply for an Export health certificate - GOVUK
+{% endblock %}
+
+{% block beforeContent%}
+{% block navigation %}{% include './_navigation.html' %}{% endblock %}
+<a href="dashboard" class="govuk-back-link">Return to your applications</a>
+{% endblock %}
+
+{% block content %}
+
+{% set list =  data["applications_"+data.unifiedTestinigUser] %}
+{% if data.listType == "both" %}
+  {% set list =  data.applications %}
+{% endif %}
+<!-- get a list of certs -->
+{% set eehcCertificates = [] %}
+  {% for cert in list %}
+  {% set n = cert.EHC  %}
+  {% if not n | hasDuplicate(eehcCertificates) %}
+  {% set obj = {'EHC':n, 'title': cert.cert_info,'EU':cert.isEU } %}
+  {% set eehcCertificates = (eehcCertificates.push(obj), eehcCertificates) %}
+  {% endif %}
+  {% endfor %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Which certificate do you want to apply for?</h1>
+
+    <div class="margin-top-30">
+      <p class="govuk-body" lang="en">
+        You can apply for:
+      </p>
+    </div>
+    <form method="post" novalidate="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+            {% for cert in eehcCertificates %}
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="certificate-{{cert.EHC}}EHC" name="selectedCertificate" type="radio" aria-describedby="certificate-{{cert.EHC}}EHC--hint" value="{{cert.EHC}}~{% if cert.EU == 'yes' and data.firstTime != 'no' %}type-of-certificate{% elseif cert.EU == 'yes' and data.firstTime == 'no' %}digital-or-paper{% else %}https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc{{cert.EHC}}{% endif %}">
+              <label class="govuk-label govuk-radios__label" for="certificate-{{cert.EHC}}EHC">
+                <strong>{{cert.EHC}}EHC </strong>
+
+              </label>
+              <span id="certificate-{{cert.EHC}}EHC--hint" class="govuk-hint govuk-radios__hint govuk-!-margin-bottom-0">{{cert.title}}</span>
+            </div>
+            {% endfor %}
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+                <!-- <input class="govuk-radios__input" id="certificate-different" name="selectedCertificate" type="radio" value="different~./form-finder" aria-controls="conditional-certificates" aria-expanded="false"> -->
+              <input class="govuk-radios__input" id="certificate-different" name="selectedCertificate" type="radio" value="different~./export-destination" aria-controls="conditional-certificates" aria-expanded="false">
+              <label class="govuk-label govuk-radios__label" for="certificate-different">
+                a different certificate
+              </label>
+            </div>
+            <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-certificates">
+              <p class="govuk-body">You will be taken to form finder. Some certificates are not currently available to apply for online</p>
+            </div> -->
+          </div>
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

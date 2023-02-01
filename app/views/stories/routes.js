@@ -170,12 +170,12 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'onboarding/confirmation?continue='+canContinue);
   })
 
-  router.post('/' + base_url + 'unified-dashboard/export-destination', function(req, res) {
+  router.post('/' + base_url + 'unified-dashboard/*/export-destination', function(req, res) {
     console.log(req.body.country+'.')
     if(req.body.country == "France" || req.body.country == "Denmark" || req.body.country == "Germany" || req.body.country == "Ireland" || req.body.country == "Northern Ireland"){
-      res.redirect(301, '/' + base_url + 'unified-dashboard/select-certificate');
+      res.redirect(301, '/' + base_url + 'unified-dashboard/'+req.params[0]+'/select-certificate');
     }
-    res.redirect(301, '/' + base_url + 'unified-dashboard/form-finder?destination_country='+req.body.country);
+    res.redirect(301, '/' + base_url + 'unified-dashboard/'+req.params[0]+'/form-finder?destination_country='+req.body.country);
   })
   // COPY
   router.post('/' + base_url + 'copy/*/commodity-error', function(req, res) {

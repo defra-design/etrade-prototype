@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Unified dashboard – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Unified dashboard</h1>
+      <h2 class="govuk-heading-m">Testing scenario</h2>
+      <form class="" id="updateUserForm"  method="post">
+      <!-- <div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    User
+  </label>
+  <select class="govuk-select" id="selectUser" name="unifiedTestinigUser">
+    <option value="paper" {% if data.unifiedTestinigUser == "paper" %}selected{% endif %}>General</option>
+    <option value="tiptree" {% if data.unifiedTestinigUser == "tiptree" %}selected{% endif %}>Tiptree Logistics</option>
+    <option value="dynamite" {% if data.unifiedTestinigUser == "dynamite" %}selected{% endif %}>Dynamite baits</option>
+  </select>
+</div> -->
+    </form>
+      <ol class="govuk-list">
+        <li><a href="/clear-data?url=/beta/verify/gov-sign-in?loginReturnURL=/stories/unified-dashboard/v1/changes-to-service&isSignedIn=no">Signing in (after March 23 2023)</a>
+        </li>
+        <li><a href="/clear-data?url=/beta/verify/gov-sign-in?loginReturnURL=/stories/unified-dashboard/v1/dashboard-1?listType={{data.unifiedTestinigUser}}&isSignedIn=no">Copy a application</a> only paper certificates
+        </li>
+        <li><a href="/clear-data?url=/beta/verify/gov-sign-in?loginReturnURL=/stories/unified-dashboard/v1/dashboard-1?listType={{data.unifiedTestinigUser}}&isSignedIn=no">Create a new cerificate from a new EHC</a>
+        </li>
+        <li><a href="/clear-data?url=/beta/verify/gov-sign-in?loginReturnURL=/stories/unified-dashboard/v1/dashboard-1?listType=both&isSignedIn=no">Search and filter applications</a>
+        </li>
+      </ol>
+
+    <h2 class="govuk-heading-m">Pages</h2>
+    <ul class="govuk-list">
+      <li><a href="/clear-data?url=/stories/unified-dashboard/v1/govuk">Start from govuk</a>
+      </li>
+      <li><a href="/clear-data?url=/stories/unified-dashboard/v1/form-finder">Start from find an export heath certificate</a>
+      </li>
+      <li><a href="/clear-data?url=/beta/verify/gov-sign-in?loginReturnURL=/stories/unified-dashboard/v1/dashboard-1">Sign in (Gov gateway)</a>
+      </li>
+      <li><a href="/clear-data?url=/stories/unified-dashboard/v1/dashboard-1&?listType=both">Dashboard - exisiting user - both EEHC and ECHO</a>
+      </li>
+      <p class="govuk-!-margin-bottom-2">Create a new certificate</p>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v1/recent-certificates">Which certificate (recently used)</a>
+
+      </li>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v1/type-of-certificate">We’ve made some changes to the service</a> - Shown first time
+
+      </li>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v1/digital-or-paper">What type of EU certificate do you want to apply for?</a>  - Shown second time through
+
+      </li>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v1/changes-to-service">Changes are coming</a>  - Interstital page after sign in (March 23rd)
+      </li>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v1/start">Before you start</a>
+      </li>
+    </ul>
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  window.addEventListener('load', function() {
+    $('#selectUser').change(function(){
+      var data= $(this).val();
+      $('#updateUserForm').submit()
+    });
+  })
+</script>
+{% endblock %}

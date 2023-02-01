@@ -1,0 +1,81 @@
+
+
+{% set serviceName = "Apply for an export health certificate"%}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Your applications - EEHC - GOVUK
+{% endblock %}
+
+{% block beforeContent%}
+{% block navigation %}{% include './_navigation.html' %}{% endblock %}
+<a href="recent-certificates" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+<!-- get a list of certs -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate="">
+        <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+        <h1 class="govuk-fieldset__heading">
+      What EHC format do you want to apply for?
+      </h1>
+
+      </legend>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Applying to digitial certificates
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+            <p class="govuk-body" lang="en">
+              To make sure all export data is consistent with the EU’s trade and control expert system (TRACES), we’ve made some changes to how you apply for an export health certificate (EHC).
+            </p>
+            <p>Certificates for the EU and Northern Ireland are digital. If you apply for a digital EHC, your:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>certifiers and importers will no longer need to use paper copies of EHCs</li>
+              <li>commodity data will be consistent with border control post requirements</li>
+            </ul>
+            <p>To learn more, you can read about the changes to <a href="#">how you apply for an EHC.</a></p>
+          You can use either service to apply for an EHC to Northern Ireland or the EU.
+        </div>
+      </details>
+
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="typeOfCertificate" name="typeOfCertificate" type="radio" value="england~./create-reference">
+          <label class="govuk-label govuk-radios__label" for="typeOfCertificate">
+            Digital EHC (new)
+          </label>
+          <div id="typeOfCertificate-hint" class="govuk-hint govuk-radios__hint">
+            You can download a QR code to scan at the border post.
+        </div>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="typeOfCertificate-2" name="typeOfCertificate" type="radio" value="paper~https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc{{data.selectedCertificate or '8350' }}">
+          <label class="govuk-label govuk-radios__label" for="typeOfCertificate-2">
+             Paper EHC
+          </label>
+          <div id="typeOfCertificate-2-hint" class="govuk-hint govuk-radios__hint">
+            You will need to print out a copy to accompnay your shipment.
+        </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+
+
+  </div>
+</div>
+{% endblock %}

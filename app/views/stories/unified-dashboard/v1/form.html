@@ -493,9 +493,9 @@ GOV.UK Prototype Kit
   {% set forwardURL = 'https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc'+query.cert_code %}
   {% if query.cert_code in eehcCertificates %}
   {% if data.firstTime == "no" %}
-    {% set forwardURL = '/stories/unified-dashboard/digital-or-paper?selectedCertificate='+query.cert_code%}
+    {% set forwardURL = '/stories/unified-dashboard/v1/digital-or-paper?selectedCertificate='+query.cert_code%}
   {% else %}
-    {% set forwardURL = '/stories/unified-dashboard/type-of-certificate?selectedCertificate='+query.cert_code %}
+    {% set forwardURL = '/stories/unified-dashboard/v1/type-of-certificate?selectedCertificate='+query.cert_code %}
     {% endif %}
   {% endif %}
 
