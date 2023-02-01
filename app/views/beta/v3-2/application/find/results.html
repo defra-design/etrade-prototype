@@ -285,7 +285,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
-      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
+      <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
         <h2 class="govuk-error-summary__title" id="error-summary-title">
           There is a problem
         </h2>
@@ -297,6 +297,21 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
             <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-name-search">Organisation name cannot be blank</a></li>
 
           </ul>
+        </div>
+      </div>
+
+      <div id="results-error-summary" class="govuk-error-summary" data-module="govuk-error-summary" style="display:none">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#results">Select an organisation</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -383,6 +398,9 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       <!-- results -->
       <div id="results" {% if query.q %}data-trigger="yes" {% endif %}>
         <p class="govuk-heading-s  govuk-!-font-weight-regular"><span class="search-result" aria-live="polite" aria-atomic="true"></span> &nbsp;<a class="govuk-link" href="./results">Reset search</a></p>
+        <p id="results-error" class="govuk-error-message" style="display:none">
+          <span class="govuk-visually-hidden">Error:</span> Select an organisation
+        </p>
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
         <div class="govuk-radios" data-module="govuk-radios">
@@ -494,6 +512,21 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       }
     }
 
+    $('#save-and-continue').on("click", function() {
+      // make sure that we have a selected result
+
+      if ($("input[name=establishmentIndex]:checked").val() === undefined ) {
+        $("#results").addClass("govuk-form-group--error");
+        $("#results-error").show();
+        $("#results-error-summary").show();
+        return false;
+      } else {
+        $("#results").removeClass("govuk-form-group--error");
+        $("#results-error").hide();
+        $("#results-error-summary").hide();
+      }
+    });
+
     $('#operator-search-button').on("click", function() {
       // validate that 1) a country was selected and 2) a search string was provided
       var hasError = false;
@@ -527,9 +560,9 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       }
 
       if (hasError) {
-        $(".govuk-error-summary").show();
+        $("#general-error-summary").show();
       } else {
-        $(".govuk-error-summary").hide();
+        $("#general-error-summary").hide();
         $('#results').hide();
         $(this).text(" Searching ...")
         $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
