@@ -12,10 +12,7 @@ Which certificate do you want to apply for - Apply for an Export health certific
 
 {% block content %}
 
-{% set list =  data["applications_"+data.unifiedTestinigUser] %}
-{% if data.listType == "both" %}
-  {% set list =  data.applications %}
-{% endif %}
+{% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
 <!-- get a list of certs -->
 {% set eehcCertificates = [] %}
   {% for cert in list %}

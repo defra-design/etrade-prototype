@@ -10,11 +10,7 @@ Your applications - EEHC - GOVUK
 {% endblock %}
 {% block content %}
 
-{% set list =  data["applications_"+data.unifiedTestinigUser] %}
-
-{% if data.listType == "both" %}
-  {% set list =  data.applications %}
-{% endif %}
+{% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
   <style>
     main {
       padding-top: 0px !important;

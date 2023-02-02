@@ -9,12 +9,15 @@ Your applications - EEHC - GOVUK
 {% block navigation %}{% include './components/_navigation.html' %}{% endblock %}
 {% endblock %}
 {% block content %}
+<!-- <div class="">
+  {% set list =  data["applications_"+data.unifiedTestinigUser] %}
+  {% if data.listType == "both" %}
+    {% set list =  data.applications %}
+  {% endif %}
+</div> -->
 
-{% set list =  data["applications_"+data.unifiedTestinigUser] %}
+{% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
 
-{% if data.listType == "both" %}
-  {% set list =  data.applications %}
-{% endif %}
   <style>
     main {
       padding-top: 0px !important;
@@ -208,7 +211,7 @@ Your applications - EEHC - GOVUK
 
                 <th class="govuk-table__header" style="width:5%!important">Destination</th>
                 <th class="govuk-table__header">Submitted</th>
-                <!-- <th class="govuk-table__header">Export date</th> -->
+                <th class="govuk-table__header">Export date</th>
                 <th class="govuk-table__header">Format</th>
                 <th class="govuk-table__header">Status</th>
                 <th class="govuk-table__header"></th>
@@ -217,7 +220,9 @@ Your applications - EEHC - GOVUK
             <tbody>
 
 
-
+              {% set month = 2 %}
+              {% set year = 2023 %}
+              {% set day =  [1,2,3,4,5,6,7,8,9,11,12,14,16,17,19,20,23,25,26,27,28] | random %}
               {% for app in list %}
 
               {% set link = "https://defra-ehco-prototype.herokuapp.com/beta/v8/core/application?id="+(loop.index-1) %}
@@ -232,7 +237,7 @@ Your applications - EEHC - GOVUK
               {% endif %}
               <tr class="govuk-table__row result">
                 <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
-                  <a href="{{link}}" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Applicatin reference </span> {{app.reference or app.applicationID}}</a>
+                  <a href="{{link}}" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Reference</span> {{app.reference or app.applicationID}}</a>
 
                   {% if app.is_block == "yes"%}
                   <div class=" govuk-!-margin-top-1 govuk-!-font-weight-regular">Block of 50 certificates</div>
@@ -251,13 +256,17 @@ Your applications - EEHC - GOVUK
                   <span class="table-heading" aria-hidden="true">Submitted on</span>
                   {{app.submitDate or "-"}}
                 </td>
-                <!-- <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
-                  <span class="table-heading" aria-hidden="true">Export date</span>
-                  {{app.exportDate or "-"}}
-                </td> -->
+                <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                  <span class="table-heading" aria-hidden="true">Proposed export</span>
+                  {{day | getDate(month,year)}}
+                </td>
                 <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
                   <span class="table-heading" aria-hidden="true">Type </span>
-                  {{app.type or "White paper"}}
+                  {% if app.type != "digital" %}
+                    Paper
+                  {% else %}
+                    Digital
+                  {% endif%}
                 </td>
                 <td id="1721147986456-status" class="govuk-table__cell" scope="row">
                   <span class="table-heading" aria-hidden="true">Status</span>
@@ -269,6 +278,16 @@ Your applications - EEHC - GOVUK
                   <a href="{{copyLink}}" class="govuk-link govuk-link--no-visited-state">Copy</a>
                 </td>
               </tr>
+              {% set count = [1,2,3,4,5,6,7,8,9,11,12,14,16,17,19,20,23,25,26,27,28] | random %}
+              {% if (day - count ) < 1 %}
+                {% set day = 29 %}
+                {% set month = month - 1 %}
+                {% if month == 0 %}
+                {% set month = 12 %}
+                {% set year = year-1 %}
+                {% endif %}
+              {% endif %}
+              {% set day = day - count%}
               {% endfor %}
 
 

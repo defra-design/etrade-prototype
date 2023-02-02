@@ -123,11 +123,11 @@ module.exports = function(env) {
 
 
   filters.getDate = function(day, mon, year) {
-    var months = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
     day.toString().replace(/^0+/, '')
-    mon.replace(/^0+/, '')
+    // mon.replace(/^0+/, '')
     return day + " " + months[mon - 1] + " " + year
   }
 
@@ -156,7 +156,7 @@ module.exports = function(env) {
   filters.convertToPageID = function(text) {
     return text.replace(/\s/g, '-')
   }
-  
+
   filters.hasDuplicate = function(t,arr,key) {
       var k = key || "EHC"
       result = false
@@ -196,6 +196,16 @@ module.exports = function(env) {
     }
 
     return false
+  }
+
+  // for eEHC only
+  filters.findObjectByKey = function(key, list) {
+      for (var i = 0; i < list.length; i++) {
+        if(list[i].user == key){
+          return list[i]
+        }
+      }
+      return list[0]
   }
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
@@ -262,6 +272,8 @@ module.exports = function(env) {
   filters.randomNumberGenerator = function(number) {
     return (Math.floor(Math.random() * number) + 1);
   }
+
+
   // -------------------------------------------------------------------
   // keep the following line to return your filters to the app
   // -------------------------------------------------------------------
