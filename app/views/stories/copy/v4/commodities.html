@@ -179,7 +179,7 @@ Home – GOV.UK Prototype Kit
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~{% if data.showWeight=='yes' %}./application/weight{% elseif data.accountName %}./application/check-your-answers{% else %}./application/check-your-answers{% endif %}">
+              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~{% if data.showWeight=='yes' %}./application/weight{% elseif data.accountName %}./application/check-your-answers?showNotification=no{% else %}./application/check-your-answers?showNotification=no{% endif %}">
               <label class="govuk-label govuk-radios__label" for="add-another-2">
                 No
               </label>
