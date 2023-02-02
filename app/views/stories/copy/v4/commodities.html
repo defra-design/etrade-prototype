@@ -93,7 +93,7 @@ Home – GOV.UK Prototype Kit
 
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-three-quarters">
-    
+
     {% if data.showNotification == "yes" %}
     <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
       <div class="govuk-notification-banner__header">
@@ -173,13 +173,13 @@ Home – GOV.UK Prototype Kit
           </div>
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~select-commodities?change=&copy=">
+              <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~./application/select-commodities?change=&copy=">
               <label class="govuk-label govuk-radios__label" for="add-another">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~{% if data.showWeight=='yes' %}./application/weight{% elseif data.accountName %}./application/check-your-answers{% else %}./added-certs?originalCommodityCount=7&amp;change=&amp;copy={% endif %}">
+              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~{% if data.showWeight=='yes' %}./application/weight{% elseif data.accountName %}./application/check-your-answers{% else %}./application/check-your-answers{% endif %}">
               <label class="govuk-label govuk-radios__label" for="add-another-2">
                 No
               </label>
