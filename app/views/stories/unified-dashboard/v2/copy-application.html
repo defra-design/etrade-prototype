@@ -7,15 +7,16 @@ Copy an application- Apply for an Export health certificate - GOVUK
 
 {% block beforeContent%}
 {% block navigation %}{% include './components/_navigation.html' %}{% endblock %}
-<a href="recent-certificates" class="govuk-back-link">Back</a>
+<a href="dashboard" class="govuk-back-link">Back</a>
 {% endblock %}
 
 {% block content %}
-{% set app = data.applications[query.id]%}
+{% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
+{% set app = list[query.id]%}
 <!-- get a list of certs -->
 <div class="govuk-grid-row" data-v-7899b5ce="" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-tag">Digital certificate</span>
+      <p><span class="govuk-tag">Digital certificate</span></p>
       <h1 class="govuk-heading-xl">Copy application</h1>
       <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">

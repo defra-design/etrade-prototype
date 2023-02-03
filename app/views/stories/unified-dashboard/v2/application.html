@@ -10,11 +10,12 @@ Copy – GOV.UK Prototype Kit
 {% block content %}
 
 {% set id = query.id or '0' %}
-{% set app = data.applications[id] %}
+{% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
+{% set app = list[id] %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-tag">Digital</span>
+  <div class="govuk-grid-column-three-quarters">
+    <p><span class="govuk-tag">Digital</span></p>
     <h1 class="govuk-heading-xl">Manage application <span style="white-space: nowrap;"> {{app.applicationID}} </span>
     </h1>
     <dl class="govuk-summary-list govuk-summary-list--no-border">
@@ -34,6 +35,14 @@ Copy – GOV.UK Prototype Kit
         </dt>
         <dd class="govuk-summary-list__value">
           {{app.applicationID}}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          IMSOC Number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          IMPORT.EU.GB.2022.0000683
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -63,14 +72,14 @@ Copy – GOV.UK Prototype Kit
           {{app.cert_info}}
         </dd>
       </div>
-      <div class="govuk-summary-list__row">
+      <!-- <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Exporter
         </dt>
         <dd class="govuk-summary-list__value">
           {{app.exporter or 'not set'}}
         </dd>
-      </div>
+      </div> -->
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Importer and destination
@@ -98,7 +107,7 @@ Copy – GOV.UK Prototype Kit
           </dd>
         </div>
     </dl>
-
+    {% block timeline %}{% include './components/_timeline.html'%}{% endblock %}
     <!-- <p class="govuk-body">
 
       <a class="govuk-button govuk-button--secondary " href="clone">Clone as new application</a>

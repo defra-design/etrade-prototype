@@ -48,6 +48,8 @@ Check your answers – GOV.UK Prototype Kit
         <h2 class="govuk-heading-m"><span id="remainingTasks">3 sections</span> need to be completed before submiting</h2>
 
         <ul class="govuk-list">
+        commoditiesAdded=  {{data.commoditiesAdded}}<br>
+        copyall =  {{data.copyall}}
           {% if data.copyall == "no" and ("commodities" not in data.manualSelection and "commodites1" not in data.manualSelection)  %}
           {% if data.commoditiesAdded != "yes" %}<li class="task"><a class="govuk-link--no-visited-state" href="select-commodities?showNotification=no">Add commodities</a></li>{% endif %}
           {% endif %}

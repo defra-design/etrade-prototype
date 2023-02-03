@@ -1,0 +1,141 @@
+/* ==========================================================================
+   #TIMELINE
+   ========================================================================== */
+$govuk-assets-path: '/govuk/assets/';
+.moj-timeline {
+  margin-bottom: govuk-spacing(4);
+  overflow: hidden;
+  position: relative;
+
+  // &:before {
+  //   background-color: $govuk-brand-colour;
+  //   content: "";
+  //   height: 100%;
+  //   left: 0;
+  //   position: absolute;
+  //   top: govuk-spacing(2);
+  //   width: 5px;
+  // }
+
+}
+
+.moj-timeline--full {
+  margin-bottom: 0;
+  &:before {
+    height: calc(100% - 75px);
+  }
+}
+
+.moj-timeline__item {
+  padding-bottom: govuk-spacing(6);
+  padding-left: govuk-spacing(4);
+  position: relative;
+
+  &:before {
+    background-color: $govuk-brand-colour;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    top: govuk-spacing(2);
+    width: 15px;
+  }
+  &:after {
+    background-color: #1d70b8;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 10px;
+    width: 5px;
+}
+
+
+}
+.moj-timeline__item-incomplete{
+  color: #505a5f!important;
+}
+.moj-timeline__item:last-child{
+  &:after {
+    background-color: transparent;
+}
+}
+
+.moj-timeline__title {
+  @include govuk-font($size: 19, $weight: bold);
+  display: inline;
+}
+
+.moj-timeline__byline {
+  @include govuk-font($size: 19);
+    color:  $govuk-secondary-text-colour;
+  display: block;
+  margin: 0;
+}
+
+.moj-timeline__date {
+  @include govuk-font($size: 19);
+  color:  $govuk-secondary-text-colour;
+  margin-top: govuk-spacing(1);
+  margin-bottom: 0;
+}
+
+.moj-timeline__description {
+  @include govuk-font($size: 19);
+  margin-top: govuk-spacing(4);
+
+}
+.app-timeline__item--sytem{
+
+  &:before {
+    background-color:  transparent;
+    // background-color:  $govuk-border-colour;
+  }
+  .moj-timeline__title{
+      font-weight: 400;
+      color:$govuk-error-colour;
+      color:$govuk-secondary-text-colour;
+      background: govuk-colour("light-grey");
+      padding:3px 10px;
+      display:inline-block;
+      margin:0
+  }
+
+
+}
+/* ==========================================================================
+   #TIMELINE DOCUMENT STYLES – FOR BACKWARDS COMPATIBILITY
+   ========================================================================== */
+
+.moj-timeline__documents {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.moj-timeline__document-item {
+  margin-bottom: govuk-spacing(1);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+.moj-timeline__document-link {
+  background-image: url(#{$govuk-assets-path}icon-document.svg);
+  background-repeat: no-repeat;
+  background-size: 20px 16px;
+  background-position: 0 50%;
+  padding-left: govuk-spacing(5);
+
+  &:focus {
+    color: govuk-colour("black"); // Focus colour on yellow should really be black.
+  }
+
+  // IE8 does not support box shadow, so use a standard border.
+  @include govuk-if-ie8 {
+    background-image: url(#{$govuk-assets-path}icon-document.png);
+  }
+
+}

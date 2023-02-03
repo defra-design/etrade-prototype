@@ -11,7 +11,9 @@ Copy an application- Apply for an Export health certificate - GOVUK
 {% endblock %}
 
 {% block content %}
-{% set app = data.applications[query.id]%}
+{% set id = query.id or '0' %}
+{% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
+{% set app = list[id] %}
 <!-- get a list of certs -->
 <div class="govuk-grid-row" data-v-7899b5ce="" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds">

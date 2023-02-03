@@ -35,7 +35,7 @@ Home – GOV.UK Prototype Kit
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="select-org-{{org.user}}" name="org" type="radio" value="{{org.user}}~./dashboard?unifiedTestinigUser={{org.user}}">
               <label class="govuk-label govuk-radios__label" for="select-org-{{org.user}}">
-                <span style="text-transform: capitalize;">{{org.user}} {{org.user=='default'}}{% if org.user=='default' %} (digital and paper){% endif%}</span>
+                <span style="text-transform: capitalize;">{{org.user}}</span> {% if org.user=='default' %} (digital and paper){% endif%}
               </label>
             </div>
             {% endfor %}

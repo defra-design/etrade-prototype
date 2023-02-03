@@ -4,18 +4,17 @@ Copy – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent%}
-<a href="dashboard-1" class="govuk-back-link">Return to your applications</a>
+<a href="../dashboard" class="govuk-back-link">Return to your applications</a>
 {% endblock%}
 
 {% block content %}
-
-{% set id = query.id or '0' %}
 {% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
+{% set id = query.id or '0' %}
 {% set app = list[id] %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-tag">Digital</span>
+    <p><span class="govuk-tag">Paper</span></p>
     <h1 class="govuk-heading-xl">Manage application <span style="white-space: nowrap;"> {{app.applicationID}} </span>
     </h1>
     <dl class="govuk-summary-list govuk-summary-list--no-border">
@@ -45,14 +44,7 @@ Copy – GOV.UK Prototype Kit
           <span class="govuk-hint">{{app.reference or 'Not set'}} </span>
         </dd>
       </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Type
-        </dt>
-        <dd class="govuk-summary-list__value">
-          <span class="govuk-hint">{{app.type}} </span>
-        </dd>
-      </div>
+
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -64,21 +56,22 @@ Copy – GOV.UK Prototype Kit
           {{app.cert_info}}
         </dd>
       </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Destination
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{app.importer}} LTD<br>
+          {{app.destination}}
+        </dd>
+      </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Exporter
         </dt>
         <dd class="govuk-summary-list__value">
           {{app.exporter or 'not set'}}
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Importer and destination
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{app.importer}} LTD<br>
-          {{app.destination}}
         </dd>
       </div>
       <div class="govuk-summary-list__row">

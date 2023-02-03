@@ -225,8 +225,8 @@ Your applications - EEHC - GOVUK
               {% set day =  [1,2,3,4,5,6,7,8,9,11,12,14,16,17,19,20,23,25,26,27,28] | random %}
               {% for app in list %}
 
-              {% set link = "https://defra-ehco-prototype.herokuapp.com/beta/v8/core/application?id="+(loop.index-1) %}
-              {% set copyLink = "https://defra-ehco-prototype.herokuapp.com/beta/v8/core/clone?id="+(loop.index-1) %}
+              {% set link = "./echo/application?id="+(loop.index-1) %}
+              {% set copyLink = "./echo/copy?id="+(loop.index-1) %}
               {% if app.type == 'Digital'%}
               {% set link = "application?id="+(loop.index-1) %}
               {% set copyLink = "copy-application?id="+(loop.index-1) %}
@@ -262,7 +262,7 @@ Your applications - EEHC - GOVUK
                 </td>
                 <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
                   <span class="table-heading" aria-hidden="true">Type </span>
-                  {% if app.type != "digital" %}
+                  {% if app.type != "Digital" %}
                     Paper
                   {% else %}
                     Digital

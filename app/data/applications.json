@@ -19,7 +19,7 @@
         "tag": "grey",
         "subbmited": "2/12/2022",
         "reference": "",
-        "inEU": "no",
+        "isEU": "no",
         "type": "Crown gold"
       }, {
         "_id": "5ebdac91354c762a2760b31f",
@@ -38,7 +38,7 @@
         "tag": "red",
         "submitDate": "",
         "reference": "",
-        "inEU": "yes",
+        "isEU": "grey",
         "type": "Digital"
       }, {
         "_id": "5ebdac911bda59ad750fc13c",
@@ -57,7 +57,7 @@
         "tag": "grey",
         "submitDate": "",
         "reference": "PO 86609 XI",
-        "inEU": "yes",
+        "isEU": "yes",
         "type": "Digital"
       }, {
         "_id": "5ebdac914668ff03d746e00e",
@@ -75,7 +75,7 @@
         "status": "processing",
         "tag": "blue",
         "submitDate": "15 May 2020",
-        "inEU": "no",
+        "isEU": "no",
         "type": "Crown gold",
         "reference": "PO 69166 AUS"
 
@@ -85,9 +85,9 @@
         "caseID": "19/17905",
         "applicationID": "272212294472",
         "name": "Cecelia Benson",
-        "exporter": "",
+        "exporter": "eded",
         "importer": "HARMONEY",
-        "destination": "Croatia",
+        "destination": "China",
         "EHC": "7006",
         "PDF": "ehc-7006ehc-3.0.pdf",
         "cert_info": "Export pig meat from Great Britain to China",
@@ -96,7 +96,7 @@
         "tag": "purple",
         "submitDate": "16 May 2020",
         "reference": "PO 36790 323",
-        "inEU": "no",
+        "isEU": "no",
         "type": "Crown gold"
       }, {
         "_id": "5ebdac9116e395b03467b8fb",
@@ -114,7 +114,7 @@
         "tag": "green",
         "submitDate": "30 Apr 2020",
         "reference": "PO 24477 PET",
-        "inEU": "yes",
+        "isEU": "yes",
         "type": "Digital"
       }, {
         "_id": "5ebdac9116e395b03467b8fb",
@@ -164,7 +164,7 @@
         "cert_info": "Export fresh meat and meat products to the USA",
         "certificate": "20/10/502091",
         "status": "completed",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "20 Apr 2020",
         "reference": "PO 52402 USA"
       }, {
@@ -182,7 +182,7 @@
         "certificate": "20/7/264353",
         "status": "submitted to certifier",
         "tag": "blue",
-        "inEU": "yes",
+        "isEU": "yes",
         "type": "Digital",
         "submitDate": "1 Apr 2020",
         "reference": "PO 65941 XI"
@@ -218,7 +218,7 @@
         "PDF": "ehc-6969ehc-8.1.pdf",
         "certificate": "20/3/372884",
         "status": "completed",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "13 Feb 2020",
         "reference": "PO 79192 Australia"
       }, {
@@ -304,7 +304,7 @@
         "cert_info": "Export fresh meat and meat products to the USA",
         "certificate": "20/2/698734",
         "status": "completed",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "2 Feb 2020",
         "reference": "PO 45376 USA"
       }, {
@@ -340,7 +340,7 @@
         "cert_info": "Export dairy and dairy products to Australia",
         "certificate": "19/11/588624",
         "status": "completed",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "2 Feb 2020",
         "reference": "PO 18891 UAJS"
       },
@@ -358,7 +358,7 @@
         "cert_info": "Export dairy and dairy products to Australia",
         "certificate": "20/5/661100",
         "status": "completed",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "31 Jan 2020",
         "reference": "PO 74394 Australia"
       },
@@ -376,7 +376,7 @@
         "cert_info": "Export dairy and dairy products to Australia",
         "certificate": "20/3/272867",
         "status": "completed",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "3 Jan 2020",
         "reference": "PO 38224 Australia"
       },
@@ -394,7 +394,7 @@
         "cert_info": "Export dairy and dairy products to Australia",
         "certificate": "19/6/377237",
         "status": "completed",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "14 Dec 2019",
         "reference": "PO 38774 Australia"
       },
@@ -413,7 +413,7 @@
         "cert_info": "Export dairy and dairy products to Australia",
         "certificate": "19/10/121369",
         "status": "completed",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "2016-04-05",
         "reference": "PO 94184 Australia"
       }
@@ -437,7 +437,7 @@
         "cert_info": "Processed pet food other than canned pet food to, or transit through, the European Union and Northern Ireland",
         "certificate": "19/7/969766",
         "status": "draft",
-        "tag": "grey",
+        "tag": "green",
         "subbmited": "2/12/2022",
         "reference": "",
         "isEU": "yes",
@@ -456,7 +456,7 @@
         "cert_info": "Processed animal protein (PAP), other than types derived from farmed insects to the European Union and Northern Ireland",
         "certificate": "20/9/101921",
         "status": "draft",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "",
         "isEU": "yes",
         "type": "White paper",
@@ -790,7 +790,7 @@
         "cert_info": "Meat products intended for human consumption, including rendered animal fats and greaves, meat extracts and treated stomachs, bladders and intestines (other than casings), that are not required to undergo a specific risk-mitigating treatment to the European Union and Northern Ireland",
         "certificate": "19/7/969766",
         "status": "draft",
-        "tag": "grey",
+        "tag": "green",
         "subbmited": "2/12/2022",
         "reference": "",
         "isEU": "yes",
@@ -809,7 +809,7 @@
         "cert_info": "Meat products intended for human consumption, including rendered animal fats and greaves, meat extracts and treated stomachs, bladders and intestines (other than casings), that are not required to undergo a specific risk-mitigating treatment to the European Union and Northern Ireland",
         "certificate": "20/9/101921",
         "status": "draft",
-        "tag": "grey",
+        "tag": "green",
         "submitDate": "",
         "isEU": "yes",
         "type": "White paper",
@@ -1142,7 +1142,7 @@
 			"cert_info": "Honey and other apiculture products intended for human consumption to the European Union and Northern Ireland",
 			"certificate": "19/7/969766",
 			"status": "draft",
-			"tag": "grey",
+			"tag": "green",
 			"subbmited": "2/12/2022",
 			"reference": "",
 			"isEU": "yes",
@@ -1161,7 +1161,7 @@
 			"cert_info": "Honey and other apiculture products intended for human consumption to the European Union and Northern Ireland",
 			"certificate": "20/9/101921",
 			"status": "draft",
-			"tag": "grey",
+			"tag": "green",
 			"submitDate": "",
 			"isEU": "yes",
 			"type": "White paper",
@@ -1493,7 +1493,7 @@
 			"cert_info": "Fresh meat intended for human consumption, excluding mechanically separated meat, of domestic ovine and caprine animals to the European Union and Northern Ireland",
 			"certificate": "19/7/969766",
 			"status": "draft",
-			"tag": "grey",
+			"tag": "green",
 			"subbmited": "2/12/2022",
 			"reference": "",
 			"isEU": "yes",
@@ -1512,7 +1512,7 @@
 			"cert_info": "Fresh meat intended for human consumption, excluding mechanically separated meat, of domestic ovine and caprine animals to the European Union and Northern Ireland",
 			"certificate": "20/9/101921",
 			"status": "draft",
-			"tag": "grey",
+			"tag": "green",
 			"submitDate": "",
 			"isEU": "yes",
 			"type": "White paper",
@@ -1843,7 +1843,7 @@
 				"cert_info": "Export fishing bait with eggs to South Africa",
 				"certificate": "19/7/969766",
 				"status": "draft",
-				"tag": "grey",
+				"tag": "green",
 				"subbmited": "2/12/2022",
 				"reference": "",
 				"isEU": "no",
@@ -1862,7 +1862,7 @@
 				"cert_info": "Processed animal protein (PAP), other than types derived from farmed insects to the European Union and Northern Ireland",
 				"certificate": "20/9/101921",
 				"status": "draft",
-				"tag": "grey",
+				"tag": "green",
 				"submitDate": "",
 				"isEU": "yes",
 				"type": "White paper",
