@@ -139,17 +139,18 @@ module.exports = function(router) {
     }else{
       res.redirect(301, '/' + base_url + 'transport-v2/added-transport');
     }
-
-
   })
-
-
   router.post('/' + base_url + 'global-certificate/*/export-destination', function(req, res) {
     console.log(req.body.country+'.')
-    if(req.body.country == "France" || req.body.country == "Denmark" || req.body.country == "Germany" || req.body.country == "Ireland" || req.body.country == "Northern Ireland"){
-      res.redirect(301, '/' + base_url + 'unified-dashboard/select-certificate');
+    if (req.body.country == "GB" || req.body.country == "XI" || req.body.country == "Any" ) {
+       res.redirect(301, '/' + base_url + 'global-certificate/'+req.params[0]+'/importer');
     }
-    res.redirect(301, '/' + base_url + 'global-certificate/'+req.params[0]+'/form-finder?destination_country='+req.body.country);
+   else  if(req.body.country == "France" || req.body.country == "Denmark" || req.body.country == "Germany" || req.body.country == "Ireland"  ){
+      res.redirect(301, '/' + base_url + 'global-certificate/'+req.params[0]+'/select-certificate');
+    }else{
+      res.redirect(301, '/' + base_url + 'global-certificate/'+req.params[0]+'/form-finder?destination_country='+req.body.country);
+    }
+    
   })
 
 

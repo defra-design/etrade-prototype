@@ -31,6 +31,22 @@
       "en-GB": "United Arab Emirates"
     }
   },
+  "country:XI": {
+    "edges": {
+      "from": [
+      ]
+    },
+    "meta": {
+      "canonical": true,
+      "canonical-mask": 1,
+      "display-name": true,
+      "stable-name": true
+    },
+    "names": {
+      "cy": false,
+      "en-GB": "Northern Ireland (United Kingdom)"
+    }
+  },
   "country:AF": {
     "edges": {
       "from": [

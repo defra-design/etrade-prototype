@@ -17,7 +17,7 @@
       Who is responsible for load?
     </h1>
     <p id="certified-as-hint" class="govuk-body">This is the oporator or organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
-    <form method="post" novalidate action="../task-list">
+    <form method="post" novalidate action="{% if query.change == 'yes' %}../check-your-answers{% else %}../task-list{% endif %}">
       <div class="govuk-form-group ">
         <label for="search-goods-certified-as" class="govuk-label">Search for organisation</label>
         <input class="govuk-input" aria-describedby="showing-count" id="search-goods-certified-as" type="text">
@@ -40,8 +40,8 @@
             {% for est in data.establishments %}
             {% if loop.index > 10 and loop.index < 20 %}
             <div class="govuk-radios__item" data-v-563d6e59="" data-content="{{est.TradingName}}">
-              <input id="goods-certified-as-{{loop.index}}" type="radio" name="goods_certified_as" class="govuk-radios__input" value="{{TradingName}}">
-              <label class="govuk-label govuk-radios__label" for="goods-certified-as-{{loop.index}}">{{est.TradingName}}<br>{{est.Address1}}, {% if est.Address2 %}{{est.Address2}}, {% endif %}{{est.Town}}, {{est.Postcode}}</label>
+              <input id="reponsibleForLoad-{{loop.index}}" type="radio" name="reponsibleForLoad" class="govuk-radios__input" value="{{TradingName}}">
+              <label class="govuk-label govuk-radios__label" for="reponsibleForLoad-{{loop.index}}">{{est.TradingName}}<br>{{est.Address1}}, {% if est.Address2 %}{{est.Address2}}, {% endif %}{{est.Town}}, {{est.Postcode}}</label>
             </div>
             {% endif %}
             {% endfor %}
@@ -62,6 +62,7 @@
       <div class="govuk-button-group">
 
         <!-- to update state  -->
+        
         <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="completed">
         <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
         <a href="../task-list" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>

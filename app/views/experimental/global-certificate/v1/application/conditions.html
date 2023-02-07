@@ -11,7 +11,7 @@ Uploaded documents – {{serviceName}} – GOV.UK
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-    <form id="form" method="METHOD" action="added-transport">
+    <form id="form" method="METHOD" action="{% if query.change == 'yes' %}../check-your-answers{% else %}./container-seal-numbers{% endif %}">
           <div class="govuk-form-group" data-v-133877c6="">
             <fieldset class="govuk-fieldset" data-v-133877c6="">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl" data-v-133877c6="">How will the consignment be stored during transport?</legend>
@@ -31,8 +31,15 @@ Uploaded documents – {{serviceName}} – GOV.UK
               </div>
             </fieldset>
           </div>
-          <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">
-          <button class="govuk-button" >Continue</button>
+          <div class="govuk-button-group">
+            {% if query.change != "yes" %}
+   <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">
+   {% endif %}
+    <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+     {% if query.change != "yes" %}
+        <a href="../task-list" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>
+        {% endif %}
+      </div>
 
     </form>
 

@@ -14,12 +14,12 @@
 
     <span class="govuk-caption-xl">Export details</span>
     <h1 class="govuk-heading-xl">
-      Where will the consignment be dispatched from?
+      Place of destination
     </h1>
-    <p id="certified-as-hint" class="govuk-body">This is the final location that the consignment will be transported from in Great Britain.</p>
-    <form method="post" novalidate action="{% if query.change == 'yes' %}../check-your-answers{% else %}responsible-for-load{% endif %}">
+    <p id="certified-as-hint" class="govuk-body">This is where the goods will first arrive after the port.</p>
+    <form method="post" novalidate action="{% if query.change == 'yes' %}../check-your-answers{% else %}../task-list{% endif %}">
       <div class="govuk-form-group ">
-        <label for="search-goods-certified-as" class="govuk-label">Search for place of dispatch</label>
+        <label for="search-goods-certified-as" class="govuk-label">Search for organisation</label>
         <input class="govuk-input" aria-describedby="showing-count" id="search-goods-certified-as" type="text">
       </div>
       <p class="govuk-body govuk-!-margin-top-4" style="display:none"><span id="showing-count" aria-atomic="true"></span> &nbsp;&nbsp;<a class="govuk-link--no-visited-state" href="./consignment-dispatched-from" id="clear-all"
@@ -38,10 +38,10 @@
 
           <div class="govuk-radios" data-module="govuk-radios" tabindex="0" data-v-563d6e59="">
             {% for est in data.establishments %}
-            {% if loop.index < 10 %}
+            {% if loop.index > 10 and loop.index < 20 %}
             <div class="govuk-radios__item" data-v-563d6e59="" data-content="{{est.TradingName}}">
-              <input id="dispatchedFrom-{{loop.index}}" type="radio" name="dispatchedFrom" class="govuk-radios__input" value="{{loop.index-1}}" {% if query.change and loop.index-1 == data.dispatchedFrom %}checked{% endif %}>
-              <label class="govuk-label govuk-radios__label" for="dispatchedFrom-{{loop.index}}">{{est.TradingName}}<br>{{est.Address1}}, {% if est.Address2 %}{{est.Address2}}, {% endif %}{{est.Town}}, {{est.Postcode}}</label>
+              <input id="PlaceOfDestination-{{loop.index}}" type="radio" name="PlaceOfDestination" class="govuk-radios__input" value="{{TradingName}}">
+              <label class="govuk-label govuk-radios__label" for="PlaceOfDestination-{{loop.index}}">{{est.TradingName}}<br>{{est.Address1}}, {% if est.Address2 %}{{est.Address2}}, {% endif %}{{est.Town}}, {{est.Postcode}}</label>
             </div>
             {% endif %}
             {% endfor %}
@@ -52,7 +52,7 @@
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            Cannot find the place of origin?
+            Cannot find the organisation
           </span>
         </summary>
         <div class="govuk-details__text">
@@ -61,14 +61,15 @@
       </details>
       <div class="govuk-button-group">
 
-        <!-- to update state  -->
-        {% if query.change != "yes" %}
-        <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">
-        {% endif%}
+    
+        {% if query.change !="yes" %}
+        <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="completed">
+        {% endif %}
+
         <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
-        {% if query.change != "yes" %}
+         {% if query.change !="yes" %}
         <a href="../task-list" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>
-         {% endif%}
+        {% endif %}
       </div>
 
 

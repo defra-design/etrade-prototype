@@ -20,15 +20,15 @@
   <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
       <h1 class="govuk-fieldset__heading">
-          Do you have asurrance for these goods?
+          Does you have asurrances for these goods?
       </h1>
     </legend>
     <div id="changed-name-hint" class="govuk-hint">
-      This means something
+      You can prove you have assurances to move these goods.
     </div>
     <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes~create-reference">
+        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes~{% if data.selectedCertificate == 'different' %}select-certificate{% else %}create-reference{% endif %}">
         <label class="govuk-label govuk-radios__label" for="changed-name">
           Yes
         </label>

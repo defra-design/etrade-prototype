@@ -12,7 +12,7 @@ Which certificate do you want to apply for - Apply for an Export health certific
 
 {% block content %}
 
-  {% set list =  data.applications %}
+{% set list =  data.applications[0].applications %}
 <!-- get a list of certs -->
 {% set eehcCertificates = [] %}
   {% for cert in list %}
@@ -39,7 +39,6 @@ Which certificate do you want to apply for - Apply for an Export health certific
               <input class="govuk-radios__input" id="certificate-{{cert.EHC}}EHC" name="selectedCertificate" type="radio" aria-describedby="certificate-9999EHC--hint" value="9999~importer">
               <label class="govuk-label govuk-radios__label" for="certificate-9999EHC">
                 <strong>9999EHC </strong>
-
               </label>
               <span id="certificate-{{cert.EHC}}EHC--hint" class="govuk-hint govuk-radios__hint govuk-!-margin-bottom-0">General certificate to Northern Ireland</span>
             </div>

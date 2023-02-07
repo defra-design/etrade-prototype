@@ -35,8 +35,8 @@ Home – GOV.UK Prototype Kit
         <ul class="app-task-list__items">
           {% set completed = []%}
           <!-- Export details -->
-          {% set taskID = "about the goods" %}
-          {% set firstPage = "goods-certified-as" %}
+          {% set taskID = "export details" %}
+          {% set firstPage = "origin-of-product" %}
           {% block exportDetails %}{% include './components/_task-list-item.html' %}{% endblock %}
 
           <!-- Import details -->
@@ -45,8 +45,8 @@ Home – GOV.UK Prototype Kit
           {% block importDetails %}{% include './components/_task-list-item.html' %}{% endblock %}
 
           <!-- Import details -->
-          {% set taskID = "transportaion of the goods" %}
-          {% set firstPage = "conditions" %}
+          {% set taskID = "transport of the goods" %}
+          {% set firstPage = "added-transport" %}
           {% block transportDetails %}{% include './components/_task-list-item.html' %}{% endblock %}
 
         </ul>
@@ -88,8 +88,7 @@ Home – GOV.UK Prototype Kit
           <p class="app-task-list_help-text">Once you've entered all the information you can, you can review your answers and submit the application.</p>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
-
-              {% if completed == 4  or (query.isComplete == "yes") %}
+              {% if completed | length == 3  or (query.isComplete == "yes") %}
               <span class="app-task-list__task-name">
                 <a href="./check-your-answers" aria-describedby="check-your-answers-status">
                   Review and submit application

@@ -172,6 +172,7 @@ module.exports = function(router) {
 
   router.post('/' + base_url + 'unified-dashboard/*/export-destination', function(req, res) {
     console.log(req.body.country+'.')
+    console.log("This is being triggered in stories routes.js")
     if(req.body.country == "France" || req.body.country == "Denmark" || req.body.country == "Germany" || req.body.country == "Ireland" || req.body.country == "Northern Ireland"){
       res.redirect(301, '/' + base_url + 'unified-dashboard/'+req.params[0]+'/select-certificate');
     }

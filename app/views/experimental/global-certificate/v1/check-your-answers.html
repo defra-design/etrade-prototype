@@ -23,7 +23,7 @@ Check your answers – GOV.UK Prototype Kit
 </style>
 
 
-
+  
       <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
         <div class="govuk-summary-list__row" data-v-e8e27fc8="">
           <div class="govuk-summary-list__key" data-v-e8e27fc8="">Application Reference</div>
@@ -31,10 +31,9 @@ Check your answers – GOV.UK Prototype Kit
           </div>
           <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="create-reference-2?showNotification=no" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
         </div>
+        
+        
       </div>
-
-
-
 
   <style media="screen">
     .govuk-summary-list__row-error {
@@ -46,52 +45,53 @@ Check your answers – GOV.UK Prototype Kit
 
   </style>
 
-        <h2 class="govuk-heading-m" data-v-e8e27fc8="">Description of the goods</h2>
+        <h2 class="govuk-heading-m" data-v-e8e27fc8="">Export details</h2>
 <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8="">Certificate</div>
-    <div class="govuk-summary-list__value" data-v-e8e27fc8="">EHC8368 - Fresh meat intended for human consumption, excluding mechanically separated meat, of domestic bovine animals to the European Union and Northern Ireland</div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""></div>
-  </div>
+          <div class="govuk-summary-list__key" data-v-e8e27fc8="">Exporter</div>
+          <div class="govuk-summary-list__value" data-v-e8e27fc8="">Avinar ltd<br>
+            24 Edenhurst avenue, London, SW6 5NE
+          </div>
+         
+        </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8="">Commodities</div>
+    <div class="govuk-summary-list__key" data-v-e8e27fc8="">Origin of the product</div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
 
-      <p class="govuk-body">4 records for 2 commodities</p>
+        {{data.origin or "Great Britain"}}
 
     </div>
 
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="../commodities?change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="./application/origin-of-product?taskID=exportdetails&change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a> <span class="govuk-visually-hidden">the origin of the product</span></div>
 
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Gross weight</div>
-    <div class="govuk-summary-list__value" data-v-e8e27fc8=""><span class="certified-goods" data-v-e8e27fc8="">52 kilograms</span></div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="./weight" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
-  </div>
-  <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Goods certified as </div>
-    <div class="govuk-summary-list__value" data-v-e8e27fc8=""><span class="certified-goods" data-v-e8e27fc8="">Human Consumption</span></div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
-  </div>
-  <div class="govuk-summary-list__row " id="containerNumber-error">
-    <div class="govuk-summary-list__key " data-v-e8e27fc8="">Container number/seal number </div>
+    <div class="govuk-summary-list__key" data-v-e8e27fc8="">Consignment dispatched from</div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-
-      389274239
-
-    </div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="container-deal-number?showNotification=no" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+      {% set est = data.establishments[(data.dispatchedFrom or 0)]%}
+      {{est.TradingName}} <br>
+      {{est.Address1}}, <br>
+      {% if est.Address2 %}{{est.Address2}}, <br>{% endif %}
+      {{est.Town}}, {{est.Postcode}}
+      
   </div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="./application/consignment-dispatched-from?taskID=exportdetails&change=yes" class="govuk-link" data-v-e8e27fc8=""> Change<span class="govuk-visually-hidden"> Where the consignment be dispatched from</span></a></div>
+  </div>
+
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Purpose of export </div>
+    <div class="govuk-summary-list__key" data-v-e8e27fc8="">Responsible for load</div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-      <div data-v-e8e27fc8="">Internal market <span class="ml-1" data-v-e8e27fc8=""></span></div>
+      {% set est = data.establishments[(data.reponsibleForLoad or 0)]%}
+      {{est.TradingName}} <br>
+      {{est.Address1}}, <br>
+      {% if est.Address2 %}{{est.Address2}}, <br>{% endif %}
+      {{est.Town}}, {{est.Postcode}}
     </div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Purpose-Of-Export" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="./application/responsible-for-load?&change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
 </div>
-<h2 class="govuk-heading-m" data-v-e8e27fc8="">Additional documents (optional)</h2>
+
+<!-- <h2 class="govuk-heading-m" data-v-e8e27fc8="">Additional documents (optional)</h2>
 <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Accompanying documents </div>
@@ -100,15 +100,20 @@ Check your answers – GOV.UK Prototype Kit
     </div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Accompanying-Documents" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
-</div>
-<h2 class="govuk-heading-m" data-v-e8e27fc8="">Persons involved</h2>
+</div> -->
+<h2 class="govuk-heading-m" data-v-e8e27fc8="">Import details</h2>
 <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Consignor or Exporter </div>
+    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Border control post</div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-      <div data-v-e8e27fc8="">Greggs plc (Glasgow, G72 7NA)</div>
+      <div data-v-e8e27fc8="">
+        {% set est = data.bcp[0].ports[(data.BCPPost or 0)]%}
+        {{est.name}} <br>
+        {{est.address}}
+
+      </div>
     </div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Consignor-Or-Exporter" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="./application/border-control?change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
     <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Consignee or Importer </div>
@@ -118,95 +123,69 @@ Check your answers – GOV.UK Prototype Kit
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Consignee-Or-Importer" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Certifier </div>
+    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Place of destination </div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
       <div data-v-e8e27fc8="">
-        <p data-v-e8e27fc8="">Hall Mark Meat Hygniene Ltd, 8 Wheelwrights Corne, GL6 ODD</p>
+        {% set est = data.establishments[(data.PlaceOfDestination or 0)]%}
+      {{est.TradingName}} <br>
+      {{est.Address1}}, <br>
+      {% if est.Address2 %}{{est.Address2}}, <br>{% endif %}
+      {{est.Town}}, {{est.Postcode}}
       </div>
     </div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Certifier" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="./application/place-of-destination?change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
-  <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Region of certification </div>
-    <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-      <div data-v-e8e27fc8="">England</div>
-    </div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Region-of-certification" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
-  </div>
-  <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Responsible for load </div>
-    <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-    <div data-v-e8e27fc8="">Greggs plc (Glasgow, G72 7NA)</div>
-    </div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Operator" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
-  </div>
+
 </div>
+
+
 <h2 class="govuk-heading-m" data-v-e8e27fc8="">Transport</h2>
 <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
   <div class="govuk-summary-list__row " id="arrivalDepartDate-error">
-    <div class="govuk-summary-list__key " data-v-e8e27fc8=""> Departure and arrival  </div>
+    <div class="govuk-summary-list__key " data-v-e8e27fc8=""> Means of transport </div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-
-      10 February 2023
+      <ol class="govuk-list govuk-list--number">
+      {% for t in data.transportList%}
+      <li>{{(t.typeOfTransport | capitalize) or "Plane"}} - {{t.identifier | upper or '92394234'}}</li>
+      {% endfor %}
+      </ol>
     </div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="arrival-and-departure?showNotification=no" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="./application/added-transport?taskID=transportofthegoods&change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Place of origin </div>
+    <div class="govuk-summary-list__key" data-v-e8e27fc8="">Consignment storage conditions during transport</div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-      <div data-v-e8e27fc8="">
-        <p data-v-e8e27fc8="">United Kingdom (GB)</p>
-        <p data-v-e8e27fc8="">Dispatch - Greggs plc (Glasgow, G72 7NA))</p>
-        <p data-v-e8e27fc8="">Loading - Greggs plc (Belfast, BT1 6JH)</p>
-      </div>
+        {{data.conditions}}
     </div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Origin" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="./application/conditions?taskID=transportofthegoods&change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
   <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Entry border control post </div>
+    <div class="govuk-summary-list__key" data-v-e8e27fc8="">Container or seal numbers</div>
     <div class="govuk-summary-list__value" data-v-e8e27fc8="">
-      <div data-v-e8e27fc8="">Belsfast Port - DAERA <span class="ml-1" data-v-e8e27fc8="">(UNLO Code: GBBEL)</span></div>
+      {% if data.sealType and "container" in data.sealType %}
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Container numbers</h3>
+      <p>{{data.containerNumbers}}</p>
+      {% endif %}
+      {% if data.sealType and "seal" in data.sealType %}
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Seal numbers</h3>
+      <p>{{data.sealNumbers}}</p>
+      {% endif %}
     </div>
     <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Border-Control-Post" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
   </div>
-  <div class="govuk-summary-list__row " id="meansOfTransport-error">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8=""> Means of transport </div>
-    <div class="govuk-summary-list__value" data-v-e8e27fc8="">
 
-
-        Train - 0239809
-
-
-    </div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="means-of-transport?showNotification=no" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
-  </div>
-  <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-    <div class="govuk-summary-list__key" data-v-e8e27fc8="">Place of destination </div>
-    <div class="govuk-summary-list__value" data-v-e8e27fc8=""><span data-v-e8e27fc8=""><div data-v-e8e27fc8="">DFDS Logistics Ltd <span class="ml-1" data-v-e8e27fc8="">(Belfast, BT3)</span></div></span></div>
-    <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Place-Of-Destination" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
-  </div>
 </div>
-
-
-
-
-      <!-- <p class="download-a-document">
+      <p class="download-a-document">
       <span class="download-a-document-image"><img class="" src="/public/images/icon-file-download.png" alt="your answers in a specimen certificate"><span class="govuk-visually-hidden">File download</span></span>
-      <strong><a href="/public/images/ehc-2849ehc-3.1.pdf" target="_blank" data-qa-id="Link-PreviewCertificate" class="govuk-link">EHC8361: Preview the answers in a specimen certificate</a> (PDF, 23KB)
+      <strong><a href="/public/images/ehc-2849ehc-3.1.pdf" target="_blank" data-qa-id="Link-PreviewCertificate" class="govuk-link">EHC9999: Preview the answers in a specimen certificate</a> (PDF, 23KB)
         <br>(opens in a new tab)</strong>
-      </p> -->
+      </p>
 
       <h2 class="govuk-heading-m" data-v-e8e27fc8=""> Check and submit your application </h2>
-      <p class="govuk-body" data-v-e8e27fc8=""> Once you have reviewed all your answers, you can validate and upon successful validation you can submit your application</p>
+      <p class="govuk-body" data-v-e8e27fc8=""> Once you have reviewed all your answers, you will need to digitally sign the certificate.</p>
       <div data-v-e8e27fc8=""><a href="review" class="govuk-button" id="validate" data-v-e8e27fc8="">
           Continue
         </a>
-        <a href="review" class="govuk-button" id="submit" data-v-e8e27fc8="" style="display:none">
-          Submit to certifier
-        </a>
-
-        <!---->
-        <!-- <p id="eleapsed-time" aria-live="polite" class="govuk-body" data-v-e8e27fc8="" style="display:none"></p> -->
       </div>
     </div>
   </div>

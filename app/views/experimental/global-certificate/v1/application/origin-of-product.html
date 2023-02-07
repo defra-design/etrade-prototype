@@ -11,31 +11,66 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form method="post" novalidate="" action="consignment-dispatched-from">
-      <div class="govuk-form-group">
-        <span class="govuk-caption-xl">Export details</span>
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-            <h1 class="govuk-fieldset__heading">
-              What is the origin of the product?
-            </h1>
-          </legend>
-          <p>Provide details of the origin of the animals from which the product is derived. These may originate from more than one country.</p>
-          <div class="repeatable-section" id="country-origin-1">
-            {% block countrySelect %}{% include '../components/_country-of-origin.html'%}{% endblock%}
-          </div>
-        </fieldset>
-        <p class="govuk-!-margin-top-4">
-          <a href="#">Add another country of origin</a>
-        </p>
+
+
+    
+    <span class="govuk-caption-xl">Export details</span>
+    
+    <h1 class="govuk-heading-xl">
+      What is the origin of the product?
+    </h1>
+    <p class="govuk-body">Provide details of the origin of the animals from which the product is derived. These may originate from more than one region. We use this information to help control the spread of disease.</p>
+    <form method="POST" action="{% if query.change == 'yes' %}../check-your-answers{% else %}consignment-dispatched-from{% endif %}">
+    <!-- <form  action="check-your-progress"  method="POST"> -->
+      <fieldset class="govuk-fieldset">
+        
+        
+        
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h3 class="govuk-fieldset__heading">
+        Origin 
+      </h3>
+      <span id="origin-hint" class="govuk-hint">Select all that apply:</span>
+    </legend>
+    <div class="govuk-checkboxes ">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="GreatBritain" name="origin" type="checkbox" value="Great Britain" {% if query.change == 'yes' and 'Great Britain' in data.origin %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="GreatBritain">
+          Great Britain
+        </label>
       </div>
-      <div class="govuk-button-group">
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="NorthernIreland" name="origin" type="checkbox" value="Northern Ireland">
+        <label class="govuk-label govuk-checkboxes__label" for="NorthernIreland">
+          Northern Ireland
+        </label>
+      </div>
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="OutsidetheUK" name="origin" type="checkbox" value="Outside the UK">
+        <label class="govuk-label govuk-checkboxes__label" for="OutsidetheUK">
+          Outside the UK
+        </label>
+      </div>
+      
+    </div>
+  </fieldset>
+</div>
+         <div class="govuk-button-group">
         <!-- to update state  -->
-        <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">
+        {% if query.change != "yes" %}
+        <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">{% endif %}
         <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+        {% if query.change != "yes" %}
         <a href="../task-list" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>
+        {% endif %}
       </div>
+      </fieldset>
     </form>
+
   </div>
 </div>
 

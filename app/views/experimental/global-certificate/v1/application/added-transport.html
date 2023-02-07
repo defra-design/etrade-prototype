@@ -125,7 +125,7 @@ Uploaded documents – {{serviceName}} – GOV.UK
             Do you want to add another means of transport?
           </legend>
           <div id="add-another-hint" class="govuk-hint">
-            <!-- You must tell us about all your directors. -->
+           List all the means of transport for this export. You must enter them in order of travel.
           </div>
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
@@ -135,23 +135,25 @@ Uploaded documents – {{serviceName}} – GOV.UK
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~../task-list">
+              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~{% if query.change == 'yes' %}../check-your-answers{% else %}./conditions{% endif %}">
               <label class="govuk-label govuk-radios__label" for="add-another-2">
                 No
               </label>
             </div>
           </div>
-          <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="completed">
+          <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in-progress">
         </fieldset>
       </div>
 
-      <button class="govuk-button" data-module="govuk-button">
-        Continue
-      </button>
-
+      <div class="govuk-button-group">
+   <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">
+    <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+    {% if query.change == "yes" %}
+        <a href="../task-list" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>
+      </div>
+       {% endif %}
       {% endif %}
     </form>
-
 
   </div>
 </div>

@@ -212,14 +212,17 @@ Your applications - EEHC - GOVUK
                 <th class="govuk-table__header"></th>
               </tr>
             </thead>
-            <tbody>
+                        <tbody>
 
+              {% set list =  data.applications[0].applications %}
 
-
+              {% set month = 2 %}
+              {% set year = 2023 %}
+              {% set day =  [1,2,3,4,5,6,7,8,9,11,12,14,16,17,19,20,23,25,26,27,28] | random %}
               {% for app in list %}
 
-              {% set link = "https://defra-ehco-prototype.herokuapp.com/beta/v8/core/application?id="+(loop.index-1) %}
-              {% set copyLink = "https://defra-ehco-prototype.herokuapp.com/beta/v8/core/clone?id="+(loop.index-1) %}
+              {% set link = "./echo/application?id="+(loop.index-1) %}
+              {% set copyLink = "./echo/copy?id="+(loop.index-1) %}
               {% if app.type == 'Digital'%}
               {% set link = "application?id="+(loop.index-1) %}
               {% set copyLink = "copy-application?id="+(loop.index-1) %}
@@ -230,7 +233,7 @@ Your applications - EEHC - GOVUK
               {% endif %}
               <tr class="govuk-table__row result">
                 <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
-                  <a href="{{link}}" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Applicatin reference </span> {{app.reference or app.applicationID}}</a>
+                  <a href="{{link}}" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Reference</span> {{app.reference or app.applicationID}}</a>
 
                   {% if app.is_block == "yes"%}
                   <div class=" govuk-!-margin-top-1 govuk-!-font-weight-regular">Block of 50 certificates</div>
@@ -249,13 +252,17 @@ Your applications - EEHC - GOVUK
                   <span class="table-heading" aria-hidden="true">Submitted on</span>
                   {{app.submitDate or "-"}}
                 </td>
-                <!-- <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
-                  <span class="table-heading" aria-hidden="true">Export date</span>
-                  {{app.exportDate or "-"}}
-                </td> -->
+                <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                  <span class="table-heading" aria-hidden="true">Proposed export</span>
+                  {{day | getDate(month,year)}}
+                </td>
                 <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
                   <span class="table-heading" aria-hidden="true">Type </span>
-                  {{app.type or "White paper"}}
+                  {% if app.type != "Digital" %}
+                    Paper
+                  {% else %}
+                    Digital
+                  {% endif%}
                 </td>
                 <td id="1721147986456-status" class="govuk-table__cell" scope="row">
                   <span class="table-heading" aria-hidden="true">Status</span>
@@ -267,6 +274,16 @@ Your applications - EEHC - GOVUK
                   <a href="{{copyLink}}" class="govuk-link govuk-link--no-visited-state">Copy</a>
                 </td>
               </tr>
+              {% set count = [1,2,3,4,5,6,7,8,9,11,12,14,16,17,19,20,23,25,26,27,28] | random %}
+              {% if (day - count ) < 1 %}
+                {% set day = 29 %}
+                {% set month = month - 1 %}
+                {% if month == 0 %}
+                {% set month = 12 %}
+                {% set year = year-1 %}
+                {% endif %}
+              {% endif %}
+              {% set day = day - count%}
               {% endfor %}
 
 
