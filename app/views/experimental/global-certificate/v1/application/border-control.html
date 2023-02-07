@@ -23,19 +23,13 @@
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby=" certified-as-hint">
-
-
-
-
           <div class="govuk-radios" data-module="govuk-radios" tabindex="0" data-v-563d6e59="">
             {% for bcp in data.bcp[0].ports %}
             <div class="govuk-radios__item" data-v-563d6e59="" data-content="{{bcp.TradingName}}">
               <input id="goods-certified-as-{{loop.index}}" type="radio" name="BCPPost" class="govuk-radios__input" value="{{loop.index -1}}">
               <label class="govuk-label govuk-radios__label" for="bcp-{{loop.index}}">{{bcp.name}}<br>{{bcp.address}}</label>
-              
             </div>
             {% endfor %}
-
           </div>
         </fieldset>
       </div>

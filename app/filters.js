@@ -32,6 +32,15 @@ module.exports = function(env) {
         return num+=1;
 
   }
+  filters.convertCountry  = function(iso){
+    let regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
+    if(iso == "XI"){
+      return "United Kingdom - Northern Ireland"
+    }else{
+      return regionNames.of(iso);
+    }
+    
+  }
   filters.removeText = function(s,t) {
         return s.replace(t,'')
 
@@ -172,7 +181,11 @@ module.exports = function(env) {
 
       return arr.sort()
   }
+  filters.sortby = function(arr,key) {
 
+      return arr.sort((a, b) => a[key] > b[key] ? 1 : -1);
+  }
+  
   filters.addToListComplete = function(list, data, completePrefix) {
     // This could be made more dynamic, used for task list.
     let checked = []

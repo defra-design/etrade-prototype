@@ -32,6 +32,7 @@ var globalCertificate = require('./global-certificate.json')
 var applications = require('./applications.json')
 var bcp = require('./bcp.json')
 var forms = require('./forms.json')
+
 module.exports = {
   "account": "Isosure Trading Ltd",
   "certificates" : certs,

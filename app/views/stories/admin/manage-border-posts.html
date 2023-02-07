@@ -1,0 +1,462 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Copy – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set posts = []%}
+{% if not query.country or query.country == "Any" %}
+    {% for bcp in data.bcp %}
+        {% for port in bcp.ports %}
+            {% set posts = (posts.push(port),posts)%}
+        {% endfor %}
+    {% endfor %}
+    {% elseif query.country == "AT" %}
+{% set posts = data.bcp[1].ports %}
+{% elseif query.country == "FR" %}
+{% set posts = data.bcp[2].ports %}
+{% elseif query.country == "ES" %}
+{% set posts = data.bcp[3].ports %}
+{% else %}
+{% set posts = data.bcp[0].ports %}
+{% endif %}
+{% set posts = posts | sortby("name") %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none" tabindex="-1">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    <li id="operator-search-country-error-summary" style="display:none"><a href="#operator-search-country">A country must be selected</a></li>
+                    <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
+                </ul>
+            </div>
+        </div>
+        <span class="govuk-caption-xl">APHA Administration</span>
+        <h1 class="govuk-heading-xl">Manage border control posts</h1>
+        <!-- <p class="govuk-body">Enter the country and address of the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p> -->
+        <form method="get" action="./manage-border-posts">
+            <div class="govuk-form-group" id="operator-search-country-form-group">
+                <label class="govuk-label" for="operator-search-country">Filter by country</label>
+                <p id="operator-search-country-error" class="govuk-error-message" style="display:none">
+                    <span class="govuk-visually-hidden">Error:</span> A country must be selected
+                </p>
+                <select class="govuk-select full-width" id="operator-search-country" name="country">
+                    <option selected="" value="">Any country</option>
+                    <option value="AT" {% if query.country == "AT" %}selected=""{% endif %}>Austria</option>
+                    <option value="BE">Belgium</option>
+                    <option value="BG">Bulgaria</option>
+                    <option value="HR">Croatia</option>
+                    <option value="CY">Cyprus</option>
+                    <option value="CZ">Czechia</option>
+                    <option value="DK">Denmark</option>
+                    <option value="EE">Estonia</option>
+                    <option value="FI">Finland</option>
+                    <option value="FR" {% if query.country == "FR" %}selected=""{% endif %}>France</option>
+                    <option value="DE">Germany</option>
+                    <option value="GR">Greece</option>
+                    <option value="HU">Hungary</option>
+                    <option value="IE">Ireland</option>
+                    <option value="IT">Italy</option>
+                    <option value="LV">Latvia</option>
+                    <option value="LT">Lithuania</option>
+                    <option value="LU">Luxembourg</option>
+                    <option value="MT">Malta</option>
+                    <option value="NL">Netherlands (the)</option>
+                    <option value="PL">Poland</option>
+                    <option value="PT">Portugal</option>
+                    <option value="RO">Romania</option>
+                    <option value="SK">Slovakia</option>
+                    <option value="SI">Slovenia</option>
+                    <option value="ES" {% if query.country == "ES" %}selected=""{% endif %}>Spain</option>
+                    <option value="SE">Sweden</option>
+                    <option value="XI" {% if query.country == "XI" %}selected=""{% endif %}>United Kingdom - Northern Ireland</option>
+                </select>
+            </div>
+            <div class="govuk-form-group">
+                <div class="govuk-form-group" id="govuk-form-group-organisation-name">
+                    <label class="govuk-label" id="organisation-search-label">Filter by name or ID of boarder control post</label>
+                    <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
+                        <span class="govuk-visually-hidden">Error:</span> Organisation name cannot be blank
+                    </p>
+                    <input class="govuk-input govuk-input--width-20" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}" >
+                </div>
+            </div>
+        </form>
+        <p class="govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+
+            <span id="showing-count" aria-atomic="true">{{posts | length}} border posts 
+            {% if query.q and query.q != "" %}
+                matching <strong>"{{query.q}}"</strong>
+            {% endif %}
+            {% if query.country and query.country != "any" and query.country != ""%}
+            in <strong>{{query.country | convertCountry}}</strong>{% endif %}
+        </span>&nbsp;&nbsp;
+        {% if (query.q  and query.q != "") or (query.country and query.country != "") %}
+        <a class="govuk-link--no-visited-state" href="./manage-border-posts" id="clear-all" style="">Clear filter</a>
+        {% endif %}
+        </p>
+    </div>
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-6">
+        <!-- results -->
+        <div id="results">
+
+            <table class="govuk-table responsive-table responsive-table--s">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Name</th>
+                        <th scope="col" class="govuk-table__header">ID</th>
+                        <th scope="col" class="govuk-table__header">Country</th>
+                        <th scope="col" class="govuk-table__header">Status</th>
+                        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    {% for bcp in posts %}
+                    {% if (not query.q or query.q == "") 
+                    or (query.q and (query.q | upper) in (bcp.name | upper))  
+                    or (query.q and query.q in bcp.id) 
+                    %}
+
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">{{bcp.name}}
+                        </th>
+                        <td class="govuk-table__cell">{{bcp.id}}</td>
+                        <td class="govuk-table__cell">{{bcp.country}}</td>
+                        <td class="govuk-table__cell">
+                            {% if bcp.status == "active" %}
+                            <span id="{{bcp.id}}-tag" class="status-tag govuk-tag">{{bcp.status}}</span>
+                            {% else %}
+                            <span id="{{bcp.id}}-tag" class="status-tag govuk-tag govuk-tag--grey">{{bcp.status}}</span>
+                            {% endif %}
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            {% if bcp.status == "active" %}
+                            <a href="#" data-target="{{bcp.id}}-tag" class="status-action-link" id="deactivate">Deactivate</a>
+                            {% else %}
+                            <a href="#" data-target="{{bcp.id}}-tag" class="status-action-link" id="activate">Make active</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+               {% if ( not query.q  or query.q == "") and (not query.country and query.country == "") %}
+            <nav class="govuk-pagination" role="navigation" aria-label="results">
+                <ul class="govuk-pagination__list">
+                    <li class="govuk-pagination__item govuk-pagination__item--current">
+                        <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1" aria-current="page">
+                            1
+                        </a>
+                    </li>
+                    <li class="govuk-pagination__item">
+                        <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2">
+                            2
+                        </a>
+                    </li>
+                    <li class="govuk-pagination__item">
+                        <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
+                            3
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="govuk-pagination__next">
+                    <a class="govuk-link govuk-pagination__link" href="#" rel="next"> <span class="govuk-pagination__link-title">Next</span> <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                            <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                        </svg></a>
+                </div>
+            </nav>
+            <p class="moj-pagination__results pull-right" style="margin-top:-80px" data-v-19f29262=""> Showing <b data-v-19f29262="">1</b> to <b data-v-19f29262="">10</b> of <b data-v-19f29262="">1783</b> applications </p>
+            {% endif %}
+            <div class="no-results-block">
+                <p class="govuk-body"><strong>Improve your search results by:</strong></p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>making sure you’ve entered the approval number correctly</li>
+                    <li>removing ‘GB’ from the approval number, if you included it</li>
+                    <li>searching for part of the organisation name, instead of the full name</li>
+                </ul>
+            </div>
+        </div>
+        <style media="screen">
+            .autocomplete__wrapper {
+    max-width: 24em;
+  }
+
+/*  .js-enabled #results {
+    display: none;
+  }*/
+
+  .app-search-wrapper {
+    display: table;
+    width: 100%;
+  }
+
+  .govuk-button--search {
+    background-color: #1d70b8;
+    text-indent: -5000px;
+    overflow: hidden;
+    width: 38px;
+    height: 38px;
+    position: relative;
+  }
+
+  .govuk-button--search:hover {
+    background-color: #003078;
+
+  }
+
+  .govuk-button--search .gem-c-search__icon {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 8px;
+    left: 7px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-\!-show--from-tablet {
+      display: block !important;
+    }
+  }
+
+  .das-show-hide__section {
+    display: none;
+  }
+
+  .das-filter {
+    margin-bottom: 30px;
+  }
+
+  .das-filter__header {
+    border: 1px solid #b1b4b6;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-\!-show--from-tablet {
+      display: block !important;
+    }
+  }
+
+  .das-filter__body {
+    padding: 20px;
+    border: 1px solid #b1b4b6;
+    border-top: none;
+  }
+
+
+
+  .js-enabled .das-show-hide__button {
+    display: block;
+  }
+
+  .das-show-hide__button {
+    display: none;
+  }
+
+  .das-filter__toggle {
+    width: auto;
+    margin: 20px 0;
+  }
+
+  @media (min-width: 40.0625em) {
+    .js-enabled .das-show-hide__button {
+      display: none;
+    }
+  }
+
+  .das-filter__heading {
+    margin-bottom: 0;
+  }
+
+  .das-filter__selected-filters {
+    background: #f3f2f1;
+    border: 1px solid #b1b4b6;
+    border-top: none;
+    padding: 20px;
+  }
+
+  .das-filter__selected-action {
+    margin-top: 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .das-filter__tag:link,
+  .das-filter__tag:visited {
+    color: #0b0c0c;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-filter__tag {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+  }
+
+  .das-filter__tag:after {
+    content: "";
+    background-image: url(/public/images/icon-cross--black.svg);
+    display: block;
+    font-weight: bold;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 0.6em;
+    right: 7px;
+  }
+
+  .das-filter__tag {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.14286;
+    background-color: #fff;
+    border: 1px solid #0b0c0c;
+    color: #0b0c0c;
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px 7px;
+    padding-right: 30px;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .das-breakable {
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .das-filter__selected-sub-heading {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .app-establishment-list {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .app-establishment-list {
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1.3157894737;
+    }
+  }
+/*
+  .app-establishment-list__row {
+    border-bottom: 1px solid #b1b4b6;
+    padding: 10px 0;
+    clear: both;
+  }
+
+  .app-establishment-list__row:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+*/
+
+  .app-establishment-list__key {
+    font-weight: 700;
+    width: 70%;
+    float: left;
+  }
+
+  .app-establishment-list__value {
+    margin: 5px 0;
+    width: 70%;
+    float: left;
+  }
+
+  .app-establishment-list__activities {
+    color: #505a5f;
+  }
+
+  .app2-establishment-list__activities {
+    padding-top: 5px;
+    font-size: 14px !important;
+    font-size: .875rem !important;
+    line-height: 1.1428571429 !important;
+  }
+
+  @media (min-width: 40.0625em) {
+    .app-2establishment-list__activities {
+
+      font-size: 16px !important;
+      font-size: 1rem !important;
+      line-height: 1.25 !important;
+    }
+
+  }
+
+  .app-establishment-list__action {
+    float: right;
+    margin-top: -55px;
+  }
+
+  .js-enabled .no-results-block {
+    display: none;
+  }
+
+  .js-enabled .moj-pagination {
+    display: none;
+  }
+
+
+</style>
+<script type="text/javascript">
+    window.addEventListener('load', function() {
+        $('#operator-search-country').on('change', function() {
+            $(this).closest('form').submit();
+        });
+
+        $('.status-action-link').on('click',function(e){
+            e.preventDefault()
+            var t = "#"+$(this).attr("data-target")
+            if($(this).attr("id") == "activate"){
+                $(t).removeClass('govuk-tag--grey').text("Active")
+                 $(this).attr("id","deactivate").text("Deactivate")
+                
+
+
+
+            }else{
+                $(t).addClass('govuk-tag--grey').text("Inactive")
+               $(this).attr("id","activate").text("Make active")
+
+            }
+        })
+
+    })
+</script>
+</div>
+</div>
+{% endblock %}

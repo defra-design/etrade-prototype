@@ -1,0 +1,318 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Copy – GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<div class="govuk-main-wrapper" id="main-content">
+    <!---->
+    <!---->
+    <div class="modal-backdrop" data-v-09ccf348="" style="display: none;">
+        <!---->
+    </div>
+    <h1 class="govuk-heading-xl">APHA</h1>
+    <div class="govuk-grid-row apha-dashboard-reporting-cards">
+        <div class="govuk-grid-column-one-quarter">
+            <div class="p-card p-component">
+                <!---->
+                <div class="p-card-body">
+                    <!---->
+                    <!---->
+                    <div class="p-card-content"> Total applications <br> 16572</div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            <div class="p-card p-component">
+                <!---->
+                <div class="p-card-body">
+                    <!---->
+                    <!---->
+                    <div class="p-card-content"> Applications in draft <br> 9601</div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            <div class="p-card p-component">
+                <!---->
+                <div class="p-card-body">
+                    <!---->
+                    <!---->
+                    <div class="p-card-content"> Applications submitted <br> 396</div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            <div class="p-card p-component">
+                <!---->
+                <div class="p-card-body">
+                    <!---->
+                    <!---->
+                    <div class="p-card-content"> Accepted by Traces <br> 260</div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+    </div><br>
+    <div class="govuk-grid-row apha-dashboard-reporting-cards">
+        <div class="govuk-grid-column-one-quarter">
+            <div class="p-card p-component">
+                <!---->
+                <div class="p-card-body">
+                    <!---->
+                    <!---->
+                    <div class="p-card-content"> With certifier <br> 60</div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            <div class="p-card p-component">
+                <!---->
+                <div class="p-card-body">
+                    <!---->
+                    <!---->
+                    <div class="p-card-content"> In progress with APHA <br> 91</div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            <div class="p-card p-component">
+                <!---->
+                <div class="p-card-body">
+                    <!---->
+                    <!---->
+                    <div class="p-card-content"> Outbreak cancelled <br> 301</div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            <div class="p-card p-component">
+                <!---->
+                <div class="p-card-body">
+                    <!---->
+                    <!---->
+                    <div class="p-card-content"> Under review <br> 0</div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+    </div><br>
+    <div class="p-divider p-component p-divider-horizontal p-divider-solid p-divider-left" role="separator">
+        <!---->
+    </div>
+    <div class="p-tabview p-component">
+        <div class="p-tabview-nav-container">
+            <!---->
+            <div class="p-tabview-nav-content">
+                <ul class="p-tabview-nav" role="tablist">
+                    <li role="presentation" class=""><a role="tab" class="p-tabview-nav-link" tabindex="0" aria-selected="false">
+                            <!----><i class="pi pi-list"></i>&nbsp; <span>Dashboards</span></a></li>
+                    <li role="presentation" class=""><a role="tab" class="p-tabview-nav-link" tabindex="0" aria-selected="false">
+                            <!----><i class="pi pi-users"></i>&nbsp; <span>User management</span></a></li>
+                    <li role="presentation" class="p-highlight"><a role="tab" class="p-tabview-nav-link" tabindex="0" aria-selected="true">
+                            <!----><i class="pi pi-exclamation-triangle"></i>&nbsp; <span>Rule configuration</span></a></li>
+                    <li role="presentation" class=""><a role="tab" class="p-tabview-nav-link" tabindex="0" aria-selected="false">
+                            <!----><i class="pi pi-book"></i>&nbsp; <span>Reporting</span></a></li>
+                    <li role="presentation" class=""><a role="tab" class="p-tabview-nav-link" tabindex="0" aria-selected="false">
+                            <!----><i class="pi pi-cog"></i>&nbsp; <span>Other</span></a></li>
+                    <li class="p-tabview-ink-bar" style="width: 190px; left: 333.963px;"></li>
+                </ul>
+            </div>
+            <!---->
+        </div>
+        <div class="p-tabview-panels">
+            <div class="p-tabview-panel" role="tabpanel" style="display: none;">
+                <!---->
+                <div>
+                    <div class="govuk-summary-list">
+                        <div class="govuk-summary-list__row"><a href="/Administration/Apha/Caseworker" class="govuk-summary-list__value govuk-link">Caseworker Dashboard</a></div>
+                        <div class="govuk-summary-list__row"><a href="/Administration/Apha/Admin" class="govuk-summary-list__value govuk-link">Support Dashboard</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-tabview-panel" role="tabpanel" style="display: none;">
+                <!---->
+                <div>
+                    <div class="govuk-summary-list">
+                        <div class="govuk-summary-list__row"><a href="/settings/user-approvals/certifiers" class="govuk-summary-list__value govuk-link">Certifier Approvals</a></div>
+                        <div class="govuk-summary-list__row"><a href="/settings/user-approvals" class="govuk-summary-list__value govuk-link">User Approvals</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-tabview-panel" role="tabpanel" style="">
+                <!---->
+                <div>
+                    <div class="govuk-summary-list">
+                        <div class="govuk-summary-list__row"><a href="/Administration/Apha/Disease-clearance" class="govuk-summary-list__value govuk-link">Manage Disease clearance</a></div>
+                        <div class="govuk-summary-list__row"><a href="/Administration/Apha/Manual-intervention" class="govuk-summary-list__value govuk-link">Manage manual intervention</a></div>
+                        <div class="govuk-summary-list__row"><a href="/Administration/Apha/EHCs/Manage" class="govuk-summary-list__value govuk-link">Manage EHCs</a></div>
+                        <div class="govuk-summary-list__row"><a href="manage-border-posts" class="govuk-summary-list__value govuk-link">Manage border control posts</a></div>
+                        <div class="govuk-summary-list__row"><a href="/Administration/Apha/Rules/Manage/Available" class="govuk-summary-list__value govuk-link">Configure Rules</a></div>
+                        <div class="govuk-summary-list__row"><a href="/Administration/Apha/Rules/Manage" class="govuk-summary-list__value govuk-link">Assign rules</a></div>
+                        <div class="govuk-summary-list__row"><a href="/Administration/Apha/Manage-Apha-Questions" class="govuk-summary-list__value govuk-link">Manage APHA Questions</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-tabview-panel" role="tabpanel" style="display: none;">
+                <!---->
+                <div>
+                    <div class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <div class="govuk-summary-list__value">
+                                <h3 class="h4">Daily Reports</h3>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Assigned-Applications" class="govuk-summary-list__value govuk-link">Assigned Applications</a></div>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Unassigned-Applications" class="govuk-summary-list__value govuk-link">Unassigned Applications</a></div>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Daily-Cancelled-And-Replaced" class="govuk-summary-list__value govuk-link">Cancelled and Replaced Applications</a></div>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Daily-Disease-Control" class="govuk-summary-list__value govuk-link">Disease Control</a></div>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Suspended-EHCs" class="govuk-summary-list__value govuk-link">Suspended EHCs</a></div>
+                                <!----><br>
+                            </div>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <div class="govuk-summary-list__value">
+                                <h3 class="h4">Monthly Reports</h3>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Disease-Clearance-Checks" class="govuk-summary-list__value govuk-link">Disease Clearance Checks</a></div>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Monthly-Processed" class="govuk-summary-list__value govuk-link">Processed Applications</a></div>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Monthly-Cancelled-And-Replaced" class="govuk-summary-list__value govuk-link">Cancelled and Replaced Applications</a></div><br>
+                            </div>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <div class="govuk-summary-list__value">
+                                <h3 class="h4">Quarterly Reports</h3>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Quarterly-Processed" class="govuk-summary-list__value govuk-link">Processed Applications</a></div>
+                                <div class="govuk-summary-list__row--no-border"><a href="/Administration/Apha/Reporting/Exporter-And-Certifier-Information" class="govuk-summary-list__value govuk-link">Exporter/Certifier Information</a></div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-tabview-panel" role="tabpanel" style="display: none;">
+                <!---->
+                <div>
+                    <div class="govuk-summary-list">
+                        <div class="govuk-summary-list__row"><a href="/Administration/Apha" class="govuk-summary-list__value govuk-link">Other Administrative Tasks</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+.p-tabview-nav-container {
+    position: relative;
+}
+.p-tabview-scrollable .p-tabview-nav-container {
+    overflow: hidden;
+}
+.p-tabview-nav-content {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-scroll-chaining: contain auto;
+        overscroll-behavior: contain auto;
+}
+.p-tabview-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+}
+.p-tabview-nav-link {
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
+}
+.p-tabview-ink-bar {
+    display: none;
+    z-index: 1;
+}
+.p-tabview-nav-link:focus {
+    z-index: 1;
+}
+.p-tabview-title {
+    line-height: 1;
+    white-space: nowrap;
+}
+.p-tabview-nav-btn {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.p-tabview-nav-prev {
+    left: 0;
+}
+.p-tabview-nav-next {
+    right: 0;
+}
+.p-tabview-nav-content::-webkit-scrollbar {
+    display: none;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    border: solid #dee2e6;
+    border-width: 0 0 2px 0;
+    border-color: transparent transparent #dee2e6 transparent;
+    background: #fff;
+    color: #6c757d;
+    padding: 1rem;
+    font-weight: 600;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    transition: box-shadow .2s;
+    margin: 0 0 -2px 0;
+}
+.p-tabview-nav-link {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
+}
+.apha-dashboard-reporting-cards .p-card .p-card-body {
+    background-color: #1d70b8;
+    color: #fff;
+    border-radius: 5px;
+}
+</style>
+{% endblock %}
