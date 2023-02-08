@@ -90,7 +90,7 @@ Copy – GOV.UK Prototype Kit
             </div>
             <div class="govuk-form-group">
                 <div class="govuk-form-group" id="govuk-form-group-organisation-name">
-                    <label class="govuk-label" id="organisation-search-label">Filter by name or ID of boarder control post</label>
+                    <label class="govuk-label" id="organisation-search-label">Filter by boarder control post or ID</label>
                     <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
                         <span class="govuk-visually-hidden">Error:</span> Organisation name cannot be blank
                     </p>
@@ -100,7 +100,7 @@ Copy – GOV.UK Prototype Kit
         </form>
         <p class="govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
 
-            <span id="showing-count" aria-atomic="true">{{posts | length}} border posts 
+            <span id="showing-count" aria-atomic="true">{{posts | length}} border control posts 
             {% if query.q and query.q != "" %}
                 matching <strong>"{{query.q}}"</strong>
             {% endif %}
