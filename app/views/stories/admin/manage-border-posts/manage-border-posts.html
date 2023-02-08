@@ -144,7 +144,7 @@ Copy – GOV.UK Prototype Kit
                             <span id="{{bcp.id}}-tag" class="status-tag govuk-tag govuk-tag--grey">{{bcp.status}}</span>
                             {% endif %}
                         </td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                        <td class="govuk-table__cell govuk-table__cell--numeric" style="text-align: right;">
                             {% if bcp.status == "active" %}
                             <a href="remove?listID={{loop.index-1}}&name={{bcp.name}}&id={{bcp.id}}&action=deactivate&country={{query.country}}&q={{query.q}}" data-target="{{bcp.id}}-tag" class="status-action-link" id="deactivate">Deactivate</a>
                             {% else %}
@@ -156,7 +156,7 @@ Copy – GOV.UK Prototype Kit
                 {% endfor %}
                 </tbody>
             </table>
-               {% if ( not query.q  or query.q == "") and (not query.country and query.country == "") %}
+               {% if ( not query.q  or query.q == "") and (not query.country or query.country == "") %}
             <nav class="govuk-pagination" role="navigation" aria-label="results">
                 <ul class="govuk-pagination__list">
                     <li class="govuk-pagination__item govuk-pagination__item--current">
