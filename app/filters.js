@@ -211,7 +211,10 @@ module.exports = function(env) {
     return false
   }
 
-  // for eEHC only
+  filters.randomNumberGenerator = function(number) {
+    return (Math.floor(Math.random() * number) + 1);
+  }
+
   filters.findObjectByKey = function(key, list) {
       for (var i = 0; i < list.length; i++) {
         if(list[i].user == key){
@@ -219,6 +222,12 @@ module.exports = function(env) {
         }
       }
       return list[0]
+  }
+
+
+filters.updateObject = function(arr,id,key,val){
+    arr[id][key]=val
+    return arr
   }
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
@@ -282,9 +291,8 @@ module.exports = function(env) {
     return newArray
   }
 
-  filters.randomNumberGenerator = function(number) {
-    return (Math.floor(Math.random() * number) + 1);
-  }
+
+
 
 
   // -------------------------------------------------------------------

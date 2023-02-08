@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Admin / APHA designs</h1>
+
+      <h2 class="govuk-heading-m">BCP Toggle</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="./manage-border-posts/home">From dashboard (rules configeration tab)</a></li>
+        <li><a href="./manage-border-posts/manage-border-posts">Manage border control posts</a></li>
+        <li><a href="./manage-border-posts/manage-border-posts?country=FR&q=bureau">Filtered view</a> (country and name)</li>
+        <li><a href="./manage-border-posts/remove">Activate a port confirmation page</a></li>
+        <li><a href="./manage-border-posts/remove">deactivate a port confirmation page</a></li>
+      </ul>
+      
+
+  </div>
+</div>
+
+{% endblock %}

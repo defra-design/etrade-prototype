@@ -24,6 +24,16 @@ Copy – GOV.UK Prototype Kit
 {% set posts = data.bcp[0].ports %}
 {% endif %}
 {% set posts = posts | sortby("name") %}
+
+
+{% if query.update_bcp_status == "yes" %}
+    {% if query.action == "activate"%}
+        {% set status = "active" %}
+    {% else %}
+        {% set status = "inactive" %}
+    {% endif %}
+    {% set posts = posts | updateObject(query.listID,"status",status) %}
+{% endif %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none" tabindex="-1">
@@ -122,14 +132,13 @@ Copy – GOV.UK Prototype Kit
                     or (query.q and (query.q | upper) in (bcp.name | upper))  
                     or (query.q and query.q in bcp.id) 
                     %}
-
                     <tr class="govuk-table__row">
                         <th scope="row" class="govuk-table__header">{{bcp.name}}
                         </th>
                         <td class="govuk-table__cell">{{bcp.id}}</td>
                         <td class="govuk-table__cell">{{bcp.country}}</td>
                         <td class="govuk-table__cell">
-                            {% if bcp.status == "active" %}
+                            {% if bcp.status == "active"%}
                             <span id="{{bcp.id}}-tag" class="status-tag govuk-tag">{{bcp.status}}</span>
                             {% else %}
                             <span id="{{bcp.id}}-tag" class="status-tag govuk-tag govuk-tag--grey">{{bcp.status}}</span>
@@ -137,9 +146,9 @@ Copy – GOV.UK Prototype Kit
                         </td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">
                             {% if bcp.status == "active" %}
-                            <a href="#" data-target="{{bcp.id}}-tag" class="status-action-link" id="deactivate">Deactivate</a>
+                            <a href="remove?listID={{loop.index-1}}&name={{bcp.name}}&id={{bcp.id}}&action=deactivate&country={{query.country}}&q={{query.q}}" data-target="{{bcp.id}}-tag" class="status-action-link" id="deactivate">Deactivate</a>
                             {% else %}
-                            <a href="#" data-target="{{bcp.id}}-tag" class="status-action-link" id="activate">Make active</a>
+                            <a href="remove?listID={{loop.index-1}}&name={{bcp.name}}&id={{bcp.id}}&action=activate&country={{query.country}}&q={{query.q}}" data-target="{{bcp.id}}-tag" class="status-action-link" id="activate">Make active</a>
                             {% endif %}
                         </td>
                     </tr>
@@ -438,22 +447,22 @@ Copy – GOV.UK Prototype Kit
             $(this).closest('form').submit();
         });
 
-        $('.status-action-link').on('click',function(e){
-            e.preventDefault()
-            var t = "#"+$(this).attr("data-target")
-            if($(this).attr("id") == "activate"){
-                $(t).removeClass('govuk-tag--grey').text("Active")
-                 $(this).attr("id","deactivate").text("Deactivate")
+        // $('.status-action-link').on('click',function(e){
+        //     e.preventDefault()
+        //     var t = "#"+$(this).attr("data-target")
+        //     if($(this).attr("id") == "activate"){
+        //         $(t).removeClass('govuk-tag--grey').text("Active")
+        //          $(this).attr("id","deactivate").text("Deactivate")
                 
 
 
 
-            }else{
-                $(t).addClass('govuk-tag--grey').text("Inactive")
-               $(this).attr("id","activate").text("Make active")
+        //     }else{
+        //         $(t).addClass('govuk-tag--grey').text("Inactive")
+        //        $(this).attr("id","activate").text("Make active")
 
-            }
-        })
+        //     }
+        // })
 
     })
 </script>

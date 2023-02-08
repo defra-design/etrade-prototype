@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Remove certificate – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set id = query.id or 0 %}
+{% set certificate = data.addedEHC[id]%}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="get" action="manage-border-posts">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                        <h1 class="govuk-fieldset__heading govuk-!-margin-bottom-4">
+                            Are you sure you want {{query.action or "activate"}} this border control post (BCP)?
+                        </h1>
+                    </legend>
+                    <!-- hidden fields to capture the filters when returning to the manage page -->
+                    <input type="hidden" name="listID" value="{{query.listID or 0}}">
+                    <input type="hidden" name="action" value="{{query.action or 'activate'}}">
+                    <input type="hidden" name="q" value="{{query.q or ''}}">
+                    <input type="hidden" name="country" value="{{query.country or ''}}">
+                    <dl class="govuk-summary-list govuk-summary-list--no-border">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Border control post
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{query.name}} <br>({{query.id}})
+                            </dd>
+                        </div>
+                    </dl>
+                    <p>After de-activating this BCP, it will no longer be selectable by the trader for any application.</p>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="change-bcp" name="update_bcp_status" type="radio" value="yes">
+                            <label class="govuk-label govuk-radios__label" for="change-bcp">
+                                Yes, {{query.action or "activate"}} this BCP
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="change-bcp-2" name="update_bcp_status" type="radio" value="no">
+                            <label class="govuk-label govuk-radios__label" for="change-bcp-2">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+
+})
+</script>
+{% endblock%}
