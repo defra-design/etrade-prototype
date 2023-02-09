@@ -56,7 +56,7 @@ Copy – GOV.UK Prototype Kit
                 <p id="operator-search-country-error" class="govuk-error-message" style="display:none">
                     <span class="govuk-visually-hidden">Error:</span> A country must be selected
                 </p>
-                <select class="govuk-select full-width" id="operator-search-country" name="country">
+                <select class="govuk-select" id="operator-search-country" name="country">
                     <option selected="" value="">Any country</option>
                     <option value="AT" {% if query.country == "AT" %}selected=""{% endif %}>Austria</option>
                     <option value="BE">Belgium</option>
@@ -91,16 +91,15 @@ Copy – GOV.UK Prototype Kit
             <div class="govuk-form-group">
                 <div class="govuk-form-group" id="govuk-form-group-organisation-name">
                     <label class="govuk-label" id="organisation-search-label">Filter by boarder control post or ID</label>
-                    <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
-                        <span class="govuk-visually-hidden">Error:</span> Organisation name cannot be blank
-                    </p>
-                    <input class="govuk-input govuk-input--width-20" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}" >
+            
+                    <input class="govuk-input govuk-input--width-30" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}" >
                 </div>
             </div>
         </form>
         <p class="govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
 
-            <span id="showing-count" aria-atomic="true">{{posts | length}} border control posts 
+            <span id="showing-count" aria-atomic="true" aria-live="polite">
+                <span id="filter-count">{{posts | length}}</span> border control posts 
             {% if query.q and query.q != "" %}
                 matching <strong>"{{query.q}}"</strong>
             {% endif %}
@@ -108,7 +107,7 @@ Copy – GOV.UK Prototype Kit
             in <strong>{{query.country | convertCountry}}</strong>{% endif %}
         </span>&nbsp;&nbsp;
         {% if (query.q  and query.q != "") or (query.country and query.country != "") %}
-        <a class="govuk-link--no-visited-state" href="./manage-border-posts" id="clear-all" style="">Clear filter</a>
+        <a class="govuk-link--no-visited-state" href="./manage-border-posts2" id="clear-all" style="">Clear filter</a>
         {% endif %}
         </p>
     </div>
@@ -133,11 +132,15 @@ Copy – GOV.UK Prototype Kit
                     or (query.q and query.q in bcp.id) 
                     %}
                     <tr class="govuk-table__row">
-                        <th scope="row" class="govuk-table__header">{{bcp.name}}
+                        <th scope="row" class="govuk-table__header">
+                            <span class="table-heading-full">{{bcp.name}}</span>
                         </th>
-                        <td class="govuk-table__cell">{{bcp.id}}</td>
-                        <td class="govuk-table__cell">{{bcp.country}}</td>
                         <td class="govuk-table__cell">
+                        <span class="table-heading" aria-hidden="true">ID</span> {{bcp.id}}
+                    </td>
+                        <td class="govuk-table__cell"><span class="table-heading" aria-hidden="true">Country</span> {{bcp.country}}</td>
+                        <td class="govuk-table__cell">
+                            <span class="table-heading" aria-hidden="true">Status </span>
                             {% if bcp.status == "active"%}
                             <span id="{{bcp.id}}-tag" class="status-tag govuk-tag">{{bcp.status}}</span>
                             {% else %}
@@ -447,6 +450,11 @@ Copy – GOV.UK Prototype Kit
             $(this).closest('form').submit();
         });
 
+        let count = $('tbody .govuk-table__row').length
+        $("#filter-count").text(count)
+        if(count == 0){
+            $("table").hide();
+        }
         // $('.status-action-link').on('click',function(e){
         //     e.preventDefault()
         //     var t = "#"+$(this).attr("data-target")

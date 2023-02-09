@@ -223,11 +223,15 @@ module.exports = function(env) {
       }
       return list[0]
   }
-
-
-filters.updateObject = function(arr,id,key,val){
+  filters.updateObject = function(arr,id,key,val){
     arr[id][key]=val
     return arr
+  }
+
+  filters.getTitle = function(){
+    let title = document.getElementsByTagName('h1')
+
+    return title.innerText
   }
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:

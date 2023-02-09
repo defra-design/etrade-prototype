@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 // Use radio redirect feature to reduce reliance on routes. https://github.com/abbott567/radio-button-redirect
 const radioButtonRedirect = require('radio-button-redirect')
+
 router.use(radioButtonRedirect)
 
 // Add your routes here - above the module.exports line
