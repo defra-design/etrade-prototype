@@ -24,16 +24,7 @@ What is the status for this border control post – GOV.UK Prototype Kit
                     <input type="hidden" name="action" value="{{query.action or 'activate'}}">
                     <input type="hidden" name="q" value="{{query.q or ''}}">
                     <input type="hidden" name="country" value="{{query.country or ''}}">
-                    <dl class="govuk-summary-list govuk-summary-list--no-border">
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">
-                                BCP
-                            </dt>
-                            <dd class="govuk-summary-list__value">
-                                {{query.name}} ({{query.id}})
-                            </dd>
-                        </div>
-                    </dl>
+                    <p><strong>{{query.name}}</strong> ({{query.id}})</p>
              
                     <div class="govuk-radios" data-module="govuk-radios">
                         <div class="govuk-radios__item">
