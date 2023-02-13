@@ -50,12 +50,7 @@
             </h1>
           </legend>
           <p>Copy everything in the original application and make any changes before submitting.</p>
-          {% if query.hasError %}
-          <p id="copy-everything-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if you want to copy everything in the original application
-          </p>
-          {% endif %}
-          <details class="govuk-details" data-module="govuk-details">
+           <details class="govuk-details" data-module="govuk-details">
             <summary class="govuk-details__summary">
               <span class="govuk-details__summary-text">
                 Information that you cannot copy
@@ -79,6 +74,12 @@
               <p>You will need to enter information for these sections manually.</p>
             </div>
           </details>
+          {% if query.hasError %}
+          <p id="copy-everything-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you want to copy everything in the original application
+          </p>
+          {% endif %}
+         
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="copy-everything" name="copyall" type="radio" value="yes">
