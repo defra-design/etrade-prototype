@@ -486,5 +486,11 @@ strong.input-description {
 
 #skip-question-container {
   background: #F1F0EF;
+  padding: 20px;
+}
+@media (min-width: 40.0625em){
+
+#skip-question-container {
   padding: 30px;
+}
 }

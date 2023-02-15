@@ -600,9 +600,11 @@ module.exports = function(router) {
   })
 
   router.post('/' + base_url + 'application/goods/goods-certified-as*', function(req, res) {
-    if (req.body.goods_certified_as) {
+    if (req.body.goods_certified_as && req.query.change != "yes") {
       res.redirect(301, '/' + base_url + 'application/task-list');
-    } else {
+    }else if (req.body.goods_certified_as && req.query.change == "yes") {  
+      res.redirect(301, '/' + base_url + 'application/check-your-answers');
+    }else { 
       res.redirect(301, '/' + base_url + 'application/goods/goods-certified-as' + req.params[0] + '?has_error=yes');
     }
   });

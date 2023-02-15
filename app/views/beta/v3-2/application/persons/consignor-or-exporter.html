@@ -24,7 +24,7 @@ Consignor or exporter – GOV.UK Prototype Kit
   }
 </style>
 
-<form class="" action="../task-list" method="post">
+<form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
 
   <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
 
@@ -47,6 +47,12 @@ Consignor or exporter – GOV.UK Prototype Kit
           {% if org.All_Activities.length > 1 %}
             {% set includeChangeAction = true %}
           {% endif %}
+
+          <!-- set fields for check your answers -->
+          <input type="hidden" name="consignorName"  value="{{org.TradingName}}">
+          <input type="hidden" name="consignorTown"  value="{{org.Town}}">
+          <input type="hidden" name="consignorPostcode"  value="{{org.Postcode}}">
+          
 
           {% set removeLink = "./remove?who=consignor&redirect=consignor-or-exporter" %}
           {% set changeLink = "./consignor/activity?establishmentIndex=" + establishmentIndex + "&establishmentApprovalIndex=" + establishmentActivityIndex %}

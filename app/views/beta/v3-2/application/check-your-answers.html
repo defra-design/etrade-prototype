@@ -16,26 +16,47 @@ Check your answers – GOV.UK Prototype Kit
 .download-a-document {
     margin-bottom: 40px;
 }
+@media (min-width: 40.0625em){
+  .govuk-summary-list__key{
+  width:35%;
+}
+.govuk-summary-list__value{
+  width:50%;
+}
+.govuk-summary-list__actions{
+  width:15%;
+}
+}
+.govuk-summary-list__placeholder{
+  color:#505a5f;
+}
 </style>
 
     <div class="ehc-summary">
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h1 class="govuk-heading-l">Check your answers before submitting your application</h1>
-          <p class="govuk-body"><strong>Application Reference - </strong>rh-test-application</p>
+        <div class="govuk-grid-column-three-quarters">
+          <h1 class="govuk-heading-xl">Check your answers before submitting your application</h1>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
+        <div class="govuk-summary-list__row" data-v-e8e27fc8="">
+          <dt class="govuk-summary-list__key" data-v-e8e27fc8="">Application Reference</dt>
+          <dd class="govuk-summary-list__value" data-v-e8e27fc8="">GBXIBN4522
+          </dd>
+          <dd class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="create-reference-2?showNotification=no" class="govuk-link" data-v-e8e27fc8=""> Change </a></dd>
+        </div>
+      </dl>
           <h2 class="govuk-heading-m">1. Description of the goods</h2>
-          <div class="govuk-summary-list govuk-!-margin-bottom-9">
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Certificate </div>
-              <div class="govuk-summary-list__value">
+              <dt class="govuk-summary-list__key"> Certificate </dt>
+              <dd class="govuk-summary-list__value">
                 EHC8328 Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland
 
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Manage-Commodities" class="govuk-link"> Change </a></div>
+              </dd>
+            
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Commodities </div>
-              <div class="govuk-summary-list__value">
+              <dt class="govuk-summary-list__key"> Commodities </dt>
+              <dd class="govuk-summary-list__value">
               {% if (data.addedEHC | length) > 0%}
                 {% set commodityCount = 0%}
                 {% for cert in data.addedEHC %}
@@ -45,170 +66,247 @@ Check your answers – GOV.UK Prototype Kit
                     {% endfor%}
                   {% endfor%}
                 {% endfor%}
-                <strong class="govuk-tag " id="manage-commodities-status">{{commodityCount}} {% if commodityCount == 1 %}record{% else %}records{%endif%} added</strong><br>
+                {{commodityCount}} {% if commodityCount == 1 %}record{% else %}records{%endif%} added
 
-                <!-- count how many sections have been skipped in total -->
-                {% set skippedSectionCount = 0 %}
-                {% for commodities in data.addedEHC[0].addedCommodities %}
-                  {% for identification in commodities.identifications %}
-                    {% if identification.incomplete.length %}
-                      {% set skippedSectionCount = skippedSectionCount + identification.incomplete.length %}
-                    {% endif %}
-                  {% endfor %}
-                {% endfor %}
-                {% if skippedSectionCount > 0 %}
-                <strong class="govuk-tag govuk-tag--red govuk-!-margin-top-1">{{skippedSectionCount}} {% if skippedSectionCount == 1 %}section{% else %}sections{%endif%} skipped</strong>
-                {% endif %}
 
                 {% else %}
                 <span class="certified-goods">3 records for 2 commodities</span>
                 {% endif %}
-                </div>
+                </dd>
 
 
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link"> Change </a></div>
+              <dd class="govuk-summary-list__actions">
+                <a href="export/added-commodities-list?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">commodities</span></a> </dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Gross weight </div>
-              <div class="govuk-summary-list__value"><span class="certified-goods">350 KG</span></div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Gross weight </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.GROSS_WEIGHT %}
+                  {{data.GROSS_WEIGHT}}
+                  {{data.GROSS_WEIGHT_quantifier  or "kg"}}
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+            </dd>
+              <dd class="govuk-summary-list__actions"><a href="./export/weight?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">gross weight</span></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Goods certified as </div>
-              <div class="govuk-summary-list__value"><span class="certified-goods">animal feedingstuff</span></div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Goods-Certified-As" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Goods certified as </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.goods_certified_as %}
+                  {{data.goods_certified_as}}
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./goods/goods-certified-as?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">goods certified as</span></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Container number/seal number (optional) </div>
-              <div class="govuk-summary-list__value">
-                <div>
-                  <p><span>Container - BICU1234567</span><span class="ml-3"> Seal - </span></p>
-                  <p><span>Container - BICU1234564</span><span class="ml-3"> Seal - </span></p>
-                  <p><span>Container - BICU1234563</span><span class="ml-3"> Seal - </span></p>
-                </div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Container-Seal-Number" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Container number/seal number (optional) </dt>
+              <dd class="govuk-summary-list__value">
+
+                {% if (data.containerNumber and data.containerNumber | removeEmptyItems > 1) or (data.sealNumber and data.sealNumber | removeEmptyItems > 1) %}
+                <ul>
+                  {% for row in data.containerNumber %}
+                    <li>Container number: {{row}} - Seal number: {{data.sealNumber[loop.index-1]}}</li>
+                  {% endfor %}
+                </ul>
+                {% elseif data.containerNumber %}
+                <p>Container number: {{data.containerNumber[1]}} - Seal number: {{data.sealNumber[1]}}</p>
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+
+                {% endif %}
+    
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="./goods/container-deal-number?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Container number/seal number</span></a>
+              </dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Purpose of export </div>
-              <div class="govuk-summary-list__value">
-                <div>Internal market <span class="ml-1"></span></div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Purpose-Of-Export" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Purpose of export </dt>
+              <dd class="govuk-summary-list__value">
+
+                {% if data.Purpose %}
+                  {{data.Purpose | capitalize }}
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./goods/purpose-of-export?change=yes" class="govuk-link"> Change </a><span class="govuk-visually-hidden">Purpose of the export</span></dd>
             </div>
-          </div>
+          </dl>
           <h2 class="govuk-heading-m">2. Additional documents (optional)</h2>
-          <div class="govuk-summary-list govuk-!-margin-bottom-9">
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Accompanying documents </div>
-              <div class="govuk-summary-list__value">
-                <div>Not completed</div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Accompanying-Documents" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Accompanying documents </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.additionalDocuments != "" %}
+                 <ul class="govuk-list govuk-!-margin-bottom-0">
+                  {% for file in data.additionalDocuments%}
+                    <li>{{file.file or "my_schedule.xlsx"}} ({{file.documentReference or "Consignment by rail for shipment"}})</li>
+                  {% endfor %}
+                </ul>
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">No documents uploaded</span>
+                {% endif %}
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./attachments/added-documents?change=yes" class="govuk-link"> Change </a></dd>
             </div>
-          </div>
+          </dl>
           <h2 class="govuk-heading-m">3. Persons involved</h2>
-          <div class="govuk-summary-list govuk-!-margin-bottom-9">
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Consignor or Exporter </div>
-              <div class="govuk-summary-list__value">
-                <div>Bradford Hide Company Ltd <span class="ml-1">(Bradford, BD1)</span></div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Consignor-Or-Exporter" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Consignor or Exporter </dt>
+              <dd class="govuk-summary-list__value">
+
+                {% if data.consignorName %}
+                {{data.consignorName}} <span class="ml-1">({{data.consignorTown}}, {{data.consignorPostcode}})</span>
+                {% else %}
+                  Denis Brinicombe Group (Crediton, EX17 3BZ)<br>
+                  Activity: Exporter
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./persons/consignor-or-exporter?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Consignee or Importer </div>
-              <div class="govuk-summary-list__value">
-                <div>Moy Park Dungannon <span class="ml-1">(Dungannon, BT71)</span></div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Consignee-Or-Importer" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Consignee or Importer </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.consigneeName %}
+                {{data.consigneeName}} <span class="ml-1">({{data.consignorTown}}, {{data.consigneePostcode}})</span>
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./persons/consignee-or-importer?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Certifier </div>
-              <div class="govuk-summary-list__value">
-                <div>
-                  <p>Avalon Equine Vets 14 West High Road BA12 7FE &nbsp; (Avalon Equine Vets)</p>
-                  <p>chicha 12 test aa11aa &nbsp; (chicha)</p>
-                </div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Certifier" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Certifier </dt>
+              <dd class="govuk-summary-list__value">
+                  {% if data.certifierName %}
+                {{data.certifierName}} <span class="ml-1">({{data.certifierTown}}, {{data.certifierPostcode}})</span>
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./persons/certifier?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Region of certification </div>
-              <div class="govuk-summary-list__value">
-                <div>England</div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Region-of-certification" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Region of certification </dt>
+              <dd class="govuk-summary-list__value">
+                 {% if data.regionOfCertification %}
+                {{data.regionOfCertification}}
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./persons/region-of-certification?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Responsible for load </div>
-              <div class="govuk-summary-list__value">
-                <div>MOY PARK Ltd <span class="ml-1">(Craigavon, BT63)</span></div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Operator" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Responsible for load </dt>
+              <dd class="govuk-summary-list__value">
+                MOY PARK Ltd <span class="ml-1">(Craigavon, BT63)</span>
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Operator" class="govuk-link"> Change </a></dd>
             </div>
-          </div>
+          </dl>
           <h2 class="govuk-heading-m">4. Transport</h2>
-          <div class="govuk-summary-list govuk-!-margin-bottom-9">
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Departure and arrival </div>
-              <div class="govuk-summary-list__value">
-                <div>
-                  {% if data.transport['arrival-and-departure'] == 'skipped' %}
-                  <strong class="govuk-tag govuk-tag--red">Question skipped</strong>
-                  {% else %}
-                  <p>Arrival - 18 Aug 2022 11:38</p>
-                  <p>Departure - 16 Aug 2022 11:38</p>
-                  {% endif %}
-                </div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Arrival-And-Departure" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key"> Departure date</dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.departure %}
+                  {{data.departure}}
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Place of origin </div>
-              <div class="govuk-summary-list__value">
-                <div>
+              <dt class="govuk-summary-list__key"> Estimated arrival date</dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.arrival %}
+                  {{data.arrival}}
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Country of origin </dd>
+              <dd class="govuk-summary-list__value">
                   <p>United Kingdom (GB)</p>
-                  <p>Region - GB-1</p>
-                  <p>Dispatch - MOY PARK LTD (Sleaford, NG34)</p>
-                  <p>Loading - MOY PARK LTD (Sleaford, NG34)</p>
-                </div>
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Origin" class="govuk-link"> Change </a></div>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Origin" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Entry border control post </div>
-              <div class="govuk-summary-list__value">
-                {% if data.transport['border-control-post'] == 'skipped' %}
-                <strong class="govuk-tag govuk-tag--red">Question skipped</strong>
+              <dt class="govuk-summary-list__key"> Region of origin (optional) </dd>
+              <dd class="govuk-summary-list__value">
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Origin" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Place of departure </dd>
+              <dd class="govuk-summary-list__value">
+                    <span class="govuk-summary-list__placeholder">Not entered</span>
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Origin" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Place of arrival </dd>
+              <dd class="govuk-summary-list__value">
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Origin" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Entry border control post</dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.borderControlPost %}
+                Antwerpen Port (UNLO Code: BEANR)
+
                 {% else %}
-                <div>Belfast Port - BCC <span class="ml-1">(UNLO Code: GBBEL)</span></div>
+                <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Border-Control-Post" class="govuk-link"> Change </a></div>
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/border-control-post?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Means of transport </div>
-              <div class="govuk-summary-list__value">
-                {% if data.transport['means-of-transport'] == 'skipped' %}
-                <strong class="govuk-tag govuk-tag--red">Question skipped</strong>
+              <dt class="govuk-summary-list__key">Transport conditions </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.tcondition %}
+                <strong class="govuk-tag govuk-tag--red">{{data.tcondition}}</strong>
                 {% else %}
-                <div>
-                  <p>Condition- Frozen</p>
-                  <div>
-                    <p>Railway <span class="ml-1">(Identifier - 343452345)</span></p>
-                  </div>
-                </div>
+                <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
-              </div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Means-Of-Transport" class="govuk-link"> Change </a></div>
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/means-of-transport?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
-              <div class="govuk-summary-list__key"> Place of destination </div>
-              <div class="govuk-summary-list__value"><span>Thiry Ben (Linter, 3350)</span></div>
-              <div class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Place-Of-Destination" class="govuk-link"> Change </a></div>
+              <dt class="govuk-summary-list__key">Means of transport</dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.tcondition %}
+                <strong class="govuk-tag govuk-tag--red">{{data.tcondition}}</strong>
+                {% else %}
+                <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/means-of-transport?change=yes" class="govuk-link"> Change </a></dd>
             </div>
-          </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Place of destination </dt>
+              <dd class="govuk-summary-list__value"><span>Thiry Ben (Linter, 3350)</span></dd>
+              <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Place-Of-Destination" class="govuk-link"> Change </a></dd>
+            </div>
+          </dl>
 
 
           <p class="download-a-document">

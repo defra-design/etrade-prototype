@@ -10,7 +10,7 @@ Region of certification – GOV.UK Prototype Kit
 {% block content %}
 
 
-<form class="" action="../task-list" method="post">
+<form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">
         <font style="vertical-align: inherit;">
@@ -25,7 +25,7 @@ Region of certification – GOV.UK Prototype Kit
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h1 class="govuk-fieldset__heading"> Certification region </h1>
+            <h1 class="govuk-fieldset__heading">Certification region</h1>
           </legend>
           <div class="govuk-hint"> Select the region in which the certification will take place: </div>
           <div class="govuk-radios" data-module="govuk-radios">

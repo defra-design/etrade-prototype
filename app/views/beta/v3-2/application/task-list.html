@@ -64,7 +64,9 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
                 {% endfor %}
               {% endfor %}
               {% if skippedSectionCount > 0 %}
-              <strong class="govuk-tag app-task-list__tag govuk-tag--red govuk-!-margin-top-1">{{skippedSectionCount}} {% if skippedSectionCount == 1 %}section{% else %}sections{%endif%} skipped</strong>
+              
+              <strong class="govuk-tag app-task-list__tag  govuk-!-margin-top-1">{{skippedSectionCount}} {% if skippedSectionCount == 1 %}section{% else %}sections{%endif%} skipped</strong>
+              
               {% endif %}
 
             {% else %}
@@ -231,7 +233,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
               </a>
             </span>
             {% if data.transport['arrival-and-departure'] == 'skipped' %}
-            <strong class="govuk-tag govuk-tag--red app-task-list__tag" id="arrival-and-departure-status">Question skipped</strong>
+            <strong class="govuk-tag  app-task-list__tag" id="arrival-and-departure-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="arrival-and-departure-status">Not started</strong>
             {% endif %}
@@ -258,7 +260,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
               </a>
             </span>
             {% if data.transport['border-control-post'] == 'skipped' %}
-              <strong class="govuk-tag app-task-list__tag govuk-tag--red" id="place-of-origin-status">Question skipped</strong>
+              <strong class="govuk-tag app-task-list__tag " id="place-of-origin-status">Completed</strong>
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
             {% endif %}
@@ -272,7 +274,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
               </a>
             </span>
             {% if data.transport['means-of-transport'] == 'skipped' %}
-              <strong class="govuk-tag app-task-list__tag govuk-tag--red" id="place-of-origin-status">Question skipped</strong>
+              <strong class="govuk-tag app-task-list__tag " id="place-of-origin-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
             {% endif %}

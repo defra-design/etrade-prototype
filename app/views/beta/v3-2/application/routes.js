@@ -176,8 +176,12 @@ module.exports = function(router) {
     if (req.body['skip-question'] == 'yes') {
       req.session.data.transport['border-control-post'] = "skipped";
     }
-
-    res.redirect(301, '/' + base_url + 'task-list');
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
+  
   })
 
 

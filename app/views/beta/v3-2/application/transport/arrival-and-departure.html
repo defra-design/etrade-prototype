@@ -10,7 +10,7 @@ Arrival and departure – GOV.UK Prototype Kit
 {% block content %}
 
 
-<form class="" method="post">
+<form class="" method="post" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}">
   <section id="intro" data-v-4e598067="">
     <div class="govuk-grid-row" data-v-4e598067="">
       <div class="govuk-grid-column-two-thirds" data-v-4e598067=""><span class="govuk-caption-xl"> Transport </span>

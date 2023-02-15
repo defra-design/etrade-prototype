@@ -29,7 +29,7 @@ Certifier – GOV.UK Prototype Kit
 </style>
 
 
-<form class="" action="../task-list" method="post">
+<form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
       <h1 class="govuk-heading-xl">Certifier</h1>
@@ -41,7 +41,9 @@ Certifier – GOV.UK Prototype Kit
 
           {% set removeLink = "./remove?who=certifier&redirect=certifier" %}
 
-
+          <input type="hidden" name="certifierName"  value="{{certifier.practiceName}}">
+          <input type="hidden" name="certifierTown"  value="{{certifier.address['line3']}}">
+          <input type="hidden" name="certifierPostcode"  value="{{certifier.address['postCode'] | upper }}">
 
           <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long govuk-!-margin-bottom-10 app-find-establishment-card">
             <div class="govuk-summary-list__row">

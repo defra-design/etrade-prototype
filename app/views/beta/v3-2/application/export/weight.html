@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Gross weight – GOV.UK Prototype Kit
+Home – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -14,38 +14,24 @@ Gross weight – GOV.UK Prototype Kit
 {% endif %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form method="post" action="../task-list">
+    <form method="post" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}">
       <div class="govuk-form-group">
         <span class="govuk-caption-xl">
-          <span class="govuk-caption-xl">{{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</span>
+          <span class="govuk-caption-xl">EHC{{data.ehc or 8361}}</span>
         </span>
         <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--xl">
-            What is the gross weight of the commodities in this certificate?
+            What is the total weight of the commodities in this certificate?
           </legend>
           <div id="add-another-hint" class="govuk-hint">
             This is the combined weight of the commodities and their containers.
           </div>
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="netWeight-3-10410-31010000">Gross weight amount
-            </label>
-            <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8="">
-              <input class="govuk-input" type="number" data-type="quantity" name="GROSS_WEIGHT"  {% if query.change=='yes' %}value="{{data.GROSS_WEIGHT}}"{%endif%} step="0.01" min="0" max="9999999" id="netWeight-3-10410-31010000"
-                data-v-4e8f37a8="">
-              <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8=""><select class="govuk-select" id="netWeight-3-10410-31010000-units" name="GROSS_WEIGHT_quantifier">
-                  <option disabled="" value="" {% if not data.GROSS_WEIGHT_quantifier %}selected{%endif%}>Select a unit</option>
-                  <option value="gram" {% if data.GROSS_WEIGHT_quantifier =="gram" and query.change=='yes' %}selected{%endif%}>gram</option>
-                  <option value="kilogram" {% if data.GROSS_WEIGHT_quantifier=="kilogram" and query.change=='yes' %}selected{%endif%}>kilogram</option>
-                  <option value="kilotonne" {% if data.GROSS_WEIGHT_quantifier=="kilotonne" and query.change=='yes' %}selected{%endif%}>kilotonne</option>
-                  <option value="tonne (metric ton)" {% if data.GROSS_WEIGHT_quantifier=="tonne (metric ton)" and query.change=='yes' %}selected{%endif%}>tonne (metric ton)</option>
-                </select></div>
-            </div>
-          </div>
+        <section id="certificates"><div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds"><fieldset class="govuk-fieldset"><legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-visually-hidden"><h1 class="govuk-fieldset__heading"> Certificate weight form </h1></legend><div class="govuk-form-group"><label class="govuk-label" for="gross-weight-amount"> Gross weight amount </label><!----><input class="govuk-input govuk-input--width-4" id="gross-weight-amount" name="GROSS_WEIGHT" type="number" value="{{data.grossweight}}"></div><div class="govuk-form-group"><label class="govuk-label" for="gross-weight-amount-units"> Gross weight amount units </label><!----><select class="govuk-select" id="gross-weight-amount-units" name="GROSS_WEIGHT_quantifier"><option value="GRM">gram</option><option value="KGM" selected>kilogram</option><option value="KTN">kilotonne</option><option value="TNE">tonne (metric ton)</option></select></div><!----></fieldset></div></div>
         </fieldset>
       </div>
 
       <button class="govuk-button" data-module="govuk-button">
-        Continue
+        Save and continue
       </button>
     </form>
   </div>

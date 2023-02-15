@@ -79,6 +79,12 @@ module.exports = function(env) {
     return s;
   }
 
+  filters.removeEmptyItems = function(arr) {
+    var n = arr.filter(function (el) {
+      return el != null;
+    });
+    return n
+  }
 
 
   filters.makeNumber = function(n) {
