@@ -2,9 +2,6 @@
   "number": "EHC8364",
   "title": "Live bivalve molluscs, echinoderms, tunicates, marine gastropods and products from these animals intended for human consumption to the European Union and Northern Ireland",
   "multiples": [],
-  "batchNumber": "single",
-  "coldStore" : "yes",
-  "identificationMark": "yes",
   "treatmentType": [
     "Chilled",
     "Frozen",
@@ -15,11 +12,12 @@
     "Aquarium",
     "Wild stock"
   ],
-  "finalConsumer": "yes",
-  "dateOfCollectionProduction": "single",
-  "manufacturingPlant" : "yes",
-  "sanitaryRegionOfOrigin" : "yes",
-
+  "species": [
+    "Rhopilema",
+    "Porifera","Anemonia","Coelenterae","Radiata","Anemonia sulcata","Actiniaria","Annelida",
+    "Nototodarus sloani","Sepioteuthis","Nototodarus sloanii","Ommastrephes","Loligo chinensis","Loligo","Loligo patagonica","Loligo spp","Loligo pealei","Loligo reynaudii","Loligo forbesi","Loligo gahi","other",
+    "Crassostrea virginica","Ostrea","Ostrea conchaphila","Crassostrea angulata","Ostrea angasi","Ostreidae","Crassostrea gigas","Ostrea chilensis","Crassostrea gasar","Ostrea puelchana","Ostrea denselammellosa","Ostrea edulis"
+  ],
   "schema": [
     { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
     { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
