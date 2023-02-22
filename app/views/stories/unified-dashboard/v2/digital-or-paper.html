@@ -1,10 +1,8 @@
-
-
 {% set serviceName = "Apply for an export health certificate"%}
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Your applications - EEHC - GOVUK
+Changes to the service - Apply for an Export health certificate - GOVUK
 {% endblock %}
 
 {% block beforeContent%}
@@ -15,23 +13,10 @@ Your applications - EEHC - GOVUK
 {% block content %}
 <!-- get a list of certs -->
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
+    <h1 class="govuk-heading-xl">You can now submit a paperless application to send goods to the EU or Northern Ireland</h1>
 
-      <form method="post" novalidate="">
-        <div class="govuk-form-group">
-    <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-        <h1 class="govuk-fieldset__heading">Do you want to create a new digital application for this EHC?</h1>
-
-      </legend>
-      <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Applying to digitial certificates
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-             <p class="govuk-body" lang="en">
+      <p class="govuk-body" lang="en">
         To make sure all export data is consistent with the EU’s trade and control expert system (TRACES), we’re making some changes to how you apply to move animals and animal products to the EU and Northern Ireland.
       </p>
       <p>You can create a paperless application for any consignment to the EU and Northern Ireland. With a paperless application, your:
@@ -40,33 +25,41 @@ Your applications - EEHC - GOVUK
         <li>certifiers and importers will no longer need to use paper copies of EHCs</li>
         <li>commodity data will be consistent with EU border control post requirements</li>
       </ul>
-      <p>To learn more, you can read about <a href="#">how you apply for an EHC.</a></p>
+      <p>To learn more, you can read about <a href="how-to-paperless-certs">how you apply for an EHC.</a></p>
+      <div class="govuk-inset-text">
 You will still be able to use paper-based applications for consignments to Northern Ireland or the EU.
-        </div>
-      </details>
-
+</div>
+      <form method="post" novalidate="">
+        <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Do you want to create a new digital application for this EHC?
+      </legend>
       <div class="govuk-radios" data-module="govuk-radios">
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="typeOfCertificate" name="typeOfCertificate" type="radio" value="england~./create-reference">
-          <label class="govuk-label govuk-radios__label" for="typeOfCertificate">
-            Yes
+          <!-- <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~/beta/v3-3/application/export/set-certificate?ehc={{data.selectedCertificate or '8350' }}"> -->
+          <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~./create-reference">
+          <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+             Yes
           </label>
-          <div id="typeOfCertificate-hint" class="govuk-hint govuk-radios__hint">
-            You can download a QR code to scan at the border post.
+          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+            You will be able to download a QR code to show at the border control post.
+
         </div>
         </div>
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="typeOfCertificate-2" name="typeOfCertificate" type="radio" value="paper~https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc{{data.selectedCertificate or '8350' }}">
-          <label class="govuk-label govuk-radios__label" for="typeOfCertificate-2">
-            No, create a non-digital version
+          <input class="govuk-radios__input" id="where-do-you-live-2" name="typeOfCertificate" type="radio" value="paper~https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc{{data.selectedCertificate or '8350' }}">
+          <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+             No, create a non-digital version
           </label>
-          <div id="typeOfCertificate-2-hint" class="govuk-hint govuk-radios__hint">
+          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
             You will need to print a copy to accompany your consignment.
         </div>
         </div>
       </div>
     </fieldset>
   </div>
+        <input type="hidden" name="firstTime" value="no">
         <button class="govuk-button" data-module="govuk-button">
           Continue
         </button>
@@ -76,5 +69,5 @@ You will still be able to use paper-based applications for consignments to North
 
 
   </div>
-</div>
+
 {% endblock %}

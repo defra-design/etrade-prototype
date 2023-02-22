@@ -22,6 +22,41 @@
     "All_Activities": ["Processing Plant"]
   },
   {
+    "AppNo": "06598773",
+    "TradingName": "ITSU (GROCERY) LTD",
+    "Address1": "53 VICTORIA ST WESTIMSTER",
+    "Address2": "",
+    "Address3": "",
+    "Town": "London",
+    "Postcode": "SW9",
+    "Country": "United Kingdom",
+    "All_Activities": ["Exporter"]
+  },
+  {
+    "AppNo": "sdlkjfkasd",
+    "TradingName": "FIELD FRESH TRADING LTD",
+    "Address1": "HAFOD Y DRE UCHAF",
+    "Address2": "PENTREFOELAS",
+    "Address3": "BETWS Y COED",
+    "Town": "Conwy",
+    "Postcode": "LL24",
+    "Country": "United Kingdom",
+    "All_Activities": ["Exporter"]
+  },
+  {
+    "AppNo": "AD 006 FE",
+    "TradingName": "PDK Shellfish Ltd",
+    "Address1": "2 South Pier",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Oban",
+    "Postcode": "TPA34 4LS",
+    "Country": "United Kingdom",
+    "All_Activities": ["Exporter"]
+  },
+ 
+ 
+  {
     "AppNo": "FR/000000441",
     "TradingName": "Premier Foods",
     "Address1": "Claylands Avenue",
