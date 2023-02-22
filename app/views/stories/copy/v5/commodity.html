@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{super()}}
+<a href="commodities?showNotification=no" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% if data.accountName == "extons" %}
+{% block extonsCommodity %}{% include "./components/_extons-commodity.html"%}{% endblock%}
+{% elseif data.accountName == "foyle" %}
+{% block foyleCommodity %}{% include "./components/_foyle-commodity.html"%}{% endblock%}
+{% elseif data.accountName == "greggs" %}
+{% block greggsCommodity %}{% include "./components/_greggs-commodity.html"%}{% endblock%}
+
+{% elseif query.new == "yes" %}
+{% block blankCommodity %}{% include "./components/_blank-commodity.html"%}{% endblock%}
+{% else %}
+{% block basicCommodity %}{% include "./components/_basic-commodity.html"%}{% endblock%}
+{% endif %}
+
+{% endblock %}

@@ -17,6 +17,7 @@ Your applications - EEHC - GOVUK
 </div> -->
 
 {% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
+{% set format = (data.unifiedTestinigUser | findObjectByKey(data.applications)).formats %}
 
   <style>
     main {
@@ -199,6 +200,7 @@ Your applications - EEHC - GOVUK
           </a>
         </p>
       </div>
+ 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <table class="govuk-table responsive-table responsive-table--s">
@@ -212,9 +214,11 @@ Your applications - EEHC - GOVUK
                 <th class="govuk-table__header" style="width:5%!important">Destination</th>
                 <th class="govuk-table__header">Submitted</th>
                 <th class="govuk-table__header">Export date</th>
+                 {% if format != "paper" %}
                 <th class="govuk-table__header">Format</th>
+                {% endif %}
                 <th class="govuk-table__header">Status</th>
-                <th class="govuk-table__header"></th>
+                <th class="govuk-table__header">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -229,12 +233,14 @@ Your applications - EEHC - GOVUK
               {% set copyLink = "./echo/copy?id="+(loop.index-1) %}
               {% if app.type == 'Digital'%}
               {% set link = "application?id="+(loop.index-1) %}
-              {% set copyLink = "copy-application?id="+(loop.index-1) %}
+              {% set copyLink = "copy-application?id="+(loop.index-1)+"&selectedCertificate="+app.EHC%}
               {% else %}
               {% if app.isEU == "yes" %}
-              {% set copyLink = "changes-to-service-copy?id="+(loop.index-1) %}
+              {% set copyLink = "changes-to-service-copy?id="+(loop.index-1)+"&selectedCertificate="+app.EHC %}
               {% endif %}
               {% endif %}
+
+
               <tr class="govuk-table__row result">
                 <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
                   <a href="{{link}}" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Reference</span> {{app.reference or app.applicationID}}</a>
@@ -260,6 +266,7 @@ Your applications - EEHC - GOVUK
                   <span class="table-heading" aria-hidden="true">Proposed export</span>
                   {{day | getDate(month,year)}}
                 </td>
+                {% if format != "paper" %}
                 <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
                   <span class="table-heading" aria-hidden="true">Type </span>
                   {% if app.type != "Digital" %}
@@ -268,6 +275,7 @@ Your applications - EEHC - GOVUK
                     Digital
                   {% endif%}
                 </td>
+                {% endif %}
                 <td id="1721147986456-status" class="govuk-table__cell" scope="row">
                   <span class="table-heading" aria-hidden="true">Status</span>
                   <div class="govuk-tag govuk-tag--{{app.tag}}">

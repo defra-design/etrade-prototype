@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{% if data.hasMultipleEHC =="yes"%}Review 2 certificates{% else %}Added 1 certificate {% endif %}</h1>
+    <section class="app-summary-card govuk-!-margin-bottom-6">
+      <header class="app-summary-card__header">
+        <h2 class="app-summary-card__title">
+          {% if data.ehc == "8468"%}
+          <strong>EHC8468</strong> - Dairy products intended for human consumption that are required to undergo a pasteurisation treatment to the European Union and Northern Ireland
+          {% elseif data.ehc == "8368"%}
+          <strong>EHC8368</strong> - Fresh meat intended for human consumption, excluding mechanically separated meat, of domestic bovine animals to the European Union and Northern Ireland
+          {% else %}
+          <strong>EHC8361</strong> - Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland
+          {% endif  %}
+        </h2>
+        <div class="app-summary-card__actions">
+          <ul class="app-summary-card__actions-list">
+            <li class="app-summary-card__actions-list-item  govuk-!-font-size-16">
+              <a class="govuk-link govuk-link--no-visited-state" href="remove-certificate?id=0">
+                Remove<span class="govuk-visually-hidden"> EHC8361 </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="app-summary-card__body">
+        <dl class="govuk-summary-list govuk-!-font-size-16">
+          <!-- set commodity count -->
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Records
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              {{data.recordsCount or 8}}
+            </dd>
+            <dd class="govuk-summary-list__actions" style="width: 40%;">
+              <!-- change url depends if there is any commodites added. -->
+              <a class="govuk-link govuk-link--no-visited-state" href="commodities">
+                Change<span class="govuk-visually-hidden"> commodities for EHC8361</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total weight
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.GROSS_WEIGHT or data.grossweight or "123"}} kilograms
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--no-visited-state" href="weight?currentCertID=0">
+                Change<span class="govuk-visually-hidden"> total weight for EHC8361</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+    <!-- this is for testing so we dont see empty certificates,
+    but there is a possiblity in production you will -->
+    {% if data.hasMultipleEHC == "yes"%}
+    <section class="app-summary-card govuk-!-margin-bottom-6">
+      <header class="app-summary-card__header">
+        <h2 class="app-summary-card__title">
+          <strong>EHC8351</strong> - Live bivalve molluscs, echinoderms, tunicates, marine gastropods and products from these animals intended for human consumption to the European Union and Northern Ireland (70 commodities)
+        </h2>
+        <div class="app-summary-card__actions">
+          <ul class="app-summary-card__actions-list">
+            <li class="app-summary-card__actions-list-item  govuk-!-font-size-16">
+              <a class="govuk-link govuk-link--no-visited-state" href="remove-certificate?id=1">
+                Remove<span class="govuk-visually-hidden"> EHC8351 </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="app-summary-card__body">
+        <dl class="govuk-summary-list govuk-!-font-size-16">
+          <!-- set commodity count -->
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Records
+            </dt>
+            <dd class="govuk-summary-list__value">
+              12
+            </dd>
+            <dd class="govuk-summary-list__actions" style="width: 40%;">
+              <!-- change url depends if there is any commodites added. -->
+              <a class="govuk-link govuk-link--no-visited-state" href="commodities?currentCertID=1 ">
+                Change<span class="govuk-visually-hidden"> commodities for EHC8364</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total weight
+            </dt>
+            <dd class="govuk-summary-list__value">
+              12 kilogram
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--no-visited-state" href="weight?currentCertID=1">
+                Change<span class="govuk-visually-hidden"> total weight for EHC8351</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+    {% endif %}
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="select-commodities">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you want to add another certificate to this export?
+          </legend>
+          <p>This might be useful if the consignment includes commodities from another certificate.</p>
+          <div id="add-another-hint" class="govuk-hint">
+            <!-- You must tell us about all your directors. -->
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~./select-certificates">
+              <label class="govuk-label govuk-radios__label" for="add-another">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~./application/check-your-answers?showNotification=no">
+              <label class="govuk-label govuk-radios__label" for="add-another-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

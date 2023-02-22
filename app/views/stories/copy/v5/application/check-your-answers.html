@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style media="screen">
+  .download-a-document-image {
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin-right: 20px;
+}
+.download-a-document {
+    margin-bottom: 40px;
+}
+
+</style>
+<div class="ehc-summary" data-v-e8e27fc8="">
+  <div class="govuk-grid-row" data-v-e8e27fc8="">
+    <div class="govuk-grid-column-three-quarters" data-v-e8e27fc8="">
+      {% if data.showNotification == "yes" %}
+      <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-body"><strong>Copied application GBXIBN4522</strong></p>
+        </div>
+      </div>
+      {% endif %}
+      <h1 class="govuk-heading-xl" data-v-e8e27fc8="">Check your answers before submitting your application</h1>
+
+
+<style media="screen">
+  .app-inset-text--warning {
+    background: #FFF7E7;
+    border-left: 10px solid #FFBF45;
+    padding: 20px 20px;
+}
+
+</style>
+
+      <div class="govuk-inset-text app-inset-text--warning">
+        <h2 class="govuk-heading-m"><span id="remainingTasks">3 sections</span> need to be completed before submiting</h2>
+
+        <ul class="govuk-list">
+        commoditiesAdded=  {{data.commoditiesAdded}}<br>
+        copyall =  {{data.copyall}}
+          {% if data.copyall == "no" and ("commodities" not in data.manualSelection and "commodites1" not in data.manualSelection)  %}
+          {% if data.commoditiesAdded != "yes" %}<li class="task"><a class="govuk-link--no-visited-state" href="select-commodities?showNotification=no">Add commodities</a></li>{% endif %}
+          {% endif %}
+          {% if data.addedContainer != "yes" %}<li class="task"><a class="govuk-link--no-visited-state" href="container-deal-number?showNotification=no">Container number/seal number</a></li>{% endif %}
+          {% if data.addedArrivalDepartDate != "yes" %}<li class="task" ><a class="govuk-link--no-visited-state" href="arrival-and-departure?showNotification=no">Departure and arrival</a></li>{% endif %}
+          {% if data.addedTransport != "yes" and data.accountName != "foyle"%}<li class="task"><a class="govuk-link--no-visited-state" href="means-of-transport?showNotification=no">Means of transport</a></li>{% endif %}
+        </ul>
+      </div>
+
+      <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
+        <div class="govuk-summary-list__row" data-v-e8e27fc8="">
+          <div class="govuk-summary-list__key" data-v-e8e27fc8="">Application Reference</div>
+          <div class="govuk-summary-list__value" data-v-e8e27fc8="">{{data.UserReference or "GBXIBN4522"}}
+          </div>
+          <div class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="create-reference-2?showNotification=no" class="govuk-link" data-v-e8e27fc8=""> Change </a></div>
+        </div>
+      </div>
+
+      {% if data.accountName == "foyle" %}
+      {% block foylecya %}{% include "../components/_foyle-cya.html"%}{% endblock%}
+      {% elseif data.accountName == "extons" %}
+       {% block extonscya %}{% include "../components/_extons-cya.html"%}{% endblock%}
+       {% elseif data.accountName == "greggs" %}
+        {% block greggscya %}{% include "../components/_greggs-cya.html"%}{% endblock%}
+      {% else %}
+      {% block basiccya %}{% include "../components/_basic-cya.html"%}{% endblock%}
+      {% endif %}
+
+
+      <p class="download-a-document">
+      <span class="download-a-document-image"><img class="" src="/public/images/icon-file-download.png" alt="your answers in a specimen certificate"><span class="govuk-visually-hidden">File download</span></span>
+      <strong><a href="/public/images/ehc-2849ehc-3.1.pdf" target="_blank" data-qa-id="Link-PreviewCertificate" class="govuk-link">EHC{{data.ehc or "8361"}}: Preview the answers in a specimen certificate</a> (PDF, 23KB)
+        <br>(opens in a new tab)</strong>
+      </p>
+      {% if data.hasMultipleEHC == "yes"%}
+      <p class="download-a-document">
+      <span class="download-a-document-image"><img class="" src="/public/images/icon-file-download.png" alt="your answers in a specimen certificate"><span class="govuk-visually-hidden">File download</span></span>
+      <strong><a href="/public/images/ehc-2849ehc-3.1.pdf" target="_blank" data-qa-id="Link-PreviewCertificate" class="govuk-link">EHC8364: Preview the answers in a specimen certificate</a> (PDF, 23KB)
+        <br>(opens in a new tab)</strong>
+      </p>
+      {% endif%}
+      <h2 class="govuk-heading-m" data-v-e8e27fc8=""> Check and submit your application </h2>
+      <p class="govuk-body" data-v-e8e27fc8=""> Once you have reviewed all your answers, you can validate and upon successful validation you can submit your application for processing by APHA and the selected certifier organisation. </p>
+      <div data-v-e8e27fc8=""><button class="govuk-button" id="validate" data-v-e8e27fc8="">
+          Check and continue
+        </button>
+        <a href="review" class="govuk-button" id="submit" data-v-e8e27fc8="" style="display:none">
+          Submit to certifier
+        </a>
+
+        <!---->
+        <!-- <p id="eleapsed-time" aria-live="polite" class="govuk-body" data-v-e8e27fc8="" style="display:none"></p> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+    let tasks = $('.task').length
+    if (tasks == 0){
+      $('.app-inset-text--warning').hide()
+    }
+    var sectionText = "sections"
+    if (tasks == 1){
+      sectionText = "section"
+    }
+    $('#remainingTasks').text(tasks + " sections")
+    var timer;
+    var timeTaken = 1;
+
+    function validate() {
+      $("#eleapsed-time").text("Elapsed time : " + timeTaken + " secs")
+      timeTaken += 1
+      if (timeTaken == 8) {
+        clearInterval(timer);
+
+        window.location.href="./review"
+      }
+    }
+    $('#validate').on('click', function(e) {
+      e.preventDefault()
+      $(this).text("Checking application")
+      $(this).prepend('<span class="fas fa-spinner fa-spin" data-v-e8e27fc8=""></span>')
+      $(this).attr("disabled", "disabled")
+      $("#eleapsed-time").show()
+      $("#eleapsed-time").text("Elapsed time : 0 secs")
+      timer = setInterval(validate, 1000);
+    })
+  })
+</script>
+{% endblock%}

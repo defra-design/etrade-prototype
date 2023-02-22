@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {% endif %}Create a reference – E-Certification for EHC's - GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form method="get" novalidate action="create-reference">
+  <!-- Form routing is handled in app/stories/accessiblity/routes.js -->
+  <div class="govuk-grid-row" data-v-7899b5ce="" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds">
+      {% if query.hasError %}
+        <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#copy-everything">Select if you want to copy everything in the original application</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <h1 class="govuk-heading-xl">Copy application</h1>
+      {% block summary %}{% include "../components/_summary.html" %}{% endblock%}
+
+      {% if data.hasUpdateToEHC == "yes" %}
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          This certificate was updated on 3 November 2022. You may have to update answers.
+        </strong>
+      </div>
+      {% endif %}
+      <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error {% endif %}">
+        <fieldset class="govuk-fieldset"  {% if query.error %} %aria-describedby="copy-everything-error"{% endif %}>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+            <h1 class="govuk-fieldset__heading">
+              Do you want to copy everything in the original application?
+            </h1>
+          </legend>
+          <p>Copy everything in the original application and make any changes before submitting.</p>
+           <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Information that you cannot copy
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p>You cannot copy the following sections:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Container number/seal number</li>
+                <li>Accompanying document</li>
+                {% if data.accountName != "foyle" %}<li>Means of transport</li>{% endif %}
+                <li>Arrival and Departure</li>
+              </ul>
+              {% if data.isDraft=="yes" %}
+              <p>The following blank sections in the original will not be coppied.</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Entry border control post</li>
+
+              </ul>
+              {% endif %}
+              <p>You will need to enter information for these sections manually.</p>
+            </div>
+          </details>
+          {% if query.hasError %}
+          <p id="copy-everything-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you want to copy everything in the original application
+          </p>
+          {% endif %}
+         
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="copy-everything" name="copyall" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="copy-everything">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="copy-everything-2" name="copyall" type="radio" value="no~select-copy-info" data-aria-controls="conditional-contact-2">
+              <label class="govuk-label govuk-radios__label" for="copy-everything-2">
+                No, I want to select which sections to copy
+              </label>
+            </div>
+          </div>
+          <input type="hidden" name="showNotification" value="yes">
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-v-7899b5ce="">Continue</button>
+    </div>
+  </div>
+
+
+</form>
+{% endblock %}

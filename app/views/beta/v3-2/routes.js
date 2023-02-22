@@ -120,7 +120,7 @@ module.exports = function(router) {
     let commodityCode = cert.commodities[req.body.commodityCode].code;
     let querystring = createCommoditiesQuerystring(req.session.data.addedEHC, cert.number, commodityCode);
 
-    res.redirect(301, '/' + base_url + 'application/export/commodity?' + querystring);
+    res.redirect(301, '/' + base_url + 'application/export/commodity?' + querystring + '&change=no');
   })
 
   function createCommoditiesQuerystring(addedEHC, ehcNumber, commodityCode) {
@@ -285,6 +285,10 @@ module.exports = function(router) {
       req.session.data.addedEHC.push(newCert);
     }
     let cert = req.session.data.addedEHC[certID]
+    console.log("Skipped: "+req.body["skip-question"])
+    if((req.body.netWeight =="" || req.body.packageCount =="" ) && req.body["skip-question"] ==  "_unchecked"){
+      res.redirect(301, '/' + base_url + 'application/export/commodity?hasError=yes');
+    }
     //If change is active dont add the certificate just update it.
     if (req.session.data.change) {
       console.log("Changing cert")
@@ -541,22 +545,16 @@ module.exports = function(router) {
 
   })
 
-  router.post('/' + base_url + 'application/export/weight', function(req, res) {
-    console.log("In post for application/export/weight");
-    let cert = req.session.data.currentCertID || 0
-    req.session.data.addedEHC[cert].weight = {
-      "amount": req.body.GROSS_WEIGHT,
-      "quantifier": req.body.GROSS_WEIGHT_quantifier
-    }
-    /*
-    if (req.session.data.has_multiple_certificates == 'yes') {
-      res.redirect(301, '/' + base_url + 'application/export/added-certs');
-    } else {
-      res.redirect(301, '/' + base_url + 'application/export/added-certs');
-    }
-    */
-    res.redirect(301, '/' + base_url + 'application/task-list');
-  });
+  // router.post('/' + base_url + 'application/export/weight', function(req, res) {
+  //   console.log("In post for application/export/weight");
+  //   let cert = req.session.data.currentCertID || 0
+  //   req.session.data.addedEHC[cert].weight = {
+  //     "amount": req.body.GROSS_WEIGHT,
+  //     "quantifier": req.body.GROSS_WEIGHT_quantifier
+  //   }
+
+  //   res.redirect(301, '/' + base_url + 'application/task-list');
+  // });
 
   router.post('/' + base_url + 'application/export/remove-commodity', function(req, res) {
     let currentCert = req.session.data.addedEHC[req.session.data.currentCertID]

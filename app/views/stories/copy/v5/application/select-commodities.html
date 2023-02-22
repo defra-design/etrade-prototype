@@ -1,0 +1,429 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Select a certificate for your export - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+  .js-enabled .js-hidden{
+    display:none;
+  }
+</style>
+{% endblock%}
+{% block content %}
+<!-- allow for querystring override of displayMax for testing purposes -->
+{% if query.displayMax %}
+  {% set displayMax = query.displayMax | int %}
+{% else %}
+  {% set displayMax = data.displayMax %}
+{% endif %}
+
+{% set page = query.page-1 or 0 %}
+{% set min = displayMax*page %}
+{% if page == 0 %}
+{% set max = displayMax*(page+1) %}
+{% else %}
+{% set max = displayMax*(page+1)-1 %}
+{% endif %}
+
+<div class="govuk-grid-row" data-v-75a00750="" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds" data-v-75a00750="">
+    <span class="govuk-caption-xl">EHC8468</span>
+    <form class="" method="post">
+      <h1 class="govuk-heading-xl">Select a commodity for this export</h1>
+
+      <p>You can add multiple commodities for this certificate by <a href="./upload/upload-with-incompletes">uploading a spreadsheet</a></p>
+
+
+      <div class="govuk-form-group"><label class="govuk-label" for="filter-commodities"> Filter commodities </label>
+        <input class="govuk-input" id="filter-commodities" type="text">
+      </div>
+      <p class="govuk-body"><span id="commodityCount">22</span> commodites <span id="searchQueryText"></span></p>
+
+      <div class="govuk-form-group cn-selection">
+        <div class="govuk-radios" data-module="govuk-radios">
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="0401  Milk and cream, not concentrated nor containing added sugar or other sweetening matter">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-1" type="radio" value="0">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-1" govuk-radios="">
+                <span class="govuk-tag">0401</span>  Milk and cream, not concentrated nor containing added sugar or other sweetening matter</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="0402  [en] (NOMENCLATURE) 10090">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-2" type="radio" value="1">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-2" govuk-radios="">
+                <span class="govuk-tag">0402</span>  [en] (NOMENCLATURE) 10090</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="0403  Buttermilk, curdled milk and cream, yogurt, kephir and other fermented or acidified milk and cream, whether or not concentrated or containing added sugar or other sweetening matter or flavoured or containing added fruit, nuts or cocoa">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-3" type="radio" value="2">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-3" govuk-radios="">
+                <span class="govuk-tag">0403</span>  Buttermilk, curdled milk and cream, yogurt, kephir and other fermented or acidified milk and cream, whether or not concentrated or containing added sugar or other sweetening matter or flavoured or containing added fruit, nuts or cocoa</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="0404  Whey, whether or not concentrated or containing added sugar or other sweetening matter; products consisting of natural milk constituents, whether or not containing added sugar or other sweetening matter, not elsewhere specified or included">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-4" type="radio" value="3">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-4" govuk-radios="">
+                <span class="govuk-tag">0404</span>  Whey, whether or not concentrated or containing added sugar or other sweetening matter; products consisting of natural milk constituents, whether or not containing added sugar or other sweetening matter, not elsewhere specified or included</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="0405  Butter and other fats and oils derived from milk; dairy spreads">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-5" type="radio" value="4">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-5" govuk-radios="">
+                <span class="govuk-tag">0405</span>  Butter and other fats and oils derived from milk; dairy spreads</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="0406 Cheese and curd">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-6" type="radio" value="5">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-6" govuk-radios="">
+                <span class="govuk-tag">0406</span> Cheese and curd</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="1901  Malt extract; food preparations of flour, groats, meal, starch or malt extract, not containing cocoa or containing less than 40|% by weight of cocoa calculated on a totally defatted basis, not elsewhere specified or included; food preparations of goods of headings|0401|to 0404, not containing cocoa or containing less than 5|% by weight of cocoa calculated on a totally defatted basis, not elsewhere specified or included">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-7" type="radio" value="6">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-7" govuk-radios="">
+                <span class="govuk-tag">1901</span>  Malt extract; food preparations of flour, groats, meal, starch or malt extract, not containing cocoa or containing less than 40|% by weight of cocoa calculated on a totally defatted basis, not elsewhere specified or included; food preparations of goods of headings|0401|to 0404, not containing cocoa or containing less than 5|% by weight of cocoa calculated on a totally defatted basis, not elsewhere specified or included</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="2202  Waters, including mineral waters and aerated waters, containing added sugar or other sweetening matter or flavoured, and other non-alcoholic beverages, not including fruit or vegetable juices of heading|2009">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-8" type="radio" value="7">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-8" govuk-radios="">
+                <span class="govuk-tag">2202</span>  Waters, including mineral waters and aerated waters, containing added sugar or other sweetening matter or flavoured, and other non-alcoholic beverages, not including fruit or vegetable juices of heading|2009</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="2835  Phosphinates (hypophosphites), phosphonates (phosphites) and phosphates; polyphosphates, whether or not chemically defined">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-9" type="radio" value="8">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-9" govuk-radios="">
+                <span class="govuk-tag">2835</span>  Phosphinates (hypophosphites), phosphonates (phosphites) and phosphates; polyphosphates, whether or not chemically defined</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item" govuk-radios="" data-search-text="3501  Casein, caseinates and other casein derivatives; casein glues">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-10" type="radio" value="9">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-10" govuk-radios="">
+                <span class="govuk-tag">3501</span>  Casein, caseinates and other casein derivatives; casein glues</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="3502  [en] (NOMENCLATURE) 10318">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-11" type="radio" value="10">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-11" govuk-radios="">
+                <span class="govuk-tag">3502</span>  [en] (NOMENCLATURE) 10318</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="151710  Margarine, excluding liquid margarine">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-12" type="radio" value="11">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-12" govuk-radios="">
+                <span class="govuk-tag">151710</span>  Margarine, excluding liquid margarine</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="151790  other than 151710">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-13" type="radio" value="12">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-13" govuk-radios="">
+                <span class="govuk-tag">151790</span>  other than 151710</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="210500  Ice cream and other edible ice, whether or not containing cocoa">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-14" type="radio" value="13">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-14" govuk-radios="">
+                <span class="govuk-tag">210500</span>  Ice cream and other edible ice, whether or not containing cocoa</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="210610  Protein concentrates and textured protein substances">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-15" type="radio" value="14">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-15" govuk-radios="">
+                <span class="govuk-tag">210610</span>  Protein concentrates and textured protein substances</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="210690  Other">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-16" type="radio" value="15">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-16" govuk-radios="">
+                <span class="govuk-tag">210690</span>  Other</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="17021100  Containing by weight 99|% or more lactose, expressed as anhydrous lactose, calculated on the dry matter">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-17" type="radio" value="16">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-17" govuk-radios="">
+                <span class="govuk-tag">17021100</span>  Containing by weight 99|% or more lactose, expressed as anhydrous lactose, calculated on the dry matter</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="18069070  Preparations containing cocoa for making beverages">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-18" type="radio" value="17">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-18" govuk-radios="">
+                <span class="govuk-tag">18069070</span>  Preparations containing cocoa for making beverages</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="21069092  Containing no milkfats, sucrose, isoglucose, glucose or starch or containing, by weight, less than 1,5|% milkfat, 5|% sucrose or isoglucose, 5|% glucose or starch">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-19" type="radio" value="18">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-19" govuk-radios="">
+                <span class="govuk-tag">21069092</span>  Containing no milkfats, sucrose, isoglucose, glucose or starch or containing, by weight, less than 1,5|% milkfat, 5|% sucrose or isoglucose, 5|% glucose or starch</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="21069098  [en] (NOMENCLATURE) 14284">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-20" type="radio" value="19">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-20" govuk-radios="">
+                <span class="govuk-tag">21069098</span>  [en] (NOMENCLATURE) 14284</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="35040010  Concentrated milk proteins specified in additional note 1 to this chapter">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-21" type="radio" value="20">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-21" govuk-radios="">
+                <span class="govuk-tag">35040010</span>  Concentrated milk proteins specified in additional note 1 to this chapter</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden" govuk-radios="" data-search-text="35040090  Other">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-22" type="radio" value="21">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-22" govuk-radios="">
+                <span class="govuk-tag">35040090</span>  Other</label>
+            </div>
+
+
+        </div>
+      </div>
+
+
+      <div class="govuk-form-group">
+
+
+
+
+          <!-- start sequence. set range to show if page is under 3 -->
+
+
+
+
+
+        <nav id="pagination" class="govuk-pagination" role="navigation" aria-label="results">
+
+
+
+
+          <ul class="govuk-pagination__list">
+
+
+
+
+
+              <li class="govuk-pagination__item govuk-pagination__item--current">
+                <a class="govuk-link govuk-pagination__link" href="?page=1" aria-label="Page 1">
+                  1
+                </a>
+              </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <li class="govuk-pagination__item ">
+                <a class="govuk-link govuk-pagination__link" href="?page=2" aria-label="Page 2">
+                  2
+                </a>
+              </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </ul>
+
+          <div class="govuk-pagination__next">
+            <a class="govuk-link govuk-pagination__link" href="?page=2" rel="next"> <span class="govuk-pagination__link-title">Next</span> <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg></a>
+          </div>
+
+        </nav>
+      </div>
+
+      <div class="govuk-button-group" type="submit">
+        <button class="govuk-button" id="add-export">Save and continue</button>
+        <!---->
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $("#search-term").on("keyup", function() {
+
+      var value = $(this).val().toLowerCase();
+
+      $("#certificate-radios div").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        // if ($("#certificate-radios div").filter(":hidden").size()) {
+        if ($("#certificate-radios div.govuk-radios__item *:visible").length) {
+          // some results are still present
+          $("#no-results").hide();
+          $("#pagination").hide();
+
+          // are some results being hidden
+          if (($("#certificate-radios div.govuk-radios__item *:visible").length) < ($("#certificate-radios div.govuk-radios__item").length)) {
+            $("#pagination").hide();
+          } else {
+            // $("#pagination").show();
+          }
+        } else {
+          // all results being hidden
+          $("#pagination").hide();
+          $("#no-results").show();
+        }
+      });
+
+    });
+
+    $("#add-export").click(function() {
+      // show error message if nothing is selected
+      if ($("input:radio[name=certificate]:checked").length == 0) {
+        $("#search-and-list").addClass("govuk-form-group--error");
+        // $("#certificate-list").addClass("govuk-form-group--error");
+        $(".govuk-error-summary").show();
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#page-error-summary").offset().top
+        }, 20);
+        return false;
+      }
+    });
+
+  })
+</script>
+{% endblock%}

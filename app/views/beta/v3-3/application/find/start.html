@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Consignor or-exporter – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set id = query.id or "1" %}
+{% set operator = data.establishments[id]%}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Which {{(data.searchLabel or 'manufacturing plant') | lower }} do you want to use?</h1>
+    <div class="margin-top-30">
+      <p class="govuk-body" lang="en">
+        Select a {{(data.searchLabel or 'manufacturing plant') | lower }} that you’ve used recently or search for a different one.
+      </p>
+    </div>
+
+    <form method="post" novalidate="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios" data-module="govuk-radios">
+            {% if query.change  and id > 3%}
+            <div class="govuk-radios__item">
+              <input checked class="govuk-radios__input" id="savedOrgSelected" name="whichOrg" type="radio" selected value="{{id}}~{%if (data.establishments[id].All_Activities | length) > 1 %}activity-select{%else%}{{data.searchReturnURL or '../export/commodity'}}{%endif%}?has_{{data.searchID}}=yes&id={{id}}&selected{{data.searchID}}={{id}}">
+              <label class="govuk-label govuk-radios__label" for="savedOrgSelected">
+                <strong>{{operator.TradingName}} ({{operator.AppNo}})</strong> - {{operator.Address1}},
+                {% if operator.Address2%}{{operator.Address2}},{% endif %}
+                {% if operator.Address3%}{{operator.Address3}},{% endif %}
+                {{operator.Town}},
+                {{operator.Postcode}}
+              </label>
+            </div>
+            {% endif %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="savedOrg1" name="whichOrg" type="radio" {% if query.change and id == 0 %}checked{% endif %} value="0~{%if (data.establishments[0].All_Activities | length) > 1 %}activity-select{%else%}{{data.searchReturnURL or '../export/commodity'}}{%endif%}?has_{{data.searchID}}=yes&id=0&selected{{data.searchID}}=0">
+              <label class="govuk-label govuk-radios__label" for="savedOrg1">
+                <strong>Riverways Farm (22028)</strong> - New Bath Road, Twyford, RG10 9RY
+              </label>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint"></div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="savedOrg2" name="whichOrg" type="radio" {% if query.change and id == 1 %}checked{% endif %} value="1~{%if (data.establishments[1].All_Activities | length) > 1 %}activity-select{%else%}{{data.searchReturnURL or '../export/commodity'}}{%endif%}?has_{{data.searchID}}=yes&id=1&selected{{data.searchID}}=1">
+              <label class="govuk-label govuk-radios__label" for="savedOrg2">
+                <strong>Ahmed Brothers Halal Ltd (1000)</strong> - Maple Court, Crystal Drive, Smethwick, B66 1RB
+
+              </label>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint"></div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="savedOrg3" name="whichOrg" type="radio" {% if query.change and id == 2 %}checked{% endif %}  value="2~{%if (data.establishments[2].All_Activities | length) > 1 %}activity-select{%else%}{{data.searchReturnURL or '../export/commodity'}}y{%endif%}?has_{{data.searchID}}=yes&id=2&selected{{data.searchID}}=2">
+              <label class="govuk-label govuk-radios__label" for="savedOrg3">
+                <strong>Kinda Food Ltd (1003)</strong> - Unit 7, Rosebery Industrial Estate, Rosebery Venue, London, N17 9SR selected{{data.searchID}}
+
+              </label>
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="savedOrg4" name="whichOrg" type="radio" {% if query.change and id == 3 %}checked{% endif %} value="3~{%if (data.establishments[3].All_Activities | length) > 1 %}activity-select{%else%}{{data.searchReturnURL or '../export/commodity'}}{%endif%}?has_{{data.searchID}}=yes&id=3&selected{{data.searchID}}=3">
+              <label class="govuk-label govuk-radios__label" for="savedOrg4">
+                <strong>Newby Foods Ltd (1004)</strong> - Head Office, Marylands, Newby Wiske, Northallerton, DL7 9ER
+              </label>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="plant-different" name="whichOrg" type="radio" value="different~./results" aria-controls="conditional-plants" aria-expanded="false">
+              <label class="govuk-label govuk-radios__label" for="plant-different">
+                Search for a different {{(data.searchLabel or 'manufacturing plant') | lower }}
+              </label>
+            </div>
+            <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-plants">
+              <p class="govuk-body">You will be taken to form finder. Some plants are not currently available to apply for online</p>
+            </div> -->
+          </div>
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+
+  </div>
+  </div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+
+  })
+</script>
+{% endblock%}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Application complete – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-panel govuk-panel--confirmation" id="application-submission-confirmation">
+        <h1 class="govuk-panel__title"> Application complete </h1>
+        <div class="govuk-panel__body"> Your serial number<br><strong id="application-serial-reference">177CC10680DC4A8</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">What's next</h2>
+      <p class="govuk-body"> The certifier, <strong>{{data.certifier or "NewTestVets LTD"}}</strong> will now review your application. Some applications may also need to be reviewed by APHA.</p>
+      <p>
+        
+
+       <p class="govuk-body"> Once your application has been certified, the information about your consignment will be validated against the EU <abbr>TRACES</abbr> data requirements.</p> 
+
+       <p>We will email <strong>name@example.com</strong> when it is approved.
+       </p>
+       <!-- <h3 class="govuk-heading-s">After the application is approved</h3> -->
+       <p class="govuk-body">The organisation responsible for the consignment, <strong > Northern Catering Butchers Ltd</strong> must create a common health entry document <abbr>(CHED)</abbr> for your consignment before it reaches the destination country.
+       </p>
+      <p>
+ </p><a href="{{data.returnURL or '../dashboard'}}" class="govuk-button"> Return to your applications </a>
+    </div>
+  </div>
+{% endblock %}

@@ -34,7 +34,9 @@
         </div>
       </div>
       {% endif %}
-      <form method="post" novalidate action="/beta/v3-1/application/task-list">
+
+      {% set certificate = data.selectedCertificate %}
+      <form method="post" novalidate action="/beta/v3-3/application/export/set-certificate?ehc={{certificate}}&url=task-list?new=yes&returnURL=/stories/unified-dashboard/v2/dashboard?added=yes">
         <div class="govuk-form-group {% if query.has_error %}govuk-form-group--error{% endif %}">
           <h1 class="govuk-label-wrapper ">
             <label class="govuk-label govuk-label--xl" for="ref" id="ref-label">

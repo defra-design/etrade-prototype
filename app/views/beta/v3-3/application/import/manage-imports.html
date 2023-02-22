@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Manage imports – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full"><span class="govuk-caption-xl"> Description of the goods </span>
+    <h1 class="govuk-heading-xl"> Manage identification imports </h1>
+
+    <p class="govuk-body"> Follow the steps below to import identification information in to the system. </p>
+    <ul class="govuk-list govuk-list--number">
+      <li>Select the certificates and commodities that you will be importing in to from above.</li>
+      <li>Use one of the options below to download the import template that we will generate based upon your selection.</li>
+      <li><a class="govuk-link" href="/public/images/import-template.xlsx" target="_blank">Click here</a> to download an import template including optional fields.</li>
+      <li><a class="govuk-link" href="/public/images/import-template-2.xlsx" target="_blank">Click here</a> to download an import template excluding optional fields.</li>
+      <li>Complete the template by inputting the required data</li>
+      <li><a class="govuk-link" href="#">Click here</a> to upload the template and import your data</li>
+    </ul>
+    <!----><a href="../manage-commodities" class="govuk-button govuk-button--secondary m-t-15"> Return to commodities </a>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,1425 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Dashboard – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<div class="login-nav login-border">
+  <ul class="login-nav__list">
+    <li class="login-nav__list-item" id="Nav-DisplayName">Ann Cooper</li>
+    <li class="login-nav__list-item"> | <a href="https://identity-management-app.herokuapp.com/manage/team-members/services-on-team-member-admin-account_company-exports?serviceLine=Exporter%20Service&amp;serviceRole=Exporter&amp;numUsers=1&amp;numAgents=0&amp;numServices=1&amp;multiOrg=no&amp;parentChild=parent" class="govuk-link login-nav__link govuk-link--no-visited-state profile" id="Link-ManageAccount">Manage account</a>|</li>
+    <li class="login-nav__list-item"><a href="#ß" class="govuk-link login-nav__link govuk-link--no-visited-state" id="Link-SignOut">Sign out</a></li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+
+
+  @media (min-width: 40.0625em){
+    .login-nav {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+  }
+@media (min-width: 40.0625em){
+  .login-nav {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+}
+
+.login-nav:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.login-nav {
+    font-family: "GDS Transport", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.14286;
+    color: #0b0c0c;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+  .login-nav__list {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+    list-style-type: none;
+    float: right;
+}
+  .login-nav__list-item {
+    position: relative;
+    margin-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 0;
+    float: left;
+}
+  .login-border {
+    /* margin-bottom: 45px; */
+}
+.app-status-tag{
+  width:110px !important;
+}
+.login-border {
+    border-bottom: 1px solid #bfc1c3;
+}
+@media (min-width: 40.0625em){
+  .login-nav {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+}
+
+.login-nav {
+    font-family: "GDS Transport", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.14286;
+    color: #0b0c0c;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+@media (min-width: 40.0625em){
+  .login-nav {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+}
+
+.login-nav {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.14286;
+    color: #0b0c0c;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #b1b4b6;
+}
+.p-dropdown {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+.p-dropdown-clear-icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -.5rem;
+}
+.p-dropdown-trigger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+}
+.p-dropdown-label {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    width: 1%;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.p-dropdown-label-empty {
+    overflow: hidden;
+    visibility: hidden;
+}
+input.p-dropdown-label  {
+    cursor: default;
+}
+.p-dropdown .p-dropdown-panel {
+    min-width: 100%;
+}
+.p-dropdown-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.p-dropdown-items-wrapper {
+    overflow: auto;
+}
+.p-dropdown-item {
+    cursor: pointer;
+    font-weight: normal;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+.p-dropdown-item-group {
+    cursor: auto;
+}
+.p-dropdown-items {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.p-dropdown-filter {
+    width: 100%;
+}
+.p-dropdown-filter-container {
+    position: relative;
+}
+.p-dropdown-filter-icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -.5rem;
+}
+.p-fluid .p-dropdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.p-fluid .p-dropdown .p-dropdown-label {
+    width: 1%;
+}
+
+.govuk-button--blue {
+  background: #005ea5;
+  color: #ffffff;
+}
+
+.govuk-button--blue:hover {
+  background: #002c82;
+}
+
+.govuk-fieldset__legend {
+  width:100%;
+}
+</style>
+
+          
+<style>
+    main{padding-top: 0px!important;}
+    .green-tag{background: #00823b}
+</style>
+
+<style>
+  #filter-cert-org #filter-container {
+        bottom: 0px;
+        color: rgb(255, 255, 255);
+        height: 40px;
+        left: 0px;
+        position: relative;
+        right: 0px;
+        text-decoration: none solid rgb(255, 255, 255);
+        text-size-adjust: 100%;
+        top: 0px;
+        width: 300px;
+        column-rule-color: rgb(255, 255, 255);
+        perspective-origin: 150px 20px;
+        transform-origin: 150px 20px;
+        caret-color: rgb(255, 255, 255);
+        background: rgb(0, 94, 165) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' width='40' height='40'%3E%3Cpath d='M25.7 24.8L21.9 21c.7-1 1.1-2.2 1.1-3.5 0-3.6-2.9-6.5-6.5-6.5S10 13.9 10 17.5s2.9 6.5 6.5 6.5c1.6 0 3-.6 4.1-1.5l3.7 3.7 1.4-1.4zM12 17.5c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5-2 4.5-4.5 4.5-4.5-2-4.5-4.5z' fill='white'%3E%3C/path%3E%3C/svg%3E") no-repeat scroll 0% 0% / 40px 40px padding-box border-box;
+        border: 0px none rgb(255, 255, 255);
+        font: normal normal 400 normal 16px / normal "Times New Roman";
+        outline: rgb(255, 255, 255) none 0px;
+    }/*#filter-container*/
+    #filter-cert-org #filter-container:after {
+        color: rgb(255, 255, 255);
+        text-decoration: none solid rgb(255, 255, 255);
+        text-size-adjust: 100%;
+        column-rule-color: rgb(255, 255, 255);
+        caret-color: rgb(255, 255, 255);
+        border: 0px none rgb(255, 255, 255);
+        font: normal normal 400 normal 16px / normal "Times New Roman";
+        outline: rgb(255, 255, 255) none 0px;
+    }/*#DIV_4:after*/
+    #filter-cert-org #filter-container:before {
+        color: rgb(255, 255, 255);
+        text-decoration: none solid rgb(255, 255, 255);
+        text-size-adjust: 100%;
+        column-rule-color: rgb(255, 255, 255);
+        caret-color: rgb(255, 255, 255);
+        border: 0px none rgb(255, 255, 255);
+        font: normal normal 400 normal 16px / normal "Times New Roman";
+        outline: rgb(255, 255, 255) none 0px;
+    }/*#DIV_4:before*/
+    #filter-cert-org #filter-input {
+        bottom: 0px;
+        height: 22px;
+        left: 0px;
+        position: relative;
+        right: 0px;
+        text-size-adjust: 100%;
+        top: 0px;
+        width: 260px;
+        perspective-origin: 130px 20px;
+        transform-origin: 130px 20px;
+        border: 2px solid rgb(255, 255, 255);
+        font: normal normal 400 normal 19px / 25px nta, Arial, sans-serif;
+        margin: 0px 0px 0px 40px;
+        padding: 9px 10px 5px;
+        border: solid 2px #000;
+        outline: none;
+    }/*#filter-input*/
+    #filter-cert-org #filter-input:focus {
+        border: solid 2px #ffbf47;
+        outline: none;
+    }/*#filter-input*/
+    #filter-cert-org #filter-input:after {
+        text-size-adjust: 100%;
+        font: normal normal 400 normal 19px / 25px nta, Arial, sans-serif;
+    }/*#filter-input:after*/
+    #filter-cert-org #filter-input:before {
+        text-size-adjust: 100%;
+        font: normal normal 400 normal 19px / 25px nta, Arial, sans-serif;
+    }/*#filter-input:before*/
+    .govuk-details__summary:before{display: none}
+
+    .app-status-tag {
+    display: inline-block;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+    color: #fff;
+    /* background-color: #1d70b8; */
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-family: "GDS Transport", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1;
+    padding-top: 5px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    padding-left: 8px
+}
+
+    .app-status-tag--blue {
+    border: 3px solid #1d70b8;
+    background-color: #1d70b8;
+    width: 90px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    }
+
+
+    .app-status-tag--grey {
+    background-color: #f3f2f1;
+    width: 90px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    border: 3px solid #f3f2f1;
+    color: #0b0c0c;
+    }
+
+    .app-status-tag--turquoise{
+      background-color: #1d70b8;
+      width: 90px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    }
+    .app-status-tag--green{
+      background-color: #00703c;
+      border: 3px solid #00703c;
+      width: 90px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    }
+    .app-status-tag--outline{
+      color: #00703c;
+      background-color: #FFF;
+      border: 3px solid #00703c;
+      width: 90px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    }
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    
+
+
+
+ 
+
+      <h1 class="govuk-heading-xl">Your applications</h1>
+      <a class="govuk-button" href="choose-certificate" style="display: inline-block;">Start a new application</a>
+    </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="GET">
+      <div class="search-wrapper govuk-form-group">
+        <label for="search-reservations" class="govuk-label">
+          Search by reference, destination, EHC, certificate or application number
+        </label>
+        <div class="search-input-wrapper">
+          <input type="search" value="" id="search-reservations" name="search" title="Search" class="govuk-input">
+          <div class="search-input-submit-wrapper">
+            <button type="submit" class="search-submit">Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <div class="defra-filter--action" style="">
+      <button id="defra-filter--button" class="govuk-button govuk-button--secondary govuk-!-margin-top-6 " type="button" aria-expanded="false"><span class="defra-filter--button-content">Show filters</span><span class="defra-filter__icon"></span></button>
+    </div>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="derfa-filter--content" style="display: none;">
+      <form method="get">
+        <div class="govuk-grid-row">
+          <!-- <div class="govuk-grid-column-one-third ">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="filter-status">
+                  Filter by status
+                </label>
+                <select class="govuk-select govuk-!-width-full" id="filter-status" name="filter_status">
+                  <option value="any" selected="selected" >Any status</option>
+                  <option value="draft" >Draft</option>
+                  <option value="processing" >Processing</option>
+                  <option value="dispatched" >Dispatched</option>
+                  <option value="certifier action" >Certifier action</option>
+                  <option value="completed" >Completed</option>
+                  <option value="cancelled" >Cancelled</option>
+                  <option value="rejected" >Rejected</option>
+
+                </select>
+              </div>
+            </div> -->
+          <div class="govuk-grid-column-one-third">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  Filter by status
+                </legend>
+                <div class="govuk-radios govuk-radios--small ">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="type-9" name="filter_status" type="radio" value="any" checked="checked">
+                    <label class="govuk-label govuk-radios__label" for="type-9">
+                      Any status
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="type-20" name="filter_status" type="radio" value="draft">
+                    <label class="govuk-label govuk-radios__label" for="type-20">
+                      Draft
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="type-3" name="filter_status" type="radio" value="processing">
+                    <label class="govuk-label govuk-radios__label" for="type-3">
+                      Processing
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item ">
+                    <input class="govuk-radios__input" id="type" name="filter_status" type="radio" value="dispatched">
+                    <label class="govuk-label govuk-radios__label" for="type">
+                      Dispatched
+                    </label>
+                  </div>
+                </div>
+                <div class="govuk-radios govuk-radios--small">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="type-2" name="filter_status" type="radio" value="needs pre-check">
+                    <label class="govuk-label govuk-radios__label" for="type-2">
+                      Needs pre-check
+                    </label>
+                  </div>
+                  <div class="  govuk-radios__item">
+                    <input class="govuk-radios__input" id="type-8" name="filter_status" type="radio" value="completed">
+                    <label class="govuk-label govuk-radios__label" for="type-8">
+                      Completed
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="type-4" name="filter_status" type="radio" value="cancelled">
+                    <label class="govuk-label govuk-radios__label" for="type-4">
+                      Cancelled
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="type-6" name="filter_status" type="radio" value="rejected">
+                    <label class="govuk-label govuk-radios__label" for="type-6">
+                      Rejected
+                    </label>
+                  </div>
+
+
+
+                </div>
+
+              </fieldset>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third ">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  Filter by export date
+                </legend>
+                <div class="govuk-radios govuk-radios--small govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="date_range" name="date_range" type="radio" value="any" checked="checked">
+                    <label class="govuk-label govuk-radios__label" for="date_range">
+                      Any
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="date_range-1" name="date_range" type="radio" value="today">
+                    <label class="govuk-label govuk-radios__label" for="date_range-1">
+                      Today
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="date_range-3" name="date_range" type="radio" value="tomorrow">
+                    <label class="govuk-label govuk-radios__label" for="date_range-3">
+                      Tomorrow
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="date_range-2" name="date_range" type="radio" value="in the next 7 days">
+                    <label class="govuk-label govuk-radios__label" for="date_range-2">
+                      Next 7 days
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="date_range-4" name="date_range" type="radio" value="custom" aria-controls="conditional-how-contacted-conditional-2" aria-expanded="false">
+                    <label class="govuk-label govuk-radios__label" for="date_range-4">
+                      Custom date range
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
+                    <div class="govuk-grid-row">
+
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h1 class="govuk-fieldset__heading">
+                              From
+                            </h1>
+                          </legend>
+                          <span id="passport-issued-hint" class="govuk-hint">
+                          </span>
+                          <div class="govuk-date-input" id="passport-issued">
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="export_form_day">
+                                  Day
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="export_form_day" name="export_form_day" type="text" pattern="[0-9]*" inputmode="numeric">
+                              </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="export_form_month">
+                                  Month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="export_form_month" name="export_form_month" type="text" pattern="[0-9]*" inputmode="numeric">
+                              </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                                  Year
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="export_form_year" name="export_form_year" type="text" pattern="[0-9]*" inputmode="numeric">
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h1 class="govuk-fieldset__heading">
+                              to
+                            </h1>
+                          </legend>
+                          <span id="passport-issued-hint" class="govuk-hint">
+                          </span>
+                          <div class="govuk-date-input" id="passport-issued">
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="export_to_day">
+                                  Day
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="export_to_day" name="export_to_day" type="text" pattern="[0-9]*" inputmode="numeric">
+                              </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="export_to_month">
+                                  Month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="export_to_month" name="export_to_month" type="text" pattern="[0-9]*" inputmode="numeric">
+                              </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="export_to_year">
+                                  Year
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="export_to_year" name="export_to_year" type="text" pattern="[0-9]*" inputmode="numeric">
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="govuk-grid-column-one-third">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  Filter by user
+                </legend>
+                <p class="govuk-body">Show applications created by:</p>
+                <div class="govuk-radios govuk-radios--small govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="show_applications_by_me" name="show_applications_by" type="radio" value="me" checked="checked">
+                    <label class="govuk-label govuk-radios__label" for="show_applications_by_me">
+                      Me
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="show_applications_by_everyone" name="show_applications_by" type="radio" value="everyone" aria-controls="conditional-how-contacted-conditional-3" aria-expanded="false">
+                    <label class="govuk-label govuk-radios__label" for="show_applications_by_everyone">
+                      Someone else
+                    </label>
+                  </div>
+
+            <div class=" govuk-form-group govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-3">
+
+                <!-- <label class="govuk-label" for="filter_name">
+                  Filter by user name
+                </label> -->
+                
+                <select class="govuk-select govuk-!-width-full" id="filter_name" name="filter_name">
+                  <option value="All users" selected="">All users</option>
+                  
+                  
+                  
+                  <option value="Ann Cooper">Ann Cooper (you)</option>
+                  1
+                  
+
+                  
+                  
+                  <option value="Ilene Harrison">Ilene Harrison</option>
+                  2
+                  
+
+                  
+                  
+                  <option value="Morgan Head">Morgan Head</option>
+                  3
+                  
+
+                  
+                  
+                  <option value="Cecelia Benson">Cecelia Benson</option>
+                  4
+                  
+
+                  
+                  
+
+                  
+                  
+
+                  
+                  
+                  <option value="Victoria Reese">Victoria Reese</option>
+                  5
+                  
+
+                  
+                  
+                  <option value="Kathy Burt">Kathy Burt</option>
+                  6
+                  
+
+                  
+                  
+                  <option value="Tamika Hurley">Tamika Hurley</option>
+                  7
+                  
+
+                  
+                  
+                  <option value="Frank Harper">Frank Harper</option>
+                  8
+                  
+
+                  
+                  
+                  <option value="Garza Salazar">Garza Salazar</option>
+                  9
+                  
+
+                  
+                  
+                  <option value="Watson Jenkins">Watson Jenkins</option>
+                  10
+                  
+
+                  
+                  
+                  <option value="Odom Schroeder">Odom Schroeder</option>
+                  11
+                  
+
+                  
+                  
+                  <option value="Beasley Chang">Beasley Chang</option>
+                  12
+                  
+
+                  
+                  
+                  <option value="Evangelina Campbell">Evangelina Campbell</option>
+                  13
+                  
+
+                  
+                  
+                  <option value="Decker Lindsey">Decker Lindsey</option>
+                  14
+                  
+
+                  
+                  
+
+                  
+                  
+
+                  
+                  
+
+                  
+                  
+
+                  
+                  
+
+                  
+                  
+
+                  
+                </select>
+              </div>
+            </div>
+          </fieldset></div>
+          </div>
+
+          <div class="govuk-grid-column-full">
+            <button type="submit" class="govuk-button govuk-!-margin-bottom-0" data-module="govuk-button" name="has_filter" value="yes">
+              Apply filter
+            </button>
+            
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="govuk-grid-column-full">
+
+    <div class="filter-tag--wrapper govuk-!-margin-bottom-6" data-module="track-click">
+      <p class="govuk-body govuk-!-margin-bottom-2">
+        <span id="js-case-count">8</span> applications 
+        
+        
+        <!--  -->
+      </p>
+      
+    </div>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <table class="govuk-table responsive-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header">
+                <div class="applicationRef-column" style="width:15%">Application reference</div>
+              </th>
+              <th class="govuk-table__header">EHC</th>
+              <th class="govuk-table__header" style="width:5%!important">Destination</th>
+              <th class="govuk-table__header">Submitted</th>
+              
+              <th class="govuk-table__header">Status</th>
+              <th class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            
+
+            
+            
+
+            
+            
+            
+            <tr class="govuk-table__row result">
+              <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
+                <a href="application?id=4" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Case ID </span> 180887274722</a>
+                
+              </th>
+              <td id="1721147986456-group-number" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">EHC </span>
+                6969
+              </td>
+
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Destination </span>
+                Australia
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Submitted</span>
+                
+              </td>
+
+              <td id="1721147986456-status" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">Status</span>
+                <div class="app-status-tag app-status-tag--grey">
+                  draft
+                </div>
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <a href="clone?id=4" class="govuk-link govuk-link--no-visited-state">Clone</a>
+              </td>
+            </tr>
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            <tr class="govuk-table__row result">
+              <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
+                <a href="application?id=2" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Case ID </span> PO 24477 UAE</a>
+                
+              </th>
+              <td id="1721147986456-group-number" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">EHC </span>
+                2849
+              </td>
+
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Destination </span>
+                UAE
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Submitted</span>
+                30 Apr 2020
+              </td>
+
+              <td id="1721147986456-status" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">Status</span>
+                <div class="app-status-tag app-status-tag--blue">
+                  processing
+                </div>
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <a href="clone?id=2" class="govuk-link govuk-link--no-visited-state">Clone</a>
+              </td>
+            </tr>
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            <tr class="govuk-table__row result">
+              <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
+                <a href="application?id=31" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Case ID </span> PO 234222 EGGS</a>
+                
+              </th>
+              <td id="1721147986456-group-number" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">EHC </span>
+                6062
+              </td>
+
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Destination </span>
+                Turkey
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Submitted</span>
+                30 Apr 2020
+              </td>
+
+              <td id="1721147986456-status" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">Status</span>
+                <div class="app-status-tag app-status-tag--outline">
+                  dispatched
+                </div>
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <a href="clone?id=31" class="govuk-link govuk-link--no-visited-state">Clone</a>
+              </td>
+            </tr>
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            <tr class="govuk-table__row result">
+              <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
+                <a href="application?id=20" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Case ID </span> PO 18891 UAJS</a>
+                
+              </th>
+              <td id="1721147986456-group-number" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">EHC </span>
+                6969
+              </td>
+
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Destination </span>
+                Australia
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Submitted</span>
+                26 Jul 2016
+              </td>
+
+              <td id="1721147986456-status" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">Status</span>
+                <div class="app-status-tag app-status-tag--green">
+                  completed
+                </div>
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <a href="clone?id=20" class="govuk-link govuk-link--no-visited-state">Clone</a>
+              </td>
+            </tr>
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            <tr class="govuk-table__row result">
+              <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
+                <a href="application?id=21" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Case ID </span> PO 74394 Australia</a>
+                
+              </th>
+              <td id="1721147986456-group-number" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">EHC </span>
+                6969
+              </td>
+
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Destination </span>
+                Australia
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Submitted</span>
+                21 Jan 2020
+              </td>
+
+              <td id="1721147986456-status" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">Status</span>
+                <div class="app-status-tag app-status-tag--green">
+                  completed
+                </div>
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <a href="clone?id=21" class="govuk-link govuk-link--no-visited-state">Clone</a>
+              </td>
+            </tr>
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            <tr class="govuk-table__row result">
+              <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
+                <a href="application?id=22" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Case ID </span> PO 38224 Australia</a>
+                
+              </th>
+              <td id="1721147986456-group-number" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">EHC </span>
+                6969
+              </td>
+
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Destination </span>
+                Australia
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Submitted</span>
+                22 Mar 2018
+              </td>
+
+              <td id="1721147986456-status" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">Status</span>
+                <div class="app-status-tag app-status-tag--green">
+                  completed
+                </div>
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <a href="clone?id=22" class="govuk-link govuk-link--no-visited-state">Clone</a>
+              </td>
+            </tr>
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            <tr class="govuk-table__row result">
+              <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
+                <a href="application?id=23" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Case ID </span> PO 38774 Australia</a>
+                
+              </th>
+              <td id="1721147986456-group-number" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">EHC </span>
+                6969
+              </td>
+
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Destination </span>
+                Australia
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Submitted</span>
+                21 Sep 2014
+              </td>
+
+              <td id="1721147986456-status" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">Status</span>
+                <div class="app-status-tag app-status-tag--green">
+                  completed
+                </div>
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <a href="clone?id=23" class="govuk-link govuk-link--no-visited-state">Clone</a>
+              </td>
+            </tr>
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            
+            
+            
+            <tr class="govuk-table__row result">
+              <th id="1721147986456-appRef" class="govuk-table__cell applicationRef-column table-header" scope="row">
+                <a href="application?id=24" class="govuk-link govuk-link--no-visited-state"> <span class="table-heading table-heading-full" aria-hidden="true">Case ID </span> PO 94184 Australia</a>
+                <br><div class=" govuk-!-margin-top-1 govuk-!-font-weight-regular">Block of 50 certificates</div>
+              </th>
+              <td id="1721147986456-group-number" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">EHC </span>
+                6969
+              </td>
+
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Destination </span>
+                Australia
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <span class="table-heading" aria-hidden="true">Submitted</span>
+                5 Apr 2016
+              </td>
+
+              <td id="1721147986456-status" class="govuk-table__cell" scope="row">
+                <span class="table-heading" aria-hidden="true">Status</span>
+                <div class="app-status-tag app-status-tag--green">
+                  completed
+                </div>
+              </td>
+              <td id="1721147986456-submitted" class="govuk-table__cell submitted-column" scope="row">
+                <a href="clone?id=24" class="govuk-link govuk-link--no-visited-state">Clone</a>
+              </td>
+            </tr>
+            
+            
+            
+            
+            
+            
+
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function() {
+      $(".clear-search-holder").hide()
+      $(".search-what-cont").hide()
+      $("#search").click(function(e) {
+        $(".search-what-text").text($("#search-input").val());
+        $(".search-what-cont").show();
+        $(".result").each(function(e) {
+          var text = $(this).text().toLowerCase();
+          if (text.indexOf($("#search-input").val().toLowerCase()) > -1) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      });
+      $("#clear-search, .search-what-close").click(function(e) {
+        $(".clear-search-holder").show()
+        $(".search-what-text").text($("#search-input").val());
+        $(".search-what-cont").show()
+        $(".search-what-cont").hide();
+        $("#search-input").val("");
+        $(".result").each(function(e) {
+          $(this).show();
+        });
+        $(this).blur();
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    window.addEventListener('load', function() {
+      var count = $('.govuk-table__row').length - 1
+      // show hide content
+      $('.derfa-filter--content').hide()
+      $('.defra-filter--action').show()
+      $('#js-case-count').text(count);
+      if (count == 0) {
+        $('.govuk-table').hide()
+      }
+      $('.derfa-filter--content').hide()
+      $('#defra-filter--button').on("click", function() {
+        if (!$('.defra-filter--action').hasClass('defra-filter--open')) {
+          $('.derfa-filter--content').show().focus()
+          $('.defra-filter--action').addClass('defra-filter--open')
+          $('#defra-filter--button').attr('aria-expanded', 'true');
+          $(".defra-filter--button-content").text('Hide filters')
+
+        } else {
+          $('.derfa-filter--content').hide()
+          $('.defra-filter--action').removeClass('defra-filter--open')
+          $('#defra-filter--button').attr('aria-expanded', 'false');
+          $(".defra-filter--button-content").text('Show filters')
+        }
+      })
+    })
+  </script>
+  
+        </div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+    $('.app-toggle-link').on('click', function(e) {
+      e.preventDefault()
+      let targetID = '#' + $(this).attr('data-target')
+      let target = $(targetID)
+      if (target.is(":visible")) {
+        target.hide()
+      } else {
+        target.show()
+      }
+
+    })
+
+    $('.govuk-button[data-toggle]').on("click",function() {
+      if(!$(".filter-container").hasClass("collapse")){
+        $(".filter-container").addClass("collapse")
+      }
+
+      var t=$(this).attr("data-target")
+      if ($(t).hasClass("collapse") ) {
+        $(t).removeClass("collapse")
+      } else {
+        $(t).addClass("collapse")
+      }
+    })
+
+    $('#78BB19F1D77D4B9').on("click", function() {
+      $('#78BB19F1D77D4B9-expand').show();
+      return false;
+    })
+
+    var subtable = '<tr data-v-0d2a5cfc="" id="subtable"><td class="govuk-table__cell" colspan="8" data-v-0d2a5cfc=""><div class="certficate-subtable govuk-inset-text" data-v-0d2a5cfc=""><table class="govuk-table" data-v-0d2a5cfc=""><thead class="govuk-table__head" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> &nbsp;Certificate Name </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Certifier </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> SP/NV </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Status </span></th><!----></tr></thead><tbody class="govuk-table__body" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><!----></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""></span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><div class="d-inline-flex" data-v-0d2a5cfc=""><!----><!----></div></td><!----></tr></tbody></table></div><div class="govuk-button-group pull-right" data-v-0d2a5cfc=""><!----><!----><a href="#" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> View application </a><a href="copy/copy-application" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> Copy application </a><!----><!----><a class="govuk-button govuk-button--warning" href="#" data-toggle="modal" data-target="#confirmRemoveModal" data-v-0d2a5cfc=""> Delete application </a></div><!----></td></tr>'
+    $('.show-subtable').on('click',function(e){
+      /*
+        e.preventDefault()
+        var row = $(this).closest(".govuk-table__row")
+        $('#subtable').remove()
+        row.after(subtable)
+      */
+    })
+
+  })
+</script>
+{% endblock%}

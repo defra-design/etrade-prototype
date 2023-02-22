@@ -23,7 +23,35 @@
       </h1>
 
       {% from "govuk/components/details/macro.njk" import govukDetails %}
+      <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      List current EHC in the prototype
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <ul class='govuk-list govuk-list--bullet'>
+      {% for cert in data.certificates %}
+      <li><strong>{{cert.number}}</strong> {{cert.title}} </li>
+      {% endfor %}
+    </ul>
+  </div>
+</details>
 
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Address book
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <ul class='govuk-list govuk-list--bullet'>
+      {% for add in data.addressBook %}
+      <li><strong>{{add.index}}</strong> {{add.type}} </li>
+      {% endfor %}
+    </ul>
+  </div>
+</details>
       {{ govukDetails({
         summaryText: "data.certificates",
         text: (data.certificates | dump )

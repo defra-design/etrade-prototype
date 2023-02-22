@@ -54,6 +54,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
               {% endfor%}
               <strong class="govuk-tag app-task-list__tag " id="manage-commodities-status">{{commodityCount}} {% if commodityCount == 1 %}record{% else %}records{%endif%} added</strong><br>
 
+              {# 
               <!-- count how many sections have been skipped in total -->
               {% set skippedSectionCount = 0 %}
               {% for commodities in data.addedEHC[0].addedCommodities %}
@@ -68,6 +69,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
               <strong class="govuk-tag app-task-list__tag  govuk-!-margin-top-1">{{skippedSectionCount}} {% if skippedSectionCount == 1 %}section{% else %}sections{%endif%} skipped</strong>
               
               {% endif %}
+              #}
 
             {% else %}
             <strong class="govuk-tag app-task-list__tag govuk-tag--blue" id="manage-commodities-status">In progress</strong>
@@ -83,17 +85,21 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             <strong class="govuk-tag app-task-list__tag" id="gross-weight-status">Completed</strong>
             {% else %}
             <span class="app-task-list__task-name">
-              <a href="./export/weight" aria-describedby="gross-weight-status">
+              <a href="./export/weight?change=no" aria-describedby="gross-weight-status">
                 Gross weight
               </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="gross-weight-status">Not started</strong>
+             {% if data.transport['weight'] == 'skipped' %}
+              <strong class="govuk-tag app-task-list__tag " id="place-of-origin-status">Completed</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
+            {% endif %}
             {% endif %}
 
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./goods/goods-certified-as" aria-describedby="goods-certified-status">
+              <a href="./goods/goods-certified-as?change=no" aria-describedby="goods-certified-status">
                 Goods certified as
               </a>
             </span>
@@ -106,7 +112,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./goods/container-deal-number" aria-describedby="container-deal-number-status">
+              <a href="./goods/container-deal-number?change=no" aria-describedby="container-deal-number-status">
                 Container number/seal numbers (optional)
               </a>
             </span>
@@ -118,7 +124,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./goods/purpose-of-export" aria-describedby="purpose-of-export-status">
+              <a href="./goods/purpose-of-export?change=no" aria-describedby="purpose-of-export-status">
                 Purpose of export
               </a>
             </span>
@@ -140,7 +146,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./attachments/added-documents" aria-describedby="accompanying-documents-status">
+              <a href="./attachments/added-documents?change=no" aria-describedby="accompanying-documents-status">
                 Accompanying documents
               </a>
             </span>
@@ -161,7 +167,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./persons/consignor-or-exporter" aria-describedby="consignor-or-exporter-status">
+              <a href="./persons/consignor-or-exporter?change=no" aria-describedby="consignor-or-exporter-status">
                 Consignor or Exporter
               </a>
             </span>
@@ -173,7 +179,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./persons/consignee-or-importer" aria-describedby="consignee-or-importer-status">
+              <a href="./persons/consignee-or-importer?change=no" aria-describedby="consignee-or-importer-status">
                 Consignee or Importer
               </a>
             </span>
@@ -185,7 +191,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./persons/certifier" aria-describedby="certifier-status">
+              <a href="./persons/certifier?change=no" aria-describedby="certifier-status">
                 Certifier
               </a>
             </span>
@@ -197,7 +203,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./persons/region-of-certification" aria-describedby="region-of-certification-status">
+              <a href="./persons/region-of-certification?change=no" aria-describedby="region-of-certification-status">
                 Region of certification
               </a>
             </span>
@@ -209,7 +215,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./persons/load" aria-describedby="arrival-and-departure-status">
+              <a href="./persons/load?change=no" aria-describedby="arrival-and-departure-status">
                 Responsible for load
               </a>
             </span>
@@ -240,7 +246,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./transport/place-of-origin" aria-describedby="place-of-origin-status">
+              <a href="./transport/place-of-origin?change=no" aria-describedby="place-of-origin-status">
                 Place of origin
               </a>
             </span>
@@ -255,7 +261,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./transport/border-control-post" aria-describedby="border-control-post-status">
+              <a href="./transport/border-control-post?change=no" aria-describedby="border-control-post-status">
                 Entry border control post
               </a>
             </span>
@@ -269,7 +275,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./transport/means-of-transport" aria-describedby="means-of-transport-status">
+              <a href="./transport/means-of-transport?change=no" aria-describedby="means-of-transport-status">
                 Means of transport
               </a>
             </span>
@@ -283,7 +289,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./transport/place-of-destination" aria-describedby="place-of-destination-status">
+              <a href="./transport/place-of-destination?change=no" aria-describedby="place-of-destination-status">
                 Place of destination
               </a>
             </span>

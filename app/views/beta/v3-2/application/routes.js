@@ -112,7 +112,11 @@ module.exports = function(router) {
     req.session.data.transport['region-of-origin'] = roo;
     req.session.data.transport['sub-region-of-origin'] = sroo;
 
-    res.redirect(301, '/' + base_url + "task-list");
+     if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
   })
 
   router.post('/' + base_url + "transport/place-of-origin/dispatch", function(req, res) {
@@ -157,7 +161,11 @@ module.exports = function(router) {
       req.session.data.transport['arrival-and-departure'] = "skipped";
     }
 
-    res.redirect(301, '/' + base_url + 'task-list');
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
   })
 
   router.post('/' + base_url + "transport/means-of-transport", function(req, res) {
@@ -167,14 +175,30 @@ module.exports = function(router) {
       req.session.data.transport['means-of-transport'] = "skipped";
     }
 
-    res.redirect(301, '/' + base_url + 'task-list');
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
+
   })
 
   router.post('/' + base_url + "transport/border-control-post", function(req, res) {
     console.log("In transport/border-control-post");
-
     if (req.body['skip-question'] == 'yes') {
       req.session.data.transport['border-control-post'] = "skipped";
+    }
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
+  
+  })
+  router.post('/' + base_url + "export/weight", function(req, res) {
+    console.log("SKIPPUY: "+req.body['skip-question'])
+    if (req.body['skip-question'] == 'yes') {
+      req.session.data.transport['weight'] = "skipped";
     }
     if(req.query.change == "yes"){
         res.redirect(301, '/' + base_url + 'check-your-answers');

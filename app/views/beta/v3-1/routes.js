@@ -84,7 +84,8 @@ module.exports = function(router) {
       res.redirect(301, '/' + base_url + 'application/export/cdu-interstitial');
     }
     */
-    res.redirect(301, '/' + base_url + 'application/export/select-commodities');
+    let page = query.url || "export/select-commodities";
+    res.redirect(301, '/' + base_url + 'application/'+page);
 
   })
 
