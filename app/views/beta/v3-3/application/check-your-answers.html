@@ -91,6 +91,22 @@ Check your answers – GOV.UK Prototype Kit
               <dd class="govuk-summary-list__actions"><a href="./export/weight?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">gross weight</span></dd>
             </div>
             <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Country of origin </dd>
+              <dd class="govuk-summary-list__value">
+                  <p>United Kingdom (GB)</p>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./goods/place-of-origin?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Region of origin (optional) </dd>
+              <dd class="govuk-summary-list__value">
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/goods?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Goods certified as </dt>
               <dd class="govuk-summary-list__value">
                 {% if data.goods_certified_as %}
@@ -104,29 +120,7 @@ Check your answers – GOV.UK Prototype Kit
               </dd>
               <dd class="govuk-summary-list__actions"><a href="./goods/goods-certified-as?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">goods certified as</span></dd>
             </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Container number/seal number (optional) </dt>
-              <dd class="govuk-summary-list__value">
-
-                {% if (data.containerNumber and data.containerNumber | removeEmptyItems > 1) or (data.sealNumber and data.sealNumber | removeEmptyItems > 1) %}
-                <ul>
-                  {% for row in data.containerNumber %}
-                    <li>Container number: {{row}} - Seal number: {{data.sealNumber[loop.index-1]}}</li>
-                  {% endfor %}
-                </ul>
-                {% elseif data.containerNumber %}
-                <p>Container number: {{data.containerNumber[1]}} - Seal number: {{data.sealNumber[1]}}</p>
-           
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-
-                {% endif %}
-    
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="./goods/container-deal-number?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Container number/seal number</span></a>
-              </dd>
-            </div>
+        
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Purpose of export </dt>
               <dd class="govuk-summary-list__value">
@@ -224,6 +218,9 @@ Check your answers – GOV.UK Prototype Kit
                 {{data.loadName}} <span class="ml-1">({{data.loadTown}}, {{data.loadPostcode}})</span>
                 {% elseif data.showDefaults=="yes" %}
                   Aubrey Allen Limited (Strabane, BT82)
+                  {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Operator" class="govuk-link"> Change </a></dd>
@@ -231,6 +228,69 @@ Check your answers – GOV.UK Prototype Kit
           </dl>
           <h2 class="govuk-heading-m">4. Transport</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Container number/seal number (optional) </dt>
+              <dd class="govuk-summary-list__value">
+
+                {% if (data.containerNumber and data.containerNumber | removeEmptyItems > 1) or (data.sealNumber and data.sealNumber | removeEmptyItems > 1) %}
+                <ul>
+                  {% for row in data.containerNumber %}
+                    <li>Container number: {{row}} - Seal number: {{data.sealNumber[loop.index-1]}}</li>
+                  {% endfor %}
+                </ul>
+                {% elseif data.containerNumber %}
+                <p>Container number: {{data.containerNumber[1]}} - Seal number: {{data.sealNumber[1]}}</p>
+           
+                {% else %}
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+
+                {% endif %}
+    
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="./goods/container-deal-number?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Container number/seal number</span></a>
+              </dd>
+            </div>
+          
+            
+            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Place of departure </dd>
+              <dd class="govuk-summary-list__value">
+
+                    {% if data.placeOfDepartureName %}
+                  {{data.placeOfDepartureName}} ({{data.placeOfDepartureTown}}, {{data.placeOfDeparturePostcode}})
+                {% else %}
+                     <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Place of loading </dd>
+              <dd class="govuk-summary-list__value">
+                  {% if data.placeOfLoadingName %}
+                  {{data.placeOfLoadingName}} ({{data.placeOfLoadingTown}}, {{data.placeOfLoadingPostcode}})
+                {% elseif data.showDefaults=="yes" %}
+                  Aubrey Allen Limited (Strabane, BT82)
+                {% else %}
+                     <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Entry border control post</dt>
+              <dd class="govuk-summary-list__value">
+                {% if data.borderControlPost or data.showDefaults=="yes" %}
+                  Antwerpen Port (UNLO Code: BEANR)
+                {% else %}
+                <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/border-control-post?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Departure date</dt>
               <dd class="govuk-summary-list__value">
@@ -251,59 +311,7 @@ Check your answers – GOV.UK Prototype Kit
                   <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
               </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Country of origin </dd>
-              <dd class="govuk-summary-list__value">
-                  <p>United Kingdom (GB)</p>
-                
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Origin" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Region of origin (optional) </dd>
-              <dd class="govuk-summary-list__value">
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/place-of-origin?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Place of departure </dd>
-              <dd class="govuk-summary-list__value">
-
-                    {% if data.placeOfDepartureName %}
-                  {{data.placeOfDepartureName}} ({{data.placeOfDepartureTown}}, {{data.placeOfDeparturePostcode}})
-                {% else %}
-                     <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/place-of-origin?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Place of loading </dd>
-              <dd class="govuk-summary-list__value">
-                  {% if data.placeOfLoadingName %}
-                  {{data.placeOfLoadingName}} ({{data.placeOfLoadingTown}}, {{data.placeOfLoadingPostcode}})
-                {% elseif data.showDefaults=="yes" %}
-                  Aubrey Allen Limited (Strabane, BT82)
-                {% else %}
-                     <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/place-of-origin?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Entry border control post</dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.borderControlPost or data.showDefaults=="yes" %}
-                  Antwerpen Port (UNLO Code: BEANR)
-                {% else %}
-                <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/border-control-post?change=yes" class="govuk-link"> Change </a></dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/arrival?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">Transport conditions </dt>

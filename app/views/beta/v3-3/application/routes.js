@@ -158,11 +158,39 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + "transport/" + redirect + "?deleted=yes&who=" + person);
   })
 
+  // Original
+  // router.post('/' + base_url + "transport/arrival-and-departure", function(req, res) {
+  //   console.log("In transport/arrival-and-departure");
+
+  //   if (req.body['skip-question'] == 'yes') {
+  //     req.session.data.transport['arrival-and-departure'] = "skipped";
+  //   }
+
+  //   if(req.query.change == "yes"){
+  //       res.redirect(301, '/' + base_url + 'check-your-answers');
+  //   }else{
+  //       res.redirect(301, '/' + base_url + 'task-list');
+  //   }
+  // })
+
   router.post('/' + base_url + "transport/arrival-and-departure", function(req, res) {
     console.log("In transport/arrival-and-departure");
 
     if (req.body['skip-question'] == 'yes') {
-      req.session.data.transport['arrival-and-departure'] = "skipped";
+      req.session.data.transport['departure'] = "skipped";
+    }
+
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'transport/arrival');
+    }
+  })
+  router.post('/' + base_url + "transport/arrival", function(req, res) {
+    console.log("In transport/arrival-and-departure");
+
+    if (req.body['skip-question'] == 'yes') {
+      req.session.data.transport['arrival'] = "skipped";
     }
 
     if(req.query.change == "yes"){
@@ -172,11 +200,25 @@ module.exports = function(router) {
     }
   })
 
+
   router.post('/' + base_url + "transport/means-of-transport", function(req, res) {
     console.log("In transport/means-of-transport");
 
     if (req.body['skip-question'] == 'yes') {
       req.session.data.transport['means-of-transport'] = "skipped";
+    }
+
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
+  })
+  router.post('/' + base_url + "transport/load-and-dispatch", function(req, res) {
+    console.log("In transport/place-of-origin");
+
+    if (req.body['skip-question'] == 'yes') {
+      req.session.data.transport['load-and-dispatch'] = "skipped";
     }
 
     if(req.query.change == "yes"){
