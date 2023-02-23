@@ -254,26 +254,27 @@ Check your answers – GOV.UK Prototype Kit
           
             
             
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Place of departure </dd>
-              <dd class="govuk-summary-list__value">
+            
 
-                    {% if data.placeOfDepartureName %}
-                  {{data.placeOfDepartureName}} ({{data.placeOfDepartureTown}}, {{data.placeOfDeparturePostcode}})
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Loading location </dd>
+              <dd class="govuk-summary-list__value">
+                  {% if data.placeOfLoadingName %}
+                  {{data.placeOfLoadingName}} ({{data.placeOfLoadingTown}}, {{data.placeOfLoadingPostcode}})
+                {% elseif data.showDefaults=="yes" %}
+                  Aubrey Allen Limited (Strabane, BT82)
                 {% else %}
                      <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
             </div>
-
             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Place of loading </dd>
+              <dt class="govuk-summary-list__key"> Dispatch location </dd>
               <dd class="govuk-summary-list__value">
-                  {% if data.placeOfLoadingName %}
-                  {{data.placeOfLoadingName}} ({{data.placeOfLoadingTown}}, {{data.placeOfLoadingPostcode}})
-                {% elseif data.showDefaults=="yes" %}
-                  Aubrey Allen Limited (Strabane, BT82)
+
+                    {% if data.placeOfDepartureName %}
+                  {{data.placeOfDepartureName}} ({{data.placeOfDepartureTown}}, {{data.placeOfDeparturePostcode}})
                 {% else %}
                      <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}

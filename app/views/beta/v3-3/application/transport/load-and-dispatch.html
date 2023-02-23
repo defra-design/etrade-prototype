@@ -32,7 +32,7 @@ Place of origin – GOV.UK Prototype Kit
   <section id="intro">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"> Transport </span>
-        <h1 class="govuk-heading-xl"> Place of load and dispatch </h1>
+        <h1 class="govuk-heading-xl"> Dispatch and loading locations </h1>
    
       </div>
     </div>
@@ -48,7 +48,7 @@ Place of origin – GOV.UK Prototype Kit
    <section id="place-of-loading">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">Place of loading</h2>
+        <h2 class="govuk-heading-m">Loading location</h2>
         <p class="govuk-body">This is the location where the consignment will be loaded.</p>
 
         {% if data.transport['loading'] %}
@@ -63,7 +63,7 @@ Place of origin – GOV.UK Prototype Kit
 
         {% else %}
           <p class="govuk-!-margin-bottom-10 find-establishment-link">
-            <a href="./place-of-origin/loading">Select a place of loading</a>
+            <a href="./place-of-origin/loading">Select loading location</a>
           </p>
         {% endif %}
       </div>
@@ -72,7 +72,7 @@ Place of origin – GOV.UK Prototype Kit
   <section id="place-of-dispatch">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">Place of dispatch</h2>
+        <h2 class="govuk-heading-m">Dispatch location</h2>
         <p class="govuk-body">This is the final location that the consignment will be transported from in Great Britain.</p>
 
         {% if data.transport['dispatch'] %}
@@ -87,7 +87,7 @@ Place of origin – GOV.UK Prototype Kit
 
         {% else %}
           <p class="govuk-!-margin-bottom-10 find-establishment-link">
-            <a href="./place-of-origin/dispatch">Select a place of dispatch</a>
+            <a href="./place-of-origin/dispatch">Select a dispatch location</a>
           </p>
         {% endif %}
         <div class="govuk-form-group govuk-!-margin-top-6" id="skip-question-container">
