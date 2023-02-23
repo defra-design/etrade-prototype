@@ -123,23 +123,7 @@ module.exports = function(router) {
     }
   })
 
-  router.post('/' + base_url + "transport/place-of-origin/dispatch", function(req, res) {
-    console.log("In place-of-origin/dispatch.html");
 
-    const establishmentIndex = req.body.establishmentIndex;
-
-    req.session.data.transport['dispatch'] = establishmentIndex;
-    res.redirect(301, '/' + base_url + 'transport/place-of-origin');
-  })
-
-  router.post('/' + base_url + "transport/place-of-origin/loading", function(req, res) {
-    console.log("In place-of-origin/loading.html");
-
-    const establishmentIndex = req.body.establishmentIndex;
-
-    req.session.data.transport['loading'] = establishmentIndex;
-    res.redirect(301, '/' + base_url + 'transport/place-of-origin');
-  })
 
   router.get('/' + base_url + 'persons/remove', function(req, res) {
     const person = req.query.who;
@@ -215,8 +199,8 @@ module.exports = function(router) {
     }
   })
   router.post('/' + base_url + "transport/load-and-dispatch", function(req, res) {
-    console.log("In transport/place-of-origin");
-
+    console.log("In transport/load-and-dispatch");
+    console.log(req.body['skip-question'])
     if (req.body['skip-question'] == 'yes') {
       req.session.data.transport['load-and-dispatch'] = "skipped";
     }

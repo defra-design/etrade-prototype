@@ -249,7 +249,6 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
                 Place of loading and dispatch
               </a>
             </span>
-
              {% if data.transport['load-and-dispatch'] == 'skipped' or (data.placeOfDispatchName and placeOfLoadingName) %}
               <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
             {% elseif data.transport.dispatch or data.transport.loading or data.transport.country or data.transport['region-of-origin'] or data.transport['sub-region-of-origin'] %}
