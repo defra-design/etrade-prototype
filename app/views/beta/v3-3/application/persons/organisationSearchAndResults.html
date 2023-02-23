@@ -459,7 +459,7 @@
     $('#save-and-continue').on("click", function() {
       // make sure that we have a selected result
 
-      if ($("input[name=establishmentIndex]:checked").val() === undefined ) {
+      if ($("#results").is(":visible") && $("input[name=establishmentIndex]:checked").val() === undefined ) {
         $("#results").addClass("govuk-form-group--error");
         $("#results-error").show();
         $("#results-error-summary").show();
