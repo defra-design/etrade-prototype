@@ -10,21 +10,19 @@ Home – GOV.UK Prototype Kit
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-xl">
-      Testing 'copy' in eEHC</h1>
+      Testing</h1>
 
       <h2 class="govuk-heading-m">Scenario</h2>
-      <p>You have received an order to process. The details are very similar to the most recent application that you made.</p>
-
-    <p>This is a prototype. You're free to make up some data, although try to use realistic data.
-</p>
-
-
+      <p>You have received an order to process.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        
+        <li>The details are very similar to the most recent application you made.</li>
+        <li>The order contains just one product.</li>
+      </ul>
+      <p>You're free to make up some data, although try to use realistic data for your organisation.</p>
 
   <form class="" action="{{data.urlRedirect or dashboard}}" method="post">
       <p style="margin-top:800px;">
-
-
-
       <button role="button" draggable="false" id="startbutton" class="govuk-button govuk-button--start" data-module="govuk-button" {% if query.disabled !='no' %}disabled="true"{% endif %}>
   Wait for researcher...</button>
   </p>
