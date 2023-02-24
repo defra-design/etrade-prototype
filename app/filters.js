@@ -147,7 +147,9 @@ module.exports = function(env) {
   }
 
   filters.getDateFromExcel = function(excelDateString) {
-    var months = ["", "January", "February", "March", "April", "May", "June",
+    console.log(excelDateString)
+    if(excelDateString[0] != ""){
+      var months = ["", "January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
     ];
     var day = excelDateString.substring(8, 10);
@@ -156,6 +158,10 @@ module.exports = function(env) {
     var year = excelDateString.substring(0, 4);
     // return "16/08/2022";
     return day + " " + month + " " + year;
+    }else{
+      return "Not Entered";
+    }
+    
   }
 
   filters.getFileName = function(txt) {

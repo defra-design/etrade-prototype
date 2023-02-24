@@ -144,6 +144,7 @@
 
 
   <div class="no-results-block">
+    {% if includeApprovalNumberSearch %}
     <p class="govuk-body">Improve your search results by:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>making sure you’ve entered the approval number correctly</li>
@@ -151,8 +152,14 @@
       <li>searching for part of the organisation name, instead of the full name</li>
       
     </ul>
+    {% else %}
+    <p>Try searching for part of the organisation name, instead of the full name.</p>
+    {% if query.showSad=="yes" %}
+    <iframe src="https://giphy.com/embed/oXB0K4oFw3fck" width="480" height="368" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/sad-arrested-development-disappointed-oXB0K4oFw3fck">via GIPHY</a></p>
+    {% endif %}
+    {% endif %}
   {% if searchFor == "consignor" %}
-    <p>If you cannot find the correct exporter, they may need to be registered as an exporter in the EU TRACES service. <a href="#">Find out more about how to register an establishment as an exporter</a>.</p>
+    <p>The exporter will need to be registered as an exporter in the EU TRACES service. <a href="#">Find out how to register or check the details are correct on TRACES</a>.</p>
   {% endif %}
 
   </div>
