@@ -49,7 +49,7 @@ Check your answers – GOV.UK Prototype Kit
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Certificate </dt>
               <dd class="govuk-summary-list__value">
-                EHC8328 Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland
+                {{ data.certificates[(data.certificate | makeNumber)].number or "test" }} - {{ data.certificates[(data.certificate | makeNumber)].title or "Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland" }}
 
               </dd>
             
