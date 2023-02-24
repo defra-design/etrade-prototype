@@ -22,6 +22,29 @@
     "All_Activities": ["Processing Plant"]
   },
   {
+    "AppNo": "DU/000002535",
+    "TradingName": "Karan Handels GMBH",
+    "Address1": "Burdericher str 5",
+    "Address2": "",
+    "Address3": "",
+    "Town": "NEUSS",
+    "Postcode": "41460",
+    "Country": "Germany",
+    "All_Activities": ["Importer"]
+  },
+  {
+    "AppNo": "DU/000002535",
+    "TradingName": "PESCADOS TXANKA S.L",
+    "Address1": "BARRIO ORTZAIKA ",
+    "Address2": "CASERUI TXABJA",
+    "Address3": "",
+    "Town": "Orio",
+    "Postcode": "20810",
+    "Country": "Spain",
+    "All_Activities": ["Importer"]
+  },
+  
+  {
     "AppNo": "3242234",
     "TradingName": "COLLAGEN SOLUTIONS UK LTD",
     "Address1": "3 Robroyston Oval",
