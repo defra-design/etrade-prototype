@@ -102,7 +102,19 @@ Copy – GOV.UK Prototype Kit
 
       <li><a class="govuk-link govuk-link--no-visited-state" href="certificate/check-your-progress?certificate=ehc2849">Edit and submit this application</a></li>
 
-      <li><a class="govuk-link govuk-link--no-visited-state" href="clone?id=4&amp;is_group=">Copy as new application</a></li>
+     {% set link = "./echo/application?id="+(loop.index-1) %}
+              {% set copyLink = "./echo/copy?id="+(loop.index-1) %}
+              {% if app.type == 'Digital'%}
+              {% set link = "application?id="+(loop.index-1) %}
+              {% set copyLink = "copy-application?id="+(loop.index-1)+"&selectedCertificate="+app.EHC%}
+              {% else %}
+              {% if app.isEU == "yes" %}
+              {% set copyLink = "changes-to-service-copy?id="+(loop.index-1)+"&selectedCertificate="+app.EHC %}
+              {% endif %}
+              {% endif %}
+
+
+      <li><a class="govuk-link govuk-link--no-visited-state" href="../{{copyLink}}">Copy as new application</a></li>
 
       <li><a class="govuk-link govuk-link--no-visited-state" href="delete">Delete this application</a></li>
 
