@@ -184,14 +184,14 @@ Manage commodity data – GOV.UK Prototype Kit
                                 <!---->
                                 <div class="govuk-!-margin-bottom-6 govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}" id="skip-question-container">
                                     <h3 class="govuk-heading-m">You can skip some sections for this commodity</h3>
-                                    <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+                                    <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
                                     {% if query.hasError %}
-                                    <p id="skipError" class="govuk-error-message">
+                                    <p id="skipError" class="govuk-error-message govuk-!-margin-top-4">
                                         <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
                                     </p>
                                     {% endif %}
                                     <div class="govuk-checkboxes__item" id="skip-question-checkbox">
-                                        <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %}>
+                                        <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %} {% if query.hasError %} aria-describedby="skipError" {% endif     %}>
                                         <label class="govuk-label govuk-checkboxes__label" for="skip-question">
                                             I've entered as much information as I can
                                         </label>
@@ -320,6 +320,8 @@ window.addEventListener('load', function() {
             // $('.defra-callout h3').text(max +" questions answered")
             // $('.defra-callout .defra-callout--content').hide()
             $('#skip-question-checkbox').hide()
+            $('.govuk-error-message').hide()
+            $('.govuk-form-group').removeClass('govuk-form-group--error')
         } else {
             $('#skip-question-checkbox').show()
         }
