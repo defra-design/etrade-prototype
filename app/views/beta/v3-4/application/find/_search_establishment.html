@@ -1,0 +1,121 @@
+{% set id = searchComponentID or "manufacturingPlant" %}
+
+{% set establishmentType = id %}
+{% set establishmentApprovalNumber = identification[establishmentType] %}
+{% set establishmentActivity = identification[id+"Activity"] %}
+{% set establishmentIndex = null %}
+
+<!-- check to see if this record ... or it's activity companion (e.g. coldStoreActivity) is incomplete -->
+{% if identification['isIncomplete'] %}
+  {% set isIncomplete = false %}
+  {% for fieldType in identification['incomplete'] %}
+    {% if ( (fieldType == establishmentType) or (fieldType == (establishmentType + "Activity")) ) %}
+      {% set isIncomplete = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- get the org info for later -->
+{% set org = null %}
+{% for establishment in data.establishments %}
+  {% if establishment.AppNo == establishmentApprovalNumber %}
+    {% set org = establishment %}
+    {% set establishmentIndex = loop.index0 %}
+  {% endif %}
+{% endfor %}
+
+<label class="govuk-label" for="{{id}}" id={{id}}>
+  {% if isIncomplete %}
+  <!-- Removed for now to see if testing needs these indicators -->
+  <!-- <strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br> -->
+  {% endif %}
+  {{searchLabel}} {% if isRequired == "no"%}(optional){% endif %}
+</label>
+
+
+{% if establishmentApprovalNumber and establishmentActivity and (establishmentActivity != -1) %}
+  <!-- Complete -->
+  <div class="govuk-form-group app-find-establishment-card">
+    <input type="hidden" id="{{establishmentType}}" name="{{establishmentType}}" value="{{ establishmentApprovalNumber }}">
+    <input type="hidden" id="{{establishmentType}}Activity" name="{{establishmentType}}Activity" value="{{ establishmentActivity }}">
+
+    <div class="app-find-establishment-details">
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}}</h3>
+      <p class="govuk-body govuk-!-margin-0">
+        {{org.Address1}}<br>
+        {% if org.Address2 !="" %} {{org.Address2}}<br>{%endif%}
+        {% if org.Address3 !="" %} {{ org.Address3 }}<br>{%endif%}
+        {{org.Town}}, {{org.Postcode}}<br>
+        {{org.Country}}<br>
+        <br>
+        Approval number: {{ org.AppNo }}<br>
+        Activity: {{ establishmentActivity}}
+      </p>
+    </div>
+
+    <div class="app-find-establishment-actions">
+      <p class="govuk-!-margin-0">
+        <a href="../find/remove-establishment?certID={{ certID }}&commodityListID={{ commodityListID }}&changeID={{ commodityID }}&establishmentType={{ establishmentType }}&random={{ 100000 | randomNumberGenerator }}">Remove</a>
+        {% if data.establishments[establishmentIndex].All_Activities.length > 1 %}
+         | <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ commodityID }}&establishmentType={{ establishmentType }}&establishmentIndex={{ establishmentIndex }}">Change activity</a>
+         {% endif %}
+      </p>
+    </div>
+  </div>
+
+
+{% elseif establishmentApprovalNumber %}
+
+  <!-- partially incomplete -->
+  <div class="govuk-form-group app-find-establishment-card">
+    <input type="hidden" id="{{establishmentType}}" name="{{establishmentType}}" value="{{ establishmentApprovalNumber }}">
+    <input type="hidden" id="{{establishmentType}}Activity" name="{{establishmentType}}Activity" value="{{ establishmentActivity }}">
+    <div class="app-find-establishment-details">
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{org.TradingName}}</h3>
+      <p class="govuk-body">
+        {{org.Address1}}<br>
+        {% if org.Address2 !="" %} {{org.Address2}}<br>{%endif%}
+        {% if org.Address3 !="" %} {{ org.Address3 }}<br>{%endif%}
+        {{org.Town}}, {{org.Postcode}}<br>
+        {{org.Country}}
+      </p>
+      <p class="govuk-body">
+        Approval number: ({{org.AppNo}})<br>
+        Activity: <strong>Not yet selected</strong><br>
+      </p>
+    </div>
+
+    <div class="app-find-establishment-actions">
+      <p class="govuk-!-margin-0">
+        <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&establishmentApprovalNumber={{ establishmentApprovalNumber }}" class="govuk-link">Select an activity</a>
+      </p>
+    </div>
+
+  </div>
+
+
+{% else %}
+  <!-- Incomplete -->
+  {% if establishmentApprovalNumber and not establishmentActivity %}
+    {% set hasApprovalNumberError = true %}
+  {% else %}
+    {% set hasApprovalNumberError = false %}
+  {% endif %}
+  <div class="govuk-form-group app-find-establishment-card {% if hasApprovalNumberError %}govuk-form-group--error{% endif %}">
+    {% set url = "start" %}
+    {% if query.has_saved_orgs == "no" %}
+      {% set url = "results" %}
+    {% endif %}
+
+    {% if hasApprovalNumberError %}
+
+    <p id="{{ establishmentType }}-error" class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span> The approval number you provided ({{ establishmentApprovalNumber }}) is invalid
+    </p>
+    {% endif %}
+    <!--<p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchLabel={{searchLabel}}&searchReturnURL={{returnURL or '../export/commodity'}}&searchID={{id}}&canSearchApprovalNumber=yes">Select a {{searchLabel | lower }}</a></p>-->
+    <p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchReturnURL={{returnURL or '../export/commodity'}}&canSearchApprovalNumber=yes&certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}">Select a {{searchLabel | lower }}</a></p>
+
+  </div>
+
+{% endif %}

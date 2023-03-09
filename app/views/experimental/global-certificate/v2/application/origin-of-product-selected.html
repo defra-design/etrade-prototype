@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {%endif%} Goods Certified As - E-Certification for EHC's - GOV UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" novalidate="" action="consignment-dispatched-from">
+      <div class="govuk-form-group">
+        <span class="govuk-caption-xl">Export details</span>
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              What is the origin of the product?
+            </h1>
+          </legend>
+          <p>Provide details of the origin of the animals from which the product is derived. These may originate from more than one country.</p>
+          <div class="repeatable-section" id="country-origin-1">
+            {% block countrySelect %}{% include '../components/_country-of-origin.html'%}{% endblock%}
+          </div>
+        </fieldset>
+        <p class="govuk-!-margin-top-4">
+          <a href="#">Add another country of origin</a>
+        </p>
+      </div>
+      <div class="govuk-button-group">
+        <!-- to update state  -->
+        <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">
+        <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+        <a href="../task-list" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock%}

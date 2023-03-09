@@ -1,0 +1,38 @@
+<dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long govuk-!-margin-bottom-10 app-find-establishment-card">
+  <div class="govuk-summary-list__row">
+    <div class="govuk-summary-list__row-group">
+      <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key app-find-establishment-card">
+   
+        <strong>{{ org.TradingName }}</strong><br>
+        {{ org.Address1 }}<br>
+        {% if org.Address2 %}{{ org.Address2 }}<br>{% endif %}
+        {% if org.Address3 %}{{ org.Address3 }}<br>{% endif %}
+        {{ org.Town }}, {{ org.Postcode }}<br>
+        {{ org.Country }}
+        {% if showOperatorActivity %}
+          <br>
+          <br>
+          Activity: {{ establishmentActivity }}
+        {% endif %}
+      </dt>
+      <dd class="govuk-summary-list__actions">
+        <ul class="govuk-summary-list__actions-list">
+          <li class="govuk-summary-list__actions-list-item">
+            <a class="govuk-link govuk-link--no-visited-state" href="{{ removeLink }}&random={{ 100000 | randomNumberGenerator }}">
+              Remove<span class="govuk-visually-hidden"> this organisation</span></a>
+          </li>
+          {% if includeChangeAction %}
+
+          <li class="govuk-summary-list__actions-list-item">
+            <a class="govuk-link govuk-link--no-visited-state"
+              href="{{ changeLink }}&random={{ 100000 | randomNumberGenerator }}">
+              Change<span class="govuk-visually-hidden"> this organisation</span>
+            </a>
+          </li>
+
+        {% endif %}
+        </ul>
+      </dd>
+    </div>
+  </div>
+</dl>

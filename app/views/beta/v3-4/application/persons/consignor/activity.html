@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Select an activity – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set id = query.id or "1" %}
+<!--{% set operator = data.establishments[id]%}-->
+<!--{% set activityToSearch = data.searchActivity or "not set"%}-->
+
+
+{% set consignor_establishmentIndex = query.establishmentIndex %}
+{% set consignor_establishmentApprovalIndex = query.establishmentApprovalIndex %}
+
+{% set operator = data.establishments[consignor_establishmentIndex] %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if query.hasError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#question">Select a consignor activity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <form method="post" novalidate="">
+    <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading" id="question">
+            Select a consignor activity
+          </h1>
+        </legend>
+
+        {% if query.hasError %}
+        <p id="where-do-you-live-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Select a consignor activity
+        </p>
+        {% endif %}
+
+        <p class="govuk-body" lang="en">
+          <strong>{{operator.TradingName}}</strong> performs multiple activities. Select the most relevant activity for the commodity you're adding.
+        </p>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with adding activities
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            If you cannot see a relevant activity for the commodity you’re adding, contact your certifier.
+          </div>
+        </details>
+
+        <div class="govuk-radios" data-module="govuk-radios">
+          {% for activity in operator.All_Activities %}
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="savedOrg{{loop.index}}" name="activityIndex" type="radio" value="{{ loop.index0 }}" {% if consignor_establishmentApprovalIndex == loop.index0 %}checked{%endif%}>
+            <label class="govuk-label govuk-radios__label" for="savedOrg{{loop.index}}">
+              {{activity}}
+            </label>
+          </div>
+          {% endfor%}
+        </div>
+      </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+      <input type="hidden" name="establishmentIndex" value="{{ consignor_establishmentIndex }}">
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

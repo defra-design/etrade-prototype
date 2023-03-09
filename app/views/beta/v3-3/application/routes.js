@@ -225,11 +225,20 @@ module.exports = function(router) {
     }
   
   })
+
   router.post('/' + base_url + "export/weight", function(req, res) {
     console.log("SKIPPUY: "+req.body['skip-question'])
     if (req.body['skip-question'] == 'yes') {
       req.session.data.transport['weight'] = "skipped";
     }
+
+    if(req.body.GROSS_WEIGHT=="" && req.body['skip-question'] == '_unchecked'){
+       res.redirect(301, '/' + base_url + 'export/weight?hasError=yes&errorType=notSkipped');
+    }
+    if(req.body.GROSS_WEIGHT!="" && req.body.GROSS_WEIGHT_quantifier == ""){
+       res.redirect(301, '/' + base_url + 'export/weight?hasError=yes&errorType=noWeight');
+    }
+    
     if(req.query.change == "yes"){
         res.redirect(301, '/' + base_url + 'check-your-answers');
     }else{

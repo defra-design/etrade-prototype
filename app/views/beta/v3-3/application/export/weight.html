@@ -13,6 +13,30 @@ Home – GOV.UK Prototype Kit
 {% endif %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+        {% if query.hasError == "yes" %}
+
+        <div class="govuk-error-summary" data-module="govuk-error-summary">
+            <div role="alert">
+                <h2 class="govuk-error-summary__title">
+                    There is a problem
+                </h2>
+                <div class="govuk-error-summary__body">
+                    <ul class="govuk-list govuk-error-summary__list"> 
+                        {% if query.errorType == "notSkipped"%}
+                        <li>
+                            <a href="#skip-question">Select if you have answered as many questions as you can</a>
+                        </li>
+                        {% endif %}
+                        {% if query.errorType == "noWeight"%}
+                        <li>
+                            <a href="#skip-question">Select a gross weight amount unit</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+{% endif %}
         <form method="post">
             <div class="govuk-form-group">
                 <span class="govuk-caption-xl">
@@ -34,21 +58,44 @@ Home – GOV.UK Prototype Kit
                                     </legend>
                                     <div class="govuk-form-group"><label class="govuk-label" for="gross-weight-amount">Gross weight amount</label>
                                         <!----><input class="govuk-input govuk-input--width-4 js-question"  data-required="true" id="gross-weight-amount" name="GROSS_WEIGHT" type="number" value="{{data.GROSS_WEIGHT}}"></div>
-                                    <div class="govuk-form-group"><label class="govuk-label" for="gross-weight-amount-units"> Gross weight amount units </label>
-                                        <!----><select class="govuk-select" data-required="true" id="gross-weight-amount-units" name="GROSS_WEIGHT_quantifier">
-                                            <option value="" {% if query.change !='yes' or data.GROSS_WEIGHT_quantifier ==''%}selected{%endif%} disabled>Select a unit</option>
-                                            <option value="GRM" {% if query.change and data.GROSS_WEIGHT_quantifier =='GRM' %}selected{% endif %}>gram</option>
-                                            <option value="KGM" {% if query.change and data.GROSS_WEIGHT_quantifier =='KGM' %}selected{% endif %}>kilogram</option>
-                                            <option value="KTN" {% if query.change and data.GROSS_WEIGHT_quantifier =='KTN' %}selected{% endif %}>kilotonne</option>
-                                            <option value="TNE" {% if query.change and data.GROSS_WEIGHT_quantifier =='TNE' %}selected{% endif %}>tonne (metric ton)</option>
-                                        </select></div>
+                                    <div class="govuk-form-group {% if query.hasError and query.errorType=='noWeight' %}govuk-form-group--error{% endif %}"><label class="govuk-label" for="gross-weight-amount-units"> Gross weight amount units </label>
+                                    {% if query.hasError and query.errorType=="noWeight" %}
+                                    <p id="skipErrorSelect" class="govuk-error-message">
+                                        <span class="govuk-visually-hidden">Error:</span> Select a gross weight amount unit
+                                    </p>
+                                    {% endif %}
+                                    <select class="govuk-select  {% if query.hasError and query.errorType=='noWeight' %}govuk-input--error{% endif %}" data-required="true" id="gross-weight-amount-units" name="GROSS_WEIGHT_quantifier" {% if query.hasError and query.errorType=='noWeight' %} aria-describedby="skipErrorSelect" {% endif %}>
+                                            <option value="" {% if query.change !='yes' or data.GROSS_WEIGHT_quantifier ==''%}selected{%endif%} >Select a unit</option>
+                                            <option value="GRM" {% if (query.change or query.hasError=='yes') and data.GROSS_WEIGHT_quantifier =='GRM' %}selected{% endif %}>gram</option>
+
+                                            <option value="KGM" {% if (query.change or query.hasError=='yes') and data.GROSS_WEIGHT_quantifier =='KGM' %}selected{% endif %}>kilogram</option>
+                                            <option value="KTN" {% if (query.change or query.hasError=='yes') and data.GROSS_WEIGHT_quantifier =='KTN' %}selected{% endif %}>kilotonne</option>
+                                            <option value="TNE" {% if (query.change or query.hasError=='yes') and data.GROSS_WEIGHT_quantifier =='TNE' %}selected{% endif %}>tonne (metric ton)</option>
+                                        </select>
+                                    </div>
                                     <!---->
                                 </fieldset>
                             </div>
                         </div>
                 </fieldset>
             </div>
-            <div class="govuk-form-group" id="skip-question-container">
+
+            <div class="skip-wrapper govuk-!-margin-bottom-6 govuk-form-group {% if query.hasError and query.errorType=='notSkipped' %}govuk-form-group--error{% endif %}" id="skip-question-container">
+                                    <h3 class="govuk-heading-m">You can skip this section</h3>
+                                    <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+                                    {% if query.hasError and query.errorType=="notSkipped" %}
+                                    <p id="skipError" class="govuk-error-message govuk-!-margin-top-4">
+                                        <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
+                                    </p>
+                                    {% endif %}
+                                    <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
+                                        <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if data.transport['weight'] == 'skipped' %}checked{% endif %} {% if query.hasError %} aria-describedby="skipError" {% endif     %}>
+                                        <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+                                            I've entered as much information as I can
+                                        </label>
+                                    </div>
+                                </div>
+<!--             <div class="govuk-form-group" id="skip-question-container">
                 <h3 class="govuk-heading-m">You can skip this section</h3>
                 <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
                 <div class="govuk-checkboxes__item" id="skip-question-checkbox">
@@ -57,7 +104,7 @@ Home – GOV.UK Prototype Kit
                         I've entered as much information as I can
                     </label>
                 </div>
-            </div>
+            </div> -->
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Save and continue
             </button>
@@ -124,6 +171,8 @@ window.addEventListener('load', function() {
             // $('.defra-callout h3').text(max +" questions answered")
             // $('.defra-callout .defra-callout--content').hide()
             $('#skip-question-checkbox').hide()
+            $('.skip-wrapper.govuk-error-message').hide()
+            $('.skip-wrapper.govuk-form-group').removeClass('govuk-form-group--error')
         } else {
             $('#skip-question-checkbox').show()
         }

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Purpose of the export – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
+  <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+    <!---->
+  </div>
+  <section id="intro">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"> Description of the goods </span>
+        <h1 class="govuk-heading-xl"> Purpose of the export </h1>
+      </div>
+    </div>
+  </section>
+  <section id="form">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!---->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+         
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" id="purpose">
+              <div class="govuk-radios__item purpose"><input class="govuk-radios__input" id="radio-transit" name="Purpose" type="radio" value="Transit"><label class="govuk-label govuk-radios__label" for="radio-transit"> Transit </label></div>
+              <!---->
+              <div class="govuk-radios__item purpose"><input class="govuk-radios__input" id="radio-intmark" name="Purpose" type="radio" value="Internal market"><label class="govuk-label govuk-radios__label" for="radio-intmark"> Internal market </label></div>
+              <div class="govuk-radios__item purpose"><input class="govuk-radios__input" id="radio-ReEntry" name="Purpose" type="radio" value="Re-entry"><label class="govuk-label govuk-radios__label" for="radio-ReEntry"> Re-entry </label></div>
+            </div>
+          </fieldset>
+        </div><button class="govuk-button"> Save and continue </button>
+      </div>
+    </div>
+  </section>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

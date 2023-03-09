@@ -1,0 +1,334 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Manage commodity data – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+    .govuk-input__suffix.suffix__action.no-border {
+    border-width: 0 !important;
+    background: transparent;
+  }
+
+  .suffix__action {
+    margin: 0;
+    padding: 0;
+  }
+
+  .suffix__action .govuk-button.multi-data,
+  .delete-button {
+    margin-left: 5px;
+  }
+
+  .max-w-155 {
+    max-width: 155px;
+  }
+
+  .etrade-warning-banner {
+    border: 5px solid #f47738;
+    background-color: #f47738;
+  }
+
+  .etrade-warning-banner h2 {
+    color: #000000;
+  }
+
+</style>
+{% endblock%}
+{% block content %}
+{% set hasIncompleteRecord = false %}
+<!-- set the current certificate -->
+{% set certID = data.currentCertID or 0 %}
+<!-- set the current list idea, use the query currentCommodityID as default if possible -->
+{% set commodityID = query.currentCommodityID or data.currentCommodityID or 0 %}
+{% set commodityListID = query.commodityListID or data.commodityListID or 0 %}
+<!-- IF Change Set the identification array location of the current commodity -->
+{% set changeID = query.changeID %}
+<!-- Set current cert  -->
+{% set cert = data.addedEHC[certID]%}
+{% set commodityCode = cert.addedCommodities[commodityListID].code %}
+{% set commodityDescription = cert.addedCommodities[commodityListID].title %}
+{% set identification = cert.addedCommodities[commodityListID].identifications[changeID]%}
+<!-- Set return URL for search establishment component -->
+{% set returnURL = "../export/commodity"%}
+<!-- Set variable to trigger different behaviour in search establishment component-->
+{% set isCommodity = "yes" %}
+{% if query.copy == "yes"%}
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-three-quarters">
+        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                    Success
+                </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+                <!-- <h3 class="govuk-notification-banner__heading">
+          Copied commodity
+        </h3> -->
+                <p class="govuk-body">Commodity copied</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{#
+<!-- Commented out this block -->
+{% if identification.isIncomplete and not query.new %}
+{% set hasIncompleteRecord = true %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+        <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                    You have skipped some sections
+                </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+                <p class="govuk-notification-banner__heading">You can enter information for these sections, or submit the application to your certifier to complete.</p>
+                <ul class="govuk-list">
+                    {% for incompleteRecord in identification.incomplete %}
+                    <!-- exclude Activity records like manufacturingPlantActivity -->
+                    {% set incompleteLabel = "" %}
+                    {% for field in cert.schema %}
+                    {% if field.id == incompleteRecord %}
+                    {% set incompleteLabel = field.title %}
+                    {% endif %}
+                    {% endfor %}
+                    {% if incompleteRecord.slice(incompleteRecord.length-8,incompleteRecord.length) == "Activity" %}
+                    <li><a class="govuk-link" href="#{{ incompleteRecord.slice(0,incompleteRecord.length-8) }}">{{ incompleteLabel }} </a></li>
+                    {% else %}
+                    <li><a class="govuk-link" href="#{{ incompleteRecord }}">{{ incompleteLabel }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<!-- Commented out this block -->
+#}
+{% if query.hasError == "yes" %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+        <div class="govuk-error-summary" data-module="govuk-error-summary">
+            <div role="alert">
+                <h2 class="govuk-error-summary__title">
+                    There is a problem
+                </h2>
+                <div class="govuk-error-summary__body">
+                    <ul class="govuk-list govuk-error-summary__list">
+                        <li>
+                            <a href="#skip-question">Select if you have answered as many questions as you can</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">{{ cert.number or "test" }}</span>
+        <h1 class="govuk-heading-xl">{% if query.change and query.new %}Add{% else %}Change{% endif %} commodity data</h1>
+        <form method="post">
+            <input type="hidden" name="ehc" value="{{cert.number}}">
+            <input type="hidden" name="commodity_id" value="{{commodityID}}">
+            <input type="hidden" name="commodity_code" value="{{commodityCode}}">
+            <input type="hidden" name="commodity_description" value="{{commodityDescription}}">
+            {% if query.new %}
+            <input type="hidden" name="new" value="yes">
+            {% endif %}
+            <div class="commodity-pane--body open " style="" id="commodity-details-panel">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-three-quarters">
+                        <div class="identification-questions">
+                            <section id="intro">
+                                <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Commodity</h2>
+                                <p><span class="govuk-tag">{{commodityCode}}</span> {{commodityDescription}}
+                                    <p>
+                            </section>
+                            <section id="questions">
+                                {% for field in cert.schema %}
+                                {% if field.type != "string" %}
+                                {% if field.type == "search" %}
+                                {% set isRequired = field.required %}
+                                {% set searchLabel = field.title %}
+                                {% set searchComponentID = field.id %}
+                                {% block searchComponentID %}{% include "../find/_search_establishment.html" %}{% endblock %}
+                                {% else %}
+                                {% set componentID = field.id %}
+                                <!-- check to see if this field is incomplete -->
+                                {% if identification['isIncomplete'] %}
+                                {% set isIncomplete = false %}
+                                {% for fieldType in identification['incomplete'] %}
+                                {% if fieldType == componentID %}
+                                {% set isIncomplete = true %}
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                                {% if isIncomplete %}
+                                <!-- <label class="govuk-label" for="{{field.id}}" id={{field.id}}>
+                      <strong class="govuk-tag govuk-tag--red">Section skipped</strong><br>
+                    </label> -->
+                                {% endif %}
+                                {% set component = "./components/_"+field.id+".html" %}
+                                {% block componentID %}{% include component %}{% endblock %}
+                                {% endif %}
+                                {% endif%}
+                                {% endfor%}
+                                <!---->
+                                <div class="govuk-!-margin-bottom-6 govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}" id="skip-question-container">
+                                    <h3 class="govuk-heading-m">You can skip some sections for this commodity</h3>
+                                    <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+                                    {% if query.hasError %}
+                                    <p id="skipError" class="govuk-error-message govuk-!-margin-top-4">
+                                        <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
+                                    </p>
+                                    {% endif %}
+                                    <div class="govuk-checkboxes__item" id="skip-question-checkbox">
+                                        <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %} {% if query.hasError %} aria-describedby="skipError" {% endif     %}>
+                                        <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+                                            I've entered as much information as I can
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- reset change values -->
+                                <input type="hidden" name="change" value="">
+                                <input type="hidden" name="changeID" value="">
+                                <input type="hidden" name="commodityListID" value="{{commodityID}}">
+                                <section id="actions">
+                                    <button data-module="govuk-button" type="submit" name="submit-button" class="govuk-button m-r-5" id="addIdentification">{% if query.new == "yes" %}Add{% else %}Update{% endif %} commodity</button>
+                                </section>
+                        </div>
+                        <!---->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+
+    $('.add-repeatable-section').on('click', function(e) {
+        e.preventDefault()
+
+        var count = parseInt($(this).attr("data-count"))
+        var targetID = "#" + $(this).attr('data-target')
+        var section = $(targetID).clone(true, true)
+        var holderID = $(this).attr('data-target') + "-holder"
+
+        var blockID = $(section).attr("id") + count
+        var deleteButton = '<button data-target="' + blockID + '"class="govuk-button delete-button govuk-button--secondary"><span class="fas fa-trash-alt"></span></button>'
+
+        // var formID = section.find("input").attr("id")+count
+        $(section).attr("id", blockID).addClass("govuk-!-margin-top-2")
+        $(section).find('input').val('')
+        // incase it is a select
+        $(section).find('select').prop("selectedIndex", 0);
+
+
+        $("#" + holderID).append(section)
+        var button = $('#' + blockID).find(".add-repeatable-section");
+        $(button).replaceWith(deleteButton)
+
+
+        $(this).attr("data-count", count + 1)
+
+    })
+
+    $(document).on('click', '.delete-button', function(e) {
+        e.preventDefault();
+        var deleteTarget = $(this).attr('data-target')
+        $("#" + deleteTarget).remove()
+    });
+
+    // clicking to find an establishment clears all information on other fields we place all establishemts closer to the top. but sill have description.
+    $(".find-establishment-link").on("click", function(e) {
+        e.preventDefault()
+        var description = $("#description").val()
+        var url = $(this).attr("href") + "&description=" + description
+        $(location).prop('href', url)
+    })
+
+
+})
+</script>
+<script type="text/javascript">
+window.addEventListener('load', function() {
+    $('.js-question').each(function() {
+        console.log("looking to see if complete")
+        var elem = $(this);
+
+        // Save current value of element
+        elem.data('oldVal', elem.val());
+        if (elem.val()!=""){
+            elem.attr('data-filled', 'yes')
+        }
+        // Look for changes in the value
+        elem.bind("propertychange change click keyup input paste", function(event) {
+            // If value has changed...
+            console.log("checking content")
+            if (elem.data('oldVal') != elem.val()) {
+                console.log("value has changed")
+                // Updated stored value
+
+                // Do action
+                if (elem.val() == "//default") {
+                    elem.val(elem.attr('data-default'));
+
+                }
+                console.log("val length = " + elem.val().length)
+                if (elem.val().length === 0) {
+                    elem.attr('data-filled', 'no')
+                } else {
+                    elem.attr('data-filled', 'yes')
+                }
+
+                console.log("data-filled = " + elem.attr('data-filled'))
+                // elem.attr('data-filled','yes')
+
+                elem.data('oldVal', elem.val());
+            }
+
+
+            checkFilled()
+        });
+    });
+
+    function checkFilled() {
+        var completed = 0;
+        var max = $('.js-question').length
+        console.log("---checkFilled---- " + max)
+        $('.js-question').each(function() {
+            console.log("Chekcing if its complete: " + ($(this).attr('data-filled') == "yes"))
+            if ($(this).attr('data-filled') === "yes") {
+                completed += 1
+            }
+
+        })
+        console.log("Completed = " + completed)
+        if (completed >= max) {
+            // $('.defra-callout h3').text(max +" questions answered")
+            // $('.defra-callout .defra-callout--content').hide()
+            $('#skip-question-checkbox').hide()
+            $('.govuk-error-message').hide()
+            $('.govuk-form-group').removeClass('govuk-form-group--error')
+        } else {
+            $('#skip-question-checkbox').show()
+        }
+        console.log("---end----")
+    }
+
+    checkFilled()
+});
+</script>
+{% endblock%}

@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {%endif%} Goods Certified As - E-Certification for EHC's - GOV UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<div class="govuk-grid-row" data-v-563d6e59="">
+  <div class="govuk-grid-column-two-thirds" data-v-563d6e59="">
+
+    <span class="govuk-caption-xl">Export details</span>
+    <h1 class="govuk-heading-xl">
+      Where will the consignment be dispatched from?
+    </h1>
+    <p id="certified-as-hint" class="govuk-body">This is the final location that the consignment will be transported from in Great Britain.</p>
+    <form method="post" novalidate action="{% if query.change == 'yes' %}../check-your-answers{% else %}responsible-for-load{% endif %}">
+      <div class="govuk-form-group ">
+        <label for="search-goods-certified-as" class="govuk-label">Search for place of dispatch</label>
+        <input class="govuk-input" aria-describedby="showing-count" id="search-goods-certified-as" type="text">
+      </div>
+      <p class="govuk-body govuk-!-margin-top-4" style="display:none"><span id="showing-count" aria-atomic="true"></span> &nbsp;&nbsp;<a class="govuk-link--no-visited-state" href="./consignment-dispatched-from" id="clear-all"
+          style="display:none; ">Clear
+          search</a>
+      </p>
+      <div class="govuk-form-group {% if query.has_error %}govuk-form-group--error{% endif %}">
+        <fieldset class="govuk-fieldset" aria-describedby="{% if query.has_error %}select-error{% endif %} certified-as-hint">
+
+          {% if query.has_error %}
+          <p id="select-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select the what the goods are certified as
+          </p>
+          {% endif %}
+
+
+          <div class="govuk-radios" data-module="govuk-radios" tabindex="0" data-v-563d6e59="">
+            {% for est in data.establishments %}
+            {% if loop.index < 10 %}
+            <div class="govuk-radios__item" data-v-563d6e59="" data-content="{{est.TradingName}}">
+              <input id="dispatchedFrom-{{loop.index}}" type="radio" name="dispatchedFrom" class="govuk-radios__input" value="{{loop.index-1}}" {% if query.change and loop.index-1 == data.dispatchedFrom %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="dispatchedFrom-{{loop.index}}">{{est.TradingName}}<br>{{est.Address1}}, {% if est.Address2 %}{{est.Address2}}, {% endif %}{{est.Town}}, {{est.Postcode}}</label>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+          </div>
+        </fieldset>
+      </div>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Cannot find the place of origin?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Some info about how these are registerded, and how to register another.
+        </div>
+      </details>
+      <div class="govuk-button-group">
+
+        <!-- to update state  -->
+        {% if query.change != "yes" %}
+        <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">
+        {% endif%}
+        <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+        {% if query.change != "yes" %}
+        <a href="../task-list" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>
+         {% endif%}
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $("#search-goods-certified-as").on("input", function() {
+      var count = 0
+      $("#showing-count").parent().hide()
+      let q = $(this).val().toLowerCase()
+      if ($(this).val().length > 0) {
+        $("#showing-count").parent().show()
+        $(".govuk-radios__item").hide()
+        $(".govuk-radios__item").filter(function() {
+
+          var r = $(this).attr("data-content").toLowerCase()
+          console.log("looking at " + r)
+          console.log(r.toString().indexOf(q))
+          if (r.toString().indexOf(q) >= 0) {
+            console.log("showing this result")
+            count += 1
+            return $(this);
+
+          }
+
+        }).show();
+      } else {
+        $(".govuk-radios__item").show()
+        count = 22
+      }
+      if (count != 22) {
+        var t = "matches"
+        if (count == 1) {
+          t = "match"
+        }
+        $("#showing-count").html("Found " + count + " " + t + " with <strong>&quot" + q + "&quot</strong>")
+        $("#clear-all").show()
+      } else {
+        $("#clear-all").hide()
+        $("#showing-count").html("Showing all 22 goods certifications")
+      }
+
+    })
+  })
+</script>
+{% endblock%}

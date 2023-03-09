@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {%endif%} Goods Certified As - E-Certification for EHC's - GOV UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<div class="govuk-grid-row" data-v-563d6e59="">
+  <div class="govuk-grid-column-two-thirds" data-v-563d6e59="">
+
+    <span class="govuk-caption-xl">Import details</span>
+    <h1 class="govuk-heading-xl">
+      Entry border control post
+    </h1>
+    <p id="certified-as-hint" class="govuk-body">This is the boarder post good will enter Northern Ireland from.
+
+</p>
+    <form method="post" novalidate action="{% if query.change == 'yes' %}../check-your-answers{% else %}./place-of-destination{% endif %}">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby=" certified-as-hint">
+          <div class="govuk-radios" data-module="govuk-radios" tabindex="0" data-v-563d6e59="">
+            {% for bcp in data.bcp[0].ports %}
+            <div class="govuk-radios__item" data-v-563d6e59="" data-content="{{bcp.TradingName}}">
+              <input id="goods-certified-as-{{loop.index}}" type="radio" name="BCPPost" class="govuk-radios__input" value="{{loop.index -1}}">
+              <label class="govuk-label govuk-radios__label" for="bcp-{{loop.index}}">{{bcp.name}}<br>{{bcp.address}}</label>
+            </div>
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+      <details class="govuk-details" data-module="govuk-details" data-v-ddeb2dc4="" ><summary class="govuk-details__summary" data-v-ddeb2dc4=""><span class="govuk-details__summary-text" data-v-ddeb2dc4=""> Help with categories of animal goods specs </span></summary><div class="govuk-details__text" data-v-ddeb2dc4=""><ul class="govuk-list govuk-list--bullet" data-v-ddeb2dc4=""><li data-v-ddeb2dc4="">POA-HC-T(FR)(2) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. Frozen products. Packed products only.</li><li data-v-ddeb2dc4="">POA-NHC-T(FR)(2) : Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. Frozen products. Packed products only.</li><li data-v-ddeb2dc4="">PNAO : Products of non-animal origin.</li><li data-v-ddeb2dc4="">HC (Food) : Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014.</li><li data-v-ddeb2dc4="">NHC (other) : Products of non-animal origin, which are neither food nor feed.</li></ul></div></details>
+      <div class="govuk-button-group">
+
+        <!-- to update state  -->
+        <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">
+        <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+        <a href="./responsible-for-load" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $("#search-goods-certified-as").on("input", function() {
+      var count = 0
+      $("#showing-count").parent().hide()
+      let q = $(this).val().toLowerCase()
+      if ($(this).val().length > 0) {
+        $("#showing-count").parent().show()
+        $(".govuk-radios__item").hide()
+        $(".govuk-radios__item").filter(function() {
+
+          var r = $(this).attr("data-content").toLowerCase()
+          console.log("looking at " + r)
+          console.log(r.toString().indexOf(q))
+          if (r.toString().indexOf(q) >= 0) {
+            console.log("showing this result")
+            count += 1
+            return $(this);
+
+          }
+
+        }).show();
+      } else {
+        $(".govuk-radios__item").show()
+        count = 22
+      }
+      if (count != 22) {
+        var t = "matches"
+        if (count == 1) {
+          t = "match"
+        }
+        $("#showing-count").html("Found " + count + " " + t + " with <strong>&quot" + q + "&quot</strong>")
+        $("#clear-all").show()
+      } else {
+        $("#clear-all").hide()
+        $("#showing-count").html("Showing all 22 goods certifications")
+      }
+
+    })
+  })
+</script>
+{% endblock%}

@@ -153,6 +153,12 @@ module.exports = function(router) {
     
   })
 
+   router.post('/' + base_url + 'global-certificate/*/container-seal-numbers-2', function(req, res) {
+    req.session.data.containerSealNumbers.push(req.body)
+    res.redirect(301, '/' + base_url + 'global-certificate/'+req.params[0]+'/container-seal-numbers-list');
+    
+  })
+
 
 
 

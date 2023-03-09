@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-width">
+      <h1 class="govuk-heading-xl">Certification</h1>
+        <div class="" style="border:1px solid #b1b4b6; background-color:#f3f2f1;padding:20px;max-height:600px;overflow-x: scroll;margin-bottom:40px">
+          <p>
+          II. Health information</p> 
+          <section class="attestation-section">
+            <p>II.a. Certificate reference number</p> <p>II.b.
+This certificate must only be used for the entry into Northern Ireland from Great Britain of consignments to be delivered directly to retailers in
+Northern Ireland for the subsequent sale by them in Northern Ireland, of fresh meat obtained from meat imported into the United Kingdom from the
+European Union, minced meat and meat preparations that comply with the rules laid down in Commission Delegated Regulation (EU) 2022/…
+[SANTE/2021/11272], and that are prepacked, ready-to-sell and labelled for the end-consumer in Northern Ireland.</p>
+The fresh meat/minced meat/ meat preparations(1
+) contain(s) the following meat constituents and meet the criteria indicated
+below:
+Species (A) Origin (B)
+(A) Insert the code for the relevant species of meat contained in the meat preparations where BOV = domestic bovine animals (including Bison
+and Bubalus species and their crossbreds); OVI = domestic sheep (Ovis aries) and goats (Capra hircus); EQU = domestic solipeds (Equus
+caballus, Equus asinus and their crossbreds); POR = domestic animals belonging to the Suidae, Tayassuidae, or Tapiridae families; RAB =
+domestic rabbits; PFG = domestic poultry and farmed feathered game; RUF = farmed non-domestic animals of the order Artiodactyla
+(excluding bovine animals (including Bison and Bubalus species and their cross-breeds), Ovis aries, Capra hircus, Suidae and Tayassuidae),
+and of the families Rhinocerotidae and Elephantidae; RUW = wild non-domestic animals of the order Artiodactyla (excluding bovine animals
+(including Bison and Bubalus species and their cross-breeds), Ovis aries, Capra hircus, Suidae and Tayassuidae), and of the families
+Rhinocerotidae and Elephantidae; EQW = wild non-domestic solipeds belonging to the subgenus Hippotigris (Zebra), WLP = wild
+lagomorphs; WGB = wild game birds.
+(B) Insert the ISO code of the country of origin and, in the case of regionalisation by European Union legislation for the relevant meat
+constituents, the region.
+II.1. Health attestation
+I, the undersigned, take full responsibility in certifying that the fresh meat/minced meat/meat preparation(s)(1)
+ and their meat constituents described
+above
+(1) [originate in Great Britain and consist of meat derived from the species referred to in Part I, box reference I.27, that is eligible for entry
+into the European Union as fresh meat and complies with the relevant animal health and public health conditions laid down in:
+- Commission Delegated Regulation (EU) 2020/692;
+- Regulations (EC) Nos 178/2002, 852/2004, 853/2004, 2073/2005 and (EU) 2017/625 of the European Parliament and of the
+Council, and any Commission Delegated and Implementing Regulations adopted pursuant to them;
+- if derived from ruminants, Regulation (EC) No 999/2001 of the European Parliament and of the Council
+- if derived from porcine animals, solipeds and other species susceptible to Trichinella infection, Commission Implementing
+Regulation (EC) No 2015/1375,]
+ and/or (1) [come from the European Union’s Sanitary and Phytosanitary area (which includes EEA/EFTA states and Northern Ireland) (2)
+1
+[II.2. Animal welfare attestation
+I, the undersigned official veterinarian, hereby certify, that the minced meat/meat preparations (1
+) described in Part I of this certificate are derived
+from meat from animals which have been treated in the slaughterhouse before and at the time of slaughter or killing in accordance with the relevant
+rules laid down in European Union legislation and have met requirements at least equivalent to those laid down in Chapters II and III of Council
+Regulation (EC) No 1099/2009. ]⯇
+13
+Place of origin: GREAT BRITAIN MM/MP Retail NI
+II. Health information II.a. Certificate reference no II.b.
+Notes
+Part I:
+— Box reference I.1: Indicate the name and identification number of the listed establishment
+— Box reference I.5: Indicate the name and identification number of the listed [] establishment
+— Box reference I.24: Indicate total gross weight and total net weight.
+— Box reference 1.18: Frozen corresponds to an internal temperature of not more than — 18°C.
+— Box reference 1.19: For containers or boxes, the container number and the seal number (if applicable) must be included.
+— Box reference 1.27: "Species": select among species described in Part II (A);
+“Treatment type”: storage life (dd/mm/yyyy);
+“Cold store”: give the address(es) and approval number(s) of approved cold stores if necessary.
+Part II:
+(1) Keep as appropriate.
+— The colour of the stamp and signature must be different from that of the other particulars in the certificate.
+— Note for the importer: This certificate is only for veterinary purposes and must accompany the consignment until it reaches the border control
+post of entry into Northern Ireland.
+</section>
+</p>
+        </div>
+
+        <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    You goods might be stopped at the border if you fail to meet the conditions
+  </strong>
+</div>
+<form class="" action="../task-list" method="post">
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          I agree to the above certification
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  </div>
+  <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="completed">
+  <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -41,6 +41,7 @@ module.exports = {
   "accounts_long": accounts_long,
   "currentCertID": 0,
   "addressBook": [],
+  "containerSealNumbers": [],
   "globalCertificate": globalCertificate,
   "bcp": bcp,
   "establishments" : establishments,
