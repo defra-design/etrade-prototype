@@ -167,7 +167,9 @@ module.exports = function(router) {
     if(req.query.change == "yes"){
         res.redirect(301, '/' + base_url + 'check-your-answers');
     }else{
-        res.redirect(301, '/' + base_url + 'transport/arrival');
+
+        // res.redirect(301, '/' + base_url + 'transport/arrival');
+        res.redirect(301, '/' + base_url + 'task-list');
     }
   })
   router.post('/' + base_url + "transport/arrival", function(req, res) {
@@ -238,5 +240,44 @@ module.exports = function(router) {
   
   })
 
+  router.post('/' + base_url + 'destination', function(req, res) {
+    console.log(req.body.country+'.')
+    console.log("This is being triggered in stories routes.js")
+    if(req.body.country == "Spain"){
+      res.redirect(301, '/' + base_url + 'cannot-use-service?country='+req.body.country);
+    }else if(req.body.country == "China" || req.body.country == "Austrailia"){
+      res.redirect(301, '/' + base_url + 'create-reference');
+    }else{
+      res.redirect(301, '/' + base_url + 're-entry');
+    }
+    
+  })
+
+  router.post('/' + base_url + "transport/added-transport", function(req, res) {
+    console.log("In transport/arrival-and-departure");
+    if (req.body['skip-question'] == 'yes') {
+      req.session.data.transport['transportMethod'] = "skipped";
+    }else if (req.body.addAnotherTransport != "no"){
+       res.redirect(301, '/' + base_url + 'transport/select-transport');
+    }
+
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
+  })
+  router.post('/' + base_url + "transport/conditions", function(req, res) {
+    console.log("In transport/conditions");
+    if (req.body['skip-question'] == 'yes') {
+      req.session.data.transport['transportConditions'] = "skipped";
+    }
+
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
+  })
 
 }

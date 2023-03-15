@@ -27,12 +27,13 @@ Place of origin – GOV.UK Prototype Kit
 
 <form class="" method="post" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"> Description of the goods </span>
+        <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">Country and region of origin</h1>
         <h2 class="govuk-heading-l"></h2>
         {% block countryOfOrigin %}{% include "../find/_country-of-origin-select.html" %}{% endblock %}
         <div class="govuk-form-group">
           <label class="govuk-label" for="region-of-origin"> Region of origin (optional)</label>
+          <p class="govuk-hint">This is the official region code. For example, GB-1 <br></p>
           <input class="govuk-input govuk-input--width-10" id="region-of-origin" name="regionOfOrigin" type="text" value="{{ data.transport['region-of-origin']}}">
         </div>
       <button class="govuk-button"> Save and continue </button></div>

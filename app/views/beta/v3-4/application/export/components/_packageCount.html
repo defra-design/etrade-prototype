@@ -1,4 +1,9 @@
+{#
+"commenting out multiple for testing. Split the number of packages and type of packaging. Remember to uncomment out the bottom endif statement"
+
 {% if field.multiple =="yes" %}
+
+
 <div class="govuk-form-group app-repeadable-holder" id="repeatable-packages-holder">
   <label class="govuk-label" for="packageCount-units">Number of packages
 </label>
@@ -70,12 +75,20 @@
 
 {% else %}
 
+"End of comment out"
+#}
 <div class="govuk-form-group">
-  <label class="govuk-label" for="packageCount-4-10410-31010000">Package count
+  <label class="govuk-label" for="packageCount-4-10410-31010000">Number of packaging
   </label>
-  <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8=""><input class="govuk-input js-question" type="number" data-type="quantity" name="packageCount" step="1" min="0" max="9999999" id="packageCount-4-10410-31010000"
+
+
+  <input class="govuk-input js-question govuk-!-width-one-third" type="number" data-type="quantity" name="packageCount" step="1" min="0" max="9999999" id="packageCount-4-10410-31010000"
       data-v-4e8f37a8="" data-mask="########" data-mask-inited="true" data-mask-raw-value="" {% if (data.change or data.copy) and identification.packageCount %}value="{{identification.packageCount}}" {% endif %}>
-    <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8="">
+  </div>
+  <div class="govuk-form-group">
+      <label class="govuk-label" for="packageCount-4-10410-31010000">Type of packaging
+  </label>
+  <p class="govuk-hint" id="packageCount-units-hint">This is usually the outer packaging you use to ship the consignment. For example, Pallet or box.</p>
       <select class="govuk-select" id="packageCount-4-10410-31010000-units" data-v-4e8f37a8="" name="packageCount_UNIT">
         <option disabled="" value="" data-v-4e8f37a8="" selected>Select a unit</option>
         <option value="Bag" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'bag'%}selected{% endif %}>Bag</option>
@@ -119,7 +132,7 @@
         <option value="Tube" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'tube'%}selected{% endif %}>Tube</option>
         <option value="Vial" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'vial'%}selected{% endif %}>Vial</option>
       </select>
-    </div>
+
   </div>
 </div>
-{% endif %}
+{# {% endif %} #}

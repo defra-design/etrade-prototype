@@ -192,6 +192,26 @@
 			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
 		}]
 
+	},
+	{
+		"destination": "Germany",
+		"ICO": "DE",
+		"ports": [{
+			"status": "inactive",
+			"name": "Berlin Brandenburg Flughafen",
+			"id": "DEBER4F",
+			"country": "Spain",
+			"address": "Air Cargo Center, Georg-Wulf-Straße 1, Schönefeld, 12529",
+			"categories": []
+		}, {
+			"status": "inactive",
+			"name": "Berlin Brandenburg Flughafen",
+			"country": "Spain",
+			"id": "DEBER4L",
+			"address": "Air Cargo Center, Georg-Wulf-Straße 1, Schönefeld, 12529",
+			"categories": []
+		}]
+
 	}
 
 ]

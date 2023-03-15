@@ -9,9 +9,9 @@ Container and seal numbers – GOV.UK Prototype Kit
 {% endblock%}
 {% block content %}
 <form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
-  <section id="intro" data-v-6265f2ae="">
     <div class="govuk-grid-row" data-v-6265f2ae="">
-      <div class="govuk-grid-column-two-thirds" data-v-6265f2ae=""><span class="govuk-caption-xl"> Description of the goods </span>
+      <div class="govuk-grid-column-two-thirds">
+
         <h1 class="govuk-heading-xl">Container and seal numbers (optional)</h1>
         <p class="govuk-body" data-v-6265f2ae=""> Provide the container and seal numbers for your export.<br data-v-6265f2ae=""> You may click <a class="govuk-link" href="#add-a-new-table-row" data-v-6265f2ae="">"Add a new row"</a> to provide
           multiples. You can provide either a container number or seal number, or both. </p>
@@ -29,12 +29,10 @@ Container and seal numbers – GOV.UK Prototype Kit
           <li data-v-6265f2ae="">The serial number: six Arabic numerals, left at owner‘s or operator‘s option.</li>
           <li data-v-6265f2ae="">The check digit: one Arabic numeral providing a means of validating the recording and transmission accuracies of the owner code and serial number.</li>
         </ul>
-      </div>
-    </div>
-  </section>
-  <section id="container-seal" data-v-6265f2ae="">
-    <div class="govuk-grid-row" data-v-6265f2ae="">
-      <div class="govuk-grid-column-two-thirds" data-v-6265f2ae="">
+   
+
+  <section id="container-seal">
+
         <table class="govuk-table" data-v-6265f2ae="">
           <caption class="govuk-table__caption govuk-table__caption--m" data-v-6265f2ae="">Container and seal numbers</caption>
           <thead class="govuk-table__head" data-v-6265f2ae="">
@@ -91,15 +89,15 @@ Container and seal numbers – GOV.UK Prototype Kit
             </tr>
           </tfoot>
         </table>
+        </section>
         <span class="count govuk-visually-hidden">{{count}}</span>
+
+        <button class="govuk-button" data-v-6265f2ae=""> Save and continue </button>
+
       </div>
     </div>
-  </section>
-  <section id="actions" data-v-6265f2ae="">
-    <div class="govuk-grid-row" data-v-6265f2ae="">
-      <div class="govuk-grid-column-two-thirds" data-v-6265f2ae=""><button class="govuk-button" data-v-6265f2ae=""> Save and continue </button></div>
-    </div>
-  </section>
+
+  
 </form>
 <!-- this is the base html to copy, it is not visuable and only used in this prototype -->
 

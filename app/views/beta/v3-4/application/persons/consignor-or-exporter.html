@@ -30,42 +30,17 @@ Consignor or exporter – GOV.UK Prototype Kit
 
   </div>
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
-    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+    <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Consignor or exporter </h1>
-      <p class="govuk-body">This is the natural or legal person dispatching the consignment. The consignor selected must be located in Great Britain.</p>
-      {% set searchLabel = "Consignor or exporter"%}
-      {% set returnURL = "../persons/consgnor-or-exporter"%}
       <div class="govuk-form-group">
 
-        {% if data.person['consignor'] and query.deleted!="yes" %}
-          {% set establishmentIndex = data.person['consignor'] %}
-          {% set org = data.establishments[establishmentIndex] %}
-          {% set establishmentActivityIndex = data.person['consignorActivity'] %}
-          {% set establishmentActivity = org.All_Activities[data.person['consignorActivity']] %}
-          {% set showOperatorActivity = false %}
-
-        
 
           <!-- set fields for check your answers -->
-          <input type="hidden" name="consignorName"  value="{{org.TradingName}}">
-          <input type="hidden" name="consignorTown"  value="{{org.Town}}">
-          <input type="hidden" name="consignorPostcode"  value="{{org.Postcode}}">
+          <input type="hidden" name="consignorName"  value="Test company name">
+          <input type="hidden" name="consignorTown"  value="London">
+          <input type="hidden" name="consignorPostcode"  value="SW6 5HM">
+       <p>This is a prototype. Please click continue as if you had filled in the details.</p>
           
-
-          {% set removeLink = "./remove?who=consignor&redirect=consignor-or-exporter" %}
-          {% set changeLink = "./consignor/activity?establishmentIndex=" + establishmentIndex + "&establishmentApprovalIndex=" + establishmentActivityIndex %}
-          {% block traderAddress %}{% include "./trader-address.html" %}{% endblock %}
-
-        {% else %}
-          {% set link = './consignor/find'%}
-          {% if data.addressBook | length > 0 %}
-          {% set link = './consignor/saved'%}
-          {% endif %}
-          <p class="govuk-!-margin-bottom-10 find-establishment-link">
-            <a href="{{link}}" class="govuk-link govuk-link--no-visited-state">Select a consignor or exporter</a>
-          </p>
-        {% endif %}
-
       </div>
 
 

@@ -190,7 +190,7 @@ Manage commodity data – GOV.UK Prototype Kit
                                         <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
                                     </p>
                                     {% endif %}
-                                    <div class="govuk-checkboxes__item" id="skip-question-checkbox">
+                                    <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
                                         <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %} {% if query.hasError %} aria-describedby="skipError" {% endif     %}>
                                         <label class="govuk-label govuk-checkboxes__label" for="skip-question">
                                             I've entered as much information as I can

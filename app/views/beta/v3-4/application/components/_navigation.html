@@ -1,0 +1,32 @@
+<nav id="app-navigation" class="app-navigation js-app-navigation govuk-clearfix app-navigation--active app-navigation--small app-navigation--no-background" role="navigation" aria-labelledby="app-navigation-heading">
+  <h2 class="govuk-visually-hidden" id="app-navigation-heading">Menu</h2>
+  <ul class="app-navigation__list app-width-container">
+    <li class="app-navigation__list-item ">
+      {% set user = data.unifiedTestinigUser %}
+      {% if data.unifiedTestinigUser == "default" %}
+        {% set user = "Anavir trading LTD" %}
+      {% endif %}
+      <span class="govuk-visually-hidden">Organisation: </span>{{user | capitalize or "Anavir"}} &nbsp;
+      {% if data.typeAccount != "single"%}
+        <!-- <span class="govuk-hint">({{role or "exporter"}})</span> -->
+        <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-navigation__link js-app-navigation__link"
+        href="accounts?currentAccount=0">Change organisation</a>
+      {% endif %}
+    </li>
+    <li class="app-navigation__list-item " style="float:right;">
+      <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-navigation__link js-app-navigation__link" href="#">
+        Sign out
+      </a>
+    </li>
+    <li class="app-navigation__list-item " style="float:right;">
+      <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-navigation__link js-app-navigation__link" href="settings">
+        Settings
+      </a>
+    </li>
+    <li class="app-navigation__list-item " style="float:right;">
+      <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-navigation__link js-app-navigation__link" href="/get-started/">
+        Home
+      </a>
+    </li>
+  </ul>
+</nav>

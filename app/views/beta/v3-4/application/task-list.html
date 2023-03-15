@@ -14,14 +14,15 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
 </div>
 <div class="govuk-grid-row" data-v-60e97bb5="" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-two-thirds" data-v-60e97bb5=""><span class="govuk-caption-xl"></span>
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Apply for an export health certificate</h1>
-    <!---->
-    <!-- <h2 class="govuk-heading-m ">Application reference: {{data.reference or "XI2934BUL3"}}</h2> -->
+     {% set certID = data.certificate or 0 %}
+{% set cert = data.certificates[certID]%}
 
-    <!-- <p><a href="create-reference-2">Change the application reference</a></p> -->
-    <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-8" data-v-60e97bb5="">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Apply for an export health certificate: {{ cert.number}}</h1>
+    
+    <dl class="govuk-summary-list govuk-summary-list--wide govuk-summary-list--no-border govuk-!-margin-bottom-8" data-v-60e97bb5="">
+     
       <div class="govuk-summary-list__row" id="manage-commodities" data-v-0a0d5507="">
-        <dt class="govuk-summary-list__key" data-v-0a0d5507="">
+        <dt class="govuk-summary-list__key" data-v-0a0d5507="" style="width:40%">
           Application reference
         <dt class="govuk-summary-list__value" data-v-0a0d5507="">
           {{data.UserReference or "XI2934BUL3"}}
@@ -30,13 +31,14 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           <a href="create-reference?change=yes">Change</a>
         </dd>
       </div>
+      
     </dl>
     <p>You have completed 3 of 14 sections.</p>
     <a href="#goods-certified-as" class="govuk-skip-link govuk-!-bottom-4 " data-module="govuk-skip-link">Skip next task to complete</a>
     <ol class="app-task-list">
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">1. </span> Description of the goods
+          <span class="app-task-list__section-number">1. </span> What's in your consignment
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
@@ -52,11 +54,15 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
                   {% endfor%}
                 {% endfor%}
               {% endfor%}
-               <a aria-describedby="manage-commodities-status" href="./export/added-commodities-list" class="govuk-link">Commodities</a>
+               <a aria-describedby="manage-commodities-status" href="./export/select-commodities" class="govuk-link">Commodities</a>
               <span class="app-task-list__task-name">
              
             </span>
-              <strong class="govuk-tag app-task-list__tag " id="manage-commodities-status">{{commodityCount}} {% if commodityCount == 1 %}record{% else %}records{%endif%} added</strong><br>
+              {% if commodityCount == 0 %}
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey " id="manage-commodities-status">Not started</strong>
+              {% else %}<strong class="govuk-tag app-task-list__tag " id="manage-commodities-status">Completed</strong>
+              {% endif %}
+
 
 
            
@@ -100,99 +106,21 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
             {% endif %}
           </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="./goods/goods-certified-as?change=no" aria-describedby="goods-certified-status">
-                Goods certified as
-              </a>
-            </span>
-            {% if data["goods_certified_as"] %}
-            <strong class="govuk-tag app-task-list__tag" id="goods-certified-status">Completed</strong>
-            {% else %}
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="goods-certified-status">Not started</strong>
-            {% endif %}
-          </li>
-
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="./goods/purpose-of-export?change=no" aria-describedby="purpose-of-export-status">
-                Purpose of export
-              </a>
-            </span>
-            {% if data.Purpose %}
-            <strong class="govuk-tag app-task-list__tag" id="purpose-of-export-status">Completed</strong>
-            {% else %}
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="purpose-of-export-status">Not started</strong>
-            {% endif %}
-          </li>
-
         </ul>
       </li>
-
       <li>
-        <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">2. </span> Additional documents (optional)
+      <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">2. </span> Certification of the consignment
         </h2>
-        <p class="app-task-list_help-text">Upload packing lists, schedules and other supporting documents to attach to your application.</p>
-        <ul class="app-task-list__items">
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="./attachments/added-documents?change=no" aria-describedby="accompanying-documents-status">
-                Accompanying documents
-              </a>
-            </span>
-            {% if (data.additionalDocuments | length) > 0 %}
-
-            <strong class="govuk-tag app-task-list__tag" id="accompanying-documents-status">{{data.additionalDocuments | length}} uploaded</strong>
-            {% else %}
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="accompanying-documents-status">0 uploaded</strong>
-            {% endif %}
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">3. </span> Persons involved
-        </h2>
-        <ul class="app-task-list__items">
-          <li class="app-task-list__item">
-
-            {% if data.consignorName %}
-            <span class="app-task-list__task-name">
-              <a href="./persons/consignor-or-exporter?change=no" aria-describedby="consignor-or-exporter-status">
-                Consignor or Exporter
-              </a>
-            </span>
-            <strong class="govuk-tag app-task-list__tag" id="consignor-or-exporter-status">Completed</strong>
-            {% else %}
-            <span class="app-task-list__task-name">
-              <a href="./persons/consignor-or-exporter?change=no&deleted=yes&who=consignor" aria-describedby="consignor-or-exporter-status">
-                Consignor or Exporter
-              </a>
-            </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="consignor-or-exporter-status">Not started</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="./persons/consignee-or-importer?change=no" aria-describedby="consignee-or-importer-status">
-                Consignee or Importer
-              </a>
-            </span>
-            {% if data.person.consignee %}
-            <strong class="govuk-tag app-task-list__tag" id="consignor-or-exporter-status">Completed</strong>
-            {% else %}
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="consignee-or-importer-status">Not started</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
+      <ul class="app-task-list__items">
+          
+           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./persons/certifier?change=no" aria-describedby="certifier-status">
                 Certifier
               </a>
             </span>
-            {% if data.person.certifier %}
+            {% if data.person.certifier or data.certifierName %}
             <strong class="govuk-tag app-task-list__tag" id="certifier-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="certifier-status">Not started</strong>
@@ -212,16 +140,86 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./persons/load?change=no" aria-describedby="arrival-and-departure-status">
-                Responsible for load
+              <a href="./goods/goods-certified-as?change=no" aria-describedby="goods-certified-status">
+                Your consignment certified as
               </a>
             </span>
-            {% if data.person.load %}
-            <strong class="govuk-tag app-task-list__tag" id="arrival-and-departure-status">Completed</strong>
+            {% if data["goods_certified_as"] %}
+            <strong class="govuk-tag app-task-list__tag" id="goods-certified-status">Completed</strong>
             {% else %}
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id=" arrival-and-departure-status">Not started</strong>
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="goods-certified-status">Not started</strong>
             {% endif %}
           </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./goods/purpose-of-export?change=no" aria-describedby="purpose-of-export-status">
+                Purpose of export
+              </a>
+            </span>
+            {% if data.Purpose %}
+            <strong class="govuk-tag app-task-list__tag" id="purpose-of-export-status">Completed</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="purpose-of-export-status">Not started</strong>
+            {% endif %}
+          </li>
+         
+        </ul>
+      </li>
+
+
+      
+
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">3. </span> Sending the consignment
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+
+            {% if data.consignorName %}
+            <span class="app-task-list__task-name">
+              <a href="./persons/consignor-or-exporter?change=no" aria-describedby="consignor-or-exporter-status">
+                 Exporter or consignor
+              </a>
+            </span>
+
+            <strong class="govuk-tag app-task-list__tag" id="consignor-or-exporter-status">Completed</strong>
+            {% else %}
+            <span class="app-task-list__task-name">
+              <a href="./persons/consignor-or-exporter?change=no&deleted=yes&who=consignor" aria-describedby="consignor-or-exporter-status">
+                Consignor or Exporter
+              </a>
+            </span>
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="consignor-or-exporter-status">Not started</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./transport/load-and-dispatch?change=no" aria-describedby="place-of-origin-status">
+                Dispatch and loading locations
+              </a>
+            </span>
+             {% if data.transport['load-and-dispatch'] == 'skipped' or (data.placeOfDispatchName or data.placeOfLoadingName) %}
+              <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
+            {% elseif data.transport.dispatch or data.transport.loading or data.transport.country or data.transport['region-of-origin'] or data.transport['sub-region-of-origin'] %}
+              <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="place-of-origin-status">In Progress</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./transport/arrival-and-departure" aria-describedby="arrival-and-departure-status">
+                Date of departure
+              </a>
+            </span>
+            {% if data.transport['departure'] == 'skipped' or data.departure %}
+            <strong class="govuk-tag  app-task-list__tag" id="arrival-and-departure-status">Completed</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="arrival-and-departure-status">Not started</strong>
+            {% endif %}
+          </li>
+          
         </ul>
       </li>
       <li>
@@ -243,21 +241,42 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             {% endif %}
           </li>
           
+          
+         
+            
+          
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./transport/load-and-dispatch?change=no" aria-describedby="place-of-origin-status">
-                Dispatch and loading locations
+              <a href="./transport/added-transport" aria-describedby="means-of-transport-status">
+                Means of transport
               </a>
             </span>
-             {% if data.transport['load-and-dispatch'] == 'skipped' or (data.placeOfDispatchName and placeOfLoadingName) %}
-              <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
-            {% elseif data.transport.dispatch or data.transport.loading or data.transport.country or data.transport['region-of-origin'] or data.transport['sub-region-of-origin'] %}
-              <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="place-of-origin-status">In Progress</strong>
+            {% if (data.transportList | length) > 0 or data.transport['transportMethod']%}
+              <strong class="govuk-tag app-task-list__tag" id="arrival-and-departure-status">Completed</strong>
             {% else %}
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="means-of-transport-status">Not started</strong>
             {% endif %}
           </li>
           <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./transport/conditions" aria-describedby="conditions-status">
+                Transport conditions
+              </a>
+            </span>
+            {% if data.trasnportConditions or data.transport['transportConditions']%}
+            <strong class="govuk-tag app-task-list__tag" id="conditions-status">Completed</strong>
+            {% else%}
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="border-control-post-status">Not started</strong>
+            {% endif %}
+          </li>
+           </ul>
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">5. </span> When the consignment arrives
+        </h2>
+        <ul class="app-task-list__items">
+           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./transport/border-control-post?change=no" aria-describedby="border-control-post-status">
                 Entry border control post
@@ -271,13 +290,13 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
 
 
           </li>
-            <li class="app-task-list__item">
+          <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./transport/arrival-and-departure" aria-describedby="arrival-and-departure-status">
-                Departure and arrival
+              <a href="./transport/arrival" aria-describedby="arrival-and-departure-status">
+                Date of arrival
               </a>
             </span>
-            {% if data.transport['departure'] == 'skipped' and data.transport['arrival'] %}
+            {% if data.transport['arrival'] == 'skipped' or data.arrival %}
             <strong class="govuk-tag  app-task-list__tag" id="arrival-and-departure-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="arrival-and-departure-status">Not started</strong>
@@ -285,26 +304,36 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./transport/means-of-transport?change=no" aria-describedby="means-of-transport-status">
-                Means of transport
+              <a href="./persons/consignee-or-importer?change=no" aria-describedby="consignee-or-importer-status">
+                Importer or consignee
               </a>
             </span>
-            {% if data.transport['means-of-transport'] == 'skipped' %}
-              <strong class="govuk-tag app-task-list__tag " id="place-of-origin-status">Completed</strong>
+            {% if data.person.consignee or data.consigneeName %}
+            <strong class="govuk-tag app-task-list__tag" id="consignor-or-exporter-status">Completed</strong>
             {% else %}
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="consignee-or-importer-status">Not started</strong>
             {% endif %}
-
-
           </li>
-
+          
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./persons/load?change=no" aria-describedby="arrival-and-departure-status">
+                Responsible for load
+              </a>
+            </span>
+            {% if data.person.load or data.loadName %}
+            <strong class="govuk-tag app-task-list__tag" id="arrival-and-departure-status">Completed</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id=" arrival-and-departure-status">Not started</strong>
+            {% endif %}
+          </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./transport/place-of-destination?change=no" aria-describedby="place-of-destination-status">
                 Place of destination
               </a>
             </span>
-            {% if data.transport.destination %}
+            {% if data.transport.destination or data.placeOfDestinationName%}
               <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
@@ -315,7 +344,28 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
       </li>
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">5. </span>Submit to certifier
+          <span class="app-task-list__section-number">6. </span> Additional documents (optional)
+        </h2>
+        <p class="app-task-list_help-text">Upload packing lists, schedules and other supporting documents to attach to your application.</p>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./attachments/added-documents?change=no" aria-describedby="accompanying-documents-status">
+                Accompanying documents
+              </a>
+            </span>
+            {% if (data.additionalDocuments | length) > 0 %}
+
+            <strong class="govuk-tag app-task-list__tag" id="accompanying-documents-status">{{data.additionalDocuments | length}} uploaded</strong>
+            {% else %}
+            <strong class="govuk-tag app-task-list__tag" id="accompanying-documents-status">None uploaded</strong>
+            {% endif %}
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">7. </span>Submit to certifier
         </h2>
         <p class="app-task-list_help-text">Once you've entered all the information you can, you can review your answers and submit the application to your certifier.</p>
         <ul class="app-task-list__items">

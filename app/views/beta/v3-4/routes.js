@@ -43,7 +43,7 @@ module.exports = function(router) {
       res.redirect(301, '/' + base_url + 'application/export/cdu-interstitial');
     }
     */
-    res.redirect(301, '/' + base_url + 'application/export/select-commodities');
+    res.redirect(301, '/' + base_url + 'application/task-list');
 
   })
 
@@ -382,6 +382,25 @@ module.exports = function(router) {
     }
 
 
+  })
+
+    router.post('/' + base_url + 'application/transport/transport-details', function(req, res) {
+    if(req.query.change){
+      req.session.data.transportList[req.query.id] = req.body
+    }else{
+        req.session.data.transportList.push(req.body);
+    }
+
+      res.redirect(301, '/' + base_url + 'application/transport/added-transport');
+  })
+
+  router.post('/' + base_url + 'application/transport/transport-method-remove', function(req, res) {
+    if(req.body.remove_document == "yes"){
+      req.session.data.transportList.splice(req.query.id,1);
+        res.redirect(301, '/' + base_url + 'application/transport/added-transport?removed=yes');
+    }else{
+      res.redirect(301, '/' + base_url + 'application/transport/added-transport');
+    }
   })
 
 

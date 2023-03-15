@@ -31,23 +31,10 @@ Place of destination – GOV.UK Prototype Kit
       <!--<span class="govuk-caption-xl"> Transport </span>-->
       <h1 class="govuk-heading-xl"> Find a place of destination </h1>
 
-      <p class="govuk-body">This is where the commodities are sent for final unloading.</p>
-
-      {% if data.transport['destination'] %}
-        {% set establishmentIndex = data.transport['destination'] %}
-        {% set org = data.establishments[establishmentIndex] %}
-
-        {% set removeLink = "./remove?who=destination&redirect=place-of-destination" %}
-
-        <input type="hidden" name="placeOfDestinationName" value="{{org.TradingName}}" >
-        <input type="hidden" name="placeOfDestinationTown" value="{{org.Town}}" >
-        <input type="hidden" name="placeOfDestinationPostcode" value="{{org.Postcode}}" >
-        {% block traderAddress %}{% include "../persons/trader-address.html" %}{% endblock %}
-      {% else %}
-        <p class="govuk-!-margin-bottom-10 find-establishment-link">
-          <a href="./place-of-destination/find">Select a place of destination</a>
-        </p>
-      {% endif %}
+        <input type="hidden" name="placeOfDestinationName" value="Acme trading " >
+        <input type="hidden" name="placeOfDestinationTown" value="London" >
+        <input type="hidden" name="placeOfDestinationPostcode" value="SW6 FHE" >
+        <p>This is a prototype. Please click continue as if you had filled in the details.</p>
       <input type="hidden" name="change" value="yes">
       <button class="govuk-button">Continue</button>
     </div>

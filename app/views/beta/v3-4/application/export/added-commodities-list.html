@@ -330,6 +330,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
         <div class="govuk-grid-column-two-thirds">
 
           <form method="post" action="select-commodities">
+            {% if count > 0 %}
 
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
@@ -363,10 +364,16 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
 
               </fieldset>
             </div>
-
             <button class="govuk-button" data-module="govuk-button">
               Continue
             </button>
+            {% else %}
+            <button class="govuk-button" data-module="govuk-button">
+              Add commodities
+            </button>
+            {% endif %}
+
+            
           </form>
         </div>
       </div>
