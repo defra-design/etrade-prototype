@@ -58,16 +58,15 @@ Uploaded documents – {{serviceName}} – GOV.UK
       </div>
     </div>
     {% endif %}
-    <span class="govuk-caption-l">Accompanying documents</span>
 
       {% if (data.additionalDocuments | length) == 0  %}
 
       <h1 class="govuk-heading-xl">Add additional documents (optional)</h1>
-      <p>Attach any supporting documents to your application. For example:</p>
+      <p>Attach any documents that support your application – for example:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>Shipping schedule</li>
-        <li>Road consignment note</li>
-        <li>Sanitary Certificate</li>
+        <li>shipping schedules</li>
+        <li>road consignment notes</li>
+        <li>sanitary certificates.</li>
       </ul>
       {% else %}
       <h1 class="govuk-heading-xl">Added {{data.additionalDocuments | length }} documents</h1>

@@ -16,7 +16,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
   <div class="govuk-grid-column-two-thirds" data-v-60e97bb5=""><span class="govuk-caption-xl"></span>
      {% set certID = data.certificate or 0 %}
 {% set cert = data.certificates[certID]%}
-
+  
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Apply for an export health certificate: {{ cert.number}}</h1>
     
     <dl class="govuk-summary-list govuk-summary-list--wide govuk-summary-list--no-border govuk-!-margin-bottom-8" data-v-60e97bb5="">
@@ -38,7 +38,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
     <ol class="app-task-list">
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">1. </span> What's in your consignment
+          <span class="app-task-list__section-number">1. </span>What’s in your consignment
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
@@ -138,10 +138,13 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="region-of-certification-status">Not started</strong>
             {% endif %}
           </li>
+
+
+          {% if data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs | length > 1 or  not data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs%}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./goods/goods-certified-as?change=no" aria-describedby="goods-certified-status">
-                Your consignment certified as
+                Consignment certification type
               </a>
             </span>
             {% if data["goods_certified_as"] %}
@@ -150,10 +153,11 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="goods-certified-status">Not started</strong>
             {% endif %}
           </li>
+          {% endif %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./goods/purpose-of-export?change=no" aria-describedby="purpose-of-export-status">
-                Purpose of export
+                Type of consignment
               </a>
             </span>
             {% if data.Purpose %}
@@ -187,7 +191,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             {% else %}
             <span class="app-task-list__task-name">
               <a href="./persons/consignor-or-exporter?change=no&deleted=yes&who=consignor" aria-describedby="consignor-or-exporter-status">
-                Consignor or Exporter
+                Exporter or consignor
               </a>
             </span>
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="consignor-or-exporter-status">Not started</strong>
@@ -231,7 +235,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./goods/container-deal-number?change=no" aria-describedby="container-deal-number-status">
-                Container number/seal numbers (optional)
+                Container number or seal numbers (optional)
               </a>
             </span>
             {% if data.containerNumber %}
@@ -248,7 +252,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./transport/added-transport" aria-describedby="means-of-transport-status">
-                Means of transport
+                Transport methods
               </a>
             </span>
             {% if (data.transportList | length) > 0 or data.transport['transportMethod']%}
@@ -330,7 +334,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./transport/place-of-destination?change=no" aria-describedby="place-of-destination-status">
-                Place of destination
+                Destination
               </a>
             </span>
             {% if data.transport.destination or data.placeOfDestinationName%}
@@ -351,7 +355,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./attachments/added-documents?change=no" aria-describedby="accompanying-documents-status">
-                Accompanying documents
+                Additional documents
               </a>
             </span>
             {% if (data.additionalDocuments | length) > 0 %}

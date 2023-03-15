@@ -1,0 +1,29 @@
+{
+  "number": "EHC8368",
+  "title": "Fresh meat intended for human consumption, excluding mechanically separated meat, of domestic bovine animals to the European Union and Northern Ireland",
+  "natureOfCommodity": ["Carcass_side","Carcass_whole","Carcass_quarters","Cuts"],
+  "species":["Bos taurus","Bison bison","Bubalus bubalis"],
+  "treatmentType": ["Bone in","Deboned","Matured"],
+  "goodsCertifiedAs": ["Human consumption"],
+  "schema": [
+    { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+    { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
+    { "id": "coldStore", "title": "Cold store", "required" : "no", "type" : "search"},
+    { "id": "identificationMark", "title": "Identification mark", "required" : "yes", "type" : "text", "error" : "Identification mark is a required field", "multiple" : "no"},
+    { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count","multiple" : "no"},
+    { "id": "packageCount_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
+    { "id": "netWeight", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field", "multiple": "no"},
+    { "id": "netWeight_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+    { "id": "slaughterHouse", "title": "Slaughterhouse", "required" : "no", "type" : "search"},
+    { "id": "treatmentType", "title": "Treatment type", "required" : "yes", "type" : "text", "error" : "Select a valid treatment type from the list", "multiple" : "no"},
+    { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "dropdown" : "text", "error" : "Nature of commodity is a required field", "multiple" : "no"},
+    { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "text", "error" : "Batch number is required","multiple" : "yes"},
+    { "id": "finalConsumer", "title": "Final consumer", "required" : "yes", "type" : "radio", "error" : "Select a valid response for Final consumer from the list"},
+    { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+    { "id": "dateOfCollectionProduction", "title": "Date of production / collection", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of production / collection", "multiple" : "yes"},
+    { "id": "plantEstablishmentCentreActivity", "title": "Plant / establishment / centre activity", "required" : "yes", "type" : "search", "error" : "Plant / establishment / centre activity is a required field - please select a valid activity"},
+    { "id": "dateOfFreezing", "title": "Date of freezing", "required" : "no", "type": "excel_date", "multiple": "yes"},
+    { "id": "species", "title": "Species", "required" : "yes", "type" : "text", "error" : "Species name is invalid", "multiple": "no"}
+  ],
+  "commodities": [{"code":"020110","title":" Carcases and half-carcases"},{"code":"020120","title":" Other cuts with bone in"},{"code":"020130","title":" Boneless"},{"code":"020210","title":" Carcases and half-carcases"},{"code":"020220","title":" Other cuts with bone in"},{"code":"020230","title":" Boneless"},{"code":"04109000","title":" Other"},{"code":"02061095","title":" Thick skirt and thin skirt"},{"code":"02061098","title":" other than Thick skirt and thin skirt"},{"code":"05040000","title":" Guts, bladders and stomachs of animals (other than fish), whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"},{"code":"15021090","title":" for human consumption"},{"code":"15029090","title":" for human consumption"},{"code":"02062100","title":" Tongues"},{"code":"02062200","title":" Livers"},{"code":"02062910","title":" For the manufacture of pharmaceutical products"},{"code":"02062991","title":" Thick skirt and thin skirt"},{"code":"02062999","title":" other than Thick skirt and thin skirt,"}]  
+}

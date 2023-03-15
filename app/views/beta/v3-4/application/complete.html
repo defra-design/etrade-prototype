@@ -16,18 +16,16 @@ Application complete – GOV.UK Prototype Kit
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <p>Your application has been submitted to the certifier.</p>
       <h2 class="govuk-heading-m">What's next</h2>
-      <p class="govuk-body"> The certifier, <strong>{{data.certifier or "NewTestVets LTD"}}</strong> will now review your application. Some applications may also need to be reviewed by APHA.</p>
+
+      <p class="govuk-body"> The certifier, <strong>{{data.certifier or "NewTestVets LTD"}}</strong> will now review your application. </p>
       <p>
-        
-
-       <p class="govuk-body"> Once your application has been certified, the information about your consignment will be validated against the EU <abbr>TRACES</abbr> data requirements.</p> 
-
-       <p>We will email <strong>name@example.com</strong> when it is approved.
-       </p>
+       <p class="govuk-body"> OOnce your application has been certified, the information about your consignment will be validated against the EU <abbr>TRACES</abbr> data requirements. You will receive an email notification when it is approved.</p> 
        <!-- <h3 class="govuk-heading-s">After the application is approved</h3> -->
-       <p class="govuk-body">The organisation responsible for the consignment, <strong > Northern Catering Butchers Ltd</strong> must create a common health entry document <abbr>(CHED)</abbr> for your consignment before it reaches the destination country.
+       <p class="govuk-body">The organisation responsible for the consignment must create a common health entry document (CHED) before the goods leave the final loading location.
        </p>
+       <p>To learn about the changes to making an application to export animals or animal products, read about <a href="/stories/unified-dashboard/v2/how-to-paperless-certs?journey=copy">how paperless applications work.</a></p>
       <p>
  </p><a href="{{data.returnURL or '../dashboard'}}" class="govuk-button"> Return to your applications </a>
     </div>

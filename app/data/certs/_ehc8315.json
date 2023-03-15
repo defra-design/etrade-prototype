@@ -1,0 +1,22 @@
+{
+    "number": "EHC8315",
+    "manufacturingPlant": "yes",
+    "title": "Hydrolysed protein, dicalcium phosphate and tricalcium phosphate to, or transit through, the European Union and Northern Ireland",
+    "netWeight": "yes",
+    "natureOfCommodity": ["By-products / feedingstuff","By-products / technical","Dicalcium phosphate","Hydrolysed protein","Tricalcium phosphate"],
+    "species": ["Pisces miscellanea","Ruminantia","Aves","Crustacea","Mammalia excl Ruminantia/Suidae","Suidae","Mollusca","Invertebrata excl Mollusca/Crustacea","Corallium rubrum"],
+    "schema": [
+            { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
+      { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+      { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+      { "id": "manufacturingPlantActivity", "title": "Manufacturing plant activity", "required" : "yes", "type" : "string", "error" : "Manufacturing plant activity is a required field - please select a valid activity"},
+      { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+      { "id": "packageCount_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
+      { "id": "netWeight", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+      { "id": "netWeight_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+      { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "text", "error" : "Batch number is required", "multiple": "yes"},
+      { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "no", "dropdown" : "string", "error" : "Nature of commodity is a required field", "multiple": "yes"},
+      { "id": "species", "title": "Species", "required" : "yes", "type" : "text", "error" : "Species name is invalid"}
+    ],
+    "commodities": [{"code":"05080010","title":" Red coral (Corallium rubrum)"},{"code":"05080090","title":" Other"},{"code":"35040010","title":" Concentrated milk proteins specified in additional note 1 to this chapter"},{"code":"35040090","title":" Other"}]
+}

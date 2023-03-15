@@ -28,6 +28,7 @@
     { "id": "plantEstablishmentCentre", "title": "Plant / Establishment / Centre", "required" : "yes", "type" : "search", "error" : "Plant / Establishment / Centre is a required field - please enter a valid approval number"},
     { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"}
   ],
+  "goodsCertifiedAs":["Human consumption"],
   "commodities": [{
     "code": "020760",
     "title": " Of guinea fowls"

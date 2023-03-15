@@ -7,7 +7,6 @@
   "dateOfCollection": "multiple",
   "Slaughterhouse": "yes",
   "finalConsumerOption": "yes",
-  "finalConsumerOption": "yes",
   "packageCount": "multiple",
   "quantity": "multiple",
   "netWeight": "multiple",
@@ -71,24 +70,129 @@
     "Unplucked",
     "Unskinned"
   ],
-  "schema": [
-    { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
-    { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
-    { "id": "coldStore", "title": "Cold store", "required" : "no", "type" : "search"},
-    { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count","multiple" : "yes"},
-    { "id": "packageCount_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
-    { "id": "quantity", "title": "Quantity", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for quantity"},
-    { "id": "quantity_unit", "title": "Quantity unit", "required" : "yes", "type" : "string", "error" : "Select a quantity unit from the list"},
-    { "id": "netWeight", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field", "multiple": "yes"},
-    { "id": "netWeight_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
-    { "id": "slaughterHouse", "title": "Slaughterhouse", "required" : "no", "type" : "search"},
-    { "id": "treatmentType", "title": "Treatment type", "required" : "yes", "type" : "text", "error" : "Select a valid treatment type from the list", "multiple" : "yes"},
-    { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "dropdown" : "text", "error" : "Nature of commodity is a required field", "multiple" : "yes"},
-    { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "text", "error" : "Batch number is required","multiple" : "yes"},
-    { "id": "finalConsumer", "title": "Final consumer", "required" : "yes", "type" : "radio", "error" : "Select a valid response for Final consumer from the list"},
-    { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
-    { "id": "dateOfProduction", "title": "Date of production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of production", "multiple" : "yes"},
-    { "id": "dateOfCollection", "title": "Date of collection", "required" : "no", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of collection", "multiple" : "yes"}
+  "schema": [{
+      "id": "commodity_code",
+      "title": "Commodity code",
+      "required": "yes",
+      "type": "string",
+      "error": "Commodity code is a required field"
+    },
+    {
+      "id": "productDescription",
+      "title": "Description",
+      "required": "no",
+      "type": "text"
+    },
+    {
+      "id": "coldStore",
+      "title": "Cold store",
+      "required": "no",
+      "type": "search"
+    },
+    {
+      "id": "packageCount",
+      "title": "Package count",
+      "required": "yes",
+      "type": "decimal",
+      "error": "Enter a whole number for package count",
+      "multiple": "yes"
+    },
+    {
+      "id": "packageCount_UNIT",
+      "title": "Package count unit",
+      "required": "yes",
+      "type": "string",
+      "error": "Select a package unit from the list"
+    },
+    {
+      "id": "quantity",
+      "title": "Quantity",
+      "required": "yes",
+      "type": "decimal",
+      "error": "Enter a whole number for quantity"
+    },
+    {
+      "id": "quantity_unit",
+      "title": "Quantity unit",
+      "required": "yes",
+      "type": "string",
+      "error": "Select a quantity unit from the list"
+    },
+    {
+      "id": "netWeight",
+      "title": "Net weight",
+      "required": "yes",
+      "type": "decimal",
+      "error": "Net weight is a required field",
+      "multiple": "yes"
+    },
+    {
+      "id": "netWeight_UNIT",
+      "title": "Net weight unit",
+      "required": "yes",
+      "type": "string",
+      "error": "Select a net weight unit from the list"
+    },
+    {
+      "id": "slaughterHouse",
+      "title": "Slaughterhouse",
+      "required": "no",
+      "type": "search"
+    },
+    {
+      "id": "treatmentType",
+      "title": "Treatment type",
+      "required": "yes",
+      "type": "text",
+      "error": "Select a valid treatment type from the list",
+      "multiple": "yes"
+    },
+    {
+      "id": "natureOfCommodity",
+      "title": "Nature of commodity",
+      "required": "yes",
+      "dropdown": "text",
+      "error": "Nature of commodity is a required field",
+      "multiple": "yes"
+    },
+    {
+      "id": "batchNumber",
+      "title": "Batch number",
+      "required": "yes",
+      "type": "text",
+      "error": "Batch number is required",
+      "multiple": "yes"
+    },
+    {
+      "id": "finalConsumer",
+      "title": "Final consumer",
+      "required": "yes",
+      "type": "radio",
+      "error": "Select a valid response for Final consumer from the list"
+    },
+    {
+      "id": "manufacturingPlant",
+      "title": "Manufacturing plant",
+      "required": "yes",
+      "type": "search",
+      "error": "Manufacturing plant is a required field - please enter a valid approval number"
+    },
+    {
+      "id": "dateOfProduction",
+      "title": "Date of production",
+      "required": "yes",
+      "type": "excel_date",
+      "error": "Enter a date in the format DD/MM/YYYY for Date of production",
+      "multiple": "yes"
+    },
+    {
+      "id": "dateOfCollection",
+      "title": "Date of collection",
+      "required": "no",
+      "type": "excel_date",
+      "error": "Enter a date in the format DD/MM/YYYY for Date of collection",
+      "multiple": "yes"
+    }
   ],
   "commodities": [{
     "code": "1901",

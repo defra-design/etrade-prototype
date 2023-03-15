@@ -7,7 +7,7 @@
 <div class="govuk-form-group app-repeadable-holder" id="repeatable-packages-holder">
   <label class="govuk-label" for="packageCount-units">Number of packages
 </label>
-  <p class="govuk-hint" id="packageCount-units-hint">This is the outer packaging you use to ship the consignment. For example, Pallet.</p>
+  <p class="govuk-hint" id="packageCount-units-hint">For example, if your consignment contains 5 pallets, enter 5.</p>
   <div class="app-repeatable-section" id="repeatable-packages">
 
     <div class="govuk-input__wrapper m-b-15">
@@ -78,8 +78,9 @@
 "End of comment out"
 #}
 <div class="govuk-form-group">
-  <label class="govuk-label" for="packageCount-4-10410-31010000">Number of packaging
-  </label>
+  <label class="govuk-label" for="packageCount-units">Number of packages
+</label>
+  <p class="govuk-hint" id="packageCount-units-hint">For example, if your consignment contains 5 pallets, enter 5.</p>
 
 
   <input class="govuk-input js-question govuk-!-width-one-third" type="number" data-type="quantity" name="packageCount" step="1" min="0" max="9999999" id="packageCount-4-10410-31010000"
@@ -88,7 +89,7 @@
   <div class="govuk-form-group">
       <label class="govuk-label" for="packageCount-4-10410-31010000">Type of packaging
   </label>
-  <p class="govuk-hint" id="packageCount-units-hint">This is usually the outer packaging you use to ship the consignment. For example, Pallet or box.</p>
+  <p class="govuk-hint" id="packageCount-units-hint">This is usually the outer packaging you use to ship the consignment. For example, pallet.</p>
       <select class="govuk-select" id="packageCount-4-10410-31010000-units" data-v-4e8f37a8="" name="packageCount_UNIT">
         <option disabled="" value="" data-v-4e8f37a8="" selected>Select a unit</option>
         <option value="Bag" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'bag'%}selected{% endif %}>Bag</option>

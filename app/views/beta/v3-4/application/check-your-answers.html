@@ -118,7 +118,10 @@ Check your answers – GOV.UK Prototype Kit
                 {% endif %}
 
               </dd>
-              <dd class="govuk-summary-list__actions"><a href="./goods/goods-certified-as?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">goods certified as</span></dd>
+              <dd class="govuk-summary-list__actions">
+                   {% if data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs | length > 1 or  not data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs%}
+                <a href="./goods/goods-certified-as?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">goods certified as</span></dd>
+                {% endif %}
             </div>
         
             <div class="govuk-summary-list__row">
