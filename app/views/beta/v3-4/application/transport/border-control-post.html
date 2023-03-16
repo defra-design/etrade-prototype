@@ -38,7 +38,7 @@ Entry border control post – GOV.UK Prototype Kit
       <h1 class="govuk-heading-xl"> What is the border control post? </h1>
       <div data-v-771dc26c="">
         <div class="govuk-form-group" data-v-771dc26c=""><label class="govuk-label" for="country" data-v-771dc26c=""> Country </label><select class="govuk-select" id="country" data-v-771dc26c="">
-            <option value="" data-v-771dc26c=""> Select a country </option>
+            <option value="" data-v-771dc26c="">Select a country</option>
             <option value="AT" data-v-771dc26c="" {% if query.ico== "AT" %}selected{% endif %}>Austria</option>
             <option value="BE" data-v-771dc26c="" {% if query.ico== "BE" %}selected{% endif %}>Belgium</option>
             <option value="BG" data-v-771dc26c="" {% if query.ico== "BG" %}selected{% endif %}>Bulgaria</option>
@@ -78,11 +78,16 @@ Entry border control post – GOV.UK Prototype Kit
 
         {% if query.country or query.q %}
         <div data-v-771dc26c="" id="border-inspection-post-listing">
-          <p><span id="count">3</span> border control posts {% if query.q %} with <strong>{{query.q}}</strong>{% endif %}{% if query.country %} in <strong>{{query.country}}</strong>{% endif %}</p>
+          <p><span id="count">3</span> border control posts {% if query.q %} with <strong>{{query.q}}</strong>{% endif %}{% if query.country and query.country !="Select a country"%} in <strong>{{query.country}}</strong>{% endif %}</p>
           {% for country in data.bcp %}
           {% set ico = country.ICO %}
+        
           {% for bcp in country.ports %}
-          {% if query.ico == ico and (query.q == "undefinded" or query.q | upper in bcp.name | upper) or  (query.q == "undefinded" or (query.q | upper) | removeWhiteSpace in bcp.id | upper) %}
+      
+          {% if query.ico == ico or query.county == "Select a country"  %}
+          {% if ((query.q | upper) | removeWhiteSpace in bcp.id | upper)
+          or ((query.q | upper) | removeWhiteSpace in bcp.name | upper)  %}
+
           <div class="govuk-radios__item app-establishment-list__row" data-content="{{bcp.name}}" data-country="{{bcp.country}}" data-number="{{bcp.id}}" data-ico="{{ico}}">
             <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="establishmentIndex" type="radio" value="{{ loop.index0 }}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
             <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index0}}">
@@ -90,6 +95,7 @@ Entry border control post – GOV.UK Prototype Kit
               {{bcp.address}},{{bcp.country}}
             </label>
           </div>
+          {% endif%}
           {% endif%}
           {% endfor %}
           {% endfor %}
