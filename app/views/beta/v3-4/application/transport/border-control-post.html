@@ -89,7 +89,7 @@ Entry border control post – GOV.UK Prototype Kit
           or ((query.q | upper) | removeWhiteSpace in bcp.name | upper)  %}
 
           <div class="govuk-radios__item app-establishment-list__row" data-content="{{bcp.name}}" data-country="{{bcp.country}}" data-number="{{bcp.id}}" data-ico="{{ico}}">
-            <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="establishmentIndex" type="radio" value="{{ loop.index0 }}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
+            <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="selctedBCP" type="radio" value="{{ loop.index0 }}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
             <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index0}}">
               <strong>{{bcp.name}}</strong> - {{ bcp.id}}<br>
               {{bcp.address}},{{bcp.country}}

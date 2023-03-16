@@ -149,7 +149,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             </span>
             {% if data["goods_certified_as"] %}
             <strong class="govuk-tag app-task-list__tag" id="goods-certified-status">Completed</strong>
-            {% else %}
+            {% else %}b
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="goods-certified-status">Not started</strong>
             {% endif %}
           </li>
@@ -286,7 +286,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
                 Entry border control post
               </a>
             </span>
-            {% if data.transport['border-control-post'] == 'skipped' %}
+            {% if data.transport['border-control-post'] == 'skipped' or data.selctedBCP %}
               <strong class="govuk-tag app-task-list__tag " id="place-of-origin-status">Completed</strong>
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
