@@ -7,7 +7,11 @@ Uploaded documents – {{serviceName}} – GOV.UK
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
 {% block content %}
-
+<style type="text/css">
+  .disabled p{
+    color: #505a5f  ;
+  }
+</style>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
@@ -17,7 +21,7 @@ Uploaded documents – {{serviceName}} – GOV.UK
             <fieldset class="govuk-fieldset" data-v-133877c6="">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl" data-v-133877c6="">How will the consignment be stored during transport?</legend>
               <p>If your consignment will be stored across multiple different transport conditions, you will need to create a separate certificate for each part of the consignment.</p>
-              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" id="purpose" data-v-133877c6="">
+              <div class="govuk-radios" data-filled="no" data-module="govuk-radios" id="purpose" data-v-133877c6="">
                 <div class="govuk-radios__item purpose" data-v-133877c6="">
                   <input class="govuk-radios__input" id="conditions-Chilled" name="trasnportConditions" type="radio" value="Chilled" {% if data.conditions == "Chilled" %}checked{% endif %}>
                   <label class="govuk-label govuk-radios__label"
@@ -35,14 +39,13 @@ Uploaded documents – {{serviceName}} – GOV.UK
           </div>
           <div class="govuk-!-margin-bottom-6" id="skip-question-container">
           <h3 class="govuk-heading-m">You can skip this section</h3>
-          <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-          <div class="govuk-checkboxes__item" id="skip-question-checkbox">
+          <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+          <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
             <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
             <label class="govuk-label govuk-checkboxes__label" for="skip-question">
               I've entered as much information as I can
             </label>
           </div>
-
         </div>
           <button class="govuk-button" >Continue</button>
 
@@ -52,3 +55,15 @@ Uploaded documents – {{serviceName}} – GOV.UK
 </div>
 
 {% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+    
+    $(".govuk-radios__input").on("click",function(e){
+      $('#skip-question-checkbox').hide()
+      $('#skip-question-container').addClass("disabled")
+    })
+
+});
+</script>
+{% endblock%}

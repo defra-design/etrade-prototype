@@ -7,7 +7,7 @@ Entry border control post – GOV.UK Prototype Kit
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 <style media="screen">
 
-  .border-inspection-post {
+.border-inspection-post {
     margin: 1em 0;
     background-color: #fff;
 }
@@ -25,6 +25,9 @@ Entry border control post – GOV.UK Prototype Kit
 }
 .border-inspection-post .govuk-button {
     margin: 0;
+}
+.disabled{
+  color: #505a5f;
 }
 </style>
 {% endblock%}
@@ -127,6 +130,13 @@ Entry border control post – GOV.UK Prototype Kit
 <script type="text/javascript">
 
 window.addEventListener('load', function() {
+
+
+    $(".govuk-radios__input").change(function(e){
+      $('#skip-question-checkbox').hide()
+      $('#skip-question-container').addClass("disabled")
+    })
+
   $("#country").on("change", function(e) {
 
     updateFilter()
