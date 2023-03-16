@@ -100,7 +100,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
               </a>
             </span>
 
-            {% if data.regionOfOrigin %}
+            {% if data.country %}
               <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
@@ -149,7 +149,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             </span>
             {% if data["goods_certified_as"] %}
             <strong class="govuk-tag app-task-list__tag" id="goods-certified-status">Completed</strong>
-            {% else %}b
+            {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="goods-certified-status">Not started</strong>
             {% endif %}
           </li>
