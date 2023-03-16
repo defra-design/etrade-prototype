@@ -212,6 +212,44 @@
 			"categories": []
 		}]
 
+	},
+	{
+		"destination": "Netherlands",
+		"ICO": "NL",
+		"ports": [{
+			"status": "Active",
+			"name": "Amsterdam - zeehaven",
+			"id": "NLAMS1",
+			"country": "Netherlands",
+			"address": "Makreelkade 9 1976 DK Ijmuiden",
+			"categories": []
+		}, {
+			"status": "Active",
+			"name": "Amsterdam - Schiphol",
+			"country": "Netherlands",
+			"id": "SchipholNLAMS4",
+			"address": "Pelikaanweg 1 1118 DT Schiphol",
+			"categories": []
+
+		},
+	 {
+			"status": "Active",
+			"name": "Eemshaven",
+			"country": "Netherlands",
+			"id": "NLEEM1",
+			"address": "Eemshornweg 5a 9979 XK Eemshaven",
+			"categories": []
+			
+		},{
+			"status": "Active",
+			"name": "Harlingen",
+			"country": "Netherlands",
+			"id": "NLHAR1",
+			"address": "Zuidwalweg 14 8861 NV Harlingen",
+			"categories": []
+			
+		}]
+
 	}
 
 ]
