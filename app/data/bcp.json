@@ -250,6 +250,104 @@
 			
 		}]
 
+	},
+	{
+		"destination": "Denmark",
+		"ICO": "DK",
+		"ports": [
+
+		{
+			"status": "Active",
+			"name": "Aalborg",
+			"id": "2DKAAL1B",
+			"country": "Denmark",
+			"address": "Langerak, Aalborg, 9220",
+			"categories": []
+		}, 
+		{
+			"status": "Active",
+			"name": "Aalborg Lufthavn",
+			"id": "DKAAL4",
+			"country": "Denmark",
+			"address": "Ny Lufthavnsvej 100 9400 Nørre Sundby",
+			"categories": []
+		}, 
+		{
+			"status": "Active",
+			"name": "Aarhus",
+			"id": "DKAAR1",
+			"country": "Denmark",
+			"address": "ALC A/S Skansevej 1 8000 Aarhus C",
+			"categories": []
+		}, 
+		{
+			"status": "Active",
+			"name": "Billund",
+			"id": "DKBLL4",
+			"country": "Denmark",
+			"address": "Sønderskovvej 5, Lystrup, 8520",
+			"categories": []
+		}, 
+		{
+			"status": "Active",
+			"name": "Danish Veterinary and Food Administration - Fødevarestyrelsen - Lystrup",
+			"id": "DKAAT4",
+			"country": "Denmark",
+			"address": " Sønderskovvej 5, Lystrup, 8520",
+			"categories": []
+		},
+		{
+			"status": "Active",
+			"name": "København Havn",
+			"id": "DKCPH1",
+			"country": "Denmark",
+			"address": "Containervej 15 2150 Nordhavn",
+			"categories": []
+		},
+		{
+			"status": "Active",
+			"name": "Esberg",
+			"id": "DKEBJ1",
+			"country": "Denmark",
+			"address": "D & F Man Terminals Denmark ApS, Vagervej 2 6700 Esbjerg",
+			"categories": []
+		},
+		{
+			"status": "Active",
+			"name": "Fredericia",
+			"id": "DKFRC1",
+			"country": "Denmark",
+			"address": "Centerhavn 23 7000 Fredericia",
+			"categories": []
+		},
+		{
+			"status": "Active",
+			"name": "Hanstholm",
+			"id": "DKHAN1",
+			"country": "Denmark",
+			"address": "Auktionsgade 39 7730 Hanstholm",
+			"categories": []
+		},
+		{
+			"status": "Active",
+			"name": "Hirtshals",
+			"id": "DKHIR1",
+			"country": "Denmark",
+			"address": "Sildekajen 6 9850 Hirtshals",
+			"categories": []
+		},
+		{
+			"status": "Active",
+			"name": "Skagen",
+			"id": "DKSKA1",
+			"country": "Denmark",
+			"address": "Coasterkajen 9990 Skagen",
+			"categories": []
+		}
+
+
+	]
+
 	}
 
 ]
