@@ -5,7 +5,7 @@
   </p>
   <select class="govuk-select" id="operator-search-country" name="country">
     <option value="Any" {%if defaultCountry == "Any"%}selected{%endif%}>Select a country</option>
-    <option value="AF" {% if data.transport.country == 'AF' %}selected{% endif %}>Afghanistan</option>
+    <option value="AF" {% if data.goods.country == 'AF' %}selected{% endif %}>Afghanistan</option>
     <option value="AX" {% if data.transport.country == 'AX' %}selected{% endif %}>Åland Islands</option>
     <option value="AL" {% if data.transport.country == 'AL' %}selected{% endif %}>Albania</option>
     <option value="DZ" {% if data.transport.country == 'DZ' %}selected{% endif %}>Algeria</option>

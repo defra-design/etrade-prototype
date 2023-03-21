@@ -66,6 +66,7 @@ module.exports = {
   "displayMax": 30,
   "paginationMax": 3,
   "manualSelection": ["not-selected"],
+  "goods": {},
   "person": {consignor : "0", consignorActivity : "0"},
   "transport": {country : "" }
 }

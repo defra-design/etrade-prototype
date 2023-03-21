@@ -53,7 +53,7 @@ Check your answers – GOV.UK Prototype Kit
           <h1 class="govuk-heading-xl">Check your answers before submitting your application</h1>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
         <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-          <dt class="govuk-summary-list__key" data-v-e8e27fc8="">Application Reference</dt>
+          <dt class="" ="govuk-summary-list__key" data-v-e8e27fc8="">Application Reference</dt>
           <dd class="govuk-summary-list__value" data-v-e8e27fc8=""> {{data.UserReference or "XI2934BUL3"}}
           </dd>
           <dd class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="create-reference?showNotification=no&change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></dd>
@@ -124,8 +124,6 @@ Check your answers – GOV.UK Prototype Kit
               <dd class="govuk-summary-list__actions"><a href="./transport/goods?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             </dl>
-
-
           <h2 class="govuk-heading-m">2. Certification of the consignment</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
@@ -235,16 +233,13 @@ Check your answers – GOV.UK Prototype Kit
               <dt class="govuk-summary-list__key"> Departure date</dt>
               <dd class="govuk-summary-list__value">
                 {% if data.departure %}
-                  {{data.departure}}
+                  {{data.departure}} {% if data.departureTime %}- {{data.departureTime}}{% endif %}
                 {% else %}
                   <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
             </div>
-            
-            
-         
           </dl>
           <h2 class="govuk-heading-m">4. Transport</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -331,7 +326,7 @@ Check your answers – GOV.UK Prototype Kit
               <dt class="govuk-summary-list__key"> Estimated arrival date</dt>
               <dd class="govuk-summary-list__value">
                 {% if data.arrival %}
-                  {{data.arrival}}
+                  {{data.arrival}} {%if data.arrivalTime %} - {{data.arrivalTime}}{% endif %}
                 {% else %}
                   <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
