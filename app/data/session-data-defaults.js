@@ -68,5 +68,8 @@ module.exports = {
   "manualSelection": ["not-selected"],
   "goods": {},
   "person": {consignor : "0", consignorActivity : "0"},
-  "transport": {country : "" }
+  "transport": {country : "" },
+  "setNetWeight": ["120","56"],
+  "setGrossWeight": "190",
+  "netToGrossWeightIs": "under"
 }

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {%endif%} Consignee or importer - E-Certification for EHC's - GOV UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+
+
+{% block content %}
+
+<div class="govuk-grid-row" data-v-563d6e59="">
+  <div class="govuk-grid-column-two-thirds" data-v-563d6e59="">
+
+    <form method="post" novalidate action="has-assurance">
+
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+         Do you want to update the gross weight for this consignmemnt?
+      </h1>
+    </legend>
+    <p id="changed-name-hint" class="govuk-hint">
+      The total net weight for this consignment has changed. You might need to update the gross weight ({{data.setGrossWeight}} kg) for this consignment.</p>
+
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="wantToChangeWeight" name="wantToChangeWeight" type="radio" value="yes~weight">
+        <label class="govuk-label govuk-radios__label" for="changed-name">
+          Yes, update the gross weight
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="wantToChangeWeight-2" name="wantToChangeWeight" type="radio" value="no~task-list">
+        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+          No, keep the gross weight - {{data.setGrossWeight}} kg
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+      <div class="govuk-button-group">
+
+        <!-- to update state  -->
+
+        <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

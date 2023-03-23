@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle = "commodity"%}
+{% endif %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+     <h1 class="govuk-heading-xl">
+            V1 - Gross weight must be greater than Total net weight 
+          </h1>
+          <p>
+           <a href="">UX Ticket</a> 
+          </p>
+
+          <h2 class="govuk-heading-m">Pages</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="task-list">From task list</a></li>
+            <li><a href="check-your-answers">From Check your answers</a></li>
+            <li><a href="check-your-answers">Update commodity net weight</a> If you increase the net weight or decrease it will change the flow. </li>
+            <li><a href="check-your-answers">Net weight has greater than Gross weight </a></li>
+            <li><a href="check-your-answers">Net weight has lower than Gross weight </a></li>
+          </ul>
+   
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+ 
+});
+</script>
+{% endblock%}

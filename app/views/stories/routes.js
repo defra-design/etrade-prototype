@@ -170,6 +170,9 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'onboarding/confirmation?continue='+canContinue);
   })
 
+
+
+
   router.post('/' + base_url + 'unified-dashboard/*/export-destination', function(req, res) {
     console.log(req.body.country+'.')
     console.log("This is being triggered in stories routes.js")
@@ -178,6 +181,69 @@ module.exports = function(router) {
     }
     res.redirect(301, '/' + base_url + 'unified-dashboard/'+req.params[0]+'/form-finder?destination_country='+req.body.country);
   })
+
+  
+
+  // GROSS WEIGHT STORY
+  router.post('/' + base_url + 'update-weight/*/commodity', function(req, res) {
+    let totalNetWeight = req.session.data.setNetWeight.reduce(function(a,b){
+      return parseInt(a)+parseInt(b)
+    })
+    if (req.session.data.setNetWeight[req.query.changeID] != req.body.netWeight){
+      req.session.data.setNetWeight[req.query.changeID]=req.body.netWeight
+      req.session.data.hasChangedNetWeight = "yes"
+    }
+    if (totalNetWeight >= req.session.data.setGrossWeight){
+      req.session.data.netToGrossWeightIs="over"
+    }else{
+      req.session.data.netToGrossWeightIs="under"
+    }
+    res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/commodity-list');
+  })
+
+  router.post('/' + base_url + 'update-weight/*/commodity-list', function(req, res) {
+    var totalNetWeight = req.session.data.setNetWeight.reduce(function(a,b){
+      return parseInt(a)+parseInt(b)
+    })
+    if(req.body.addAnother == "yes"){
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/not-in-prototype');
+    }
+    //total net weight is taken from the default session data : "setNetWeight": ["120","56"],
+    if(req.session.data.hasChangedNetWeight != "yes"){
+        // to mimic no change. 
+        res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/task-list');
+
+    }else if(totalNetWeight > req.session.data.setGrossWeight){
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/update-weight-must');
+      req.session.data.changedWeightIs="higher"
+    }else{
+      req.session.data.changedWeightIs="lower"
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/update-weight-question');
+    }
+  
+  })
+
+  router.post('/' + base_url + 'update-weight/*/weight', function(req, res) {
+    var totalNetWeight = req.session.data.setNetWeight.reduce(function(a,b){
+      return parseInt(a)+parseInt(b)
+    })
+    if(totalNetWeight > req.body.GROSS_WEIGHT ){
+
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/weight?hasError=yes&errorType=over');
+      req.session.data.netToGrossWeightIs="over"
+    }else{
+      req.session.data.netToGrossWeightIs="under"
+      if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/check-your-answers');
+      }else{
+        res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/task-list');
+      }
+      
+    }
+  
+  })
+
+
   // COPY
   router.post('/' + base_url + 'copy/*/commodity-error', function(req, res) {
     var errors = []

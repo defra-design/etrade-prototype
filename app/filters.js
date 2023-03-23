@@ -245,6 +245,16 @@ module.exports = function(env) {
 
     return title.innerText
   }
+
+  filters.sumTotal = function(arr){
+    let sum = arr.reduce(function(a,b){
+      return parseInt(a)+parseInt(b)
+    })
+
+    return sum
+  }
+
+  
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:
