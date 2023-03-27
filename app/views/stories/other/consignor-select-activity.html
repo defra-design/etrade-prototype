@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Where will the certification take place – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Select activity for consignor / Exporter
+      </h1>
+      <p>User needs to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+        be able to select the activity of the estabilishment, it more than one. 
+      </li>
+      <li>Be able to always change the activity if there is more than one</li>
+    </ul>
+
+      <h2 class="govuk-heading-m">Version 1</h2>
+      <p>This is the version we will go with. Just add the existing functionality of selecting activity type. </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="/clear-data?url=/beta/v3-5/application/task-list">from Task list</a>
+      </li>
+      <li>
+          <a href="/clear-data?url=/beta/v3-5/application/persons/consignor-or-exporter?change=no&deleted=yes&who=consignor">consignor page - not selected </a>
+      </li>
+      <li>
+          <a href="/clear-data?url=/beta/v3-5/application/persons/consignor-or-exporter?change=no&deleted=yes&who=consignor">find consignor</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+<!-- // -->
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  window.addEventListener('load', function() {
+    $(".govuk-button").on("click", function() {
+      $(this).preventDefault()
+      if ($('#region-of-certification').is(':checked')) {
+        $("form").submit()
+      } else {
+        window.location.href = "region-of-certification-v2?hasError=yes"
+      }
+    })
+
+  })
+
+})
+</script>
+{% endblock%}

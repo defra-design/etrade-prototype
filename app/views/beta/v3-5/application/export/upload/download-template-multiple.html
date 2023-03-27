@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Download commodity data template - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle =  "commodity"%}
+{% endif %}
+
+{% set ehcNumber = data.certificates[(data.certificate | makeNumber)].number or "test" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!--<span class="govuk-caption-xl">
+      Description of the goods
+    </span>-->
+    <h1 class="govuk-heading-xl">Make sure you are using the updated spreadsheet template</h1>
+    <p class="govuk-body">You must use the updated spreadsheet template, as it follows TRACES data requirements.</p>
+    <div class="govuk-inset-text">
+      If you do not use the most up-to-date version of the template, TRACES may be unable to accept your commodity data.
+    </div>
+    <p class="govuk-body">
+
+      <a href="/public/ehc-templates/ehc8329-template-v3.xlsx" class="govuk-link">Download template for EHC8329</a> (last updated on 2 October 2022)<br>
+      <a href="/public/ehc-templates/ehc8361-template-v3.xlsx" class="govuk-link">Download template for EHC8361</a> (last updated on 23 September 2022)<br>
+      <a href="/public/ehc-templates/ehc8364-template-v3.xlsx" class="govuk-link">Download template for EHC8364</a> (last updated on 27 September 2022)<br>
+    </p>
+    <p class="govuk-body">
+      Once you have entered your commodity data in the updated spreadsheet template, you can <a href="./">upload the spreadsheet</a>. You can enter up to 100 rows of data in each spreadsheet. If you want to enter more commodity data, you can upload multiple spreadsheets.
+    </p>
+<!--
+    <a href="#" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">Upload commodity data</a>
+-->
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

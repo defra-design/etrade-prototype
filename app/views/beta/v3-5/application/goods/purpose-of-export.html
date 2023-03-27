@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-What type of consignment are you sending – GOV.UK Prototype Kit
+Purpose of the export – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -9,45 +9,10 @@ What type of consignment are you sending – GOV.UK Prototype Kit
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {% if query.hasError == "yes" %}
-    <div class="govuk-error-summary" data-module="govuk-error-summary">
-      <div role="alert">
-        <h2 class="govuk-error-summary__title">
-          There is a problem
-        </h2>
-        <div class="govuk-error-summary__body">
-          <ul class="govuk-list govuk-error-summary__list">
-            {% if query.errorType == "notChecked" %}
-            <li>
-              <a href="#consignment-type-error">Select the type of consignment are you sending</a>
-            </li>
-            {% endif %}
-            {% if query.errorType == "noCountry" %}
-            <li>
-              <a href="#final-destination-error">Select the final destination for this consignment</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-      </div>
-    </div>
-    {% endif %}
-    <form class="" action="end-of-prototype" method="post" novalidate>
-      <div class="govuk-form-group {% if query.hasError and query.errorType =='notChecked' %}
-      govuk-form-group--error{% endif %}">
-        <fieldset class="govuk-fieldset" {% if query.hasError=="yes" and query.errorType =='notChecked' %}aria-describedby="consignment-type-error" {% endif %} {% if query.hasError=="yes" and query.errorType =='noCountry'%}aria-describedby="final-destination-error" {% endif %}>
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-            <span class="govuk-caption-l">Description of the goods</span>
-            <h1 class="govuk-fieldset__heading">
-              What type of consignment are you sending?
-            </h1>
-          </legend>
-          {% if query.hasError and query.errorType == "notChecked"%}
-          <p id="consignment-type-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select the type of consignment are you sending
-          </p>
-          {% endif %}
-
+    <form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
+      <h1 class="govuk-heading-xl">What type of consignment are you sending?</h1>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
           <div class="govuk-radios__item purpose">
             <input class="govuk-radios__input" id="radio-intmark" name="Purpose" type="radio" value="Internal market" aria-decribedby="purpose-internal-hint">
             <label class="govuk-label govuk-radios__label" for="radio-intmark">EU or Northern Ireland market</label>
@@ -55,22 +20,14 @@ What type of consignment are you sending – GOV.UK Prototype Kit
           </div>
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" id="purpose">
             <div class="govuk-radios__item purpose">
-              <input class="govuk-radios__input" id="radio-transit" name="Purpose" type="radio" value="Transit" aria-decribedby="purpose-transit-hint" data-aria-controls="conditional-transit-country" {% if query.hasError and query.errorType =='noCountry' %}
-      checked{% endif %}>
+              <input class="govuk-radios__input" id="radio-transit" name="Purpose" type="radio" value="Transit" aria-decribedby="purpose-transit-hint" data-aria-controls="conditional-transit-country">
               <label class="govuk-label govuk-radios__label" for="radio-transit">In transit consignment</label>
               <div id="purpose-transit-hint" class="govuk-hint govuk-radios__hint">Your consignment’s final destination is a non-EU country, but it will pass through an EU country or Northern Ireland.</div>
             </div>
             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-transit-country">
-              <div class="govuk-form-group {% if query.hasError and query.errorType =='noCountry' %}
-      govuk-form-group--error{% endif %}" data-v-a3b8a65e="">
+              <div class="govuk-form-group" data-v-a3b8a65e="">
                 <label class="govuk-label" for="purpose-of-export-country" data-v-a3b8a65e="">Final destination of the consignment</label>
-                 {% if query.hasError and query.errorType == "noCountry"%}
-          <p id="final-destination-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select the type of consignment are you sending
-          </p>
-          {% endif %}
-                <select class="govuk-select {% if query.hasError and query.errorType =='noCountry' %}govuk-select--error{% endif %}" id="purpose-of-export-country" required="" data-v-a3b8a65e="">
-                  <option value="">Select a country</option>
+                <select class="govuk-select" id="purpose-of-export-country" required="" data-v-a3b8a65e="">
                   <option value="AF" data-v-a3b8a65e="">Afghanistan</option>
                   <option value="AX" data-v-a3b8a65e="">Åland Islands</option>
                   <option value="AL" data-v-a3b8a65e="">Albania</option>
@@ -321,7 +278,7 @@ What type of consignment are you sending – GOV.UK Prototype Kit
             </div>
           </div>
       </div>
-      <button class="govuk-button" type="submit"> Save and continue </button>
+      <button class="govuk-button"> Save and continue </button>
       </fieldset>
   </div>
   </form>
@@ -333,19 +290,7 @@ What type of consignment are you sending – GOV.UK Prototype Kit
 {% block pageScripts %}
 <script type="text/javascript">
 window.addEventListener('load', function() {
-  $(".govuk-button").on("click", function(e) {
-    e.preventDefault()
 
-    if ($('input[name="Purpose"]').is(':checked')) {
-      if ($('#purpose-of-export-country').val() != "" || $('input[name="Purpose"]:checked').val() != "Transit"){
-        $("form").submit()
-      } else {
-        window.location.href = "purpose-of-export-v2?hasError=yes&errorType=noCountry"
-      }
-    } else {
-      window.location.href = "purpose-of-export-v2?hasError=yes&errorType=notChecked"
-    }
-  })
 
 })
 </script>

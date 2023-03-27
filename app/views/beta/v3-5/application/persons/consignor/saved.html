@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Default consignor – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form id="search" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+          <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
+            <fieldset class="govuk-fieldset">
+              <legend id="question" class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Which consignor or exporter do you want to use?
+                </h1>
+
+              </legend>
+              <p class="govuk-body">Select a consignor or exporter that you’ve used recently or search for a different one.</p>
+
+              <div class="govuk-radios" data-module="govuk-radios">
+    {% set type = "consignor"%}
+    {% for address in data.addressBook %}
+    {% set operator =  data.establishments[address.index] %}
+    <div class="govuk-radios__item app-establishment-list__row" data-content="{{operator.TradingName}}" data-postcode="{{operator.Postcode}}" data-number="{{operator.AppNo}}">
+      <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="establishmentIndex" type="radio" value="{{ loop.index0 }}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
+      <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index0}}">
+        <strong>{{operator.TradingName}}</strong><br>
+        {{operator.Address1}},<br>
+        {% if operator.Address2%}{{operator.Address2}}<br>{% endif %}
+        {% if operator.Address3%}{{operator.Address3}}<br>{% endif %}
+        {{operator.Town}}, {{operator.Postcode}}<br>
+        {{operator.Country}}
+      </label>
+      {% if showApprovalNumberAndActivites %}
+      <div id="establishmentIndex{{loop.index0 }}-hint" class="govuk-hint govuk-radios__hint">
+        {% if operator.AppNo %}Approval number: {{operator.AppNo}}<br>{% endif %}
+        Activities:
+        {% for activity in operator.All_Activities%}{% if loop.index != 1 %}, {% endif %}{{activity}}{% endfor %}
+      </div>
+      {% endif %}
+
+      {% if showActivites %}
+      <div id="establishmentIndex{{loop.index0 }}-hint" class="govuk-hint govuk-radios__hint">
+        {% if operator.All_Activities.length == 1 %}
+        Activity:
+        {% else %}
+        Activities:
+        {% endif %}
+        {% for activity in operator.All_Activities%}{% if loop.index != 1 %}, {% endif %}{{activity}}{% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+    {% endfor %}
+    <div class="govuk-radios__divider">or</div>
+    <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="plant-different" name="establishmentIndex" type="radio" value="different~./find" aria-controls="conditional-plants" aria-expanded="false">
+              <label class="govuk-label govuk-radios__label" for="plant-different">
+                Search for a different consignor or exporter 
+              </label>
+            </div>
+  </div>
+            </fieldset>
+          </div>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+  
+
+    </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}

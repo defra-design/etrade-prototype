@@ -2,7 +2,7 @@ module.exports = function(router) {
   // Load helper functions
 
   // CHANGE VERSION each time you create a new version
-  const base_url = "beta/v3-3/application/";
+  const base_url = "beta/v3-5/application/";
 
   router.post('/' + base_url + "persons/consignee/find", function(req, res) {
     console.log("In consignee/find.html");
@@ -20,11 +20,13 @@ module.exports = function(router) {
     const country = req.body.country;
 
     if (establishmentIndex) {
+      req.session.data.person['exporter']=establishmentIndex
         // check out same file for adding adding to address book. 
         // check if the establishment has multiple activities
         if (req.session.data.establishments[establishmentIndex].All_Activities.length == 1) {
+
           req.session.data.person['consignorActivity'] = 0;
-          res.redirect(301, '/' + base_url + 'persons/consignor/default');
+          res.redirect(301, '/' + base_url + 'persons/consignor-or-exporter');
         } else {
           res.redirect(301, '/' + base_url + 'persons/consignor/activity?establishmentIndex=' + establishmentIndex);
         }
@@ -38,7 +40,7 @@ module.exports = function(router) {
 
     const establishmentIndex = req.body.establishmentIndex;
 
-    req.session.data.person['exporter'] = establishmentIndex;
+    req.session.data.person['consignor'] = establishmentIndex;
     res.redirect(301, '/' + base_url + 'persons/consignor-or-exporter');
   })
 
@@ -64,7 +66,7 @@ module.exports = function(router) {
 
     if (consignorActivity) {
       req.session.data.person['consignorActivity'] = consignorActivity;
-      res.redirect(301, '/' + base_url + 'persons/consignor/default');
+      res.redirect(301, '/' + base_url + 'persons/consignor-or-exporter');
     } else {
       res.redirect(301, '/' + base_url + 'persons/consignor/activity?hasError=true&establishmentIndex=' + establishmentIndex);
     }
@@ -104,18 +106,18 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'transport/place-of-destination');
   })
 
-  router.post('/' + base_url + 'transport/place-of-origin', function(req, res) {
-    console.log("In transport/place-of-origin");
+  router.post('/' + base_url + 'goods/place-of-origin', function(req, res) {
+    console.log("In goods/place-of-origin");
 
-    const country = req.body.country;
-    const roo = req.body.regionOfOrigin;
-    const sroo = req.body.subRegionOfOrigin;
+    let country = req.body.country;
+    // let roo = req.body.regionOfOrigin;
+    // let sroo = req.body.subRegionOfOrigin;
 
-    console.log("Saving transport data " + country + ", " + roo + ", " + sroo);
+    // console.log("Saving goods data " + country + ", " + roo + ", " + sroo);
 
-    req.session.data.transport['country'] = country;
-    req.session.data.transport['region-of-origin'] = roo;
-    req.session.data.transport['sub-region-of-origin'] = sroo;
+    req.session.data.goods['country'] = country;
+    // req.session.data.goods['region-of-origin'] = roo;
+    // req.session.data.goods['sub-region-of-origin'] = sroo;
 
      if(req.query.change == "yes"){
         res.redirect(301, '/' + base_url + 'check-your-answers');
@@ -168,7 +170,9 @@ module.exports = function(router) {
     if(req.query.change == "yes"){
         res.redirect(301, '/' + base_url + 'check-your-answers');
     }else{
-        res.redirect(301, '/' + base_url + 'transport/arrival');
+
+        // res.redirect(301, '/' + base_url + 'transport/arrival');
+        res.redirect(301, '/' + base_url + 'task-list');
     }
   })
   router.post('/' + base_url + "transport/arrival", function(req, res) {
@@ -226,20 +230,11 @@ module.exports = function(router) {
     }
   
   })
-
   router.post('/' + base_url + "export/weight", function(req, res) {
     console.log("SKIPPUY: "+req.body['skip-question'])
     if (req.body['skip-question'] == 'yes') {
       req.session.data.transport['weight'] = "skipped";
     }
-
-    if(req.body.GROSS_WEIGHT=="" && req.body['skip-question'] == '_unchecked'){
-       res.redirect(301, '/' + base_url + 'export/weight?hasError=yes&errorType=notSkipped');
-    }
-    if(req.body.GROSS_WEIGHT!="" && req.body.GROSS_WEIGHT_quantifier == ""){
-       res.redirect(301, '/' + base_url + 'export/weight?hasError=yes&errorType=noWeight');
-    }
-    
     if(req.query.change == "yes"){
         res.redirect(301, '/' + base_url + 'check-your-answers');
     }else{
@@ -248,5 +243,44 @@ module.exports = function(router) {
   
   })
 
+  router.post('/' + base_url + 'destination', function(req, res) {
+    console.log(req.body.country+'.')
+    console.log("This is being triggered in stories routes.js")
+    if(req.body.country == "Spain"){
+      res.redirect(301, '/' + base_url + 'cannot-use-service?country='+req.body.country);
+    }else if(req.body.country == "China" || req.body.country == "Austrailia"){
+      res.redirect(301, '/' + base_url + 'create-reference');
+    }else{
+      res.redirect(301, '/' + base_url + 're-entry');
+    }
+    
+  })
+
+  router.post('/' + base_url + "transport/added-transport", function(req, res) {
+    console.log("In transport/arrival-and-departure");
+    if (req.body['skip-question'] == 'yes') {
+      req.session.data.transport['transportMethod'] = "skipped";
+    }else if (req.body.addAnotherTransport != "no"){
+       res.redirect(301, '/' + base_url + 'transport/select-transport');
+    }
+
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
+  })
+  router.post('/' + base_url + "transport/conditions", function(req, res) {
+    console.log("In transport/conditions");
+    if (req.body['skip-question'] == 'yes') {
+      req.session.data.transport['transportConditions'] = "skipped";
+    }
+
+    if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'check-your-answers');
+    }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+    }
+  })
 
 }

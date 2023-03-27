@@ -1,0 +1,465 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Find a certifier – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form id="search" method="post" novalidate name="search">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+      <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+
+            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div id="results-error-summary" class="govuk-error-summary" data-module="govuk-error-summary" style="display:none">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#results">Select an organisation</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+        <div class="govuk-form-group" id="govuk-form-group-organisation-name">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--xl" for="certifier-search">
+              Search for a certifier
+            </label>
+          </h1>
+          <p class="govuk-body">Search for and select the certifying officers organisation who is authorised by Defra to sign the official certificate.</p>
+          <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
+            <span class="govuk-visually-hidden">Error:</span> Organisation name cannot be blank
+          </p>
+          <div id="certifier-search-hint" class="govuk-hint">
+            You may use the name or postcode
+          </div>
+
+          <div id="certifier-search-group">
+            <input class="govuk-input govuk-input--width-20" id="search-field-organisation-name" spellcheck="false" name="certifier" type="search" placeholder="" value="{{query.q}}">
+            <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
+          </div>
+
+        </div>
+
+
+    </div>
+  </div>
+
+
+<!-- results -->
+<div id="results" {% if query.q %}data-trigger="yes" {% endif %}>
+  <p class="govuk-heading-s  govuk-!-font-weight-regular">
+    <span class="search-result" aria-live="polite" aria-atomic="true"></span>
+    <!--&nbsp;<a class="govuk-link" href="./results">Reset search</a>-->
+    </p>
+    <p id="results-error" class="govuk-error-message" style="display:none">
+      <span class="govuk-visually-hidden">Error:</span> Select an organisation
+    </p>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+  <div class="govuk-radios" data-module="govuk-radios">
+    {% set type = "certifier"%}
+    {% for certifier in data.certifiers %}
+
+    <div class="govuk-radios__item app-establishment-list__row" data-content="{{certifier.name}}">
+      <input class="govuk-radios__input" id="certifierIndex{{loop.index0 }}" name="certifierIndex" type="radio" value="{{ loop.index0 }}" aria-describedby="certifierIndex{{loop.index0 }}-hint">
+      <label class="govuk-label govuk-radios__label" for="certifierIndex{{loop.index0}}" id="certifierIndex{{loop.index0 }}-hint">
+        <strong>{{certifier.practiceName}}</strong><br>
+        {{certifier.address['line1']}},<br>
+        {% if certifier.address['line2'] %}{{certifier.address['line2']}}<br>{% endif %}
+        {% if certifier.address['line3'] %}{{certifier.address['line3']}}<br>{% endif %}
+        {{certifier.address['postCode'] | upper }}
+      </label>
+    </div>
+    {% endfor %}
+  </div>
+
+    <div class="no-results-block">
+    <p class="govuk-body"><strong>Improve your search results by:</strong></p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>making sure you’ve entered the certifier name or postcode correctly</li>
+      <li>searching for part of the certifier name, instead of the full name</li>
+      <li>searching for the first part of the postcode, instead of the full postcode</li>
+    </ul>
+
+  </div>
+
+  <button id="save-and-continue" type="submit" class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
+    Save and continue
+  </button>
+
+</div>
+</form>
+
+<style media="screen">
+  .autocomplete__wrapper {
+    max-width: 24em;
+  }
+
+  .js-enabled #results {
+    display: none;
+  }
+
+  .app-search-wrapper {
+    display: table;
+    width: 100%;
+  }
+
+  .govuk-button--search {
+    background-color: #1d70b8;
+    text-indent: -5000px;
+    overflow: hidden;
+    width: 38px;
+    height: 38px;
+    position: relative;
+  }
+
+  .govuk-button--search:hover {
+    background-color: #003078;
+
+  }
+
+  .govuk-button--search .gem-c-search__icon {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 8px;
+    left: 7px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-\!-show--from-tablet {
+      display: block !important;
+    }
+  }
+
+  .das-show-hide__section {
+    display: none;
+  }
+
+  .das-filter {
+    margin-bottom: 30px;
+  }
+
+  .das-filter__header {
+    border: 1px solid #b1b4b6;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-\!-show--from-tablet {
+      display: block !important;
+    }
+  }
+
+  .das-filter__body {
+    padding: 20px;
+    border: 1px solid #b1b4b6;
+    border-top: none;
+  }
+
+
+
+  .js-enabled .das-show-hide__button {
+    display: block;
+  }
+
+  .das-show-hide__button {
+    display: none;
+  }
+
+  .das-filter__toggle {
+    width: auto;
+    margin: 20px 0;
+  }
+
+  @media (min-width: 40.0625em) {
+    .js-enabled .das-show-hide__button {
+      display: none;
+    }
+  }
+
+  .das-filter__heading {
+    margin-bottom: 0;
+  }
+
+  .das-filter__selected-filters {
+    background: #f3f2f1;
+    border: 1px solid #b1b4b6;
+    border-top: none;
+    padding: 20px;
+  }
+
+  .das-filter__selected-action {
+    margin-top: 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .das-filter__tag:link,
+  .das-filter__tag:visited {
+    color: #0b0c0c;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-filter__tag {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+  }
+
+  .das-filter__tag:after {
+    content: "";
+    background-image: url(/public/images/icon-cross--black.svg);
+    display: block;
+    font-weight: bold;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 0.6em;
+    right: 7px;
+  }
+
+  .das-filter__tag {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.14286;
+    background-color: #fff;
+    border: 1px solid #0b0c0c;
+    color: #0b0c0c;
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px 7px;
+    padding-right: 30px;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .das-breakable {
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .das-filter__selected-sub-heading {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .app-establishment-list {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .app-establishment-list {
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1.3157894737;
+    }
+  }
+
+  .app-establishment-list__key {
+    font-weight: 700;
+    width: 70%;
+    float: left;
+  }
+
+  .app-establishment-list__value {
+    margin: 5px 0;
+    width: 70%;
+    float: left;
+  }
+
+  .app-establishment-list__activities {
+    color: #505a5f;
+  }
+
+  .app2-establishment-list__activities {
+    padding-top: 5px;
+    font-size: 14px !important;
+    font-size: .875rem !important;
+    line-height: 1.1428571429 !important;
+  }
+
+  @media (min-width: 40.0625em) {
+    .app-2establishment-list__activities {
+
+      font-size: 16px !important;
+      font-size: 1rem !important;
+      line-height: 1.25 !important;
+    }
+
+  }
+
+  .app-establishment-list__action {
+    float: right;
+    margin-top: -55px;
+  }
+
+  .js-enabled .no-results-block {
+    display: none;
+  }
+
+  .js-enabled .moj-pagination {
+    display: none;
+  }
+
+
+</style>
+
+
+<!-- // -->
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+    var timer;
+    var timeTaken = 1;
+
+    $('#save-and-continue').on("click", function() {
+      // make sure that we have a selected result
+
+      if ($("input[name=certifierIndex]:checked").val() === undefined ) {
+        $("#results").addClass("govuk-form-group--error");
+        $("#results-error").show();
+        $("#results-error-summary").show();
+        return false;
+      } else {
+        $("#results").removeClass("govuk-form-group--error");
+        $("#results-error").hide();
+        $("#results-error-summary").hide();
+      }
+    });
+
+    $('#organisation-search-button').on("click", function() {
+
+      // validate that a search string was provided
+      var hasError = false;
+      var hasOrganisationNameError = false;
+
+      if ($("#search-field-organisation-name").val().trim().length == 0) {
+        hasOrganisationNameError = true;
+        hasError = true;
+        $("#govuk-form-group-organisation-name").addClass("govuk-form-group--error");
+        $("#search-field-organisation-name-error").show();
+        $("#search-field-organisation-name-error-summary").show();
+        $("#search-field-organisation-name").addClass(".govuk-input--error");
+
+      } else {
+        $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
+        $("#search-field-organisation-name-error").hide();
+        $("#search-field-organisation-name-error-summary").hide();
+        $("#search-field-organisation-name").removeClass(".govuk-input--error");
+      }
+
+      if (hasError) {
+        $("#general-error-summary").show();
+      } else {
+        $("#general-error-summary").hide();
+        $(this).text(" Searching ...")
+        $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
+        $(this).attr("disabled","disabled")
+        timer = setInterval(updateOperatorSearchButton, 1000);
+      }
+
+
+      return false;
+    })
+
+    function updateOperatorSearchButton (){
+      timeTaken+=1
+      if(timeTaken == 2){
+        clearInterval(timer);
+        $('#organisation-search-button').text("Search");
+        $('#organisation-search-button').removeAttr("disabled");
+        var certifierSearchString = $("#search-field-organisation-name").val();
+        searchEstablishments("certifier", certifierSearchString);
+        $('#results').show();
+        timeTaken = 1;
+      }
+    }
+
+
+    function searchEstablishments(searchType, searchString) {
+
+      $("#results").show();
+      $(".app-establishment-list__row").hide();
+
+      let q = searchString.toLowerCase();
+
+      if (searchType == "certifier") {
+        $(".app-establishment-list__row").filter(function() {
+          var a = $(this).attr("data-content").toLowerCase()
+          if (q != "" && a.indexOf(q) >= 0) {
+            return $(this)
+          }
+        }).show()
+      } else {
+        // this shouldn't be happening
+      }
+
+      var count = $(".app-establishment-list__row:visible").length
+      var r
+      if (count == 1) {
+        r = count + " result for " + "<strong>" + q + "</strong>";
+      } else {
+        r = count + " results for " + "<strong>" + q + "</strong>";
+      }
+      if (count > 0) {
+        $(".no-results-block").hide()
+        $("#save-and-continue").show();
+      } else {
+        $(".no-results-block").show()
+        $("#save-and-continue").hide();
+      }
+      $(".search-result").html(r)
+    }
+
+  })
+</script>
+{% endblock%}

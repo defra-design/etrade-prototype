@@ -31,14 +31,14 @@ Consignor or exporter – GOV.UK Prototype Kit
   </div>
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
-      <h1 class="govuk-heading-xl">Consignor or exporter </h1>
+      <h1 class="govuk-heading-xl">Exporter or Consignor</h1>
       <p class="govuk-body">This is the natural or legal person dispatching the consignment. The consignor selected must be located in Great Britain.</p>
       {% set searchLabel = "Consignor or exporter"%}
       {% set returnURL = "../persons/consgnor-or-exporter"%}
       <div class="govuk-form-group">
 
-        {% if data.person['consignor'] %}
-          {% set establishmentIndex = data.person['consignor'] %}
+        {% if data.person['exporter'] and query.deleted!="yes" %}
+          {% set establishmentIndex = data.person['exporter'] %}
           {% set org = data.establishments[establishmentIndex] %}
           {% set establishmentActivityIndex = data.person['consignorActivity'] %}
           {% set establishmentActivity = org.All_Activities[data.person['consignorActivity']] %}

@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+We've made some changes to the service - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
+    <h1 class="govuk-heading-xl">We’ve made some changes to the service</h1>
+    <!---->
+    <!---->
+    <!---->
+    <p class="govuk-body">To make sure all export data is consistent with the EU’s trade and control expert system (TRACES), we’ve made some changes to how you apply for an export health certificate (EHC).</p>
+    <p class="govuk-body">If you apply for an EHC through the new service, your:
+    <ul class="govuk-list govuk-list--bullet">
+      <li>certifiers and importers will no longer need to use paper copies of EHCs</li>
+      <li>commodity data will be consistent with border control post requirements</li>
+    </ul>
+    <p class="govuk-body">To learn more, you can read about the <a href="#">changes to how you apply for an EHC</a>.</p>
+    <p class="govuk-body">You can still use the previous EHC application service if you want to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>view an application that you started <strong>before 1 September 2022</strong></li>
+      <li>apply for an EHC for exports to countries outside the EU</li>
+    </ul>
+    <p class="govuk-body">You can use either service to apply for an EHC to Northern Ireland or the EU.</p>
+    <form class="" action="" method="post">
+
+
+    <div class="govuk-form-group" method="submit">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      Do you want to continue to the new service to apply for an EHC?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="which-service" name="which_service" type="radio" value="etrade~./application/start">
+        <label class="govuk-label govuk-radios__label" for="which-service">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="which-service-2" name="which_service" type="radio" value="echo~./dashboard-echo">
+        <label class="govuk-label govuk-radios__label" for="which-service-2">
+          No, I want to use the previous EHC application service
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<button type="submit" name="button" class="govuk-button">Continue</button>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

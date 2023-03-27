@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Certifier – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<style>
+  .find-establishment-link {
+    padding: 30px;
+    background: #f3f2f1;
+  }
+
+  .govuk-summary-list__actions {
+    padding-right: 30px;
+  }
+
+  .govuk-summary-list__row {
+    border: none;
+  }
+
+  .app-summary-list__key {
+    width: 500px;
+  }
+</style>
+
+
+<form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
+  <div class="govuk-grid-row" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Certifier</h1>
+        <p>This is a prototype. Please click continue as if you had filled in the details.</p>
+      
+        <input type="hidden" name="certifierName"  value="Test company name">
+          <input type="hidden" name="certifierTown"  value="London">
+          <input type="hidden" name="certifierPostcode"  value="SW6 5HM">
+      <button class="govuk-button">Continue</button>
+    </div>
+  </div>
+</form>
+
+
+
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}
