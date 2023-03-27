@@ -189,15 +189,18 @@ module.exports = function(router) {
     let totalNetWeight = req.session.data.setNetWeight.reduce(function(a,b){
       return parseInt(a)+parseInt(b)
     })
+    console.log("totalNetWeight="+totalNetWeight)
+    console.log()
     if (req.session.data.setNetWeight[req.query.changeID] != req.body.netWeight){
       req.session.data.setNetWeight[req.query.changeID]=req.body.netWeight
       req.session.data.hasChangedNetWeight = "yes"
     }
-    if (totalNetWeight >= req.session.data.setGrossWeight){
+    if (totalNetWeight >= req.body.GROSS_WEIGHT){
       req.session.data.netToGrossWeightIs="over"
     }else{
       req.session.data.netToGrossWeightIs="under"
     }
+    req.session.data.setGrossWeight = req.body.GROSS_WEIGHT
     res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/commodity-list');
   })
 
@@ -229,7 +232,7 @@ module.exports = function(router) {
     })
     if(totalNetWeight > req.body.GROSS_WEIGHT ){
 
-      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/weight?hasError=yes&errorType=over');
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/weight?hasError=yes&errorType=over&change='+req.query.change);
       req.session.data.netToGrossWeightIs="over"
     }else{
       req.session.data.netToGrossWeightIs="under"
@@ -238,6 +241,24 @@ module.exports = function(router) {
       }else{
         res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/task-list');
       }
+      
+    }
+  
+  })
+
+  router.post('/' + base_url + 'update-weight/*/check-your-answers', function(req, res) {
+    var totalNetWeight = req.session.data.setNetWeight.reduce(function(a,b){
+      return parseInt(a)+parseInt(b)
+    })
+    if(totalNetWeight > req.body.GROSS_WEIGHT ){
+
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/check-your-answers?hasError=yes&errorType=over');
+      req.session.data.netToGrossWeightIs="over"
+    }else{
+      req.session.data.netToGrossWeightIs="under"
+      
+        res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/review');
+    
       
     }
   

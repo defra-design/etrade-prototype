@@ -14,19 +14,21 @@ Home – GOV.UK Prototype Kit
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
      <h1 class="govuk-heading-xl">
-            V1 - Gross weight must be greater than Total net weight 
+            V2 - Gross weight must be greater than total net weight 
           </h1>
-          <p>
-           <a href="">UX Ticket</a> 
+          <p>This is a simplified version with just an error on submiting a gross weight under the total net weight, on both the weight page and the check your answers. <br>
+           <a href="https://dev.azure.com/defragovuk/DEFRA-EEHC/_workitems/edit/167963">UX Ticket</a> 
           </p>
+          <p>From default the total net weight is <strong>176kg</strong> and the gross weight is <strong>190kg </strong></p>
+          <p>To trigger errors update the commodity net weight or lower the gross weight to under 176kg</p>
 
           <h2 class="govuk-heading-m">Pages</h2>
           <ul class="govuk-list govuk-list--bullet">
             <li><a href="task-list">From task list</a></li>
             <li><a href="check-your-answers">From Check your answers</a></li>
-            <li><a href="check-your-answers">Update commodity net weight</a> If you increase the net weight or decrease it will change the flow. </li>
-            <li><a href="check-your-answers">Net weight has greater than Gross weight </a></li>
-            <li><a href="check-your-answers">Net weight has lower than Gross weight </a></li>
+            <li><a href="weight">Gross weight page</a> - change to under 176 to trigger error</li>
+            <li><a href="weight?hasError=yes">Gross weight page with error</a></li>
+            <li><a href="check-your-answers?hasError=yes">Check your answers with error</a></li>
           </ul>
    
   </div>

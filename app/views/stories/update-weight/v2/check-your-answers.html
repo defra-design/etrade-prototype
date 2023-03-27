@@ -11,8 +11,36 @@ Home – GOV.UK Prototype Kit
 {% if (data.addedCommodities | length) == 1%}
 {% set commodityTitle = "commodity"%}
 {% endif %}
+<style type="text/css">
+  .govuk-summary-list__value{
+    width:50%;
+  }
+.govuk-summary-list__row-error {
+    border-left: 5px solid #d4351c;
+}
+.govuk-summary-list__row-error .govuk-summary-list__key {
+    padding-left: 10px;
+}
+</style>
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-three-quarters">
+             {% if query.hasError %}
+      <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+
+
+
+              <li><a class="govuk-link" href="#gross-weight-error">Gross weight amount must be greater or equal to the total net weight of commodities</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
           <h1 class="govuk-heading-xl">Check your answers before submitting your application</h1>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
         <div class="govuk-summary-list__row" data-v-e8e27fc8="">
@@ -46,7 +74,7 @@ Home – GOV.UK Prototype Kit
                     
                   
                 
-                1 record added
+                2 record added
 
 
                 
@@ -54,15 +82,16 @@ Home – GOV.UK Prototype Kit
 
 
               <dd class="govuk-summary-list__actions">
-                <a href="export/added-commodities-list?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">commodities</span></a> </dd>
+                <a href="commodity-list?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">commodities</span></a> </dd>
             </div>
-            <div class="govuk-summary-list__row">
+            <div class="govuk-summary-list__row {% if query.hasError %}govuk-summary-list__row-error{% endif %}"{% if query.hasError %}id="gross-weight-error"{% endif %}>
               <dt class="govuk-summary-list__key"> Gross weight </dt>
               <dd class="govuk-summary-list__value">
-                
-                  12
-                  GRM
-                
+                {% if query.hasError %}
+                  <span class="govuk-error-message" id="gross-weight-error--message"><span class="govuk-visually-hidden">Error:</span> Gross weight amount must be greater or equal to the total net weight of commodities</span>
+                {% endif %}
+                  {{data.GROSS_WEIGHT or data.setGrossWeight}} kg
+                 
             </dd>
               <dd class="govuk-summary-list__actions"><a href="./weight?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">gross weight</span></dd>
             </div>
@@ -277,20 +306,18 @@ Home – GOV.UK Prototype Kit
               <dd class="govuk-summary-list__actions"><a href="./attachments/added-documents?change=yes" class="govuk-link"> Change </a></dd>
             </div>
           </dl>
-          <div class="gem-c-print-link govuk-!-display-none-print govuk-!-margin-top-3 govuk-!-margin-bottom-8">
-    <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="ga4-event-tracker print-link" data-track-category="printButton" data-track-action="clicked" data-track-label="Print this page" data-ga4-event="{&quot;event_name&quot;:&quot;print_page&quot;,&quot;type&quot;:&quot;print page&quot;,&quot;index&quot;:{&quot;index_link&quot;:1},&quot;index_total&quot;:2,&quot;section&quot;:&quot;Content&quot;}" data-ga4-event-tracker-module-started="true" data-print-link-module-started="true">Print your answers</button>
-</div>
+
 
           <h2 class="govuk-heading-m"> Submit to certifier </h2>
           <p class="govuk-body"> Once you've entered all the information you can, you can review your answers and submit the application to your certifier.
-          </p><div>
-            <a href="review" class="govuk-button" id="submit">
+          </p>
+            <form method="post">
+            <button class="govuk-button" id="submit">
                 Continue
-              </a>
-
-            <!---->
+              </button>
             <p id="eleapsed-time" aria-live="polite" class="govuk-body" style="display:none"></p>
-          </div>
+       
+          </form>
         </div>
       </div>
 {% endblock %}
