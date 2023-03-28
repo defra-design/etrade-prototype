@@ -24,7 +24,7 @@ What type of consignment are you sending – GOV.UK Prototype Kit
             {% endif %}
             {% if query.errorType == "noCountry" %}
             <li>
-              <a href="#final-destination-error">Select the final destination for this consignment</a>
+              <a href="#final-destination-error">Select the destination country</a>
             </li>
             {% endif %}
           </ul>
@@ -63,10 +63,10 @@ What type of consignment are you sending – GOV.UK Prototype Kit
             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-transit-country">
               <div class="govuk-form-group {% if query.hasError and query.errorType =='noCountry' %}
       govuk-form-group--error{% endif %}" data-v-a3b8a65e="">
-                <label class="govuk-label" for="purpose-of-export-country" data-v-a3b8a65e="">Final destination of the consignment</label>
+                <label class="govuk-label" for="purpose-of-export-country" data-v-a3b8a65e="">Destination country</label>
                  {% if query.hasError and query.errorType == "noCountry"%}
           <p id="final-destination-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select the type of consignment are you sending
+            <span class="govuk-visually-hidden">Error:</span> Select the destination country
           </p>
           {% endif %}
                 <select class="govuk-select {% if query.hasError and query.errorType =='noCountry' %}govuk-select--error{% endif %}" id="purpose-of-export-country" required="" data-v-a3b8a65e="">
