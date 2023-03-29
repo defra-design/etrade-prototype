@@ -27,16 +27,30 @@ Responsible for load – GOV.UK Prototype Kit
 
 <form class="" action="../task-list" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">Responsible for load</h1>
-     
-        <!-- set fields for check your answers -->
-          <input type="hidden" name="loadName"  value="Testing Company name">
-          <input type="hidden" name="loadTown"  value="London">
-          <input type="hidden" name="loadPostcode"  value="SW6 5HM">
-      
-           <p>This is a prototype. Please click continue as if you had filled in the details.</p>
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+      <h1 class="govuk-heading-xl">Responsible for load (optional)</h1>
+      <p class="govuk-body">Enter the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
+   
 
+      <!-- <p>The organisation responsible for load will get notificaied by <abbr title="Trade Control and Expert System">TRACES</abbr> in order to create a <abbr title="Common Health Entry Document">CHED</abbr>. </p> -->
+
+<p>The organisation must have the role of responsible for load in <abbr title="Trade Control and Expert System">TRACES</abbr>.</p>
+
+      {% if data.person['load'] %}
+        {% set establishmentIndex = data.person['load'] %}
+        {% set org = data.establishments[establishmentIndex] %}
+        <!-- set fields for check your answers -->
+          <input type="hidden" name="loadName"  value="{{org.TradingName}}">
+          <input type="hidden" name="loadTown"  value="{{org.Town}}">
+          <input type="hidden" name="loadPostcode"  value="{{org.Postcode}}">
+        {% set removeLink = "./remove?who=load&redirect=load" %}
+        {% block traderAddress %}{% include "./trader-address.html" %}{% endblock %}
+
+      {% else %}
+        <p class="govuk-!-margin-bottom-10 find-establishment-link">
+          <a href="./load/find" class="govuk-link govuk-link--no-visited-state">Select an organisation responsible for load</a>
+        </p>
+      {% endif %}
       <button class="govuk-button">Continue</button>
     </div>
   </div>
