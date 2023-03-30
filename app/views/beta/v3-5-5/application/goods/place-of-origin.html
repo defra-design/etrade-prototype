@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Place of origin – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<style>
+  .find-establishment-link {
+    padding: 30px;
+    background: #f3f2f1;
+  }
+
+  .govuk-summary-list__actions {
+    padding-right: 30px;
+  }
+
+  .govuk-summary-list__row {
+    border: none;
+  }
+</style>
+
+
+<form class="" method="post" >
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Country and region of origin</h1>
+        <h2 class="govuk-heading-l"></h2>
+        {% block countryOfOrigin %}{% include "../find/_country-of-origin-select.html" %}{% endblock %}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="region-of-origin"> Region of origin (optional)</label>
+          <p class="govuk-hint">This is the official region code. For example, GB-1 <br></p>
+          <input class="govuk-input govuk-input--width-10" id="region-of-origin" name="regionOfOrigin" type="text" value="{{ data.transport['region-of-origin']}}">
+        </div>
+      <button class="govuk-button"> Save and continue </button></div>
+     </div>
+    </div>
+  </form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

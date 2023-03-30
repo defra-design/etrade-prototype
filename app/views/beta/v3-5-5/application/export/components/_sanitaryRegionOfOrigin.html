@@ -1,0 +1,246 @@
+<div class="govuk-form-group" {% if identification.sanitaryRegionOfOrigin == "BR" %} selected {% endif %}><label class="govuk-label" for="operator-search-country">Sanitary Region of Origin {% if field.requiered=="no"%}(optional for <acronym title="TRACES is the EU's digital certification platform. You can submit your application without entering this information.">TRACES</a>){% endif %}</label>
+  <select class="govuk-select full-width" id="operator-search-country" name="sanitaryRegionOfOrigin">
+    <option disabled="" value="" selected>Select a sanitary region of origin</option>
+    <option value="AF" {% if identification.sanitaryRegionOfOrigin == "AF" %} selected {% endif %}>Afghanistan</option>
+    <option value="AX" {% if identification.sanitaryRegionOfOrigin == "AX" %} selected {% endif %}>Åland Islands</option>
+    <option value="AL" {% if identification.sanitaryRegionOfOrigin == "AL" %} selected {% endif %}>Albania</option>
+    <option value="DZ" {% if identification.sanitaryRegionOfOrigin == "DZ" %} selected {% endif %}>Algeria</option>
+    <option value="AS" {% if identification.sanitaryRegionOfOrigin == "AS" %} selected {% endif %}>American Samoa</option>
+    <option value="AD" {% if identification.sanitaryRegionOfOrigin == "AD" %} selected {% endif %}>Andorra</option>
+    <option value="AO" {% if identification.sanitaryRegionOfOrigin == "AO" %} selected {% endif %}>Angola</option>
+    <option value="AI" {% if identification.sanitaryRegionOfOrigin == "AI" %} selected {% endif %}>Anguilla</option>
+    <option value="AG" {% if identification.sanitaryRegionOfOrigin == "AG" %} selected {% endif %}>Antigua and Barbuda</option>
+    <option value="AR" {% if identification.sanitaryRegionOfOrigin == "AR" %} selected {% endif %}>Argentina</option>
+    <option value="AM" {% if identification.sanitaryRegionOfOrigin == "AM" %} selected {% endif %}>Armenia</option>
+    <option value="AW" {% if identification.sanitaryRegionOfOrigin == "AW" %} selected {% endif %}>Aruba</option>
+    <option value="AU" {% if identification.sanitaryRegionOfOrigin == "AU" %} selected {% endif %}>Australia</option>
+    <option value="AT" {% if identification.sanitaryRegionOfOrigin == "AT" %} selected {% endif %}>Austria</option>
+    <option value="AZ" {% if identification.sanitaryRegionOfOrigin == "AZ" %} selected {% endif %}>Azerbaijan</option>
+    <option value="BS" {% if identification.sanitaryRegionOfOrigin == "BS" %} selected {% endif %}>Bahamas (the)</option>
+    <option value="BH" {% if identification.sanitaryRegionOfOrigin == "BH" %} selected {% endif %}>Bahrain</option>
+    <option value="BD" {% if identification.sanitaryRegionOfOrigin == "BD" %} selected {% endif %}>Bangladesh</option>
+    <option value="BB" {% if identification.sanitaryRegionOfOrigin == "BB" %} selected {% endif %}>Barbados</option>
+    <option value="BY" {% if identification.sanitaryRegionOfOrigin == "BY" %} selected {% endif %}>Belarus</option>
+    <option value="BE" {% if identification.sanitaryRegionOfOrigin == "BE" %} selected {% endif %}>Belgium</option>
+    <option value="BZ" {% if identification.sanitaryRegionOfOrigin == "BZ" %} selected {% endif %}>Belize</option>
+    <option value="BJ" {% if identification.sanitaryRegionOfOrigin == "BJ" %} selected {% endif %}>Benin</option>
+    <option value="BM" {% if identification.sanitaryRegionOfOrigin == "BM" %} selected {% endif %}>Bermuda</option>
+    <option value="BT" {% if identification.sanitaryRegionOfOrigin == "BT" %} selected {% endif %}>Bhutan</option>
+    <option value="BO" {% if identification.sanitaryRegionOfOrigin == "BO" %} selected {% endif %}>Bolivia (Plurinational State of)</option>
+    <option value="BQ" {% if identification.sanitaryRegionOfOrigin == "BQ" %} selected {% endif %}>Bonaire, Sint Eustatius and Saba</option>
+    <option value="BA" {% if identification.sanitaryRegionOfOrigin == "BA" %} selected {% endif %}>Bosnia and Herzegovina</option>
+    <option value="BW" {% if identification.sanitaryRegionOfOrigin == "BW" %} selected {% endif %}>Botswana</option>
+    <option value="BR" {% if identification.sanitaryRegionOfOrigin == "BR" %} selected {% endif %}>Brazil</option>
+    <option value="IO" {% if identification.sanitaryRegionOfOrigin == "IO" %} selected {% endif %}>British Indian Ocean Territory (the)</option>
+    <option value="BN" {% if identification.sanitaryRegionOfOrigin == "BN" %} selected {% endif %}>Brunei Darussalam</option>
+    <option value="BG" {% if identification.sanitaryRegionOfOrigin == "BG" %} selected {% endif %}>Bulgaria</option>
+    <option value="BF" {% if identification.sanitaryRegionOfOrigin == "BF" %} selected {% endif %}>Burkina Faso</option>
+    <option value="BI" {% if identification.sanitaryRegionOfOrigin == "BI" %} selected {% endif %}>Burundi</option>
+    <option value="CV" {% if identification.sanitaryRegionOfOrigin == "CV" %} selected {% endif %}>Cabo Verde</option>
+    <option value="KH" {% if identification.sanitaryRegionOfOrigin == "KH" %} selected {% endif %}>Cambodia</option>
+    <option value="CM" {% if identification.sanitaryRegionOfOrigin == "CM" %} selected {% endif %}>Cameroon</option>
+    <option value="CA" {% if identification.sanitaryRegionOfOrigin == "CA" %} selected {% endif %}>Canada</option>
+    <option value="KY" {% if identification.sanitaryRegionOfOrigin == "KY" %} selected {% endif %}>Cayman Islands (the)</option>
+    <option value="CF" {% if identification.sanitaryRegionOfOrigin == "CF" %} selected {% endif %}>Central African Republic (the)</option>
+    <option value="TD" {% if identification.sanitaryRegionOfOrigin == "TD" %} selected {% endif %}>Chad</option>
+    <option value="CL" {% if identification.sanitaryRegionOfOrigin == "CL" %} selected {% endif %}>Chile</option>
+    <option value="CN" {% if identification.sanitaryRegionOfOrigin == "CN" %} selected {% endif %}>China</option>
+    <option value="CO" {% if identification.sanitaryRegionOfOrigin == "CO" %} selected {% endif %}>Colombia</option>
+    <option value="KM" {% if identification.sanitaryRegionOfOrigin == "KM" %} selected {% endif %}>Comoros (the)</option>
+    <option value="CD" {% if identification.sanitaryRegionOfOrigin == "CD" %} selected {% endif %}>Congo (the Democratic Republic of the)</option>
+    <option value="CG" {% if identification.sanitaryRegionOfOrigin == "CG" %} selected {% endif %}>Congo (the)</option>
+    <option value="CK" {% if identification.sanitaryRegionOfOrigin == "CK" %} selected {% endif %}>Cook Islands (the)</option>
+    <option value="CR" {% if identification.sanitaryRegionOfOrigin == "CR" %} selected {% endif %}>Costa Rica</option>
+    <option value="CI" {% if identification.sanitaryRegionOfOrigin == "CI" %} selected {% endif %}>Côte d'Ivoire</option>
+    <option value="HR" {% if identification.sanitaryRegionOfOrigin == "HR" %} selected {% endif %}>Croatia</option>
+    <option value="CU" {% if identification.sanitaryRegionOfOrigin == "CU" %} selected {% endif %}>Cuba</option>
+    <option value="CW" {% if identification.sanitaryRegionOfOrigin == "CW" %} selected {% endif %}>Curaçao</option>
+    <option value="CY" {% if identification.sanitaryRegionOfOrigin == "CY" %} selected {% endif %}>Cyprus</option>
+    <option value="CZ" {% if identification.sanitaryRegionOfOrigin == "CZ" %} selected {% endif %}>Czechia</option>
+    <option value="DK" {% if identification.sanitaryRegionOfOrigin == "DK" %} selected {% endif %}>Denmark</option>
+    <option value="DJ" {% if identification.sanitaryRegionOfOrigin == "DJ" %} selected {% endif %}>Djibouti</option>
+    <option value="DM" {% if identification.sanitaryRegionOfOrigin == "DM" %} selected {% endif %}>Dominica</option>
+    <option value="DO" {% if identification.sanitaryRegionOfOrigin == "DO" %} selected {% endif %}>Dominican Republic (the)</option>
+    <option value="EC" {% if identification.sanitaryRegionOfOrigin == "EC" %} selected {% endif %}>Ecuador</option>
+    <option value="EG" {% if identification.sanitaryRegionOfOrigin == "EG" %} selected {% endif %}>Egypt</option>
+    <option value="SV" {% if identification.sanitaryRegionOfOrigin == "SV" %} selected {% endif %}>El Salvador</option>
+    <option value="GQ" {% if identification.sanitaryRegionOfOrigin == "GQ" %} selected {% endif %}>Equatorial Guinea</option>
+    <option value="ER" {% if identification.sanitaryRegionOfOrigin == "ER" %} selected {% endif %}>Eritrea</option>
+    <option value="EE" {% if identification.sanitaryRegionOfOrigin == "EE" %} selected {% endif %}>Estonia</option>
+    <option value="SZ" {% if identification.sanitaryRegionOfOrigin == "SZ" %} selected {% endif %}>Eswatini</option>
+    <option value="ET" {% if identification.sanitaryRegionOfOrigin == "ET" %} selected {% endif %}>Ethiopia</option>
+    <option value="FK" {% if identification.sanitaryRegionOfOrigin == "FK" %} selected {% endif %}>Falkland Islands (the) [Malvinas]</option>
+    <option value="FO" {% if identification.sanitaryRegionOfOrigin == "FO" %} selected {% endif %}>Faroe Islands (the)</option>
+    <option value="FJ" {% if identification.sanitaryRegionOfOrigin == "FJ" %} selected {% endif %}>Fiji</option>
+    <option value="FI" {% if identification.sanitaryRegionOfOrigin == "FI" %} selected {% endif %}>Finland</option>
+    <option value="FR" {% if identification.sanitaryRegionOfOrigin == "FR" %} selected {% endif %}>France</option>
+    <option value="GF" {% if identification.sanitaryRegionOfOrigin == "GF" %} selected {% endif %}>French Guiana</option>
+    <option value="PF" {% if identification.sanitaryRegionOfOrigin == "PF" %} selected {% endif %}>French Polynesia</option>
+    <option value="GA" {% if identification.sanitaryRegionOfOrigin == "GA" %} selected {% endif %}>Gabon</option>
+    <option value="GM" {% if identification.sanitaryRegionOfOrigin == "GM" %} selected {% endif %}>Gambia (the)</option>
+    <option value="GE" {% if identification.sanitaryRegionOfOrigin == "GE" %} selected {% endif %}>Georgia</option>
+    <option value="DE" {% if identification.sanitaryRegionOfOrigin == "DE" %} selected {% endif %}>Germany</option>
+    <option value="GH" {% if identification.sanitaryRegionOfOrigin == "GH" %} selected {% endif %}>Ghana</option>
+    <option value="GI" {% if identification.sanitaryRegionOfOrigin == "GI" %} selected {% endif %}>Gibraltar</option>
+    <option value="GR" {% if identification.sanitaryRegionOfOrigin == "GR" %} selected {% endif %}>Greece</option>
+    <option value="GL" {% if identification.sanitaryRegionOfOrigin == "GL" %} selected {% endif %}>Greenland</option>
+    <option value="GD" {% if identification.sanitaryRegionOfOrigin == "GD" %} selected {% endif %}>Grenada</option>
+    <option value="GP" {% if identification.sanitaryRegionOfOrigin == "GP" %} selected {% endif %}>Guadeloupe</option>
+    <option value="GU" {% if identification.sanitaryRegionOfOrigin == "GU" %} selected {% endif %}>Guam</option>
+    <option value="GT" {% if identification.sanitaryRegionOfOrigin == "GT" %} selected {% endif %}>Guatemala</option>
+    <option value="GG" {% if identification.sanitaryRegionOfOrigin == "GG" %} selected {% endif %}>Guernsey</option>
+    <option value="GN" {% if identification.sanitaryRegionOfOrigin == "GN" %} selected {% endif %}>Guinea</option>
+    <option value="GW" {% if identification.sanitaryRegionOfOrigin == "GW" %} selected {% endif %}>Guinea-Bissau</option>
+    <option value="GY" {% if identification.sanitaryRegionOfOrigin == "GY" %} selected {% endif %}>Guyana</option>
+    <option value="HT" {% if identification.sanitaryRegionOfOrigin == "HT" %} selected {% endif %}>Haiti</option>
+    <option value="VA" {% if identification.sanitaryRegionOfOrigin == "VA" %} selected {% endif %}>Holy See (the)</option>
+    <option value="HN" {% if identification.sanitaryRegionOfOrigin == "HN" %} selected {% endif %}>Honduras</option>
+    <option value="HK" {% if identification.sanitaryRegionOfOrigin == "HK" %} selected {% endif %}>Hong Kong</option>
+    <option value="HU" {% if identification.sanitaryRegionOfOrigin == "HU" %} selected {% endif %}>Hungary</option>
+    <option value="IS" {% if identification.sanitaryRegionOfOrigin == "IS" %} selected {% endif %}>Iceland</option>
+    <option value="IN" {% if identification.sanitaryRegionOfOrigin == "IN" %} selected {% endif %}>India</option>
+    <option value="ID" {% if identification.sanitaryRegionOfOrigin == "ID" %} selected {% endif %}>Indonesia</option>
+    <option value="IR" {% if identification.sanitaryRegionOfOrigin == "IR" %} selected {% endif %}>Iran (Islamic Republic of)</option>
+    <option value="IQ" {% if identification.sanitaryRegionOfOrigin == "IQ" %} selected {% endif %}>Iraq</option>
+    <option value="IE" {% if identification.sanitaryRegionOfOrigin == "IE" %} selected {% endif %}>Ireland</option>
+    <option value="IM" {% if identification.sanitaryRegionOfOrigin == "IM" %} selected {% endif %}>Isle of Man</option>
+    <option value="IL" {% if identification.sanitaryRegionOfOrigin == "IL" %} selected {% endif %}>Israel</option>
+    <option value="IT" {% if identification.sanitaryRegionOfOrigin == "IT" %} selected {% endif %}>Italy</option>
+    <option value="JM" {% if identification.sanitaryRegionOfOrigin == "JM" %} selected {% endif %}>Jamaica</option>
+    <option value="JP" {% if identification.sanitaryRegionOfOrigin == "JP" %} selected {% endif %}>Japan</option>
+    <option value="JE" {% if identification.sanitaryRegionOfOrigin == "JE" %} selected {% endif %}>Jersey</option>
+    <option value="JO" {% if identification.sanitaryRegionOfOrigin == "JO" %} selected {% endif %}>Jordan</option>
+    <option value="KZ" {% if identification.sanitaryRegionOfOrigin == "KZ" %} selected {% endif %}>Kazakhstan</option>
+    <option value="KE" {% if identification.sanitaryRegionOfOrigin == "KE" %} selected {% endif %}>Kenya</option>
+    <option value="KI" {% if identification.sanitaryRegionOfOrigin == "KI" %} selected {% endif %}>Kiribati</option>
+    <option value="KP" {% if identification.sanitaryRegionOfOrigin == "KP" %} selected {% endif %}>Korea (the Democratic People's Republic of)</option>
+    <option value="KR" {% if identification.sanitaryRegionOfOrigin == "KR" %} selected {% endif %}>Korea (the Republic of)</option>
+    <option value="KW" {% if identification.sanitaryRegionOfOrigin == "KW" %} selected {% endif %}>Kuwait</option>
+    <option value="KG" {% if identification.sanitaryRegionOfOrigin == "KG" %} selected {% endif %}>Kyrgyzstan</option>
+    <option value="LA" {% if identification.sanitaryRegionOfOrigin == "LA" %} selected {% endif %}>Lao People's Democratic Republic (the)</option>
+    <option value="LV" {% if identification.sanitaryRegionOfOrigin == "LV" %} selected {% endif %}>Latvia</option>
+    <option value="LB" {% if identification.sanitaryRegionOfOrigin == "LB" %} selected {% endif %}>Lebanon</option>
+    <option value="LS" {% if identification.sanitaryRegionOfOrigin == "LS" %} selected {% endif %}>Lesotho</option>
+    <option value="LR" {% if identification.sanitaryRegionOfOrigin == "LR" %} selected {% endif %}>Liberia</option>
+    <option value="LY" {% if identification.sanitaryRegionOfOrigin == "LY" %} selected {% endif %}>Libya</option>
+    <option value="LI" {% if identification.sanitaryRegionOfOrigin == "LI" %} selected {% endif %}>Liechtenstein</option>
+    <option value="LT" {% if identification.sanitaryRegionOfOrigin == "LT" %} selected {% endif %}>Lithuania</option>
+    <option value="LU" {% if identification.sanitaryRegionOfOrigin == "LU" %} selected {% endif %}>Luxembourg</option>
+    <option value="MO" {% if identification.sanitaryRegionOfOrigin == "MO" %} selected {% endif %}>Macao</option>
+    <option value="MG" {% if identification.sanitaryRegionOfOrigin == "MG" %} selected {% endif %}>Madagascar</option>
+    <option value="MW" {% if identification.sanitaryRegionOfOrigin == "MW" %} selected {% endif %}>Malawi</option>
+    <option value="MY" {% if identification.sanitaryRegionOfOrigin == "MY" %} selected {% endif %}>Malaysia</option>
+    <option value="ML" {% if identification.sanitaryRegionOfOrigin == "ML" %} selected {% endif %}>Mali</option>
+    <option value="MT" {% if identification.sanitaryRegionOfOrigin == "MT" %} selected {% endif %}>Malta</option>
+    <option value="MH" {% if identification.sanitaryRegionOfOrigin == "MH" %} selected {% endif %}>Marshall Islands (the)</option>
+    <option value="MQ" {% if identification.sanitaryRegionOfOrigin == "MQ" %} selected {% endif %}>Martinique</option>
+    <option value="MR" {% if identification.sanitaryRegionOfOrigin == "MR" %} selected {% endif %}>Mauritania</option>
+    <option value="MU" {% if identification.sanitaryRegionOfOrigin == "MU" %} selected {% endif %}>Mauritius</option>
+    <option value="YT" {% if identification.sanitaryRegionOfOrigin == "YT" %} selected {% endif %}>Mayotte</option>
+    <option value="MX" {% if identification.sanitaryRegionOfOrigin == "MX" %} selected {% endif %}>Mexico</option>
+    <option value="FM" {% if identification.sanitaryRegionOfOrigin == "FM" %} selected {% endif %}>Micronesia (Federated States of)</option>
+    <option value="MD" {% if identification.sanitaryRegionOfOrigin == "MD" %} selected {% endif %}>Moldova (the Republic of)</option>
+    <option value="MC" {% if identification.sanitaryRegionOfOrigin == "MC" %} selected {% endif %}>Monaco</option>
+    <option value="MN" {% if identification.sanitaryRegionOfOrigin == "MN" %} selected {% endif %}>Mongolia</option>
+    <option value="ME" {% if identification.sanitaryRegionOfOrigin == "ME" %} selected {% endif %}>Montenegro</option>
+    <option value="MS" {% if identification.sanitaryRegionOfOrigin == "MS" %} selected {% endif %}>Montserrat</option>
+    <option value="MA" {% if identification.sanitaryRegionOfOrigin == "MA" %} selected {% endif %}>Morocco</option>
+    <option value="MZ" {% if identification.sanitaryRegionOfOrigin == "MZ" %} selected {% endif %}>Mozambique</option>
+    <option value="MM" {% if identification.sanitaryRegionOfOrigin == "MM" %} selected {% endif %}>Myanmar</option>
+    <option value="NA" {% if identification.sanitaryRegionOfOrigin == "NA" %} selected {% endif %}>Namibia</option>
+    <option value="NR" {% if identification.sanitaryRegionOfOrigin == "NR" %} selected {% endif %}>Nauru</option>
+    <option value="NP" {% if identification.sanitaryRegionOfOrigin == "NP" %} selected {% endif %}>Nepal</option>
+    <option value="NL" {% if identification.sanitaryRegionOfOrigin == "NL" %} selected {% endif %}>Netherlands (the)</option>
+    <option value="NC" {% if identification.sanitaryRegionOfOrigin == "NC" %} selected {% endif %}>New Caledonia</option>
+    <option value="NZ" {% if identification.sanitaryRegionOfOrigin == "NZ" %} selected {% endif %}>New Zealand</option>
+    <option value="NI" {% if identification.sanitaryRegionOfOrigin == "NI" %} selected {% endif %}>Nicaragua</option>
+    <option value="NE" {% if identification.sanitaryRegionOfOrigin == "NE" %} selected {% endif %}>Niger (the)</option>
+    <option value="NG" {% if identification.sanitaryRegionOfOrigin == "NG" %} selected {% endif %}>Nigeria</option>
+    <option value="NU" {% if identification.sanitaryRegionOfOrigin == "NU" %} selected {% endif %}>Niue</option>
+    <option value="NF" {% if identification.sanitaryRegionOfOrigin == "NF" %} selected {% endif %}>Norfolk Island</option>
+    <option value="MP" {% if identification.sanitaryRegionOfOrigin == "MP" %} selected {% endif %}>Northern Mariana Islands (the)</option>
+    <option value="NO" {% if identification.sanitaryRegionOfOrigin == "NO" %} selected {% endif %}>Norway</option>
+    <option value="OM" {% if identification.sanitaryRegionOfOrigin == "OM" %} selected {% endif %}>Oman</option>
+    <option value="PK" {% if identification.sanitaryRegionOfOrigin == "PK" %} selected {% endif %}>Pakistan</option>
+    <option value="PW" {% if identification.sanitaryRegionOfOrigin == "PW" %} selected {% endif %}>Palau</option>
+    <option value="PS" {% if identification.sanitaryRegionOfOrigin == "PS" %} selected {% endif %}>Palestine, State of</option>
+    <option value="PA" {% if identification.sanitaryRegionOfOrigin == "PA" %} selected {% endif %}>Panama</option>
+    <option value="PG" {% if identification.sanitaryRegionOfOrigin == "PG" %} selected {% endif %}>Papua New Guinea</option>
+    <option value="PY" {% if identification.sanitaryRegionOfOrigin == "PY" %} selected {% endif %}>Paraguay</option>
+    <option value="PE" {% if identification.sanitaryRegionOfOrigin == "PE" %} selected {% endif %}>Peru</option>
+    <option value="PH" {% if identification.sanitaryRegionOfOrigin == "PH" %} selected {% endif %}>Philippines (the)</option>
+    <option value="PN" {% if identification.sanitaryRegionOfOrigin == "PN" %} selected {% endif %}>Pitcairn</option>
+    <option value="PL" {% if identification.sanitaryRegionOfOrigin == "PL" %} selected {% endif %}>Poland</option>
+    <option value="PT" {% if identification.sanitaryRegionOfOrigin == "PT" %} selected {% endif %}>Portugal</option>
+    <option value="PR" {% if identification.sanitaryRegionOfOrigin == "PR" %} selected {% endif %}>Puerto Rico</option>
+    <option value="QA" {% if identification.sanitaryRegionOfOrigin == "QA" %} selected {% endif %}>Qatar</option>
+    <option value="MK" {% if identification.sanitaryRegionOfOrigin == "MK" %} selected {% endif %}>Republic of North Macedonia</option>
+    <option value="RE" {% if identification.sanitaryRegionOfOrigin == "RE" %} selected {% endif %}>Réunion</option>
+    <option value="RO" {% if identification.sanitaryRegionOfOrigin == "RO" %} selected {% endif %}>Romania</option>
+    <option value="RU" {% if identification.sanitaryRegionOfOrigin == "RU" %} selected {% endif %}>Russian Federation (the)</option>
+    <option value="RW" {% if identification.sanitaryRegionOfOrigin == "RW" %} selected {% endif %}>Rwanda</option>
+    <option value="BL" {% if identification.sanitaryRegionOfOrigin == "BL" %} selected {% endif %}>Saint Barthélemy</option>
+    <option value="SH" {% if identification.sanitaryRegionOfOrigin == "SH" %} selected {% endif %}>Saint Helena, Ascension and Tristan da Cunha</option>
+    <option value="KN" {% if identification.sanitaryRegionOfOrigin == "KN" %} selected {% endif %}>Saint Kitts and Nevis</option>
+    <option value="LC" {% if identification.sanitaryRegionOfOrigin == "LC" %} selected {% endif %}>Saint Lucia</option>
+    <option value="MF" {% if identification.sanitaryRegionOfOrigin == "MF" %} selected {% endif %}>Saint Martin (French part)</option>
+    <option value="PM" {% if identification.sanitaryRegionOfOrigin == "PM" %} selected {% endif %}>Saint Pierre and Miquelon</option>
+    <option value="VC" {% if identification.sanitaryRegionOfOrigin == "VC" %} selected {% endif %}>Saint Vincent and the Grenadines</option>
+    <option value="WS" {% if identification.sanitaryRegionOfOrigin == "WS" %} selected {% endif %}>Samoa</option>
+    <option value="SM" {% if identification.sanitaryRegionOfOrigin == "SM" %} selected {% endif %}>San Marino</option>
+    <option value="ST" {% if identification.sanitaryRegionOfOrigin == "ST" %} selected {% endif %}>Sao Tome and Principe</option>
+    <option value="SA" {% if identification.sanitaryRegionOfOrigin == "SA" %} selected {% endif %}>Saudi Arabia</option>
+    <option value="SN" {% if identification.sanitaryRegionOfOrigin == "SN" %} selected {% endif %}>Senegal</option>
+    <option value="RS" {% if identification.sanitaryRegionOfOrigin == "RS" %} selected {% endif %}>Serbia</option>
+    <option value="SC" {% if identification.sanitaryRegionOfOrigin == "SC" %} selected {% endif %}>Seychelles</option>
+    <option value="SL" {% if identification.sanitaryRegionOfOrigin == "SL" %} selected {% endif %}>Sierra Leone</option>
+    <option value="SG" {% if identification.sanitaryRegionOfOrigin == "SG" %} selected {% endif %}>Singapore</option>
+    <option value="SX" {% if identification.sanitaryRegionOfOrigin == "SX" %} selected {% endif %}>Sint Maarten (Dutch part)</option>
+    <option value="SK" {% if identification.sanitaryRegionOfOrigin == "SK" %} selected {% endif %}>Slovakia</option>
+    <option value="SI" {% if identification.sanitaryRegionOfOrigin == "SI" %} selected {% endif %}>Slovenia</option>
+    <option value="SB" {% if identification.sanitaryRegionOfOrigin == "SB" %} selected {% endif %}>Solomon Islands</option>
+    <option value="SO" {% if identification.sanitaryRegionOfOrigin == "SO" %} selected {% endif %}>Somalia</option>
+    <option value="ZA" {% if identification.sanitaryRegionOfOrigin == "ZA" %} selected {% endif %}>South Africa</option>
+    <option value="GS" {% if identification.sanitaryRegionOfOrigin == "GS" %} selected {% endif %}>South Georgia and the South Sandwich Islands</option>
+    <option value="SS" {% if identification.sanitaryRegionOfOrigin == "SS" %} selected {% endif %}>South Sudan</option>
+    <option value="ES" {% if identification.sanitaryRegionOfOrigin == "ES" %} selected {% endif %}>Spain</option>
+    <option value="LK" {% if identification.sanitaryRegionOfOrigin == "LK" %} selected {% endif %}>Sri Lanka</option>
+    <option value="SD" {% if identification.sanitaryRegionOfOrigin == "SD" %} selected {% endif %}>Sudan (the)</option>
+    <option value="SR" {% if identification.sanitaryRegionOfOrigin == "SR" %} selected {% endif %}>Suriname</option>
+    <option value="SE" {% if identification.sanitaryRegionOfOrigin == "SE" %} selected {% endif %}>Sweden</option>
+    <option value="CH" {% if identification.sanitaryRegionOfOrigin == "CH" %} selected {% endif %}>Switzerland</option>
+    <option value="SY" {% if identification.sanitaryRegionOfOrigin == "SY" %} selected {% endif %}>Syrian Arab Republic</option>
+    <option value="TW" {% if identification.sanitaryRegionOfOrigin == "TW" %} selected {% endif %}>Taiwan (Province of China)</option>
+    <option value="TJ" {% if identification.sanitaryRegionOfOrigin == "TJ" %} selected {% endif %}>Tajikistan</option>
+    <option value="TZ" {% if identification.sanitaryRegionOfOrigin == "TZ" %} selected {% endif %}>Tanzania, United Republic of</option>
+    <option value="TH" {% if identification.sanitaryRegionOfOrigin == "TH" %} selected {% endif %}>Thailand</option>
+    <option value="TL" {% if identification.sanitaryRegionOfOrigin == "TL" %} selected {% endif %}>Timor-Leste</option>
+    <option value="TG" {% if identification.sanitaryRegionOfOrigin == "TG" %} selected {% endif %}>Togo</option>
+    <option value="TK" {% if identification.sanitaryRegionOfOrigin == "TK" %} selected {% endif %}>Tokelau</option>
+    <option value="TO" {% if identification.sanitaryRegionOfOrigin == "TO" %} selected {% endif %}>Tonga</option>
+    <option value="TT" {% if identification.sanitaryRegionOfOrigin == "TT" %} selected {% endif %}>Trinidad and Tobago</option>
+    <option value="TN" {% if identification.sanitaryRegionOfOrigin == "TN" %} selected {% endif %}>Tunisia</option>
+    <option value="TR" {% if identification.sanitaryRegionOfOrigin == "TR" %} selected {% endif %}>Turkey</option>
+    <option value="TM" {% if identification.sanitaryRegionOfOrigin == "TM" %} selected {% endif %}>Turkmenistan</option>
+    <option value="TC" {% if identification.sanitaryRegionOfOrigin == "TC" %} selected {% endif %}>Turks and Caicos Islands (the)</option>
+    <option value="TV" {% if identification.sanitaryRegionOfOrigin == "TV" %} selected {% endif %}>Tuvalu</option>
+    <option value="UG" {% if identification.sanitaryRegionOfOrigin == "UG" %} selected {% endif %}>Uganda</option>
+    <option value="UA" {% if identification.sanitaryRegionOfOrigin == "UA" %} selected {% endif %}>Ukraine</option>
+    <option value="AE" {% if identification.sanitaryRegionOfOrigin == "AE" %} selected {% endif %}>United Arab Emirates (the)</option>
+    <option value="GB" {% if identification.sanitaryRegionOfOrigin == "GB" %} selected {% endif %}>United Kingdom</option>
+    <option value="XI" {% if identification.sanitaryRegionOfOrigin == "XI" %} selected {% endif %}>United Kingdom - Northern Ireland</option>
+    <option value="UM" {% if identification.sanitaryRegionOfOrigin == "UM" %} selected {% endif %}>United States Minor Outlying Islands (the)</option>
+    <option value="US" {% if identification.sanitaryRegionOfOrigin == "US" %} selected {% endif %}>United States of America (the)</option>
+    <option value="UY" {% if identification.sanitaryRegionOfOrigin == "UY" %} selected {% endif %}>Uruguay</option>
+    <option value="UZ" {% if identification.sanitaryRegionOfOrigin == "UZ" %} selected {% endif %}>Uzbekistan</option>
+    <option value="VU" {% if identification.sanitaryRegionOfOrigin == "VU" %} selected {% endif %}>Vanuatu</option>
+    <option value="VE" {% if identification.sanitaryRegionOfOrigin == "VE" %} selected {% endif %}>Venezuela (Bolivarian Republic of)</option>
+    <option value="VN" {% if identification.sanitaryRegionOfOrigin == "VN" %} selected {% endif %}>Viet Nam</option>
+    <option value="VG" {% if identification.sanitaryRegionOfOrigin == "VG" %} selected {% endif %}>Virgin Islands (British)</option>
+    <option value="VI" {% if identification.sanitaryRegionOfOrigin == "VI" %} selected {% endif %}>Virgin Islands (U.S.)</option>
+    <option value="WF" {% if identification.sanitaryRegionOfOrigin == "WF" %} selected {% endif %}>Wallis and Futuna</option>
+    <option value="YE" {% if identification.sanitaryRegionOfOrigin == "YE" %} selected {% endif %}>Yemen</option>
+    <option value="ZM" {% if identification.sanitaryRegionOfOrigin == "ZM" %} selected {% endif %}>Zambia</option>
+    <option value="ZW" {% if identification.sanitaryRegionOfOrigin == "ZW" %} selected {% endif %}>Zimbabwe</option>
+  </select>
+</div>

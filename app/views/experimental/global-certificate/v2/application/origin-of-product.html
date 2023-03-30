@@ -62,7 +62,8 @@
          <div class="govuk-button-group">
         <!-- to update state  -->
         {% if query.change != "yes" %}
-        <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">{% endif %}
+        <input type="hidden" name="{{data.taskID | removeWhiteSpace}}Status" value="in progress">
+        {% endif %}
         <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
         {% if query.change != "yes" %}
         <a href="../task-list" class="govuk-button govuk-button--secondary" data-v-563d6e59="">Save and exit</a>
