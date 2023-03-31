@@ -64,7 +64,7 @@ Home – GOV.UK Prototype Kit
               <span class="govuk-visually-hidden">Error:</span> Select a gross weight amount unit
             </p>
             {% endif %}
-            <select class="govuk-select  {% if query.hasError and query.errorType=='noWeight' %}govuk-input--error{% endif %}" data-required="true" id="gross-weight-amount-units" name="GROSS_WEIGHT_quantifier" {% if query.hasError and query.errorType=='noWeight' %} aria-describedby="skipErrorSelect" {% endif %}>
+            <select class="govuk-select {% if query.hasError and query.errorType=='noWeight' %}govuk-input--error{% endif %}" data-required="true" id="gross-weight-amount-units" name="GROSS_WEIGHT_quantifier" {% if query.hasError and query.errorType=='noWeight' %} aria-describedby="skipErrorSelect" {% endif %}>
               <option value="" {% if query.change !='yes' or data.GROSS_WEIGHT_quantifier=='' %}selected{%endif%}>Select a unit</option>
               <option value="GRM" {% if (query.change or query.hasError=='yes' ) and data.GROSS_WEIGHT_quantifier=='GRM' %}selected{% endif %}>gram</option>
               <option value="KGM" {% if (query.change or query.hasError=='yes' ) and data.GROSS_WEIGHT_quantifier=='KGM' or not data.GROSS_WEIGHT_quantifier%}selected{% endif %}>kilogram</option>
