@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Select a manufacturing plant activity – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if query.hasError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="COLD_STORES-GEN">Select a manufacturing plant activity</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <form method="post" action="commodity">
+        
+  
+    <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
+      <fieldset class="govuk-fieldset" aria-describedby="select-activity-hint {% if query.hasError %}govuk-form-group--error{% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            Select a manufacturing plant activity
+          </h1>
+        </legend>
+        <div id="select-activity-hint" class="govuk-hint">
+          <strong>Defra eTrade Exporters LTD</strong> performs multiple activities. Select the activity for the commodity you're adding.
+        </div>
+        
+        {% if query.hasError %}
+        <div class="govuk-error-message" id="activity-error-message"><span class="govuk-visually-hidden">Error: </span>Select a manufacturing plant activity</div>
+        {% endif %}
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="COLD_STORES-GEN" name="COLD_STORES" type="radio" value="Cold stores - GEN - Food" aria-describedby="COLD_STORES-GEN--hint" {% if query.change and data.COLD_STORES== "Cold stores - GEN - Food"%}checked{% endif %} >
+            <label class="govuk-label govuk-radios__label" for="COLD_STORES">Cold stores - GEN - Food</label>
+            <div id="COLD_STORES-GEN--hint" class="govuk-hint govuk-radios__hint">
+              General activity establishment - non-EU
+            </div>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="COLD_STORE-RM" name="COLD_STORES" type="radio" value="COLD_STORES - RM" aria-describedby="COLD_STORES-RM--hint" {% if query.change and data.COLD_STORES== "COLD_STORES - RM"%}checked{% endif %}>
+            <label class="govuk-label govuk-radios__label" for="COLD_STORES">Cold stores - RM - Food</label>
+            <div id="COLD_STORES-RM--hint" class="govuk-hint govuk-radios__hint">
+              Meat of domestic ungulates
+            </div>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="COLD_STORE-RM" name="COLD_STORES" type="radio" value="COLD_STORES - RPM" aria-describedby="COLD_STORES-RPM--hint" {% if query.change and data.COLD_STORES== "COLD_STORES - RPM"%}checked{% endif %}>
+            <label class="govuk-label govuk-radios__label" for="COLD_STORES">Cold stores - RPM - Food</label>
+            <div id="COLD_STORES-RPM--hint" class="govuk-hint govuk-radios__hint">
+              Meat products
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary"><span class="govuk-details__summary-text"> Help with adding activities </span></summary>
+          <div class="govuk-details__text"> If you're unsure which activity to select for the commodity you're adding, contact your certifier. </div>
+        </details>
+    <button type="submit" class="govuk-button" > Save and continue </button>
+        </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  $(".govuk-button").on("click", function(e) {
+    e.preventDefault()
+
+    if ($('input[name="COLD_STORES"]').is(':checked')) {
+   
+        $("form").submit()
+    
+    } else {
+      window.location.href = "select-activity-with-classification?hasError=yes"
+    }
+  })
+
+})
+</script>
+{% endblock%}
