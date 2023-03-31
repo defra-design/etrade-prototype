@@ -32,7 +32,7 @@ Select an activity – {{serviceName}} - GOV.UK
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#question">Select a consignor activity</a>
+              <a href="#question">Select a consignor or exporter activity</a>
             </li>
           </ul>
         </div>
@@ -42,34 +42,25 @@ Select an activity – {{serviceName}} - GOV.UK
 
     <form method="post" novalidate="">
     <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
-      <fieldset class="govuk-fieldset">
+      <fieldset class="govuk-fieldset" aria-describedby="activity-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
           <h1 class="govuk-fieldset__heading" id="question">
-            Select a consignor activity
+            Select a consignor or exporter activity
           </h1>
         </legend>
+        <p class="govuk-hint" id="activity-hint">
+          <strong>{{operator.TradingName}}</strong> performs multiple activities. Select the most relevant activity for the consignor or exporter you're adding.
+        </p>
+
 
         {% if query.hasError %}
         <p id="where-do-you-live-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span> Select a consignor activity
+          <span class="govuk-visually-hidden">Error:</span> Select a consignor or exporter activity
         </p>
         {% endif %}
 
-        <p class="govuk-body" lang="en">
-          <strong>{{operator.TradingName}}</strong> performs multiple activities. Select the most relevant activity for the commodity you're adding.
-        </p>
-
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Help with adding activities
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            If you cannot see a relevant activity for the commodity you’re adding, contact your certifier.
-          </div>
-        </details>
-
+     
+      
         <div class="govuk-radios" data-module="govuk-radios">
           {% for activity in operator.All_Activities %}
           <div class="govuk-radios__item">
@@ -82,6 +73,16 @@ Select an activity – {{serviceName}} - GOV.UK
         </div>
       </fieldset>
       </div>
+      <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with adding activities
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            If you cannot see a relevant activity for the consignor or exporter you’re adding, contact your certifier.
+          </div>
+        </details>
 
       <button class="govuk-button" data-module="govuk-button">
         Save and continue
