@@ -35,7 +35,7 @@ Home – GOV.UK Prototype Kit
 
 
 
-              <li><a class="govuk-link" href="#gross-weight-error">Gross weight amount must be greater or equal to the total net weight of commodities</a></li>
+              <li><a class="govuk-link" href="#gross-weight-error">The gross weight of the commodities cannot be less than the net weight</a></li>
             </ul>
           </div>
         </div>
@@ -88,7 +88,7 @@ Home – GOV.UK Prototype Kit
               <dt class="govuk-summary-list__key"> Gross weight </dt>
               <dd class="govuk-summary-list__value">
                 {% if query.hasError %}
-                  <span class="govuk-error-message" id="gross-weight-error--message"><span class="govuk-visually-hidden">Error:</span> Gross weight amount must be greater or equal to the total net weight of commodities</span>
+                  <span class="govuk-error-message" id="gross-weight-error--message"><span class="govuk-visually-hidden">Error:</span>The gross weight of the commodities cannot be less than the net weight</span>
                 {% endif %}
                   {{data.GROSS_WEIGHT or data.setGrossWeight}} kg
                  

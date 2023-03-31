@@ -33,7 +33,7 @@ Home – GOV.UK Prototype Kit
             {% endif %}
             {% if query.errorType == "over"%}
             <li>
-              <a href="#overErrorSelect">Gross weight amount must be less or equal to the total net weight of commodities</a>
+              <a href="#overErrorSelect">The gross weight of the commodities cannot be less than the net weight</a>
             </li>
             {% endif %}
           </ul>
@@ -44,19 +44,16 @@ Home – GOV.UK Prototype Kit
     <h1 class="govuk-heading-xl">
       What is the gross weight of the commodities in this certificate?
     </h1>
-    <p>
-      This is the combined weight of the commodities and their containers.
-    </p>
     <form method="post">
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <div class="govuk-form-group {% if query.hasError and query.errorType=='over' %}govuk-form-group--error{% endif %}"><label class="govuk-label" for="gross-weight-amount">Gross weight amount</label>
-            <div id="add-another-hint" class="govuk-hint">
+          <!--   <div id="add-another-hint" class="govuk-hint">
               This must be greater or equal to the total net weight of all commodities in the consignment.
-            </div>
+            </div> -->
             {% if query.hasError and query.errorType=="over" %}
             <p id="overErrorSelect" class="govuk-error-message ">
-              <span class="govuk-visually-hidden">Error:</span> Gross weight amount must be greater or equal to the total net weight of commodities
+              <span class="govuk-visually-hidden">Error:</span> The gross weight of the commodities cannot be less than the net weight
             </p>
             {% endif %}
             <input class="govuk-input govuk-input--width-4 js-question {% if query.hasError and query.errorType=='over' %}govuk-input--error{% endif %}" data-required="true" id="gross-weight-amount" name="GROSS_WEIGHT" type="number" value="{{data.GROSS_WEIGHT or data.setGrossWeight}}">
