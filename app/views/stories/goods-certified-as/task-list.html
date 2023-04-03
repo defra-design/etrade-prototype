@@ -102,11 +102,11 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./goods/goods-certified-as?change=no" aria-describedby="goods-certified-status">
-                Goods certified as
+              <a href="./goods-certified-as?change=no&certificate=16" aria-describedby="goods-certified-status">
+                Goods certified as 
               </a>
             </span>
-            {% if data["goods_certified_as"] %}
+            {% if data.goods_certified_as %}
             <strong class="govuk-tag app-task-list__tag" id="goods-certified-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="goods-certified-status">Not started</strong>

@@ -25,6 +25,7 @@
       </div>
     </div>
     {% endif %}
+    
     <!-- <p id="certified-as-hint" class="govuk-body">State the intended use for the products in your application.</p> -->
     <form method="post" novalidate>
       {% if query.showSearch=="yes"%}
@@ -52,7 +53,7 @@
           <div class="govuk-radios" data-module="govuk-radios" tabindex="0" data-v-563d6e59="">
             {% for item in cert.goodsCertifiedAs %}
             <div class="govuk-radios__item" data-v-563d6e59="" data-content="Animal feedingstuff">
-              <input id="goods-certified-as-{{loop.index -1}}" type="radio" name="goods_certified_as" class="govuk-radios__input" value="{{item}}" data-v-563d6e59="">
+              <input id="goods-certified-as-{{loop.index -1}}" type="radio" name="goods_certified_as" class="govuk-radios__input" value="{{item}}" {% if data.goods_certified_as=="Human consumption" %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="goods-certified-as-0" data-v-563d6e59="">{{item}}</label>
             </div>
             {% endfor %}
