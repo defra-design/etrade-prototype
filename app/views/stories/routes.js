@@ -50,6 +50,15 @@ module.exports = function(router) {
       res.redirect(301, '/' + base_url + 'accessiblity/goods-certified-as'+req.params[0]+'?has_error=yes');
     }
   })
+  router.post('/' + base_url + 'goods-certified-as/goods-certified-as*', function(req, res) {
+    if (req.body.goods_certified_as && req.query.change != "yes") {
+      res.redirect(301, '/' + base_url + 'goods-certified-as/task-list');
+    }else if (req.body.goods_certified_as && req.query.change == "yes") {  
+      res.redirect(301, '/' + base_url + 'goods-certified-as/check-your-answers');
+    }else { 
+      res.redirect(301, '/' + base_url + 'goods-certified-as/goods-certified-as' + req.params[0] + '?has_error=yes');
+    }
+  });
   router.post('/' + base_url + 'accessiblity/create-reference*', function(req, res) {
 
     if (req.body.UserReference == "") {
