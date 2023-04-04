@@ -25,18 +25,11 @@
       </div>
     </div>
     {% endif %}
-    
+
     <!-- <p id="certified-as-hint" class="govuk-body">State the intended use for the products in your application.</p> -->
     <form method="post" novalidate>
-      {% if query.showSearch=="yes"%}
-      <div class="govuk-form-group ">
-        <label for="search-goods-certified-as" class="govuk-label">Search for goods certification</label>
-        <input class="govuk-input" aria-describedby="showing-count" id="search-goods-certified-as" type="text">
-      </div>
-      {% endif %}
-      <p class="govuk-body govuk-!-margin-top-4" style="display:none"><span id="showing-count" aria-atomic="true"></span> &nbsp;&nbsp;<a class="govuk-link--no-visited-state" href="./goods-certified-as" id="clear-all" style="display:none; ">Clear
-          search</a>
-      </p>
+      
+     
       <div class="govuk-form-group {% if query.has_error %}govuk-form-group--error{% endif %}">
         <fieldset class="govuk-fieldset" aria-describedby="{% if query.has_error %}select-error{% endif %}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
@@ -44,6 +37,15 @@
               What is your consignment certified as?
             </h1>
           </legend>
+          {% if query.showSearch=="yes"%}
+      <div class="govuk-form-group ">
+        <label for="search-goods-certified-as" class="govuk-label">Search for goods certification</label>
+        <input class="govuk-input" aria-describedby="showing-count" id="search-goods-certified-as" type="text">
+      </div>
+       <p class="govuk-body govuk-!-margin-top-4" style="display:none"><span id="showing-count" aria-atomic="true"></span> &nbsp;&nbsp;<a class="govuk-link--no-visited-state" href="./goods-certified-as" id="clear-all" style="display:none; ">Clear
+          search</a>
+      </p>
+      {% endif %}
           {% if query.has_error %}
           <p id="select-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Select what is your consignment certified as
