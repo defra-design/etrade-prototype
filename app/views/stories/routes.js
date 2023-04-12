@@ -42,6 +42,19 @@ module.exports = function(router) {
 
   })
 
+  router.post('/' + base_url + "select-certifier/certifier/find", function(req, res) {
+    console.log("In certifier/find.html");
+
+    const certifierIndex = req.body.certifierIndex;
+    console.log("certiferIndex: " + certifierIndex);
+
+    req.session.data.person['certifier'] = certifierIndex;
+
+  
+    
+    res.redirect(301, '/' + base_url + 'select-certifier/certifier');
+  })
+
   router.post('/' + base_url + 'accessiblity/goods-certified-as*', function(req, res) {
 
     if (req.body.goods_certified_as) {

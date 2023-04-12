@@ -31,13 +31,47 @@ Certifier – GOV.UK Prototype Kit
 
 <form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
       <h1 class="govuk-heading-xl">Certifier</h1>
-        <p>This is a prototype. Please click continue as if you had filled in the details.</p>
-      
-        <input type="hidden" name="certifierName"  value="Test company name">
-          <input type="hidden" name="certifierTown"  value="London">
-          <input type="hidden" name="certifierPostcode"  value="SW6 5HM">
+      <p class="govuk-body">Search for and select the certifying officers organisation who is authorised by Defra to sign the official certificate.</p>
+
+        {% if data.person['certifier'] %}
+          {% set certifierIndex = data.person['certifier'] %}
+          {% set certifier = data.certifiers[certifierIndex] %}
+
+          {% set removeLink = "./remove?who=certifier&redirect=certifier" %}
+
+          <input type="hidden" name="certifierName"  value="{{certifier.practiceName}}">
+          <input type="hidden" name="certifierTown"  value="{{certifier.address['line3']}}">
+          <input type="hidden" name="certifierPostcode"  value="{{certifier.address['postCode'] | upper }}">
+
+          <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long govuk-!-margin-bottom-10 app-find-establishment-card">
+            <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__row-group">
+                <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key app-find-establishment-card">
+                  <strong>{{certifier.practiceName}}</strong><br>
+                  {{certifier.address['line1']}},<br>
+                  {% if certifier.address['line2'] %}{{certifier.address['line2']}}<br>{% endif %}
+                  {% if certifier.address['line3'] %}{{certifier.address['line3']}}<br>{% endif %}
+                  {{certifier.address['postCode'] | upper }}
+                </dt>
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                    <li class="govuk-summary-list__actions-list-item">
+                      <a class="govuk-link govuk-link--no-visited-state" href="{{ removeLink }}&random={{ 100000 | randomNumberGenerator }}">
+                        Remove<span class="govuk-visually-hidden"> this certifier</span></a>
+                    </li>
+                  </ul>
+                </dd>
+              </div>
+            </div>
+          </dl>
+        {% else %}
+          <p class="govuk-!-margin-bottom-10 find-establishment-link">
+            <a href="./certifier/find" class="govuk-link govuk-link--no-visited-state">Select a certifier</a>
+          </p>
+        {% endif %}
+
       <button class="govuk-button">Continue</button>
     </div>
   </div>

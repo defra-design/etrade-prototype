@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">E-certs</span>
+      Pagination
+      </h1>
+      <p>
+        Update certifier search to be consistent with other operator searches. Even though this is not a TRACES search it should look and behave similar to the other searches like, exporter and inporter search. 
+      </p>
+    
+
+      <!-- <h2 class="govuk-heading-m">Release phase (beta)</h2> -->
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <ul class="govuk-list">
+        <li><a href="/clear-data?url=/stories/select-certifier/certifier" class="govuk-link">Working journey</a></li>
+        <br>
+        <p>The follow are static page only for design and HTML reference</p>
+        <li><a href="/clear-data?url=/stories/select-certifier/certifier/find" class="govuk-link">Find a certifier</a></li>
+         <li><a href="/clear-data?url=/stories/select-certifier/search-error" class="govuk-link">Find a certifier - with search empty error</a></li>
+         <li><a href="/clear-data?url=/stories/select-certifier/select-error" class="govuk-link">Find a certifier - with select org error</a></li>
+
+
+
+      </ul>
+
+      <!-- <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Main changes
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <table class='govuk-table'>
+            <thead class='govuk-table__head'>
+              <tr class='govuk-table__row'>
+                <th scope='col' class='govuk-table__header'>What we've done</th>
+                <th scope='col' class='govuk-table__header'>Why we did it</th>
+              </tr>
+            </thead>
+            <tbody class='govuk-table__body'>
+              <tr class='govuk-table__row'>
+                <td class='govuk-table__cell'>Changed sign in process, now emailing a code</td>
+                <td class='govuk-table__cell'>Issues were discoved with emailing a link. Senders were using it as a book mark.</td>
+              </tr>
+              <tr class='govuk-table__row'>
+                <td class='govuk-table__cell'>New verion for mailroom with after ur <a href="/v9/mailroom/">look up and forwarding</a></td>
+                <td class='govuk-table__cell'>Slimmed down version of the previous journey (v7)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details> -->
+      <!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Other features</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/stories/file-import/">Improve uploading of commodities V1</a></li>
+        <li><a href="/stories/accessiblity/">Accessibility updates</a></li>
+        <li><a href="/experimental/add-commodities/">Adding commodities redesign v1(Experimental)</a></li>
+        <li><a href="/stories/place-of-origin-remove-dropdown/place-of-origin">Remove single option drowpdowns</a></li>
+
+      </ul> -->
+      <!-- <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> -->
+  </div>
+</div>
+<script type="text/javascript">
+
+</script>
+
+{% endblock %}
