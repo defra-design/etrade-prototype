@@ -11,7 +11,7 @@ Find a certifier – {{serviceName}} - GOV.UK
 
 <form id="search" method="post" novalidate name="search">
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
 
       <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
         <h2 class="govuk-error-summary__title" id="error-summary-title">
@@ -20,7 +20,7 @@ Find a certifier – {{serviceName}} - GOV.UK
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
 
-            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
+            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#search-field-organisation-name">Enter an organisation name or postcode</a></li>
 
           </ul>
         </div>
@@ -40,32 +40,25 @@ Find a certifier – {{serviceName}} - GOV.UK
           </div>
         </div>
       </div>
-
-
-
+       <h1 class="govuk-heading-xl">Find a certifier</h1>
+        <p class="govuk-body">This is the certifying officers organisation who is authorised by DEFRA to sign the official certificate.</p>
         <div class="govuk-form-group" id="govuk-form-group-organisation-name">
-          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--xl" for="certifier-search">
-              Search for a certifier
-            </label>
-          </h1>
-          <p class="govuk-body">Search for and select the certifying officers organisation who is authorised by Defra to sign the official certificate.</p>
-          <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
-            <span class="govuk-visually-hidden">Error:</span> Organisation name cannot be blank
-          </p>
+          <label for="certifier-search-group" class="govuk-label">Certifier name or postcode</label>
+        
           <div id="certifier-search-hint" class="govuk-hint">
-            You may use the name or postcode
+            Partial company names (for example, Examplefood), may return better results than full names (for example, Examplefood Company Partners Ltd).
           </div>
-
+          <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
+            <span class="govuk-visually-hidden">Error:</span> Enter an organisation name or postcode
+          </p>
           <div id="certifier-search-group">
-            <input class="govuk-input govuk-input--width-20" id="search-field-organisation-name" spellcheck="false" name="certifier" type="search" placeholder="" value="{{query.q}}">
+            <input class="govuk-input govuk-input--width-20" id="search-field-organisation-name" spellcheck="false" name="certifier" type="search" placeholder="" value="{{query.q}}" aria-describedby="certifier-search-hint">
             <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
           </div>
 
         </div>
 
 
-    </div>
-  </div>
 
 
 <!-- results -->
@@ -74,10 +67,11 @@ Find a certifier – {{serviceName}} - GOV.UK
     <span class="search-result" aria-live="polite" aria-atomic="true"></span>
     <!--&nbsp;<a class="govuk-link" href="./results">Reset search</a>-->
     </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
     <p id="results-error" class="govuk-error-message" style="display:none">
       <span class="govuk-visually-hidden">Error:</span> Select an organisation
     </p>
-  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  
 
   <div class="govuk-radios" data-module="govuk-radios">
     {% set type = "certifier"%}
@@ -109,8 +103,10 @@ Find a certifier – {{serviceName}} - GOV.UK
   <button id="save-and-continue" type="submit" class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
     Save and continue
   </button>
-
 </div>
+    </div>
+  </div>
+
 </form>
 
 <style media="screen">
@@ -363,11 +359,13 @@ Find a certifier – {{serviceName}} - GOV.UK
 
     $('#save-and-continue').on("click", function() {
       // make sure that we have a selected result
-
+      resetErrors()
       if ($("input[name=certifierIndex]:checked").val() === undefined ) {
         $("#results").addClass("govuk-form-group--error");
         $("#results-error").show();
         $("#results-error-summary").show();
+        $("#results-error-summary").focus();
+        console.log($("#results-error-summary").focus())
         return false;
       } else {
         $("#results").removeClass("govuk-form-group--error");
@@ -376,8 +374,19 @@ Find a certifier – {{serviceName}} - GOV.UK
       }
     });
 
-    $('#organisation-search-button').on("click", function() {
+    function resetErrors(){
+      $('#search-field-organisation-name').attr("aria-describedby", "certifier-search-hint")
+      $("#results-error-summary").hide();
+      $("#results").removeClass("govuk-form-group--error");
+      $("#results-error").hide();
+      $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
+      $("#search-field-organisation-name-error").hide();
+      $("#search-field-organisation-name-error-summary").hide();
+      $("#search-field-organisation-name").removeClass(".govuk-input--error");
+    }
 
+    $('#organisation-search-button').on("click", function() {
+      resetErrors()
       // validate that a search string was provided
       var hasError = false;
       var hasOrganisationNameError = false;
@@ -398,7 +407,11 @@ Find a certifier – {{serviceName}} - GOV.UK
       }
 
       if (hasError) {
-        $("#general-error-summary").show();
+        $("#general-error-summary").show().focus();
+        var ariaText = "certifier-search-hint search-field-organisation-name-error"
+        $('#search-field-organisation-name').attr("aria-describedby", ariaText)
+
+
       } else {
         $("#general-error-summary").hide();
         $(this).text(" Searching ...")

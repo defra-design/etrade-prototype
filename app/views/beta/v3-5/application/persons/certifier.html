@@ -33,7 +33,7 @@ Certifier – GOV.UK Prototype Kit
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
       <h1 class="govuk-heading-xl">Certifier</h1>
-      <p class="govuk-body">Search for and select the certifying officers organisation who is authorised by Defra to sign the official certificate.</p>
+      <p class="govuk-body">This is the certifying officers organisation who is authorised by DEFRA to sign the official certificate.</p>
 
         {% if data.person['certifier'] %}
           {% set certifierIndex = data.person['certifier'] %}
@@ -66,16 +66,6 @@ Certifier – GOV.UK Prototype Kit
               </div>
             </div>
           </dl>
-
-
-
-
-
-
-
-
-
-
         {% else %}
           <p class="govuk-!-margin-bottom-10 find-establishment-link">
             <a href="./certifier/find" class="govuk-link govuk-link--no-visited-state">Select a certifier</a>

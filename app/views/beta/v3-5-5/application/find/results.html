@@ -293,8 +293,8 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
           <ul class="govuk-list govuk-error-summary__list">
 
             <li id="operator-search-country-error-summary" style="display:none"><a href="#operator-search-country-form-group">A country must be selected</a></li>
-            <li id="search-field-approval-number-error-summary" style="display:none"><a href="#approval-number-search">Approval number cannot be blank</a></li>
-            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-name-search">Organisation name cannot be blank</a></li>
+            <li id="search-field-approval-number-error-summary" style="display:none"><a href="#approval-number-search">Enter the organisation’s approval number</a></li>
+            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-name-search">Enter the organisation’s name</a></li>
 
           </ul>
         </div>
@@ -353,7 +353,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
                       Enter the organisation’s approval number. For example AB123, BC&nbsp;001 or XZ-2892-830.
                     </label>
                     <p id="search-field-approval-number-error" class="govuk-error-message" style="display:none">
-                      <span class="govuk-visually-hidden">Error:</span> Approval number cannot be blank
+                      <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s approval number
                     </p>
                     <input class="govuk-input govuk-!-width-one-half" id="search-field-approval-number" name="q" type="search" spellcheck="false" aria-describedby="contact-by-email-error" value="{{query.q}}">
                     <button id="operator-search-button" class="govuk-button app-button--search" type="button">Search</button>
@@ -617,6 +617,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
         $(this).text(" Searching ...")
         $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
         $(this).attr("disabled","disabled")
+        console.log("Triggered interval")
         timer = setInterval(updateOperatorSearchButton, 1000);
       }
 

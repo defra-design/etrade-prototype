@@ -293,27 +293,15 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
           <ul class="govuk-list govuk-error-summary__list">
 
             <li id="operator-search-country-error-summary" style="display:none"><a href="#operator-search-country-form-group">A country must be selected</a></li>
-            <li id="search-field-approval-number-error-summary" style="display:none"><a href="#approval-number-search">Approval number cannot be blank</a></li>
-            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-name-search">Organisation name cannot be blank</a></li>
-
+            <li id="search-field-approval-number-error-summary" style="display:none"><a href="#approval-number-search">Enter the organisation’s approval number</a></li>
+            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-name-search">Enter the organisation’s name</a></li>
+             <li id="results-error-summary"  style="display:none">
+                <a href="#results">Select an organisation</a>
+              </li>
           </ul>
         </div>
       </div>
 
-      <div id="results-error-summary" class="govuk-error-summary" data-module="govuk-error-summary" style="display:none">
-        <div role="alert">
-          <h2 class="govuk-error-summary__title">
-            There is a problem
-          </h2>
-          <div class="govuk-error-summary__body">
-            <ul class="govuk-list govuk-error-summary__list">
-              <li>
-                <a href="#results">Select an organisation</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <h1 class="govuk-heading-xl">Find a {{establishmentTypeLabel}}</h1>
 
@@ -353,7 +341,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
                       Enter the organisation’s approval number. For example AB123, BC&nbsp;001 or XZ-2892-830.
                     </label>
                     <p id="search-field-approval-number-error" class="govuk-error-message" style="display:none">
-                      <span class="govuk-visually-hidden">Error:</span> Approval number cannot be blank
+                      <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s approval number
                     </p>
                     <input class="govuk-input govuk-!-width-one-half" id="search-field-approval-number" name="q" type="search" spellcheck="false" aria-describedby="contact-by-email-error" value="{{query.q}}">
                     <button id="operator-search-button" class="govuk-button app-button--search" type="button">Search</button>
@@ -371,7 +359,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
                       You will see more search results if you search for part of the organisation name, rather than the full name.
                     </label>
                     <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
-                      <span class="govuk-visually-hidden">Error:</span> Organisation name cannot be blank
+                      <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s name
                     </p>
                     <input class="govuk-input govuk-!-width-one-half" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}">
                     <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
@@ -386,12 +374,12 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
 
 
         {% endif %}
+
         {% if query.hasError and "empty" in query.errorType%}
         <p id="national-insurance-number-error" class="govuk-error-message">
           <span class="govuk-visually-hidden">Error:</span> Enter an approval number or the {{(data.searchLabel or 'manufacturing plant') | lower}} name
         </p>
         {% endif %}
-
       </div>
 
 
@@ -495,6 +483,8 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
         $('#organisation-search-button').text("Search");
         $('#organisation-search-button').removeAttr("disabled");
         var organisationNameSearchString = $("#search-field-organisation-name").val();
+        // clear other search field
+        $("#search-field-approval-number").val("")
         searchEstablishments("organisationName", organisationNameSearchString);
         $('#results').show();
         timeTaken = 1;
@@ -508,19 +498,25 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
         $('#operator-search-button').text("Search");
         $('#operator-search-button').removeAttr("disabled");
         var approvalNumberSearchString = $("#search-field-approval-number").val();
+        // clear other search field
+        $("#search-field-organisation-name").val("")
         searchEstablishments("approvalNumber", approvalNumberSearchString);
         $('#results').show();
         timeTaken = 1;
       }
     }
 
-    $('#save-and-continue').on("click", function() {
+    $('#save-and-continue').on("click", function(e) {
       // make sure that we have a selected result
-
+      resetErrors()
       if ($("input[name=establishmentIndex]:checked").val() === undefined ) {
+
+        $("#general-error-summary").show();
         $("#results").addClass("govuk-form-group--error");
         $("#results-error").show();
         $("#results-error-summary").show();
+        setTimeout(function() { $("#general-error-summary").focus() }, 1000);
+
         return false;
       } else {
         $("#results").removeClass("govuk-form-group--error");
@@ -529,12 +525,23 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       }
     });
 
+    function resetErrors(){
+      $('#search-field-organisation-name').attr("aria-describedby", "certifier-search-hint")
+      $("#results-error-summary").hide();
+      $("#results").removeClass("govuk-form-group--error");
+      $("#results-error").hide();
+      $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
+      $("#search-field-organisation-name-error").hide();
+      $("#search-field-organisation-name-error-summary").hide();
+      $("#search-field-organisation-name").removeClass(".govuk-input--error");
+    }
+
     $('#operator-search-button').on("click", function() {
       // validate that 1) a country was selected and 2) a search string was provided
       var hasError = false;
       var hasCountryError = false;
       var hasApprovalNumberError = false;
-
+      resetErrors()
       if ($("#operator-search-country").val() == "Any") {
         hasCountryError = true;
         hasError = true;
@@ -562,7 +569,9 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       }
 
       if (hasError) {
-        $("#general-error-summary").show();
+        $("#general-error-summary").show(); 
+        setTimeout(function() { $("#general-error-summary").focus() }, 1000);
+
       } else {
         $("#general-error-summary").hide();
         $('#results').hide();
@@ -583,12 +592,13 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       var hasCountryError = false;
       var hasOrganisationNameError = false;
 
+
       if ($("#operator-search-country").val() == "Any") {
         hasCountryError = true;
         hasError = true;
         $("#operator-search-country-form-group").addClass("govuk-form-group--error");
         $("#operator-search-country-error").show();
-        $("#operator-search-country-error-summary").show();
+        $("#operator-search-country-error-summary").show()
       } else {
         $("#operator-search-country-form-group").removeClass("govuk-form-group--error");
         $("#operator-search-country-error").hide();
@@ -610,7 +620,8 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       }
 
       if (hasError) {
-        $(".govuk-error-summary").show();
+        $(".govuk-error-summary").show()
+        setTimeout(function() { $("#general-error-summary").focus() }, 1000);
       } else {
         $(".govuk-error-summary").hide();
         $('#results').hide();

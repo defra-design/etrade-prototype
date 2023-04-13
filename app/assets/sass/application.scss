@@ -471,7 +471,9 @@ strong.input-description {
 .app-button--search:hover{
   background-color: #003078;
 }
-
+.app-button--search[disabled = disabled]:hover{
+  background-color: #003078;
+}
 .app-summary-card__body {
   .app-summary-list--small {
     font-size: 16px;
