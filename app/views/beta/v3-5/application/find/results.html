@@ -322,10 +322,8 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
 
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <h1 class="govuk-fieldset__heading">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                   Search for an organisation
-                </h1>
               </legend>
 
               <div class="govuk-radios" data-module="govuk-radios">
@@ -338,12 +336,13 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
                 <div class="govuk-radios__conditional" id="conditional-search">
                   <div class="govuk-form-group" id="govuk-form-group-approval-number">
                     <label class="govuk-label" for="search-field-approval-number">
-                      Enter the organisation’s approval number. For example AB123, BC&nbsp;001 or XZ-2892-830.
+                      Enter the organisation’s approval number
                     </label>
+                    <div class="govuk-hint" id="search-field-approval-number-hint">For example AB123, BC&nbsp;001 or XZ-2892-830.</div>
                     <p id="search-field-approval-number-error" class="govuk-error-message" style="display:none">
                       <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s approval number
                     </p>
-                    <input class="govuk-input govuk-!-width-one-half" id="search-field-approval-number" name="q" type="search" spellcheck="false" aria-describedby="contact-by-email-error" value="{{query.q}}">
+                    <input class="govuk-input govuk-!-width-one-half" id="search-field-approval-number" name="q" type="search" spellcheck="false" aria-describedby="search-field-approval-number-hint contact-by-email-error " value="{{query.q}}">
                     <button id="operator-search-button" class="govuk-button app-button--search" type="button">Search</button>
                   </div>
                 </div>
@@ -355,13 +354,15 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
                 </div>
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-search-2">
                   <div class="govuk-form-group" id="govuk-form-group-organisation-name">
+
                     <label class="govuk-label" for="search-field-organisation-name">
-                      You will see more search results if you search for part of the organisation name, rather than the full name.
+                      Enter the organisation’s name
                     </label>
+                    <div class="govuk-hint" id="search-field-organisation-name-hint">You will see more search results if you search for part of the organisation name, rather than the full name.</div>
                     <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
                       <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s name
                     </p>
-                    <input class="govuk-input govuk-!-width-one-half" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}">
+                    <input class="govuk-input govuk-!-width-three-quarters" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}" aria-describedby="search-field-organisation-name-hint">
                     <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
                   </div>
                 </div>
@@ -376,16 +377,22 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
         {% endif %}
 
         {% if query.hasError and "empty" in query.errorType%}
-        <p id="national-insurance-number-error" class="govuk-error-message">
+        <p id="approval-number-error" class="govuk-error-message">
           <span class="govuk-visually-hidden">Error:</span> Enter an approval number or the {{(data.searchLabel or 'manufacturing plant') | lower}} name
         </p>
         {% endif %}
       </div>
+      <style type="text/css">
+        #clearFilter{display: none}
+      </style>
 
+       <p id="resultsCounter" class="govuk-heading-s  govuk-!-font-weight-regular">
+        <span class="search-result" aria-live="polite" aria-atomic="true"></span>  &nbsp;<a id="clearFilter" class="govuk-link" href="./results">Reset search</a></p>
+        
 
       <!-- results -->
       <div id="results" {% if query.q %}data-trigger="yes" {% endif %}>
-        <p class="govuk-heading-s  govuk-!-font-weight-regular"><span class="search-result" aria-live="polite" aria-atomic="true"></span> &nbsp;<a class="govuk-link" href="./results">Reset search</a></p>
+       
         <p id="results-error" class="govuk-error-message" style="display:none">
           <span class="govuk-visually-hidden">Error:</span> Select an organisation
         </p>
@@ -530,10 +537,14 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       $("#results-error-summary").hide();
       $("#results").removeClass("govuk-form-group--error");
       $("#results-error").hide();
+      $("#clearFilter").hide();
+      $("#search-field-approval-number-error").hide();
+      $("#govuk-form-group-approval-number").removeClass("govuk-form-group--error");
       $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
       $("#search-field-organisation-name-error").hide();
+      $("#search-field-approval-number-error-summary").hide();
       $("#search-field-organisation-name-error-summary").hide();
-      $("#search-field-organisation-name").removeClass(".govuk-input--error");
+      $("#search-field-organisation-name").removeClass("govuk-input--error");
     }
 
     $('#operator-search-button').on("click", function() {
@@ -559,13 +570,13 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
         $("#govuk-form-group-approval-number").addClass("govuk-form-group--error");
         $("#search-field-approval-number-error").show();
         $("#search-field-approval-number-error-summary").show();
-        $("#search-field-approval-number").addClass(".govuk-input--error");
+        $("#search-field-approval-number").addClass("govuk-input--error");
 
       } else {
         $("#govuk-form-group-approval-number").removeClass("govuk-form-group--error");
         $("#search-field-approval-number-error").hide();
         $("#search-field-approval-number-error-summary").hide();
-        $("#search-field-approval-number").removeClass(".govuk-input--error");
+        $("#search-field-approval-number").removeClass("govuk-input--error");
       }
 
       if (hasError) {
@@ -575,6 +586,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       } else {
         $("#general-error-summary").hide();
         $('#results').hide();
+        $("#clearFilter").hide();
         $(this).text(" Searching ...")
         $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
         $(this).attr("disabled","disabled")
@@ -591,7 +603,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       var hasError = false;
       var hasCountryError = false;
       var hasOrganisationNameError = false;
-
+      resetErrors()
 
       if ($("#operator-search-country").val() == "Any") {
         hasCountryError = true;
@@ -610,13 +622,13 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
         $("#govuk-form-group-organisation-name").addClass("govuk-form-group--error");
         $("#search-field-organisation-name-error").show();
         $("#search-field-organisation-name-error-summary").show();
-        $("#search-field-organisation-name").addClass(".govuk-input--error");
+        $("#search-field-organisation-name").addClass("govuk-input--error");
 
       } else {
         $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
         $("#search-field-organisation-name-error").hide();
         $("#search-field-organisation-name-error-summary").hide();
-        $("#search-field-organisation-name").removeClass(".govuk-input--error");
+        $("#search-field-organisation-name").removeClass("govuk-input--error");
       }
 
       if (hasError) {
@@ -625,6 +637,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
       } else {
         $(".govuk-error-summary").hide();
         $('#results').hide();
+        $("#clearFilter").hide();
         $(this).text(" Searching ...")
         $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
         $(this).attr("disabled","disabled")
@@ -638,6 +651,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
     function searchEstablishments(searchType, searchString) {
 
       $("#results").show();
+      $("#clearFilter").show();
       $(".app-establishment-list__row").hide();
 
       let q = searchString.toLowerCase();
