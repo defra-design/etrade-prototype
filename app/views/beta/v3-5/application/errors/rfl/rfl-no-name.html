@@ -11,14 +11,14 @@ Did this export originate in EU or Northern Ireland - eTrade – GOV.UK Prototyp
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
-      <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="" tabindex="-1">
+      <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="">
         <h2 class="govuk-error-summary__title" id="error-summary-title">
           There is a problem
         </h2>
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
 
-            <li id="operator-search-country-error-summary" style=""><a href="#operator-search-country">Select a country</a></li>
+            <li id="operator-search-country-error-summary" style="display: none;"><a href="#operator-search-country">Select a country</a></li>
             <li id="search-field-organisation-name-error-summary" style=""><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
 
           </ul>
@@ -40,16 +40,16 @@ Did this export originate in EU or Northern Ireland - eTrade – GOV.UK Prototyp
         </div>
       </div>
 
-      <h1 class="govuk-heading-xl">Find a place of destination</h1>
-      <p class="govuk-body">This is the final destination of the consignment.</p>
+      <h1 class="govuk-heading-xl">Find an organisation responsible for the load</h1>
+      <p class="govuk-body">Enter the country and address of the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
 
-      <div class="govuk-form-group govuk-form-group--error" id="operator-search-country-form-group">
+      <div class="govuk-form-group" id="operator-search-country-form-group">
         <label class="govuk-label" for="operator-search-country">Country</label>
-        <p id="operator-search-country-error" class="govuk-error-message" style="">
+        <p id="operator-search-country-error" class="govuk-error-message" style="display: none;">
           <span class="govuk-visually-hidden">Error:</span> Select a country
         </p>
-        <select class="govuk-select govuk-select--error" id="operator-search-country" aria-describedby="operator-search-country-error">
-          <option selected="" value="Any">Select a country</option>
+        <select class="govuk-select" id="operator-search-country">
+          <option value="Any">Select a country</option>
           <option value="AT">Austria</option>
           <option value="BE">Belgium</option>
           <option value="BG">Bulgaria</option>
@@ -59,7 +59,7 @@ Did this export originate in EU or Northern Ireland - eTrade – GOV.UK Prototyp
           <option value="DK">Denmark</option>
           <option value="EE">Estonia</option>
           <option value="FI">Finland</option>
-          <option value="FR">France</option>
+          <option value="FR" selected="" >France</option>
           <option value="DE">Germany</option>
           <option value="GR">Greece</option>
           <option value="HU">Hungary</option>
@@ -87,7 +87,7 @@ Did this export originate in EU or Northern Ireland - eTrade – GOV.UK Prototyp
 
   
   <div class="govuk-form-group govuk-form-group--error" id="govuk-form-group-organisation-name">
-    <label class="govuk-label" id="organisation-search-label">Place of destination name</label>
+    <label class="govuk-label" id="organisation-search-label">Responsible for load organisation name</label>
     
     <div id="organisation-search-hint" class="govuk-hint ">
       Partial company names (for example, Examplefood), may return better results than full names (for example, Examplefood Company Partners Ltd).
@@ -95,7 +95,7 @@ Did this export originate in EU or Northern Ireland - eTrade – GOV.UK Prototyp
     <p id="search-field-organisation-name-error" class="govuk-error-message" style="">
       <span class="govuk-visually-hidden">Error:</span> Organisation name cannot be blank
     </p>
-    <input class="govuk-input govuk-input--width-20 govuk-input--error" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="" aria-describedby="search-field-organisation-name search-field-organisation-name-error">
+    <input class="govuk-input govuk-input--width-20 govuk-input--error .govuk-input--error" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="" aria-describedby="search-field-organisation-name search-field-organisation-name-error">
     <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
   </div>
   
@@ -1673,7 +1673,7 @@ Did this export originate in EU or Northern Ireland - eTrade – GOV.UK Prototyp
         $("#govuk-form-group-approval-number").addClass("govuk-form-group--error");
         $("#search-field-approval-number-error").show();
         $("#search-field-approval-number-error-summary").show();
-        $("#search-field-approval-number").addClass(".govuk-input--error");
+        $("#search-field-approval-number").addClass("govuk-input--error");
 
 
       } else {
@@ -1728,13 +1728,13 @@ Did this export originate in EU or Northern Ireland - eTrade – GOV.UK Prototyp
         $("#govuk-form-group-organisation-name").addClass("govuk-form-group--error");
         $("#search-field-organisation-name-error").show();
         $("#search-field-organisation-name-error-summary").show();
-        $("#search-field-organisation-name").addClass(".govuk-input--error");
+        $("#search-field-organisation-name").addClass("govuk-input--error");
 
       } else {
         $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
         $("#search-field-organisation-name-error").hide();
         $("#search-field-organisation-name-error-summary").hide();
-        $("#search-field-organisation-name").removeClass(".govuk-input--error");
+        $("#search-field-organisation-name").removeClass("govuk-input--error");
       }
 
       if (hasError) {
