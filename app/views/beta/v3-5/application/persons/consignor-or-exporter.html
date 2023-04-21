@@ -50,8 +50,11 @@ Consignor or exporter – GOV.UK Prototype Kit
 
           <!-- set fields for check your answers -->
           <input type="hidden" name="consignorName"  value="{{org.TradingName}}">
+          <input type="hidden" name="consignorAddress1" value="{{ org.Address1 }}">
           <input type="hidden" name="consignorTown"  value="{{org.Town}}">
+          <input type="hidden" name="consignorCountry"  value="{{ org.Country }}">
           <input type="hidden" name="consignorPostcode"  value="{{org.Postcode}}">
+          <input type="hidden" name="consignorActivity" value="{{establishmentActivity}}">
           
 
           {% set removeLink = "./remove?who=consignor&redirect=consignor-or-exporter" %}

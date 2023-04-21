@@ -26,7 +26,6 @@ module.exports = function(router) {
     if(!req.body.certifierAccountType){
       res.redirect(301, '/' + base_url + 'onboarding/certifier-account?hasError=yes&errorType=notSelected');
     }
-
     if(code == "" && req.body.certifierAccountType != "administrative"){
       res.redirect(301, '/' + base_url + 'onboarding/certifier-account?hasError=yes&errorType=empty&retry=yes&accountType='+req.body.certifierAccountType);
     }
@@ -41,6 +40,14 @@ module.exports = function(router) {
     }
 
   })
+
+   router.post('/' + base_url + 'container-numbers/*/container-seal-numbers-2', function(req, res) {
+    req.session.data.containerSealNumbers.push(req.body)
+    res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-list');
+    
+  })
+
+
 
   router.post('/' + base_url + "select-certifier/certifier/find", function(req, res) {
     console.log("In certifier/find.html");

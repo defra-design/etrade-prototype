@@ -230,14 +230,11 @@ window.addEventListener('load', function() {
 
         var blockID = $(section).attr("id") + count
         var deleteButton = '<button data-target="' + blockID + '"class="govuk-button delete-button govuk-button--secondary"><span class="fas fa-trash-alt"></span></button>'
-
         // var formID = section.find("input").attr("id")+count
         $(section).attr("id", blockID).addClass("govuk-!-margin-top-2")
         $(section).find('input').val('')
         // incase it is a select
         $(section).find('select').prop("selectedIndex", 0);
-
-
         $("#" + holderID).append(section)
         var button = $('#' + blockID).find(".add-repeatable-section");
         $(button).replaceWith(deleteButton)

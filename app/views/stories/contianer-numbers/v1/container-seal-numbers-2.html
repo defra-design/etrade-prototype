@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Provide the container or seal numbers for this consignment – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <form id="form" method="POST" >
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        Provide the container or seal numbers for this consignment
+      </h1>
+    </legend>
+    <div id="contact-hint" class="govuk-hint">
+     You can provide either a container number or seal number, or both.
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="sealType-1" name="sealType" type="checkbox" value="container" data-aria-controls="conditional-sealType-1">
+        <label class="govuk-label govuk-checkboxes__label" for="sealType-1">
+          Container number
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-sealType-1">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-visually-hidden" for="containerNumbers">
+          Container number
+        </label>
+        <p class="govuk-hint" id="containerNumbersHint">This is 4 letters followed by 6 numbers. For example, BICU123456. </p>
+        <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers" name="containerNumbers" aria-described-by="containerNumbersHint"></textarea>
+      </div>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="sealType-2" name="sealType" type="checkbox" value="seal" data-aria-controls="conditional-sealType-2">
+        <label class="govuk-label govuk-checkboxes__label" for="sealType-2">
+          Seal number
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-sealType-2">
+        <div class="govuk-form-group">
+        <label class="govuk-label govuk-visually-hidden" for="sealNumbers">
+            Seal number 
+        </label>
+        <p class="govuk-hint" id="sealNumbersHint">Enter this if a seal is affixed to the container, truck or rail wagon under the supervision of the competent authority issuing the certificate.</p>
+        <input class="govuk-input govuk-input--width-20" type="text" id="sealNumbers" name="sealNumbers" aria-described-by="sealNumbersHint"></input>
+      </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<div class="govuk-button-group">
+
+    <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

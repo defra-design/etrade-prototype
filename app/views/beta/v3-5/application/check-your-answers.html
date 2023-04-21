@@ -196,7 +196,11 @@ Check your answers – GOV.UK Prototype Kit
               <dd class="govuk-summary-list__value">
 
                 {% if data.consignorName %}
-                {{data.consignorName}} <span class="ml-1">({{data.consignorTown}}, {{data.consignorPostcode}})</span>
+                {{data.consignorName}}<br>
+                {{data.consignorAddress1}}, 
+                {{data.consignorTown}},{{data.consignorPostcode}}, 
+                {{data.consignorCountry}}<br>
+                Activity: {{data.consignorActivity}}
                 {% else %}
                   Denis Brinicombe Group (Crediton, EX17 3BZ)<br>
                   Activity: Exporter
@@ -208,7 +212,7 @@ Check your answers – GOV.UK Prototype Kit
               <dt class="govuk-summary-list__key"> Dispatch location </dd>
               <dd class="govuk-summary-list__value">
 
-                    {% if data.placeOfDepartureName %}
+                  {% if data.placeOfDepartureName %}
                   {{data.placeOfDepartureName}} ({{data.placeOfDepartureTown}}, {{data.placeOfDeparturePostcode}})
                 {% else %}
                      <span class="govuk-summary-list__placeholder">Not entered</span>
