@@ -8,6 +8,7 @@ Add closed containers number – {{serviceName}} – GOV.UK
 <style type="text/css">
   .app-add-another__remove-button {
     margin-bottom: 0;
+    margin-left: 5px;
 }
 
 
@@ -19,34 +20,47 @@ Add closed containers number – {{serviceName}} – GOV.UK
 </style>
 {% endblock%}
 {% block content %}
+{% set id = query.id or 0 %}
+{% set next = "container-seal-numbers-list" %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
+    {% if data.goodsInContianers == "yes" %}
+    <h1 class="govuk-heading-xl"> Add seal numbers for container {{data.containerNumbers}}</h1>
+    <p>Enter this if a seal is affixed to the container, truck or rail wagon under the supervision of the competent authority issuing the certificate.</p>
+    {% else %}
     <h1 class="govuk-heading-xl"> Add seal numbers</h1>
     <p>Enter this if a seal is affixed to the container, truck or rail wagon under the supervision of the competent authority issuing the certificate.</p>
+    {% endif %}
 
-    <form id="form" method="post" action="add-seal-numbers">
+   
+
+    <form id="form" method="post">
+      <input type="hidden" name="containerNumbers" value="{{query.containerNumbers}}">
+      {% if data.goodsInContianers == "yes" %}
+      <input type="hidden" name="SealsForContainer" value="{{id}}">
+      {% endif %}
+
       <div id="app-add-another" >
         <fieldset class="govuk-fieldset app-add-another__item" id="app-add-another--container"aria-describedby="" data-count="1">
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="containerNumbers1">
-              Container number <span class="app-add-another__title-number" style="display:none;">1</span>
+              Seal number <span class="app-add-another__title-number" style="display:none;">1</span>
             </label>
       
-            <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers1" name="containerNumbers" aria-described-by="containerNumbersHint1">
+            <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers1" name="sealNumbers" aria-described-by="containerNumbersHint1">
              <button type="button" style="display:none;" class="govuk-button govuk-button--secondary app-add-another__remove-button" data-target="app-add-another--container">Remove</button>
           </div><!-- form group-->
          
         </fieldset>
         </div> <!-- data-module="app-add-another" -->
-        <button class="govuk-button govuk-button--secondary app-add-another__add-button govuk-!-margin-bottom-4" data-module="govuk-button" data-count="1" data-target="app-add-another" type="button">
-            Add another container number
+        <button class="govuk-button govuk-button--secondary app-add-another__add-button govuk-!-margin-bottom-8" data-module="govuk-button" data-count="1" data-target="app-add-another" type="button">
+            Add another seal number
         </button>
-
         <div class="govuk-button-group">
           <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
         </div>
-      
+        
     </form>
   </div>
 </div>

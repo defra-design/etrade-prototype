@@ -46,6 +46,16 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-list');
     
   })
+ router.post('/' + base_url + 'container-numbers/*/add-seal-numbers', function(req, res) {
+    var seals = req.body.sealNumbers
+    var container = req.body.containerNumbers
+    var item = {"container":container,"seals":seals}
+    console.log("adding item")
+    req.session.data.containerSealNumbers.push(item)
+
+    res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-list');
+    
+  })
 
 
 

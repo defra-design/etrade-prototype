@@ -8,27 +8,29 @@ Uploaded documents – {{serviceName}} – GOV.UK
 {% endblock%}
 {% block content %}
 
+<!-- get number of containers -->
+
+
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-
     <form id="form" method="METHOD" action="{% if query.change == 'yes' %}../check-your-answers{% else %}../task-list{% endif %}">
 
       <h1 class="govuk-heading-xl">
-        {% if containerSealNumber |length ==  0 %}
+
+        {% if data.containerSealNumbers |length ==  0 %}
         Add container or seal numbers for this consignment
         {% else %}
-        Added {{ containerSealNumber |length  }} {{"container" | plural(containerSealNumber |length)}} and seal numbers
+        Added {{ data.containerSealNumbers |length  }} {{"container" | plural("containers", data.containerSealNumbers | length)}} and {{n.sealNumbers | length}} seal numbers
         {% endif %}
       </h1>
-      <p>Insert the appropriate identification number for the consignment. Container
-numbers must be included. </p>
       <dl class="govuk-summary-list app-list-with-actions hmrc-list-with-actions--short">
-      {% for n in data.containerSealNumber%}
+      {% for n in data.containerSealNumbers %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
           <ul class="govuk-list govuk-!-margin-bottom-0">
-            <li><strong>{{loop.index}}. {{(n.typeOfTransport | capitalize) or "Plane"}} </strong> - {{t.identifier | upper or '92394234'}}</li>
+            <li>{% if n.containerNumbers %}<strong>Continer number</strong>  {{n.containerNumbers}} <br>{% endif %}
+               {% if n.sealNumbers %} <strong>Seal number:</strong>  {{n.sealNumbers}} </li>{% endif %}
             <li></li>
 
           </ul>
@@ -47,7 +49,34 @@ numbers must be included. </p>
       </div>
       {% endfor %}
     </dl>
+<div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Do you want to add another container or seal number?
+                </legend>
+                <div id="add-another-hint" class="govuk-hint">
+                  <!-- You must tell us about all your directors. -->
+                </div>
+                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~container-seal-numbers-2&amp;copy=">
+                    <label class="govuk-label govuk-radios__label" for="add-another">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    
+                    
+                    
+                    <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~./task-list">
+                    <label class="govuk-label govuk-radios__label" for="add-another-2">
+                      No
+                    </label>
+                  </div>
+                </div>
 
+              </fieldset>
+            </div>
       <div class="govuk-button-group">
       
       <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
