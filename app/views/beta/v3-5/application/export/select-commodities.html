@@ -23,15 +23,18 @@ Select a commodity – GOV.UK Prototype Kit
     <span class="govuk-caption-xl">{{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</span>
     <form class="" method="post">
       <h1 class="govuk-heading-xl">Select a commodity for this export</h1>
-
-      <!-- <p>You can add multiple commodities for this certificate by <a href="./upload/upload-with-incompletes">uploading a spreadsheet</a></p> -->
+      
 
       {% if data.certificates[ehc].commodities | length > 15 %}
       <div class="govuk-form-group"><label class="govuk-label" for="filter-commodities"> Filter commodities </label>
-        <input class="govuk-input" id="filter-commodities" type="text">
+        <p class="govuk-hint">The commodity code must be 10 numbers or less. If your commodity code is 12 numbers only enter the first 10 numbers of the code.</p>
+        <input class="govuk-input govuk-input--width-20" id="filter-commodities" type="text">
       </div>
       <p class="govuk-body"><span id="commodityCount">{{data.certificates[ehc].commodities | length}}</span> commodites <span id="searchQueryText"></span></p>
       {% endif %}
+      <div id="no-results">
+        <p>TRACES will only accept commodity codes that are 10 numbers or less.</p>
+      </div>
       <div class="govuk-form-group cn-selection">
         <div class="govuk-radios" data-module="govuk-radios">
           {% for com in data.certificates[ehc].commodities %}
@@ -155,6 +158,10 @@ Select a commodity – GOV.UK Prototype Kit
         $('#commodityCount').text(count)
           $('#searchQueryText').html(" with <strong>"+$('#filter-commodities').val()+"</strong>")
         updatePagination(count)
+
+        if(count == 0){
+         
+        }
       }
       function updatePagination(c){
         if(c > max){
