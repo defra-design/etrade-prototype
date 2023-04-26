@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Will the goods be transported in closed containers – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <form id="form" method="post" >
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        Will the goods be transported in closed containers?
+      </h1>
+    </legend>
+  <!--   <div id="contact-hint" class="govuk-hint">
+     You can provide either a container number or seal number, or both.
+    </div> -->
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="goodsInContianers" name="goodsInContianers" type="radio" value="yes~./add-container-number">
+        <label class="govuk-label govuk-radios__label" for="goodsInContianers">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="goodsInContianers-2" name="goodsInContianers" type="radio" value="no~./want-to-add-seal-numbers">
+        <label class="govuk-label govuk-radios__label" for="goodsInContianers-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<div class="govuk-button-group">
+  
+    <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+  
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $('.govuk-radios__input').change(function(){
+      console.log($(this).val().indexOf("no"))
+      if($(this).val().indexOf("no") >= 0 ){
+        $('#status').val("completed")
+        
+      }else{
+         $('#status').val("in progress")
+      }
+    })
+  })
+</script>
+{% endblock%}

@@ -46,15 +46,36 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-list');
     
   })
+
+  router.post('/' + base_url + 'container-numbers/*/add-container-number', function(req, res) {
+    var container = req.body.containerNumbers 
+    // check to see if continer number matches the requirment. 
+    // 3 letters followed by a U,J,Z or R then followed by 6 numbers followed by 1 number.
+    if(!container.match(/^[a-zA-Z]{3}[UJZR][0-9]{6}(\s)*\d$/)){
+
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/add-container-number?hasError=yes');
+    }
+    else{
+      // need it to be UpperCase
+      req.session.data.containerNumbers=req.body.containerNumbers.toUpperCase()
+
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/add-seal-numbers');
+    }
+    
+    
+    
+  })
  router.post('/' + base_url + 'container-numbers/*/add-seal-numbers', function(req, res) {
     var seals = req.body.sealNumbers
     var container = req.body.containerNumbers
     var item = {"container":container,"seals":seals}
     console.log("adding item")
     req.session.data.containerSealNumbers.push(item)
-
+    if(req.session.data.goodsInContianers == "yes"){
     res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-list');
-    
+    }else{
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/task-list');
+    }
   })
 
 
