@@ -4,7 +4,7 @@
   <label class="govuk-label" for="natureOfCommodity">Nature of commodity
   </label>
   <div class="app-repeatable-section" id="repeatable-nature-of">
-    <div class="govuk-input__wrapper m-t-15">
+    <div class="govuk-input__wrapper ">
       <select class="govuk-select full-width" id="natureOfCommodity" name="natureOfCommodity">
         <option disabled="" value="" {% if not (identification.natureOfCommodity) %}selected{%endif%}>Select a nature of commodity</option>
         {% for item in listOfItems%}
@@ -24,7 +24,7 @@
 <div class="govuk-form-group">
   <label class="govuk-label" for="natureOfCommodity">Nature of commodity
   </label>
-  <select class="govuk-select full-width" id="natureOfCommodity" name="natureOfCommodity">
+  <select class="govuk-select" id="natureOfCommodity" name="natureOfCommodity">
     <option disabled="" value="" {% if not (query.change) or (identification.natureOfCommodity == null) %}selected{%endif%}>Select a nature of commodity</option>
     {% if (listOfItems| length) > 0%}
     {% for item in listOfItems%}
