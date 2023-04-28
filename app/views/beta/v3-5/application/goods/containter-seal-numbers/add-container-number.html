@@ -21,20 +21,42 @@ Add closed containers number – {{serviceName}} – GOV.UK
 {% endblock%}
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-three-quarters">
+  <div class="govuk-grid-column-two-thirds">
+    {% if query.hasError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+    }
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        <li>
+          <a href="containerNumbers1">The container number must be 3 letters followed by a U,J,Z or R then followed by 6 numbers</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endif %}
     <h1 class="govuk-heading-xl">Add closed containers numbers</h1>
     <p>Enter the closed containers for this shipment. You do not need to enter the transport registration number on this page. </p>
      <p>You will be able to enter more than one continer if needed.</p>
-    <form id="form" method="get" action="add-seal-numbers">
+    <form id="form" method="POST">
       <div id="app-add-another" >
         <fieldset class="govuk-fieldset app-add-another__item" id="app-add-another--container"aria-describedby="" data-count="1">
 
-          <div class="govuk-form-group">
+          <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="containerNumbers1">
               Container number <span class="app-add-another__title-number" style="display:none;">1</span>
             </label>
-            <div class="govuk-hint">This is 4 letters followed by 6 numbers. For example, BICU123456.</div>
-            <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers1" name="containerNumbers" aria-described-by="containerNumbersHint1" value="{% if query.change %}{{data.containerSealNumbers[query.id].container}}{% endif %}">
+            <div class="govuk-hint">This is 4 letters followed by 7 numbers. For example, BICU123456 7.</div>
+            {% if query.hasError %}
+            <p class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> The container number must be 3 letters followed by a U,J,Z or R then followed by 7 numbers
+            </p>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10 {% if query.hasError %}govuk-input--error{% endif %}" type="text" id="containerNumbers1" name="containerNumbers" aria-described-by="containerNumbersHint1" value="{% if query.change %}{{data.containerSealNumbers[query.id].container}}{% endif %}">
              <button type="button" style="display:none;" class="govuk-button govuk-button--secondary app-add-another__remove-button" data-target="app-add-another--container">Remove</button>
           </div><!-- form group-->
          
