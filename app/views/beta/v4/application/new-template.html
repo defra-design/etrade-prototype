@@ -1,0 +1,174 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Before your start - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<style>
+  table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th, .spreadsheet td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  width: 100%;
+}
+
+table th {
+  background-color: 	#1d70b8;
+  color: #fff;
+}
+
+#template{
+  overflow-x: auto;
+}
+
+td, th {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+table tr, table td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+}
+
+.templatebutton{
+  margin-top: 15px;
+}
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Template for EHC 8468</h1>
+
+    <p class="govuk-body">
+      Adapt your schedule to match this template and use it to add many commodity data at once. When completed, upload the template to your application.
+     </p>
+
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-width">
+    <div id="template" class="govuk-body">
+
+    </div>
+
+    <div id="downloadlink">
+    </div>
+
+    <a href="/beta/v4/application/export/upload/" class="govuk-link">Continue application</a>
+
+    
+  </div>
+
+</div>
+
+  <script>
+    function generateCSV() {
+      // Define the data for the CSV file
+      var data = [
+      ["Commodity code", "Product description", "Species", "Cold store", "Cold store activity", "Identification mark", "Package count", "Package count Unit", "Net weight", "Net weight Unit", "Treatment type", "Nature of commodity", "Batch number", "Final consumer", "Date of collection/production", "Manufacturing plant", "Manufacturing plant activity", "Plant/Establishment/Centre", "Plant/Establishment/Centre activity" ],
+        
+        ["Hello", "Welcome", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""],
+        ["", "", "","","","","","","","","","","","","","","","",""]
+      ];
+      
+      // Create the CSV string
+      var csvContent = "data:text/csv;charset=utf-8," +
+        data.map(row => row.join(",")).join("\n");
+      
+      // Create a new window with the template page
+      var templateWindow = window.open("new-template.html");
+      
+      // Wait for the template page to load
+      templateWindow.onload = function() {
+        // Get the template div element
+        var templateDiv = templateWindow.document.getElementById("template");
+        
+        // Create a new table element
+        var table = templateWindow.document.createElement("table");
+      
+        // Create the table header
+        var headerRow = templateWindow.document.createElement("tr");
+        data[0].forEach(header => {
+          var th = templateWindow.document.createElement("th");
+          th.textContent = header;
+          headerRow.appendChild(th);
+        });
+        table.appendChild(headerRow);
+      
+        // Create the table rows
+        data.slice(1).forEach(rowData => {
+          var row = templateWindow.document.createElement("tr");
+          rowData.forEach(cellData => {
+            var cell = templateWindow.document.createElement("td");
+            cell.textContent = cellData;
+            row.appendChild(cell);
+          });
+          table.appendChild(row);
+        });
+      
+        // Append the table to the template div
+        templateDiv.appendChild(table);
+      
+        // Create a download button
+        var downloadButton = templateWindow.document.createElement("button");
+        downloadButton.textContent = "Download template";
+        downloadButton.classList.add("govuk-button", "templatebutton");
+        downloadButton.onclick = function() {
+          // Create a new link element
+          var link = templateWindow.document.createElement("a");
+      
+          // Set the link's href attribute to the CSV data
+          link.setAttribute("href", encodeURI(csvContent));
+      
+          // Set the link's download attribute to the file name
+          link.setAttribute("download", "data.csv");
+      
+          // Append the link to the body
+          templateWindow.document.body.appendChild(link);
+      
+          // Click the link to initiate the download
+          link.click();
+      
+          // Remove the link from the body
+          templateWindow.document.body.removeChild(link);
+        };
+      
+        // Append the download button to the template div
+        templateDiv.appendChild(downloadButton);
+
+      };
+    }
+    </script>
+
+
+{% endblock %}

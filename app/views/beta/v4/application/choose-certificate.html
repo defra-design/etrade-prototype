@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Version 3 Summary – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      Version 4
+    </h1>-->
+
+    <div class="govuk-!-margin-top-7"></div>
+
+    <div id="formGroup" class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            Select a certificate for your export
+          </h1>
+        </legend>
+          <!--<p class="govuk-body">
+            This page is NOT part of the actual journey. It is to showcase the different Scenarios.
+          </p>-->
+
+          <p id="error-message" style="display: none;" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you want to cancel, replace or re-certify the application.
+          </p>
+
+        <div class="govuk-radios" data-module="govuk-radios">
+          <form id="radio-group">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="optionOne" name="choose-account" type="radio" value="optionOne">
+              <label class="govuk-label govuk-radios__label" for="optionOne">
+                <strong>EHC8468 </strong> Dairy products intended for human consumption that are required to undergo a pasteurisation treatment to the European Union and Northern Ireland (22 commodities)
+              </label>
+              <!--<div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                Select this option if you’ve received official confirmation from the border control post to cancel and replace your application.
+              </div>-->
+            </div>
+            <br>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="optionTwo" name="choose-account" type="radio" value="optionTwo">
+              <label class="govuk-label govuk-radios__label" for="optionTwo">
+              <strong>EHC8371</strong> Fresh meat intended for human consumption, excluding minced meat and mechanically separated meat, of poultry to the European Union and Northern Ireland (25 commodities)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="optionThree" name="choose-account" type="radio" value="optionThree">
+              <label class="govuk-label govuk-radios__label" for="optionThree">
+              <strong>EHC8396</strong> Collagen intended for human consumption to the European Union and Northern Ireland (3 commodities)
+              </label>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                The exporter will still be able to create a new application for this consignment.              </div>
+            </div>
+          </form>
+        </div>
+      </fieldset>
+    </div>
+      <button class="govuk-button" onclick="submit()">Add to export</button>
+
+  </div>
+</div>
+
+
+<script>
+
+  window.addEventListener('beforeunload', function(event) {
+   document.getElementById("radio-group").reset();
+  }, false);
+  
+      function submit() {
+  const optionOne = document.querySelector('input[value="optionOne"]');
+  const optionTwo = document.querySelector('input[value="optionTwo"]');
+  const optionThree = document.querySelector('input[value="optionThree"]');
+  if (!optionOne.checked && !optionTwo.checked && !optionThree.checked) {
+    document.getElementById("error-message").style.display = "block";
+    document.getElementById("formGroup").style.borderLeft = "5px solid #d4351c";
+    document.getElementById("formGroup").style.paddingLeft = "15px";
+  } else {
+    document.getElementById("error-message").style.display = "none";
+    document.getElementById("formGroup").style.borderLeft = "none";
+    document.getElementById("formGroup").style.paddingLeft = "0";
+
+    if (optionOne.checked) 
+      window.location.href = "/beta/v4/application/export/cdu-interstitial";
+
+    if (optionTwo.checked) 
+      window.location.href = "";
+
+    if (optionThree.checked) 
+      window.location.href = "";
+    
+  }
+}
+</script>
+
+
+{% endblock %}
