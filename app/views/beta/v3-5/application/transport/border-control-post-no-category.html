@@ -49,26 +49,11 @@ Entry border control post – GOV.UK Prototype Kit
             <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index}}">
               <strong>{{bcp.name}}</strong> - {{country.destination}}
               <br>{{bcp.address}}
-              <br>UN/LOCODE: {{bcp.unlocode}}
-              <br>Code: {{bcp.id}}
-              
+              <br>
             </label>
-            <div id="establishmentIndex{{loop.index}}-hint" class="govuk-hint govuk-radios__hint">
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Commodity types accepted by this BCP
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  <ul class="govuk-list govuk-list--bullet">
-                    {% for category in bcp.categoriesOfAnimalsGoodsSpecs %}
-                    <li><strong>{{category.code}}</strong> {{category.description}}</li>
-                    {% endfor %}
-                   
-                  </ul>
-                </div>
-              </details>
+            <div id="establishmentIndex{{loop.index}}-hint" class="govuk-hint govuk-radios__hint ">
+              code: {{bcp.id}}
+              <br> unlocode: {{bcp.unlocode or "GBLAR"}}
             </div>
           </div>
           {% endif %}

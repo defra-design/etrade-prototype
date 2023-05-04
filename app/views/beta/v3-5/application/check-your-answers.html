@@ -271,7 +271,7 @@ Check your answers – GOV.UK Prototype Kit
               </dd>
             </div>
              <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Means of transport</dt>
+              <dt class="govuk-summary-list__key">Transport method</dt>
               <dd class="govuk-summary-list__value">
                 {% if data.addedTransport  and data.addedTransport != ""%}
                 {% if data.addedTransport  | length > 2 %}
@@ -296,7 +296,7 @@ Check your answers – GOV.UK Prototype Kit
               <dd class="govuk-summary-list__actions"><a href="./transport/means-of-transport?change=yes" class="govuk-link"> Change </a></dd>
             </div>
              <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Transport conditions </dt>
+              <dt class="govuk-summary-list__key">Transport storage </dt>
               <dd class="govuk-summary-list__value">
                 {% if data.tcondition %}
                 {{data.tcondition}}
@@ -306,7 +306,7 @@ Check your answers – GOV.UK Prototype Kit
                 <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
               </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/means-of-transport?change=yes" class="govuk-link"> Change </a></dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/conditions?change=yes" class="govuk-link"> Change </a></dd>
             </div>
           
             
