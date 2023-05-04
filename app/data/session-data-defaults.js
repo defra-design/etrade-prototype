@@ -71,5 +71,6 @@ module.exports = {
   "transport": {country : "" },
   "setNetWeight": ["120","56"],
   "setGrossWeight": "190",
-  "netToGrossWeightIs": "under"
+  "netToGrossWeightIs": "under",
+  "bcpDestination": "Northern Ireland"
 }
