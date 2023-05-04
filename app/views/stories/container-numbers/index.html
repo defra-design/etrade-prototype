@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Trade: E-certs</span>
+      Container and seal numbers update</h1>
+   
+     
+  <!--     <p>Use the following numbers on the gateway login page:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><strong>0000</strong> - 1 account and can access service</li>
+        <li><strong>1111</strong> - Multiple certerfier only accounts</li>
+        <li><strong>2222</strong> - Multiple certerfier and exporter</li>
+        <li><strong>3333</strong> - Individual, certifier and exporter accounts</li>
+        <li><strong>4444</strong> - 1 certifier and 1 individual</li>
+        <li><strong>5555</strong> - Very long list (autocomplete)</li>
+        <li><strong>6666</strong> - Not approved: Certifier with 1 account</li>
+        <li><strong>7777</strong> - No account: 1 account but not associated with etrade</li>
+      </ul> -->
+
+      <p>These versions has not been tested yet</p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <ul class="govuk-list govuk-list--bullet">
+   
+        <li><a href="/clear-data?url=/stories/container-numbers/v1/task-list">Version 1 - Simple</a></li>
+        <li><a href="/clear-data?url=/stories/container-numbers/v2/task-list">Version 2 - linear questions based</a></li>
+        <li><a href="/clear-data?url=/stories/container-numbers/v3/task-list">Version 3 - Add to list</a></li>
+
+      </ul>
+  </div>
+
+</div>
+
+{% endblock %}

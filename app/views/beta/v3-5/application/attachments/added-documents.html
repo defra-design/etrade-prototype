@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Uploaded documents – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<style media="screen">
+  .attachment .attachment-thumb {
+    display: block;
+    width: 99px;
+    height: 140px;
+    background: #fff;
+    outline: 5px solid rgba(11, 12, 12, 0.1);
+    box-shadow: 0 2px 2px rgb(11 12 12 / 40%);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .attachment .attachment-thumb span {
+    padding-top: 50px;
+  }
+  .spreadsheet td,
+  .spreadsheet th {
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #bfc1c3;
+  }
+
+  .spreadsheet thead th {
+    border-bottom-width: 0px;
+  }
+
+  .spreadsheet .table-field-index,
+  .spreadsheet th {
+    background: #f8f8f8;
+    font-weight: 700;
+    text-align: center;
+  }
+</style>
+
+{% set filename= data.file or "Updated_Passport-one-page.png" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    {% if query.showNotification == "yes" %}
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          File uploaded
+        </h3>
+        <p class="govuk-body">{{file.file or "my_schedule.xlsx"}}</p>
+      </div>
+    </div>
+    {% endif %}
+
+      {% if (data.additionalDocuments | length) == 0  %}
+
+      <h1 class="govuk-heading-xl">Add additional documents (optional)</h1>
+      <p>Attach any documents that support your application – for example:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>shipping schedules</li>
+        <li>road consignment notes</li>
+        <li>sanitary certificates.</li>
+      </ul>
+      {% else %}
+      <h1 class="govuk-heading-xl">Added {{data.additionalDocuments | length }} documents</h1>
+      {% endif %}
+
+      {% set upload_to_traces = 0 %}
+      <dl class="govuk-summary-list app-list-with-actions hmrc-list-with-actions--short">
+        {% for file in data.additionalDocuments%}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+              <ul class="govuk-list govuk-!-margin-bottom-0">
+                <li><strong>{{file.file or "my_schedule.xlsx"}}</strong></li>
+                <li>{{file.documentReference or "Consignment by rail for shipment"}}</li>
+                <li>{{file.fileType or "Rail consignment note"}} issued {{file.dateOfIssue or "01-02-2022"}}</li>
+                 {% if file.send_to_traces == "yes"%}
+                    {% set upload_to_traces = upload_to_traces+1 %}
+                  <li><strong class="govuk-tag govuk-tag--blue">Send to TRACES</strong></li>
+                  {% endif %}
+              </ul>
+
+          </dt>
+          <dd class="govuk-summary-list__actions app-summary-list__actions">
+        <ul class="govuk-summary-list__actions-list">
+          <li class="govuk-summary-list__actions-list-item">
+            <a class="govuk-link govuk-link--no-visited-state" href="#"><span aria-hidden="true">Download</span><span class="govuk-visually-hidden">Change Sydney Russell</span></a>
+          </li>
+          <li class="govuk-summary-list__actions-list-item">
+            <a class="govuk-link govuk-link--no-visited-state" href="remove-document?id={{loop.index -1}}"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Remove Sydney Russell from the list</span></a>
+          </li>
+        </ul>
+      </dd>
+        </div>
+        {% endfor %}
+      </dl>
+      {% if upload_to_traces > 2%}
+        <p class="govuk-body govuk-!-margin-bottom-8">{{upload_to_traces}} document{% if upload_to_traces > 1%}s{%endif%} will be sent to traces when you submit this application.</p>
+      {% endif %}
+      <form method="post" action="uploads">
+      {% if (data.additionalDocuments | length) == 0  and query.removed != "yes" %}
+      <a class="govuk-button" data-module="govuk-button" href="uploads">
+        Upload a document
+      </a>
+      <p class="govuk-body"></p>
+      {% else %}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+              Do you want to upload another document?
+            </legend>
+            <div id="add-another-hint" class="govuk-hint">
+              <!-- You must tell us about all your directors. -->
+            </div>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~uploads">
+                <label class="govuk-label govuk-radios__label" for="add-another">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~{% if data.change == 'yes'%}../check-your-answers?change=no{%else%}../task-list?change=no{% endif %}">
+                <label class="govuk-label govuk-radios__label" for="add-another-2">
+                  No
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% endif %}
+      </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

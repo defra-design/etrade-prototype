@@ -37,14 +37,16 @@ Consignor or exporter – GOV.UK Prototype Kit
       {% set returnURL = "../persons/consgnor-or-exporter"%}
       <div class="govuk-form-group">
 
-        {% if data.person['consignor'] and query.deleted!="yes" %}
+        {% if data.person['consignor'] %}
           {% set establishmentIndex = data.person['consignor'] %}
           {% set org = data.establishments[establishmentIndex] %}
           {% set establishmentActivityIndex = data.person['consignorActivity'] %}
           {% set establishmentActivity = org.All_Activities[data.person['consignorActivity']] %}
-          {% set showOperatorActivity = false %}
+          {% set showOperatorActivity = true %}
 
-        
+          {% if org.All_Activities.length > 1 %}
+            {% set includeChangeAction = true %}
+          {% endif %}
 
           <!-- set fields for check your answers -->
           <input type="hidden" name="consignorName"  value="{{org.TradingName}}">
@@ -57,12 +59,8 @@ Consignor or exporter – GOV.UK Prototype Kit
           {% block traderAddress %}{% include "./trader-address.html" %}{% endblock %}
 
         {% else %}
-          {% set link = './consignor/find'%}
-          {% if data.addressBook | length > 0 %}
-          {% set link = './consignor/saved'%}
-          {% endif %}
           <p class="govuk-!-margin-bottom-10 find-establishment-link">
-            <a href="{{link}}" class="govuk-link govuk-link--no-visited-state">Select a consignor or exporter</a>
+            <a href="./consignor/find" class="govuk-link govuk-link--no-visited-state">Select a consignor or exporter</a>
           </p>
         {% endif %}
 

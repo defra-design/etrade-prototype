@@ -103,18 +103,18 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'transport/place-of-destination');
   })
 
-  router.post('/' + base_url + 'transport/place-of-origin', function(req, res) {
-    console.log("In transport/place-of-origin");
+  router.post('/' + base_url + 'goods/place-of-origin', function(req, res) {
+    console.log("In goods/place-of-origin");
 
-    const country = req.body.country;
-    const roo = req.body.regionOfOrigin;
-    const sroo = req.body.subRegionOfOrigin;
+    let country = req.body.country;
+    // let roo = req.body.regionOfOrigin;
+    // let sroo = req.body.subRegionOfOrigin;
 
-    console.log("Saving transport data " + country + ", " + roo + ", " + sroo);
+    // console.log("Saving goods data " + country + ", " + roo + ", " + sroo);
 
-    req.session.data.transport['country'] = country;
-    req.session.data.transport['region-of-origin'] = roo;
-    req.session.data.transport['sub-region-of-origin'] = sroo;
+    req.session.data.goods['country'] = country;
+    // req.session.data.goods['region-of-origin'] = roo;
+    // req.session.data.goods['sub-region-of-origin'] = sroo;
 
      if(req.query.change == "yes"){
         res.redirect(301, '/' + base_url + 'check-your-answers');

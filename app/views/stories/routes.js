@@ -26,7 +26,6 @@ module.exports = function(router) {
     if(!req.body.certifierAccountType){
       res.redirect(301, '/' + base_url + 'onboarding/certifier-account?hasError=yes&errorType=notSelected');
     }
-
     if(code == "" && req.body.certifierAccountType != "administrative"){
       res.redirect(301, '/' + base_url + 'onboarding/certifier-account?hasError=yes&errorType=empty&retry=yes&accountType='+req.body.certifierAccountType);
     }
@@ -42,6 +41,58 @@ module.exports = function(router) {
 
   })
 
+   router.post('/' + base_url + 'container-numbers/*/container-seal-numbers-2', function(req, res) {
+    req.session.data.containerSealNumbers.push(req.body)
+    res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-list');
+    
+  })
+
+  router.post('/' + base_url + 'container-numbers/*/add-container-number', function(req, res) {
+    var container = req.body.containerNumbers 
+    // check to see if continer number matches the requirment. 
+    // 3 letters followed by a U,J,Z or R then followed by 6 numbers followed by 1 number.
+    if(!container.match(/^[a-zA-Z]{3}[UJZR][0-9]{6}(\s)*\d$/)){
+
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/add-container-number?hasError=yes');
+    }
+    else{
+      // need it to be UpperCase
+      req.session.data.containerNumbers=req.body.containerNumbers.toUpperCase()
+
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/add-seal-numbers');
+    }
+    
+    
+    
+  })
+ router.post('/' + base_url + 'container-numbers/*/add-seal-numbers', function(req, res) {
+    var seals = req.body.sealNumbers
+    var container = req.body.containerNumbers
+    var item = {"container":container,"seals":seals}
+    console.log("adding item")
+    req.session.data.containerSealNumbers.push(item)
+    if(req.session.data.goodsInContianers == "yes"){
+    res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-list');
+    }else{
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/task-list');
+    }
+  })
+
+
+
+  router.post('/' + base_url + "select-certifier/certifier/find", function(req, res) {
+    console.log("In certifier/find.html");
+
+    const certifierIndex = req.body.certifierIndex;
+    console.log("certiferIndex: " + certifierIndex);
+
+    req.session.data.person['certifier'] = certifierIndex;
+
+  
+    
+    res.redirect(301, '/' + base_url + 'select-certifier/certifier');
+  })
+
   router.post('/' + base_url + 'accessiblity/goods-certified-as*', function(req, res) {
 
     if (req.body.goods_certified_as) {
@@ -50,6 +101,15 @@ module.exports = function(router) {
       res.redirect(301, '/' + base_url + 'accessiblity/goods-certified-as'+req.params[0]+'?has_error=yes');
     }
   })
+  router.post('/' + base_url + 'goods-certified-as/goods-certified-as*', function(req, res) {
+    if (req.body.goods_certified_as && req.query.change != "yes") {
+      res.redirect(301, '/' + base_url + 'goods-certified-as/task-list');
+    }else if (req.body.goods_certified_as && req.query.change == "yes") {  
+      res.redirect(301, '/' + base_url + 'goods-certified-as/check-your-answers');
+    }else { 
+      res.redirect(301, '/' + base_url + 'goods-certified-as/goods-certified-as' + req.params[0] + '?has_error=yes');
+    }
+  });
   router.post('/' + base_url + 'accessiblity/create-reference*', function(req, res) {
 
     if (req.body.UserReference == "") {
@@ -170,6 +230,9 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'onboarding/confirmation?continue='+canContinue);
   })
 
+
+
+
   router.post('/' + base_url + 'unified-dashboard/*/export-destination', function(req, res) {
     console.log(req.body.country+'.')
     console.log("This is being triggered in stories routes.js")
@@ -178,6 +241,90 @@ module.exports = function(router) {
     }
     res.redirect(301, '/' + base_url + 'unified-dashboard/'+req.params[0]+'/form-finder?destination_country='+req.body.country);
   })
+
+  
+
+  // GROSS WEIGHT STORY
+  router.post('/' + base_url + 'update-weight/*/commodity', function(req, res) {
+    let totalNetWeight = req.session.data.setNetWeight.reduce(function(a,b){
+      return parseInt(a)+parseInt(b)
+    })
+    console.log("totalNetWeight="+totalNetWeight)
+    console.log()
+    if (req.session.data.setNetWeight[req.query.changeID] != req.body.netWeight){
+      req.session.data.setNetWeight[req.query.changeID]=req.body.netWeight
+      req.session.data.hasChangedNetWeight = "yes"
+    }
+    if (totalNetWeight >= req.body.GROSS_WEIGHT){
+      req.session.data.netToGrossWeightIs="over"
+    }else{
+      req.session.data.netToGrossWeightIs="under"
+    }
+    req.session.data.setGrossWeight = req.body.GROSS_WEIGHT
+    res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/commodity-list');
+  })
+
+  router.post('/' + base_url + 'update-weight/*/commodity-list', function(req, res) {
+    var totalNetWeight = req.session.data.setNetWeight.reduce(function(a,b){
+      return parseInt(a)+parseInt(b)
+    })
+    if(req.body.addAnother == "yes"){
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/not-in-prototype');
+    }
+    //total net weight is taken from the default session data : "setNetWeight": ["120","56"],
+    if(req.session.data.hasChangedNetWeight != "yes"){
+        // to mimic no change. 
+        res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/task-list');
+
+    }else if(totalNetWeight > req.session.data.setGrossWeight){
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/update-weight-must');
+      req.session.data.changedWeightIs="higher"
+    }else{
+      req.session.data.changedWeightIs="lower"
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/update-weight-question');
+    }
+  
+  })
+
+  router.post('/' + base_url + 'update-weight/*/weight', function(req, res) {
+    var totalNetWeight = req.session.data.setNetWeight.reduce(function(a,b){
+      return parseInt(a)+parseInt(b)
+    })
+    if(totalNetWeight > req.body.GROSS_WEIGHT ){
+
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/weight?hasError=yes&errorType=over&change='+req.query.change);
+      req.session.data.netToGrossWeightIs="over"
+    }else{
+      req.session.data.netToGrossWeightIs="under"
+      if(req.query.change == "yes"){
+        res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/check-your-answers');
+      }else{
+        res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/task-list');
+      }
+      
+    }
+  
+  })
+
+  router.post('/' + base_url + 'update-weight/*/check-your-answers', function(req, res) {
+    var totalNetWeight = req.session.data.setNetWeight.reduce(function(a,b){
+      return parseInt(a)+parseInt(b)
+    })
+    if(totalNetWeight > req.body.GROSS_WEIGHT ){
+
+      res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/check-your-answers?hasError=yes&errorType=over');
+      req.session.data.netToGrossWeightIs="over"
+    }else{
+      req.session.data.netToGrossWeightIs="under"
+      
+        res.redirect(301, '/' + base_url + 'update-weight/'+req.params[0]+'/review');
+    
+      
+    }
+  
+  })
+
+
   // COPY
   router.post('/' + base_url + 'copy/*/commodity-error', function(req, res) {
     var errors = []

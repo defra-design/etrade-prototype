@@ -54,9 +54,9 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
                   {% endfor%}
                 {% endfor%}
               {% endfor%}
-               <a aria-describedby="manage-commodities-status" href="./export/select-commodities" class="govuk-link">Commodities</a>
               <span class="app-task-list__task-name">
-             
+               <a aria-describedby="manage-commodities-status" href="{% if commodityCount == 0 %}./export/select-commodities{% else %}./export/added-commodities-list{% endif %}" class="govuk-link">Commodities</a>
+              
             </span>
               {% if commodityCount == 0 %}
               <strong class="govuk-tag app-task-list__tag govuk-tag--grey " id="manage-commodities-status">Not started</strong>
@@ -100,7 +100,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
               </a>
             </span>
 
-            {% if data.regionOfOrigin %}
+            {% if data.goods['country'] %}
               <strong class="govuk-tag app-task-list__tag" id="place-of-origin-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>
@@ -286,7 +286,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
                 Entry border control post
               </a>
             </span>
-            {% if data.transport['border-control-post'] == 'skipped' %}
+            {% if data.transport['border-control-post'] == 'skipped' or data.selctedBCP %}
               <strong class="govuk-tag app-task-list__tag " id="place-of-origin-status">Completed</strong>
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="place-of-origin-status">Not started</strong>

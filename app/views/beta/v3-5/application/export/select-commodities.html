@@ -1,0 +1,187 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Select a commodity – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+  .js-enabled .js-hidden{
+    display:none;
+  }
+</style>
+{% endblock%}
+{% block content %}
+{% set page = query.page-1 or 0 %}
+{% set min = data.displayMax*page %}
+{% set max = data.displayMax*(page+1) %}
+{% set ehc = (data.certificate|makeNumber) or 1 %}
+<input type="hidden" id="displayMax" name="displayMax" value="{{data.displayMax}}">
+<div class="govuk-grid-row" data-v-75a00750="" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds" data-v-75a00750="">
+    <span class="govuk-caption-xl">{{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</span>
+    <form class="" method="post">
+      <h1 class="govuk-heading-xl">Select a commodity for this export</h1>
+      
+
+      {% if data.certificates[ehc].commodities | length > 15 %}
+      <div class="govuk-form-group"><label class="govuk-label" for="filter-commodities"> Filter commodities </label>
+        <p class="govuk-hint">The commodity code must contain no more than 10 numbers. If your commodity code is longer, you only need to enter the first 10 numbers.</p>
+        <input class="govuk-input govuk-input--width-20" id="filter-commodities" type="text">
+      </div>
+      <p class="govuk-body"><span id="commodityCount">{{data.certificates[ehc].commodities | length}}</span> commodites <span id="searchQueryText"></span></p>
+      {% endif %}
+     
+      <div class="govuk-form-group cn-selection">
+        <div class="govuk-radios" data-module="govuk-radios">
+          {% for com in data.certificates[ehc].commodities %}
+            {% if loop.index >= min and loop.index <= max   %}
+            <div class="govuk-radios__item" govuk-radios data-search-text="{{com.code}} {{com.title}}">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-{{loop.index}}" type="radio" value="{{loop.index-1}}">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-{{loop.index}}" govuk-radios>
+                <span class="govuk-tag">{{com.code}}</span> {{com.title}}</label>
+            </div>
+            {%else%}
+            <div class="govuk-radios__item js-hidden" govuk-radios data-search-text="{{com.code}} {{com.title}}">
+              <input class="govuk-radios__input" name="commodityCode" id="cn-selection-{{loop.index}}" type="radio" value="{{loop.index-1}}">
+              <label class="govuk-label govuk-radios__label" for="cn-selection-{{loop.index}}" govuk-radios>
+                <span class="govuk-tag">{{com.code}}</span> {{com.title}}</label>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% if (data.certificates[ehc].commodities | length) >= data.displayMax  %}
+
+      <div class="govuk-form-group">
+        {% set count = 0 %}
+        {% set pageNumber = 1 %}
+        {% set last = ((data.certificates[ehc].commodities | length) / data.displayMax)| round  %}
+        {% if (page+1) <= 3 %}
+          <!-- start sequence. set range to show if page is under 3 -->
+          {% set rangeMin = 1 %}
+          {% set rangeMax = 4 %}
+          {% set elipsis1 = page -1 %}
+          {% set elipsis2 = rangeMax+1 %}
+        {% elseif page+3 >= last %}
+        <!-- end sequence, show 3 before the last page-->
+          {% set rangeMin = (last-3) %}
+          {% set rangeMax = last %}
+          {% set elipsis1 = rangeMin -1 %}
+          {% set elipsis2 = last +3 %}
+        {% else %}
+
+        <!-- middle sequence. This when you need to show 2 elipsis -->
+          {% set rangeMin = page %}
+          {% set rangeMax = page+2 %}
+          {% set elipsis1 = rangeMin-1 %}
+          {% set elipsis2 = rangeMax+1 %}
+        {% endif %}
+        <nav id="pagination" class="govuk-pagination" role="navigation" aria-label="results">
+
+
+          {% if query.page > 1 %}
+          <div class="govuk-pagination__prev">
+            <a class="govuk-link govuk-pagination__link" href="?page={{page}}" rel="prev">
+              <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+              </svg>
+              <span class="govuk-pagination__link-title">Previous</span></a>
+          </div>
+          {% endif %}
+
+          <ul class="govuk-pagination__list">
+            {% for p in data.certificates[ehc].commodities %}
+
+              {% if (loop.index-1)  >= count %}
+
+              {% if pageNumber == 1 or (pageNumber >= rangeMin and pageNumber <= rangeMax) or pageNumber == last  %}
+              <li class="govuk-pagination__item {% if pageNumber == page+1 or (page==0 and pageNumber==1) %}govuk-pagination__item--current{%endif%}">
+                <a class="govuk-link govuk-pagination__link" href="?page={{pageNumber}}" aria-label="Page {{pageNumber}}">
+                  {{pageNumber}}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if pageNumber == elipsis1 or pageNumber == elipsis2 %}
+                <li class="govuk-pagination__item govuk-pagination__item--ellipses">&ctdot;</li>
+              {% endif %}
+
+              {% set count = count+data.displayMax %}
+              {% set pageNumber = pageNumber+1%}
+
+              {% endif %}
+
+            {% endfor %}
+          </ul>
+          {% if page+1 != last %}
+          <div class="govuk-pagination__next">
+            <a class="govuk-link govuk-pagination__link" href="?page={{page+2}}" rel="next"> <span class="govuk-pagination__link-title">Next</span> <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13"
+                width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg></a>
+          </div>
+          {% endif %}
+        </nav>
+      </div>
+      {% endif %}
+      <div class="govuk-button-group" type="submit">
+        <button class="govuk-button" id="add-export">Save and continue</button>
+        <!---->
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    let max = $('#displayMax').val()
+    let pagination = $('#pagination')
+      function showResults(q){
+          console.log("query = "+q)
+        $( ".govuk-radios__item" ).each(function( index ) {
+          var r = $(this).attr("data-search-text").toUpperCase()
+
+
+          if(r.includes(q)){
+            console.log(r.includes(q))
+            $(this).show()
+          }else{
+            $(this).hide()
+          }
+        })
+        var count = $( ".govuk-radios__item:visible").length
+        $('#commodityCount').text(count)
+          $('#searchQueryText').html(" with <strong>"+$('#filter-commodities').val()+"</strong>")
+        updatePagination(count)
+
+        if(count == 0){
+         
+        }
+      }
+      function updatePagination(c){
+        if(c > max){
+          // show pagination
+          // pagination.show()
+          // initial verison just show all no pagination on search
+            pagination.hide()
+        }else{
+          // hide pagination
+          pagination.hide()
+        }
+
+      }
+    $('#filter-commodities').on('input', function() {
+
+      var q=$(this).val().toUpperCase()
+
+      if(q.length >= 3 ){
+        showResults(q);
+      }
+    })
+
+  })
+</script>
+{% endblock%}

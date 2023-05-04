@@ -47,7 +47,7 @@ module.exports = {
   "establishments" : establishments,
   "certifiers" : certifiers,
   "applications": applications,
-  "unifiedTestinigUser": "Stara",
+  "unifiedTestinigUser": "Freedown",
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,
@@ -66,6 +66,11 @@ module.exports = {
   "displayMax": 30,
   "paginationMax": 3,
   "manualSelection": ["not-selected"],
+  "goods": {},
   "person": {consignor : "0", consignorActivity : "0"},
-  "transport": {country : "" }
+  "transport": {country : "" },
+  "setNetWeight": ["120","56"],
+  "setGrossWeight": "190",
+  "netToGrossWeightIs": "under",
+  "bcpDestination": "Northern Ireland"
 }

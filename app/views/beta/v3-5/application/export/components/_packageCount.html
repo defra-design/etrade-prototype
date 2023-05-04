@@ -1,0 +1,139 @@
+{#
+"commenting out multiple for testing. Split the number of packages and type of packaging. Remember to uncomment out the bottom endif statement"
+
+{% if field.multiple =="yes" %}
+
+
+<div class="govuk-form-group app-repeadable-holder" id="repeatable-packages-holder">
+  <label class="govuk-label" for="packageCount-units">Number of packages
+</label>
+  <p class="govuk-hint" id="packageCount-units-hint">For example, if your consignment contains 5 boxes, enter 5.</p>
+  <div class="app-repeatable-section" id="repeatable-packages">
+
+    <div class="govuk-input__wrapper m-b-15">
+      <label for="netWeight" class="govuk-label govuk-visually-hidden">Type of packaging</label>
+      <input class="js-question govuk-input govuk-!-width-one-half" type="number" data-type="quantity" name="netWeight" step="0.01" min="0" max="9999999" id="netWeight"
+        value="{% if data.change or data.copy %}{{identification.netWeight}}{% endif %}">
+      <div class="govuk-input__suffix suffix__action no-border">
+        <select class="govuk-select govuk-input--width-4"  id="packageCount-units" data-v-4e8f37a8="" name="packageCount_UNIT" aria-described-by="packageCount-units-hint">
+          <option disabled="" value="" data-v-4e8f37a8="" selected>Select the type of packaging</option>
+          <option value="Bag" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Bag'%}selected{% endif %}>Bag</option>
+          <option value="Bale, compressed" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Bale, compressed'%}selected{% endif %}>Bale, compressed</option>
+          <option value="Barrel, wooden, bung type" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Barrel, wooden, bung type'%}selected{% endif %}>Barrel, wooden, bung type</option>
+          <option value="Barrel, wooden, removable head" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Barrel, wooden, removable head'%}selected{% endif %}>Barrel, wooden, removable head</option>
+          <option value="Box" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Box'%}selected{% endif %}>Box</option>
+          <option value="Box, wooden, natural wood, ordinary" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Box, wooden, natural wood, ordinary'%}selected{% endif %}>Box, wooden, natural wood,
+            ordinary
+          </option>
+          <option value="Box, wooden, natural wood, with sift proof walls" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Box, wooden, natural wood, with sift proof walls'%}selected{% endif %}>Box,
+            wooden, natural wood,
+            with sift proof walls</option>
+          <option value="Bulk, solid, granular particles ('grains')" {% if (data.change or data.copy) and identification.packageCount_UNIT == "Bulk, solid, granular particles ('grains')"%}selected{% endif %}>Bulk, solid,
+            granular
+            particles ("grains")
+          </option>
+          <option value="Can, rectangular" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Can, rectangular'%}selected{% endif %}>Can, rectangular</option>
+          <option value="Canister" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Canister'%}selected{% endif %}>Canister</option>
+          <option value="Carton" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Carton'%}selected{% endif %}>Carton</option>
+          <option value="Case" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Case'%}selected{% endif %}>Case</option>
+          <option value="Case, with pallet base, wooden" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Case, with pallet base, wooden'%}selected{% endif %}>Case, with pallet base, wooden</option>
+          <option value="Cask" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Cask'%}selected{% endif %}>Cask</option>
+          <option value="Coffer" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Coffer'%}selected{% endif %}>Coffer</option>
+          <option value="Container, not otherwise specified as transport equipment"
+            {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Container, not otherwise specified as transport equipment'%}selected{% endif %}>Container,
+            not otherwise specified as transport equipment</option>
+          <option value="Crate" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Crate'%}selected{% endif %}>Crate</option>
+          <option value="Crate, wooden" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Crate, wooden'%}selected{% endif %}>Crate, wooden</option>
+          <option value="Drum" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Drum'%}selected{% endif %}>Drum</option>
+          <option value="Receptacle, glass" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Receptacle, glass'%}selected{% endif %}>Receptacle, glass</option>
+          <option value="Jar" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Jar'%}selected{% endif %}>Jar</option>
+          <option value="Logs, in bundle/bunch/truss" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Logs, in bundle/bunch/truss'%}selected{% endif %}>Logs, in bundle/bunch/truss</option>
+          <option value="Lug" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Lug'%}selected{% endif %}>Lug</option>
+          <option value="Luggage" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Luggage'%}selected{% endif %}>Luggage</option>
+          <option value="Package" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Package'%}selected{% endif %}>Package</option>
+          <option value="Package, display, wooden" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Package, display, wooden'%}selected{% endif %}>Package, display, wooden</option>
+          <option value="Pail" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Pail'%}selected{% endif %}>Pail</option>
+          <option value="Pallet" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Pallet'%}selected{% endif %}>Pallet</option>
+          <option value="Bag, plastics film" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Bag, plastics film'%}selected{% endif %}>Bag, plastics film</option>
+          <option value="Box, plastic, expanded" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Box, plastic, expanded'%}selected{% endif %}>Box, plastic, expanded</option>
+          <option value="Punnet" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Punnet'%}selected{% endif %}>Punnet</option>
+          <option value="Rednet" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Rednet'%}selected{% endif %}>Rednet</option>
+          <option value="Tank, rectangula" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Tank, rectangula'%}selected{% endif %}>Tank, rectangular</option>
+          <option value="Bag, tote" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Bag, tote'%}selected{% endif %}>Bag, tote</option>
+          <option value="Tray pack" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Tray pack'%}selected{% endif %}>Tray pack</option>
+          <option value="Tube" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Tube'%}selected{% endif %}>Tube</option>
+          <option value="Vial" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Vial'%}selected{% endif %}>Vial</option>
+        </select>
+        <button type="button" data-count="1" data-target="repeatable-packages" class="govuk-button govuk-button--secondary multi-data add-repeatable-section"><span class="fas fa-plus"></span>
+        </button>
+        <!---->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+"End of comment out"
+#}
+<div class="govuk-form-group">
+  <label class="govuk-label" for="packageCount-units">Number of packages
+</label>
+  <p class="govuk-hint" id="packageCount-units-hint">For example, if your consignment contains 5 boxes, enter 5.</p>
+
+
+  <input class="govuk-input js-question govuk-!-width-one-third" type="number" data-type="quantity" name="packageCount" step="1" min="0" max="9999999" id="packageCount-4-10410-31010000"
+      data-v-4e8f37a8="" data-mask="########" data-mask-inited="true" data-mask-raw-value="" {% if (data.change or data.copy) and identification.packageCount %}value="{{identification.packageCount}}" {% endif %}>
+  </div>
+  <div class="govuk-form-group">
+      <label class="govuk-label" for="packageCount-4-10410-31010000">Type of packaging
+  </label>
+  <p class="govuk-hint" id="packageCount-units-hint">This is usually the outer packaging you use to ship the consignment. For example, box.</p>
+      <select class="govuk-select" id="packageCount-4-10410-31010000-units" data-v-4e8f37a8="" name="packageCount_UNIT">
+        <option disabled="" value="" data-v-4e8f37a8="" selected>Select a unit</option>
+        <option value="Bag" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'bag'%}selected{% endif %}>Bag</option>
+        <option value="Bale, compressed" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'bale, compressed'%}selected{% endif %}>Bale, compressed</option>
+        <option value="Barrel, wooden, bung type" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'barrel, wooden, bung type'%}selected{% endif %}>Barrel, wooden, bung type</option>
+        <option value="Barrel, wooden, removable head" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'barrel, wooden, removable head'%}selected{% endif %}>Barrel, wooden, removable head</option>
+        <option value="Box" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'box' %}selected{% endif %}>Box</option>
+        <option value="Box, wooden, natural wood, ordinary" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'box, wooden, natural wood, ordinary'%}selected{% endif %}>Box, wooden, natural wood, ordinary</option>
+        <option value="Box, wooden, natural wood, with sift proof walls" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'box, wooden, natural wood, with sift proof walls'%}selected{% endif %}>Box, wooden, natural wood,
+          with sift proof walls</option>
+        <option value="Bulk, solid, granular particles ('grains')" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == "bulk, solid, granular particles ('grains')"%}selected{% endif %}>Bulk, solid, granular particles ("grains")
+        </option>
+        <option value="Can, rectangular" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'can, rectangular'%}selected{% endif %}>Can, rectangular</option>
+        <option value="Canister" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'canister'%}selected{% endif %}>Canister</option>
+        <option value="Carton" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'carton'%}selected{% endif %}>Carton</option>
+        <option value="Case" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'case'%}selected{% endif %}>Case</option>
+        <option value="Case, with pallet base, wooden" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'case, with pallet base, wooden'%}selected{% endif %}>Case, with pallet base, wooden</option>
+        <option value="Cask" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'cask'%}selected{% endif %}>Cask</option>
+        <option value="Coffer" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'coffer'%}selected{% endif %}>Coffer</option>
+        <option value="Container, not otherwise specified as transport equipment" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'container, not otherwise specified as transport equipment'%}selected{% endif %}>Container,
+          not otherwise specified as transport equipment</option>
+        <option value="Crate" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'crate'%}selected{% endif %}>Crate</option>
+        <option value="Crate, wooden" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'crate, wooden'%}selected{% endif %}>Crate, wooden</option>
+        <option value="Drum" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'drum'%}selected{% endif %}>Drum</option>
+        <option value="Receptacle, glass" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'receptacle, glass'%}selected{% endif %}>Receptacle, glass</option>
+        <option value="Jar" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'jar'%}selected{% endif %}>Jar</option>
+        <option value="Logs, in bundle/bunch/truss" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'logs, in bundle/bunch/truss'%}selected{% endif %}>Logs, in bundle/bunch/truss</option>
+        <option value="Lug" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'lug'%}selected{% endif %}>Lug</option>
+        <option value="Luggage" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'luggage'%}selected{% endif %}>Luggage</option>
+        <option value="Package" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'package'%}selected{% endif %}>Package</option>
+        <option value="Package, display, wooden" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'package, display, wooden'%}selected{% endif %}>Package, display, wooden</option>
+        <option value="Pail" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'pail'%}selected{% endif %}>Pail</option>
+        <option value="Pallet" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'pallet'%}selected{% endif %}>Pallet</option>
+        <option value="Bag, plastics film" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'bag, plastics film'%}selected{% endif %}>Bag, plastics film</option>
+        <option value="Box, plastic, expanded" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'box, plastic, expanded'%}selected{% endif %}>Box, plastic, expanded</option>
+        <option value="Punnet" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'punnet'%}selected{% endif %}>Punnet</option>
+        <option value="Rednet" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'rednet'%}selected{% endif %}>Rednet</option>
+        <option value="Tank, rectangula" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'tank, rectangular'%}selected{% endif %}>Tank, rectangular</option>
+        <option value="Bag, tote" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'bag, tote'%}selected{% endif %}>Bag, tote</option>
+        <option value="Tray pack" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'tray pack'%}selected{% endif %}>Tray pack</option>
+        <option value="Tube" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'tube'%}selected{% endif %}>Tube</option>
+        <option value="Vial" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'vial'%}selected{% endif %}>Vial</option>
+      </select>
+
+  </div>
+</div>
+{# {% endif %} #}

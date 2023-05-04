@@ -1,0 +1,441 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<style type="text/css">
+  .app-accordion .govuk-accordion__controls {
+    display: none;
+  }
+
+</style>
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-three-quarters">
+    <span class="govuk-caption-xl">EHC8328</span>
+    <h1 class="govuk-heading-xl">
+      Added 2 records
+    </h1>
+    <!-- set the location of the commodity in the full commodity list. This needs improving -->
+    <div class="commodity-accordion app-accordion hasIncompleteRecord" id="accordion-default-1">
+      <div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span class="govuk-accordion__show-all-text">Show all sections</span></button></div>
+      <h2 class="govuk-heading-s commodity-group-label">41012050 - <span class="govuk-!-font-weight-regular" title="Dried or dry-salted">Dried or dry-salted</span></h2>
+      <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+        <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section incomplete" id="c0-i0">
+          <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+            <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+              <!-- count how many sections were skipped for this record -->
+              <!--<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>-->
+              Lamb chops -
+              {{data.setNetWeight[0]}} kilogram
+              - 9 Box
+            </dt>
+            <dd class="govuk-summary-list__actions">
+              <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=0&amp;removeID=0">
+                    Remove<span class="govuk-visually-hidden"> this record</span>
+                  </a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link govuk-link--no-visited-state" href="commodity?productDescription=Lamb chops&changeID=0&packages=9">
+                    Change<span class="govuk-visually-hidden"> this record</span>
+                  </a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8328&amp;currentCommodityID=&amp;commodityListID=0&amp;changeID=0&amp;random=36538">
+                    Copy<span class="govuk-visually-hidden"> this record</span>
+                  </a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+          <dd class="govuk-summary-list__value">
+            <div class="govuk-accordion__section-heading">
+              <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                  <span class="govuk-accordion__section-heading-text-focus">
+                    <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                    <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                      <span class="govuk-accordion__section-toggle-focus">
+                        <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                        <span class="govuk-accordion__section-toggle-text">
+                          Show details<span class="govuk-visually-hidden"> for this record</span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+              <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                <div class="govuk-grid-row">
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Commodity code
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      41012050
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Description <span class="optional">(optional)</span>
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Lamb chops
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Species
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Bison
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half isIncomplete"> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Manufacturing plant
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <!-- find establishment TradingName from approval number -->
+                      Not entered
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Net weight
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{data.setNetWeight[0]}} kilogram
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Net weight unit
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      kilogram
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Package count
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      9
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Package count unit
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Box
+                    </dd>
+                  </div>
+                </div>
+              </dl>
+            </div>
+          </dd>
+        </div>
+        <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section incomplete" id="c0-i1">
+          <div class="govuk-summary-list__row-group govuk-accordion__section-header">
+            <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
+              <!-- count how many sections were skipped for this record -->
+              <!--<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>-->
+              Lamb cutlets -
+              {{data.setNetWeight[1]}} kilogram
+              - 12 Box
+            </dt>
+            <dd class="govuk-summary-list__actions">
+              <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link govuk-link--no-visited-state" href="remove-commodity?removeCommodityID=0&amp;removeID=1">
+                    Remove<span class="govuk-visually-hidden"> this record</span>
+                  </a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link govuk-link--no-visited-state" href="commodity?commodity=&amp;change=yes&amp;copy=&amp;currentCommodityID=&amp;commodityListID=0&amp;changeID=1">
+                    Change<span class="govuk-visually-hidden"> this record</span>
+                  </a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link govuk-link--no-visited-state" href="copy-record?ehcNumber=EHC8328&amp;currentCommodityID=&amp;commodityListID=0&amp;changeID=1&amp;random=79476">
+                    Copy<span class="govuk-visually-hidden"> this record</span>
+                  </a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+          <dd class="govuk-summary-list__value">
+            <div class="govuk-accordion__section-heading">
+              <button type="button" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                <span class="govuk-accordion__section-heading-text" id="accordion-default-heading-1">
+                  <span class="govuk-accordion__section-heading-text-focus">
+                    <span class="govuk-visually-hidden govuk-accordion__section-heading-divider">, </span>
+                    <span class="govuk-accordion__section-toggle" data-nosnippet="">
+                      <span class="govuk-accordion__section-toggle-focus">
+                        <span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+                        <span class="govuk-accordion__section-toggle-text">
+                          Show details<span class="govuk-visually-hidden"> for this record</span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+              <dl class="govuk-summary-list  govuk-summary-list--no-border app-summary-list--small app-summary-list--wide">
+                <div class="govuk-grid-row">
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Commodity code
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      41012050
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Description <span class="optional">(optional)</span>
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Lamb cutlets
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Species
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Bubalus bubalis
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half isIncomplete"> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Manufacturing plant
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <!-- find establishment TradingName from approval number -->
+                      Not entered
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Net weight
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{data.setNetWeight[1]}}
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Net weight unit
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      kilogram
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Package count
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      12
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half "> -->
+                  <div class="govuk-summary-list__row govuk-grid-column-one-half ">
+                    <dt class="govuk-summary-list__key">
+                      Package count unit
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Box
+                    </dd>
+                  </div>
+                </div>
+              </dl>
+            </div>
+          </dd>
+        </div>
+      </dl>
+      <p class="govuk-!-margin-bottom-8"><a href="add-new-record?currentCommodityID=4&amp;commodityCode=41012050&amp;ehcNumber=EHC8328&amp;random=52431" class="govuk-link--no-visited-state"><strong>Add another record for 41012050</strong></a></p>
+    </div>
+    {{data.change}}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form method="post" action="task-list">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+                Do you want to add another commodity to this certificate?
+              </legend>
+              <div id="add-another-hint" class="govuk-hint">
+                <!-- You must tell us about all your directors. -->
+              </div>
+              <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="add-another" name="addAnother" type="radio~not-in-prototype" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="add-another">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="add-another-2" name="addAnother" type="radio" value="no~{% if data.change=='yes' %}check-your-answers{% else %}task-list{% endif %}">
+                  <label class="govuk-label govuk-radios__label" for="add-another-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+  {% block pageScripts %}
+  <script type="text/javascript">
+    window.addEventListener('load', function() {
+      var controls =
+        '<div class="govuk-accordion__controls"><button type="button" class="govuk-accordion__show-all" aria-expanded="false"><span class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span><span class="govuk-accordion__show-all-text">Show all sections</span></button></div>'
+      var accordion = $('.app-accordion')
+      if ($('.govuk-accordion__section').length > 1) {
+        accordion.prepend(controls)
+      }
+      var showAllBtn = $('.govuk-accordion__show-all')
+      var showDetails = $('.govuk-accordion__section-button')
+
+      function showSection(b, t, a = "") {
+        var txt = (a) ? "Hide all sections" : "Hide details";
+        var label = (a) ? ".govuk-accordion__show-all-text" : ".govuk-accordion__section-toggle-text";
+        $(b).attr('aria-expanded', "true")
+        $(b).find(".govuk-accordion-nav__chevron").removeClass("govuk-accordion-nav__chevron--down")
+        if (!$(t).hasClass("govuk-accordion__section--expanded")) {
+          $(t).addClass('govuk-accordion__section--expanded')
+        }
+        $(t).find(label).text(txt)
+        if (a) {
+          var eb = $(t).find(".govuk-accordion__section-button")
+          console.log(eb)
+          showSection(eb, t)
+        }
+
+      }
+
+      function hideSection(b, t, a = false) {
+
+        var txt = (a) ? "Show all sections" : "Show details";
+        var label = (a) ? ".govuk-accordion__show-all-text" : ".govuk-accordion__section-toggle-text";
+        $(b).attr('aria-expanded', "false")
+        $(b).find(".govuk-accordion-nav__chevron").addClass("govuk-accordion-nav__chevron--down")
+        $(t).removeClass('govuk-accordion__section--expanded')
+        $(t).find(label).text(txt)
+        if (a) {
+          var eb = $(t).find(".govuk-accordion__section-button")
+          console.log(eb)
+          hideSection(eb, t)
+        }
+      }
+      showDetails.on('click', function(e) {
+        e.preventDefault()
+        console.log("working")
+        var section = $(this).closest('.govuk-accordion__section');
+        if ($(this).attr('aria-expanded') == 'false') {
+
+          // $(this).attr('aria-expanded',"true")
+          showSection(this, section)
+
+        } else {
+
+          hideSection(this, section)
+        }
+      })
+      showAllBtn.on('click', function(e) {
+        e.preventDefault()
+        var section = $('.govuk-accordion__section')
+        if ($(this).attr('aria-expanded') == 'false') {
+
+          // $(this).attr('aria-expanded',"true")
+          showSection(this, section, true)
+
+        } else {
+
+          hideSection(this, section, true)
+        }
+
+      })
+
+      $('button.navButton').click(function() {
+        if ($(this).attr('aria-label') == 'incomplete-only') {
+          showIncompleteRecords();
+        } else {
+          showAllRecords();
+        }
+      });
+
+      $('#shortcutToIncompleteRecords').click(function() {
+        showIncompleteRecords();
+      });
+
+      $('input[type=radio][name="incomplete-filter"]').change(function() {
+        if (this.value == 'incomplete-only') {
+          showIncompleteRecords();
+        } else {
+          showAllRecords();
+        }
+      });
+
+      function showIncompleteRecords() {
+        $(".commodity-accordion-row").hide();
+        $(".commodity-accordion-row.incomplete").show();
+
+        $(".commodity-accordion").hide();
+
+        $(".hasIncompleteRecord").show();
+
+        $("button.navButton").removeClass("active");
+        $("#navButtonIncompleteOnly").addClass("active");
+      }
+
+      function showAllRecords() {
+        $(".commodity-accordion-row").show();
+        $(".app-accordion").show();
+
+        $("button.navButton").removeClass("active");
+        $("#navButtonAllRecords").addClass("active");
+      }
+
+
+
+    })
+  </script>
+  {% endblock%}

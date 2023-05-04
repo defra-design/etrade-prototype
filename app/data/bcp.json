@@ -1,217 +1,525 @@
-[{
-		"destination": "Northern Ireland",
-		"ICO": "XI",
-		"ports": [{
-			"status": "active",
-			"name": "Belfast Port - BCC",
-			"country": "Northern Ireland",
-			"id": "XIBEL1-BCC",
-			"address": "Belfast City Council, 5 Corry Place, Belfast Harbour Estate, BT3 9HY",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Belfast Port - DAERA",
-			"id": "XIBEL1-DAERA",
-			"country": "Northern Ireland",
-			"address": "DAERA Office,Cargo Centre,Belfast International Airport,Belfast,BT29 4AB",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Belfast International Airport - DAERA",
-			"id": "XIBEL4",
-			"country": "Northern Ireland",
-			"address": "Belfast City Council, 5 Corry Place, Belfast Harbour Estate, BT3 9HY",
-			"categories": ["POA-NHC-NT", "POA-NHC-T(CH)"]
-		}, {
-			"status": "active",
-			"name": "Larne Harbour - DAERA",
-			"id": "XILAR1-DAERA",
-			"country": "Northern Ireland",
-			"address": "Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Redlands Road, Larne Harbour, BT40 1AX",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Larne Harbour - MEA",
-			"id": "XILAR1-MEA",
-			"country": "Northern Ireland",
-			"address": "Mid and East Antrim Borough Council, Shed 66, Redlands Road Larne Harbour, BT40 1AX",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Foyle Port - DAERA",
-			"id": "XIWPT1-DAERA",
-			"country": "Northern Ireland",
-			"address": "Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Portal Inspection Office, Warrenpoint Port, BT34 3JR",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}]
+[
+  {
+    "destination": "Northern Ireland",
+    "ICO": "XI",
+    "ports": [
+    {
+      "status": "active",
+      "name": "Belfast Port - BCC",
+      "country": "Northern Ireland",
+      "id": "XIBEL1-BCC",
+      "address": "Belfast City Council, 5 Corry Place, Belfast Harbour Estate, BT3 9HY",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"],
+      "categoriesOfAnimalsGoodsSpecs": [
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. Frozen products. Packed products only. ",
+        "code": "POA-HC-T(FR)(2)"
+      },
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. Frozen products. Packed products only. ",
+        "code": "POA-NHC-T(FR)(2)"
+      },
+      {
+        "description": "Products of non-animal origin. ",
+        "code": "PNAO"
+      },
+      {
+        "description": "Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014. ",
+        "code": "HC (Food)"
+      },
+      {
+        "description": "Products of non-animal origin, which are neither food nor feed. ",
+        "code": "NHC (other)"
+      }],
+      "unlocode": "GBBEL"
+    },
+    {
+      "status": "active",
+      "name": "Belfast Port - DAERA",
+      "id": "XIBEL1-DAERA",
+      "unlocode": "GBBEL",
+      "country": "Northern Ireland",
+      "address": "DAERA Office,Cargo Centre,Belfast International Airport,Belfast,BT29 4AB",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"],
+      "categoriesOfAnimalsGoodsSpecs": [
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. Frozen products. Packed products only. ",
+        "code": "POA-HC-T(FR)(2)"
+      },
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. Frozen products. Packed products only. ",
+        "code": "POA-NHC-T(FR)(2)"
+      },
+      {
+        "description": "Products of non-animal origin. ",
+        "code": "PNAO"
+      },
+      {
+        "description": "Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014. ",
+        "code": "HC (Food)"
+      },
+      {
+        "description": "Products of non-animal origin, which are neither food nor feed. ",
+        "code": "NHC (other)"
+      }]
+
+    },
+    {
+      "status": "active",
+      "name": "Larne Harbour - DAERA",
+      "id": "XILAR1-DAERA",
+      "unlocode": "GBLAR",
+      "country": "Northern Ireland",
+      "address": "Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Redlands Road, Larne Harbour, BT40 1AX",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"],
+      "categoriesOfAnimalsGoodsSpecs": [
+      {
+        "description": "Live animals. Registered equidae. ",
+        "code": "LA-E"
+      },
+      {
+        "description": "Live animals. Other animals other than Ungulates (This abbreviation includes zoo Ungulates). ",
+        "code": "LA-O"
+      },
+      {
+        "description": "Live animals. Ungulates other than registered equidae. ",
+        "code": "LA-U"
+      },
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. ",
+        "code": "POA-HC"
+      },
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. ",
+        "code": "POA-NHC"
+      },
+      {
+        "description": "Products of non-animal origin. Feed of non-animal origin covered by conditions or measures referred to in Article 47(1)(d)(e) or (f) of (Regulation (EU) 2017/625. ",
+        "code": "PNAO-NHC(feed)"
+      },
+      {
+        "description": "Plants. ",
+        "code": "P"
+      },
+      {
+        "description": "Plant products. ",
+        "code": "PP"
+      },
+      {
+        "description": "Wood and wood products. ",
+        "code": "PP(WP)"
+      },
+      {
+        "description": "Other objects. ",
+        "code": "OO"
+      },
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Unknown description. ",
+        "code": "POA-HC(fish/fishery products)"
+      },
+      {
+        "description": "Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014. ",
+        "code": "PNAO-HC(food)"
+      },
+      {
+        "description": "Products of non-animal origin. Products of non-animal origin, which are neither food nor feed. See additional specifications. ",
+        "code": "PNAO-NHC(other)(1)"
+      },
+      {
+        "description": "Unknown description. ",
+        "code": "COI(organics)"
+      }]
+    },
+    {
+      "status": "active",
+      "name": "Warrenpoint Port - DAERA",
+      "id": "XIWPT1-DAERA",
+      "unlocode": "GBWPT",
+      "country": "Northern Ireland",
+      "address": "Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Portal Inspection Office, Warrenpoint Port, BT34 3JR",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"],
+      "categoriesOfAnimalsGoodsSpecs": [
+      {
+        "description": "Live animals. Registered equidae. ",
+        "code": "LA-E"
+      },
+      {
+        "description": "Live animals. Other animals other than Ungulates (This abbreviation includes zoo Ungulates). ",
+        "code": "LA-O"
+      },
+      {
+        "description": "Live animals. Ungulates other than registered equidae. ",
+        "code": "LA-U"
+      },
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. ",
+        "code": "POA-HC"
+      },
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. ",
+        "code": "POA-NHC"
+      },
+      {
+        "description": "Products of non-animal origin. Feed of non-animal origin covered by conditions or measures referred to in Article 47(1)(d)(e) or (f) of (Regulation (EU) 2017/625. ",
+        "code": "PNAO-NHC(feed)"
+      },
+      {
+        "description": "Plants. ",
+        "code": "P"
+      },
+      {
+        "description": "Plant products. ",
+        "code": "PP"
+      },
+      {
+        "description": "Wood and wood products. ",
+        "code": "PP(WP)"
+      },
+      {
+        "description": "Other objects. ",
+        "code": "OO"
+      },
+      {
+        "description": "Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Unknown description. ",
+        "code": "POA-HC(fish/fishery products)"
+      },
+      {
+        "description": "Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014. ",
+        "code": "PNAO-HC(food)"
+      },
+      {
+        "description": "Products of non-animal origin. Products of non-animal origin, which are neither food nor feed. See additional specifications. ",
+        "code": "PNAO-NHC(other)(1)"
+      },
+      {
+        "description": "Unknown description. ",
+        "code": "COI(organics)"
+      }]
+    }]
+  },
+  {
+    "destination": "Austria",
+    "ICO": "AU",
+    "ports": [
+    {
+      "status": "active",
+      "name": "Zollstelle Buchs/Bahnhof",
+      "id": "AT920100",
+      "country": "Austria",
+      "address": "Galuragasse 3, Feldkirch, 6800",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "active",
+      "name": "Zollstelle Tisis",
+      "id": "AT920400",
+      "country": "Austria",
+      "address": "Lichtensteiner Strasse 139a, Feldkirch, 6800",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "active",
+      "name": "Grenzkontrollstelle Graz",
+      "id": "ATGRZ4FEED",
+      "country": "Austria",
+      "address": "Flughafenstraße 51, Feldkirchen bei Graz, 8073",
+      "categories": ["POA-NHC-NT", "POA-NHC-T(CH)"]
+    },
+    {
+      "status": "active",
+      "name": "Grenzkontrollstelle Linz",
+      "id": "ATLNZ4",
+      "country": "Austria",
+      "address": "Flughafenstraße 3, A-4063 Hörsching",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "active",
+      "name": "Grenzkontrollstelle Linz",
+      "id": "ATLNZ4FOOD",
+      "country": "Austria",
+      "address": "Flughafenstraße 3, Hörsching, 4063",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "active",
+      "name": "Grenzkontrollstelle Wien-Schwechat",
+      "id": "ATVIE4",
+      "country": "Austria",
+      "address": "Air Cargo Center / Stiege 10 A-1300 Wien-Flughafen",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    }]
+
+  },
+  {
+    "destination": "France",
+    "ICO": "FR",
+    "ports": [
+    {
+      "status": "active",
+      "name": "Calais bureau",
+      "id": "FR000740",
+      "country": "France",
+      "address": "70 RUE MOLLIEN, Calais Cedex, 62225",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "active",
+      "name": "Dunkerque port bureau",
+      "id": "FR001260DGCCRF",
+      "country": "France",
+      "address": "3 RUE L'HERMITTE, Dunkerque Cedex 1, 59385",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "active",
+      "name": "Dunkerque port bureau",
+      "id": "ATGRZ4FEED",
+      "country": "France",
+      "address": "3 RUE L'HERMITTE, Dunkerque Cedex 1, 59385",
+      "categories": ["POA-NHC-NT", "POA-NHC-T(CH)"]
+    },
+    {
+      "status": "active",
+      "name": "Port la nouvelle bureau",
+      "id": "FR003650",
+      "country": "France",
+      "address": "2 quai du port, Port-la-Nouvelle, 11210",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "active",
+      "name": "Rouen port bureau",
+      "id": "FR003920",
+      "country": "France",
+      "address": "19, boulevard du midi - BP 31068, Rouen Cedex, 76173",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "inactive",
+      "name": "BREST",
+      "country": "France",
+      "id": "BRESTFRBES1",
+      "address": "60, avenue Baron Lacrosse 29850 GOUESNOU",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    }]
 
 
+  },
+  {
+    "destination": "Spain",
+    "ICO": "SI",
+    "ports": [
+    {
+      "status": "inactive",
+      "name": "Pasajes (Port)",
+      "id": "ES PAS 1P- SANIDAD EXTERIOR",
+      "country": "Spain",
+      "address": "ALGEPOSA / PASAJES, Edfº SAGEP – 2ª PLANTA, Pasaia, 201105",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "inactive",
+      "name": "Arrecife (Lanzarote),P",
+      "country": "Spain",
+      "id": "ESACE1P-SANIDADEXTERIOR",
+      "address": "Puerto de los Mármoles s/n 35500 Arrecife Lanzarote, Arrecife, 35500",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "inactive",
+      "name": "Arrecife (Lanzarote),A",
+      "country": "Spain",
+      "id": "ESACE4P-SANIDADEXTERIOR",
+      "address": "Aeropuerto de Lanzarote, 35500 Arrecife Las Palmas, Arrecife, 35500",
+      "categories": ["POA-NHC-NT", "POA-NHC-T(CH)"]
+    },
+    {
+      "status": "inactive",
+      "name": "Málaga",
+      "country": "Spain",
+      "id": "ESAGP1",
+      "address": "Puerto de Málaga Muelle nº 8-Explanada de Pescadería, Local 29 29071-MÁLAGA (Puerto)",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "inactive",
+      "name": "Málaga SanidadExterior",
+      "country": "Spain",
+      "id": "ESAGP1-SANIDADEXTERIOR",
+      "address": "1Puerto de Málaga Muelle nº 8-Explanada de Pescadería, Local 29 29071-MÁLAGA (Puerto)",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    },
+    {
+      "status": "inactive",
+      "name": "Alicante",
+      "country": "Spain",
+      "id": "ESALC1",
+      "address": "Avda. del Faro, s/n. Muelle de Poniente 03071-ALICANTE (Puerto)",
+      "categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
+    }]
 
-	},
-	{
-		"destination": "Austria",
-		"ICO": "AU",
-		"ports": [{
-			"status": "active",
-			"name": "Zollstelle Buchs/Bahnhof",
-			"id": "AT920100",
-			"country": "Austria",
-			"address": "Galuragasse 3, Feldkirch, 6800",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Zollstelle Tisis",
-			"id": "AT920400",
-			"country": "Austria",
-			"address": "Lichtensteiner Strasse 139a, Feldkirch, 6800",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Grenzkontrollstelle Graz",
-			"id": "ATGRZ4FEED",
-			"country": "Austria",
-			"address": "Flughafenstraße 51, Feldkirchen bei Graz, 8073",
-			"categories": ["POA-NHC-NT", "POA-NHC-T(CH)"]
-		}, {
-			"status": "active",
-			"name": "Grenzkontrollstelle Linz",
-			"id": "ATLNZ4",
-			"country": "Austria",
-			"address": "Flughafenstraße 3, A-4063 Hörsching",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Grenzkontrollstelle Linz",
-			"id": "ATLNZ4FOOD",
-			"country": "Austria",
-			"address": "Flughafenstraße 3, Hörsching, 4063",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Grenzkontrollstelle Wien-Schwechat",
-			"id": "ATVIE4",
-			"country": "Austria",
-			"address": "Air Cargo Center / Stiege 10 A-1300 Wien-Flughafen",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}]
+  },
+  {
+    "destination": "Germany",
+    "ICO": "DE",
+    "ports": [
+    {
+      "status": "inactive",
+      "name": "Berlin Brandenburg Flughafen",
+      "id": "DEBER4F",
+      "country": "Spain",
+      "address": "Air Cargo Center, Georg-Wulf-Straße 1, Schönefeld, 12529",
+      "categories": []
+    },
+    {
+      "status": "inactive",
+      "name": "Berlin Brandenburg Flughafen",
+      "country": "Spain",
+      "id": "DEBER4L",
+      "address": "Air Cargo Center, Georg-Wulf-Straße 1, Schönefeld, 12529",
+      "categories": []
+    }]
 
-	},
-	{
-		"destination": "France",
-		"ICO": "FR",
-		"ports": [{
-			"status": "active",
-			"name": "Calais bureau",
-			"id": "FR000740",
-			"country": "France",
-			"address": "70 RUE MOLLIEN, Calais Cedex, 62225",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Dunkerque port bureau",
-			"id": "FR001260DGCCRF",
-			"country": "France",
-			"address": "3 RUE L'HERMITTE, Dunkerque Cedex 1, 59385",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Dunkerque port bureau",
-			"id": "ATGRZ4FEED",
-			"country": "France",
-			"address": "3 RUE L'HERMITTE, Dunkerque Cedex 1, 59385",
-			"categories": ["POA-NHC-NT", "POA-NHC-T(CH)"]
-		}, {
-			"status": "active",
-			"name": "Port la nouvelle bureau",
-			"id": "FR003650",
-			"country": "France",
-			"address": "2 quai du port, Port-la-Nouvelle, 11210",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "active",
-			"name": "Rouen port bureau",
-			"id": "FR003920",
-			"country": "France",
-			"address": "19, boulevard du midi - BP 31068, Rouen Cedex, 76173",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "inactive",
-			"name": "BREST",
-			"country": "France",
-			"id": "BRESTFRBES1",
-			"address": "60, avenue Baron Lacrosse 29850 GOUESNOU",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}]
+  },
+  {
+    "destination": "Netherlands",
+    "ICO": "NL",
+    "ports": [
+    {
+      "status": "Active",
+      "name": "Amsterdam - zeehaven",
+      "id": "NLAMS1",
+      "country": "Netherlands",
+      "address": "Makreelkade 9 1976 DK Ijmuiden",
+      "categories": []
+    },
+    {
+      "status": "Active",
+      "name": "Amsterdam - Schiphol",
+      "country": "Netherlands",
+      "id": "SchipholNLAMS4",
+      "address": "Pelikaanweg 1 1118 DT Schiphol",
+      "categories": []
+
+    },
+    {
+      "status": "Active",
+      "name": "Eemshaven",
+      "country": "Netherlands",
+      "id": "NLEEM1",
+      "address": "Eemshornweg 5a 9979 XK Eemshaven",
+      "categories": []
+
+    },
+    {
+      "status": "Active",
+      "name": "Harlingen",
+      "country": "Netherlands",
+      "id": "NLHAR1",
+      "address": "Zuidwalweg 14 8861 NV Harlingen",
+      "categories": []
+
+    }]
+
+  },
+  {
+    "destination": "Denmark",
+    "ICO": "DK",
+    "ports": [
+
+      {
+        "status": "Active",
+        "name": "Aalborg",
+        "id": "2DKAAL1B",
+        "country": "Denmark",
+        "address": "Langerak, Aalborg, 9220",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "Aalborg Lufthavn",
+        "id": "DKAAL4",
+        "country": "Denmark",
+        "address": "Ny Lufthavnsvej 100 9400 Nørre Sundby",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "Aarhus",
+        "id": "DKAAR1",
+        "country": "Denmark",
+        "address": "ALC A/S Skansevej 1 8000 Aarhus C",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "Billund",
+        "id": "DKBLL4",
+        "country": "Denmark",
+        "address": "Sønderskovvej 5, Lystrup, 8520",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "Danish Veterinary and Food Administration - Fødevarestyrelsen - Lystrup",
+        "id": "DKAAT4",
+        "country": "Denmark",
+        "address": " Sønderskovvej 5, Lystrup, 8520",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "København Havn",
+        "id": "DKCPH1",
+        "country": "Denmark",
+        "address": "Containervej 15 2150 Nordhavn",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "Esberg",
+        "id": "DKEBJ1",
+        "country": "Denmark",
+        "address": "D & F Man Terminals Denmark ApS, Vagervej 2 6700 Esbjerg",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "Fredericia",
+        "id": "DKFRC1",
+        "country": "Denmark",
+        "address": "Centerhavn 23 7000 Fredericia",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "Hanstholm",
+        "id": "DKHAN1",
+        "country": "Denmark",
+        "address": "Auktionsgade 39 7730 Hanstholm",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "Hirtshals",
+        "id": "DKHIR1",
+        "country": "Denmark",
+        "address": "Sildekajen 6 9850 Hirtshals",
+        "categories": []
+      },
+      {
+        "status": "Active",
+        "name": "Skagen",
+        "id": "DKSKA1",
+        "country": "Denmark",
+        "address": "Coasterkajen 9990 Skagen",
+        "categories": []
+      }
 
 
-	},
-	{
-		"destination": "Spain",
-		"ICO": "SI",
-		"ports": [{
-			"status": "inactive",
-			"name": "Pasajes (Port)",
-			"id": "ES PAS 1P- SANIDAD EXTERIOR",
-			"country": "Spain",
-			"address": "ALGEPOSA / PASAJES, Edfº SAGEP – 2ª PLANTA, Pasaia, 201105",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "inactive",
-			"name": "Arrecife (Lanzarote),P",
-			"country": "Spain",
-			"id": "ESACE1P-SANIDADEXTERIOR",
-			"address": "Puerto de los Mármoles s/n 35500 Arrecife Lanzarote, Arrecife, 35500",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "inactive",
-			"name": "Arrecife (Lanzarote),A",
-			"country": "Spain",
-			"id": "ESACE4P-SANIDADEXTERIOR",
-			"address": "Aeropuerto de Lanzarote, 35500 Arrecife Las Palmas, Arrecife, 35500",
-			"categories": ["POA-NHC-NT", "POA-NHC-T(CH)"]
-		}, {
-			"status": "inactive",
-			"name": "Málaga",
-			"country": "Spain",
-			"id": "ESAGP1",
-			"address": "Puerto de Málaga Muelle nº 8-Explanada de Pescadería, Local 29 29071-MÁLAGA (Puerto)",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "inactive",
-			"name": "Málaga SanidadExterior",
-			"country": "Spain",
-			"id": "ESAGP1-SANIDADEXTERIOR",
-			"address": "1Puerto de Málaga Muelle nº 8-Explanada de Pescadería, Local 29 29071-MÁLAGA (Puerto)",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}, {
-			"status": "inactive",
-			"name": "Alicante",
-			"country": "Spain",
-			"id": "ESALC1",
-			"address": "Avda. del Faro, s/n. Muelle de Poniente 03071-ALICANTE (Puerto)",
-			"categories": ["POA-HC-T(FR)(2)", "POA-NHC-T(FR)(2)", "PNAO", "HC (FOOD)", "NHC (OTHER)"]
-		}]
+    ]
 
-	},
-	{
-		"destination": "Germany",
-		"ICO": "DE",
-		"ports": [{
-			"status": "inactive",
-			"name": "Berlin Brandenburg Flughafen",
-			"id": "DEBER4F",
-			"country": "Spain",
-			"address": "Air Cargo Center, Georg-Wulf-Straße 1, Schönefeld, 12529",
-			"categories": []
-		}, {
-			"status": "inactive",
-			"name": "Berlin Brandenburg Flughafen",
-			"country": "Spain",
-			"id": "DEBER4L",
-			"address": "Air Cargo Center, Georg-Wulf-Straße 1, Schönefeld, 12529",
-			"categories": []
-		}]
-
-	}
+  }
 
 ]

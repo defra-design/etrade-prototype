@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if query.has_error %}Error: {%endif%} Goods Certified As - E-Certification for EHC's - GOV UK
+{% endblock %}
+{% block beforeContent %}
+
+{% endblock%}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Goods certified as v3</h1>
+    <h2 class="govuk-heading-m">What's changed</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>New header</li>
+      <li>Removed search if radios is under 25</li>
+      <li>Other is at the end of the list</li>
+      <li>If just 1, this is pre-selected</li>
+      <li>CTA button copy update to "Save and continue"</li>
+    </ul>
+    <h2 class="govuk-heading-m">What's changed</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="goods-certified-as?certificate=1">List of 20 with "other"</a></li>
+      <li><a href="goods-certified-as?certificate=1&showSearch=yes">List over 25</a></li>
+      <li><a href="goods-certified-as?certificate=13">List only 5</a></li>
+    
+
+    </ul>
+    <p class="govuk-body">If there is only one radio button</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li><a href="goods-certified-as?certificate=16">List of 1 (pre-selected)</a></li>
+        <li><a href="/clear-data?url=/stories/goods-certified-as/task-list?goods_certified_as=Human consumption&certificate=16">From task list (task is completed from the start)</a></li>
+    </ul>
+    <p class="govuk-body">Error page</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li><a href="goods-certified-as?certificate=1&has_error=yes">With error - Blank</a></li>
+
+    </ul>
+  </div>
+</div>
+{% endblock%}

@@ -28,11 +28,11 @@ Home – GOV.UK Prototype Kit
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             {% if query.errorType  and "packageCount" in query.errorType %}
-            <li><a class="govuk-link" href="#packageCount">Enter package count</a></li>
+            <li><a class="govuk-link" href="#packageCount">Enter the number of packages in the consignment</a></li>
             {% endif %}
             <!-- exclude Activity records like manufacturingPlantActivity -->
             {% if query.errorType  and "netWeight" in query.errorType %}
-            <li><a class="govuk-link" href="#netWeight">Enter net weight</a></li>
+            <li><a class="govuk-link" href="#netWeight">Enter the net weight of the consignment</a></li>
             {% endif %}
             {% if query.errorType  and "dateOfCollectionProduction" in query.errorType %}
             <li><a class="govuk-link" href="#dateOfCollectionProduction">Enter the date of collection / production</a></li>
@@ -136,7 +136,7 @@ Home – GOV.UK Prototype Kit
               </label>
               {% if query.hasError and 'packageCount' in query.errorType %}
               <p id="packageCount-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Enter a package count
+                <span class="govuk-visually-hidden">Error:</span> Enter the number of packages in the consignment
               </p>
               {% endif %}
               <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8="">
@@ -198,7 +198,7 @@ Home – GOV.UK Prototype Kit
 
                 {% if query.hasError and 'netWeight' in query.errorType %}
                 <p id="netWeight-error" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">Error:</span> Enter a net weight
+                  <span class="govuk-visually-hidden">Error:</span> Enter the net weight of the consignment
                 </p>
                 {% endif %}
               <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8="">

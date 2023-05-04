@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Add closed containers number – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style type="text/css">
+  .app-add-another__remove-button {
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+
+
+.app-add-another__item {
+
+    position: relative;
+}
+</style>
+{% endblock%}
+{% block content %}
+{% set id = query.id or 0 %}
+{% set next = "container-seal-numbers-list" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    {% if data.goodsInContianers == "yes" %}
+    {{ data.containerNumbers |length }}<br>
+    {{id}}
+    {% if  data.containerNumbers |length > 1 and id < data.containerNumbers |length   %}
+    {% set next = "add-seal-numbers?id="+(id | int+1) %}
+    {% endif %}
+    <h1 class="govuk-heading-xl"> Add seal numbers for container {{data.containerNumbers[id]}}</h1>
+    <p>Enter this if a seal is affixed to the container, truck or rail wagon under the supervision of the competent authority issuing the certificate.</p>
+    {% else %}
+    <h1 class="govuk-heading-xl"> Add seal numbers</h1>
+    <p>Enter this if a seal is affixed to the container, truck or rail wagon under the supervision of the competent authority issuing the certificate.</p>
+    {% endif %}
+
+   
+
+    <form id="form" method="post" action="{{next}}">
+      {% if data.goodsInContianers == "yes" %}
+      <input type="hidden" name="SealsForContainer" value="{{id}}">
+      {% endif %}
+
+      <div id="app-add-another" >
+        <fieldset class="govuk-fieldset app-add-another__item" id="app-add-another--container"aria-describedby="" data-count="1">
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="containerNumbers1">
+              Seal number <span class="app-add-another__title-number" style="display:none;">1</span>
+            </label>
+      
+            <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers1" name="sealNumbers" aria-described-by="containerNumbersHint1">
+             <button type="button" style="display:none;" class="govuk-button govuk-button--secondary app-add-another__remove-button" data-target="app-add-another--container">Remove</button>
+          </div><!-- form group-->
+         
+        </fieldset>
+        </div> <!-- data-module="app-add-another" -->
+        <button class="govuk-button govuk-button--secondary app-add-another__add-button govuk-!-margin-bottom-8" data-module="govuk-button" data-count="1" data-target="app-add-another" type="button">
+            Add another container number
+        </button>
+
+        <div class="govuk-button-group">
+          <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+        </div>
+      
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+    var added=0;
+    var addedItems = [];
+    var template = $(".app-add-another__item").prop("outerHTML")
+
+    $('.app-add-another__add-button').on("click", function(e){
+     e.preventDefault()
+
+        var count = parseInt($(this).attr("data-count"))
+        console.log(count)
+        var targetID = template
+        var section = $(template).clone(true, true)
+        var holderID =  $(this).attr('data-target') 
+
+        var blockID = $(section).attr("id") + (count+1)
+        console.log(targetID)
+        var deleteButton = $(section).find("button")
+        $(deleteButton).attr("data-target",blockID)
+
+        // var formID = section.find("input").attr("id")+count
+        $(section).attr("id", blockID).addClass("govuk-!-margin-top-2")
+        $(section).find('input').val('')
+        // incase it is a select
+        $(section).find('select').prop("selectedIndex", 0);
+        $("#" + holderID).append(section)
+        $(section).find(".app-add-another__title-number").text(count + 1)
+        displayButtons(count + 1)
+
+
+        $(this).attr("data-count", count + 1)
+
+      })
+
+    $(document).on('click', '.app-add-another__remove-button', function(e) {
+        e.preventDefault();
+        var deleteTarget = $(this).attr('data-target')
+        $("#" + deleteTarget).remove()
+        var c = parseInt($(".app-add-another__add-button").attr("data-count"))-1
+        $(".app-add-another__add-button").attr("data-count",c)
+
+        displayButtons(c)
+    });
+
+    function displayButtons(c){
+      if(c > 1){
+        $(".app-add-another__remove-button").show()
+        $(".app-add-another__title-number").show()
+      }else{
+        $(".app-add-another__remove-button").hide()
+        $(".app-add-another__title-number").hide()
+        $(".app-add-another__item .app-add-another__title-number").text(1)
+      }
+    }
+
+    // $('.app-add-another__add-button').on("click", function(e){
+
+    //   e.preventDefault();
+      
+      
+    //   newItem = $("div[data-module='app-add-another']").append(template)
+    //   let count = $(".app-add-another__item").length+1
+    //   alert(count+1)
+    //   $(newItem).find(".app-add-another__remove-button").show()
+    //   $(newItem).find(".app-add-another__title-number").text(count)
+     
+    // })
+    // function init(){
+    //   template = $(".app-add-another__item").html()
+    // }
+    // function addItems(){
+    //   var c=1
+    //   $(".app-add-another__item").each(function() {
+    //    $(this).attr('data-id',c)
+    //    c+=1
+
+    //   })
+
+    // }
+    // init()
+})
+</script>
+{% endblock%}

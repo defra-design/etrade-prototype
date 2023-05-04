@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Before your start - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
+    <!--<h1 class="govuk-heading-xl">Apply for an export health certificate</h1>-->
+    <!---->
+    <!---->
+    <!---->
+    <!--
+    <p class="govuk-body">You can use this service to apply for an export health certificate (EHC) to export live animals and animal products from Great Britain to the EU or Northern Ireland.</p>
+    <p class="govuk-body">Once you have submitted your application, we will send it to the EU’s trade control and export system (TRACES). This will enable your importer to create a common health entry document (CHED).</p>
+    <p class="govuk-body">You can use this service to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>apply for export health certificates for the EU and Northern Ireland</li>
+      <li>find certificate reference numbers for the EU TRACES system</li>
+      <li>view and download previous export health certificates in different languages</li>
+    </ul>
+    -->
+    <h2 class="govuk-heading-xl">You cannot use this service to export to {{query.country or 'Spain'}}</h2>
+    <p class="govuk-body">
+      {{query.country or 'Spain'}} currently does not allow digital certificates. 
+    </p>
+    <p>You must use a paper certificate.</p>
+    
+    <p><a href="../dashboard" class="govuk-button">Return to dashboard</a></p>
+  </div>
+</div>
+
+{% endblock %}

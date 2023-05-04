@@ -20,13 +20,14 @@ module.exports = function(router) {
     const country = req.body.country;
 
     if (establishmentIndex) {
-        req.session.data.person['consignor'] = establishmentIndex;
-          //add address to address book
-    let address = {"index":establishmentIndex,"type":"consignor"}
-    req.session.data.addressBook.push(address)
-    console.log(req.session.data.addressBook)
-       res.redirect(301, '/' + base_url + 'persons/consignor-or-exporter');
-
+        // check out same file for adding adding to address book. 
+        // check if the establishment has multiple activities
+        if (req.session.data.establishments[establishmentIndex].All_Activities.length == 1) {
+          req.session.data.person['consignorActivity'] = 0;
+          res.redirect(301, '/' + base_url + 'persons/consignor/default');
+        } else {
+          res.redirect(301, '/' + base_url + 'persons/consignor/activity?establishmentIndex=' + establishmentIndex);
+        }
     } else {
       res.redirect(301, '/' + base_url + 'persons/consignor/find?hasError=true&country=' + country);
     }
@@ -37,7 +38,7 @@ module.exports = function(router) {
 
     const establishmentIndex = req.body.establishmentIndex;
 
-    req.session.data.person['consignor'] = establishmentIndex;
+    req.session.data.person['exporter'] = establishmentIndex;
     res.redirect(301, '/' + base_url + 'persons/consignor-or-exporter');
   })
 

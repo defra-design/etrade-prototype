@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Select a commodity for this export – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set ehc = (data.certificate|makeNumber) or 1 %}
+<div class="govuk-grid-row" data-v-75a00750="" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds" data-v-75a00750="">
+    <span class="govuk-caption-xl">{{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</span>
+    <form class="" action="manage-imports" method="get">
+      <h1 class="govuk-heading-xl">Select a commodity for this export</h1>
+      {% if data.certificates[ehc].commodities | length > 4 %}
+      <div class="govuk-form-group"><label class="govuk-label" for="filter-commodities"> Filter commodities </label><input class="govuk-input" id="filter-commodities" type="text">
+      </div>
+      {% endif %}
+      <div class="govuk-form-group cn-selection">
+        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+          {% for com in data.certificates[ehc].commodities %}
+            <div class="govuk-checkboxes__item" govuk-checkboxes>
+              <input class="govuk-checkboxes__input" name="commodityCode" id="cn-selection-{{loop.index}}" type="checkbox" value="{{loop.index-1}}">
+              <label class="govuk-label govuk-checkboxes__label" for="cn-selection-{{loop.index}}" govuk-checkboxes>
+                <span class="govuk-tag">{{com.code}}</span> {{com.title}}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="govuk-button-group" type="submit"><button class="govuk-button" id="add-export">Save and continue</button>
+        <!---->
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

@@ -1,0 +1,330 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle = "commodity"%}
+{% endif %}
+<style type="text/css">
+  .govuk-summary-list__value{
+    width:50%;
+  }
+.govuk-summary-list__row-error {
+    border-left: 5px solid #d4351c;
+}
+.govuk-summary-list__row-error .govuk-summary-list__key {
+    padding-left: 10px;
+}
+</style>
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+             {% if query.hasError %}
+      <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+
+
+
+              <li><a class="govuk-link" href="#gross-weight-error">The gross weight of the commodities cannot be less than the net weight</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+          <h1 class="govuk-heading-xl">Check your answers before submitting your application</h1>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
+        <div class="govuk-summary-list__row" data-v-e8e27fc8="">
+          <dt class="" ="govuk-summary-list__key"="" data-v-e8e27fc8="">Application Reference</dt>
+          <dd class="govuk-summary-list__value" data-v-e8e27fc8=""> Richards certicate
+          </dd>
+          <dd class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="create-reference?showNotification=no&amp;change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></dd>
+        </div>
+      </dl>
+
+
+          <h2 class="govuk-heading-m">1. What’s in your consignment</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Certificate </dt>
+              <dd class="govuk-summary-list__value">
+                EHC8328 - Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland
+
+              </dd>
+            
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Commodities </dt>
+              <dd class="govuk-summary-list__value">
+              
+                
+                
+                  
+                    
+                      
+                    
+                  
+                
+                2 record added
+
+
+                
+                </dd>
+
+
+              <dd class="govuk-summary-list__actions">
+                <a href="commodity-list?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">commodities</span></a> </dd>
+            </div>
+            <div class="govuk-summary-list__row {% if query.hasError %}govuk-summary-list__row-error{% endif %}"{% if query.hasError %}id="gross-weight-error"{% endif %}>
+              <dt class="govuk-summary-list__key"> Gross weight </dt>
+              <dd class="govuk-summary-list__value">
+                {% if query.hasError %}
+                  <span class="govuk-error-message" id="gross-weight-error--message"><span class="govuk-visually-hidden">Error:</span>The gross weight of the commodities cannot be less than the net weight</span>
+                {% endif %}
+                  {{data.GROSS_WEIGHT or data.setGrossWeight}} kg
+                 
+            </dd>
+              <dd class="govuk-summary-list__actions"><a href="./weight?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">gross weight</span></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Country of origin 
+              </dt><dd class="govuk-summary-list__value">
+                  <p>United Kingdom (GB)</p>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./goods/place-of-origin?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Region of origin (optional) 
+              </dt><dd class="govuk-summary-list__value">
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/goods?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            </dl>
+          <h2 class="govuk-heading-m">2. Certification of the consignment</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Certifier </dt>
+              <dd class="govuk-summary-list__value">
+                  
+                Test company name <span class="ml-1">(London, SW6 5HM)</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./persons/certifier?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Region of certification </dt>
+              <dd class="govuk-summary-list__value">
+                 
+                GB-SCT
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./persons/region-of-certification?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Goods certified as </dt>
+              <dd class="govuk-summary-list__value">
+                
+                  Breeding/production
+                
+
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                   
+                <a href="./goods/goods-certified-as?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">goods certified as</span></dd>
+                
+            </div>
+        
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Type of consignment</dt>
+              <dd class="govuk-summary-list__value">
+
+                
+                  Internal market
+                
+
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./goods/purpose-of-export?change=yes" class="govuk-link"> Change </a><span class="govuk-visually-hidden">Purpose of the export</span></dd>
+            </div>
+          </dl>
+          
+          <h2 class="govuk-heading-m">3. Sending the consignment</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Consignor or Exporter </dt>
+              <dd class="govuk-summary-list__value">
+
+                
+                Test company name <span class="ml-1">(London, SW6 5HM)</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./persons/consignor-or-exporter?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Dispatch location 
+              </dt><dd class="govuk-summary-list__value">
+
+                    
+                     <span class="govuk-summary-list__placeholder">Not entered</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Loading location 
+              </dt><dd class="govuk-summary-list__value">
+                  
+                  Testing Company Name (London, SW6 5HM)
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+              <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Departure date</dt>
+              <dd class="govuk-summary-list__value">
+                
+                  2023-03-24 - 12
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+          </dl>
+          <h2 class="govuk-heading-m">4. Transport</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Container number/seal number (optional) </dt>
+              <dd class="govuk-summary-list__value">
+
+                
+                <p>Container number: BICU1234567 - Seal number: 323r23r</p>
+           
+                
+    
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="./goods/container-deal-number?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Container number/seal number</span></a>
+              </dd>
+            </div>
+             <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Means of transport</dt>
+              <dd class="govuk-summary-list__value">
+                
+                <span class="govuk-summary-list__placeholder">Not entered</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/means-of-transport?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+             <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Transport conditions </dt>
+              <dd class="govuk-summary-list__value">
+                
+                <span class="govuk-summary-list__placeholder">Not entered</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/means-of-transport?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+          
+            
+            
+
+            </dl>
+          <h2 class="govuk-heading-m">5. When the consignment arrives</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+             <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Entry border control post</dt>
+              <dd class="govuk-summary-list__value">
+                
+                <span class="govuk-summary-list__placeholder">Not entered</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/border-control-post?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Estimated arrival date</dt>
+              <dd class="govuk-summary-list__value">
+                
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/arrival?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+           
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Importer or Consignee</dt>
+              <dd class="govuk-summary-list__value">
+                
+                Testing Company Name <span class="ml-1">(London, SW6 5HM)</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./persons/consignee-or-importer?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+           
+          
+            
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Responsible for load </dt>
+              <dd class="govuk-summary-list__value">
+
+                
+                Testing Company name <span class="ml-1">(London, SW6 5HM)</span>
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Operator" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Destination </dt>
+              <dd class="govuk-summary-list__value">
+                
+                  Acme trading  (London, SW6 FHE)
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="/transport/place-of-destination?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+          </dl>
+          <h2 class="govuk-heading-m">6. Additional documents (optional)</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Accompanying documents </dt>
+              <dd class="govuk-summary-list__value">
+                
+                  <span class="govuk-summary-list__placeholder">No documents uploaded</span>
+                
+                
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./attachments/added-documents?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+          </dl>
+
+
+          <h2 class="govuk-heading-m"> Submit to certifier </h2>
+          <p class="govuk-body"> Once you've entered all the information you can, you can review your answers and submit the application to your certifier.
+          </p>
+            <form method="post">
+            <button class="govuk-button" id="submit">
+                Continue
+              </button>
+            <p id="eleapsed-time" aria-live="polite" class="govuk-body" style="display:none"></p>
+       
+          </form>
+        </div>
+      </div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+ 
+});
+</script>
+{% endblock%}
