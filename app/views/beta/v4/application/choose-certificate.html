@@ -28,21 +28,19 @@ Version 3 Summary – GOV.UK Prototype Kit
           </p>-->
 
           <p id="error-message" style="display: none;" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if you want to cancel, replace or re-certify the application.
+            <span class="govuk-visually-hidden">Error:</span> Select a certificate.
           </p>
+
+
+          <label class="govuk-label" for="search-term">Search for certificate</label>
+          <div class="govuk-hint">Search by certificate number or name</div>
+          <input class="govuk-input" id="search-term" type="text">
+          <br>
+          <br>
 
         <div class="govuk-radios" data-module="govuk-radios">
           <form id="radio-group">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="optionOne" name="choose-account" type="radio" value="optionOne">
-              <label class="govuk-label govuk-radios__label" for="optionOne">
-                <strong>EHC8468 </strong> Dairy products intended for human consumption that are required to undergo a pasteurisation treatment to the European Union and Northern Ireland (22 commodities)
-              </label>
-              <!--<div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                Select this option if you’ve received official confirmation from the border control post to cancel and replace your application.
-              </div>-->
-            </div>
-            <br>
+            
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="optionTwo" name="choose-account" type="radio" value="optionTwo">
               <label class="govuk-label govuk-radios__label" for="optionTwo">
@@ -54,9 +52,50 @@ Version 3 Summary – GOV.UK Prototype Kit
               <label class="govuk-label govuk-radios__label" for="optionThree">
               <strong>EHC8396</strong> Collagen intended for human consumption to the European Union and Northern Ireland (3 commodities)
               </label>
-              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                The exporter will still be able to create a new application for this consignment.              </div>
             </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" name="choose-account" type="radio" value="optionThree">
+              <label class="govuk-label govuk-radios__label" for="optionThree">
+              <strong>EHC8299 </strong> Blood products not intended for human consumption that could be used as feed material intended for dispatch to, or transit through, the European Union and Northern Ireland (3 commodities)
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" name="choose-account" type="radio" value="optionThree">
+              <label class="govuk-label govuk-radios__label" for="optionThree">
+              <strong>EHC8305</strong> Processed pet food other than canned pet food to, or transit through, the European Union and Northern Ireland (38 commodities)
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" name="choose-account" type="radio" value="optionThree">
+              <label class="govuk-label govuk-radios__label" for="optionThree">
+              <strong>EHC8307</strong> Blood and blood products from equidae to be used outside the feed chain to, or transit through, the European Union and Northern Ireland (8 commodities)
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" name="choose-account" type="radio" value="optionThree">
+              <label class="govuk-label govuk-radios__label" for="optionThree">
+              <strong>EHC8308</strong> Untreated blood products for the manufacture of derived products for purposes outside the feed chain for farmed animals to, or transit through, the European Union and Northern Ireland (3 commodities)
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" name="choose-account" type="radio" value="optionThree">
+              <label class="govuk-label govuk-radios__label" for="optionThree">
+              <strong>EHC8315</strong> Hydrolysed protein, dicalcium phosphate and tricalcium phosphate to, or transit through, the European Union and Northern Ireland (4 commodities)
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="optionOne" name="choose-account" type="radio" value="optionOne">
+              <label class="govuk-label govuk-radios__label" for="optionOne">
+                <strong>EHC8468 </strong> Dairy products intended for human consumption that are required to undergo a pasteurisation treatment to the European Union and Northern Ireland (22 commodities)
+              </label>
+            </div>
+
           </form>
         </div>
       </fieldset>

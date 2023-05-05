@@ -41,7 +41,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a aria-describedby="manage-commodities-status" href="{% if data.has_multiple_certificates == 'yes'%}./export/added-certs{%else%}./export/{{data.listURL}}{%endif%}" class="govuk-link">Manage commodities</a>
+              <a aria-describedby="manage-commodities-status" href="/beta/v4/application/choose-certificate" class="govuk-link">Manage commodities</a>
             </span>
             {% if (data.addedEHC | length) > 0%}
             {% set commodityCount = 0%}
