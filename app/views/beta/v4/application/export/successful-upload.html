@@ -16,48 +16,13 @@ We’ve made some changes to how you enter commodity data – GOV.UK Prototype K
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-
-    <div class="govuk-error-summary" data-module="govuk-error-summary">
-      <div role="alert">
-        <h2 class="govuk-error-summary__title">
-          There is a problem
-        </h2>
-        <div class="govuk-error-summary__body">
-          <ul class="govuk-list govuk-error-summary__list">
-            <li>
-              <a href="#"> Net weight information not provided</a>
-            </li>
-            <li>
-              <a href="#">Commodity code information not provided</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
     <form method="post">
       <div class="govuk-form-group">
         <!--<h1 class="govuk-heading-xl">We’ve made some changes to how you enter commodity data</h1>-->
-        <h1 class="govuk-heading-xl">Upload schedule for EHC8468</h1>
+        <h1 class="govuk-heading-xl">Schedule for EHC8468 has been uploaded successfully</h1>
         <!--<p class="govuk-body">To ensure all commodity data is consistent with the EU’s TRACES database, we’ve changed the way you enter information about your consignment.</p>-->
 
-        <p class="govuk-body">The following errors can be found in your template:</p>
-          <ul class="govuk-list govuk-list--bullet">
-          <li>Net weight information not provided</li>
-          <li>Commodity code information not provided</li>
-          </ul>
-
-          <p>
-            Fix the errors and re-upload your template to continue. 
-          </p>
-          <br>
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="file-upload-1">
-              Upload a file
-            </label>
-            <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-          </div>
-
+         
         <!--<p>
           <a href="{{ ehcTemplateDownloadPath }}">View or download the TRACES spreadsheet template</a>.
         </p>
@@ -70,6 +35,8 @@ We’ve made some changes to how you enter commodity data – GOV.UK Prototype K
 
 
     </form>
+
+  
 
 
     <!--<div id="formGroup" class="govuk-form-group">
@@ -115,7 +82,7 @@ We’ve made some changes to how you enter commodity data – GOV.UK Prototype K
     </div>
       <!--<button class="govuk-button" onclick="submit()">Continue</button>-->
 
-      <a href="/beta/v4/application/export/successful-upload" class="govuk-button">Continue</a>
+      <a href="/beta/v4/application/task-list-completed" class="govuk-button">Continue application</a>
 
 
 
