@@ -18,9 +18,13 @@ Uploaded documents – {{serviceName}} – GOV.UK
         {% set sealCount = 0 %}
         {% for s in data.containerSealNumbers %}
           {% if s.seals | length > 1 %}
-            {% for x in s.seals %}
-            {% set sealCount = sealCount +1 %}
-            {% endfor %}
+            {% if not s.seals | isString %}
+              {% for x in s.seals %}
+                {% set sealCount = sealCount +1 %}
+              {% endfor %}
+            {% else%}
+                {% set sealCount = 1 %}
+            {% endif %}
           {% else %}
             {% if s.seals %}
             {% set sealCount = sealCount +1 %}
@@ -33,11 +37,11 @@ Uploaded documents – {{serviceName}} – GOV.UK
         
       </h1>
       <dl class="govuk-summary-list app-list-with-actions hmrc-list-with-actions--short">
-      
       {% for n in data.containerSealNumbers %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
           <ul class="govuk-list govuk-!-margin-bottom-0">
+
             <li>{% if n.container %}<strong>Continer number</strong>  {{n.container}} <br>{% endif %}
                {% if n.seals %} <strong>Seal number:</strong>  {{n.seals}} </li>{% endif %}
             <li></li>
@@ -47,11 +51,12 @@ Uploaded documents – {{serviceName}} – GOV.UK
         </dt>
         <dd class="govuk-summary-list__actions app-summary-list__actions">
           <ul class="govuk-summary-list__actions-list">
-            <li class="govuk-summary-list__actions-list-item">
-              <a class="govuk-link govuk-link--no-visited-state" href="add-container-number?id={{loop.index -1}}&change=yes"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Remove Sydney Russell from the list</span></a>
-            </li>
+            
             <li class="govuk-summary-list__actions-list-item">
               <a class="govuk-link govuk-link--no-visited-state" href="remove?id={{loop.index -1}}"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Remove Sydney Russell from the list</span></a>
+            </li>
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="add-container-number?id={{loop.index -1}}&change=yes"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Remove Sydney Russell from the list</span></a>
             </li>
           </ul>
         </dd>

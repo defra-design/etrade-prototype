@@ -164,6 +164,11 @@ module.exports = function(env) {
     
   }
 
+
+  filters.isString = function(obj){
+    return typeof obj == 'string';
+  }
+
   filters.getFileName = function(txt) {
     return txt.substr(txt.lastIndexOf('.') + 1);
   }

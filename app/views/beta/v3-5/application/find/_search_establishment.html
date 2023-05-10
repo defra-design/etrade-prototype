@@ -29,8 +29,20 @@
   <!-- Removed for now to see if testing needs these indicators -->
   <!-- <strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br> -->
   {% endif %}
+  <!-- change to the plant / center label. To keep old versions update the label in each version. -->
+  {% if field.id == "plantEstablishmentCentreActivity" %}
+  {% set searchLabel = "Add another establishment" %}
+  {% endif %}
   {{searchLabel}} {% if isRequired == "no"%}(optional){% endif %}
 </label>
+{% if field.plantEstablishmentCentreActivity %}
+<p class="govuk-hint"> </p>
+{% endif %}
+{% if field.hint  %}
+<p class="govuk-hint">
+  {{field.hint}}
+</p>
+{% endif %}
 
 
 {% if establishmentApprovalNumber and establishmentActivity and (establishmentActivity != -1) %}

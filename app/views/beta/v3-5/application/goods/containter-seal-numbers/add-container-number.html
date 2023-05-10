@@ -24,7 +24,7 @@ Add closed containers number – {{serviceName}} – GOV.UK
   <div class="govuk-grid-column-two-thirds">
     {% if query.hasError %}
     <div class="govuk-error-summary" data-module="govuk-error-summary">
-    }
+    
   <div role="alert">
     <h2 class="govuk-error-summary__title">
       There is a problem
@@ -32,14 +32,14 @@ Add closed containers number – {{serviceName}} – GOV.UK
     <div class="govuk-error-summary__body">
       <ul class="govuk-list govuk-error-summary__list">
         <li>
-          <a href="containerNumbers1">The container number must be 3 letters followed by a U,J,Z or R then followed by 6 numbers</a>
+          <a href="containerNumbers1">The container number must be 3 letters followed by a U,J,Z or R then followed by 7 numbers</a>
         </li>
       </ul>
     </div>
   </div>
 </div>
 {% endif %}
-    <h1 class="govuk-heading-xl">Add closed containers numbers</h1>
+    <h1 class="govuk-heading-xl">{% if query.change == "yes" %}Change{% else %}Add{% endif %} closed containers numbers</h1>
     <p>Enter the closed containers for this shipment. You do not need to enter the transport registration number on this page. </p>
      <p>You will be able to enter more than one continer if needed.</p>
     <form id="form" method="POST">
@@ -67,7 +67,7 @@ Add closed containers number – {{serviceName}} – GOV.UK
         </button> -->
 
         <div class="govuk-button-group">
-          <button class="govuk-button" data-v-563d6e59="">Add container number</button>
+          <button class="govuk-button" data-v-563d6e59="">{% if query.change == "yes" %}Save and continue{% else %}Add container number{% endif %}</button>
         </div>
       
     </form>

@@ -25,7 +25,7 @@ Add closed containers number – {{serviceName}} – GOV.UK
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
     {% if data.goodsInContianers == "yes" %}
-    <h1 class="govuk-heading-xl"> Add seal numbers for container {{data.containerNumbers}}</h1>
+    <h1 class="govuk-heading-xl"> {% if query.change == "yes" %}Change{% else %}Add{% endif %}  seal numbers for container {{data.containerNumbers}}</h1>
     <p>Enter this if a seal is affixed to the container, truck or rail wagon under the supervision of the competent authority issuing the certificate.</p>
     {% else %}
     <h1 class="govuk-heading-xl"> Add seal numbers</h1>
@@ -35,15 +35,47 @@ Add closed containers number – {{serviceName}} – GOV.UK
    
 
     <form id="form" method="post">
-      <input type="hidden" name="containerNumbers" value="{{query.containerNumbers}}">
       {% if data.goodsInContianers == "yes" %}
       <input type="hidden" name="SealsForContainer" value="{{id}}">
       {% endif %}
 
+      {% set sealCount = 1 %}
+      {% if data.containerSealNumbers[query.id].seals | length > 1 and not data.containerSealNumbers[query.id].seals | isString %}
+        {% set sealCount =  data.containerSealNumbers[query.id].seals | length%}
+      {% endif %}
       <div id="app-add-another" >
-        <fieldset class="govuk-fieldset app-add-another__item" id="app-add-another--container"aria-describedby="" data-count="1">
-
-          <div class="govuk-form-group">
+        
+          {% if query.change=="yes" and sealCount >= 1 %}
+            {% if not data.containerSealNumbers[query.id].seals | isString %}
+              {% for seal in data.containerSealNumbers[query.id].seals  %}
+                {% set sealCount = sealCount +1 %}
+                <fieldset class="govuk-fieldset app-add-another__item" id="app-add-another--container" aria-describedby="" data-count="{{sealCount}}">
+                 <div class="govuk-form-group">
+            <label class="govuk-label" for="containerNumbers{{loop.index}}">
+              Seal number <span class="app-add-another__title-number" >{{loop.index}}</span>
+            </label>
+      
+            <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers{{loop.index}}" name="sealNumbers" aria-described-by="containerNumbersHint{{loop.index}}" value="{{data.containerSealNumbers[query.id].seals[loop.index-1]}}">
+             <button type="button" class="govuk-button govuk-button--secondary app-add-another__remove-button" data-target="app-add-another--container">Remove</button>
+          </div><!-- form group-->
+           </fieldset>
+              {% endfor %}
+            {% else%}
+            <fieldset class="govuk-fieldset app-add-another__item" id="app-add-another--container" aria-describedby="" data-count="{{sealCount}}">
+               <div class="govuk-form-group">
+            <label class="govuk-label" for="containerNumbers{{loop.index}}">
+              Seal number <span class="app-add-another__title-number" >{{loop.index}}</span>
+            </label>
+      
+            <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers1" name="sealNumbers" aria-described-by="containerNumbersHint1" value="{{data.containerSealNumbers[query.id].seals}}">
+             <button type="button" style="display:none;" class="govuk-button govuk-button--secondary app-add-another__remove-button" data-target="app-add-another--container">Remove</button>
+          </div><!-- form group-->
+           </fieldset>
+            {% endif %}
+          {% else %}
+             <!-- New seal numbers -->
+             <fieldset class="govuk-fieldset app-add-another__item" id="app-add-another--container" aria-describedby="" data-count="{{sealCount}}">
+             <div class="govuk-form-group">
             <label class="govuk-label" for="containerNumbers1">
               Seal number <span class="app-add-another__title-number" style="display:none;">1</span>
             </label>
@@ -51,8 +83,12 @@ Add closed containers number – {{serviceName}} – GOV.UK
             <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers1" name="sealNumbers" aria-described-by="containerNumbersHint1">
              <button type="button" style="display:none;" class="govuk-button govuk-button--secondary app-add-another__remove-button" data-target="app-add-another--container">Remove</button>
           </div><!-- form group-->
+           </fieldset>
+          {% endif %}
+
          
-        </fieldset>
+         
+       
         </div> <!-- data-module="app-add-another" -->
         <button class="govuk-button govuk-button--secondary app-add-another__add-button govuk-!-margin-bottom-8" data-module="govuk-button" data-count="1" data-target="app-add-another" type="button">
             Add another seal number

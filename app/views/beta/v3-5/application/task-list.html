@@ -126,7 +126,9 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="certifier-status">Not started</strong>
             {% endif %}
           </li>
-          <li class="app-task-list__item">
+
+          <!-- REMOVED - REGION OF ORIGIN will be in part 2 section of the certifiers journey -->
+     <!-- <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./persons/region-of-certification?change=no" aria-describedby="region-of-certification-status">
                 Region of certification
@@ -137,7 +139,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="region-of-certification-status">Not started</strong>
             {% endif %}
-          </li>
+          </li> -->
 
 
           {% if data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs | length > 1 or  not data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs%}
@@ -238,7 +240,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
                 Container number or seal numbers
               </a>
             </span>
-            {% if data.containerNumber %}
+            {% if (data.goodsInContianers  or data.goods['hasContainers']=="skipped") or (data.goodsHaveSeal or data.goods['hasSealNumber'] == "skipped") or data.containerNumbers %}
             <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="container-deal-number-status">Not started</strong>
