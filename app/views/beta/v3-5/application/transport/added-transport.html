@@ -60,7 +60,7 @@ Uploaded documents – {{serviceName}} – GOV.UK
       </div>
     </div>
     {% endif %}
-    <span class="govuk-caption-l">Transport</span>
+
 
     {% if (data.transportList | length) == 0  %}
 
@@ -113,6 +113,7 @@ Uploaded documents – {{serviceName}} – GOV.UK
 
     <form method="post" >
       {% if (data.transportList | length) == 0 %}
+      <p><button class="govuk-button govuk-button--secondary">Add a means of transport</button></p>
       <div class="govuk-!-margin-bottom-6" id="skip-question-container">
           <h3 class="govuk-heading-m">You can skip this section</h3>
           <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>

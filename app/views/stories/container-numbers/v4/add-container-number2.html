@@ -11,42 +11,58 @@ Add closed containers number – {{serviceName}} – GOV.UK
         margin-left: 5px;
 }
 
-
+.app-add-another__remove-button {
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: auto;
+}
 
 .app-add-another__item {
 
     position: relative;
 }
+
 </style>
 {% endblock%}
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-    <h1 class="govuk-heading-xl"> Add closed containers numbers</h1>
-    <p>Enter all closed containers for this shipment. You do not need to enter trailer ship or tanker numbers here. This is 4 letters followed by 6 numbers. For example, BICU123456.</p>
+    <h1 class="govuk-heading-xl">Add container and or seal numbers</h1>
+    <p>You must enter continer and or seal numbers if: </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>the goods will be transported in closed containers</li>
+      <li>a seal is affixed to the container, truck or rail wagon during transport.</li>
+    </ul>
+    <p>You do not need to enter trailer ship or tanker numbers here.</p>
 
     <form id="form" method="post" action="add-seal-numbers">
       <div id="app-add-another" >
         <fieldset class="govuk-fieldset app-add-another__item" id="app-add-another--container"aria-describedby="" data-count="1">
+          <legend class="govuk-fieldset__legend app-add-another__title govuk-fieldset__legend--m">
+
+        Container and or seal number <span class="app-add-another__title-number" style="display:none;">1</span>
+
+      </legend>
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="containerNumbers1">
-              Container number <span class="app-add-another__title-number" style="display:none;">1</span>
+              Container number 
             </label>
-      
+            <div class="govuk-hint">This is 4 letters followed by 7 numbers. For example, BICU123456 7.</div>
             <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers1" name="containerNumbers" aria-described-by="containerNumbersHint1">
-             <button type="button" style="display:none;" class="govuk-button govuk-button--secondary app-add-another__remove-button" data-target="app-add-another--container">Remove</button>
+            
           </div><!-- form group-->
           <div class="govuk-form-group">
-            <label class="govuk-label" for="containerNumbers1">
-              Seal number <span class="app-add-another__title-number" style="display:none;">1</span>
+            <label class="govuk-label" for="sealNumbers">
+                Seal number 
             </label>
-      
-            <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers1" name="sealNumbers" aria-described-by="containerNumbersHint1">
-             <button type="button" style="display:none;" class="govuk-button govuk-button--secondary app-add-another__remove-button" data-target="app-add-another--container">Remove</button>
-          </div><!-- form group-->
-         
+            <p class="govuk-hint" id="sealNumbersHint">Enter this if a seal is affixed to the container, truck or rail wagon under the supervision of the competent authority issuing the certificate.</p>
+            <input class="govuk-input govuk-input--width-20" type="text" id="sealNumbers" name="sealNumbers" aria-described-by="sealNumbersHint"></input>
+          </div>
+          <button type="button" style="display:none;" class="govuk-button govuk-button--secondary app-add-another__remove-button" data-target="app-add-another--container">Remove</button>
         </fieldset>
+         
         </div> <!-- data-module="app-add-another" -->
         <button class="govuk-button govuk-button--secondary app-add-another__add-button govuk-!-margin-bottom-8" data-module="govuk-button" data-count="1" data-target="app-add-another" type="button">
             Add another container number
