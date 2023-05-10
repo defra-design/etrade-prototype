@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% if query.establishmentType == "manufacturingPlant" %}
+  {% set establishmentTypeLabel = "manufacturing plant" %}
+{% elseif query.establishmentType == "coldStore" %}
+  {% set establishmentTypeLabel = "cold store" %}
+{% elseif query.establishmentType == "slaughterHouse" %}
+  {% set establishmentTypeLabel = "slaughterhouse" %}
+{% elseif query.establishmentType == "cuttingPlant" %}
+  {% set establishmentTypeLabel = "cutting plant" %}
+{% elseif query.establishmentType == "plantEstablishmentCentre" %}
+  {% set establishmentTypeLabel = "plant / establishment / centre" %}
+{% else %}
+  {% set establishmentTypeLabel = "operator" %}
+{% endif %}
+
+{% block pageTitle %}
+Select an activity – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set id = query.id or "1" %}
+<!--{% set operator = data.establishments[id]%}-->
+<!--{% set activityToSearch = data.searchActivity or "not set"%}-->
+
+
+{% set addedEHC_certID = query.certId %}
+{% set addedEHC_addedCommoditiesId = query.addedCommoditiesId %}
+{% set addedEHC_identificationsId = query.identificationsId %}
+{% set addedEHC_establishmentType = query.establishmentType %}
+{% set addedEHC_establishmentApprovalNumber = query.establishmentApprovalNumber %}
+{% set addedEHC_establishmentIndex = query.establishmentIndex %}
+
+{% set cert = data.addedEHC[addedEHC_certID]%}
+{% set identification = cert.addedCommodities[addedEHC_addedCommoditiesId].identifications[addedEHC_identificationsId]%}
+{% set activityName = identification[addedEHC_establishmentType+'Activity'] %}
+
+{% set operator = null %}
+{% if addedEHC_establishmentIndex %}
+  {% set operator = data.establishments[addedEHC_establishmentIndex] %}
+{% else %}
+  {% for establishment in data.establishments %}
+    {% if establishment.AppNo == addedEHC_establishmentApprovalNumber %}
+      {% set operator = establishment %}
+    {% endif %}
+  {% endfor %}
+
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" novalidate="">
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            Select a {{ establishmentTypeLabel }} activity
+          </h1>
+        </legend>
+
+        <p class="govuk-body" lang="en">
+          <strong>{{operator.TradingName}}</strong> performs multiple activities. Select the most relevant activity for the commodity you're adding.
+        </p>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with adding activities
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            If you cannot see a relevant activity for the commodity you’re adding, contact your certifier.
+          </div>
+        </details>
+
+        <div class="govuk-radios" data-module="govuk-radios">
+          {% for activity in operator.All_Activities %}
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="savedOrg{{loop.index}}" name="activityName" type="radio" {% if activityName == activity  %}checked{% endif %} value="{{activity}}">
+            <label class="govuk-label govuk-radios__label" for="savedOrg{{loop.index}}">
+              {{activity}}
+            </label>
+          </div>
+          {% endfor%}
+        </div>
+      </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+      <input type="hidden" name="addedEHC_certID" value="{{ addedEHC_certID }}">
+      <input type="hidden" name="addedEHC_addedCommoditiesId" value="{{ addedEHC_addedCommoditiesId }}">
+      <input type="hidden" name="addedEHC_identificationsId" value="{{ addedEHC_identificationsId }}">
+      <input type="hidden" name="addedEHC_establishmentType" value="{{ addedEHC_establishmentType }}">
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

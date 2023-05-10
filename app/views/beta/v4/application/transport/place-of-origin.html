@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Place of origin – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<style>
+  .find-establishment-link {
+    padding: 30px;
+    background: #f3f2f1;
+  }
+
+  .govuk-summary-list__actions {
+    padding-right: 30px;
+  }
+
+  .govuk-summary-list__row {
+    border: none;
+  }
+</style>
+
+
+<form class="" action="../task-list" method="post">
+  <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+    <!---->
+  </div>
+  <section id="intro">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"> Transport </span>
+        <h1 class="govuk-heading-xl"> Place of origin </h1>
+        <!---->
+        <!---->
+        <!---->
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">1. Country of origin</h2>
+
+        {% block countryOfOrigin %}{% include "../find/_country-of-origin-select.html" %}{% endblock %}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="region-of-origin"> Region of origin (optional)</label>
+          <select class="govuk-select full-width" id="region-of-origin">
+            <option selected>Select a region</option>
+            <option>GB-0</option>
+            <option>GB-1</option>
+            <option>GB-2</option>
+          </select></div>
+      </div>
+    </div>
+  </section>
+  <section id="place-of-dispatch">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">2. Place of dispatch</h2>
+        <p class="govuk-body">This is the final location that the consignment will be transported from in Great Britain.</p>
+
+        {% if data.person['dispatch'] %}
+          {% set establishmentIndex = data.person['dispatch'] %}
+          {% set org = data.establishments[establishmentIndex] %}
+
+          {% set removeLink = "./remove?who=dispatch&redirect=place-of-origin" %}
+          {% block traderAddress %}{% include "../persons/trader-address.html" %}{% endblock %}
+
+        {% else %}
+          <p class="govuk-!-margin-bottom-10 find-establishment-link">
+            <a href="./place-of-origin/dispatch">Select a place of dispatch</a>
+          </p>
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+  <section id="place-of-loading">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">3. Place of loading</h2>
+        <p class="govuk-body">This is the location where the consignment will be loaded.</p>
+        <!---->
+        {% if data.person['loading'] %}
+          {% set establishmentIndex = data.person['loading'] %}
+          {% set org = data.establishments[establishmentIndex] %}
+
+          {% set removeLink = "./remove?who=loading&redirect=place-of-origin" %}
+          {% block traderAddress2 %}{% include "../persons/trader-address.html" %}{% endblock %}
+
+        {% else %}
+          <p class="govuk-!-margin-bottom-10 find-establishment-link">
+            <a href="./place-of-origin/loading">Select a place of loading</a>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <section id="actions">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds"><button class="govuk-button"> Save and continue </button></div>
+    </div>
+  </section>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+
+  })
+</script>
+{% endblock%}

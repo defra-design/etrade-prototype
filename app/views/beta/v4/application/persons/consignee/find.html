@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Find a consignee or importer – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form id="search" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+      <h1 class="govuk-heading-xl">Find a consignee or importer</h1>
+      <p class="govuk-body">This is the organisation that will receive this consignment. They must be located in either Northern Ireland or the EU.</p>
+
+      {% set defaultCountry = "Any" %}
+      {% block countryOfOrigin %}{% include "../../find/_country-of-origin-select.html" %}{% endblock %}
+
+      {% set includeApprovalNumberSearch = false %}
+      {% set orgSearchLabel = "Consignee or importer name" %}
+      {% block organisationSearch %}{% include "../organisationSearchAndResults.html" %}{% endblock %}
+
+    </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
