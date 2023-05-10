@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Uploaded documents – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<style type="text/css">
+  .disabled p{
+    color: #505a5f  ;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    
+
+
+    
+    <h1 class="govuk-heading-xl">Added 2 transport methods</h1>
+    
+    <p>List all the transport methods for this consignment, from the place of dispatch to the border control post. You must enter them in the order that they will take place.</p>
+    
+    <dl class="govuk-summary-list app-list-with-actions hmrc-list-with-actions--short">
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+          <ul class="govuk-list govuk-!-margin-bottom-0">
+            <li><strong>1. Road vehicle </strong> - AD9342</li>
+            <li></li>
+
+          </ul>
+
+        </dt>
+        <dd class="govuk-summary-list__actions app-summary-list__actions">
+          <ul class="govuk-summary-list__actions-list">
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="select-transport?id=0&amp;change=yes"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change../ Road vehicle AD9342</span></a>
+            </li>
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="./transport-method-remove?id=0"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Road vehicle AD9342</span></a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+          <ul class="govuk-list govuk-!-margin-bottom-0">
+            <li><strong>2. Road vehicle </strong> - 124312</li>
+            <li></li>
+
+          </ul>
+
+        </dt>
+        <dd class="govuk-summary-list__actions app-summary-list__actions">
+          <ul class="govuk-summary-list__actions-list">
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="select-transport?id=1&amp;change=yes"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change../ Road vehicle 124312</span></a>
+            </li>
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="./transport-method-remove?id=1"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Road vehicle 124312</span></a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+      
+    </dl>
+    <!-- <dl class="govuk-summary-list  govuk-summary-list--no-border">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Transport conditions
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Chilled
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd>
+      </div>
+    </dl> -->
+
+    <form method="post">
+      
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you want to add another means of transport?
+          </legend>
+          <div id="add-another-hint" class="govuk-hint">
+            <!-- You must tell us about all your directors. -->
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another" name="addAnotherTransport" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="add-another">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another-2" name="addAnotherTransport" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="add-another-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+      
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+    
+    $(".govuk-radios__input").on("click",function(e){
+      $('#skip-question-checkbox').hide()
+      $('#skip-question-container').addClass("disabled")
+    })
+
+});
+</script>
+{% endblock%}
