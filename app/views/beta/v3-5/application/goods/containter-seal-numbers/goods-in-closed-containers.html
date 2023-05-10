@@ -7,138 +7,79 @@ Will the goods be transported in closed containers – {{serviceName}} – GOV.U
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
 {% block content %}
-
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-
-    <form id="form" method="post" >
-  <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-      <h1 class="govuk-fieldset__heading">
-        Will the goods be transported in closed containers?
-      </h1>
-    </legend>
-  <!--   <div id="contact-hint" class="govuk-hint">
+    <!-- routing is controlled in v3-5/application/routes.js -->
+    <form id="form" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Will the goods be transported in closed containers?
+            </h1>
+          </legend>
+          <!--   <div id="contact-hint" class="govuk-hint">
      You can provide either a container number or seal number, or both.
     </div> -->
-    <div class="govuk-radios govuk-radios--inline js-question" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input " id="goodsInContianers" name="goodsInContianers" type="radio" value="yes~./add-container-number">
-        <label class="govuk-label govuk-radios__label" for="goodsInContianers">
-          Yes
-        </label>
+          <div class="govuk-radios govuk-radios--inline js-question " data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="goodsInContianers" name="goodsInContianers" type="radio" value="yes" {% if data.goodsInContianers=='yes' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="goodsInContianers" >
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="goodsInContianers-2" name="goodsInContianers" type="radio" value="no" {% if data.goodsInContianers=='no' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="goodsInContianers-2" >
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="goodsInContianers-2" name="goodsInContianers" type="radio" value="no~./want-to-add-seal-numbers">
-        <label class="govuk-label govuk-radios__label" for="goodsInContianers-2">
-          No
-        </label>
+      <div class="govuk-form-group" id="skip-question-container">
+        <h3 class="govuk-heading-m">You can skip this section</h3>
+        <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+        <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
+          <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if data.goods['hasContainers']=="skipped" %}checked{% endif %}>
+          <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+            I've entered as much information as I can
+          </label>
+        </div>
       </div>
-    </div>
-  </fieldset>
-</div>
-<div class="govuk-form-group" id="skip-question-container">
-  <h3 class="govuk-heading-m">You can skip this section</h3>
-  <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-  <div class="govuk-checkboxes__item" id="skip-question-checkbox">
-    <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %}>
-    <label class="govuk-label govuk-checkboxes__label" for="skip-question">
-      I've entered as much information as I can
-    </label>
-  </div>
-</div>
-<div class="govuk-button-group">
-  
-    <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
-  
+      <div class="govuk-button-group">
+        <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
       </div>
     </form>
-
   </div>
 </div>
-
 {% endblock %}
-
 {% block pageScripts %}
 <script type="text/javascript">
-  window.addEventListener('load', function() {
-    $('.govuk-radios__input').change(function(){
-      console.log($(this).val().indexOf("no"))
-      if($(this).val().indexOf("no") >= 0 ){
-        $('#status').val("completed")
-        
-      }else{
-         $('#status').val("in progress")
-      }
-    })
-    $('.js-question').each(function() {
-    console.log("looking to see if complete")
-    var elem = $(this);
+window.addEventListener('load', function() {
 
-    // Save current value of element
-    elem.data('oldVal', elem.val());
-    if (elem.val() != "") {
-      elem.attr('data-filled', 'yes')
-    }
-    // Look for changes in the value
-    elem.bind("propertychange change click keyup input paste", function(event) {
-      // If value has changed...
-      console.log("checking content")
-      if (elem.data('oldVal') != elem.val()) {
-        console.log("value has changed")
-        // Updated stored value
-
-        // Do action
-        if (elem.val() == "//default") {
-          elem.val(elem.attr('data-default'));
-
-        }
-        console.log("val length = " + elem.val().length)
-        if (elem.val().length === 0) {
-          elem.attr('data-filled', 'no')
-        } else {
-          elem.attr('data-filled', 'yes')
-        }
-
-        console.log("data-filled = " + elem.attr('data-filled'))
-        // elem.attr('data-filled','yes')
-
-        elem.data('oldVal', elem.val());
-      }
+function toggleSkipped(){
+   if ($('input[name=goodsInContianers]:checked').length > 0) {
+    $('#skip-question-checkbox').hide()
+    $('.skip-wrapper.govuk-error-message').hide()
+    $('.skip-wrapper.govuk-form-group').removeClass('govuk-form-group--error')
 
 
-      checkFilled()
-    });
-  });
 
-  function checkFilled() {
-    var completed = 0;
-    var max = $('.js-question').length
-    console.log("---checkFilled---- " + max)
-    $('.js-question').each(function() {
-      console.log("Chekcing if its complete: " + ($(this).attr('data-filled') == "yes"))
-      if ($(this).attr('data-filled') === "yes") {
-        completed += 1
-      }
+  } else {
+    $('#skip-question-checkbox').show()
 
-    })
-    console.log("Completed = " + completed)
-    if (completed >= max) {
-      // $('.defra-callout h3').text(max +" questions answered")
-      // $('.defra-callout .defra-callout--content').hide()
-      $('#skip-question-checkbox').hide()
-      $('.skip-wrapper.govuk-error-message').hide()
-      $('.skip-wrapper.govuk-form-group').removeClass('govuk-form-group--error')
-    } else {
-      $('#skip-question-checkbox').show()
-    }
-    console.log("---end----")
   }
+}
 
-  checkFilled()
+ 
+  $('.govuk-radios__input').change(function() {
+    toggleSkipped()
   })
-</script>
 
+toggleSkipped()
+
+
+})
+</script>
 {% endblock%}

@@ -21,7 +21,7 @@
     { "id": "finalConsumer", "title": "Final consumer", "required" : "yes", "type" : "radio", "error" : "Select a valid response for Final consumer from the list"},
     { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
     { "id": "dateOfCollectionProduction", "title": "Date of production / collection", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of production / collection", "multiple" : "yes"},
-    { "id": "plantEstablishmentCentreActivity", "title": "Plant / establishment / centre activity", "required" : "yes", "type" : "search", "error" : "Plant / establishment / centre activity is a required field - please select a valid activity"},
+    { "id": "plantEstablishmentCentreActivity", "title": "Plant / establishment / centre activity", "required" : "yes", "type" : "search", "error" : "Plant / establishment / centre activity is a required field - please select a valid activity", "hint" :  "This is any relevant establishment and activity that you have not already entered for this commodity. For example, a processing plant or meat preparation establishment."},
     { "id": "dateOfFreezing", "title": "Date of freezing", "required" : "no", "type": "excel_date", "multiple": "yes"},
     { "id": "species", "title": "Species", "required" : "yes", "type" : "text", "error" : "Species name is invalid", "multiple": "no"}
   ],
