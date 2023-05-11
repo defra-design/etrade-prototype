@@ -2,15 +2,15 @@
 
               <div class="govuk-form-group" data-v-1e0d18a4="">
                   <label class="govuk-label" for="vehicle-registration-0" data-v-1e0d18a4=""> Vehicle registration </label>
-                  <input class="govuk-input govuk-!-width-two-thirds" maxlength="30" id="vehicle-registration-0"  name="identifier" value="{% if transportDetails %}{{transportDetails.identifier}}{% endif %}"></div>
+                  <input class="govuk-input govuk-!-width-two-thirds js-question" maxlength="30" id="vehicle-registration-0"  name="identifier" value="{% if transportDetails %}{{transportDetails.identifier}}{% endif %}"></div>
               <div class="govuk-form-group" data-v-1e0d18a4="">
                 <label class="govuk-label" for="vehicle-trailer-number-0" data-v-1e0d18a4=""> Trailer number </label>
-                <input class="govuk-input govuk-!-width-two-thirds" maxlength="30" id="vehicle-trailer-number-0" name="trailer" value="{% if transportDetails %}{{transportDetails.trailer}}{% endif %}"></div>
+                <input class="govuk-input govuk-!-width-two-thirds js-question" maxlength="30" id="vehicle-trailer-number-0" name="trailer" value="{% if transportDetails %}{{transportDetails.trailer}}{% endif %}"></div>
 
               <div class="govuk-form-group" data-v-1e0d18a4="">
                 <input type="hidden" name="defualtvalue" id="defualtvalue" value="{% if transportDetails %}{{transportDetails.country}}{% endif %}">
                 <label class="govuk-label" for="country-0" > Country </label>
-                <select class="govuk-select full-width" id="country-0" name="country" >
+                <select class="govuk-select full-width js-question" id="country-0" name="country" >
                     <option value="AF" data-v-1e0d18a4="">Afghanistan (AF)</option>
                     <option value="AX" data-v-1e0d18a4="">Åland Islands (AX)</option>
                     <option value="AL" data-v-1e0d18a4="">Albania (AL)</option>

@@ -47,7 +47,7 @@ Uploaded documents – {{serviceName}} – GOV.UK
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
     <form id="form" method="post">
-      <!---->
+       <span class="govuk-caption-l">Transport methods</span>
       <div class="govuk-form-group" data-v-133877c6="">
         <fieldset class="govuk-fieldset" data-v-133877c6="">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl" data-v-133877c6="">{{data.transportType or "Road vehicle"}} details</legend>
@@ -56,6 +56,17 @@ Uploaded documents – {{serviceName}} – GOV.UK
         </fieldset>
       </div>
 
+<div class="govuk-!-margin-bottom-6" id="skip-question-container">
+          <h3 class="govuk-heading-m">You can skip this section</h3>
+          <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+          <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
+            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
+            <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+              I've entered as much information as I can
+            </label>
+          </div>
+
+        </div>
       <input type="hidden" name="typeOfTransport" value="{{data.transportType or 'Plane'}}">
       <button class="govuk-button" data-v-133877c6="">Add means of transport</button>
     </form>
@@ -63,4 +74,76 @@ Uploaded documents – {{serviceName}} – GOV.UK
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  $('.js-question').each(function() {
+    console.log("looking to see if complete")
+    var elem = $(this);
+
+    // Save current value of element
+    elem.data('oldVal', elem.val());
+    if (elem.val() != "") {
+      elem.attr('data-filled', 'yes')
+    }
+    // Look for changes in the value
+    elem.bind("propertychange change click keyup input paste", function(event) {
+      // If value has changed...
+      console.log("checking content")
+      if (elem.data('oldVal') != elem.val()) {
+        console.log("value has changed")
+        // Updated stored value
+
+        // Do action
+        if (elem.val() == "//default") {
+          elem.val(elem.attr('data-default'));
+
+        }
+        console.log("val length = " + elem.val().length)
+        if (elem.val().length === 0) {
+          elem.attr('data-filled', 'no')
+        } else {
+          elem.attr('data-filled', 'yes')
+        }
+
+        console.log("data-filled = " + elem.attr('data-filled'))
+        // elem.attr('data-filled','yes')
+
+        elem.data('oldVal', elem.val());
+      }
+
+
+      checkFilled()
+    });
+  });
+
+  function checkFilled() {
+    var completed = 0;
+    var max = $('.js-question').length
+    console.log("---checkFilled---- " + max)
+    $('.js-question').each(function() {
+      console.log("Chekcing if its complete: " + ($(this).attr('data-filled') == "yes"))
+      if ($(this).attr('data-filled') === "yes") {
+        completed += 1
+      }
+
+    })
+    console.log("Completed = " + completed)
+    if (completed >= max) {
+      // $('.defra-callout h3').text(max +" questions answered")
+      // $('.defra-callout .defra-callout--content').hide()
+      $('#skip-question-checkbox').hide()
+      $('.skip-wrapper.govuk-error-message').hide()
+      $('.skip-wrapper.govuk-form-group').removeClass('govuk-form-group--error')
+    } else {
+      $('#skip-question-checkbox').show()
+    }
+    console.log("---end----")
+  }
+
+  checkFilled()
+});
+</script>
 {% endblock %}
