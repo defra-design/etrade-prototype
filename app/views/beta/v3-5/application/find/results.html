@@ -13,8 +13,10 @@
   {% set establishmentTypeLabel = "slaughterhouse" %}
 {% elseif query.establishmentType == "cuttingPlant" %}
   {% set establishmentTypeLabel = "cutting plant" %}
+{% elseif query.establishmentType == "plantEstablishmentCentreActivity" %}
+  {% set establishmentTypeLabel = "establishment" %}
 {% elseif query.establishmentType == "plantEstablishmentCentre" %}
-  {% set establishmentTypeLabel = "plant / establishment / centre" %}
+  {% set establishmentTypeLabel = "establishment" %}
 {% else %}
   {% set establishmentTypeLabel = "operator" %}
 {% endif %}
@@ -291,19 +293,24 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
         </h2>
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
-
             <li id="operator-search-country-error-summary" style="display:none"><a href="#operator-search-country-form-group">A country must be selected</a></li>
             <li id="search-field-approval-number-error-summary" style="display:none"><a href="#approval-number-search">Enter the organisation’s approval number</a></li>
-            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-name-search">Enter the organisation’s name</a></li>
-             <li id="results-error-summary"  style="display:none">
-                <a href="#results">Select an organisation</a>
-              </li>
+            <li id="search-field-organisation-name-error-summary" style="display:none">
+              <a href="#organisation-name-search">Enter the organisation’s name</a>
+            </li>
+            <li id="results-error-summary"  style="display:none">
+              <a href="#results">Select an organisation</a>
+            </li>
           </ul>
         </div>
       </div>
 
 
-      <h1 class="govuk-heading-xl">Find a {{establishmentTypeLabel}}</h1>
+      <h1 class="govuk-heading-xl">Find {{establishmentTypeLabel | convertAorAn}} {{establishmentTypeLabel}}</h1>
+
+      {% if query.hint != "undefined" %}
+      <p class="govuk-body">{{query.hint}}</p>
+      {% endif %}
 
       {% block countryOfOrigin %}{% include "./_country-of-origin-select.html" %}{% endblock %}
 

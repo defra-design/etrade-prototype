@@ -79,6 +79,18 @@ module.exports = function(env) {
     return s;
   }
 
+  filters.removeWord = function(t, s) {
+    console.log("text="+t)
+    let l = t.indexOf(s)
+    console.log(l)
+    if (l >= 0 ) {
+      console.log("Return altered "+t.replace(s,''))
+      return t.replace(s,'')
+    }
+    console.log("Return original"+t.replace(s,''))
+    return t;
+  }
+
   filters.removeEmptyItems = function(arr) {
     var n = arr.filter(function (el) {
       return el != null;
@@ -259,6 +271,9 @@ module.exports = function(env) {
     return sum
   }
 
+  filters.convertAorAn =function (val){
+  return /^[aeiou]/i.test(val) ? 'an' : 'a';
+}
   
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:

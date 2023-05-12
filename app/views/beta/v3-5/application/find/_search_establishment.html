@@ -29,9 +29,13 @@
   <!-- Removed for now to see if testing needs these indicators -->
   <!-- <strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br> -->
   {% endif %}
+  {% set notEstablishmentLink = "Select a "+searchLabel |  lower %}
+  
   <!-- change to the plant / center label. To keep old versions update the label in each version. -->
   {% if field.id == "plantEstablishmentCentreActivity" %}
   {% set searchLabel = "Add another establishment" %}
+  {% set notEstablishmentLink = "Select another establishment"%}
+  
   {% endif %}
   {{searchLabel}} {% if isRequired == "no"%}(optional){% endif %}
 </label>
@@ -126,7 +130,7 @@
     </p>
     {% endif %}
     <!--<p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchLabel={{searchLabel}}&searchReturnURL={{returnURL or '../export/commodity'}}&searchID={{id}}&canSearchApprovalNumber=yes">Select a {{searchLabel | lower }}</a></p>-->
-    <p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchReturnURL={{returnURL or '../export/commodity'}}&canSearchApprovalNumber=yes&certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}">Select a {{searchLabel | lower }}</a></p>
+    <p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchReturnURL={{returnURL or '../export/commodity'}}&canSearchApprovalNumber=yes&certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&hint={{field.hint}}">{{notEstablishmentLink}}</a></p>
 
 
   </div>
