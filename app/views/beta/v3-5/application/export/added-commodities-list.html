@@ -278,10 +278,16 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                     {% endif %}
 
 
+                    <!-- change to the plant / center label. To keep old versions update the label in each version. -->
+                    {% set schemaTittle = schemaItem.title%}
+                    {% if schemaItem.id == "plantEstablishmentCentreActivity" %}
+                    {% set schemaTittle = "Add another establishment" %}
+                    {% endif %}
+
                     <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half {%if itemIsIncomplete %}isIncomplete{% endif %}"> -->
                       <div class="govuk-summary-list__row govuk-grid-column-one-half "> 
                       <dt class="govuk-summary-list__key">
-                        {{ schemaItem.title }} {% if schemaItem.required == "no" %} <span class="optional">(optional)</span>{% endif %}
+                        {{ schemaTittle  }} {% if schemaItem.required == "no" %} <span class="optional">(optional)</span>{% endif %}
                       </dt>
                       <dd class="govuk-summary-list__value">
                         {% if schemaItem.type == "excel_date" %}

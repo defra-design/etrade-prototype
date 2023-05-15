@@ -62,6 +62,8 @@ module.exports = function(env) {
     return show
   }
 
+
+
   filters.getCommodityCode = function(s) {
     var n = s
     var marker = s.indexOf("-") - 1;

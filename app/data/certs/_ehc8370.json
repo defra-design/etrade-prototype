@@ -31,7 +31,7 @@
       { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
       { "id": "manufacturingPlantActivity", "title": "Manufacturing plant activity", "required" : "yes", "type" : "string", "error" : "Manufacturing plant activity is a required field - please select a valid activity"},
       { "id": "plantEstablishmentCentre", "title": "Plant / establishment / centre", "required" : "yes", "type" : "search", "error" : "Plant / establishment / centre is a required field - please enter a valid approval number"},
-      { "id": "plantEstablishmentCentreActivity", "title": "Plant / establishment / centre activity", "required" : "yes", "type" : "string", "error" : "Plant / establishment / centre activity is a required field - please select a valid activity"},
+      { "id": "plantEstablishmentCentreActivity", "title": "Plant / establishment / centre", "required" : "yes", "type" : "string", "error" : "Plant / establishment / centre activity is a required field - please select a valid activity"},
       { "id": "dateOfFreezing", "title": "Date of freezing", "required" : "no", "type": "excel_date"},
       { "id": "freezingDateRange", "title": "Freezing date range", "required" : "no", "type": "string"},
       { "id": "cuttingPlant", "title": "Cutting plant", "required" : "yes", "type" : "search", "error" : "Cutting plant is a required field - please enter a valid approval number"},

@@ -35,9 +35,12 @@
   {% include "includes/head.html" %}
 {% endblock %}
 
+<!--  // Dynamically pull in the page title from the page h1. See JS below. --> 
+<!-- // override this by setting a page level pageTitle block --> 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  {{ serviceName }} – GOV.UK Prototype
 {% endblock %}
+
 
 {% block header %}
   {# Set serviceName in config.js. #}
@@ -148,6 +151,9 @@
             $('.app-editing-mode').remove()
           })
         })
+
+        $('#pageMetaTitle').text($('h1')[0].text())
+
         </script>
     {% block pageScripts %}{% endblock %}
   {% endblock %}
