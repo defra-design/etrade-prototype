@@ -23,7 +23,7 @@
           <ul class="govuk-list govuk-error-summary__list">
             {% if query.error_type == "length"%}
             <li>
-              <a href="#reference-error">The application reference must be 20 characters or less</a>
+              <a href="#reference-error">The application reference must be 25 characters or less</a>
             </li>
             {% else %}
             <li>
@@ -41,12 +41,12 @@
               Your reference for this application
             </label>
           </h1>
-          <p id="reference-hint" class="govuk-hint">Enter a reference up to 20 characters long, such as an invoice number or consignee. This reference will not appear on the final certificate. </p>
+          <p id="reference-hint" class="govuk-hint">Enter a reference up to 25 characters long, such as an invoice number or consignee. This reference will not appear on the final certificate. </p>
           {% if query.has_error %}
           <p id="reference-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span>
             {% if query.error_type == "length"%}
-            The application reference must be 20 characters or less
+            The application reference must be 25 characters or less
             {% endif %}
             {% if query.error_type == "empty"%}
             Enter your application reference

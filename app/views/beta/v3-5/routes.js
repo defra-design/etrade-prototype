@@ -677,11 +677,17 @@ module.exports = function(router) {
   });
 
   router.post('/' + base_url + 'application/create-reference', function(req, res) {
+    const regex = /^[a-zA-Z _.\/-]{1,25}/;
+
     if (req.body.UserReference == "") {
       res.redirect(301, '/' + base_url + 'application/create-reference?has_error=yes&error_type=empty');
     }
-    if (req.body.UserReference.length > 20) {
+  
+    if (req.body.UserReference.length > 25) {
       res.redirect(301, '/' + base_url + 'application/create-reference?has_error=yes&error_type=length');
+    }
+    if(!req.body.UserReference.match(regex)){
+
     }
     if (req.query.change == "yes") {
       res.redirect(301, '/' + base_url + 'application/task-list');

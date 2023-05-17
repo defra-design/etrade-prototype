@@ -24,14 +24,16 @@ Select a commodity – GOV.UK Prototype Kit
     <form class="" method="post">
       <h1 class="govuk-heading-xl">Select a commodity for this export</h1>
       
-
+      <p  id="commodity-code-hint">The commodity code must be between 4 and 8  numbers. If your usual commodity code is longer, select a commodity code that contains the first 6 or 8 numbers</p>
       {% if data.certificates[ehc].commodities | length > 15 %}
       <div class="govuk-form-group"><label class="govuk-label" for="filter-commodities"> Filter commodities </label>
-        <p class="govuk-hint">The commodity code must contain no more than 10 numbers. If your commodity code is longer, you only need to enter the first 10 numbers.</p>
-        <input class="govuk-input govuk-input--width-20" id="filter-commodities" type="text">
+        
+        <input class="govuk-input govuk-input--width-20" id="filter-commodities" type="text" aria-described-by="commodity-code-hint">
       </div>
       <p class="govuk-body"><span id="commodityCount">{{data.certificates[ehc].commodities | length}}</span> commodites <span id="searchQueryText"></span></p>
+
       {% endif %}
+
      
       <div class="govuk-form-group cn-selection">
         <div class="govuk-radios" data-module="govuk-radios">
@@ -125,6 +127,8 @@ Select a commodity – GOV.UK Prototype Kit
           {% endif %}
         </nav>
       </div>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <p>If you cannot find your commodity code contact the person who raises the CHED or importer to agree the best commodity code.</p>
       {% endif %}
       <div class="govuk-button-group" type="submit">
         <button class="govuk-button" id="add-export">Save and continue</button>
