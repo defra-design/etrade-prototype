@@ -69,7 +69,7 @@ Uploaded documents – {{serviceName}} – GOV.UK
     {% else %}
     <h1 class="govuk-heading-xl">Added {{data.transportList | length }} transport {{"method"|plural("methods",data.transportList | length)}}</h1>
     {% endif %}
-    <p>List all the transport methods for this consignment, from the place of dispatch to the border control post. You must enter them in the order that they will take place.</p>
+    <p>List all the transport methods for this consignment, from the port or airport to the border control post. You must enter them in the order that they will take place.</p>
     {% set upload_to_traces = 0 %}
     <dl class="govuk-summary-list app-list-with-actions hmrc-list-with-actions--short">
       {% for t in data.transportList%}
