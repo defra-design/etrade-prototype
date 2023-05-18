@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Consignor or-exporter – {{serviceName}} - GOV.UK
+Which {{(data.searchLabel or 'manufacturing plant') | lower }} do you want to use - {{super()}}
 {% endblock %}
 {% block beforeContent %}
 {{super()}}

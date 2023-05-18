@@ -27,12 +27,12 @@ Responsible for load – GOV.UK Prototype Kit
 
 <form class="" action="../task-list" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
-    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
+    <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Responsible for load (optional)</h1>
       <p class="govuk-body">Enter the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
    
 <p>The organisation must have the role of responsible for load in <abbr title="Trade Control and Expert System">TRACES</abbr>.</p>
-
+<!-- 
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -46,7 +46,7 @@ Responsible for load – GOV.UK Prototype Kit
     <p>By entering the organisation details TRACES will send a notification to the person responsible for load. </p>
     <p>If this is blank the organsiation responsible for load will need to manually search for this certificate using the IMSOC number and the certificate reference in TRACES. </p>
   </div>
-</details>
+</details> -->
 
       {% if data.person['load'] %}
         {% set establishmentIndex = data.person['load'] %}

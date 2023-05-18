@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Select a commodity – GOV.UK Prototype Kit
+Select a commodity – {{super()}}
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -127,9 +127,10 @@ Select a commodity – GOV.UK Prototype Kit
           {% endif %}
         </nav>
       </div>
-      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-      <p>If you cannot find your commodity code contact the person who raises the CHED or importer to agree the best commodity code.</p>
+    
       {% endif %}
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <p>If you cannot find your commodity code contact the person who raises the CHED or importer to agree the best commodity code.</p>
       <div class="govuk-button-group" type="submit">
         <button class="govuk-button" id="add-export">Save and continue</button>
         <!---->

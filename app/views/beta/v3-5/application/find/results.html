@@ -26,7 +26,7 @@
 
 
 {% block pageTitle %}
-Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
+Find a {{ establishmentTypeLabel }} – {{super()}}
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -319,7 +319,7 @@ Find a {{ establishmentTypeLabel }} – {{serviceName}} - GOV.UK
         {% if data.canSearchApprovalNumber == "no" %}
           <label class="govuk-label">Search by organisation name</label>
           <div id="organisation-search-hint" class="govuk-hint govuk-radios__hint">
-            Partial company names (e.g. Examplefood) may return better results than full company names (e.g. Examplefood Company Partners Ltd).
+            Partial company names (e.g. Examplefood) may return better results than full company names (e.g.  Examplefood Company Ltd).
           </div>
         {% else %}
 

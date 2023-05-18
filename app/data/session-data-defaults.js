@@ -72,5 +72,7 @@ module.exports = {
   "setNetWeight": ["120","56"],
   "setGrossWeight": "190",
   "netToGrossWeightIs": "under",
-  "bcpDestination": "Northern Ireland"
+  "bcpDestination": "Northern Ireland",
+  // latest version
+  "version" : "3-5"
 }

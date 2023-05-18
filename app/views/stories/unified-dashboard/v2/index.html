@@ -24,7 +24,20 @@ Unified dashboard – GOV.UK Prototype Kit
       </select>
       <input type="hidden"  id="listType" name="listType" value="{{data.unifiedTestinigUser}}">
     </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="sort">
+        Version
+      </label>
+      <select class="govuk-select" id="selectVersion" name="version">
+        <option value="3-3" {% if data.version == "3-3" %}selected{% endif %}>3-3</option>
+        <option value="3-4" {% if data.version == "3-4" %}selected{% endif %}>3-4</option>
+        <option value="3-5" {% if data.version == "3-5" or not data.version %}selected{% endif %}>3-5</option>
+      </select>
+      <input type="hidden"  id="listType" name="listType" value="{{data.unifiedTestinigUser}}">
+    </div>
         </form>
+
         <script>
           window.addEventListener('load', function() {
             $('#selectUser').change(function(){
@@ -81,6 +94,10 @@ Unified dashboard – GOV.UK Prototype Kit
 <script>
   window.addEventListener('load', function() {
     $('#selectUser').change(function(){
+      var data= $(this).val();
+      $('#updateUserForm').submit()
+    });
+    $('#selectVersion').change(function(){
       var data= $(this).val();
       $('#updateUserForm').submit()
     });

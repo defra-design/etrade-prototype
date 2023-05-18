@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-{% if query.has_error %}Error: {%endif%} Goods Certified As - E-Certification for EHC's - GOV UK
+{% if query.has_error %}Error: {%endif%} Goods Certified As - {{super()}}
 {% endblock %}
 {% block beforeContent %}
 {{super()}}

@@ -36,14 +36,14 @@
       {% endif %}
 
       {% set certificate = data.selectedCertificate %}
-      <form method="post" novalidate action="/beta/v3-4/application/export/set-certificate?ehc={{certificate}}&url=task-list?new=yes&returnURL=/stories/unified-dashboard/v2/dashboard?added=yes">
+      <form method="post" novalidate action="/beta/v{{data.version or '3-5'}}/application/export/set-certificate?ehc={{certificate}}&url=task-list?new=yes&returnURL=/stories/unified-dashboard/v2/dashboard?added=yes">
         <div class="govuk-form-group {% if query.has_error %}govuk-form-group--error{% endif %}">
           <h1 class="govuk-label-wrapper ">
             <label class="govuk-label govuk-label--xl" for="ref" id="ref-label">
               Your reference for this application
             </label>
           </h1>
-          <p id="reference-hint" class="govuk-hint">Enter a reference up to 20 characters long, such as an invoice number or consignee. This reference will not appear on the final certificate. </p>
+          <p id="reference-hint" class="govuk-hint">Enter a reference up to 25 characters long, such as an invoice number or consignee. This reference will not appear on the final certificate. </p>
           {% if query.has_error %}
           <p id="reference-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span>

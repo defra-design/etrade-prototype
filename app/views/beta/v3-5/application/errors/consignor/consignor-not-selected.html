@@ -4,7 +4,7 @@
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
 {% block pageTitle %}
-Find an exporter or consignor - eTrade – GOV.UK Prototype Kit
+Find an exporter or consignor - {{super()}}
 {% endblock %}
 {% block content %}
 <form id="search" method="post">
@@ -297,7 +297,7 @@ Find an exporter or consignor - eTrade – GOV.UK Prototype Kit
     <label class="govuk-label" id="organisation-search-label">Exporter or consignor name</label>
     
     <div id="organisation-search-hint" class="govuk-hint ">
-      Partial company names (for example, Examplefood), may return better results than full names (for example, Examplefood Company Partners Ltd).
+      Partial company names (for example, Examplefood), may return better results than full names (for example,  Examplefood Company Ltd).
     </div>
     <p id="search-field-organisation-name-error" class="govuk-error-message" style="display: none;">
       <span class="govuk-visually-hidden">Error:</span>Enter an exporter or consignor name</p>

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Task list - {{ serviceName }} – GOV.UK Prototype Kit
+Task list - {{super()}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -274,7 +274,18 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
         </h2>
 
         <ul class="app-task-list__items">
-
+              <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./goods/purpose-of-export?change=no" aria-describedby="purpose-of-export-status">
+                Type of consignment
+              </a>
+            </span>
+            {% if data.Purpose %}
+            <strong class="govuk-tag app-task-list__tag" id="purpose-of-export-status">Completed</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="purpose-of-export-status">Not started</strong>
+            {% endif %}
+          </li>
            <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./transport/border-control-post?change=no" aria-describedby="border-control-post-status">
@@ -326,18 +337,7 @@ Task list - {{ serviceName }} – GOV.UK Prototype Kit
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id=" arrival-and-departure-status">Not started</strong>
             {% endif %}
           </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="./goods/purpose-of-export?change=no" aria-describedby="purpose-of-export-status">
-                Type of consignment
-              </a>
-            </span>
-            {% if data.Purpose %}
-            <strong class="govuk-tag app-task-list__tag" id="purpose-of-export-status">Completed</strong>
-            {% else %}
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="purpose-of-export-status">Not started</strong>
-            {% endif %}
-          </li>
+      
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./transport/place-of-destination?change=no" aria-describedby="place-of-destination-status">
