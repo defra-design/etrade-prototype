@@ -95,6 +95,25 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'persons/load');
   })
 
+  router.post('/' + base_url + "transport/place-of-origin/loading", function(req, res) {
+    console.log("In transport/place-of-origin/loading.html");
+
+    const establishmentIndex = req.body.establishmentIndex;
+
+    req.session.data.transport['loading'] = establishmentIndex;
+    res.redirect(301, '/' + base_url + 'transport/load-and-dispatch');
+  })
+
+  router.post('/' + base_url + "transport/place-of-origin/dispatch", function(req, res) {
+    console.log("In transport/place-of-origin/dispatch.html");
+
+    const establishmentIndex = req.body.establishmentIndex;
+
+    req.session.data.transport['dispatch'] = establishmentIndex;
+    res.redirect(301, '/' + base_url + 'transport/load-and-dispatch');
+  })
+
+
   router.post('/' + base_url + "transport/place-of-destination/find", function(req, res) {
     console.log("In place-of-destination/find.html");
 
