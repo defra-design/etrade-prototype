@@ -45,6 +45,18 @@ Check your answers – {{super()}}
     padding: 10px 10px 10px 36px;
     text-decoration: none;
 }
+.govuk-summary-list__row--print{ display:none; }
+@media print {
+   .govuk-grid-column-three-quarters{
+    width: 100% !important;
+   }
+   .govuk-summary-list__actions{
+    display: none;
+   }
+   .app-main-footer{ display: none; }
+   .govuk-summary-list__row--print{ display:table-row; }
+   .govuk-footer { display:none; }
+}
 </style>
 
     <div class="ehc-summary">
@@ -52,8 +64,22 @@ Check your answers – {{super()}}
         <div class="govuk-grid-column-three-quarters">
           <h1 class="govuk-heading-xl">Check your answers before submitting your application</h1>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
-        <div class="govuk-summary-list__row" data-v-e8e27fc8="">
-          <dt class="" ="govuk-summary-list__key" data-v-e8e27fc8="">Application Reference</dt>
+        <div class="govuk-summary-list__row govuk-summary-list__row--print">
+              <dt class="govuk-summary-list__key"> Application ID </dt>
+              <dd class="govuk-summary-list__value">
+               3083845984093853498
+            </dd>
+              <dd class="govuk-summary-list__actions"></dd>
+        </div>
+        <div class="govuk-summary-list__row govuk-summary-list__row--print">
+              <dt class="govuk-summary-list__key"> Created by </dt>
+              <dd class="govuk-summary-list__value">
+                Bill Shoggins
+            </dd>
+              <dd class="govuk-summary-list__actions"></dd>
+        </div>
+        <div class="govuk-summary-list__row " data-v-e8e27fc8="">
+          <dt class="govuk-summary-list__key" data-v-e8e27fc8="">Application Reference</dt>
           <dd class="govuk-summary-list__value" data-v-e8e27fc8=""> {{data.UserReference or "XI2934BUL3"}}
           </dd>
           <dd class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="create-reference?showNotification=no&change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></dd>
@@ -460,6 +486,9 @@ Check your answers – {{super()}}
               <dd class="govuk-summary-list__actions"><a href="./attachments/added-documents?change=yes" class="govuk-link"> Change </a></dd>
             </div>
           </dl>
+
+
+          <div class="app-main-footer">
 <!--           <div class="gem-c-print-link govuk-!-display-none-print govuk-!-margin-top-3 govuk-!-margin-bottom-8">
     <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="ga4-event-tracker print-link" data-track-category="printButton" data-track-action="clicked" data-track-label="Print this page" data-ga4-event="{&quot;event_name&quot;:&quot;print_page&quot;,&quot;type&quot;:&quot;print page&quot;,&quot;index&quot;:{&quot;index_link&quot;:1},&quot;index_total&quot;:2,&quot;section&quot;:&quot;Content&quot;}" data-ga4-event-tracker-module-started="true" data-print-link-module-started="true">Print your answers</button>
 </div> -->
@@ -472,7 +501,7 @@ Check your answers – {{super()}}
 
            <p class="download-a-document">
           
-            <strong><a href="/public/images/ehc-2849ehc-3.1.pdf" target="_blank" data-qa-id="Link-PreviewCertificate" class="govuk-link">Download your application as a PDF</a>
+            <strong><a href="/public/images/check-your-answer.pdf" download  class="govuk-link">Download your application as a PDF</a>
             </strong>
           </p>
 
@@ -485,6 +514,7 @@ Check your answers – {{super()}}
 
             <!---->
             <p id="eleapsed-time" aria-live="polite" class="govuk-body" style="display:none"></p>
+          </div>
           </div>
         </div>
       </div>
