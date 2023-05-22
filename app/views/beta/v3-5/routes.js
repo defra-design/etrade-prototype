@@ -5,7 +5,7 @@ module.exports = function(router) {
 
   // Load helper functions
   const writeXlsxFile = require('write-excel-file/node');
-  var html_to_pdf = require('html-pdf-node');
+
   
 
   // CHANGE VERSION each time you create a new version
