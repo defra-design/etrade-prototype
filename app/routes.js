@@ -71,7 +71,12 @@ router.get('/clear-data', function(req, res) {
 
 // Adding "query" to every page. This is a bit of a hack may look at different inplementation.
 // in nunjkucks you can call {{query[key]}}
-
+router.use(function(req, res, next) {
+    req.getUrl = function() {
+      return req.protocol + "://" + req.get('host') + req.originalUrl;
+    }
+    return next();
+});
 router.get('*', function(req, res) {
   let path = req.params[0]
   let pathEnd = path.slice(-1)

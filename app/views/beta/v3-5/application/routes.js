@@ -1,4 +1,6 @@
 module.exports = function(router) {
+
+
   // Load helper functions
 
   // CHANGE VERSION each time you create a new version
@@ -155,6 +157,8 @@ module.exports = function(router) {
     delete req.session.data.person[person];
     res.redirect(301, '/' + base_url + "persons/" + redirect + "?deleted=yes&who=" + person);
   })
+
+  
 
   router.get('/' + base_url + 'transport/remove', function(req, res) {
     const person = req.query.who;

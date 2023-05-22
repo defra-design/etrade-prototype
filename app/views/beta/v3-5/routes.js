@@ -2,9 +2,11 @@ module.exports = function(router) {
   require('./application/export/upload/routes.js')(router);
   require('./write-excel/routes.js')(router);
   require('./application/routes.js')(router);
-  
+
   // Load helper functions
   const writeXlsxFile = require('write-excel-file/node');
+  var html_to_pdf = require('html-pdf-node');
+  
 
   // CHANGE VERSION each time you create a new version
   const base_url = "beta/v3-5/"
@@ -876,6 +878,8 @@ module.exports = function(router) {
 
 
   });
+
+
 
 
 
