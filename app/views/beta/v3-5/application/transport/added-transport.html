@@ -85,7 +85,7 @@ Add transport methods - {{super()}}
         <dd class="govuk-summary-list__actions app-summary-list__actions">
           <ul class="govuk-summary-list__actions-list">
             <li class="govuk-summary-list__actions-list-item">
-              <a class="govuk-link govuk-link--no-visited-state" href="select-transport?id={{loop.index -1}}&change=yes"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change../ {{(t.typeOfTransport | capitalize) or "Plane"}} {{t.identifier | upper or '92394234'}}</span></a>
+              <a class="govuk-link govuk-link--no-visited-state" href="transport-details?id={{loop.index -1}}&change=yes"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change../ {{(t.typeOfTransport | capitalize) or "Plane"}} {{t.identifier | upper or '92394234'}}</span></a>
             </li>
             <li class="govuk-summary-list__actions-list-item">
               <a class="govuk-link govuk-link--no-visited-state" href="./transport-method-remove?id={{loop.index -1}}"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">{{(t.typeOfTransport | capitalize) or "Plane"}} {{t.identifier | upper or '92394234'}}</span></a>

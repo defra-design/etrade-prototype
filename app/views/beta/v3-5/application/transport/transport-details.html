@@ -68,7 +68,7 @@ Transport methods – {{super()}}
 
         </div>
       <input type="hidden" name="typeOfTransport" value="{{data.transportType or 'Plane'}}">
-      <button class="govuk-button" data-v-133877c6="">Add means of transport</button>
+      <button class="govuk-button" data-v-133877c6="">{% if query.change %}Save and continue{% else %}Add means of transport{% endif %}</button>
     </form>
 
   </div>
