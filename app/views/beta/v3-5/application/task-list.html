@@ -231,7 +231,7 @@ Task list - {{super()}}
                 Container number or seal numbers
               </a>
             </span>
-            {% if (data.goodsInContianers  or data.goods['hasContainers']=="skipped") or (data.goodsHaveSeal or data.goods['hasSealNumber'] == "skipped") or data.containerNumbers %}
+            {% if (data.goodsInContianers  or data.goods['hasContainers']=="skipped") or (data.goodsHaveSeal or data.goods['hasSealNumber'] == "skipped") or data.containerNumbers  or data.containerSealNumbers | length > 0 %}
             <strong class="govuk-tag app-task-list__tag" id="container-deal-number-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="container-deal-number-status">Not started</strong>
