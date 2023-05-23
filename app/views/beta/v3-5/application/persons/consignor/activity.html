@@ -60,9 +60,27 @@ Select an activity – {{serviceName}} - GOV.UK
         {% endif %}
 
      
-      
+        <!-- update to show activity classifications. Currenlty the list of operators with classifications is small.  -->
+
+        {% if operator.activityClassifications %}
+        <div class="govuk-radios" data-module="govuk-radios">
+          {% for activity in operator.activityClassifications %}
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="savedOrg{{loop.index}}" name="activityIndex" type="radio" value="{{ loop.index -1}}" {% if consignor_establishmentApprovalIndex == (loop.index -1) %}checked{%endif%} aria-describedby="savedOrg{{loop.index -1}}-hint">
+            <label class="govuk-label govuk-radios__label" for="savedOrg{{loop.index}}">
+              {{activity.activity.name}} - {{activity.classification.code}} - {{activity.classificationGroup.name}}
+            </label>
+            <div class="govuk-hint govuk-radios__hint" id="savedOrg{{loop.index}}-hint">
+              {{activity.classification.name}}
+            </div>
+          </div>
+          {% endfor%}
+        </div>
+        {% else %}
         <div class="govuk-radios" data-module="govuk-radios">
           {% for activity in operator.All_Activities %}
+
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="savedOrg{{loop.index}}" name="activityIndex" type="radio" value="{{ loop.index0 }}" {% if consignor_establishmentApprovalIndex == loop.index0 %}checked{%endif%}>
             <label class="govuk-label govuk-radios__label" for="savedOrg{{loop.index}}">
@@ -71,6 +89,7 @@ Select an activity – {{serviceName}} - GOV.UK
           </div>
           {% endfor%}
         </div>
+        {% endif %}
       </fieldset>
       </div>
       <details class="govuk-details" data-module="govuk-details">

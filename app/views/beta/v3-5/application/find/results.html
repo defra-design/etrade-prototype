@@ -409,7 +409,7 @@ Find a {{ establishmentTypeLabel }} – {{super()}}
           {% set type = "consignor"%}
           {% for operator in data.establishments %}
           <div class="govuk-radios__item app-establishment-list__row" data-content="{{operator.TradingName}}" data-postcode="{{operator.Postcode}}" data-number="{{operator.AppNo}}">
-            <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="establishmentIndex" type="radio" value="{{ loop.index0 }}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
+            <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="establishmentIndex" type="radio" value="{{ loop.index -1}}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
             <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index0}}">
               <strong>{{operator.TradingName}}</strong><br>
               {{operator.Address1}},<br>

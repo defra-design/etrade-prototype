@@ -1,5 +1,4 @@
-[
-  {
+[{
     "AppNo": "U1344327/ABP/MIMC",
     "TradingName": "Denis Brinicombe Group",
     "Address1": "Fordton Industrial Estate",
@@ -8,7 +7,38 @@
     "Town": "Devon",
     "Postcode": "EX17 3BZ",
     "Country": "United Kingdom",
-    "All_Activities": ["Category 3 - Animal By-Products", "Exporter"]
+    "All_Activities": ["Category 3 - Animal By-Products", "Exporter"],
+    "activityClassifications": [{
+        "classificationGroup": {
+          "code": "animal_byproducts",
+          "name": "Animal By-Products"
+        },
+        "classification": {
+          "code": "ABP-SH",
+          "name": "Slaughterhouses and fishery vessels"
+        },
+        "activity": {
+          "code": "CATEGORY_3",
+          "name": "Category 3"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "FOOD-OTH",
+          "name": "Other establishments"
+        },
+        "activity": {
+          "code": "EXPORTER",
+          "name": "Exporter"
+        },
+        "activityStatus": "NEW"
+      }
+    ]
   },
   {
     "AppNo": "FR/000002535",
@@ -19,7 +49,23 @@
     "Town": "Ashford",
     "Postcode": "TN24 0LU",
     "Country": "United Kingdom",
-    "All_Activities": ["Processing Plant"]
+    "All_Activities": ["Processing Plant"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "RPM",
+        "name": "Meat products"
+      },
+      "activity": {
+        "code": "PROCESSING_PLANT",
+        "name": "Processing Plant"
+      },
+      "activityStatus": "VALID"
+    }]
+
   },
   {
     "AppNo": "DU/000002535",
@@ -30,7 +76,211 @@
     "Town": "NEUSS",
     "Postcode": "41460",
     "Country": "Germany",
-    "All_Activities": ["Importer"]
+    "All_Activities": ["Importer"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "veterinary",
+        "name": "Animal"
+      },
+      "classification": {
+        "code": "EXP",
+        "name": "Animal exporter"
+      },
+      "activity": {
+        "code": "ANIMAL_IMPORTER",
+        "name": "Animal importer"
+      },
+      "activityStatus": "NEW"
+    }]
+  },
+  {
+    "AppNo": "GB 4053",
+    "TradingName": "Midland Bacon Company",
+    "Address1": "Leamore Lane Bloxwich,",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Walsall",
+    "Postcode": "WS2",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cutting plant", "Mechanically separated meat plant", "Minced meat plant", "Meat preparation plant", "Processing plant"],
+    "activityClassifications": [{
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "RM",
+          "name": "Meat of domestic ungulates"
+        },
+        "activity": {
+          "code": "CUTTING_PLANT",
+          "name": "Cutting Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MECHANICALLY_SEPARATED_MEAT_PLANT",
+          "name": "Mechanically Separated Meat Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MINCED_MEAT_PLANT",
+          "name": "Minced Meat Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MEAT_PREPARATION_PLANT",
+          "name": "Meat Preparation Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "RPM",
+          "name": "Meat products"
+        },
+        "activity": {
+          "code": "PROCESSING_PLANT",
+          "name": "Processing Plant"
+        },
+        "activityStatus": "VALID"
+      }
+    ]
+  },
+  {
+    "AppNo": "GB5513",
+    "TradingName": "WOODHEAD BROS",
+    "Address1": "Brunel Road Wardentree Industrial Estate",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Spalding",
+    "Postcode": "PE11",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing plant", "Category 3", "Cutting plant", "Slaughterhouse", "Meat preparation plant"],
+    "activityClassifications": [{
+        "classificationGroup": {
+          "code": "animal_byproducts",
+          "name": "Animal By-Products"
+        },
+        "classification": {
+          "code": "ABP-SH",
+          "name": "Slaughterhouses and fishery vessels"
+        },
+        "activity": {
+          "code": "CATEGORY_3",
+          "name": "Category 3"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "RM",
+          "name": "Meat of domestic ungulates"
+        },
+        "activity": {
+          "code": "CUTTING_PLANT",
+          "name": "Cutting Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "RM",
+          "name": "Meat of domestic ungulates"
+        },
+        "activity": {
+          "code": "SLAUGHTER_HOUSE",
+          "name": "Slaughterhouse"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "RPM",
+          "name": "Meat products"
+        },
+        "activity": {
+          "code": "PROCESSING_PLANT",
+          "name": "Processing Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MEAT_PREPARATION_PLANT",
+          "name": "Meat Preparation Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "CAS",
+          "name": "Treated stomachs, bladders and intestines: casings only"
+        },
+        "activity": {
+          "code": "PROCESSING_PLANT",
+          "name": "Processing Plant"
+        },
+        "activityStatus": "VALID"
+      }
+    ]
   },
   {
     "AppNo": "DU/000002535",
@@ -41,9 +291,24 @@
     "Town": "Orio",
     "Postcode": "20810",
     "Country": "Spain",
-    "All_Activities": ["Importer"]
+    "All_Activities": ["Importer"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "veterinary",
+        "name": "Animal"
+      },
+      "classification": {
+        "code": "EXP",
+        "name": "Animal exporter"
+      },
+      "activity": {
+        "code": "ANIMAL_IMPORTER",
+        "name": "Animal importer"
+      },
+      "activityStatus": "NEW"
+    }]
   },
-  
+
   {
     "AppNo": "3242234",
     "TradingName": "COLLAGEN SOLUTIONS UK LTD",
@@ -53,7 +318,22 @@
     "Town": "Glasgow",
     "Postcode": "G33 1AP",
     "Country": "United Kingdom",
-    "All_Activities": ["Exporter"]
+    "All_Activities": ["Exporter"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "FOOD-OTH",
+        "name": "Other establishments"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    }]
   },
   {
     "AppNo": "06598 773",
@@ -64,7 +344,22 @@
     "Town": "London",
     "Postcode": "SW9",
     "Country": "United Kingdom",
-    "All_Activities": ["Exporter"]
+    "All_Activities": ["Exporter"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "FOOD-OTH",
+        "name": "Other establishments"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    }]
   },
   {
     "AppNo": "06598 234",
@@ -75,7 +370,22 @@
     "Town": "Conwy",
     "Postcode": "LL24",
     "Country": "United Kingdom",
-    "All_Activities": ["Exporter"]
+    "All_Activities": ["Exporter"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "FOOD-OTH",
+        "name": "Other establishments"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    }]
   },
   {
     "AppNo": "AD 006 FE",
@@ -86,10 +396,25 @@
     "Town": "Oban",
     "Postcode": "TPA34 4LS",
     "Country": "United Kingdom",
-    "All_Activities": ["Exporter"]
+    "All_Activities": ["Exporter"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "FOOD-OTH",
+        "name": "Other establishments"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    }]
   },
- 
- 
+
+
   {
     "AppNo": "FR/000000441",
     "TradingName": "Premier Foods",
@@ -99,7 +424,22 @@
     "Town": "Worksop",
     "Postcode": "S81 7AY",
     "Country": "United Kingdom",
-    "All_Activities": ["Processing Plant"]
+    "All_Activities": ["Processing Plant"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "RPM",
+        "name": "Meat products"
+      },
+      "activity": {
+        "code": "PROCESSING_PLANT",
+        "name": "Processing Plant"
+      },
+      "activityStatus": "VALID"
+    }]
   },
   {
     "AppNo": "2045",
@@ -110,7 +450,68 @@
     "Town": "Pontefract",
     "Postcode": "WF8 3DD",
     "Country": "United Kingdom",
-    "All_Activities": ["Cold Store - food GEN", "Cutting Plant - food PM", "Mince Meat Establishment - food MM","Processing Plant - food MPP", "Slaughterhouse - food PM","Meat Preparation Establishment - food MM"]
+    "All_Activities": ["Cold Store - food GEN", "Cutting Plant - food PM", "Mince Meat Establishment - food MM", "Processing Plant - food MPP", "Slaughterhouse - food PM", "Meat Preparation Establishment - food MM"],
+    "activityClassifications": [{
+        "classificationGroup": {
+          "code": "animal_byproducts",
+          "name": "Animal By-Products"
+        },
+        "classification": {
+          "code": "ABP-SH",
+          "name": "Slaughterhouses and fishery vessels"
+        },
+        "activity": {
+          "code": "CATEGORY_3",
+          "name": "Category 3"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "PM",
+          "name": "Meat from poultry and lagomorphs"
+        },
+        "activity": {
+          "code": "CUTTING_PLANT",
+          "name": "Cutting Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "PM",
+          "name": "Meat from poultry and lagomorphs"
+        },
+        "activity": {
+          "code": "SLAUGHTER_HOUSE",
+          "name": "Slaughterhouse"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MEAT_PREPARATION_PLANT",
+          "name": "Meat Preparation Plant"
+        },
+        "activityStatus": "VALID"
+      }
+    ]
   },
   {
     "AppNo": "4599",
@@ -121,7 +522,39 @@
     "Town": "Wolverhampton",
     "Postcode": "WV8 1XE",
     "Country": "United Kingdom",
-    "All_Activities": ["Cutting Plant", "Mince Meat Establishment"]
+    "All_Activities": ["Cutting Plant", "Mince Meat Establishment"],
+    "activityClassifications": [{
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "PM",
+          "name": "Meat from poultry and lagomorphs"
+        },
+        "activity": {
+          "code": "CUTTING_PLANT",
+          "name": "Cutting Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MEAT_PREPARATION_PLANT",
+          "name": "Meat Preparation Plant"
+        },
+        "activityStatus": "VALID"
+      }
+    ]
+
   },
   {
     "AppNo": "5116",
@@ -132,707 +565,908 @@
     "Town": "Lincoln",
     "Postcode": "LN6 5TX",
     "Country": "United Kingdom",
-    "All_Activities": ["Cutting Plant (Red)", "Slaughterhouse (Red)","Processing Plant (Meat)"]
+    "All_Activities": ["Cutting Plant", "Slaughterhouse", "Processing Plant"],
+    "activityClassifications": [{
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "PM",
+          "name": "Meat from poultry and lagomorphs"
+        },
+        "activity": {
+          "code": "CUTTING_PLANT",
+          "name": "Cutting Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "animal_byproducts",
+          "name": "Animal By-Products"
+        },
+        "classification": {
+          "code": "ABP-SH",
+          "name": "Slaughterhouses and fishery vessels"
+        },
+        "activity": {
+          "code": "CATEGORY_3",
+          "name": "Category 3"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "RPM",
+          "name": "Meat products"
+        },
+        "activity": {
+          "code": "PROCESSING_PLANT",
+          "name": "Processing Plant"
+        },
+        "activityStatus": "VALID"
+      }
+
+    ]
+
   },
 
- {
-   "AppNo": "22028",
-   "TradingName": "Riverways Farm",
-   "Address1": "New Bath Road",
-   "Address2": "",
-   "Address3": "",
-   "Town": "Twyford",
-   "Postcode": "RG10 9RY",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1000",
-   "TradingName": "Ahmed Brothers Halal Ltd",
-   "Address1": "Maple Court",
-   "Address2": "Crystal Drive",
-   "Address3": "",
-   "Town": "Smethwick",
-   "Postcode": "B66 1RB",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1003",
-   "TradingName": "Kinda Food Ltd",
-   "Address1": "Unit 7",
-   "Address2": "Rosebery Industrial Estate",
-   "Address3": "Rosebery Venue",
-   "Town": "London",
-   "Postcode": "N17 9SR",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1004",
-   "TradingName": "Newby Foods Ltd",
-   "Address1": "Head Office",
-   "Address2": "Marylands",
-   "Address3": "Newby Wiske",
-   "Town": "Northallerton",
-   "Postcode": "DL7 9ER",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "10058",
-   "TradingName": "Woodlands Poultry Farm",
-   "Address1": "Bigbury Road ",
-   "Address2": "Chartham Hatch",
-   "Address3": "",
-   "Town": "Canterbury",
-   "Postcode": "CT4 7NE",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1006",
-   "TradingName": "Aubrey Allen Limited",
-   "Address1": "Unit 1",
-   "Address2": "Siskin Parkway East",
-   "Address3": "Middlemarch Business Park",
-   "Town": "Coventry",
-   "Postcode": "CV3 4AD",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1007",
-   "TradingName": "Frank Bird (Poultry) Ltd",
-   "Address1": "Underlyne",
-   "Address2": "Langwathby",
-   "Address3": "",
-   "Town": "Penrith",
-   "Postcode": "CA10 1NB",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1008",
-   "TradingName": "K D Catering Butchers Ltd",
-   "Address1": "Baytree Farm",
-   "Address2": "Bay Tree Lane",
-   "Address3": "Sayerland",
-   "Town": "Polegate",
-   "Postcode": "BN26 6QN",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1009",
-   "TradingName": "Karaca Meat Limited",
-   "Address1": "Unit 3 Beeching Park Industrial Estate",
-   "Address2": "Wainwright Road",
-   "Address3": "",
-   "Town": "Bexhill-on-Sea",
-   "Postcode": "TN39 3UR",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1012",
-   "TradingName": "CSP (Food Services) Limited",
-   "Address1": "52 Farringdon Street",
-   "Address2": "",
-   "Address3": "",
-   "Town": "London",
-   "Postcode": "EC4A 4BD",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "56938",
-   "TradingName": "MOY PARK",
-   "Address1": "170 LARNE ROAD, BALLYMENA",
-   "Address2": "Ballymena",
-   "Address3": "County Antrim",
-   "Town": "Northern Ireland",
-   "Postcode": "BT42",
-   "Country": "United Kingdom - Northern Ireland (XI)",
-   "All_Activities": ["Importer"]
- },
- {
-   "AppNo": "56932",
-   "TradingName": "Moy Park Ltd",
-   "Address1": "8 Willow Road, Bready",
-   "Address2": "Strabane",
-   "Address3": "",
-   "Town": "County Tyrone",
-   "Postcode": "BT82",
-   "Country": "Northern Ireland",
-   "All_Activities": ["Exporter", "Importer", "Terrestrial animal establishment"]
- },
- {
-   "AppNo": "1018",
-   "TradingName": "Gunne Butchers UK Ltd",
-   "Address1": "Units 4 - 7",
-   "Address2": "Beeching Park Industrial Estate",
-   "Address3": "Wainwright Road",
-   "Town": "Bexhill-on-Sea",
-   "Postcode": "TN39 3UR",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1019",
-   "TradingName": "Fairfax Meadow Europe Limited ",
-   "Address1": "Unit 2 & 3",
-   "Address2": "Trafalgar Trading Estate",
-   "Address3": "",
-   "Town": "Enfield",
-   "Postcode": "EN3 7TY",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment","Slaughter house"]
- },
- {
-   "AppNo": "1024",
-   "TradingName": "Thorner's of Somerset",
-   "Address1": "Bridge Farm Shop",
-   "Address2": "",
-   "Address3": "Pylle",
-   "Town": "Shepton Mallet",
-   "Postcode": "BA4 6TA",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1025",
-   "TradingName": "Gilders Transport Ltd (T/A Martins Meats)",
-   "Address1": "Unit 5",
-   "Address2": "Orchard Industrial Estate",
-   "Address3": "Toddington",
-   "Town": "Cheltenham",
-   "Postcode": "GL54 5EB",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1026",
-   "TradingName": "Simon D Hall Anne M Hall & John D Hall (T/A Halls Poultry)",
-   "Address1": "Rushyford Farm",
-   "Address2": "",
-   "Address3": "Rushyford",
-   "Town": "Ferryhill",
-   "Postcode": "DL17 0LJ",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1028",
-   "TradingName": "Swandean Fresh Meats Limited",
-   "Address1": "Swandean Fresh Meats Limited",
-   "Address2": "Manor Parade",
-   "Address3": "Salvington Road",
-   "Town": "Worthing",
-   "Postcode": "BN13 2JP",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1030",
-   "TradingName": "Castle Hill Meats Limited (T/A Burtons Catering Butchers)",
-   "Address1": "Unit 3",
-   "Address2": "Shire Hill",
-   "Address3": "",
-   "Town": "Saffron Walden",
-   "Postcode": "CB11 3AQ",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1037",
-   "TradingName": "Parkers Foodservice Ltd",
-   "Address1": "Unit X",
-   "Address2": "Rudford Industrial Estate",
-   "Address3": "Ford Road",
-   "Town": "Arundel",
-   "Postcode": "BN18 0BF",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1040",
-   "TradingName": "Vantage Foods Limited",
-   "Address1": "Unit P & Q",
-   "Address2": "Vantage Way",
-   "Address3": "",
-   "Town": "Poole",
-   "Postcode": "BH12 4NU",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1046",
-   "TradingName": "Northern Catering Butchers Ltd",
-   "Address1": "Unit 3",
-   "Address2": "Ashley Industrial Estate",
-   "Address3": "Rawmarsh Road",
-   "Town": "Rotherham",
-   "Postcode": "S60 1RU",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1049",
-   "TradingName": "Bredbury Catering Ltd",
-   "Address1": "Unit 3",
-   "Address2": "Hammond Avenue",
-   "Address3": "",
-   "Town": "Stockport",
-   "Postcode": "SK4 1PQ",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1052",
-   "TradingName": "Freshasia Foods Ltd",
-   "Address1": "Unit 21 & 27",
-   "Address2": "Hailey Road",
-   "Address3": "",
-   "Town": "Erith",
-   "Postcode": "DA18 4AA",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1057",
-   "TradingName": "Roofe Catering Butchers Ltd",
-   "Address1": "White Lodge Business Estate",
-   "Address2": "Hall Road",
-   "Address3": "",
-   "Town": "Norwich",
-   "Postcode": "NR4 6DG",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "8743",
-   "TradingName": "XPO Logistics",
-   "Address1": "EST DONCASTER DN4 5NP",
-   "Address2": "",
-   "Address3": "",
-   "Town": "Doncaster",
-   "Postcode": "DN4",
-   "Country": "United Kingdom",
-   "All_Activities": ["Category 3"]
- },
- {
-   "AppNo": "1060",
-   "TradingName": "Ashlyn's Organics Ltd",
-   "Address1": "High Laver Hall",
-   "Address2": "",
-   "Address3": "",
-   "Town": "Ongar",
-   "Postcode": "CM5 0DU",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1061",
-   "TradingName": "Bidfresh Ltd T/A Henson Meats",
-   "Address1": "2 Tom Cribb Road",
-   "Address2": "",
-   "Address3": "Woolwich",
-   "Town": "London",
-   "Postcode": "SE28 0FN",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1065",
-   "TradingName": "Traymoor Ltd",
-   "Address1": "Kingston",
-   "Address2": "Matching Lane",
-   "Address3": "",
-   "Town": "White Roding",
-   "Postcode": "CM6 1RP",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
- },
- {
-   "AppNo": "1067",
-   "TradingName": "Swannington Farm to Fork",
-   "Address1": "Woodlands Farm",
-   "Address2": "Church Lane",
-   "Address3": "Swannington",
-   "Town": "Norwich",
-   "Postcode": "NR9 5NN",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Re-Wrapping and repackaging establishment"]
- },
- {
-   "AppNo": "1068",
-   "TradingName": "Rox Meat Limited",
-   "Address1": "Unit 39",
-   "Address2": "Spray Street",
-   "Address3": "",
-   "Town": "Woolwich",
-   "Postcode": "SE18 6AP",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Re-Wrapping and repackaging establishment"]
- },
- {
-   "AppNo": "1069",
-   "TradingName": "Philip Dennis FoodService Limited (T/A Philip Dennis Foodservice)",
-   "Address1": "Unit 4",
-   "Address2": "Brannam Crescent",
-   "Address3": "Roundswell Business Park",
-   "Town": "Barnstaple",
-   "Postcode": "EX31 3TD",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store", "Cutting Plant", "Meat Preparation Establishment"]
- },
- {
-   "AppNo": "1072",
-   "TradingName": "Kazon Limited",
-   "Address1": "Unit 1",
-   "Address2": "61 Sutherland Road",
-   "Address3": "Walthamstow",
-   "Town": "London",
-   "Postcode": "E17 6BH",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cutting Plant"]
- },
- {
-   "AppNo": "1073",
-   "TradingName": "Clark & Son (Long Melford) Limited",
-   "Address1": "Unit 3 Cordell Works",
-   "Address2": "Cordell Road",
-   "Address3": "",
-   "Town": "Long Melford",
-   "Postcode": "CO10 9EH",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Store",
-   "Cutting Plant",
-   "Mince Meat Establishment"]
 
- },
- {
-   "AppNo": "PA-TEC-0019",
-   "TradingName": "Jackson ImmunoResearch Labs Inc",
-   "Address1": "872 West Baltimore Pike",
-   "Address2": "Chester County",
-   "Address3": "Pennsylvania",
-   "Town": "West Grove",
-   "Postcode": "19390",
-   "Country": "United States of America (the)",
-   "All_Activities": ["Category 1 - Animal By-Products ABP-BBL",
-   "Category 3 - Animal By-Products ABP-BBL",
-   "Category 3 - Animal By-Products ABP-COL"]
+  {
+    "AppNo": "22028",
+    "TradingName": "Riverways Farm",
+    "Address1": "New Bath Road",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Twyford",
+    "Postcode": "RG10 9RY",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"],
+    "activityClassifications": [{
+        "classificationGroup": {
+          "code": "animal_byproducts",
+          "name": "Animal By-Products"
+        },
+        "classification": {
+          "code": "ABP-SH",
+          "name": "Slaughterhouses and fishery vessels"
+        },
+        "activity": {
+          "code": "CATEGORY_3",
+          "name": "Category 3"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "PM",
+          "name": "Meat from poultry and lagomorphs"
+        },
+        "activity": {
+          "code": "CUTTING_PLANT",
+          "name": "Cutting Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "PM",
+          "name": "Meat from poultry and lagomorphs"
+        },
+        "activity": {
+          "code": "SLAUGHTER_HOUSE",
+          "name": "Slaughterhouse"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MEAT_PREPARATION_PLANT",
+          "name": "Meat Preparation Plant"
+        },
+        "activityStatus": "VALID"
+      }
+    ]
+  },
+  {
+    "AppNo": "1000",
+    "TradingName": "Ahmed Brothers Halal Ltd",
+    "Address1": "Maple Court",
+    "Address2": "Crystal Drive",
+    "Address3": "",
+    "Town": "Smethwick",
+    "Postcode": "B66 1RB",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1003",
+    "TradingName": "Kinda Food Ltd",
+    "Address1": "Unit 7",
+    "Address2": "Rosebery Industrial Estate",
+    "Address3": "Rosebery Venue",
+    "Town": "London",
+    "Postcode": "N17 9SR",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1004",
+    "TradingName": "Newby Foods Ltd",
+    "Address1": "Head Office",
+    "Address2": "Marylands",
+    "Address3": "Newby Wiske",
+    "Town": "Northallerton",
+    "Postcode": "DL7 9ER",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "10058",
+    "TradingName": "Woodlands Poultry Farm",
+    "Address1": "Bigbury Road ",
+    "Address2": "Chartham Hatch",
+    "Address3": "",
+    "Town": "Canterbury",
+    "Postcode": "CT4 7NE",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1006",
+    "TradingName": "Aubrey Allen Limited",
+    "Address1": "Unit 1",
+    "Address2": "Siskin Parkway East",
+    "Address3": "Middlemarch Business Park",
+    "Town": "Coventry",
+    "Postcode": "CV3 4AD",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1007",
+    "TradingName": "Frank Bird (Poultry) Ltd",
+    "Address1": "Underlyne",
+    "Address2": "Langwathby",
+    "Address3": "",
+    "Town": "Penrith",
+    "Postcode": "CA10 1NB",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1008",
+    "TradingName": "K D Catering Butchers Ltd",
+    "Address1": "Baytree Farm",
+    "Address2": "Bay Tree Lane",
+    "Address3": "Sayerland",
+    "Town": "Polegate",
+    "Postcode": "BN26 6QN",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1009",
+    "TradingName": "Karaca Meat Limited",
+    "Address1": "Unit 3 Beeching Park Industrial Estate",
+    "Address2": "Wainwright Road",
+    "Address3": "",
+    "Town": "Bexhill-on-Sea",
+    "Postcode": "TN39 3UR",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1012",
+    "TradingName": "CSP (Food Services) Limited",
+    "Address1": "52 Farringdon Street",
+    "Address2": "",
+    "Address3": "",
+    "Town": "London",
+    "Postcode": "EC4A 4BD",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "56938",
+    "TradingName": "MOY PARK",
+    "Address1": "170 LARNE ROAD, BALLYMENA",
+    "Address2": "Ballymena",
+    "Address3": "County Antrim",
+    "Town": "Northern Ireland",
+    "Postcode": "BT42",
+    "Country": "United Kingdom - Northern Ireland (XI)",
+    "All_Activities": ["Importer"]
+  },
+  {
+    "AppNo": "56932",
+    "TradingName": "Moy Park Ltd",
+    "Address1": "8 Willow Road, Bready",
+    "Address2": "Strabane",
+    "Address3": "",
+    "Town": "County Tyrone",
+    "Postcode": "BT82",
+    "Country": "Northern Ireland",
+    "All_Activities": ["Exporter", "Importer", "Terrestrial animal establishment"]
+  },
+  {
+    "AppNo": "1018",
+    "TradingName": "Gunne Butchers UK Ltd",
+    "Address1": "Units 4 - 7",
+    "Address2": "Beeching Park Industrial Estate",
+    "Address3": "Wainwright Road",
+    "Town": "Bexhill-on-Sea",
+    "Postcode": "TN39 3UR",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1019",
+    "TradingName": "Fairfax Meadow Europe Limited ",
+    "Address1": "Unit 2 & 3",
+    "Address2": "Trafalgar Trading Estate",
+    "Address3": "",
+    "Town": "Enfield",
+    "Postcode": "EN3 7TY",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment", "Slaughter house"]
+  },
+  {
+    "AppNo": "1024",
+    "TradingName": "Thorner's of Somerset",
+    "Address1": "Bridge Farm Shop",
+    "Address2": "",
+    "Address3": "Pylle",
+    "Town": "Shepton Mallet",
+    "Postcode": "BA4 6TA",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1025",
+    "TradingName": "Gilders Transport Ltd (T/A Martins Meats)",
+    "Address1": "Unit 5",
+    "Address2": "Orchard Industrial Estate",
+    "Address3": "Toddington",
+    "Town": "Cheltenham",
+    "Postcode": "GL54 5EB",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1026",
+    "TradingName": "Simon D Hall Anne M Hall & John D Hall (T/A Halls Poultry)",
+    "Address1": "Rushyford Farm",
+    "Address2": "",
+    "Address3": "Rushyford",
+    "Town": "Ferryhill",
+    "Postcode": "DL17 0LJ",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1028",
+    "TradingName": "Swandean Fresh Meats Limited",
+    "Address1": "Swandean Fresh Meats Limited",
+    "Address2": "Manor Parade",
+    "Address3": "Salvington Road",
+    "Town": "Worthing",
+    "Postcode": "BN13 2JP",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1030",
+    "TradingName": "Castle Hill Meats Limited (T/A Burtons Catering Butchers)",
+    "Address1": "Unit 3",
+    "Address2": "Shire Hill",
+    "Address3": "",
+    "Town": "Saffron Walden",
+    "Postcode": "CB11 3AQ",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1037",
+    "TradingName": "Parkers Foodservice Ltd",
+    "Address1": "Unit X",
+    "Address2": "Rudford Industrial Estate",
+    "Address3": "Ford Road",
+    "Town": "Arundel",
+    "Postcode": "BN18 0BF",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1040",
+    "TradingName": "Vantage Foods Limited",
+    "Address1": "Unit P & Q",
+    "Address2": "Vantage Way",
+    "Address3": "",
+    "Town": "Poole",
+    "Postcode": "BH12 4NU",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1046",
+    "TradingName": "Northern Catering Butchers Ltd",
+    "Address1": "Unit 3",
+    "Address2": "Ashley Industrial Estate",
+    "Address3": "Rawmarsh Road",
+    "Town": "Rotherham",
+    "Postcode": "S60 1RU",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1049",
+    "TradingName": "Bredbury Catering Ltd",
+    "Address1": "Unit 3",
+    "Address2": "Hammond Avenue",
+    "Address3": "",
+    "Town": "Stockport",
+    "Postcode": "SK4 1PQ",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1052",
+    "TradingName": "Freshasia Foods Ltd",
+    "Address1": "Unit 21 & 27",
+    "Address2": "Hailey Road",
+    "Address3": "",
+    "Town": "Erith",
+    "Postcode": "DA18 4AA",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1057",
+    "TradingName": "Roofe Catering Butchers Ltd",
+    "Address1": "White Lodge Business Estate",
+    "Address2": "Hall Road",
+    "Address3": "",
+    "Town": "Norwich",
+    "Postcode": "NR4 6DG",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "8743",
+    "TradingName": "XPO Logistics",
+    "Address1": "EST DONCASTER DN4 5NP",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Doncaster",
+    "Postcode": "DN4",
+    "Country": "United Kingdom",
+    "All_Activities": ["Category 3"]
+  },
+  {
+    "AppNo": "1060",
+    "TradingName": "Ashlyn's Organics Ltd",
+    "Address1": "High Laver Hall",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Ongar",
+    "Postcode": "CM5 0DU",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1061",
+    "TradingName": "Bidfresh Ltd T/A Henson Meats",
+    "Address1": "2 Tom Cribb Road",
+    "Address2": "",
+    "Address3": "Woolwich",
+    "Town": "London",
+    "Postcode": "SE28 0FN",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "1065",
+    "TradingName": "Traymoor Ltd",
+    "Address1": "Kingston",
+    "Address2": "Matching Lane",
+    "Address3": "",
+    "Town": "White Roding",
+    "Postcode": "CM6 1RP",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
+  },
+  {
+    "AppNo": "626787",
+    "TradingName": "BRAKES",
+    "Address1": "ASH INDUSTRIAL ESTATE, FLEX MEADOW",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Harlow",
+    "Postcode": "SW1",
+    "Country": "United Kingdom",
+    "All_Activities": ["Exporter"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "FOOD-OTH",
+        "name": "Other establishments"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    }]
+  },
+  {
+    "AppNo": "800729",
+    "TradingName": "BRAKES",
+    "Address1": "FLEX MEADOW, PINNACLES WEST",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Harlow",
+    "Postcode": "SW1",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Stores"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "GEN",
+        "name": "General activity establishment - non-EU"
+      },
+      "activity": {
+        "code": "COLD_STORES",
+        "name": "Cold Stores"
+      },
+      "activityStatus": "NEW"
+    }]
+  },
+  {
+    "AppNo": "842886",
+    "TradingName": "BRAKES",
+    "Address1": "FLEX MEADOW, PINNACLES WEST SW1",
+    "Address2": "Harlow",
+    "Address3": "",
+    "Town": "Essex",
+    "Postcode": "CM19",
+    "Country": "United Kingdom",
+    "All_Activities": ["Exporter"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "non_animal_origin_food_and_feed",
+        "name": "Feed and Food of Non-Animal Origin"
+      },
+      "classification": {
+        "code": "NON_ANIMAL_ORIGIN_FOOD_AND_FEED",
+        "name": "Feed and Food of Non-Animal Origin"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    }]
+  },
+  {
+    "AppNo": "1067",
+    "TradingName": "Swannington Farm to Fork",
+    "Address1": "Woodlands Farm",
+    "Address2": "Church Lane",
+    "Address3": "Swannington",
+    "Town": "Norwich",
+    "Postcode": "NR9 5NN",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Re-Wrapping and repackaging establishment"]
+  },
+  {
+    "AppNo": "1068",
+    "TradingName": "Rox Meat Limited",
+    "Address1": "Unit 39",
+    "Address2": "Spray Street",
+    "Address3": "",
+    "Town": "Woolwich",
+    "Postcode": "SE18 6AP",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Re-Wrapping and repackaging establishment"]
+  },
+  {
+    "AppNo": "1069",
+    "TradingName": "Philip Dennis FoodService Limited (T/A Philip Dennis Foodservice)",
+    "Address1": "Unit 4",
+    "Address2": "Brannam Crescent",
+    "Address3": "Roundswell Business Park",
+    "Town": "Barnstaple",
+    "Postcode": "EX31 3TD",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store", "Cutting Plant", "Meat Preparation Establishment"]
+  },
+  {
+    "AppNo": "1072",
+    "TradingName": "Kazon Limited",
+    "Address1": "Unit 1",
+    "Address2": "61 Sutherland Road",
+    "Address3": "Walthamstow",
+    "Town": "London",
+    "Postcode": "E17 6BH",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cutting Plant"]
+  },
+  {
+    "AppNo": "1073",
+    "TradingName": "Clark & Son (Long Melford) Limited",
+    "Address1": "Unit 3 Cordell Works",
+    "Address2": "Cordell Road",
+    "Address3": "",
+    "Town": "Long Melford",
+    "Postcode": "CO10 9EH",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Store",
+      "Cutting Plant",
+      "Mince Meat Establishment"
+    ]
 
- },
- {
-   "AppNo": "GB BB 093",
-   "TradingName": "Macduff Shellfish (Scotland) Ltd",
-   "Address1": "Station Road",
-   "Address2": "Mintlaw",
-   "Address3": "Aberdeenshire",
-   "Town": "Mintlaw",
-   "Postcode": "AB42",
-   "Country": "United Kingdom",
-   "All_Activities": ["Dispatch centre - Food LBM, Processing plant - Food FFP"]
- },
- {
-   "AppNo": "MD 060",
-   "TradingName": "O'Toole International Logistics Ltd",
-   "Address1": "Unit 5 Sholto Crescent",
-   "Address2": "Righead Industrial Estate",
-   "Address3": "North Lanarkshire",
-   "Town": "Bellshill",
-   "Postcode": "ML4 3LX",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold stores - Food GEN"]
- },
- {
-   "AppNo": "HA 015",
-   "TradingName": "DFDS Logistics Limited",
-   "Address1": "Middleton Avenue Strutherhill Industrial Estate",
-   "Address2": "Larkhall",
-   "Address3": "South Lanarkshire",
-   "Town": "Larkhall",
-   "Postcode": "ML9 2TL",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold stores - Food GEN"]
- },
- {
-   "AppNo": "SA 102",
-   "TradingName": "Lerwick Fish Market",
-   "Address1": "Mair's Yard",
-   "Address2": "Lerwick",
-   "Address3": "Shetland Islands",
-   "Town": "Lerwick",
-   "Postcode": "ZE1 0PW",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing plant - Food FFP"]
- },
- {
-   "AppNo": "AA029",
-   "TradingName": "Colin Fraser Limited",
-   "Address1": "15 Raik Road",
-   "Address2": "Aberdeen",
-   "Address3": "Aberdeen",
-   "Town": "Aberdeen",
-   "Postcode": "AB11 5QL",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing plant - Food FFP"]
- },
- {
-   "AppNo": "AA087",
-   "TradingName": "A G D Duff and Partners Ltd",
-   "Address1": "2 Stell Road",
-   "Address2": "Aberdeen City",
-   "Address3": "Aberdeen",
-   "Town": "Aberdeen",
-   "Postcode": "AB11 5QR",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing plant - Food FFP"]
- },
- {
-   "AppNo": "AA107",
-   "TradingName": "Nolan Seafood (UK) Ltd",
-   "Address1": "Craigshaw Drive",
-   "Address2": "West Tullos Industrial Estate",
-   "Address3": "Aberdeen",
-   "Town": "Aberdeen",
-   "Postcode": "AB12 3AN",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing plant - Food FFP"]
- },
- {
-   "AppNo": "U1341318/ABP/OTHER",
-   "TradingName": "CC Moore & Co Ltd",
-   "Address1": "West Mill Farm Bait Centre",
-   "Address2": "West Mill Lane",
-   "Address3": "Stalbridge Sturminster Newton",
-   "Town": "Stalbridge",
-   "Postcode": "DT10 2RU",
-   "Country": "United Kingdom",
-   "All_Activities": ["Category 3 - Animal By-Products ABP-COL"]
- },
- {
-   "AppNo": "NO 006",
-   "TradingName": "Blackmore Vale Farm Cream Ltd",
-   "Address1": "Wincombe Lane",
-   "Address2": "Shaftesbury",
-   "Address3": "Dorset",
-   "Town": "Shaftesbury",
-   "Postcode": "SP7 8QD",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "2837",
-   "TradingName": "The Blackmore Vale Butchery",
-   "Address1": "Unit 1a Hardings Business Centre",
-   "Address2": "Bowbridge",
-   "Address3": "Henstridge",
-   "Town": "Bowbridge",
-   "Postcode": "BA8 0TF",
-   "Country": "United Kingdom",
-   "All_Activities": ["Cold Stores", "Re-wrapping Establishment", "Minced Meat Plant", "Meat Preparation Plant", "Cutting Plant", "Processing Plant"]
- },
- {
-   "AppNo": "OF 020",
-   "TradingName": "Noble Foods",
-   "Address1": "Cotswold Farm",
-   "Address2": "Standlake",
-   "Address3": "Oxfordshire",
-   "Town": "Standlake",
-   "Postcode": "OX29 7RB",
-   "Country": "United Kingdom",
-   "All_Activities": ["Egg-packing Centre", "Liquid Egg Plant"]
- },
- {
-   "AppNo": "PL 04191802WE",
-   "TradingName": "Gourmet House",
-   "Address1": "Fruit & Vegetable Market",
-   "Address2": "London",
-   "Address3": "London",
-   "Town": "London",
-   "Postcode": "SW8",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "FG 041",
-   "TradingName": "Gourmet House",
-   "Address1": "Fruit & Vegetable Market",
-   "Address2": "London",
-   "Address3": "London",
-   "Town": "London",
-   "Postcode": "SW8",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "2060",
-   "TradingName": "Karro Foods Ltd T/A Malton Bacon Factory",
-   "Address1": "Hugden Way",
-   "Address2": "Norton Grove Industrial Estate",
-   "Address3": "Malton",
-   "Town": "Malton",
-   "Postcode": "YO17 9HG",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant", "Category 3", "Cutting Plant", "Slaughterhouse", "Meat Preparation Plant", "Minced Meat Plant"]
- },
- {
-   "AppNo": "AA117",
-   "TradingName": "Skateraw Fisheries",
-   "Address1": "Old Ford Road",
-   "Address2": "Aberdeen",
-   "Address3": "Aberdeen",
-   "Town": "Aberdeen",
-   "Postcode": "AB11 5RL",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "AA140",
-   "TradingName": "Skateraw Fisheries",
-   "Address1": "18 South Esplanade West",
-   "Address2": "Aberdeen",
-   "Address3": "Aberdeen",
-   "Town": "Aberdeen",
-   "Postcode": "AB11 9AA",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "AD 093",
-   "TradingName": "Islay Crab Exports Limited",
-   "Address1": "The Shellfish Factory",
-   "Address2": "Glenegedale",
-   "Address3": "Isle of Islay, Argyll",
-   "Town": "Argyll and Bute",
-   "Postcode": "PA42 7AS",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "BB006",
-   "TradingName": "MJ French Fish (t/a Jack Taylor)",
-   "Address1": "West Shore Road Industrial Estate",
-   "Address2": "Fraserburgh",
-   "Address3": "Aberdeenshire",
-   "Town": "Fraserburgh",
-   "Postcode": "AB43 9LG",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "BB010",
-   "TradingName": "Seafood Sourcing Ltd.",
-   "Address1": "Harbour Road",
-   "Address2": "Fraserburgh",
-   "Address3": "Aberdeenshire",
-   "Town": "Fraserburgh",
-   "Postcode": "AB43 9TD",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "BB025",
-   "TradingName": "Enterfoods",
-   "Address1": "8 RECLAIMED GROUND HARBOUR ROAD",
-   "Address2": "Fraserburgh",
-   "Address3": "Aberdeenshire",
-   "Town": "Fraserburgh",
-   "Postcode": "AB43",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "BB027",
-   "TradingName": "Whitelink Seafoods Ltd",
-   "Address1": "Maxwell Place",
-   "Address2": "Fraserburgh",
-   "Address3": "Aberdeenshire",
-   "Town": "Fraserburgh",
-   "Postcode": "AB43 9SX",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "BB055",
-   "TradingName": "McConnell Seafoods Ltd",
-   "Address1": "Unit 9",
-   "Address2": "Volum Street",
-   "Address3": "Peterhead",
-   "Town": "Peterhead",
-   "Postcode": "AB42 1TZ",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "EB 007",
-   "TradingName": "J K Thomson",
-   "Address1": "Units 1-8 Eskmills Park",
-   "Address2": "Musselburgh",
-   "Address3": "East Lothian",
-   "Town": "Musselburgh",
-   "Postcode": "EH21",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "GA 050",
-   "TradingName": "Marine Products Scotland",
-   "Address1": "25 Mossend Lane",
-   "Address2": "Glasgow",
-   "Address3": "Glasgow City",
-   "Town": "Glasgow",
-   "Postcode": "G33 4DD",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "GA 108",
-   "TradingName": "Scot West Shellfish Ltd",
-   "Address1": "Block E Unit 5",
-   "Address2": "130 Blochairn Road",
-   "Address3": "Glasgow City",
-   "Town": "Glasgow",
-   "Postcode": "G21 2DU",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "KD 008",
-   "TradingName": "Scotprime Seafoods Ltd",
-   "Address1": "11 Whitfield Drive",
-   "Address2": "Ayr",
-   "Address3": "South Ayrshire",
-   "Town": "Ayr",
-   "Postcode": "KA8 9RZ",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "KD 040",
-   "TradingName": "Caladero Scotland Ltd",
-   "Address1": "Unit 1, Freeport, Shawfarm Road",
-   "Address2": "Prestwick",
-   "Address3": "South Ayrshire",
-   "Town": "Prestwick",
-   "Postcode": "KA9 2TR",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing Plant"]
- },
- {
-   "AppNo": "MN 100",
-   "TradingName": "Exton Foods",
-   "Address1": "Units 5 and 6 Caldey Road",
-   "Address2": "",
-   "Address3": "",
-   "Town": "Manchester",
-   "Postcode": "M23 9GE",
-   "Country": "United Kingdom",
-   "All_Activities": ["Processing plant - food (MPP)","Establishment - food (FOOD-OTH)"]
- }
+  },
+  {
+    "AppNo": "PA-TEC-0019",
+    "TradingName": "Jackson ImmunoResearch Labs Inc",
+    "Address1": "872 West Baltimore Pike",
+    "Address2": "Chester County",
+    "Address3": "Pennsylvania",
+    "Town": "West Grove",
+    "Postcode": "19390",
+    "Country": "United States of America (the)",
+    "All_Activities": ["Category 1 - Animal By-Products ABP-BBL",
+      "Category 3 - Animal By-Products ABP-BBL",
+      "Category 3 - Animal By-Products ABP-COL"
+    ]
+
+  },
+  {
+    "AppNo": "GB BB 093",
+    "TradingName": "Macduff Shellfish (Scotland) Ltd",
+    "Address1": "Station Road",
+    "Address2": "Mintlaw",
+    "Address3": "Aberdeenshire",
+    "Town": "Mintlaw",
+    "Postcode": "AB42",
+    "Country": "United Kingdom",
+    "All_Activities": ["Dispatch centre - Food LBM, Processing plant - Food FFP"]
+  },
+  {
+    "AppNo": "MD 060",
+    "TradingName": "O'Toole International Logistics Ltd",
+    "Address1": "Unit 5 Sholto Crescent",
+    "Address2": "Righead Industrial Estate",
+    "Address3": "North Lanarkshire",
+    "Town": "Bellshill",
+    "Postcode": "ML4 3LX",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold stores - Food GEN"]
+  },
+  {
+    "AppNo": "HA 015",
+    "TradingName": "DFDS Logistics Limited",
+    "Address1": "Middleton Avenue Strutherhill Industrial Estate",
+    "Address2": "Larkhall",
+    "Address3": "South Lanarkshire",
+    "Town": "Larkhall",
+    "Postcode": "ML9 2TL",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold stores - Food GEN"]
+  },
+  {
+    "AppNo": "SA 102",
+    "TradingName": "Lerwick Fish Market",
+    "Address1": "Mair's Yard",
+    "Address2": "Lerwick",
+    "Address3": "Shetland Islands",
+    "Town": "Lerwick",
+    "Postcode": "ZE1 0PW",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing plant - Food FFP"]
+  },
+  {
+    "AppNo": "AA029",
+    "TradingName": "FRIGO BREDA WAREHOUSING BV",
+    "Address1": "IABC 5257",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Breda",
+    "Postcode": "4814",
+    "Country": "UNetherlands (the)",
+    "All_Activities": ["Importer"]
+  },
+  {
+    "AppNo": "AA029",
+    "TradingName": "Colin Fraser Limited",
+    "Address1": "15 Raik Road",
+    "Address2": "Aberdeen",
+    "Address3": "Aberdeen",
+    "Town": "Aberdeen",
+    "Postcode": "AB11 5QL",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing plant - Food FFP"]
+  },
+  {
+    "AppNo": "AA087",
+    "TradingName": "A G D Duff and Partners Ltd",
+    "Address1": "2 Stell Road",
+    "Address2": "Aberdeen City",
+    "Address3": "Aberdeen",
+    "Town": "Aberdeen",
+    "Postcode": "AB11 5QR",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing plant - Food FFP"]
+  },
+  {
+    "AppNo": "AA107",
+    "TradingName": "Nolan Seafood (UK) Ltd",
+    "Address1": "Craigshaw Drive",
+    "Address2": "West Tullos Industrial Estate",
+    "Address3": "Aberdeen",
+    "Town": "Aberdeen",
+    "Postcode": "AB12 3AN",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing plant - Food FFP"]
+  },
+  {
+    "AppNo": "U1341318/ABP/OTHER",
+    "TradingName": "CC Moore & Co Ltd",
+    "Address1": "West Mill Farm Bait Centre",
+    "Address2": "West Mill Lane",
+    "Address3": "Stalbridge Sturminster Newton",
+    "Town": "Stalbridge",
+    "Postcode": "DT10 2RU",
+    "Country": "United Kingdom",
+    "All_Activities": ["Category 3 - Animal By-Products ABP-COL"]
+  },
+  {
+    "AppNo": "NO 006",
+    "TradingName": "Blackmore Vale Farm Cream Ltd",
+    "Address1": "Wincombe Lane",
+    "Address2": "Shaftesbury",
+    "Address3": "Dorset",
+    "Town": "Shaftesbury",
+    "Postcode": "SP7 8QD",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "2837",
+    "TradingName": "The Blackmore Vale Butchery",
+    "Address1": "Unit 1a Hardings Business Centre",
+    "Address2": "Bowbridge",
+    "Address3": "Henstridge",
+    "Town": "Bowbridge",
+    "Postcode": "BA8 0TF",
+    "Country": "United Kingdom",
+    "All_Activities": ["Cold Stores", "Re-wrapping Establishment", "Minced Meat Plant", "Meat Preparation Plant", "Cutting Plant", "Processing Plant"]
+  },
+  {
+    "AppNo": "OF 020",
+    "TradingName": "Noble Foods",
+    "Address1": "Cotswold Farm",
+    "Address2": "Standlake",
+    "Address3": "Oxfordshire",
+    "Town": "Standlake",
+    "Postcode": "OX29 7RB",
+    "Country": "United Kingdom",
+    "All_Activities": ["Egg-packing Centre", "Liquid Egg Plant"]
+  },
+  {
+    "AppNo": "PL 04191802WE",
+    "TradingName": "Gourmet House",
+    "Address1": "Fruit & Vegetable Market",
+    "Address2": "London",
+    "Address3": "London",
+    "Town": "London",
+    "Postcode": "SW8",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "FG 041",
+    "TradingName": "Gourmet House",
+    "Address1": "Fruit & Vegetable Market",
+    "Address2": "London",
+    "Address3": "London",
+    "Town": "London",
+    "Postcode": "SW8",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "2060",
+    "TradingName": "Karro Foods Ltd T/A Malton Bacon Factory",
+    "Address1": "Hugden Way",
+    "Address2": "Norton Grove Industrial Estate",
+    "Address3": "Malton",
+    "Town": "Malton",
+    "Postcode": "YO17 9HG",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant", "Category 3", "Cutting Plant", "Slaughterhouse", "Meat Preparation Plant", "Minced Meat Plant"]
+  },
+  {
+    "AppNo": "AA117",
+    "TradingName": "Skateraw Fisheries",
+    "Address1": "Old Ford Road",
+    "Address2": "Aberdeen",
+    "Address3": "Aberdeen",
+    "Town": "Aberdeen",
+    "Postcode": "AB11 5RL",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "AA140",
+    "TradingName": "Skateraw Fisheries",
+    "Address1": "18 South Esplanade West",
+    "Address2": "Aberdeen",
+    "Address3": "Aberdeen",
+    "Town": "Aberdeen",
+    "Postcode": "AB11 9AA",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "AD 093",
+    "TradingName": "Islay Crab Exports Limited",
+    "Address1": "The Shellfish Factory",
+    "Address2": "Glenegedale",
+    "Address3": "Isle of Islay, Argyll",
+    "Town": "Argyll and Bute",
+    "Postcode": "PA42 7AS",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "BB006",
+    "TradingName": "MJ French Fish (t/a Jack Taylor)",
+    "Address1": "West Shore Road Industrial Estate",
+    "Address2": "Fraserburgh",
+    "Address3": "Aberdeenshire",
+    "Town": "Fraserburgh",
+    "Postcode": "AB43 9LG",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "BB010",
+    "TradingName": "Seafood Sourcing Ltd.",
+    "Address1": "Harbour Road",
+    "Address2": "Fraserburgh",
+    "Address3": "Aberdeenshire",
+    "Town": "Fraserburgh",
+    "Postcode": "AB43 9TD",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "BB025",
+    "TradingName": "Enterfoods",
+    "Address1": "8 RECLAIMED GROUND HARBOUR ROAD",
+    "Address2": "Fraserburgh",
+    "Address3": "Aberdeenshire",
+    "Town": "Fraserburgh",
+    "Postcode": "AB43",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "BB027",
+    "TradingName": "Whitelink Seafoods Ltd",
+    "Address1": "Maxwell Place",
+    "Address2": "Fraserburgh",
+    "Address3": "Aberdeenshire",
+    "Town": "Fraserburgh",
+    "Postcode": "AB43 9SX",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "BB055",
+    "TradingName": "McConnell Seafoods Ltd",
+    "Address1": "Unit 9",
+    "Address2": "Volum Street",
+    "Address3": "Peterhead",
+    "Town": "Peterhead",
+    "Postcode": "AB42 1TZ",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "EB 007",
+    "TradingName": "J K Thomson",
+    "Address1": "Units 1-8 Eskmills Park",
+    "Address2": "Musselburgh",
+    "Address3": "East Lothian",
+    "Town": "Musselburgh",
+    "Postcode": "EH21",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "GA 050",
+    "TradingName": "Marine Products Scotland",
+    "Address1": "25 Mossend Lane",
+    "Address2": "Glasgow",
+    "Address3": "Glasgow City",
+    "Town": "Glasgow",
+    "Postcode": "G33 4DD",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "GA 108",
+    "TradingName": "Scot West Shellfish Ltd",
+    "Address1": "Block E Unit 5",
+    "Address2": "130 Blochairn Road",
+    "Address3": "Glasgow City",
+    "Town": "Glasgow",
+    "Postcode": "G21 2DU",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "KD 008",
+    "TradingName": "Scotprime Seafoods Ltd",
+    "Address1": "11 Whitfield Drive",
+    "Address2": "Ayr",
+    "Address3": "South Ayrshire",
+    "Town": "Ayr",
+    "Postcode": "KA8 9RZ",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "KD 040",
+    "TradingName": "Caladero Scotland Ltd",
+    "Address1": "Unit 1, Freeport, Shawfarm Road",
+    "Address2": "Prestwick",
+    "Address3": "South Ayrshire",
+    "Town": "Prestwick",
+    "Postcode": "KA9 2TR",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant"]
+  },
+  {
+    "AppNo": "MN 100",
+    "TradingName": "Exton Foods",
+    "Address1": "Units 5 and 6 Caldey Road",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Manchester",
+    "Postcode": "M23 9GE",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing plant - food (MPP)", "Establishment - food (FOOD-OTH)"]
+  }
 
 ]

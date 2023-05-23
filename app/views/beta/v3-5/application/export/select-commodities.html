@@ -24,7 +24,7 @@ Select a commodity – {{super()}}
     <form class="" method="post">
       <h1 class="govuk-heading-xl">Select a commodity for this export</h1>
       
-      <p  id="commodity-code-hint">The commodity code must be between 4 and 8  numbers. If your usual commodity code is longer, select a commodity code that contains the first 6 or 8 numbers</p>
+      <p  id="commodity-code-hint" class="govuk-hint">The commodity code must be between 4 and 8  numbers. If your usual commodity code is longer, select a commodity code that contains the first 6 or 8 numbers</p>
       {% if data.certificates[ehc].commodities | length > 15 %}
       <div class="govuk-form-group"><label class="govuk-label" for="filter-commodities"> Filter commodities </label>
         
@@ -130,7 +130,8 @@ Select a commodity – {{super()}}
     
       {% endif %}
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-      <p>If you cannot find your commodity code contact the person who raises the CHED or importer to agree the best commodity code.</p>
+      <!-- <p>If you cannot find your commodity code contact the person who raises the CHED or importer to agree the best commodity code.</p> -->
+      <p>If you cannot find the commodity code for your consignment, contact your importer.</p>
       <div class="govuk-button-group" type="submit">
         <button class="govuk-button" id="add-export">Save and continue</button>
         <!---->

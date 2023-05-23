@@ -2,6 +2,8 @@
 
 {% set establishmentType = id %}
 {% set establishmentApprovalNumber = identification[establishmentType] %}
+
+<!-- // new classification, however some establishments have not been updated. for consistancy there are two ways of showing the activity.  -->
 {% set establishmentActivity = identification[id+"Activity"] %}
 {% set establishmentIndex = null %}
 
@@ -33,8 +35,8 @@
   
   <!-- change to the plant / center label. To keep old versions update the label in each version. -->
   {% if field.id == "plantEstablishmentCentreActivity" %}
-  {% set searchLabel = "Additional manufacturing plant" %}
-  {% set notEstablishmentLink = "Select another establishment"%}
+  {% set searchLabel = "Additional establishment" %}
+  {% set notEstablishmentLink = "Select an additional establishment"%}
   
   {% endif %}
   {{searchLabel}} {% if isRequired == "no"%}(optional){% endif %}
@@ -103,7 +105,8 @@
 
     <div class="app-find-establishment-actions">
       <p class="govuk-!-margin-0">
-        <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&establishmentApprovalNumber={{ establishmentApprovalNumber }}" class="govuk-link">Select an activity</a>
+          <a href="../find/remove-establishment?certID={{ certID }}&commodityListID={{ commodityListID }}&changeID={{ commodityID }}&establishmentType={{ establishmentType }}&random={{ 100000 | randomNumberGenerator }}" style="display:inline-block;">Remove</a>
+        <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&establishmentApprovalNumber={{ establishmentApprovalNumber }}" class="govuk-link" style="display:inline-block;">Select an activity</a>
       </p>
     </div>
 

@@ -448,13 +448,14 @@ module.exports = function(router) {
   }
 
   router.post('/' + base_url + 'application/find/results', function(req, res) {
-
+    console.log(" ")
+    console.log("---- results post---- ")
     let certId = req.body.addedEHC_certId;
     let addedCommoditiesId = req.body.addedEHC_addedCommoditiesId;
     let identificationsId = req.body.addedEHC_identificationsId;
     let establishmentType = req.body.addedEHC_establishmentType;
     let establishmentIndex = parseInt(req.body.establishmentIndex);
-
+    console.log(establishmentIndex)
     if (establishmentIndex) {
       console.log("We have an establishmentIndex");
       console.log("Getting identification data");
@@ -477,7 +478,7 @@ module.exports = function(router) {
        } else {
          identification.incomplete = [];
        }
-
+       console.log(establishment.All_Activities)
 
       if (establishment.All_Activities.length == 1) {
         // select the index and redirect

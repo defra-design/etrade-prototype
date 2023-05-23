@@ -2,7 +2,7 @@
     "number": "EHC8370",
     "manufacturingPlant": "yes",
     "title": "Fresh meat, excluding mechanically separated meat, of domestic porcine animals to the European Union and Northern Ireland",
-    "natureOfCommodity": ["Animal","Apiculture by-products","Apiculture products for HC","Aquarium","Bile","Biodiesel","Biogas","Blood","Blood and blood products from equidae","Blood products / feedingstuff","Blood products / technical","Blood products for feeding purposes","Blood products for technical purposes","Bone","Bones, horns, hooves and products thereof","Bowels","Breeding eggs","By-products / feedingstuff","By-products / technical","Canned petfood","CARCASS_QUARTERS","CARCASS_SIDE","CARCASS_WHOLE","Casing","Catering waste","Collagen","Colostrum","Composite products","Compost after composting","consumption","Cosmetic products","CUTS","Dairy","Dicalcium phosphate","Digestion residues from biogas production other than biogas","Digestive tract content","Domestic","Dried Noodles","Edible Collagen","Egg Products","Egg products for HC","Embryos","Farmed game","Farmed stock","Fat derivatives","Feathers","Feed additives and premixtures","Feed production (please specify)","Fertilisers other than COMR, BIOR, MANU, MANP","Fishery products","FISHERY_PRODUCTS_CANNED","FISHERY_PRODUCTS_NOT_CANNED","flavouring innards","Flavouring innards for petfood","Fresh Meat","Game","Game trophies","Gelatine","Gelatine/collagen for HC","Hatching eggs","HC, preserved at ambient temperature","HC, preserved at frozen/chilled temperature","Hides","Highly refined products for HC","horns/hooves","HTST simple","HTST,Sterilisation,UHT","human consumption","hydrolised proteins","Hydrolysed protein","Insects for HC","Insects including maggots and worms","Jelly royal","Large farmed game","Large wild game","Material collected from waste water treatment","Material of category 1","Material of category 2","Material of category 3","Meat and bone meal (Category 1, 2)","meat preparations","meat products","Medical devices","milk based products","Milk, colostrum and derived products from milk and colostrum","Minced Meat","Non edible collagen","non human consumption","OFFAL","ORGANIC","Other","Other unprocessed ABP","Others","Ova-embryos","ovoproducts","Pasteurized","Petfood: dogchews","Pharmaceutical products","Powder","Powder bones","Processed animal protein (Category 3; indicate animal species)","processed manure","Processed manure and manure products","Processed petfood other than canned petfood","product in capsules","Products of animal origin/ no longer for human consumption","Products produced by bees","Raw hides and skins","Raw material for HC gelatine/collagen","Raw material for processing of gelatine and collagen","Raw milk","Raw petfood","Rendered fat for HC","Rendered fat from ABP for oleochemical purposes","Rendered fats and fish oil for feeding","Rendered fats and fish oil for purposes other than for feeding or for oleochemical purposes","Semen","Small feathered farmed game","Small feathered wild game","Small wild game","SPF","Sterilization","Treated hides and skins","Treated Raw material for processing of gelatine and collagen","Tricalcium phosphate","UHT","Unprocessed manure","Whole bodies of dead animals (cadavers)","Wild game","Wild stock","wool, hair, pig bristles, feathers"],
+    "natureOfCommodity": ["Carcass_quarters","Carcass_side","Carcass_whole","Cuts"],
     "treatmentType" : ["A = 0 T°C","Animal by-products of category 1","Animal by-products of category 2","B = Fo>=3°","bone in","C = T>=80°","Chilled","Combined heat treatment","cooked","D = T>=70°C","deboned","dried","E = Aw<=0.93+Ph<=6","eviscerated","F = T>=65°C pv=40","Fresh","frozen","Homogenisation","In shell","Live","matured","minced","No thermal treatment","Otherwise processed","pasteurisation","Plucked","prepared","preserved","processed","Raw milk","Roasted","salted","shelled","Single heat treatment","Skinned","smoked","sterilisation","Treated","UHT","Ultrafiltration","Ultrasonication","uneviscerated","Unplucked","unskinned"],
     "batchNumber": "yes",
     "netWeight": "yes",
@@ -11,33 +11,32 @@
     "schema": [
       { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
       { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
-      { "id": "species", "title": "Species", "required" : "yes", "type" : "text", "error" : "Species name is invalid"},
-      { "id": "coldStore", "title": "Cold store", "required" : "no", "type" : "search"},
-      { "id": "coldStoreActivity", "title": "Cold store activity", "required" : "no", "type" : "string"},
-      { "id": "identificationMark", "title": "Identification mark", "required" : "yes", "type" : "text", "error" : "Identification mark is a required field"},
-      { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+      
+     
+     
       { "id": "packageCount_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
-      { "id": "netWeight", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
-      { "id": "netWeight_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+      
       { "id": "slaughterhouse", "title": "Slaughterhouse", "required" : "yes", "type" : "search", "error" : "Slaughterhouse is a required field - please enter a valid approval number"},
       { "id": "slaughterhouseActivity", "title": "Slaughterhouse activity", "required" : "yes", "type" : "string", "error" : "Slaughterhouse activity is a required field - please select a valid activity"},
-
+      { "id": "cuttingPlant", "title": "Cutting plant", "required" : "yes", "type" : "search", "error" : "Cutting plant is a required field - please enter a valid approval number"},
+      { "id": "cuttingPlantActivity", "title": "Cutting plant activity", "required" : "yes", "type" : "string", "error" : "Cutting plant activity is a required field - please select a valid activity"},
+      { "id": "coldStore", "title": "Cold store", "required" : "yes", "type" : "search"},
+      { "id": "coldStoreActivity", "title": "Cold store activity", "required" : "no", "type" : "string"},
       { "id": "treatmentType", "title": "Treatment type", "required" : "yes", "type" : "dropdown", "error" : "Select a valid treatment type from the list"},
       { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "dropdown" : "string", "error" : "Nature of commodity is a required field"},
 
+      { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+      { "id": "netWeight", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+      { "id": "netWeight_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
       { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "text", "error" : "Batch number is required"},
-      { "id": "finalConsumer", "title": "Final consumer", "required" : "no", "type" : "radio"},
-      { "id": "dateOfCollectionProduction", "title": "Date of collection / production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of collection / production"},
-      { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
-      { "id": "manufacturingPlantActivity", "title": "Manufacturing plant activity", "required" : "yes", "type" : "string", "error" : "Manufacturing plant activity is a required field - please select a valid activity"},
-      { "id": "plantEstablishmentCentre", "title": "Plant / establishment / centre", "required" : "yes", "type" : "search", "error" : "Plant / establishment / centre is a required field - please enter a valid approval number"},
-      { "id": "plantEstablishmentCentreActivity", "title": "Plant / establishment / centre", "required" : "yes", "type" : "string", "error" : "Plant / establishment / centre activity is a required field - please select a valid activity"},
+
+
       { "id": "dateOfFreezing", "title": "Date of freezing", "required" : "no", "type": "excel_date"},
-      { "id": "freezingDateRange", "title": "Freezing date range", "required" : "no", "type": "string"},
-      { "id": "cuttingPlant", "title": "Cutting plant", "required" : "yes", "type" : "search", "error" : "Cutting plant is a required field - please enter a valid approval number"},
-      { "id": "cuttingPlantActivity", "title": "Cutting plant activity", "required" : "yes", "type" : "string", "error" : "Cutting plant activity is a required field - please select a valid activity"},
+      { "id": "freezingDateRange", "title": "Freezing date range", "required" : "no", "type": "string","multiple": "yes"},
+     
       { "id": "quantity", "title": "Quantity", "required" : "no", "type" : "decimal"},
-      { "id": "quantity_UNIT", "title": "Quantity unit", "required" : "no", "type" : "string"}
+      { "id": "quantity_UNIT", "title": "Quantity unit", "required" : "no", "type" : "string"},
+      { "id": "species", "title": "Species", "required" : "yes", "type" : "text", "error" : "Species name is invalid"}
 
     ],
     "commodities": [{"code":"1501","title":" Pig fat (including lard) and poultry fat, other than that of heading|0209|or 1503"},{"code":"04109000","title":" Other"},{"code":"02063000","title":" Of swine, fresh or chilled"},{"code":"02091090","title":" Pig fat, other than that of subheading 0209|10|11|or 0209|10|19"},{"code":"05040000","title":" Guts, bladders and stomachs of animals (other than fish), whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"},{"code":"15011090","title":" for human consumption."},{"code":"15012090","title":" for human consumption."},{"code":"02031110","title":" Of domestic swine"},{"code":"02032110","title":" Of domestic swine"},{"code":"02064100","title":" Livers"},{"code":"02064900","title":" Other than livers,"},{"code":"02091011","title":" Fresh, chilled, frozen, salted or in brine"},{"code":"02091019","title":" Dried or smoked"},{"code":"02031211","title":" Hams and cuts thereof"},{"code":"02031219","title":" Shoulders and cuts thereof"},{"code":"02031955","title":" Boneless"},{"code":"02031959","title":" Other than 02031911; 02031913; 02031915; 02031955"},{"code":"02031911","title":" Fore-ends and cuts thereof"},{"code":"02031913","title":" Loins and cuts thereof, with bone in"},{"code":"02031915","title":" Bellies (streaky) and cuts thereof"},{"code":"02032211","title":" Hams and cuts thereof"},{"code":"02032219","title":" Shoulders and cuts thereof"},{"code":"02032911","title":" Fore-ends and cuts thereof"},{"code":"02032913","title":" Loins and cuts thereof, with bone in"},{"code":"02032915","title":" Bellies (streaky) and cuts thereof"},{"code":"02032955","title":" Boneless"},{"code":"02032959","title":" Other than 02032911; 02032913; 02032915; 02032955;"}]
