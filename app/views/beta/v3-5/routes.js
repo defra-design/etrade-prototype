@@ -500,8 +500,8 @@ module.exports = function(router) {
         if (!identification.incomplete || (identification.incomplete.length == 0)) {
           identification.isIncomplete = false;
         }
-
-        res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+        // res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+        res.redirect(301, '/' + base_url + 'application/export/commodity?commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
       } else {
         // prompt the user to select an activity
         res.redirect(301, '/' + base_url + 'application/find/activity-select?certId=' + certId + '&addedCommoditiesId=' + addedCommoditiesId + '&identificationsId=' + identificationsId + '&establishmentType=' + establishmentType + '&establishmentIndex=' + establishmentIndex);
@@ -582,7 +582,9 @@ module.exports = function(router) {
 
 
       // redirect
-      res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+      // Removed the change=yes from the URL redirect as it was causeing the UI to think it was changining an existing commodity, not sure what this was supposed to do
+      // res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+      res.redirect(301, '/' + base_url + 'application/export/commodity?commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
     } else {
         console.log("Missing required activityName radio button value");
         // ?certId=0&addedCommoditiesId=2&identificationsId=0&establishmentType=manufacturingPlant&establishmentIndex=40

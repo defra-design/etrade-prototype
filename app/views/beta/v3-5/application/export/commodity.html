@@ -136,7 +136,7 @@ Manage commodity data - {{super()}}
 <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-full">
         <span class="govuk-caption-xl">{{ cert.number or "test" }}</span>
-        <h1 class="govuk-heading-xl">{% if query.change and query.new %}Add{% else %}Change{% endif %} commodity data</h1>
+        <h1 class="govuk-heading-xl">{% if not query.change or query.new %}Add{% else %}Change{% endif %} commodity data</h1>
         <form method="post">
             <input type="hidden" name="ehc" value="{{cert.number}}">
             <input type="hidden" name="commodity_id" value="{{commodityID}}">
