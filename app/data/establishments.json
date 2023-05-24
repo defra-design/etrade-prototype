@@ -68,6 +68,47 @@
 
   },
   {
+    "AppNo": "WD028",
+    "TradingName": "McLelland Cheese Packing",
+    "Address1": "Commerce road",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Stranraer",
+    "Postcode": "DG9 7DA",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing Plant","Exporter"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "MMP",
+        "name": "Raw Milk, Dairy Products, Colostrum and Colostrum-based Products"
+      }, 
+      "activity": {
+        "code": "PROCESSING_PLANT",
+        "name": "Processing Plant"
+      },
+      "activityStatus": "VALID"
+    },{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "FOOD-OTH",
+        "name": "Other establishments"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    }]
+
+  },
+  {
     "AppNo": "DU/000002535",
     "TradingName": "Karan Handels GMBH",
     "Address1": "Burdericher str 5",
@@ -181,7 +222,7 @@
     ]
   },
   {
-    "AppNo": "GB5513",
+    "AppNo": "5513",
     "TradingName": "WOODHEAD BROS",
     "Address1": "Brunel Road Wardentree Industrial Estate",
     "Address2": "",

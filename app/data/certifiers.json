@@ -24,6 +24,19 @@
       }
     },
     {
+      "name": "Carmelo Cantera",
+      "practiceName": "Carmelo Cantera",
+      "organisationId": "9503f5dc-b4f4-e911-a813-000d3a20f3f8",
+      "allowInspection": "Yes",
+      "address": {
+        "line1": "34 Lache Hall Crescent",
+        "line2": "Chester",
+        "line3": "Cheshire",
+        "postCode": "CH4 7NF"
+      }
+    },
+   
+    {
       "name": "Defra Vets test 123  m11 3np  ",
       "practiceName": "Defra Vets",
       "organisationId": "c1fa7b9a-72d4-e911-a974-000d3a28d1a0",

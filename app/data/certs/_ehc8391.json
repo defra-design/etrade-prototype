@@ -1,0 +1,99 @@
+{
+  "number": "EHC8391",
+  "title": "Honey and other apiculture products intended for human consumption to the European Union and Northern Ireland",
+  "treatmentType": ["A = 0 t°c","Animal by-products of category 1","Animal by-products of category 2","B = fo&gt;=3°","Bone in","C = t&gt;=80°","Chilled","Combined heat treatment","Cooked","D = t&gt;=70°c","Deboned","Dried","E = aw&lt;=0.93+ph&lt;=6","Eviscerated","F = t&gt;=65°c pv=40","Fresh","Frozen","Homogenisation","In shell","Live","Matured","Minced","No thermal treatment","Otherwise processed","Pasteurisation","Plucked","Prepared","Preserved","Processed","Raw milk","Roasted","Salted","Shelled","Single heat treatment","Skinned","Smoked","Sterilisation","Treated","Uht","Ultrafiltration","Ultrasonication","Uneviscerated","Unplucked","Unskinned"],
+  "species": ["Apis mellifera"],
+  "schema": [
+    { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
+    { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
+    { "id": "coldStore", "title": "Cold store", "required" : "no", "type" : "search"},
+    { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+    { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
+    { "id": "packageCount_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
+    { "id": "identificationMark", "title": "Identification mark", "required" : "yes", "type" : "text", "error" : "Missing identification mark"},
+    { "id": "netWeight", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
+    { "id": "netWeight_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
+    { "id": "treatmentType", "title": "Treatment type", "required" : "yes", "type" : "dropdown", "error" : "Select a valid treatment type from the list"},
+    { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "text", "error" : "Batch number is required","multiple": "yes"},
+    { "id": "finalConsumer", "title": "Final consumer", "required" : "yes", "type" : "radio", "error" : "Select a valid response for Final consumer from the list"},
+    { "id": "dateOfCollectionProduction", "title": "Date of collection / production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of collection / production", "multiple" : "yes"},
+    { "id": "species", "title": "Species", "required" : "yes", "type" : "dropdown", "error" : "Species name is invalid"}
+  ],
+  "goodsCertifiedAs":["Human consumption"],
+  "commodities": [{
+    "code": "020760",
+    "title": " Of guinea fowls"
+  }, {
+    "code": "020890",
+    "title": " Other"
+  }, {
+    "code": "04109000",
+    "title": " Other"
+  }, {
+    "code": "020741",
+    "title": " Not cut in pieces, fresh or chilled"
+  }, {
+    "code": "020742",
+    "title": " Not cut in pieces, frozen"
+  }, {
+    "code": "020744",
+    "title": " Other, fresh or chilled"
+  }, {
+    "code": "020745",
+    "title": " Other, frozen"
+  }, {
+    "code": "020751",
+    "title": " Not cut in pieces, fresh or chilled"
+  }, {
+    "code": "020752",
+    "title": " Not cut in pieces, frozen"
+  }, {
+    "code": "020754",
+    "title": " Other, fresh or chilled"
+  }, {
+    "code": "020755",
+    "title": " Other, frozen"
+  }, {
+    "code": "020711",
+    "title": " Not cut in pieces, fresh or chilled"
+  }, {
+    "code": "020712",
+    "title": " Not cut in pieces, frozen"
+  }, {
+    "code": "020713",
+    "title": " Cuts and offal, fresh or chilled"
+  }, {
+    "code": "020714",
+    "title": " Cuts and offal, frozen"
+  }, {
+    "code": "020724",
+    "title": " Not cut in pieces, fresh or chilled"
+  }, {
+    "code": "020725",
+    "title": " Not cut in pieces, frozen"
+  }, {
+    "code": "020726",
+    "title": " Cuts and offal, fresh or chilled"
+  }, {
+    "code": "020727",
+    "title": " Cuts and offal, frozen"
+  }, {
+    "code": "02089010",
+    "title": " Of domestic pigeons"
+  }, {
+    "code": "02089030",
+    "title": " Of game, other than of rabbits or hares"
+  }, {
+    "code": "02089098",
+    "title": " Other"
+  }, {
+    "code": "05040000",
+    "title": " Guts, bladders and stomachs of animals (other than fish), whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"
+  }, {
+    "code": "02074300",
+    "title": " Fatty livers, fresh or chilled"
+  }, {
+    "code": "02075300",
+    "title": " Fatty livers, fresh or chilled"
+  }]
+}
