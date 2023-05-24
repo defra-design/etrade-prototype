@@ -103,8 +103,24 @@
     "Town": "Stranraer",
     "Postcode": "DG9 7DA",
     "Country": "United Kingdom",
-    "All_Activities": ["Processing Plant","Exporter"],
-    "activityClassifications": [{
+    "All_Activities": ["Cold Stores","Processing Plant","Exporter"],
+    "activityClassifications": [
+      {
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "GEN",
+        "name": "General activity establishment"
+      }, 
+      "activity": {
+        "code": "COLD_STORES",
+        "name": "Cold stores"
+      },
+      "activityStatus": "VALID"
+    },
+      {
       "classificationGroup": {
         "code": "food",
         "name": "Food"
@@ -518,7 +534,7 @@
     "Town": "Pontefract",
     "Postcode": "WF8 3DD",
     "Country": "United Kingdom",
-    "All_Activities": ["Cold Store - food GEN", "Cutting Plant - food PM", "Mince Meat Establishment - food MM", "Processing Plant - food MPP", "Slaughterhouse - food PM", "Meat Preparation Establishment - food MM"],
+    "All_Activities": ["Cold Store - food GEN", "Cutting Plant - food PM", "Mince Meat Establishment - food MM", "Processing Plant - food MPP", "Slaughterhouse - food PM", "Meat Preparation Establishment - food MM","Processing plant","Exporter"],
     "activityClassifications": [{
         "classificationGroup": {
           "code": "animal_byproducts",
@@ -531,6 +547,36 @@
         "activity": {
           "code": "CATEGORY_3",
           "name": "Category 3"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "FOOD-OTH",
+        "name": "Other establishments"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "RPM",
+          "name": "Meat products"
+        },
+        "activity": {
+          "code": "PROCESSING_PLANT",
+          "name": "Processing Plant"
         },
         "activityStatus": "VALID"
       },
