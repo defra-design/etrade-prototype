@@ -3,6 +3,7 @@
   "title": "Honey and other apiculture products intended for human consumption to the European Union and Northern Ireland",
   "treatmentType": ["A = 0 t°c","Animal by-products of category 1","Animal by-products of category 2","B = fo&gt;=3°","Bone in","C = t&gt;=80°","Chilled","Combined heat treatment","Cooked","D = t&gt;=70°c","Deboned","Dried","E = aw&lt;=0.93+ph&lt;=6","Eviscerated","F = t&gt;=65°c pv=40","Fresh","Frozen","Homogenisation","In shell","Live","Matured","Minced","No thermal treatment","Otherwise processed","Pasteurisation","Plucked","Prepared","Preserved","Processed","Raw milk","Roasted","Salted","Shelled","Single heat treatment","Skinned","Smoked","Sterilisation","Treated","Uht","Ultrafiltration","Ultrasonication","Uneviscerated","Unplucked","Unskinned"],
   "species": ["Apis mellifera"],
+  "goodsCertifiedAs": ["Human consumption"],
   "schema": [
     { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
     { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
@@ -20,80 +21,5 @@
     { "id": "species", "title": "Species", "required" : "yes", "type" : "dropdown", "error" : "Species name is invalid"}
   ],
   "goodsCertifiedAs":["Human consumption"],
-  "commodities": [{
-    "code": "020760",
-    "title": " Of guinea fowls"
-  }, {
-    "code": "020890",
-    "title": " Other"
-  }, {
-    "code": "04109000",
-    "title": " Other"
-  }, {
-    "code": "020741",
-    "title": " Not cut in pieces, fresh or chilled"
-  }, {
-    "code": "020742",
-    "title": " Not cut in pieces, frozen"
-  }, {
-    "code": "020744",
-    "title": " Other, fresh or chilled"
-  }, {
-    "code": "020745",
-    "title": " Other, frozen"
-  }, {
-    "code": "020751",
-    "title": " Not cut in pieces, fresh or chilled"
-  }, {
-    "code": "020752",
-    "title": " Not cut in pieces, frozen"
-  }, {
-    "code": "020754",
-    "title": " Other, fresh or chilled"
-  }, {
-    "code": "020755",
-    "title": " Other, frozen"
-  }, {
-    "code": "020711",
-    "title": " Not cut in pieces, fresh or chilled"
-  }, {
-    "code": "020712",
-    "title": " Not cut in pieces, frozen"
-  }, {
-    "code": "020713",
-    "title": " Cuts and offal, fresh or chilled"
-  }, {
-    "code": "020714",
-    "title": " Cuts and offal, frozen"
-  }, {
-    "code": "020724",
-    "title": " Not cut in pieces, fresh or chilled"
-  }, {
-    "code": "020725",
-    "title": " Not cut in pieces, frozen"
-  }, {
-    "code": "020726",
-    "title": " Cuts and offal, fresh or chilled"
-  }, {
-    "code": "020727",
-    "title": " Cuts and offal, frozen"
-  }, {
-    "code": "02089010",
-    "title": " Of domestic pigeons"
-  }, {
-    "code": "02089030",
-    "title": " Of game, other than of rabbits or hares"
-  }, {
-    "code": "02089098",
-    "title": " Other"
-  }, {
-    "code": "05040000",
-    "title": " Guts, bladders and stomachs of animals (other than fish), whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"
-  }, {
-    "code": "02074300",
-    "title": " Fatty livers, fresh or chilled"
-  }, {
-    "code": "02075300",
-    "title": " Fatty livers, fresh or chilled"
-  }]
+  "commodities": [{"code":"04109000","title":" Other"},{"code":"210690","title":" Other"},{"code":"04090000","title":" Natural honey"},{"code":"05100000","title":" Ambergris, castoreum, civet and musk; cantharides; bile, whether or not dried; glands and other animal products used in the preparation of pharmaceutical products, fresh, chilled, frozen or otherwise provisionally preserved"},{"code":"17021100","title":" Containing by weight 99|% or more lactose, expressed as anhydrous lactose, calculated on the dry matter"},{"code":"21069098","title":" Other"},{"code":"12129995","title":" Other"},{"code":"2005","title":" Other vegetables prepared or preserved otherwise than by vinegar or acetic acid, not frozen, other than products of heading|2006"},{"code":"190240","title":" Couscous"},{"code":"15219010","title":" Spermaceti, whether or not refined or coloured"},{"code":"15219091","title":" Raw"},{"code":"15219099","title":" refined or coloured:"}]
 }
