@@ -68,6 +68,33 @@
 
   },
   {
+    "AppNo": "",
+    "TradingName": "Lactalis McLelland Ltd",
+    "Address1": "Red central",
+    "Address2": "60 High street",
+    "Address3": "",
+    "Town": "Redhill",
+    "Postcode": "RH1 1SH",
+    "Country": "United Kingdom",
+    "All_Activities": ["Exporter"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "FOOD-OTH",
+        "name": "Other establishments"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    }]
+
+  },
+  {
     "AppNo": "WD028",
     "TradingName": "McLelland Cheese Packing",
     "Address1": "Commerce road",
