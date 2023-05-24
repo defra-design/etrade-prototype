@@ -352,10 +352,17 @@ module.exports = function(router) {
     req.session.data.goods['hasSealNumber'] = ""
     if (req.body['skip-question'] == 'yes') {
       req.session.data.goods['hasSealNumber'] = "skipped";
+      if (req.query.change == "yes") {
+      res.redirect(301, '/' + base_url + 'check-your-answers');
+      }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+      }
     }
     if (req.query.change == "yes") {
       res.redirect(301, '/' + base_url + 'check-your-answers');
-    } else {
+    } else if (req.body.goodsHaveSeal=="no"){
+      res.redirect(301, '/' + base_url + 'task-list');
+    }else{
       res.redirect(301, '/' + base_url + 'goods/containter-seal-numbers/add-seal-numbers');
     }
   })
