@@ -1349,6 +1349,49 @@
     "All_Activities": ["Cold Store", "Cutting Plant", "Mince Meat Establishment"]
   },
   {
+    "AppNo": "AK 132",
+    "TradingName": "Northern Catering Butchers Ltd",
+    "Address1": "Coquet Enterprise Park",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Amble",
+    "Postcode": "NE65",
+    "Country": "United Kingdom",
+    "All_Activities": ["Processing plant", "Dispatch centre"],
+    "activityClassifications": [
+                    {
+                        "classificationGroup": {
+                            "code": "food",
+                            "name": "Food"
+                        },
+                        "classification": {
+                            "code": "FFP",
+                            "name": "Fishery products"
+                        },
+                        "activity": {
+                            "code": "PROCESSING_PLANT",
+                            "name": "Processing Plant"
+                        },
+                        "activityStatus": "VALID"
+                    },
+                    {
+                        "classificationGroup": {
+                            "code": "food",
+                            "name": "Food"
+                        },
+                        "classification": {
+                            "code": "LBM",
+                            "name": "Live bivalve molluscs"
+                        },
+                        "activity": {
+                            "code": "DISPATCH_CENTRE",
+                            "name": "Dispatch centre"
+                        },
+                        "activityStatus": "VALID"
+                    }
+                ]
+  },
+  {
     "AppNo": "1049",
     "TradingName": "Bredbury Catering Ltd",
     "Address1": "Unit 3",
