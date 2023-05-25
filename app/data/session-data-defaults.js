@@ -64,7 +64,7 @@ module.exports = {
   "currentCertID" : 0,
   "currentCommodityID": 0,
   "displayMax": 30,
-  "paginationMax": 3,
+  "paginationMax": 5,
   "manualSelection": ["not-selected"],
   "goods": {},
   "person": {consignor : "0", consignorActivity : "0"},
