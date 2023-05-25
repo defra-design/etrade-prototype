@@ -1350,12 +1350,12 @@
   },
   {
     "AppNo": "AK 132",
-    "TradingName": "Northern Catering Butchers Ltd",
+    "TradingName": "Coquet Island Shellfish",
     "Address1": "Coquet Enterprise Park",
     "Address2": "",
     "Address3": "",
     "Town": "Amble",
-    "Postcode": "NE65",
+    "Postcode": "NE65 OPE",
     "Country": "United Kingdom",
     "All_Activities": ["Processing plant", "Dispatch centre"],
     "activityClassifications": [
