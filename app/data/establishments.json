@@ -95,6 +95,320 @@
 
   },
   {
+    "AppNo": "12345",
+    "TradingName": "Defra Exporters LTD",
+    "Address1": "Spring Villa Road",
+    "Address2": "Edgware",
+    "Address3": "",
+    "Town": "Hertsmere",
+    "Postcode": "HA8",
+    "Country": "United Kingdom",
+    "All_Activities": ["Meat preparation plant", "Processing plant", "Cutting plant", "Cold stores", "Port of loading", "Slaughterhouse", "Establishment", "Exporter", "Animal exporter", "Minced meat plant", "Cold Stores"],
+    "activityClassifications": [{
+        "classificationGroup": {
+          "code": "germinal_products",
+          "name": "Germinal products"
+        },
+        "classification": {
+          "code": "SEM-COL",
+          "name": "Semen collection centres"
+        },
+        "activity": {
+          "code": null,
+          "name": "Porcine collection centre"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MECHANICALLY_SEPARATED_MEAT_PLANT",
+          "name": "Mechanically Separated Meat Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MEAT_PREPARATION_PLANT",
+          "name": "Meat Preparation Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "RPM",
+          "name": "Meat products"
+        },
+        "activity": {
+          "code": "PROCESSING_PLANT",
+          "name": "Processing Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "PM",
+          "name": "Meat from poultry and lagomorphs"
+        },
+        "activity": {
+          "code": "CUTTING_PLANT",
+          "name": "Cutting Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "RPM",
+          "name": "Meat products"
+        },
+        "activity": {
+          "code": "COLD_STORES",
+          "name": "Cold Stores"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "FOOD-OTH",
+          "name": "Other establishments"
+        },
+        "activity": {
+          "code": "LOADING_PORT",
+          "name": "Port of loading"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MMP",
+          "name": "Raw milk, dairy products, colostrum and colostrum-based products"
+        },
+        "activity": {
+          "code": "PROCESSING_PLANT",
+          "name": "Processing Plant"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MMP",
+          "name": "Raw milk, dairy products, colostrum and colostrum-based products"
+        },
+        "activity": {
+          "code": "COLD_STORES",
+          "name": "Cold Stores"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "germinal_products",
+          "name": "Germinal products"
+        },
+        "classification": {
+          "code": "EMB-COL",
+          "name": "Embryo collection teams"
+        },
+        "activity": {
+          "code": null,
+          "name": "Equine collection team"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "PM",
+          "name": "Meat from poultry and lagomorphs"
+        },
+        "activity": {
+          "code": "SLAUGHTER_HOUSE",
+          "name": "Slaughterhouse"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "PM",
+          "name": "Meat from poultry and lagomorphs"
+        },
+        "activity": {
+          "code": "COLD_STORES",
+          "name": "Cold Stores"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "veterinary",
+          "name": "Animal"
+        },
+        "classification": {
+          "code": "EXP",
+          "name": "Animal exporter"
+        },
+        "activity": {
+          "code": "ESTABLISHMENT",
+          "name": "Establishment"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "FOOD-OTH",
+          "name": "Other establishments"
+        },
+        "activity": {
+          "code": "EXPORTER",
+          "name": "Exporter"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "FOOD-OTH",
+          "name": "Other establishments"
+        },
+        "activity": {
+          "code": "ESTABLISHMENT",
+          "name": "Establishment"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "veterinary",
+          "name": "Animal"
+        },
+        "classification": {
+          "code": "EXP",
+          "name": "Animal exporter"
+        },
+        "activity": {
+          "code": "ANIMAL_EXPORTER",
+          "name": "Animal exporter"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "COLD_STORES",
+          "name": "Cold Stores"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "germinal_products",
+          "name": "Germinal products"
+        },
+        "classification": {
+          "code": "EMB-PRO",
+          "name": "Embryo production teams"
+        },
+        "activity": {
+          "code": null,
+          "name": "Equine production team"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "germinal_products",
+          "name": "Germinal products"
+        },
+        "classification": {
+          "code": "GERM-STO",
+          "name": "Germinal product storage centres"
+        },
+        "activity": {
+          "code": null,
+          "name": "Porcine GPS centre"
+        },
+        "activityStatus": "VALID"
+      },
+      {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MM",
+          "name": "Minced meat, meat preparations and mechanically separated meat (MSM)"
+        },
+        "activity": {
+          "code": "MINCED_MEAT_PLANT",
+          "name": "Minced Meat Plant"
+        },
+        "activityStatus": "VALID"
+      }
+    ]
+
+  },
+
+  {
     "AppNo": "WD028",
     "TradingName": "McLelland Cheese Packing",
     "Address1": "Commerce road",
@@ -103,52 +417,52 @@
     "Town": "Stranraer",
     "Postcode": "DG9 7DA",
     "Country": "United Kingdom",
-    "All_Activities": ["Cold Stores","Processing Plant","Exporter"],
-    "activityClassifications": [
+    "All_Activities": ["Cold Stores", "Processing Plant", "Exporter"],
+    "activityClassifications": [{
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "GEN",
+          "name": "General activity establishment"
+        },
+        "activity": {
+          "code": "COLD_STORES",
+          "name": "Cold stores"
+        },
+        "activityStatus": "VALID"
+      },
       {
-      "classificationGroup": {
-        "code": "food",
-        "name": "Food"
-      },
-      "classification": {
-        "code": "GEN",
-        "name": "General activity establishment"
-      }, 
-      "activity": {
-        "code": "COLD_STORES",
-        "name": "Cold stores"
-      },
-      "activityStatus": "VALID"
-    },
-      {
-      "classificationGroup": {
-        "code": "food",
-        "name": "Food"
-      },
-      "classification": {
-        "code": "MMP",
-        "name": "Raw Milk, Dairy Products, Colostrum and Colostrum-based Products"
-      }, 
-      "activity": {
-        "code": "PROCESSING_PLANT",
-        "name": "Processing Plant"
-      },
-      "activityStatus": "VALID"
-    },{
-      "classificationGroup": {
-        "code": "food",
-        "name": "Food"
-      },
-      "classification": {
-        "code": "FOOD-OTH",
-        "name": "Other establishments"
-      },
-      "activity": {
-        "code": "EXPORTER",
-        "name": "Exporter"
-      },
-      "activityStatus": "NEW"
-    }]
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "MMP",
+          "name": "Raw Milk, Dairy Products, Colostrum and Colostrum-based Products"
+        },
+        "activity": {
+          "code": "PROCESSING_PLANT",
+          "name": "Processing Plant"
+        },
+        "activityStatus": "VALID"
+      }, {
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "FOOD-OTH",
+          "name": "Other establishments"
+        },
+        "activity": {
+          "code": "EXPORTER",
+          "name": "Exporter"
+        },
+        "activityStatus": "NEW"
+      }
+    ]
 
   },
   {
@@ -534,7 +848,7 @@
     "Town": "Pontefract",
     "Postcode": "WF8 3DD",
     "Country": "United Kingdom",
-    "All_Activities": ["Cold Store - food GEN", "Cutting Plant - food PM", "Mince Meat Establishment - food MM", "Processing Plant - food MPP", "Slaughterhouse - food PM", "Meat Preparation Establishment - food MM","Processing plant","Exporter"],
+    "All_Activities": ["Cold Store - food GEN", "Cutting Plant - food PM", "Mince Meat Establishment - food MM", "Processing Plant - food MPP", "Slaughterhouse - food PM", "Meat Preparation Establishment - food MM", "Processing plant", "Exporter"],
     "activityClassifications": [{
         "classificationGroup": {
           "code": "animal_byproducts",
@@ -551,20 +865,20 @@
         "activityStatus": "VALID"
       },
       {
-      "classificationGroup": {
-        "code": "food",
-        "name": "Food"
+        "classificationGroup": {
+          "code": "food",
+          "name": "Food"
+        },
+        "classification": {
+          "code": "FOOD-OTH",
+          "name": "Other establishments"
+        },
+        "activity": {
+          "code": "EXPORTER",
+          "name": "Exporter"
+        },
+        "activityStatus": "NEW"
       },
-      "classification": {
-        "code": "FOOD-OTH",
-        "name": "Other establishments"
-      },
-      "activity": {
-        "code": "EXPORTER",
-        "name": "Exporter"
-      },
-      "activityStatus": "NEW"
-    },
       {
         "classificationGroup": {
           "code": "food",
