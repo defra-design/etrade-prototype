@@ -12,11 +12,7 @@
     "schema": [
       { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
       { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
-      
-     
-     
       { "id": "packageCount_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
-      
       { "id": "slaughterhouse", "title": "Slaughterhouse", "required" : "yes", "type" : "search", "error" : "Slaughterhouse is a required field - please enter a valid approval number"},
       { "id": "slaughterhouseActivity", "title": "Slaughterhouse activity", "required" : "yes", "type" : "string", "error" : "Slaughterhouse activity is a required field - please select a valid activity"},
       { "id": "cuttingPlant", "title": "Cutting plant", "required" : "yes", "type" : "search", "error" : "Cutting plant is a required field - please enter a valid approval number"},
@@ -25,16 +21,12 @@
       { "id": "coldStoreActivity", "title": "Cold store activity", "required" : "no", "type" : "string"},
       { "id": "treatmentType", "title": "Treatment type", "required" : "yes", "type" : "dropdown", "error" : "Select a valid treatment type from the list"},
       { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "dropdown" : "string", "error" : "Nature of commodity is a required field"},
-
       { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
       { "id": "netWeight", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
       { "id": "netWeight_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
       { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "text", "error" : "Batch number is required"},
-
-
       { "id": "dateOfFreezing", "title": "Date of freezing", "required" : "no", "type": "excel_date"},
       { "id": "freezingDateRange", "title": "Freezing date range", "required" : "no", "type": "string","multiple": "yes"},
-     
       { "id": "quantity", "title": "Quantity", "required" : "no", "type" : "decimal"},
       { "id": "quantity_UNIT", "title": "Quantity unit", "required" : "no", "type" : "string"},
       { "id": "species", "title": "Species", "required" : "yes", "type" : "text", "error" : "Species name is invalid"}
