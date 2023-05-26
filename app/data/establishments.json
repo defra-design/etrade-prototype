@@ -95,6 +95,61 @@
 
   },
   {
+    "AppNo": "",
+    "TradingName": "Neil Hardy Aquatica Ltd",
+    "Address1": "Evens corner",
+    "Address2": "Woodmansterne lane",
+    "Address3": "",
+    "Town": "Carshalton",
+    "Postcode": "SM5 4DQ",
+    "Country": "United Kingdom",
+    "All_Activities": ["Exporter"],
+    "activityClassifications": [{
+      "classificationGroup": {
+        "code": "food",
+        "name": "Food"
+      },
+      "classification": {
+        "code": "FOOD-OTH",
+        "name": "Other establishments"
+      },
+      "activity": {
+        "code": "EXPORTER",
+        "name": "Exporter"
+      },
+      "activityStatus": "NEW"
+    }]
+
+  },
+  {
+    "AppNo": "FL-PFO-0001",
+    "TradingName": "New Life International",
+    "Address1": "E31950 SW 197th Ave",
+    "Address2": "",
+    "Address3": "",
+    "Town": "Homestead",
+    "Postcode": "FL 33030",
+    "Country": "USA",
+    "All_Activities": ["Category 3"],
+    "activityClassifications": [
+      {
+        "classificationGroup": {
+          "code": "animal_byproducts",
+          "name": "Animal By-Products"
+        },
+        "classification": {
+          "code": "ABP-PET",
+          "name": "Petfood plants (Including plants manufacturing dogchews and flavouring innards)"
+        },
+        "activity": {
+          "code": "CATEGORY_3",
+          "name": "Category 3"
+        },
+        "activityStatus": "VALID"
+      }]
+
+  },
+  {
     "AppNo": "12345",
     "TradingName": "Defra Exporters LTD",
     "Address1": "Spring Villa Road",
