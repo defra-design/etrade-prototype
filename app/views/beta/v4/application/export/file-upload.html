@@ -18,12 +18,18 @@ We’ve made some changes to how you enter commodity data – GOV.UK Prototype K
 
     <form method="post">
       <div class="govuk-form-group">
-
         <!--<h1 class="govuk-heading-xl">We’ve made some changes to how you enter commodity data</h1>-->
-        <h1 class="govuk-heading-xl">You can add commodity data individually or upload it in a spreadsheet</h1>
+        <h1 class="govuk-heading-xl">Upload schedule for EHC8468</h1>
         <!--<p class="govuk-body">To ensure all commodity data is consistent with the EU’s TRACES database, we’ve changed the way you enter information about your consignment.</p>-->
-        <p>If you want to use a spreadsheet, you can use our template to ensure all commodity data is consistent with the EU’s TRACES database and adapt your schedule to match the template.</p>
-        
+
+          <br>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="file-upload-1">
+              Upload a file
+            </label>
+            <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+          </div>
+
         <!--<p>
           <a href="{{ ehcTemplateDownloadPath }}">View or download the TRACES spreadsheet template</a>.
         </p>
@@ -38,7 +44,7 @@ We’ve made some changes to how you enter commodity data – GOV.UK Prototype K
     </form>
 
 
-    <div id="formGroup" class="govuk-form-group">
+    <!--<div id="formGroup" class="govuk-form-group">
       <fieldset class="govuk-fieldset">
         
 
@@ -51,38 +57,37 @@ We’ve made some changes to how you enter commodity data – GOV.UK Prototype K
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="optionOne" name="choose-account" type="radio" value="optionOne">
               <label class="govuk-label govuk-radios__label" for="optionOne">
-                <!--Create a new template to upload many commodity records at once-->
-                Download a new template to create a schedule of many commodity records at once
+                Use a template to upload multiple commodity records at once
               </label>
-              <!--<div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                This is a one-time process except when there are changes in TRACES database.
-              </div>-->
               <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                This is a one-time process. If there are changes from TRACES, we will notify you to update your template.
+                You will need to use our spreadsheet template to ensure consistency with EU TRACES data – you can view or download the template on the next page.
               </div>
             </div>
-           
+            <br>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="optionTwo" name="choose-account" type="radio" value="optionTwo">
               <label class="govuk-label govuk-radios__label" for="optionTwo">
-                <!--Upload a template you have previously created to upload your schedule-->
-                Upload a schedule you have already created by using a template
+                Enter commodities individually
               </label>
-              <!--<div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint govuk-body-s">
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint govuk-body-s">
                 There has been changes in TRACES or to business rules exporters needs to be aware of.
-              </div>-->
+              </div>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="optionThree" name="choose-account" type="radio" value="optionThree">
               <label class="govuk-label govuk-radios__label" for="optionThree">
-                Enter commodities individually
+                Cancel this application
               </label>
-            </div>
-          </form>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                The exporter will still be able to create a new application for this consignment.              </div>
+              </div>
+          </form>-->
         </div>
       </fieldset>
     </div>
-      <button class="govuk-button" onclick="submit()">Continue</button>
+      <!--<button class="govuk-button" onclick="submit()">Continue</button>-->
+
+      <a href="/beta/v4/application/export/file-upload-error" class="govuk-button">Continue</a>
 
 
 
@@ -120,10 +125,10 @@ We’ve made some changes to how you enter commodity data – GOV.UK Prototype K
       window.location.href = "/beta/v4/application/select-template-v2";
 
     if (optionTwo.checked) 
-      window.location.href = "/beta/v4/application/export/file-upload-ready";
+      window.location.href = "";
 
     if (optionThree.checked) 
-      window.location.href = "";
+      window.location.href = "/beta/v1-1-3/review/cancel/cancel-certificate";
     
   }
 }

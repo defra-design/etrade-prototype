@@ -1,188 +1,61 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Total weight of the commodities in this certificate - {{super()}}
+Gross weight – GOV.UK Prototype Kit
 {% endblock %}
-
-
 {% block beforeContent %}
 {{super()}}
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
-
-
 {% block content %}
-
 {% set commodityTitle = "commodities"%}
 {% if (data.addedCommodities | length) == 1%}
-{% set commodityTitle = "commodity"%}
+{% set commodityTitle =  "commodity"%}
 {% endif %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {% if query.hasError == "yes" %}
-    <div class="govuk-error-summary" data-module="govuk-error-summary">
-      <div role="alert">
-        <h2 class="govuk-error-summary__title">
-          There is a problem
-        </h2>
-        <div class="govuk-error-summary__body">
-          <ul class="govuk-list govuk-error-summary__list">
-            {% if query.errorType == "notSkipped"%}
-            <li>
-              <a href="#skip-question">Select if you have answered as many questions as you can</a>
-            </li>
-            {% endif %}
-            {% if query.errorType == "noWeight"%}
-            <li>
-              <a href="#skip-question">Select a gross weight amount unit</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-      </div>
-    </div>
-    {% endif %}
-
     <form method="post">
       <div class="govuk-form-group">
-     
-        <fieldset class="govuk-fieldset" aria-describedby="weight-hint">
+        <span class="govuk-caption-xl">
+          <span class="govuk-caption-xl">{{ data.certificates[(data.certificate | makeNumber)].number or "test" }}</span>
+        </span>
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--xl">
-            What is the total weight of the commodities?
+            What is the gross weight of the commodities in this certificate?
           </legend>
-          <div id="weight-hint" class="govuk-hint">
+          <div id="add-another-hint" class="govuk-hint">
             This is the combined weight of the commodities and their containers.
           </div>
-          <section id="certificates">
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-thirds">
-                <fieldset class="govuk-fieldset">
-                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-visually-hidden">
-                    <h1 class="govuk-fieldset__heading"> Certificate weight form </h1>
-                  </legend>
-                  <div class="govuk-form-group"><label class="govuk-label" for="gross-weight-amount">Gross weight amount</label>
-                    <!----><input class="govuk-input govuk-input--width-4 js-question" data-required="true" id="gross-weight-amount" name="GROSS_WEIGHT" type="number" value="{{data.GROSS_WEIGHT}}"></div>
-                  <div class="govuk-form-group {% if query.hasError and query.errorType=='noWeight' %}govuk-form-group--error{% endif %}"><label class="govuk-label" for="gross-weight-amount-units"> Gross weight amount units </label>
-                    {% if query.hasError and query.errorType=="noWeight" %}
-                    <p id="skipErrorSelect" class="govuk-error-message">
-                      <span class="govuk-visually-hidden">Error:</span> Select a gross weight amount unit
-                    </p>
-                    {% endif %}
-                    <select class="govuk-select  {% if query.hasError and query.errorType=='noWeight' %}govuk-input--error{% endif %}" data-required="true" id="gross-weight-amount-units" name="GROSS_WEIGHT_quantifier" {% if query.hasError and query.errorType=='noWeight' %} aria-describedby="skipErrorSelect" {% endif %}>
-                      <option value="" {% if query.change !='yes' or data.GROSS_WEIGHT_quantifier=='' %}selected{%endif%}>Select a unit</option>
-                      <option value="GRM" {% if (query.change or query.hasError=='yes' ) and data.GROSS_WEIGHT_quantifier=='GRM' %}selected{% endif %}>gram</option>
-                      <option value="KGM" {% if (query.change or query.hasError=='yes' ) and data.GROSS_WEIGHT_quantifier=='KGM' %}selected{% endif %}>kilogram</option>
-                      <option value="KTN" {% if (query.change or query.hasError=='yes' ) and data.GROSS_WEIGHT_quantifier=='KTN' %}selected{% endif %}>kilotonne</option>
-                      <option value="TNE" {% if (query.change or query.hasError=='yes' ) and data.GROSS_WEIGHT_quantifier=='TNE' %}selected{% endif %}>tonne (metric ton)</option>
-                    </select>
-                  </div>
-                  <!---->
-                </fieldset>
-              </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="netWeight-3-10410-31010000">Total weight amount
+            </label>
+            <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8="">
+              <input class="govuk-input" type="number" data-type="quantity" name="GROSS_WEIGHT"  {% if query.change=='yes' %}value="{{data.GROSS_WEIGHT}}"{%endif%} step="0.01" min="0" max="9999999" id="netWeight-3-10410-31010000"
+                data-v-4e8f37a8="">
+              <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8=""><select class="govuk-select" id="netWeight-3-10410-31010000-units" name="GROSS_WEIGHT_quantifier">
+                  <option disabled="" value="" {% if not data.GROSS_WEIGHT_quantifier %}selected{%endif%}>Select a unit</option>
+                  <option value="gram" {% if data.GROSS_WEIGHT_quantifier =="gram" and query.change=='yes' %}selected{%endif%}>gram</option>
+                  <option value="kilogram" {% if data.GROSS_WEIGHT_quantifier=="kilogram" and query.change=='yes' %}selected{%endif%}>kilogram</option>
+                  <option value="kilotonne" {% if data.GROSS_WEIGHT_quantifier=="kilotonne" and query.change=='yes' %}selected{%endif%}>kilotonne</option>
+                  <option value="tonne (metric ton)" {% if data.GROSS_WEIGHT_quantifier=="tonne (metric ton)" and query.change=='yes' %}selected{%endif%}>tonne (metric ton)</option>
+                </select></div>
             </div>
+          </div>
         </fieldset>
       </div>
-      <div class="skip-wrapper govuk-!-margin-bottom-6 govuk-form-group {% if query.hasError and query.errorType=='notSkipped' %}govuk-form-group--error{% endif %}" id="skip-question-container">
-        <h3 class="govuk-heading-m">You can skip this section</h3>
-        <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-        {% if query.hasError and query.errorType=="notSkipped" %}
-        <p id="skipError" class="govuk-error-message govuk-!-margin-top-4">
-          <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
-        </p>
-        {% endif %}
-        <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
-          <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if data.transport['weight']=='skipped' %}checked{% endif %} {% if query.hasError %} aria-describedby="skipError" {% endif %}>
-          <label class="govuk-label govuk-checkboxes__label" for="skip-question">
-            I've entered as much information as I can
-          </label>
-        </div>
-      </div>
-      <!--             <div class="govuk-form-group" id="skip-question-container">
-                <h3 class="govuk-heading-m">You can skip this section</h3>
-                <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-                <div class="govuk-checkboxes__item" id="skip-question-checkbox">
-                    <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
-                    <label class="govuk-label govuk-checkboxes__label" for="skip-question">
-                        I've entered as much information as I can
-                    </label>
-                </div>
-            </div> -->
-      <button type="submit" class="govuk-button" data-module="govuk-button">
-        Save and continue
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
       </button>
     </form>
   </div>
 </div>
 {% endblock %}
+
 {% block pageScripts %}
 <script type="text/javascript">
-window.addEventListener('load', function() {
-  $('.js-question').each(function() {
-    console.log("looking to see if complete")
-    var elem = $(this);
+  window.addEventListener('load', function() {
 
-    // Save current value of element
-    elem.data('oldVal', elem.val());
-    if (elem.val() != "") {
-      elem.attr('data-filled', 'yes')
-    }
-    // Look for changes in the value
-    elem.bind("propertychange change click keyup input paste", function(event) {
-      // If value has changed...
-      console.log("checking content")
-      if (elem.data('oldVal') != elem.val()) {
-        console.log("value has changed")
-        // Updated stored value
-
-        // Do action
-        if (elem.val() == "//default") {
-          elem.val(elem.attr('data-default'));
-
-        }
-        console.log("val length = " + elem.val().length)
-        if (elem.val().length === 0) {
-          elem.attr('data-filled', 'no')
-        } else {
-          elem.attr('data-filled', 'yes')
-        }
-
-        console.log("data-filled = " + elem.attr('data-filled'))
-        // elem.attr('data-filled','yes')
-
-        elem.data('oldVal', elem.val());
-      }
-
-
-      checkFilled()
-    });
-  });
-
-  function checkFilled() {
-    var completed = 0;
-    var max = $('.js-question').length
-    console.log("---checkFilled---- " + max)
-    $('.js-question').each(function() {
-      console.log("Chekcing if its complete: " + ($(this).attr('data-filled') == "yes"))
-      if ($(this).attr('data-filled') === "yes") {
-        completed += 1
-      }
-
-    })
-    console.log("Completed = " + completed)
-    if (completed >= max) {
-      // $('.defra-callout h3').text(max +" questions answered")
-      // $('.defra-callout .defra-callout--content').hide()
-      $('#skip-question-checkbox').hide()
-      $('.skip-wrapper.govuk-error-message').hide()
-      $('.skip-wrapper.govuk-form-group').removeClass('govuk-form-group--error')
-    } else {
-      $('#skip-question-checkbox').show()
-    }
-    console.log("---end----")
-  }
-
-  checkFilled()
-});
+  })
 </script>
 {% endblock%}

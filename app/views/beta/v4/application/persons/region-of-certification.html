@@ -1,49 +1,39 @@
 {% extends "layout.html" %}
+
 {% block pageTitle %}
-Where will the consignment be certified – GOV.UK Prototype Kit
+Region of certification – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
 {% block content %}
-<form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
+
+
+<form class="" action="../task-list" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
-    <div class="govuk-grid-column-two-thirds">
-      {% if query.hasError == "yes" %}
-      <div class="govuk-error-summary" data-module="govuk-error-summary">
-        <div role="alert">
-          <h2 class="govuk-error-summary__title">
-            There is a problem
-          </h2>
-          <div class="govuk-error-summary__body">
-            <ul class="govuk-list govuk-error-summary__list">
-              <li>
-                <a href="#where-certification-error">Select the country that the consignment will be certified in</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      {% endif %}
-      <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
-        <fieldset class="govuk-fieldset" {% if query.hasError=="yes" %}aria-describedby="where-certification-error" {% endif %}>
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-            <span class="govuk-caption-l">Persons involved</span>
-            <h1 class="govuk-fieldset__heading">
-              Where will the consignment be certified?
-            </h1>
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">Persons involved</font>
+        </font>
+      </span>
+      <h1 class="govuk-heading-xl"> In which region will the certification take place? </h1>
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            <h1 class="govuk-fieldset__heading"> Certification region </h1>
           </legend>
-          {% if query.hasError %}
-          <p id="where-certification-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select the country that the consignment will be certified in
-          </p>
-          {% endif %}
+          <div class="govuk-hint"> Select the region in which the certification will take place: </div>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification" name="regionOfCertification" type="radio" value="GB-ENG"><label class="govuk-label govuk-radios__label" for="region-of-certification">
                 England </label></div>
             <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification-2" name="regionOfCertification" type="radio" value="GB-SCT"><label class="govuk-label govuk-radios__label" for="region-of-certification-2">
                 Scotland </label></div>
+            <div class="govuk-radios__divider">or</div>
             <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification-3" name="regionOfCertification" type="radio" value="GB-WLS"><label class="govuk-label govuk-radios__label" for="region-of-certification-3">
                 Wales </label></div>
           </div>
@@ -53,23 +43,15 @@ Where will the consignment be certified – GOV.UK Prototype Kit
   </div>
 </form>
 <!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
 <!-- // -->
+
 {% endblock %}
 {% block pageScripts %}
 <script type="text/javascript">
-window.addEventListener('load', function() {
   window.addEventListener('load', function() {
-    $(".govuk-button").on("click", function() {
-      $(this).preventDefault()
-      if ($('#region-of-certification').is(':checked')) {
-        $("form").submit()
-      } else {
-        window.location.href = "region-of-certification-v2?hasError=yes"
-      }
-    })
+
 
   })
-
-})
 </script>
 {% endblock%}

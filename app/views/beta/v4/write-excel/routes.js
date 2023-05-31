@@ -7,12 +7,14 @@ module.exports = function(router) {
   var fileDownload = require('js-file-download');
 
   // CHANGE VERSION each time you create a new version
-  const base_url = "beta/v4/write-excel/"
+  const base_url = "beta/v3/write-excel/"
 
   router.post('/' + base_url + "write-excel", upload.single('file-upload-1'), function(req, res) {
     console.log("In write-excel routes.js");
+
     let certID = req.session.data.currentCertID || 0;
     let addedEHC = req.session.data.addedEHC[0];
+
     if (addedEHC) {
       console.log("We have data at addedEHC[0]")
 

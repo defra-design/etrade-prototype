@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Means of transport – {{super()}}
+Means of transport – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -11,7 +11,6 @@ Means of transport – {{super()}}
     border: 2px solid #1f70b8;
     padding-bottom: 1px;
     margin-bottom: 1.4em;
-    display: none;
 }
   .means-of-transport-selection-suffix[data-v-1e0d18a4] {
     padding: 0;
@@ -39,18 +38,13 @@ Means of transport – {{super()}}
     font-size: 2em;
     color: #1f70b8;
     padding-bottom: 15px;
-    display: none;
 }
-.transport-card{display:none}
-.means-of-transport-card{display:block}
 </style>
 {% endblock%}
 {% block content %}
 
 
-<form class="" id="form" method="post">
-  <input type="hidden" name="addedTransport" value="">
-  <input type="hidden" name="transportID" value="">
+<form class="" action="../task-list" method="post">
   <div class="govuk-grid-row" data-v-1e0d18a4="">
     <div class="govuk-grid-column-two-thirds" data-v-1e0d18a4=""><span class="govuk-caption-xl"> Transport </span>
       <h1 class="govuk-heading-xl"> Means of transport </h1>
@@ -80,30 +74,29 @@ Means of transport – {{super()}}
         <div class="govuk-form-group" data-v-1e0d18a4=""><label class="govuk-label" for="meansOfTransportSelection" data-v-1e0d18a4=""> Means of transport </label>
           <div class="govuk-input__wrapper" data-v-1e0d18a4="">
             <div class="govuk-form-group" data-v-1e0d18a4=""><select class="govuk-select full-width" id="meansOfTransportSelection" data-v-1e0d18a4="">
-                <option value="" data-v-1e0d18a4="">Make a selection</option>
+                <option disabled="" value="" data-v-1e0d18a4="">Make a selection</option>
                 <option value="Railway" data-v-1e0d18a4="">Railway</option>
                 <option value="Road" data-v-1e0d18a4="">Road vehicle</option>
                 <option value="Airplane" data-v-1e0d18a4="">Airplane</option>
                 <option value="Vessel" data-v-1e0d18a4="">Vessel</option>
               </select></div>
-            <div class="govuk-input__suffix means-of-transport-selection-suffix" data-v-1e0d18a4=""><button id="addTransport" class="govuk-button govuk-button--secondary" data-v-1e0d18a4="">Add means of transport</button>
+            <div class="govuk-input__suffix means-of-transport-selection-suffix" data-v-1e0d18a4=""><button class="govuk-button" data-v-1e0d18a4="">Add means of transport</button>
               <!---->
             </div>
           </div>
         </div>
       </div>
-      <ul class="govuk-list" id="listOfTransport" >
-        <li  data-type="Road" id="Road" class="transport-card">
+      <ul class="govuk-list" data-v-1e0d18a4="">
+        <li data-v-1e0d18a4="">
           <div class="means-of-transport-card" data-v-1e0d18a4="">
             <div class="means-of-transport-card--heading" data-v-1e0d18a4="">
               <h3 class="govuk-heading-s" data-v-1e0d18a4="">Road <a href="#" class="pull-right remove-means-of-transport" id="remove-transport-0" data-v-1e0d18a4=""><span class="govuk-visually-hidden" data-v-1e0d18a4="">Remove row</span><span
                     class="fas fa-trash-alt" data-v-1e0d18a4=""></span></a></h3>
             </div>
-            <!-- <input type="hidden" name="addedTransport" value="Road" > -->
             <div class="means-of-transport-card--body" data-v-1e0d18a4="">
               <div class="govuk-summary-list" data-v-1e0d18a4="">
                 <div class="govuk-summary-list__row" data-v-1e0d18a4=""><label class="govuk-summary-list__key" for="vehicle-registration-0" data-v-1e0d18a4=""> Vehicle registration </label>
-                  <div class="govuk-summary-list__value" data-v-1e0d18a4=""><input class="govuk-input" maxlength="30" id="vehicle-registration-0" name="transportID"data-v-1e0d18a4=""></div>
+                  <div class="govuk-summary-list__value" data-v-1e0d18a4=""><input class="govuk-input" maxlength="30" id="vehicle-registration-0" data-v-1e0d18a4=""></div>
                 </div>
               </div>
               <div class="govuk-summary-list__row" data-v-1e0d18a4=""><label class="govuk-summary-list__key" for="vehicle-trailer-number-0" data-v-1e0d18a4=""> Trailer number </label>
@@ -371,20 +364,24 @@ Means of transport – {{super()}}
             </div>
           </div>
         </li>
-        <li data-type="Airplane" id="Airplane" class="transport-card">
+        <li data-v-1e0d18a4="">
           <div class="means-of-transport-card" data-v-1e0d18a4="">
             <div class="means-of-transport-card--heading" data-v-1e0d18a4="">
               <h3 class="govuk-heading-s" data-v-1e0d18a4="">Airplane <a href="#" class="pull-right remove-means-of-transport" id="remove-transport-1" data-v-1e0d18a4=""><span class="govuk-visually-hidden" data-v-1e0d18a4="">Remove row</span><span
                     class="fas fa-trash-alt" data-v-1e0d18a4=""></span></a></h3>
             </div>
-             <!-- <input type="hidden" name="addedTransport" value="Airplane" > -->
             <div class="means-of-transport-card--body" data-v-1e0d18a4="">
               <div class="govuk-summary-list" data-v-1e0d18a4="">
                 <!---->
               </div>
-        
+              <!---->
+              <!---->
+              <!---->
+              <!---->
+              <!---->
+              <!---->
               <div class="govuk-summary-list__row" data-v-1e0d18a4=""><label class="govuk-summary-list__key" for="flight-number-1" data-v-1e0d18a4=""> Flight number </label>
-                <div class="govuk-summary-list__value" data-v-1e0d18a4=""><input name="transportID" class="govuk-input" maxlength="30" id="flight-number-1" data-v-1e0d18a4=""></div>
+                <div class="govuk-summary-list__value" data-v-1e0d18a4=""><input class="govuk-input" maxlength="30" id="flight-number-1" data-v-1e0d18a4=""></div>
               </div>
               <div class="govuk-summary-list__row" data-v-1e0d18a4=""><label class="govuk-summary-list__key" for="international-transport-document-1" data-v-1e0d18a4=""> International transport document (Optional) </label>
                 <div class="govuk-summary-list__value" data-v-1e0d18a4=""><input class="govuk-input" maxlength="30" id="international-transport-document-1" data-v-1e0d18a4=""></div>
@@ -398,7 +395,7 @@ Means of transport – {{super()}}
             </div>
           </div>
         </li>
-        <li data-type="Vessel" id="Vessel" class="transport-card">
+        <li data-v-1e0d18a4="">
           <div class="means-of-transport-card" data-v-1e0d18a4="">
             <div class="means-of-transport-card--heading" data-v-1e0d18a4="">
               <h3 class="govuk-heading-s" data-v-1e0d18a4="">Vessel <a href="#" class="pull-right remove-means-of-transport" id="remove-transport-2" data-v-1e0d18a4=""><span class="govuk-visually-hidden" data-v-1e0d18a4="">Remove row</span><span
@@ -410,7 +407,7 @@ Means of transport – {{super()}}
               </div>
               <!---->
               <div class="govuk-summary-list__row" data-v-1e0d18a4=""><label class="govuk-summary-list__key" for="ship-name-2" data-v-1e0d18a4=""> Ship name </label>
-                <div class="govuk-summary-list__value" data-v-1e0d18a4=""><input name="transportID" class="govuk-input" maxlength="30" id="ship-name-2" data-v-1e0d18a4=""></div>
+                <div class="govuk-summary-list__value" data-v-1e0d18a4=""><input class="govuk-input" maxlength="30" id="ship-name-2" data-v-1e0d18a4=""></div>
               </div>
               <div class="govuk-summary-list__row" data-v-1e0d18a4=""><label for="flag-state-2" class="govuk-summary-list__key" data-v-1e0d18a4=""> Flag state </label>
                 <div class="govuk-summary-list__value" data-v-1e0d18a4=""><select class="govuk-select full-wilabelh" id="flag-state-2" data-v-1e0d18a4="">
@@ -677,7 +674,7 @@ Means of transport – {{super()}}
             </div>
           </div>
         </li>
-        <li  data-type="Railway" id="Railway" class="transport-card">
+        <li data-v-1e0d18a4="">
           <div class="means-of-transport-card" data-v-1e0d18a4="">
             <div class="means-of-transport-card--heading" data-v-1e0d18a4="">
               <h3 class="govuk-heading-s" data-v-1e0d18a4="">Railway <a href="#" class="pull-right remove-means-of-transport" id="remove-transport-3" data-v-1e0d18a4=""><span class="govuk-visually-hidden" data-v-1e0d18a4="">Remove row</span><span
@@ -685,29 +682,26 @@ Means of transport – {{super()}}
             </div>
             <div class="means-of-transport-card--body" data-v-1e0d18a4="">
               <div class="govuk-summary-list" data-v-1e0d18a4="">
-              
+                <!---->
               </div>
+              <!---->
+              <!---->
+              <!---->
+              <!---->
+              <!---->
+              <!---->
+              <!---->
+              <!---->
               <div class="govuk-summary-list__row" data-v-1e0d18a4=""><label class="govuk-summary-list__key" for="identifier-3" data-v-1e0d18a4=""> Identifier </label>
-                <div class="govuk-summary-list__value" data-v-1e0d18a4="">
-                  <input class="govuk-input" maxlength="30" id="identifier-3" name="transportID" data-v-1e0d18a4=""></div>
+                <div class="govuk-summary-list__value" data-v-1e0d18a4=""><input class="govuk-input" maxlength="30" id="identifier-3" data-v-1e0d18a4=""></div>
               </div>
             </div>
           </div>
-      
+          <!---->
         </li>
       </ul>
-        <div id="skip-question-container">
-        <h3 class="govuk-heading-m">You can skip this section</h3>
-        <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-        <div class="govuk-checkboxes__item" id="skip-question-checkbox">
-          <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %}>
-          <label class="govuk-label govuk-checkboxes__label" for="skip-question">
-            I've entered as much information as I can
-          </label>
-        </div>
-      </div>
       <input type="hidden" name="meansOfTransport" value="yes">
-      <div class="govuk-error-message" data-v-1e0d18a4=""></div><button class="govuk-button" data-v-1e0d18a4=""> Save and continue </button>
+      <div class="govuk-error-message" data-v-1e0d18a4=""></div><button class="govuk-button" data-v-1e0d18a4=""> Save and return </button>
     </div>
   </div>
 </form>
@@ -719,30 +713,8 @@ Means of transport – {{super()}}
 {% block pageScripts %}
 <script type="text/javascript">
   window.addEventListener('load', function() {
-    var  count=0
-    $("#addTransport").on('click', function(e){
-      e.preventDefault();
-      var t=$("#meansOfTransportSelection").val()
-      if(t!=""){
-      let html = $("#"+t).clone()
-      console.log(html)
-      let id = t + count
-      let i = "<input type='hidden' name='addedTransport' value='"+t+"'>"
-      $(html).attr('id',id).show()
-      $(html).append(i)
-      $("#listOfTransport").append(html);
 
-      count+=1
-      }
-    })
-    $(document.body).on('click', '.remove-means-of-transport', function(e) {
-      e.preventDefault()
-      $(this).closest("li").remove()
-      count -= 1
-     
-    })
 
   })
 </script>
-
 {% endblock%}

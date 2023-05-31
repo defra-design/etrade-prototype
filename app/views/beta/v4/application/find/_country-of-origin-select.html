@@ -1,21 +1,18 @@
-<div class="govuk-form-group" id="operator-search-country-form-group">
+<div class="govuk-form-group">
   <label class="govuk-label" for="operator-search-country">Country {%if establishmentTypeLabel%} of {{establishmentTypeLabel}}{%endif%}</label>
-  <p id="operator-search-country-error" class="govuk-error-message" style="display:none">
-    <span class="govuk-visually-hidden">Error:</span> A country must be selected
-  </p>
   <select class="govuk-select" id="operator-search-country" name="country">
     <option value="Any" {%if defaultCountry == "Any"%}selected{%endif%}>Select a country</option>
-    <option value="AF" {% if data.transport.country == 'AF' %}selected{% endif %}>Afghanistan</option>
-    <option value="AX" {% if data.transport.country == 'AX' %}selected{% endif %}>Åland Islands</option>
-    <option value="AL" {% if data.transport.country == 'AL' %}selected{% endif %}>Albania</option>
-    <option value="DZ" {% if data.transport.country == 'DZ' %}selected{% endif %}>Algeria</option>
-    <option value="AS" {% if data.transport.country == 'AS' %}selected{% endif %}>American Samoa</option>
-    <option value="AD" {% if data.transport.country == 'AD' %}selected{% endif %}>Andorra</option>
-    <option value="AO" {% if data.transport.country == 'AO' %}selected{% endif %}>Angola</option>
-    <option value="AI" {% if data.transport.country == 'AI' %}selected{% endif %}>Anguilla</option>
-    <option value="AG" {% if data.transport.country == 'AG' %}selected{% endif %}>Antigua and Barbuda</option>
-    <option value="AR" {% if data.transport.country == 'AR' %}selected{% endif %}>Argentina</option>
-    <option value="AM" {% if data.transport.country == 'AM' %}selected{% endif %}>Armenia</option>
+    <option value="AF">Afghanistan</option>
+    <option value="AX">Åland Islands</option>
+    <option value="AL">Albania</option>
+    <option value="DZ">Algeria</option>
+    <option value="AS">American Samoa</option>
+    <option value="AD">Andorra</option>
+    <option value="AO">Angola</option>
+    <option value="AI">Anguilla</option>
+    <option value="AG">Antigua and Barbuda</option>
+    <option value="AR">Argentina</option>
+    <option value="AM">Armenia</option>
     <option value="AW">Aruba</option>
     <option value="AU">Australia</option>
     <option value="AT">Austria</option>
@@ -231,7 +228,7 @@
     <option value="UG">Uganda</option>
     <option value="UA">Ukraine</option>
     <option value="AE">United Arab Emirates (the)</option>
-    <option value="GB"  selected>United Kingdom - Great Britain</option>
+    <option value="GB" {% if defaultCountry == "GB" %}selected{% endif %}>United Kingdom</option>
     <option value="XI">United Kingdom - Northern Ireland</option>
     <option value="UM">United States Minor Outlying Islands (the)</option>
     <option value="US">United States of America (the)</option>

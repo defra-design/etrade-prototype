@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Place of origin – {{super()}}
+Place of origin – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -25,39 +25,69 @@ Place of origin – {{super()}}
 </style>
 
 
-<form class="" method="post">
+<form class="" action="../task-list" method="post">
   <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
     <!---->
   </div>
   <section id="intro">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"> Transport </span>
-        <h1 class="govuk-heading-xl"> Place of load and dispatch </h1>
-   
+        <h1 class="govuk-heading-xl"> Place of origin </h1>
+        <!---->
+        <!---->
+        <!---->
       </div>
     </div>
   </section>
   <section>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-      
+        <h2 class="govuk-heading-l">1. Country of origin</h2>
 
-       
+        {% block countryOfOrigin %}{% include "../find/_country-of-origin-select.html" %}{% endblock %}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="region-of-origin"> Region of origin (optional)</label>
+          <select class="govuk-select full-width" id="region-of-origin">
+            <option selected>Select a region</option>
+            <option>GB-0</option>
+            <option>GB-1</option>
+            <option>GB-2</option>
+          </select></div>
+      </div>
     </div>
   </section>
-   <section id="place-of-loading">
+  <section id="place-of-dispatch">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">Place of loading</h2>
-        <p class="govuk-body">This is the location where the consignment will be loaded.</p>
+        <h2 class="govuk-heading-l">2. Place of dispatch</h2>
+        <p class="govuk-body">This is the final location that the consignment will be transported from in Great Britain.</p>
 
-        {% if data.transport['loading'] %}
-          {% set establishmentIndex = data.transport['loading'] %}
+        {% if data.person['dispatch'] %}
+          {% set establishmentIndex = data.person['dispatch'] %}
           {% set org = data.establishments[establishmentIndex] %}
 
-          <input type="hidden" name="placeOfLoadingName" value="{{org.TradingName}}" >
-        <input type="hidden" name="placeOfLoadingTown" value="{{org.Town}}" >
-        <input type="hidden" name="placeOfLoadingPostcode" value="{{org.Postcode}}" >
+          {% set removeLink = "./remove?who=dispatch&redirect=place-of-origin" %}
+          {% block traderAddress %}{% include "../persons/trader-address.html" %}{% endblock %}
+
+        {% else %}
+          <p class="govuk-!-margin-bottom-10 find-establishment-link">
+            <a href="./place-of-origin/dispatch">Select a place of dispatch</a>
+          </p>
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+  <section id="place-of-loading">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">3. Place of loading</h2>
+        <p class="govuk-body">This is the location where the consignment will be loaded.</p>
+        <!---->
+        {% if data.person['loading'] %}
+          {% set establishmentIndex = data.person['loading'] %}
+          {% set org = data.establishments[establishmentIndex] %}
+
           {% set removeLink = "./remove?who=loading&redirect=place-of-origin" %}
           {% block traderAddress2 %}{% include "../persons/trader-address.html" %}{% endblock %}
 
@@ -69,42 +99,6 @@ Place of origin – {{super()}}
       </div>
     </div>
   </section>
-  <section id="place-of-dispatch">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">Place of dispatch</h2>
-        <p class="govuk-body">This is the final location that the consignment will be transported from in Great Britain.</p>
-
-        {% if data.transport['dispatch'] %}
-          {% set establishmentIndex = data.transport['dispatch'] %}
-          {% set org = data.establishments[establishmentIndex] %}
-
-          <input type="hidden" name="placeOfDispatchName" value="{{org.TradingName}}" >
-        <input type="hidden" name="placeOfDispatchTown" value="{{org.Town}}" >
-        <input type="hidden" name="placeOfDispatchPostcode" value="{{org.Postcode}}" >
-          {% set removeLink = "./remove?who=dispatch&redirect=place-of-origin" %}
-          {% block traderAddress %}{% include "../persons/trader-address.html" %}{% endblock %}
-
-        {% else %}
-          <p class="govuk-!-margin-bottom-10 find-establishment-link">
-            <a href="./place-of-origin/dispatch">Select a place of dispatch</a>
-          </p>
-        {% endif %}
-        <div class="govuk-form-group govuk-!-margin-top-6" id="skip-question-container">
-      <h3 class="govuk-heading-m">You can skip this section</h3>
-      <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-      <div class="govuk-checkboxes__item" id="skip-question-checkbox">
-        <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %}>
-        <label class="govuk-label govuk-checkboxes__label" for="skip-question">
-          I've entered as much information as I can
-        </label>
-      </div>
-
-  </div>
-      </div>
-    </div>
-  </section>
-  
   <section id="actions">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds"><button class="govuk-button"> Save and continue </button></div>

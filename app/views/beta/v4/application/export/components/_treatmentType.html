@@ -5,8 +5,8 @@
 
   <label class="govuk-label" for="natureOfCommodity">Treatment type</label>
   <div class="app-repeatable-section" id="repeatable-treatmentType">
-    <div class="govuk-input__wrapper ">
-      <select class="govuk-select" id="treatent-type" name="treatmentType">
+    <div class="govuk-input__wrapper m-t-15">
+      <select class="govuk-select full-width" id="treatent-type" name="treatmentType">s
         <option disabled="" value="" selected></option>
         {% for item in listOfItems%}
         <option value="{{item}}" {% if (data.change=="yes" or data.copy=="yes") and (item==identification.treatmentType or item==identification.treatmentType[loop.index-1]) %}selected{% endif %}>{{item}}</option>
@@ -24,8 +24,8 @@
 
     {% for row in identification.treatmentType %}
     <div class="app-repeatable-section govuk-!-margin-top-2" id="repeatable-treatmentType{{loop.index}}">
-    <div class="govuk-input__wrapper ">
-      <select class="govuk-select" id="treatent-type" name="treatmentType">
+    <div class="govuk-input__wrapper m-t-15">
+      <select class="govuk-select full-width" id="treatent-type" name="treatmentType">
 
         <option disabled="" value=""></option>
         {% for item in listOfItems%}
@@ -46,7 +46,7 @@
 {% else %}
 <div class="govuk-form-group">
   <label class="govuk-label" for="natureOfCommodity">Treatment type</label>
-  <select class="govuk-select" id="treatent-type" name="treatmentType">
+  <select class="govuk-select full-width" id="treatent-type" name="treatmentType">
     <option disabled="" value="" {% if not (identification.treatmentType) %}selected{%endif%}>Select a treatment type</option>
     {% if (listOfSpecies| length) <= 20 %}
     <option disabled="" value="" ></option>

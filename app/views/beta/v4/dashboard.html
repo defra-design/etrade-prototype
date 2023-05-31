@@ -1,116 +1,103 @@
 {% extends "layout.html" %}
+
 {% block pageTitle %}
 Dashboard – GOV.UK Prototype Kit
 {% endblock %}
+
 {% block content %}
+
 <style type="text/css">
 .p-dropdown {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  cursor: pointer;
-  position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
-
 .p-dropdown-clear-icon {
-  position: absolute;
-  top: 50%;
-  margin-top: -.5rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -.5rem;
 }
-
 .p-dropdown-trigger {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
 }
-
 .p-dropdown-label {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  width: 1%;
-  text-overflow: ellipsis;
-  cursor: pointer;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    width: 1%;
+    text-overflow: ellipsis;
+    cursor: pointer;
 }
-
 .p-dropdown-label-empty {
-  overflow: hidden;
-  visibility: hidden;
+    overflow: hidden;
+    visibility: hidden;
 }
-
-input.p-dropdown-label {
-  cursor: default;
+input.p-dropdown-label  {
+    cursor: default;
 }
-
 .p-dropdown .p-dropdown-panel {
-  min-width: 100%;
+    min-width: 100%;
 }
-
 .p-dropdown-panel {
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-
 .p-dropdown-items-wrapper {
-  overflow: auto;
+    overflow: auto;
 }
-
 .p-dropdown-item {
-  cursor: pointer;
-  font-weight: normal;
-  white-space: nowrap;
-  position: relative;
-  overflow: hidden;
+    cursor: pointer;
+    font-weight: normal;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
 }
-
 .p-dropdown-item-group {
-  cursor: auto;
+    cursor: auto;
 }
-
 .p-dropdown-items {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
-
 .p-dropdown-filter {
-  width: 100%;
+    width: 100%;
 }
-
 .p-dropdown-filter-container {
-  position: relative;
+    position: relative;
 }
-
 .p-dropdown-filter-icon {
-  position: absolute;
-  top: 50%;
-  margin-top: -.5rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -.5rem;
 }
-
 .p-fluid .p-dropdown {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 }
-
 .p-fluid .p-dropdown .p-dropdown-label {
-  width: 1%;
+    width: 1%;
 }
 
 .govuk-button--blue {
@@ -121,777 +108,812 @@ input.p-dropdown-label {
 .govuk-button--blue:hover {
   background: #002c82;
 }
-
-.govuk-fieldset__legend {
-  width: 100%;
-}
 </style>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
-    <h1 class="govuk-heading-xl"> Your Applications </h1>
-  </div>
-</div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full"><a href="./application/start" class="govuk-button govuk-button--start" role="button"> Start a new application <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-      </svg></a></div>
-</div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <div class="govuk-form-group"><label class="govuk-label-wrapper" for="search"><span class="govuk-label govuk-label--l">Search for an application</span></label>
-      <div id="search-hint" class="govuk-hint"> Search by Certificate Name, Serial Number, 4 digit EHC Number, Application Reference, Exporter User Name or Commodity Type. </div><input class="govuk-input" id="search" name="search" type="text" aria-describedby="search-hint" autocomplete="off">
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
+      <h1 class="govuk-heading-xl"> Your Applications </h1>
     </div>
   </div>
-  <div class="govuk-grid-column-full">
-    <div class="govuk-button-group"><button class="govuk-button govuk-button--secondary" data-module="govuk-button" data-toggle="collapse" data-target="#countryFilter"> Filter by Country
-        <!---->
-      </button><button class="govuk-button govuk-button--secondary" data-module="govuk-button" data-toggle="collapse" data-target="#dateFilter"> Filter by Date
-        <!---->
-      </button><button class="govuk-button govuk-button--secondary" data-module="govuk-button" data-toggle="collapse" data-target="#statusFilter"> Filter by Status
-        <!---->
-      </button><a class="govuk-link" href="#">Clear all filters</a></div>
-  </div>
-</div>
-<div>
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full filter-container collapse" id="countryFilter">
-      <div class="govuk-form-group filter-panel">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m m-0"><span class="pull-right govuk-button-group d-inline m-0">
-              <!----><a class="govuk-link" href="#countryFilter" data-toggle="collapse" aria-expanded="true">Hide filter</a>
-            </span>
-            <h3 class="pull-left govuk-fieldset__heading"> Filter by Country </h3>
-          </legend>
-          <div class="govuk-checkboxes govuk-checkboxes--small filter-row" data-module="govuk-checkboxes">
-            <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="DE" name="country" type="checkbox" value="DE"><label class="govuk-label govuk-checkboxes__label filter-label" for="DE"><span class="country-flag-wrapper"><span class="flag f-de normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Germany <span class="count">2</span></span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="FR" name="country" type="checkbox" value="FR"><label class="govuk-label govuk-checkboxes__label filter-label" for="FR"><span class="country-flag-wrapper"><span class="flag f-fr normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> France <span class="count">7</span></span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="IE" name="country" type="checkbox" value="IE"><label class="govuk-label govuk-checkboxes__label filter-label" for="IE"><span class="country-flag-wrapper"><span class="flag f-ie normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Ireland <span class="count">3</span></span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="NL" name="country" type="checkbox" value="NL"><label class="govuk-label govuk-checkboxes__label filter-label" for="NL"><span class="country-flag-wrapper"><span class="flag f-nl normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Netherlands <span class="count">2</span></span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="SE" name="country" type="checkbox" value="SE"><label class="govuk-label govuk-checkboxes__label filter-label" for="SE"><span class="country-flag-wrapper"><span class="flag f-se normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Sweden <span class="count">1</span></span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="XI" name="country" type="checkbox" value="XI"><label class="govuk-label govuk-checkboxes__label filter-label" for="XI"><span class="country-flag-wrapper"><span class="flag f-gb normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Northern Ireland <span class="count">545</span></span></label></div>
-          </div>
-        </fieldset>
+    <div class="govuk-grid-column-full"><a href="./application/start" class="govuk-button govuk-button--start" role="button"> Start a new application <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5"
+          height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg></a></div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-form-group"><label class="govuk-label-wrapper" for="search"><span class="govuk-label govuk-label--l">Search for an application</span></label>
+        <div id="search-hint" class="govuk-hint"> Search by Certificate Name, Serial Number, 4 digit EHC Number, Application Reference, Exporter User Name or Commodity Type. </div><input class="govuk-input" id="search" name="search" type="text"
+          aria-describedby="search-hint" autocomplete="off">
       </div>
     </div>
+    <div class="govuk-grid-column-full">
+      <div class="govuk-button-group"><button class="govuk-button govuk-button--secondary" data-module="govuk-button" data-toggle="collapse" data-target="#countryFilter"> Filter by Country
+          <!---->
+        </button><button class="govuk-button govuk-button--secondary" data-module="govuk-button" data-toggle="collapse" data-target="#dateFilter"> Filter by Date
+          <!---->
+        </button><button class="govuk-button govuk-button--secondary" data-module="govuk-button" data-toggle="collapse" data-target="#statusFilter"> Filter by Status
+          <!---->
+        </button><a class="govuk-link" href="#">Clear all filters</a></div>
+    </div>
   </div>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full filter-container collapse" id="dateFilter">
-      <div class="govuk-form-group filter-panel">
-        <div class="govuk-form-group">
+  <div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full filter-container collapse" id="countryFilter">
+        <div class="govuk-form-group filter-panel">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m m-0"><span class="pull-right govuk-button-group d-inline m-0"><a class="govuk-link" href="#dateFilter" data-toggle="collapse" aria-expanded="true">Hide filter</a></span>
-              <h3 class="pull-left govuk-fieldset__heading"> Filter by Date Created/Updated </h3>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m m-0"><span class="pull-right govuk-button-group d-inline m-0">
+                <!----><a class="govuk-link" href="#countryFilter" data-toggle="collapse" aria-expanded="true">Hide filter</a>
+              </span>
+              <h3 class="pull-left govuk-fieldset__heading"> Filter by Country </h3>
             </legend>
-            <div class="govuk-radios govuk-radios filter-row" data-module="govuk-radios">
-              <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-all" name="dateFilter" type="radio" value="all"><label class="govuk-label govuk-radios__label" for="dateFilter-all"> All dates </label></div>
-              <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-today" name="dateFilter" type="radio" value="today"><label class="govuk-label govuk-radios__label" for="dateFilter-today"> Today </label></div>
-              <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-last7" name="dateFilter" type="radio" value="last7"><label class="govuk-label govuk-radios__label" for="dateFilter-last7"> Last 7 days </label>
-              </div>
-              <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-last14" name="dateFilter" type="radio" value="last14"><label class="govuk-label govuk-radios__label" for="dateFilter-last14"> Last 14 days
-                </label></div>
-              <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-last21" name="dateFilter" type="radio" value="last21"><label class="govuk-label govuk-radios__label" for="dateFilter-last21"> Last 21 days
-                </label></div>
-              <div class="govuk-radios__item col-sm-6">
-                <div><input class="govuk-radios__input" id="dateFilter-custom" name="dateFilter" type="radio" value="custom"><label class="govuk-label govuk-radios__label" for="dateFilter-custom"> Custom date range </label>
-                  <div class="vc-popover-content-wrapper" placement="bottom-start">
-                    <!---->
+            <div class="govuk-checkboxes govuk-checkboxes--small filter-row" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="DE" name="country" type="checkbox" value="DE"><label class="govuk-label govuk-checkboxes__label filter-label" for="DE"><span
+                    class="country-flag-wrapper"><span class="flag f-de normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Germany <span class="count">2</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="FR" name="country" type="checkbox" value="FR"><label class="govuk-label govuk-checkboxes__label filter-label" for="FR"><span
+                    class="country-flag-wrapper"><span class="flag f-fr normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> France <span class="count">7</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="IE" name="country" type="checkbox" value="IE"><label class="govuk-label govuk-checkboxes__label filter-label" for="IE"><span
+                    class="country-flag-wrapper"><span class="flag f-ie normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Ireland <span class="count">3</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="NL" name="country" type="checkbox" value="NL"><label class="govuk-label govuk-checkboxes__label filter-label" for="NL"><span
+                    class="country-flag-wrapper"><span class="flag f-nl normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Netherlands <span class="count">2</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="SE" name="country" type="checkbox" value="SE"><label class="govuk-label govuk-checkboxes__label filter-label" for="SE"><span
+                    class="country-flag-wrapper"><span class="flag f-se normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Sweden <span class="count">1</span></span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6 col-lg-4"><input class="govuk-checkboxes__input" id="XI" name="country" type="checkbox" value="XI"><label class="govuk-label govuk-checkboxes__label filter-label" for="XI"><span
+                    class="country-flag-wrapper"><span class="flag f-gb normal-flag" data-v-8720a308="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span> Northern Ireland <span class="count">545</span></span></label></div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full filter-container collapse" id="dateFilter">
+        <div class="govuk-form-group filter-panel">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m m-0"><span class="pull-right govuk-button-group d-inline m-0"><a class="govuk-link" href="#dateFilter" data-toggle="collapse" aria-expanded="true">Hide filter</a></span>
+                <h3 class="pull-left govuk-fieldset__heading"> Filter by Date Created/Updated </h3>
+              </legend>
+              <div class="govuk-radios govuk-radios filter-row" data-module="govuk-radios">
+                <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-all" name="dateFilter" type="radio" value="all"><label class="govuk-label govuk-radios__label" for="dateFilter-all"> All dates </label></div>
+                <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-today" name="dateFilter" type="radio" value="today"><label class="govuk-label govuk-radios__label" for="dateFilter-today"> Today </label></div>
+                <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-last7" name="dateFilter" type="radio" value="last7"><label class="govuk-label govuk-radios__label" for="dateFilter-last7"> Last 7 days </label>
+                </div>
+                <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-last14" name="dateFilter" type="radio" value="last14"><label class="govuk-label govuk-radios__label" for="dateFilter-last14"> Last 14 days
+                  </label></div>
+                <div class="govuk-radios__item col-sm-6"><input class="govuk-radios__input" id="dateFilter-last21" name="dateFilter" type="radio" value="last21"><label class="govuk-label govuk-radios__label" for="dateFilter-last21"> Last 21 days
+                  </label></div>
+                <div class="govuk-radios__item col-sm-6">
+                  <div><input class="govuk-radios__input" id="dateFilter-custom" name="dateFilter" type="radio" value="custom"><label class="govuk-label govuk-radios__label" for="dateFilter-custom"> Custom date range </label>
+                    <div class="vc-popover-content-wrapper" placement="bottom-start">
+                      <!---->
+                    </div>
                   </div>
                 </div>
               </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full filter-container collapse" id="statusFilter">
+        <div class="govuk-form-group filter-panel">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m m-0"><span class="pull-right govuk-button-group d-inline m-0">
+                <!----><a class="govuk-link" href="#statusFilter" data-toggle="collapse" aria-expanded="true">Hide filter</a>
+              </span>
+              <h3 class="pull-left govuk-fieldset__heading"> Filter by Status </h3>
+            </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small filter-row" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-0" name="status" type="checkbox" value="AphaCancelled"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-0">APHA
+                  Cancelled<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-1" name="status" type="checkbox" value="AphaRejected"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-1">APHA
+                  Rejected<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-2" name="status" type="checkbox" value="CertifierApprovedAwaitingSync"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-2">Awaiting Sync with Traces<span class="count">17</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-3" name="status" type="checkbox" value="Cancelled"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-3">Cancelled<span class="count">5</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-4" name="status" type="checkbox" value="CertifierApproved"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-4">Certifier Approved<span class="count">139</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-5" name="status" type="checkbox" value="CertifierCancelled"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-5">Certifier Cancelled<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-6" name="status" type="checkbox" value="CertifierPartiallyApproved"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-6">Certifier Partially Approved<span class="count">2</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-7" name="status" type="checkbox" value="CertifierPartiallyCancelled"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-7">Certifier Partially Cancelled<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-8" name="status" type="checkbox" value="CertifierPartiallyRejected"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-8">Certifier Partially Rejected<span class="count">1</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-9" name="status" type="checkbox" value="CertifierRejected"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-9">Certifier Rejected<span class="count">7</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-10" name="status" type="checkbox" value="DiseaseOutbreakCancelled"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-10">Disease Outbreak Cancelled<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-11" name="status" type="checkbox" value="OutbreakFurtherInformationRequired"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-11">Disease Outbreak Further Information Required<span class="count">345</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-12" name="status" type="checkbox" value="DiseaseOutbreakRejected"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-12">Disease Outbreak Rejected<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-13" name="status" type="checkbox" value="Draft"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-13">Draft<span
+                    class="count">1020</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-14" name="status" type="checkbox" value="UnderReview"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-14">EHC
+                  Under review<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-15" name="status" type="checkbox" value="InProgressWithApha"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-15">In Progress with APHA<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-16" name="status" type="checkbox" value="WithCertifier"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-16">In
+                  Progress with Certifier<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-17" name="status" type="checkbox" value="ReturnedToExporter"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-17">Returned by Certifier<span class="count">0</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-18" name="status" type="checkbox" value="Submitted"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-18">Submitted
+                  to Certifier<span class="count">206</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-19" name="status" type="checkbox" value="CertifierApprovedAcceptedByTraces"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-19">Successful Sync with Traces<span class="count">30</span></label></div>
+              <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-20" name="status" type="checkbox" value="CertifierApprovedRejectedByTraces"><label class="govuk-label govuk-checkboxes__label filter-label"
+                  for="status-20">Unsuccessful Sync with Traces<span class="count">11</span></label></div>
             </div>
           </fieldset>
         </div>
       </div>
     </div>
   </div>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full filter-container collapse" id="statusFilter">
-      <div class="govuk-form-group filter-panel">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m m-0"><span class="pull-right govuk-button-group d-inline m-0">
-              <!----><a class="govuk-link" href="#statusFilter" data-toggle="collapse" aria-expanded="true">Hide filter</a>
-            </span>
-            <h3 class="pull-left govuk-fieldset__heading"> Filter by Status </h3>
-          </legend>
-          <div class="govuk-checkboxes govuk-checkboxes--small filter-row" data-module="govuk-checkboxes">
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-0" name="status" type="checkbox" value="AphaCancelled"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-0">APHA
-                Cancelled<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-1" name="status" type="checkbox" value="AphaRejected"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-1">APHA
-                Rejected<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-2" name="status" type="checkbox" value="CertifierApprovedAwaitingSync"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-2">Awaiting Sync with Traces<span class="count">17</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-3" name="status" type="checkbox" value="Cancelled"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-3">Cancelled<span class="count">5</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-4" name="status" type="checkbox" value="CertifierApproved"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-4">Certifier Approved<span class="count">139</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-5" name="status" type="checkbox" value="CertifierCancelled"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-5">Certifier Cancelled<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-6" name="status" type="checkbox" value="CertifierPartiallyApproved"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-6">Certifier Partially Approved<span class="count">2</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-7" name="status" type="checkbox" value="CertifierPartiallyCancelled"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-7">Certifier Partially Cancelled<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-8" name="status" type="checkbox" value="CertifierPartiallyRejected"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-8">Certifier Partially Rejected<span class="count">1</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-9" name="status" type="checkbox" value="CertifierRejected"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-9">Certifier Rejected<span class="count">7</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-10" name="status" type="checkbox" value="DiseaseOutbreakCancelled"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-10">Disease Outbreak Cancelled<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-11" name="status" type="checkbox" value="OutbreakFurtherInformationRequired"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-11">Disease Outbreak Further Information Required<span class="count">345</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-12" name="status" type="checkbox" value="DiseaseOutbreakRejected"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-12">Disease Outbreak Rejected<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-13" name="status" type="checkbox" value="Draft"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-13">Draft<span class="count">1020</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-14" name="status" type="checkbox" value="UnderReview"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-14">EHC
-                Under review<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-15" name="status" type="checkbox" value="InProgressWithApha"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-15">In Progress with APHA<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-16" name="status" type="checkbox" value="WithCertifier"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-16">In
-                Progress with Certifier<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-21" name="status" type="checkbox" value="WithCertifier"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-21">Pending Replacement<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-22" name="status" type="checkbox" value="WithCertifier"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-22">Replaced<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-23" name="status" type="checkbox" value="WithCertifier"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-23">Replacement<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-17" name="status" type="checkbox" value="ReturnedToExporter"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-17">Returned by Certifier<span class="count">0</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-18" name="status" type="checkbox" value="Submitted"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-18">Submitted
-                to Certifier<span class="count">206</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-19" name="status" type="checkbox" value="CertifierApprovedAcceptedByTraces"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-19">Successful Sync with Traces<span class="count">30</span></label></div>
-            <div class="govuk-checkboxes__item col-sm-6"><input class="govuk-checkboxes__input" id="status-20" name="status" type="checkbox" value="CertifierApprovedRejectedByTraces"><label class="govuk-label govuk-checkboxes__label filter-label" for="status-20">Unsuccessful Sync with Traces<span class="count">11</span></label></div>
-          </div>
-        </fieldset>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="govuk-grid-row home-list p-govuk" data-v-19f29262="">
-  <div class="govuk-grid-column-full" data-v-19f29262="">
-    <table class="govuk-table" data-module="moj-sortable-table" data-v-19f29262="">
-      <thead class="govuk-table__head small-text" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <th scope="col" class="govuk-table__header d-none d-md-table-cell nowrap" data-v-19f29262=""> Serial No. </th>
-          <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="none" data-v-19f29262=""><button type="button" data-index="0" data-v-19f29262=""> Reference </button></th>
-          <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="none" data-v-19f29262=""><button type="button" data-index="1" data-v-19f29262=""> Exporter </button></th>
-          <th scope="col" class="govuk-table__header d-none d-md-table-cell" data-v-19f29262=""> Country </th>
-          <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="descending" data-v-19f29262=""><button type="button" data-index="2" data-v-19f29262=""> Created </button></th>
-          <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="none" data-v-19f29262=""><button type="button" data-index="3" data-v-19f29262=""> Exported </button></th>
-          <th scope="col" class="govuk-table__header d-none d-md-table-cell" data-v-19f29262=""> Status </th>
-          <th scope="col" class="govuk-table__header" data-v-19f29262=""><span class="pull-right show-hide" data-v-19f29262=""><a class="govuk-link" href="#" data-v-19f29262=""> Show all </a></span></th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/9acdcee8-4864-40b2-9f98-9002ed774cd2" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">A6F74D95<br data-v-19f29262=""> 27B2402</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/9acdcee8-4864-40b2-9f98-9002ed774cd2" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">A6F74D9527B2402</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/2e05aab9-7e11-4112-a955-1ac8ac078dc8" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">C8D519C5<br data-v-19f29262=""> 9A3C4FA</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Richards certicate</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/2e05aab9-7e11-4112-a955-1ac8ac078dc8" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">C8D519C59A3C4FA</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Richards certicate</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262="">
-                    <!----><span class="small-text" data-v-19f29262=""></span>
-                  </td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/b4914f43-8a8f-4ee0-bc60-3ad5eca49f46" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">8063EF7D<br data-v-19f29262=""> FBF5453</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Richards certicate</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/b4914f43-8a8f-4ee0-bc60-3ad5eca49f46" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">8063EF7DFBF5453</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Richards certicate</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262="">
-                    <!----><span class="small-text" data-v-19f29262=""></span>
-                  </td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/827a39a7-6103-4cd3-9ad3-ee02a698b473" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">DF811331<br data-v-19f29262=""> 999646C</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">25 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/827a39a7-6103-4cd3-9ad3-ee02a698b473" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">DF811331999646C</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">25 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/b449f562-5b74-4e39-87cf-7de5817733ae" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">CFCF53B6<br data-v-19f29262=""> B0A147A</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">TS8416</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/b449f562-5b74-4e39-87cf-7de5817733ae" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">CFCF53B6B0A147A</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">TS8416</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/29489538-66ca-4779-90cd-d22baaf5ab80" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">78BB19F1<br data-v-19f29262=""> D77D4B9</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">20 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/29489538-66ca-4779-90cd-d22baaf5ab80" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">78BB19F1D77D4B9</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">20 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262="" id="78BB19F1D77D4B9"><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <tr data-v-5f726ce5="" id="78BB19F1D77D4B9-expand" style="display:none">
-          <td class="govuk-table__cell" colspan="8" data-v-5f726ce5="">
-            <div class="certficate-subtable govuk-inset-text" data-v-5f726ce5="">
-              <table class="govuk-table" data-v-5f726ce5="">
-                <thead class="govuk-table__head" data-v-5f726ce5="">
-                  <tr class="govuk-table__row" data-v-5f726ce5="">
-                    <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
-                      <span class="small-text" data-v-5f726ce5="">&nbsp;Certificate Name</span>
-                    </th>
-                    <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
-                      <span class="small-text" data-v-5f726ce5="">Certifier</span>
-                    </th>
-                    <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
-                      <span class="small-text" data-v-5f726ce5="">SP/NV</span>
-                    </th>
-                    <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
-                      <span class="small-text" data-v-5f726ce5="">Status</span>
-                    </th>
-                    <th scope="col" class="govuk-table__header download-header" data-v-5f726ce5="" style="width:150px;">
-                      <span class="small-text" data-v-5f726ce5="">Download</span>
-                    </th>
+  <div class="govuk-grid-row home-list p-govuk" data-v-19f29262="">
+    <div class="govuk-grid-column-full" data-v-19f29262="">
+      <table class="govuk-table" data-module="moj-sortable-table" data-v-19f29262="">
+        <thead class="govuk-table__head small-text" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <th scope="col" class="govuk-table__header d-none d-md-table-cell nowrap" data-v-19f29262=""> Serial No. </th>
+            <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="none" data-v-19f29262=""><button type="button" data-index="0" data-v-19f29262=""> Reference </button></th>
+            <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="none" data-v-19f29262=""><button type="button" data-index="1" data-v-19f29262=""> Exporter </button></th>
+            <th scope="col" class="govuk-table__header d-none d-md-table-cell" data-v-19f29262=""> Country </th>
+            <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="descending" data-v-19f29262=""><button type="button" data-index="2" data-v-19f29262=""> Created </button></th>
+            <th scope="col" class="govuk-table__header d-none d-md-table-cell" aria-sort="none" data-v-19f29262=""><button type="button" data-index="3" data-v-19f29262=""> Exported </button></th>
+            <th scope="col" class="govuk-table__header d-none d-md-table-cell" data-v-19f29262=""> Status </th>
+            <th scope="col" class="govuk-table__header" data-v-19f29262=""><span class="pull-right show-hide" data-v-19f29262=""><a class="govuk-link" href="#" data-v-19f29262=""> Show all </a></span></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/9acdcee8-4864-40b2-9f98-9002ed774cd2" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">A6F74D95<br data-v-19f29262=""> 27B2402</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262=""
+                  style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/9acdcee8-4864-40b2-9f98-9002ed774cd2" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">A6F74D9527B2402</span></a></td>
                   </tr>
-                </thead>
-                <tbody class="govuk-table__body" data-v-5f726ce5="">
-                  <tr class="govuk-table__row" data-v-5f726ce5="">
-                    <td class="govuk-table__cell" data-v-5f726ce5="">
-                      <span class="small-text" data-v-5f726ce5="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262=""
+                          style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/2e05aab9-7e11-4112-a955-1ac8ac078dc8" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">C8D519C5<br data-v-19f29262=""> 9A3C4FA</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Richards certicate</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/2e05aab9-7e11-4112-a955-1ac8ac078dc8" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">C8D519C59A3C4FA</span></a></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Richards certicate</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262="">
+                      <!----><span class="small-text" data-v-19f29262=""></span>
                     </td>
-                    <td class="govuk-table__cell" data-v-5f726ce5="">
-                      <span class="small-text" data-v-5f726ce5="">test user</span>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/b4914f43-8a8f-4ee0-bc60-3ad5eca49f46" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">8063EF7D<br data-v-19f29262=""> FBF5453</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Richards certicate</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/b4914f43-8a8f-4ee0-bc60-3ad5eca49f46" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">8063EF7DFBF5453</span></a></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Richards certicate</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262="">
+                      <!----><span class="small-text" data-v-19f29262=""></span>
                     </td>
-                    <td class="govuk-table__cell" data-v-5f726ce5="">
-                      <span class="small-text" data-v-5f726ce5="">190537</span>
-                    </td>
-                    <td class="govuk-table__cell" data-v-5f726ce5="">
-                      <div class="d-inline-flex" data-v-5f726ce5="">
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/827a39a7-6103-4cd3-9ad3-ee02a698b473" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">DF811331<br data-v-19f29262=""> 999646C</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262=""
+                  style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">25 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/827a39a7-6103-4cd3-9ad3-ee02a698b473" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">DF811331999646C</span></a></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262=""
+                          style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">25 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/b449f562-5b74-4e39-87cf-7de5817733ae" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">CFCF53B6<br data-v-19f29262=""> B0A147A</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">TS8416</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262=""
+                  style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">24 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/b449f562-5b74-4e39-87cf-7de5817733ae" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">CFCF53B6B0A147A</span></a></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">TS8416</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262=""
+                          style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">24 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/29489538-66ca-4779-90cd-d22baaf5ab80" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">78BB19F1<br data-v-19f29262=""> D77D4B9</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262=""
+                  style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">20 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span><br
+                data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/29489538-66ca-4779-90cd-d22baaf5ab80" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">78BB19F1D77D4B9</span></a></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262=""
+                          style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">20 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262="" id="78BB19F1D77D4B9"><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+
+          <tr data-v-5f726ce5="" id="78BB19F1D77D4B9-expand" style="display:none">
+            <td class="govuk-table__cell" colspan="8" data-v-5f726ce5="">
+              <div class="certficate-subtable govuk-inset-text" data-v-5f726ce5="">
+                <table class="govuk-table" data-v-5f726ce5="">
+                  <thead class="govuk-table__head" data-v-5f726ce5="">
+                    <tr class="govuk-table__row" data-v-5f726ce5="">
+                      <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">&nbsp;Certificate Name</span>
+                      </th>
+                      <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">Certifier</span>
+                      </th>
+                      <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">SP/NV</span>
+                      </th>
+                      <th scope="col" class="govuk-table__header" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">Status</span>
+                      </th>
+                      <th scope="col" class="govuk-table__header download-header" data-v-5f726ce5="" style="width:150px;">
+                        <span class="small-text" data-v-5f726ce5="">Download</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body" data-v-5f726ce5="">
+                    <tr class="govuk-table__row" data-v-5f726ce5="">
+                      <td class="govuk-table__cell" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span>
+                      </td>
+                      <td class="govuk-table__cell" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">test user</span>
+                      </td>
+                      <td class="govuk-table__cell" data-v-5f726ce5="">
+                        <span class="small-text" data-v-5f726ce5="">190537</span>
+                      </td>
+                      <td class="govuk-table__cell" data-v-5f726ce5="">
+                        <div class="d-inline-flex" data-v-5f726ce5="">
+                          <div data-v-5f726ce5="">
+                            <span class="govuk-tag AcceptedByTraces" data-v-5f726ce5="">Successful Sync with Traces</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="govuk-table__cell nowrap" data-v-5f726ce5="">
                         <div data-v-5f726ce5="">
-                          <span class="govuk-tag AcceptedByTraces" data-v-5f726ce5="">Successful Sync with Traces</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="govuk-table__cell nowrap" data-v-5f726ce5="">
-                      <div data-v-5f726ce5="">
-                        <div class="p-dropdown p-component p-inputwrapper p-inputwrapper-filled mr-2" data-v-5f726ce5="">
-                          <div class="p-hidden-accessible">
-                            <input type="text" readonly="" aria-haspopup="true" aria-expanded="false">
+                          <div class="p-dropdown p-component p-inputwrapper p-inputwrapper-filled mr-2" data-v-5f726ce5="">
+                            <div class="p-hidden-accessible">
+                              <input type="text" readonly="" aria-haspopup="true" aria-expanded="false">
+                            </div>
+                            <span class="p-dropdown-label p-inputtext">English</span>
+                            <div class="p-dropdown-trigger" role="button" aria-haspopup="listbox" aria-expanded="false">
+                              <span class="p-sr-only">Show dropdown</span>
+                              <span class="p-dropdown-trigger-icon pi pi-chevron-down"></span>
+                            </div>
                           </div>
-                          <span class="p-dropdown-label p-inputtext">English</span>
-                          <div class="p-dropdown-trigger" role="button" aria-haspopup="listbox" aria-expanded="false">
-                            <span class="p-sr-only">Show dropdown</span>
-                            <span class="p-dropdown-trigger-icon pi pi-chevron-down"></span>
-                          </div>
+
+<button class="govuk-button govuk-button--blue" title="Download certificate"><span class="fas fa-file-download" data-v-5f726ce5=""></span></button>
+<a href="./view-certificate" role="button" draggable="false" class="govuk-button" data-module="govuk-button" title="View certificate">
+  <span class="fas fa-qrcode" data-v-5f726ce5=""></span></a>
+
                         </div>
-                        <button class="govuk-button govuk-button--blue" title="Download certificate"><span class="fas fa-file-download" data-v-5f726ce5=""></span></button>
-                        <a href="./view-certificate" role="button" draggable="false" class="govuk-button" data-module="govuk-button" title="View certificate">
-                          <span class="fas fa-qrcode" data-v-5f726ce5=""></span></a>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="govuk-button-group pull-right" data-v-5f726ce5="">
-              <!--
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="govuk-button-group pull-right" data-v-5f726ce5="">
+                <!--
                 <a href="#" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">View certificate</a>
                 <a href="#" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">Download certificate (pdf)</a>
                 -->
-              <a href="/Export-health-certificate/bab39dd0-f35b-4a99-bdca-39837307753c" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">View application</a>
-              <a href="/bab39dd0-f35b-4a99-bdca-39837307753c/Copy-Application" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">Copy application</a>
-            </div>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/d24e7c7b-9c79-4f68-b740-7190ee8ced0c" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">580C4503<br data-v-19f29262=""> 5C544F3</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">uploadtest</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/d24e7c7b-9c79-4f68-b740-7190ee8ced0c" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">580C45035C544F3</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">uploadtest</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262="">
-                    <!----><span class="small-text" data-v-19f29262=""></span>
-                  </td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/65cbab9f-1cb3-43ae-ab4f-f1af8f16c065" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">9EE96B70<br data-v-19f29262=""> 6DD74C1</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Smoketest0505</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/65cbab9f-1cb3-43ae-ab4f-f1af8f16c065" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">9EE96B706DD74C1</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Smoketest0505</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/5ec525e0-25dc-47b8-a849-46d64ed0bea1" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">9C31C5B8<br data-v-19f29262=""> 2BCA40F</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">20 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/5ec525e0-25dc-47b8-a849-46d64ed0bea1" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">9C31C5B82BCA40F</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">20 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-      <tbody class="govuk-table__body" data-v-19f29262="">
-        <tr class="govuk-table__row" data-v-19f29262="">
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/893ce108-6247-4ee7-a068-012192fcf3c7" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">83763959<br data-v-19f29262=""> 6CC947F</span></a></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">SmokeUpload1905</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
-          <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Submitted" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Submitted to Certifier</span></span><br data-v-19f29262="">
-            <!---->
-          </td>
-          <td class="govuk-table__cell" data-v-19f29262="">
-            <div class="d-md-none" data-v-19f29262="">
-              <table class="govuk-table" data-v-19f29262="">
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Serial No.</th>
-                  <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/893ce108-6247-4ee7-a068-012192fcf3c7" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">837639596CC947F</span></a></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Reference</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">SmokeUpload1905</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exporter</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Country</th>
-                  <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262="" style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Created</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Exported</th>
-                  <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
-                </tr>
-                <tr class="govuk-table__row" data-v-19f29262="">
-                  <th class="small-text" data-v-19f29262="">Status</th>
-                  <td align="right" data-v-19f29262=""><span class="govuk-tag Submitted" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Submitted to Certifier</span></span></td>
-                </tr>
-              </table>
-            </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable app-toggle-link" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
-          </td>
-        </tr>
-        <!---->
-      </tbody>
-    </table>
-    <nav class="moj-pagination" id="pagination-label" data-v-19f29262="">
-      <p class="govuk-visually-hidden" aria-labelledby="pagination-label" data-v-19f29262="">Pagination navigation</p>
-      <ul class="moj-pagination__list" data-v-19f29262="">
-        <li class="moj-pagination__item moj-pagination__item--prev" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262=""> Previous<span class="govuk-visually-hidden" data-v-19f29262=""> page of applications</span></a></li>
-        <li class="moj-pagination__item moj-pagination__item--active" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">1</a></li>
-        <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">2</a></li>
-        <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">3</a></li>
-        <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">4</a></li>
-        <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">5</a></li>
-        <li class="moj-pagination__item moj-pagination__item--dots" data-v-19f29262="">...</li>
-        <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">179</a></li>
-        <li class="moj-pagination__item moj-pagination__item--next" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262=""> Next<span class="govuk-visually-hidden" data-v-19f29262=""> page of applications</span></a></li>
-      </ul>
-      <p class="moj-pagination__results pull-right" data-v-19f29262=""> Showing <b data-v-19f29262="">1</b> to <b data-v-19f29262="">10</b> of <b data-v-19f29262="">1783</b> applications </p>
-    </nav>
+                <a href="/Export-health-certificate/bab39dd0-f35b-4a99-bdca-39837307753c" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">View application</a>
+                <a href="/bab39dd0-f35b-4a99-bdca-39837307753c/Copy-Application" class="govuk-button govuk-button--secondary" data-v-5f726ce5="">Copy application</a>
+              </div>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/d24e7c7b-9c79-4f68-b740-7190ee8ced0c" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">580C4503<br data-v-19f29262=""> 5C544F3</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">uploadtest</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/d24e7c7b-9c79-4f68-b740-7190ee8ced0c" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">580C45035C544F3</span></a></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">uploadtest</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262="">
+                      <!----><span class="small-text" data-v-19f29262=""></span>
+                    </td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/65cbab9f-1cb3-43ae-ab4f-f1af8f16c065" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">9EE96B70<br data-v-19f29262=""> 6DD74C1</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Smoketest0505</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262=""
+                  style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">--</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span><br data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/65cbab9f-1cb3-43ae-ab4f-f1af8f16c065" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">9EE96B706DD74C1</span></a></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Smoketest0505</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262=""
+                          style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">--</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag Draft" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Draft</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/5ec525e0-25dc-47b8-a849-46d64ed0bea1" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">9C31C5B8<br data-v-19f29262=""> 2BCA40F</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262=""
+                  style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">20 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span><br
+                data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/5ec525e0-25dc-47b8-a849-46d64ed0bea1" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">9C31C5B82BCA40F</span></a></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Otooles</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262=""
+                          style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">20 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag CertifierApprovedAcceptedByTraces" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Successful Sync with Traces</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+        <tbody class="govuk-table__body" data-v-19f29262="">
+          <tr class="govuk-table__row" data-v-19f29262="">
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><a href="/Export-health-certificate/893ce108-6247-4ee7-a068-012192fcf3c7" class="govuk-link" data-v-19f29262=""><span class="small-text"
+                  data-v-19f29262="">83763959<br data-v-19f29262=""> 6CC947F</span></a></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">SmokeUpload1905</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="nowrap" data-v-19f29262=""><span class="flag f-gb normal-flag flag" data-v-8720a308="" data-v-19f29262=""
+                  style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;);"></span><span class="small-text" data-v-19f29262="">XI</span></span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="small-text nowrap" data-v-19f29262="">19 May 2022</span></td>
+            <td class="govuk-table__cell d-none d-md-table-cell" data-v-19f29262=""><span class="govuk-tag Submitted" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Submitted to Certifier</span></span><br data-v-19f29262="">
+              <!---->
+            </td>
+            <td class="govuk-table__cell" data-v-19f29262="">
+              <div class="d-md-none" data-v-19f29262="">
+                <table class="govuk-table" data-v-19f29262="">
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Serial No.</th>
+                    <td align="right" data-v-19f29262=""><a href="/Export-health-certificate/893ce108-6247-4ee7-a068-012192fcf3c7" class="govuk-link" data-v-19f29262=""><span class="small-text" data-v-19f29262="">837639596CC947F</span></a></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Reference</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">SmokeUpload1905</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exporter</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">etrad euser</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Country</th>
+                    <td align="right" data-v-19f29262=""><span data-v-19f29262=""><span class="flag f-gb normal-flag" data-v-8720a308="" data-v-19f29262=""
+                          style="background-image: url(&quot;/public/img/flags.1147a273.png&quot;); width: 50px;"></span></span><span class="small-text" data-v-19f29262="">XI</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Created</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Exported</th>
+                    <td align="right" data-v-19f29262=""><span class="small-text" data-v-19f29262="">19 May 2022</span></td>
+                  </tr>
+                  <tr class="govuk-table__row" data-v-19f29262="">
+                    <th class="small-text" data-v-19f29262="">Status</th>
+                    <td align="right" data-v-19f29262=""><span class="govuk-tag Submitted" data-v-19f29262=""><span class="small-text" data-v-19f29262="">Submitted to Certifier</span></span></td>
+                  </tr>
+                </table>
+              </div><span class="pull-right show-hide small-text" data-v-19f29262=""><a class="govuk-link show-subtable" href="#" data-v-19f29262=""><span class="pi pi-chevron-circle-down" data-v-19f29262=""></span> Show </a></span>
+            </td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
+      <nav class="moj-pagination" id="pagination-label" data-v-19f29262="">
+        <p class="govuk-visually-hidden" aria-labelledby="pagination-label" data-v-19f29262="">Pagination navigation</p>
+        <ul class="moj-pagination__list" data-v-19f29262="">
+          <li class="moj-pagination__item moj-pagination__item--prev" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262=""> Previous<span class="govuk-visually-hidden" data-v-19f29262=""> page of applications</span></a></li>
+          <li class="moj-pagination__item moj-pagination__item--active" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">1</a></li>
+          <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">2</a></li>
+          <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">3</a></li>
+          <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">4</a></li>
+          <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">5</a></li>
+          <li class="moj-pagination__item moj-pagination__item--dots" data-v-19f29262="">...</li>
+          <li class="moj-pagination__item" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262="">179</a></li>
+          <li class="moj-pagination__item moj-pagination__item--next" data-v-19f29262=""><a class="moj-pagination__link" href="#" data-v-19f29262=""> Next<span class="govuk-visually-hidden" data-v-19f29262=""> page of applications</span></a></li>
+        </ul>
+        <p class="moj-pagination__results pull-right" data-v-19f29262=""> Showing <b data-v-19f29262="">1</b> to <b data-v-19f29262="">10</b> of <b data-v-19f29262="">1783</b> applications </p>
+      </nav>
+    </div>
   </div>
-</div>
 {% endblock %}
 {% block pageScripts %}
 <script type="text/javascript">
-window.addEventListener('load', function() {
+  window.addEventListener('load', function() {
+    var subtable = '<tr data-v-0d2a5cfc="" id="subtable"><td class="govuk-table__cell" colspan="8" data-v-0d2a5cfc=""><div class="certficate-subtable govuk-inset-text" data-v-0d2a5cfc=""><table class="govuk-table" data-v-0d2a5cfc=""><thead class="govuk-table__head" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> &nbsp;Certificate Name </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Certifier </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> SP/NV </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Status </span></th><!----></tr></thead><tbody class="govuk-table__body" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><!----></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""></span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><div class="d-inline-flex" data-v-0d2a5cfc=""><!----><!----></div></td><!----></tr></tbody></table></div><div class="govuk-button-group pull-right" data-v-0d2a5cfc=""><!----><!----><a href="#" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> View application </a><a href="copy/copy-application" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> Copy application </a><!----><!----><a class="govuk-button govuk-button--warning" href="#" data-toggle="modal" data-target="#confirmRemoveModal" data-v-0d2a5cfc=""> Delete application </a></div><!----></td></tr>'
+    $('.show-subtable').on('click',function(e){
+      /*
+        e.preventDefault()
+        var row = $(this).closest(".govuk-table__row")
+        $('#subtable').remove()
+        row.after(subtable)
+      */
+    })
+    $('.govuk-button[data-toggle]').on("click",function() {
+      if(!$(".filter-container").hasClass("collapse")){
+        $(".filter-container").addClass("collapse")
+      }
 
+      var t=$(this).attr("data-target")
+      if ($(t).hasClass("collapse") ) {
+        $(t).removeClass("collapse")
+      } else {
+        $(t).addClass("collapse")
+      }
+    })
 
-  $('.app-toggle-link').on('click', function(e) {
-    e.preventDefault()
-    let targetID = '#' + $(this).attr('data-target')
-    let target = $(targetID)
-    if (target.is(":visible")) {
-      target.hide()
-    } else {
-      target.show()
-    }
+    $('#78BB19F1D77D4B9').on("click", function() {
+      $('#78BB19F1D77D4B9-expand').show();
+      return false;
+    })
 
   })
-
-  $('.govuk-button[data-toggle]').on("click", function() {
-    if (!$(".filter-container").hasClass("collapse")) {
-      $(".filter-container").addClass("collapse")
-    }
-
-    var t = $(this).attr("data-target")
-    if ($(t).hasClass("collapse")) {
-      $(t).removeClass("collapse")
-    } else {
-      $(t).addClass("collapse")
-    }
-  })
-
-  $('#78BB19F1D77D4B9').on("click", function() {
-    $('#78BB19F1D77D4B9-expand').show();
-    return false;
-  })
-
-  var subtable = '<tr data-v-0d2a5cfc="" id="subtable"><td class="govuk-table__cell" colspan="8" data-v-0d2a5cfc=""><div class="certficate-subtable govuk-inset-text" data-v-0d2a5cfc=""><table class="govuk-table" data-v-0d2a5cfc=""><thead class="govuk-table__head" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> &nbsp;Certificate Name </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Certifier </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> SP/NV </span></th><th scope="col" class="govuk-table__header" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""> Status </span></th><!----></tr></thead><tbody class="govuk-table__body" data-v-0d2a5cfc=""><tr class="govuk-table__row" data-v-0d2a5cfc=""><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc="">EHC8361 Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><!----></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><span class="small-text" data-v-0d2a5cfc=""></span></td><td class="govuk-table__cell" data-v-0d2a5cfc=""><div class="d-inline-flex" data-v-0d2a5cfc=""><!----><!----></div></td><!----></tr></tbody></table></div><div class="govuk-button-group pull-right" data-v-0d2a5cfc=""><!----><!----><a href="#" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> View application </a><a href="copy/copy-application" class="govuk-button govuk-button--secondary" data-v-0d2a5cfc=""> Copy application </a><!----><!----><a class="govuk-button govuk-button--warning" href="#" data-toggle="modal" data-target="#confirmRemoveModal" data-v-0d2a5cfc=""> Delete application </a></div><!----></td></tr>'
-  $('.show-subtable').on('click', function(e) {
-    /*
-      e.preventDefault()
-      var row = $(this).closest(".govuk-table__row")
-      $('#subtable').remove()
-      row.after(subtable)
-    */
-  })
-
-})
 </script>
 {% endblock%}

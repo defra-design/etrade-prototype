@@ -5,7 +5,7 @@ module.exports = function(router) {
   const upload = multer({ dest: './public/data/uploads/' })
 
   // CHANGE VERSION each time you create a new version
-  const base_url = "beta/v4/application/export/"
+  const base_url = "beta/v3/application/export/"
 
   function getCommodityIndex(commodity_code, certificate_index, certificate) {
     // console.log("In getCommodityIndex with params commodity_code: " + commodity_code + ", certificate_index: " + certificate_index + ", certificate: " + certificate);
@@ -418,8 +418,8 @@ module.exports = function(router) {
                         // TODO: validate the activity that is stored in the next column, so uploaded_data[uploadedDataRow][c+1]
 
                         if (establishmentDetails.AppNo) {
-                          // since we have a match, store the establishment index
-                          // e.g. manufacturingPlantActivity
+                          // we have a match
+                          // previously, we stored the establishmentIndex in the format of manufacturingPlant-id
                           // console.log("Found a match for this approval number: " + establishmentDetails.AppNo + " - storing id value of " + establishmentIndex);
                           // temp[establishmentType+"-id"] = establishmentIndex;
                         } else {

@@ -9,60 +9,18 @@ Find a consignor or exporter – {{serviceName}} - GOV.UK
 {% endblock%}
 {% block content %}
 
-<style type="text/css">
-  
-
-  .selectedCountry {
-    display: none;
-  }
-
-/*  hacky way to remove country. This is preselected. */
-</style>
-
 <form id="search" method="post">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
-      <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
-        <h2 class="govuk-error-summary__title" id="error-summary-title">
-          There is a problem
-        </h2>
-        <div class="govuk-error-summary__body">
-          <ul class="govuk-list govuk-error-summary__list">
-
-            <li id="operator-search-country-error-summary" style="display:none"><a href="#operator-search-country">A country must be selected</a></li>
-            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
-
-          </ul>
-        </div>
-      </div>
-
-      <div id="results-error-summary" class="govuk-error-summary" data-module="govuk-error-summary" style="display:none">
-        <div role="alert">
-          <h2 class="govuk-error-summary__title">
-            There is a problem
-          </h2>
-          <div class="govuk-error-summary__body">
-            <ul class="govuk-list govuk-error-summary__list">
-              <li>
-                <a href="#results">Select an organisation</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <h1 class="govuk-heading-xl">Find an exporter or consignor</h1>
+      <h1 class="govuk-heading-xl">Find a consignor or exporter</h1>
       <p class="govuk-body">This is the organisation that will send this consignment. They must be located in Great Britain.</p>
 
-      {% set defaultCountry = "GB" %}
-      <div class="govuk-visually-hidden">
+      {% set defaultCountry = "Any" %}
       {% block countryOfOrigin %}{% include "../../find/_country-of-origin-select.html" %}{% endblock %}
-      </div>
+
       {% set includeApprovalNumberSearch = false %}
-      {% set searchFor = "consignor"%}
-      {% set showActivites = true %}
-      {% set orgSearchLabel = "Exporter or consignor name" %}
+      {% set orgSearchLabel = "Consignor or exporter name" %}
       {% block organisationSearch %}{% include "../organisationSearchAndResults.html" %}{% endblock %}
 
     </div>

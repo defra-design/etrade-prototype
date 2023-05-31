@@ -1,15 +1,9 @@
 module.exports = function(router) {
-  require('./application/export/upload/routes.js')(router);
-  require('./write-excel/routes.js')(router);
-  require('./application/routes.js')(router);
-
   // Load helper functions
   const writeXlsxFile = require('write-excel-file/node');
 
-  
-
   // CHANGE VERSION each time you create a new version
-  const base_url = "beta/v4/"
+  const base_url = "beta/v3/"
 
   function isAlreadyAdded(a, v) {
     let r = a.find(element => {
@@ -40,16 +34,12 @@ module.exports = function(router) {
 
     }
 
-    // temporarily removing CDU journey
-    /*
     if (req.session.data.hasSeenCduInterstitial) {
       res.redirect(301, '/' + base_url + 'application/export/how-to-add');
     } else {
       req.session.data.hasSeenCduInterstitial = true;
       res.redirect(301, '/' + base_url + 'application/export/cdu-interstitial');
     }
-    */
-    res.redirect(301, '/' + base_url + 'application/task-list');
 
   })
 
@@ -59,50 +49,6 @@ module.exports = function(router) {
 
   router.post('/' + base_url + 'application/export/how-to-add', function(req, res) {
     res.redirect(301, '/' + base_url + 'application/export/how-to-add?error=true');
-  })
-
-
-   //used setting the EHC when skipping the certificate selection page
-  router.get('/' + base_url + 'application/export/set-certificate', function(req, res) {
-    let cn = "EHC"+ (req.query.ehc || "8530");
-    var id = 0
-    //set a default certificate
-    var cert = req.session.data.certificates[0]
-    // find certtificate based on EHC number
-    let obj = req.session.data.certificates.find((o, i) => {
-      if(o.number == cn ){
-        cert = o
-        id=i
-      }
-    });
-    console.log("SETTING EHC of "+cn)
-    console.log("cert="+cert.number)
-    console.log("id="+id)
-
-    if (!isAlreadyAdded(req.session.data.addedEHC, cert.number)) {
-      // create a new array to hold the commodity data
-      cert.addedCommodities = []
-      // Add the cert to the array
-      req.session.data.addedEHC.push(cert);
-      //set the id of the current Certificate
-      req.session.data.currentCertID = req.session.data.addedEHC.length - 1;
-
-      req.session.data.currentCommodityID = id;
-      req.session.data.certificate = id
-    }
-
-    // temporarily removing CDU journey
-    /*
-    if (req.session.data.hasSeenCduInterstitial) {
-      res.redirect(301, '/' + base_url + 'application/export/how-to-add');
-    } else {
-      req.session.data.hasSeenCduInterstitial = true;
-      res.redirect(301, '/' + base_url + 'application/export/cdu-interstitial');
-    }
-    */
-    let page = req.query.url || "export/select-commodities";
-    res.redirect(301, '/' + base_url + 'application/'+page);
-
   })
 
   router.post('/' + base_url + 'application/export/select-commodities', function(req, res) {
@@ -170,10 +116,8 @@ module.exports = function(router) {
     let commodityCode = cert.commodities[req.body.commodityCode].code;
     let querystring = createCommoditiesQuerystring(req.session.data.addedEHC, cert.number, commodityCode);
 
-    res.redirect(301, '/' + base_url + 'application/export/commodity?' + querystring + '&change=no');
+    res.redirect(301, '/' + base_url + 'application/export/commodity?' + querystring);
   })
-
-
 
   function createCommoditiesQuerystring(addedEHC, ehcNumber, commodityCode) {
     let addedEHC_commodityIndex = getAddedEhcCommodityIndex(addedEHC, ehcNumber);
@@ -337,10 +281,6 @@ module.exports = function(router) {
       req.session.data.addedEHC.push(newCert);
     }
     let cert = req.session.data.addedEHC[certID]
-    console.log("Skipped: "+req.body["skip-question"])
-    if((req.body.netWeight =="" || req.body.packageCount =="" ) && req.body["skip-question"] ==  "_unchecked"){
-      res.redirect(301, '/' + base_url + 'application/export/commodity?hasError=yes');
-    }
     //If change is active dont add the certificate just update it.
     if (req.session.data.change) {
       console.log("Changing cert")
@@ -390,25 +330,6 @@ module.exports = function(router) {
 
   })
 
-    router.post('/' + base_url + 'application/transport/transport-details', function(req, res) {
-    if(req.query.change){
-      req.session.data.transportList[req.query.id] = req.body
-    }else{
-        req.session.data.transportList.push(req.body);
-    }
-
-      res.redirect(301, '/' + base_url + 'application/transport/added-transport');
-  })
-
-  router.post('/' + base_url + 'application/transport/transport-method-remove', function(req, res) {
-    if(req.body.remove_document == "yes"){
-      req.session.data.transportList.splice(req.query.id,1);
-        res.redirect(301, '/' + base_url + 'application/transport/added-transport?removed=yes');
-    }else{
-      res.redirect(301, '/' + base_url + 'application/transport/added-transport');
-    }
-  })
-
 
   function writeBodyDataToSchema(schema, body) {
     console.log("Writing data based on schema");
@@ -433,14 +354,6 @@ module.exports = function(router) {
         data['incomplete'].push(schema[x].id);
         data['isIncomplete'] = true;
       }
-
-      // support search type (establishments)
-      if (schema[x].type == "search") {
-        console.log("Schema type is search: " + schema[x].id);
-        // in addition to the main item, also look for its companion (e.g. manufacturingPlantActivity)
-        // data[schema[x].id+'-id'] = body[schema[x].id+'-id'];
-        data[schema[x].id+'Activity'] = body[schema[x].id+'Activity'];
-      }
     }
 
     // console.log(data);
@@ -448,14 +361,13 @@ module.exports = function(router) {
   }
 
   router.post('/' + base_url + 'application/find/results', function(req, res) {
-    console.log(" ")
-    console.log("---- results post---- ")
+
     let certId = req.body.addedEHC_certId;
     let addedCommoditiesId = req.body.addedEHC_addedCommoditiesId;
     let identificationsId = req.body.addedEHC_identificationsId;
     let establishmentType = req.body.addedEHC_establishmentType;
     let establishmentIndex = parseInt(req.body.establishmentIndex);
-    console.log(establishmentIndex)
+
     if (establishmentIndex) {
       console.log("We have an establishmentIndex");
       console.log("Getting identification data");
@@ -478,7 +390,7 @@ module.exports = function(router) {
        } else {
          identification.incomplete = [];
        }
-       console.log(establishment.All_Activities)
+
 
       if (establishment.All_Activities.length == 1) {
         // select the index and redirect
@@ -500,8 +412,8 @@ module.exports = function(router) {
         if (!identification.incomplete || (identification.incomplete.length == 0)) {
           identification.isIncomplete = false;
         }
-        // res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
-        res.redirect(301, '/' + base_url + 'application/export/commodity?commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+
+        res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
       } else {
         // prompt the user to select an activity
         res.redirect(301, '/' + base_url + 'application/find/activity-select?certId=' + certId + '&addedCommoditiesId=' + addedCommoditiesId + '&identificationsId=' + identificationsId + '&establishmentType=' + establishmentType + '&establishmentIndex=' + establishmentIndex);
@@ -582,9 +494,7 @@ module.exports = function(router) {
 
 
       // redirect
-      // Removed the change=yes from the URL redirect as it was causeing the UI to think it was changining an existing commodity, not sure what this was supposed to do
-      // res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
-      res.redirect(301, '/' + base_url + 'application/export/commodity?commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+      res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
     } else {
         console.log("Missing required activityName radio button value");
         // ?certId=0&addedCommoditiesId=2&identificationsId=0&establishmentType=manufacturingPlant&establishmentIndex=40
@@ -600,7 +510,7 @@ module.exports = function(router) {
 
   // this is a virtual page - it doesn't really exist, it just serves as an action for removing an establishment
   router.get('/' + base_url + 'application/find/remove-establishment', function(req, res) {
-    console.log("In post for find/remove-establishment");
+    console.log("In routes.js for find/remove-establishment");
 
     // which establishment type?
     // which commodity?
@@ -608,6 +518,8 @@ module.exports = function(router) {
     let commodityListID = req.query.commodityListID;
     let changeID = req.query.changeID;
     let establishmentType = req.query.establishmentType;
+
+    console.log(certID, commodityListID, changeID, establishmentType);
 
     let identification = req.session.data.addedEHC[certID].addedCommodities[commodityListID].identifications[changeID];
     console.log(identification);
@@ -619,16 +531,20 @@ module.exports = function(router) {
 
   })
 
-  // router.post('/' + base_url + 'application/export/weight', function(req, res) {
-  //   console.log("In post for application/export/weight");
-  //   let cert = req.session.data.currentCertID || 0
-  //   req.session.data.addedEHC[cert].weight = {
-  //     "amount": req.body.GROSS_WEIGHT,
-  //     "quantifier": req.body.GROSS_WEIGHT_quantifier
-  //   }
+  router.post('/' + base_url + 'application/export/weight', function(req, res) {
+    console.log("In post for application/export/weight");
+    let cert = req.session.data.currentCertID || 0
+    req.session.data.addedEHC[cert].weight = {
+      "amount": req.body.GROSS_WEIGHT,
+      "quantifier": req.body.GROSS_WEIGHT_quantifier
+    }
 
-  //   res.redirect(301, '/' + base_url + 'application/task-list');
-  // });
+    if (req.session.data.has_multiple_certificates == 'yes') {
+      res.redirect(301, '/' + base_url + 'application/export/added-certs');
+    } else {
+      res.redirect(301, '/' + base_url + 'application/export/added-certs');
+    }
+  });
 
   router.post('/' + base_url + 'application/export/remove-commodity', function(req, res) {
     let currentCert = req.session.data.addedEHC[req.session.data.currentCertID]
@@ -672,27 +588,19 @@ module.exports = function(router) {
   })
 
   router.post('/' + base_url + 'application/goods/goods-certified-as*', function(req, res) {
-    if (req.body.goods_certified_as && req.query.change != "yes") {
+    if (req.body.goods_certified_as) {
       res.redirect(301, '/' + base_url + 'application/task-list');
-    }else if (req.body.goods_certified_as && req.query.change == "yes") {  
-      res.redirect(301, '/' + base_url + 'application/check-your-answers');
-    }else { 
+    } else {
       res.redirect(301, '/' + base_url + 'application/goods/goods-certified-as' + req.params[0] + '?has_error=yes');
     }
   });
 
   router.post('/' + base_url + 'application/create-reference', function(req, res) {
-    const regex = /^[a-zA-Z _.\/-]{1,25}/;
-
     if (req.body.UserReference == "") {
       res.redirect(301, '/' + base_url + 'application/create-reference?has_error=yes&error_type=empty');
     }
-  
-    if (req.body.UserReference.length > 25) {
+    if (req.body.UserReference.length > 20) {
       res.redirect(301, '/' + base_url + 'application/create-reference?has_error=yes&error_type=length');
-    }
-    if(!req.body.UserReference.match(regex)){
-
     }
     if (req.query.change == "yes") {
       res.redirect(301, '/' + base_url + 'application/task-list');
@@ -881,8 +789,6 @@ module.exports = function(router) {
 
 
   });
-
-
 
 
 

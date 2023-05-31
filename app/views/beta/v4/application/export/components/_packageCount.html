@@ -1,17 +1,14 @@
 {% if field.multiple =="yes" %}
 <div class="govuk-form-group app-repeadable-holder" id="repeatable-packages-holder">
-   <label class="govuk-label" for="packageCount-units">Number of packages
-</label>
-  <p class="govuk-hint" id="packageCount-units-hint">This is usually the outer packaging you use to ship the consignment. For example, 5 boxes.</p>
+  <label class="govuk-label" for="packageCount-units">Package count</label>
   <div class="app-repeatable-section" id="repeatable-packages">
 
     <div class="govuk-input__wrapper m-b-15">
-      <input class="js-question govuk-input" type="number" data-type="quantity" name="netWeight" step="0.01" min="0" max="9999999" id="netWeight-3-10410-31010000"
+      <input class="govuk-input" type="number" data-type="quantity" name="netWeight" step="0.01" min="0" max="9999999" id="netWeight-3-10410-31010000"
         value="{% if data.change or data.copy %}{{identification.netWeight}}{% endif %}">
       <div class="govuk-input__suffix suffix__action no-border">
-           <label for="packageCount-units" class="govuk-label govuk-visually-hidden">Type of packaging</label>
-        <select class="govuk-select max-w-155" id="packageCount-units" data-v-4e8f37a8="" name="packageCount_UNIT" aria-describedby="packageCount-units-hint">
-          <option disabled="" value="" data-v-4e8f37a8="" selected>Select a type of packaging</option>
+        <select class="govuk-select max-w-155" id="packageCount-units" data-v-4e8f37a8="" name="packageCount_UNIT">
+          <option disabled="" value="" data-v-4e8f37a8="" selected>Select a unit</option>
           <option value="Bag" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Bag'%}selected{% endif %}>Bag</option>
           <option value="Bale, compressed" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Bale, compressed'%}selected{% endif %}>Bale, compressed</option>
           <option value="Barrel, wooden, bung type" {% if (data.change or data.copy) and identification.packageCount_UNIT == 'Barrel, wooden, bung type'%}selected{% endif %}>Barrel, wooden, bung type</option>
@@ -71,14 +68,13 @@
 {% else %}
 
 <div class="govuk-form-group">
-     <label class="govuk-label" for="packageCount-units">Number of packages
-</label>
-  <p class="govuk-hint" id="packageCount-hint">This is usually the outer packaging you use to ship the consignment. For example, 5 boxes.</p>
-  <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8=""><input class="govuk-input js-question" type="number" data-type="quantity" name="packageCount" step="1" min="0" max="9999999" id="packageCount-4-10410-31010000"
-      data-v-4e8f37a8="" data-mask="########" data-mask-inited="true" data-mask-raw-value="" {% if (data.change or data.copy) and identification.packageCount %}value="{{identification.packageCount}}" {% endif %} aria-describedby="packageCount-hint">
+  <label class="govuk-label" for="packageCount-4-10410-31010000">Package count
+  </label>
+  <div class="govuk-input__wrapper select-input-wrapper" data-v-4e8f37a8=""><input class="govuk-input" type="number" data-type="quantity" name="packageCount" step="1" min="0" max="9999999" id="packageCount-4-10410-31010000"
+      data-v-4e8f37a8="" data-mask="########" data-mask-inited="true" data-mask-raw-value="" {% if (data.change or data.copy) and identification.packageCount %}value="{{identification.packageCount}}" {% endif %}>
     <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8="">
-      <select class="govuk-select" id="packageCount-4-10410-31010000-units" data-v-4e8f37a8="" name="packageCount_UNIT" aria-describedby="packageCount-hint">
-        <option disabled="" value="" data-v-4e8f37a8="" selected>Select a type of packaging</option>
+      <select class="govuk-select" id="packageCount-4-10410-31010000-units" data-v-4e8f37a8="" name="packageCount_UNIT">
+        <option disabled="" value="" data-v-4e8f37a8="" selected>Select a unit</option>
         <option value="Bag" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'bag'%}selected{% endif %}>Bag</option>
         <option value="Bale, compressed" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'bale, compressed'%}selected{% endif %}>Bale, compressed</option>
         <option value="Barrel, wooden, bung type" {% if (data.change or data.copy) and identification.packageCount_UNIT | lower == 'barrel, wooden, bung type'%}selected{% endif %}>Barrel, wooden, bung type</option>

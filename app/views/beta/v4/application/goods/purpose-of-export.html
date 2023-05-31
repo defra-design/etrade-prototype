@@ -1,318 +1,55 @@
 {% extends "layout.html" %}
+
 {% block pageTitle %}
-What type of consignment are you sending - {{super()}}
+Purpose of the export – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    {% if query.hasError == "yes" %}
-    <div class="govuk-error-summary" data-module="govuk-error-summary">
-      <div role="alert">
-        <h2 class="govuk-error-summary__title">
-          There is a problem
-        </h2>
-        <div class="govuk-error-summary__body">
-          <ul class="govuk-list govuk-error-summary__list">
-            {% if query.errorType == "notChecked" %}
-            <li>
-              <a href="#consignment-type-error">Select the type of consignment you are sending</a>
-            </li>
-            {% endif %}
-            {% if query.errorType == "noCountry" %}
-            <li>
-              <a href="#final-destination-error">Enter the destination country for the consignment</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
+
+
+<form class="" action="../task-list" method="post">
+  <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+    <!---->
+  </div>
+  <section id="intro">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"> Description of the goods </span>
+        <h1 class="govuk-heading-xl"> Purpose of the export </h1>
       </div>
     </div>
-    {% endif %}
-    <form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post" novalidate>
-      <div class="govuk-form-group {% if query.hasError and query.errorType =='notChecked' %}
-      govuk-form-group--error{% endif %}">
-        <fieldset class="govuk-fieldset" {% if query.hasError=="yes" and query.errorType=='notChecked' %}aria-describedby="consignment-type-error" {% endif %} {% if query.hasError=="yes" and query.errorType=='noCountry' %}aria-describedby="final-destination-error" {% endif %}>
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-            <h1 class="govuk-fieldset__heading">
-              What type of consignment are you sending?
-            </h1>
-          </legend>
-          {% if query.hasError and query.errorType == "notChecked"%}
-          <p id="consignment-type-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select the type of consignment you are sending
-          </p>
-          {% endif %}
-          <div class="govuk-radios" data-module="govuk-radios">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="radio-internal" name="Purpose" type="radio" value="Internal market" aria-decribedby="purpose-internal-hint">
-            <label class="govuk-label govuk-radios__label" for="radio-intmark">EU or Northern Ireland market</label>
-            <div id="purpose-internal-hint" class="govuk-hint govuk-radios__hint">Your consignment will be delivered to the EU or Northern Ireland and stay there.</div>
-          </div>
-          <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="radio-transit" name="Purpose" type="radio" value="Transit" aria-decribedby="purpose-transit-hint" data-aria-controls="conditional-transit-country" {% if query.hasError and query.errorType=='noCountry' %} checked{% endif %}>
-              <label class="govuk-label govuk-radios__label" for="radio-transit">In transit consignment</label>
-              <div id="purpose-transit-hint" class="govuk-hint govuk-radios__hint">Your consignment’s final destination is a non-EU country, but it will pass through an EU country or Northern Ireland.</div>
+  </section>
+  <section id="form">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!---->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> What is the purpose of the consignment? </legend>
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" id="purpose">
+              <div class="govuk-radios__item purpose"><input class="govuk-radios__input" id="radio-transit" name="Purpose" type="radio" value="TRANSIT"><label class="govuk-label govuk-radios__label" for="radio-transit"> Transit </label></div>
+              <!---->
+              <div class="govuk-radios__item purpose"><input class="govuk-radios__input" id="radio-intmark" name="Purpose" type="radio" value="IMPORT"><label class="govuk-label govuk-radios__label" for="radio-intmark"> Internal market </label></div>
+              <div class="govuk-radios__item purpose"><input class="govuk-radios__input" id="radio-ReEntry" name="Purpose" type="radio" value="RE_ENTRY"><label class="govuk-label govuk-radios__label" for="radio-ReEntry"> Re-entry </label></div>
             </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-transit-country">
-              <div class="govuk-form-group {% if query.hasError and query.errorType =='noCountry' %} govuk-form-group--error{% endif %}">
-                <label class="govuk-label" for="purpose-of-export-country" data-v-a3b8a65e="">Destination country</label>
-                {% if query.hasError and query.errorType == "noCountry"%}
-                <p id="final-destination-error" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">Error:</span> Enter the destination country for the consignment
-                </p>
-                {% endif %}
-             
-                <select class="govuk-select " id="purpose-of-export-country" required="">
-                  <option value="">select a country</option>
-                  <option value="afghanistan">afghanistan</option>
-                  <option value="albania">albania</option>
-                  <option value="algeria">algeria</option>
-                  <option value="american">american samoa</option>
-                  <option value="andorra">andorra</option>
-                  <option value="angola">angola</option>
-                  <option value="anguilla">anguilla</option>
-                  <option value="antarctica">antarctica</option>
-                  <option value="antigua">antigua and barbuda</option>
-                  <option value="argentina">argentina</option>
-                  <option value="armenia">armenia</option>
-                  <option value="aruba">aruba</option>
-                  <option value="australia">australia</option>
-                  <option value="azerbaijan">azerbaijan</option>
-                  <option value="bahamas">bahamas</option>
-                  <option value="bahrain">bahrain</option>
-                  <option value="bangladesh">bangladesh</option>
-                  <option value="barbados">barbados</option>
-                  <option value="belarus">belarus</option>
-                  <option value="belize">belize</option>
-                  <option value="benin">benin</option>
-                  <option value="bermuda">bermuda</option>
-                  <option value="bhutan">bhutan</option>
-                  <option value="bolivia">bolivia</option>
-                  <option value="bosnia">bosnia and herzegovina</option>
-                  <option value="botswana">botswana</option>
-                  <option value="bouvet">bouvet island</option>
-                  <option value="brazil">brazil</option>
-                  <option value="british">british indian ocean territory</option>
-                  <option value="brunei">brunei darussalam</option>
-                  <option value="burkina">burkina faso</option>
-                  <option value="burundi">burundi</option>
-                  <option value="cambodia">cambodia</option>
-                  <option value="cameroon">cameroon</option>
-                  <option value="canada">canada</option>
-                  <option value="cape">cape verde</option>
-                  <option value="cayman">cayman islands</option>
-                  <option value="central">central african republic</option>
-                  <option value="ceuta">ceuta</option>
-                  <option value="chad">chad</option>
-                  <option value="chile">chile</option>
-                  <option value="china">china</option>
-                  <option value="christmas">christmas island</option>
-                  <option value="cocos">cocos (keeling) islands</option>
-                  <option value="colombia">colombia</option>
-                  <option value="comoros">comoros</option>
-                  <option value="congo">congo</option>
-                  <option value="cook">cook islands</option>
-                  <option value="costa">costa rica</option>
-                  <option value="cote">cote d'ivoire</option>
-                  <option value="cuba">cuba</option>
-                  <option value="democratic">democratic republic of congo</option>
-                  <option value="djibouti">djibouti</option>
-                  <option value="dominica">dominica</option>
-                  <option value="dominican">dominican republic</option>
-                  <option value="ecuador">ecuador</option>
-                  <option value="egypt">egypt</option>
-                  <option value="el">el salvador</option>
-                  <option value="equatorial">equatorial guinea</option>
-                  <option value="eritrea">eritrea</option>
-                  <option value="ethiopia">ethiopia</option>
-                  <option value="falkland">falkland islands</option>
-                  <option value="faroe">faroe islands</option>
-                  <option value="fiji">fiji</option>
-                  <option value="french">french polynesia</option>
-                  <option value="french">french southern and antarctic lands</option>
-                  <option value="gabon">gabon</option>
-                  <option value="gambia">gambia</option>
-                  <option value="georgia">georgia</option>
-                  <option value="ghana">ghana</option>
-                  <option value="gibraltar">gibraltar</option>
-                  <option value="greenland">greenland</option>
-                  <option value="grenada">grenada</option>
-                  <option value="guam">guam</option>
-                  <option value="guatemala">guatemala</option>
-                  <option value="guinea">guinea</option>
-                  <option value="guinea-bissau">guinea-bissau</option>
-                  <option value="guyana">guyana</option>
-                  <option value="haiti">haiti</option>
-                  <option value="heard">heard and mc donald islands</option>
-                  <option value="honduras">honduras</option>
-                  <option value="hong">hong kong</option>
-                  <option value="iceland">iceland</option>
-                  <option value="india">india</option>
-                  <option value="indonesia">indonesia</option>
-                  <option value="iran">iran</option>
-                  <option value="iraq">iraq</option>
-                  <option value="israel">israel</option>
-                  <option value="jamaica">jamaica</option>
-                  <option value="japan">japan</option>
-                  <option value="jordan">jordan</option>
-                  <option value="kazakhstan">kazakhstan</option>
-                  <option value="kenya">kenya</option>
-                  <option value="kiribati">kiribati</option>
-                  <option value="korea,">korea, democratic people's republic of (north)</option>
-                  <option value="korea,">korea, republic of (south)</option>
-                  <option value="kosovo*en•••">kosovo*en•••</option>
-                  <option value="kuwait">kuwait</option>
-                  <option value="kyrgyzstan">kyrgyzstan</option>
-                  <option value="laos">laos</option>
-                  <option value="lebanon">lebanon</option>
-                  <option value="lesotho">lesotho</option>
-                  <option value="liberia">liberia</option>
-                  <option value="libya">libya</option>
-                  <option value="liechtenstein">liechtenstein</option>
-                  <option value="macau">macau</option>
-                  <option value="republic">republic of north macedonia</option>
-                  <option value="madagascar">madagascar</option>
-                  <option value="malawi">malawi</option>
-                  <option value="malaysia">malaysia</option>
-                  <option value="maldives">maldives</option>
-                  <option value="mali">mali</option>
-                  <option value="marshall">marshall islands (the republic of)</option>
-                  <option value="mauritania">mauritania</option>
-                  <option value="mauritius">mauritius</option>
-                  <option value=""></option>
-                  <option value="melilla">melilla</option>
-                  <option value="mexico">mexico</option>
-                  <option value="micronesia">micronesia (federated states of)</option>
-                  <option value="moldova">moldova (the republic of)</option>
-                  <option value="mongolia">mongolia</option>
-                  <option value="montenegro">montenegro</option>
-                  <option value="montserrat">montserrat</option>
-                  <option value="morocco">morocco</option>
-                  <option value="mozambique">mozambique</option>
-                  <option value="myanmar">myanmar</option>
-                  <option value="namibia">namibia</option>
-                  <option value="nauru">nauru</option>
-                  <option value="nepal">nepal</option>
-                  <option value="netherlands">netherlands antilles</option>
-                  <option value="new">new caledonia</option>
-                  <option value="new">new zealand</option>
-                  <option value="nicaragua">nicaragua</option>
-                  <option value="niger">niger</option>
-                  <option value="nigeria">nigeria</option>
-                  <option value="niue">niue</option>
-                  <option value="norfolk">norfolk island</option>
-                  <option value="northern">northern mariana islands</option>
-                  <option value="norway">norway</option>
-                  <option value="palestine**en•••">palestine**en•••</option>
-                  <option value="oman">oman</option>
-                  <option value="pakistan">pakistan</option>
-                  <option value="palau">palau</option>
-                  <option value="panama">panama</option>
-                  <option value="papua">papua new guinea</option>
-                  <option value="paraguay">paraguay</option>
-                  <option value="peru">peru</option>
-                  <option value="philippines">philippines</option>
-                  <option value="pitcairn">pitcairn islands</option>
-                  <option value="qatar">qatar</option>
-                  <option value="russian">russian federation</option>
-                  <option value="rwanda">rwanda</option>
-                  <option value="saint">saint barthelemy</option>
-                  <option value="saint">saint helena (incl ascension island and tristan de cunha)</option>
-                  <option value="saint">saint kitts and nevis</option>
-                  <option value="saint">saint lucia</option>
-                  <option value="saint">saint pierre and miquelon</option>
-                  <option value="saint">saint vincent and the grenadines</option>
-                  <option value="samoa">samoa</option>
-                  <option value="san">san marino</option>
-                  <option value="sao">sao tome and principe</option>
-                  <option value="saudi">saudi arabia</option>
-                  <option value="senegal">senegal</option>
-                  <option value="serbia">serbia</option>
-                  <option value="seychelles">seychelles</option>
-                  <option value="sierra">sierra leone</option>
-                  <option value="singapore">singapore</option>
-                  <option value="solomon">solomon islands</option>
-                  <option value="somalia">somalia</option>
-                  <option value="south">south africa</option>
-                  <option value="south">south georgia and the south sandwich islands</option>
-                  <option value="south">south sudan</option>
-                  <option value="sri">sri lanka</option>
-                  <option value="sudan">sudan</option>
-                  <option value="suriname">suriname</option>
-                  <option value="swaziland">swaziland</option>
-                  <option value="switzerland">switzerland</option>
-                  <option value="syria">syria</option>
-                  <option value="taiwan">taiwan</option>
-                  <option value="tajikistan">tajikistan</option>
-                  <option value="tanzania">tanzania</option>
-                  <option value="thailand">thailand</option>
-                  <option value="timor">timor leste</option>
-                  <option value="togo">togo</option>
-                  <option value="tokelau">tokelau</option>
-                  <option value="tonga">tonga</option>
-                  <option value="trinidad">trinidad and tobago</option>
-                  <option value="tunisia">tunisia</option>
-                  <option value="turkey">turkey</option>
-                  <option value="turkmenistan">turkmenistan</option>
-                  <option value="turks">turks and caicos islands</option>
-                  <option value="tuvalu">tuvalu</option>
-                  <option value="uganda">uganda</option>
-                  <option value="ukraine">ukraine</option>
-                  <option value="united">united arab emirates</option>
-                  <option value="united">united kingdom</option>
-                  <option value="united">united states</option>
-                  <option value="united">united states minor outlying islands</option>
-                  <option value="uruguay">uruguay</option>
-                  <option value="uzbekistan">uzbekistan</option>
-                  <option value="vanuatu">vanuatu</option>
-                  <option value="vatican">vatican city state (holy see)</option>
-                  <option value="venezuela">venezuela</option>
-                  <option value="vietnam">vietnam</option>
-                  <option value="virgin">virgin islands (british)</option>
-                  <option value="virgin">virgin islands (u.s.)</option>
-                  <option value="wallis">wallis and futuna islands</option>
-                  <option value="yemen">yemen</option>
-                  <option value="zambia">zambia</option>
-                  <option value="zimbabwe">zimbabwe</option>
-                </select></div>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="radio-ReEntry" name="Purpose" type="radio" value="Re-entry">
-              <label class="govuk-label govuk-radios__label" for="radio-ReEntry">Re-entry consignment</label>
-              <div id="purpose-internal-hint" class="govuk-hint govuk-radios__hint">Your consignment is originally from the EU or Northern Ireland, and it will be delivered to its original location after a temporary stay in Great Britain.</div>
-            </div>
-            </div>
+          </fieldset>
+        </div><button class="govuk-button"> Save and continue </button>
       </div>
-      <button class="govuk-button" type="submit"> Save and continue </button>
-      </fieldset>
-  </div>
-  </form>
-</div>
-</div>
+    </div>
+  </section>
+</form>
 <!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
 <!-- // -->
+
 {% endblock %}
 {% block pageScripts %}
 <script type="text/javascript">
-window.addEventListener('load', function() {
-  $(".govuk-button").on("click", function(e) {
-    e.preventDefault()
+  window.addEventListener('load', function() {
 
-    if ($('input[name="Purpose"]').is(':checked')) {
-      if ($('#purpose-of-export-country').val() != "" || $('input[name="Purpose"]:checked').val() != "Transit") {
-        $("form").submit()
-      } else {
-        window.location.href = "purpose-of-export-v2?hasError=yes&errorType=noCountry"
-      }
-    } else {
-      window.location.href = "purpose-of-export-v2?hasError=yes&errorType=notChecked"
-    }
+
   })
-
-})
 </script>
 {% endblock%}
