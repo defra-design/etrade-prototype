@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Remove certificate - {{super()}}
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set id = query.id or 0 %}
+{% set certificate = data.addedEHC[id]%}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post">
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        Are you sure you want to remove this certificate?
+      </h1>
+    </legend>
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Certificate
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{certificate.number}} {{ certificate.title}}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Records added
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% set commodityCount = 0%}
+      {% for c in certificate.addedCommodities %}
+      {% for i in c.identifications %}
+      {% set commodityCount = commodityCount+1 %}
+      {% endfor%}
+      {% endfor%}
+      {{commodityCount or '2'}}
+    </dd>
+  </div>
+</dl>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="remove_certificate" name="remove_certificate" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="remove_certificate">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="remove_certificate-2" name="remove_certificate " type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="remove_certificate-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

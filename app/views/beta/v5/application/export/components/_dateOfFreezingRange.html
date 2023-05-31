@@ -1,0 +1,29 @@
+{% set dateOfFreezingIsRequired = true %}
+{% for schema in cert.schema %}
+  {% if schema.id == "dateOfFreezing" and schema.required == "no" %}
+    {% set dateOfFreezingIsRequired = false %}
+  {% endif %}
+{% endfor %}
+
+{% if field.multiple == "yes" %}
+<div class="govuk-form-group app-repeadable-holder govuk-!-width-one-third" id="repeatable-freezing-date-holder">
+  <label class="govuk-label" for="FREEZING_DATE-6-11711-020120">Date of freezing range {% if not dateOfFreezingIsRequired %}&nbsp;(optional for <acronym title="TRACES is the EU's digital certification platform. You can submit your application without entering this information.">TRACES</a>){% endif %}</label>
+  <div class="app-repeatable-section" id="repeatable-freezing-date-range">
+    <div class="govuk-input__wrapper ">
+      <input name="dateOfFreezingRange" class="govuk-input" type="date" id="FREEZING_DATE-6-11711-020120">
+      <div class="govuk-input__suffix suffix__action no-border" aria-hidden="true">
+        <button type="button" data-count="1" data-target="repeatable-freezing-date-range" class="govuk-button govuk-button--secondary multi-data add-repeatable-section"><span class="fas fa-plus"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="govuk-form-group">
+  <label class="govuk-label" for="freezing-date-range">Date of freezing range
+
+  </label>
+<input class="govuk-input govuk-!-width-one-third" type="date" name="freezing-date-range" id="freezing-date-range">
+
+</div>
+{% endif %}

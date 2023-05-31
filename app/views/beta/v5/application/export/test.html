@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Export test – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<style media="screen">
+  table {
+  table-layout: fixed;
+  width: 100%;
+  *margin-left: -100px; /*ie7*/
+}
+td, th {
+  vertical-align: top;
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  width: 100px;
+}
+.fix {
+  position: absolute;
+  *position: relative; /*ie7*/
+  margin-left: -100px;
+  width: 100px;
+}
+.outer {
+  position: relative;
+}
+.inner {
+  overflow-x: scroll;
+  overflow-y: visible;
+  width: 400px;
+  margin-left: 100px;
+}
+</style>
+<div class="outer">
+  <div class="inner">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header"></th>
+        <th scope="col" class="govuk-table__header">Col 1</th>
+        <th scope="col" class="govuk-table__header">Col 2</th>
+        <th scope="col" class="govuk-table__header">Col 3</th>
+        <th scope="col" class="govuk-table__header">Col 4</th>
+        <th scope="col" class="fix govuk-table__header">Col 5</th>
+      </thead>
+      <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__cell">Header A</th>
+        <td class="govuk-table__cell">col 1 - A</td>
+        <td class="govuk-table__cell">col 2 - A (WITH LONGER CONTENT)</td>
+        <td class="govuk-table__cell">col 3 - A</td>
+        <td class="govuk-table__cell">col 4 - A</td>
+        <td class="govuk-table__cell fix">col 5 - A</td>
+      </tr >
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">Header B</th>
+        <td class="govuk-table__cell">col 1 - B</td>
+        <td class="govuk-table__cell">col 2 - B</td>
+        <td class="govuk-table__cell">col 3 - B</td>
+        <td class="govuk-table__cell">col 4 - B</td>
+        <td class="govuk-table__cell fix">col 5 - B</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">Header C</th>
+        <td class="govuk-table__cell">col 1 - C</td>
+        <td class="govuk-table__cell">col 2 - C</td>
+        <td class="govuk-table__cell">col 3 - C</td>
+        <td class="govuk-table__cell">col 4 - C</td>
+        <td class="govuk-table__cell fix">col 5 - C</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {})
+</script>
+{% endblock%}

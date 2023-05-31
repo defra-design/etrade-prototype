@@ -1,0 +1,50 @@
+{% extends "layout-blank.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Testing 'copy' in eEHC</h1>
+
+      <h2 class="govuk-heading-m">Scenario</h2>
+      <p>You have received an order to process. The details are very similar to the most recent application that you made.</p>
+
+    <p>This is a prototype. You're free to make up some data, although try to use realistic data.
+</p>
+
+
+
+  <form class="" action="{{data.urlRedirect or dashboard}}" method="post">
+      <p style="margin-top:800px;">
+
+
+
+      <button role="button" draggable="false" id="startbutton" class="govuk-button govuk-button--start" data-module="govuk-button" {% if query.disabled !='no' %}disabled="true"{% endif %}>
+  Wait for researcher...</button>
+  </p>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+
+  document.addEventListener("keypress", function(event) {
+  if (event.keyCode == 13) {
+    document.getElementById('startbutton').disabled = false;
+    document.getElementById('startbutton').innerHTML="Start"
+  }
+});
+
+  var delayInMilliseconds = 10000; //1 second
+
+setTimeout(function() {
+   document.getElementById('startbutton').disabled = false;
+   document.getElementById('startbutton').innerHTML="Start"
+}, delayInMilliseconds);
+</script>
+{% endblock %}

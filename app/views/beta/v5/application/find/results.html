@@ -1,0 +1,716 @@
+{% extends "layout.html" %}
+
+{% set addedEHC_certID = query.certId %}
+{% set addedEHC_addedCommoditiesId = query.addedCommoditiesId %}
+{% set addedEHC_identificationsId = query.identificationsId %}
+{% set addedEHC_establishmentType = query.establishmentType %}
+
+{% if query.establishmentType == "manufacturingPlant" %}
+  {% set establishmentTypeLabel = "manufacturing plant" %}
+{% elseif query.establishmentType == "coldStore" %}
+  {% set establishmentTypeLabel = "cold store" %}
+{% elseif query.establishmentType == "slaughterHouse" %}
+  {% set establishmentTypeLabel = "slaughterhouse" %}
+{% elseif query.establishmentType == "cuttingPlant" %}
+  {% set establishmentTypeLabel = "cutting plant" %}
+{% elseif query.establishmentType == "plantEstablishmentCentreActivity" %}
+  {% set establishmentTypeLabel = "establishment" %}
+{% elseif query.establishmentType == "plantEstablishmentCentre" %}
+  {% set establishmentTypeLabel = "establishment" %}
+{% else %}
+  {% set establishmentTypeLabel = "operator" %}
+{% endif %}
+
+{% set cert = data.addedEHC[addedEHC_certID]%}
+{% set identification = cert.addedCommodities[addedEHC_addedCommoditiesId].identifications[addedEHC_identificationsId]%}
+
+
+{% block pageTitle %}
+Find a {{ establishmentTypeLabel }} – {{super()}}
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<style media="screen">
+  .autocomplete__wrapper {
+    max-width: 24em;
+  }
+
+  .js-enabled #results {
+    display: none;
+  }
+
+  .app-search-wrapper {
+    display: table;
+    width: 100%;
+  }
+
+  .govuk-button--search {
+    background-color: #1d70b8;
+    text-indent: -5000px;
+    overflow: hidden;
+    width: 38px;
+    height: 38px;
+    position: relative;
+  }
+
+  .govuk-button--search:hover {
+    background-color: #003078;
+
+  }
+
+  .govuk-button--search .gem-c-search__icon {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 8px;
+    left: 7px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-\!-show--from-tablet {
+      display: block !important;
+    }
+  }
+
+  .das-show-hide__section {
+    display: none;
+  }
+
+  .das-filter {
+    margin-bottom: 30px;
+  }
+
+  .das-filter__header {
+    border: 1px solid #b1b4b6;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-\!-show--from-tablet {
+      display: block !important;
+    }
+  }
+
+  .das-filter__body {
+    padding: 20px;
+    border: 1px solid #b1b4b6;
+    border-top: none;
+  }
+
+
+
+  .js-enabled .das-show-hide__button {
+    display: block;
+  }
+
+  .das-show-hide__button {
+    display: none;
+  }
+
+  .das-filter__toggle {
+    width: auto;
+    margin: 20px 0;
+  }
+
+  @media (min-width: 40.0625em) {
+    .js-enabled .das-show-hide__button {
+      display: none;
+    }
+  }
+
+  .das-filter__heading {
+    margin-bottom: 0;
+  }
+
+  .das-filter__selected-filters {
+    background: #f3f2f1;
+    border: 1px solid #b1b4b6;
+    border-top: none;
+    padding: 20px;
+  }
+
+  .das-filter__selected-action {
+    margin-top: 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .das-filter__tag:link,
+  .das-filter__tag:visited {
+    color: #0b0c0c;
+  }
+
+  @media (min-width: 40.0625em) {
+    .das-filter__tag {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+  }
+
+  .das-filter__tag:after {
+    content: "";
+    background-image: url(/public/images/icon-cross--black.svg);
+    display: block;
+    font-weight: bold;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 0.6em;
+    right: 7px;
+  }
+
+  .das-filter__tag {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.14286;
+    background-color: #fff;
+    border: 1px solid #0b0c0c;
+    color: #0b0c0c;
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px 7px;
+    padding-right: 30px;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .das-breakable {
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .das-filter__selected-sub-heading {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .app-establishment-list {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .app-establishment-list {
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1.3157894737;
+    }
+  }
+/*
+  .app-establishment-list__row {
+    border-bottom: 1px solid #b1b4b6;
+    padding: 10px 0;
+    clear: both;
+  }
+
+  .app-establishment-list__row:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+*/
+
+  .app-establishment-list__key {
+    font-weight: 700;
+    width: 70%;
+    float: left;
+  }
+
+  .app-establishment-list__value {
+    margin: 5px 0;
+    width: 70%;
+    float: left;
+  }
+
+  .app-establishment-list__activities {
+    color: #505a5f;
+  }
+
+  .app2-establishment-list__activities {
+    padding-top: 5px;
+    font-size: 14px !important;
+    font-size: .875rem !important;
+    line-height: 1.1428571429 !important;
+  }
+
+  @media (min-width: 40.0625em) {
+    .app-2establishment-list__activities {
+
+      font-size: 16px !important;
+      font-size: 1rem !important;
+      line-height: 1.25 !important;
+    }
+
+  }
+
+  .app-establishment-list__action {
+    float: right;
+    margin-top: -55px;
+  }
+
+  .js-enabled .no-results-block {
+    display: none;
+  }
+
+  .js-enabled .moj-pagination {
+    display: none;
+  }
+
+
+</style>
+{% set id = query.id or "1" %}
+{% set consignor = data.establishments[id]%}
+<form id="search" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+      <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li id="operator-search-country-error-summary" style="display:none"><a href="#operator-search-country-form-group">A country must be selected</a></li>
+            <li id="search-field-approval-number-error-summary" style="display:none"><a href="#approval-number-search">Enter the organisation’s approval number</a></li>
+            <li id="search-field-organisation-name-error-summary" style="display:none">
+              <a href="#organisation-name-search">Enter the organisation’s name</a>
+            </li>
+            <li id="results-error-summary"  style="display:none">
+              <a href="#results">Select an organisation</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <h1 class="govuk-heading-xl">Find {{establishmentTypeLabel | convertAorAn}} {{establishmentTypeLabel}}</h1>
+
+      {% if query.hint != "undefined" %}
+      <p class="govuk-body">{{query.hint}}</p>
+      {% endif %}
+
+      {% block countryOfOrigin %}{% include "./_country-of-origin-select.html" %}{% endblock %}
+
+      <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
+
+        {% if data.canSearchApprovalNumber == "no" %}
+          <label class="govuk-label">Search by organisation name</label>
+          <div id="organisation-search-hint" class="govuk-hint govuk-radios__hint">
+            Partial company names (e.g. Examplefood) may return better results than full company names (e.g.  Examplefood Company Ltd).
+          </div>
+        {% else %}
+
+
+
+
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Search for an organisation
+              </legend>
+
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item" id="approval-number-search">
+                  <input class="govuk-radios__input" id="search-type-1" name="search-type" type="radio" value="approval-number" checked data-aria-controls="conditional-search">
+                  <label class="govuk-label govuk-radios__label" for="search-type-1">
+                    Search by approval number
+                  </label>
+                </div>
+                <!-- conditional block -->
+                <div class="govuk-radios__conditional" id="conditional-search">
+                  <div class="govuk-form-group" id="govuk-form-group-approval-number">
+                    <label class="govuk-label" for="search-field-approval-number">
+                      Enter the organisation’s approval number
+                    </label>
+                    <div class="govuk-hint" id="search-field-approval-number-hint">For example AB123, BC&nbsp;001 or XZ-2892-830.</div>
+                    <p id="search-field-approval-number-error" class="govuk-error-message" style="display:none">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s approval number
+                    </p>
+                    <input class="govuk-input govuk-!-width-one-half" id="search-field-approval-number" name="q" type="search" spellcheck="false" aria-describedby="search-field-approval-number-hint contact-by-email-error " value="{{query.q}}">
+                    <button id="operator-search-button" class="govuk-button app-button--search" type="button">Search</button>
+                  </div>
+                </div>
+                <div class="govuk-radios__item" id="organisation-name-search">
+                  <input class="govuk-radios__input" id="search-type-2" name="search-type" type="radio" value="organisation-name" data-aria-controls="conditional-search-2">
+                  <label class="govuk-label govuk-radios__label" for="search-type-2">
+                    Search by organisation name
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-search-2">
+                  <div class="govuk-form-group" id="govuk-form-group-organisation-name">
+
+                    <label class="govuk-label" for="search-field-organisation-name">
+                      Enter the organisation’s name
+                    </label>
+                    <div class="govuk-hint" id="search-field-organisation-name-hint">You will see more search results if you search for part of the organisation name, rather than the full name.</div>
+                    <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s name
+                    </p>
+                    <input class="govuk-input govuk-!-width-three-quarters" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}" aria-describedby="search-field-organisation-name-hint">
+                    <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
+                  </div>
+                </div>
+
+
+              </div>
+            </fieldset>
+          </div>
+
+
+
+        {% endif %}
+
+        {% if query.hasError and "empty" in query.errorType%}
+        <p id="approval-number-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter an approval number or the {{(data.searchLabel or 'manufacturing plant') | lower}} name
+        </p>
+        {% endif %}
+      </div>
+      <style type="text/css">
+        #clearFilter{display: none}
+      </style>
+
+       <p id="resultsCounter" class="govuk-heading-s  govuk-!-font-weight-regular">
+        <span class="search-result" aria-live="polite" aria-atomic="true"></span>  &nbsp;<a id="clearFilter" class="govuk-link" href="./results">Reset search</a></p>
+
+      <!-- results -->
+      <div id="results" {% if query.q %}data-trigger="yes" {% endif %}>
+       
+        <p id="results-error" class="govuk-error-message" style="display:none">
+          <span class="govuk-visually-hidden">Error:</span> Select an organisation
+        </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+        <div class="govuk-radios" data-module="govuk-radios">
+          {% set type = "consignor"%}
+          {% for operator in data.establishments %}
+          <div class="govuk-radios__item app-establishment-list__row" data-content="{{operator.TradingName}}" data-postcode="{{operator.Postcode}}" data-number="{{operator.AppNo}}">
+            <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="establishmentIndex" type="radio" value="{{ loop.index -1}}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
+            <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index0}}">
+              <strong>{{operator.TradingName}}</strong><br>
+              {{operator.Address1}},<br>
+              {% if operator.Address2%}{{operator.Address2}}<br>{% endif %}
+              {% if operator.Address3%}{{operator.Address3}}<br>{% endif %}
+              {{operator.Town}}, {{operator.Postcode}}<br>
+              {{operator.Country}}
+            </label>
+            <div id="establishmentIndex{{loop.index0 }}-hint" class="govuk-hint govuk-radios__hint">
+              {% if operator.AppNo %}TRACES number: {{operator.AppNo}}<br>{% endif %}
+              Activities:
+              {% for activity in operator.All_Activities%}{% if loop.index != 1 %}, {% endif %}{{activity}}{% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        {% if query.show_pagination %}
+        <nav class="moj-pagination" aria-label="Pagination navigation">
+
+          <ul class="moj-pagination__list">
+            <li class="moj-pagination__item  moj-pagination__item--prev">
+              <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> page</span></a>
+            </li>
+
+            <li class="moj-pagination__item moj-pagination__item--active">1</li>
+
+            <li class="moj-pagination__item " aria-label="Page 2 of 30" aria-current="page"><a class="moj-pagination__link" href="/page=2" aria-label="Page 2 of 30">2</a></li>
+
+            <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3" aria-label="Page 3 of 30">3</a></li>
+
+            <li class="moj-pagination__item moj-pagination__item--dots">…</li>
+
+            <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=5" aria-label="Page 5 of 30">5</a></li>
+
+            <li class="moj-pagination__item  moj-pagination__item--next">
+              <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> page</span></a>
+            </li>
+          </ul>
+
+          <p class="moj-pagination__results">Showing <b>1</b> to <b>50</b> of <b>369</b> organisations</p>
+        </nav>
+        {% endif %}
+
+        <div class="no-results-block">
+
+          <p class="govuk-body"><strong>Improve your search results by:</strong></p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>making sure you’ve entered the approval number correctly</li>
+            <li>removing ‘GB’ from the approval number, if you included it</li>
+            <li>searching for part of the organisation name, instead of the full name</li>
+          </ul>
+          
+
+        </div>
+
+        <input type="hidden" name="addedEHC_certId" value="{{ addedEHC_certID }}">
+        <input type="hidden" name="addedEHC_addedCommoditiesId" value="{{ addedEHC_addedCommoditiesId }}">
+        <input type="hidden" name="addedEHC_identificationsId" value="{{ addedEHC_identificationsId }}">
+        <input type="hidden" name="addedEHC_establishmentType" value="{{ addedEHC_establishmentType }}">
+
+        <button id="save-and-continue" type="submit" class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
+          Save and continue
+        </button>
+
+      </div>
+    </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+    var timer;
+    var timeTaken = 1;
+
+    function updateOperatorSearchButton (){
+      timeTaken+=1
+      if(timeTaken == 2){
+        clearInterval(timer);
+        $('#organisation-search-button').text("Search");
+        $('#organisation-search-button').removeAttr("disabled");
+        var organisationNameSearchString = $("#search-field-organisation-name").val();
+        // clear other search field
+        $("#search-field-approval-number").val("")
+        searchEstablishments("organisationName", organisationNameSearchString);
+        $('#results').show();
+        timeTaken = 1;
+      }
+    }
+
+    function updateApprovalNumberSearchButton (){
+      timeTaken+=1
+      if(timeTaken == 2){
+        clearInterval(timer);
+        $('#operator-search-button').text("Search");
+        $('#operator-search-button').removeAttr("disabled");
+        var approvalNumberSearchString = $("#search-field-approval-number").val();
+        // clear other search field
+        $("#search-field-organisation-name").val("")
+        searchEstablishments("approvalNumber", approvalNumberSearchString);
+        $('#results').show();
+        timeTaken = 1;
+      }
+    }
+
+    $('#save-and-continue').on("click", function(e) {
+      // make sure that we have a selected result
+      resetErrors()
+      if ($("input[name=establishmentIndex]:checked").val() === undefined ) {
+
+        $("#general-error-summary").show();
+        $("#results").addClass("govuk-form-group--error");
+        $("#results-error").show();
+        $("#results-error-summary").show();
+        setTimeout(function() { $("#general-error-summary").focus() }, 1000);
+
+        return false;
+      } else {
+        $("#results").removeClass("govuk-form-group--error");
+        $("#results-error").hide();
+        $("#results-error-summary").hide();
+      }
+    });
+
+    function resetErrors(){
+      $('#search-field-organisation-name').attr("aria-describedby", "certifier-search-hint")
+      $("#results-error-summary").hide();
+      $("#results").removeClass("govuk-form-group--error");
+      $("#results-error").hide();
+      $("#clearFilter").hide();
+      $("#search-field-approval-number-error").hide();
+      $("#govuk-form-group-approval-number").removeClass("govuk-form-group--error");
+      $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
+      $("#search-field-organisation-name-error").hide();
+      $("#search-field-approval-number-error-summary").hide();
+      $("#search-field-organisation-name-error-summary").hide();
+      $("#search-field-organisation-name").removeClass("govuk-input--error");
+    }
+
+    $('#operator-search-button').on("click", function() {
+      // validate that 1) a country was selected and 2) a search string was provided
+      var hasError = false;
+      var hasCountryError = false;
+      var hasApprovalNumberError = false;
+      resetErrors()
+      if ($("#operator-search-country").val() == "Any") {
+        hasCountryError = true;
+        hasError = true;
+        $("#operator-search-country-form-group").addClass("govuk-form-group--error");
+        $("#operator-search-country-error").show();
+        $("#operator-search-country-error-summary").show();
+      } else {
+        $("#operator-search-country-form-group").removeClass("govuk-form-group--error");
+        $("#operator-search-country-error").hide();
+        $("#operator-search-country-error-summary").hide();
+      }
+      if ($("#search-field-approval-number").val().trim().length == 0) {
+        hasApprovalNumberError = true;
+        hasError = true;
+        $("#govuk-form-group-approval-number").addClass("govuk-form-group--error");
+        $("#search-field-approval-number-error").show();
+        $("#search-field-approval-number-error-summary").show();
+        $("#search-field-approval-number").addClass("govuk-input--error");
+
+      } else {
+        $("#govuk-form-group-approval-number").removeClass("govuk-form-group--error");
+        $("#search-field-approval-number-error").hide();
+        $("#search-field-approval-number-error-summary").hide();
+        $("#search-field-approval-number").removeClass("govuk-input--error");
+      }
+
+      if (hasError) {
+        $("#general-error-summary").show(); 
+        setTimeout(function() { $("#general-error-summary").focus() }, 1000);
+
+      } else {
+        $("#general-error-summary").hide();
+        $('#results').hide();
+        $("#clearFilter").hide();
+        $(this).text(" Searching ...")
+        $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
+        $(this).attr("disabled","disabled")
+        timer = setInterval(updateApprovalNumberSearchButton, 1000);
+      }
+
+
+      return false;
+    })
+
+    $('#organisation-search-button').on("click", function() {
+
+      // validate that 1) a country was selected and 2) a search string was provided
+      var hasError = false;
+      var hasCountryError = false;
+      var hasOrganisationNameError = false;
+      resetErrors()
+
+      if ($("#operator-search-country").val() == "Any") {
+        hasCountryError = true;
+        hasError = true;
+        $("#operator-search-country-form-group").addClass("govuk-form-group--error");
+        $("#operator-search-country-error").show();
+        $("#operator-search-country-error-summary").show()
+      } else {
+        $("#operator-search-country-form-group").removeClass("govuk-form-group--error");
+        $("#operator-search-country-error").hide();
+        $("#operator-search-country-error-summary").hide();
+      }
+      if ($("#search-field-organisation-name").val().trim().length == 0) {
+        hasOrganisationNameError = true;
+        hasError = true;
+        $("#govuk-form-group-organisation-name").addClass("govuk-form-group--error");
+        $("#search-field-organisation-name-error").show();
+        $("#search-field-organisation-name-error-summary").show();
+        $("#search-field-organisation-name").addClass("govuk-input--error");
+
+      } else {
+        $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
+        $("#search-field-organisation-name-error").hide();
+        $("#search-field-organisation-name-error-summary").hide();
+        $("#search-field-organisation-name").removeClass("govuk-input--error");
+      }
+
+      if (hasError) {
+        $(".govuk-error-summary").show()
+        setTimeout(function() { $("#general-error-summary").focus() }, 1000);
+      } else {
+        $(".govuk-error-summary").hide();
+        $('#results').hide();
+        $("#clearFilter").hide();
+        $(this).text(" Searching ...")
+        $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
+        $(this).attr("disabled","disabled")
+        timer = setInterval(updateOperatorSearchButton, 1000);
+      }
+
+
+      return false;
+    })
+
+    function searchEstablishments(searchType, searchString) {
+
+      $("#results").show();
+      $("#clearFilter").show();
+      $(".app-establishment-list__row").hide();
+
+      let q = searchString.toLowerCase();
+
+      if (searchType == "approvalNumber") {
+        $(".app-establishment-list__row").filter(function() {
+          var a = $(this).attr("data-number").toLowerCase()
+          if (q != "" && a.indexOf(q) >= 0) {
+            return $(this)
+          }
+        }).show()
+      } else {
+        // must be an organisation name search
+        $(".app-establishment-list__row").filter(function() {
+          var t = $(this).attr("data-content").toLowerCase()
+          if (q != "" && t.indexOf(q) >= 0) {
+            return $(this)
+          }
+        }).show()
+      }
+
+      var count = $(".app-establishment-list__row:visible").length
+      var r
+      if (count == 1) {
+        r = count + " result for " + "<strong>" + q + "</strong> in <strong>United Kingdom</strong>";
+      } else {
+        r = count + " results for " + "<strong>" + q + "</strong> in <strong>United Kingdom</strong>";
+      }
+      if (count > 0) {
+        $(".no-results-block").hide()
+        $(".moj-pagination").show()
+        $("#save-and-continue").show();
+      } else {
+        $(".no-results-block").show()
+        $("#save-and-continue").hide();
+      }
+      $(".search-result").html(r)
+    }
+
+    /* Radio button toggles */
+    $('input[name=search-type]').on("change", function() {
+      if (this.value == 'organisation-name') {
+        $('#approval-number-search-group').hide();
+        $('#organisation-name-search-group').show();
+      } else {
+        $('#approval-number-search-group').show();
+        $('#organisation-name-search-group').hide();
+      }
+    });
+
+    $(".operator-pane").hide()
+
+  })
+</script>
+{% endblock%}

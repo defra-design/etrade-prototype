@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Update gross weight – {{super()}}
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+{% set ehc = (data.certificate|makeNumber) or 0 %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="added-certs">
+      <div class="govuk-form-group">
+        <!-- <span class="govuk-caption-xl">
+          {{ data.certificates or "EHC8328" }}
+        </span> -->
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--xl">
+            Do you want to update the gross weight of the commodities?
+          </legend>
+          <div id="add-another-hint" class="govuk-hint">
+          You have updated the commodites on the certificate. This might affect the gross weight you entered, {{data.GROSS_WEIGHT or "24"}} {{data.GROSS_WEIGHT_quantifier or "kG"}}
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-to-add-upload" name="how-to-add" type="radio" value="yes~weight?change=yes" aria-describedby="manually-adding-hint">
+              <label class="govuk-label govuk-radios__label" for="how-to-add-upload">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-to-add-manually" name="how-to-add" type="radio" value="no~task-list" aria-describedby="manually-adding-hint">
+              <label class="govuk-label govuk-radios__label" for="how-to-add-manually">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+
+  })
+</script>
+{% endblock%}

@@ -1,0 +1,4 @@
+<div class="govuk-form-group"><label class="govuk-label" for="productDescription">Product description &nbsp;(optional) </label>
+  <p class="govuk-hint" id="productDescription-hint">If your consignment contains multiple commodities, a description may help you to identify this product. It will not appear on your final application.</p>
+  <input class="govuk-input" type="text" id="productDescription" name="productDescription" value="{% if (data.change or data.copy ) %}{{identification.productDescription}}{% endif %}{% if query.updated == 'yes' or query.hasError == 'yes'%}{{data.productDescription}}{% endif %}" aria-describedby="productDescription-hint">
+</div>
