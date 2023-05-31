@@ -23,7 +23,7 @@
           <ul class="govuk-list govuk-error-summary__list">
             {% if query.error_type == "length"%}
             <li>
-              <a href="#reference-error">The application reference must be 20 characters or less</a>
+              <a href="#reference-error">The application reference must be 25 characters or less</a>
             </li>
             {% else %}
             <li>
@@ -41,12 +41,12 @@
               Your reference for this application
             </label>
           </h1>
-          <p id="reference-hint" class="govuk-hint">Enter a reference up to 20 characters long, such as an invoice number or consignee. This reference will not appear on the final certificate. </p>
+          <p id="reference-hint" class="govuk-hint">Enter a reference up to 25 characters long, such as an invoice number or consignee. This reference will not appear on the final certificate. </p>
           {% if query.has_error %}
           <p id="reference-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span>
             {% if query.error_type == "length"%}
-            The application reference must be 20 characters or less
+            The application reference must be 25 characters or less
             {% endif %}
             {% if query.error_type == "empty"%}
             Enter your application reference
@@ -55,15 +55,13 @@
           {% endif %}
           <input class="govuk-input govuk-input--width-20 {% if query.has_error %}govuk-input--error{% endif %}" id="ref" aria-describedby="reference-hint {% if query.has_error %}reference-error{% endif %}" name="UserReference" type="text" value="{% if query.change == 'yes'%}{{UserReference}}{% endif %}">
         </div>
-        <!--<section class="m-t-15" id="actions" data-v-01948390="">
+        <section class="m-t-15" id="actions" data-v-01948390="">
           <div class="govuk-grid-row" data-v-01948390="">
             <div class="govuk-grid-column-two-thirds" data-v-01948390="">
               <button role="button" type="submit" class="govuk-button" data-v-01948390="">Save and continue</button>
             </div>
           </div>
-        </section>-->
-        
-        <a href="/beta/v4/application/choose-certificate" class="govuk-button" role="button" draggable="false" data-module="govuk-button">Save and continue</a>
+        </section>
       </form>
     </div>
   </div>

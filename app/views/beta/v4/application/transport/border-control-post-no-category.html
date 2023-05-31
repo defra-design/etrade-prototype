@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+What is the border control post - {{super()}}
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+  .border-inspection-post {
+    margin: 1em 0;
+    background-color: #fff;
+}
+.border-inspection-post .bcp-heading {
+    padding: 0.5em;
+    background-color: #1f70b8;
+}
+.border-inspection-post .bcp-heading .govuk-heading-s {
+    margin: 0;
+    color: #fff;
+}
+.border-inspection-post .bcp-body {
+    padding: 0.5em;
+    border: 4px solid #1f70b8;
+}
+.border-inspection-post .govuk-button {
+    margin: 0;
+}
+.disabled{
+  color: #505a5f;
+}
+</style>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row" data-v-771dc26c="" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds" data-v-771dc26c="">
+    <h1 class="govuk-heading-xl"> What is the border control post? </h1>
+    <p>Showing only BCP’s that allow digital applications </p>
+    <form class="" method="post">
+      
+
+      <div class="govuk-form-group">
+        <div data-v-771dc26c="" id="border-inspection-post-listing">
+        {% for country in data.bcp %}
+        {% if country.destination == data.bcpDestination %}
+          {% for bcp in country.ports %}
+          {% if bcp.status == "active" %}
+          <div class="govuk-radios__item app-establishment-list__row" data-content="{{bcp.name}}" data-country="{{country.destination}}" data-number="{{bcp.id}}" data-ico="{{country.ICO}}">
+            <input class="govuk-radios__input" id="establishmentIndex{{loop.index}}" name="selctedBCP" type="radio" value="{{loop.index-1}}" aria-describedby="establishmentIndex{{loop.index}}-hint">
+            <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index}}">
+              <strong>{{bcp.name}}</strong> - {{country.destination}}
+              <br>{{bcp.address}}
+              <br>
+            </label>
+            <div id="establishmentIndex{{loop.index}}-hint" class="govuk-hint govuk-radios__hint ">
+              code: {{bcp.id}}
+              <br> unlocode: {{bcp.unlocode or "GBLAR"}}
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+        </div>
+        <p class="govuk-!-margin-top-6 govuk-!-margin-bottom-6"><strong>If you cannot find the BCP please <a href="https://www.gov.uk/export-health-certificates/composite-food-products-intended-for-human-consumption-to-the-european-union-and-northern-ireland-post-21-april-2021-certificate-8350">continue to use paper based application</a> for any consignments.</strong></p>
+        
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock%}

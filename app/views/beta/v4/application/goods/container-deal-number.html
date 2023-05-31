@@ -1,20 +1,20 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Container and seal numbers – GOV.UK Prototype Kit
+Container and seal numbers - {{super()}}
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
 {% block content %}
-<form class="" action="../task-list" method="post">
-  <section id="intro" data-v-6265f2ae="">
-    <div class="govuk-grid-row" data-v-6265f2ae="">
-      <div class="govuk-grid-column-two-thirds" data-v-6265f2ae=""><span class="govuk-caption-xl"> Description of the goods </span>
-        <h1 class="govuk-heading-xl">Container and seal numbers</h1>
+<form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
+    <div class="govuk-grid-row">
+       <div class="govuk-grid-column-three-quarters">
+        <h1 class="govuk-heading-xl">Container and seal numbers (optional)</h1>
         <p class="govuk-body" data-v-6265f2ae=""> Provide the container and seal numbers for your export.<br data-v-6265f2ae=""> You may click <a class="govuk-link" href="#add-a-new-table-row" data-v-6265f2ae="">"Add a new row"</a> to provide
           multiples. You can provide either a container number or seal number, or both. </p>
+
         <p class="govuk-body" id="container-number-format-hint" data-v-6265f2ae=""> If provided, the container number must be in the below format:<br data-v-6265f2ae=""><br data-v-6265f2ae=""><strong class="input-description"
             data-v-6265f2ae="">BIC</strong> <strong class="input-description" data-v-6265f2ae="">U or J or Z</strong> <strong class="input-description" data-v-6265f2ae="">123456</strong> <strong class="input-description" data-v-6265f2ae="">7</strong>
         </p>
@@ -29,45 +29,55 @@ Container and seal numbers – GOV.UK Prototype Kit
           <li data-v-6265f2ae="">The serial number: six Arabic numerals, left at owner‘s or operator‘s option.</li>
           <li data-v-6265f2ae="">The check digit: one Arabic numeral providing a means of validating the recording and transmission accuracies of the owner code and serial number.</li>
         </ul>
-      </div>
-    </div>
-  </section>
+  
+
   <section id="container-seal" data-v-6265f2ae="">
-    <div class="govuk-grid-row" data-v-6265f2ae="">
-      <div class="govuk-grid-column-two-thirds" data-v-6265f2ae="">
+
         <table class="govuk-table" data-v-6265f2ae="">
           <caption class="govuk-table__caption govuk-table__caption--m" data-v-6265f2ae="">Container and seal numbers</caption>
           <thead class="govuk-table__head" data-v-6265f2ae="">
             <tr class="govuk-table__row" data-v-6265f2ae="">
-              <th scope="col" class="govuk-table__header" id="container-number-header" data-v-6265f2ae="">Container number (Optional)</th>
+              <th scope="col" class="govuk-table__header" id="container-number-header" data-v-6265f2ae="">Container number</th>
               <th scope="col" class="govuk-table__header" id="seal-number-header" data-v-6265f2ae="">Seal number</th>
               <th scope="col" class="govuk-table__header" data-v-6265f2ae="">Remove</th>
             </tr>
           </thead>
           <tbody class="govuk-table__body" data-v-6265f2ae="">
-            <tr data-v-01965295="">
-              <td class="table__cell__error" data-v-01965295="">
-                <!---->
-                <!---->
-              </td>
-              <td class="table__cell__error" data-v-01965295="">
-                <!---->
-              </td>
-              <td data-v-01965295=""></td>
-            </tr>
-            <tr class="govuk-table__row govuk-visually-hidden" id="row0">
-              <td class="govuk-table__cell" data-v-01965295=""><input class="govuk-input" name="containerNumber" aria-labelledby="container-number-header" data-v-01965295=""></td>
-              <td class="govuk-table__cell" data-v-01965295=""><input class="govuk-input" name="sealNumber" aria-labelledby="seal-number-header" data-v-01965295=""></td>
+            {% set count=1%}
+            {% if data.containerNumber | length > 0 or data.sealNumber | length > 0 %}
+
+              {% for container in data.containerNumber %}
+              {% if container != "" %}
+            <tr class="govuk-table__row" id="row{{count}}">
+              <td class="govuk-table__cell" data-v-01965295=""><input class="govuk-input" name="containerNumber" aria-labelledby="container-number-header" data-v-01965295="" value="{{container}}"></td>
+              <td class="govuk-table__cell" data-v-01965295=""><input class="govuk-input" name="sealNumber" aria-labelledby="seal-number-header" data-v-01965295="" ></td>
               <td class="govuk-table__cell" data-v-01965295="">
-                <button class="govuk-button govuk-button--secondary app-remove-button" style="display:none" data-v-01965295=""><span class="govuk-visually-hidden" data-v-01965295="">Remove row</span><span class="fas fa-trash-alt"
+                <button class="govuk-button govuk-button--secondary app-remove-button" data-v-01965295=""><span class="govuk-visually-hidden" data-v-01965295="">Remove row</span><span class="fas fa-trash-alt"
                     data-v-01965295=""></span></button>
               </td>
             </tr>
-            <tr class="govuk-table__row" id="row1">
+              {% set count=count+1%}
+              {% endif %}
+              {% endfor %}
+              {% for seal in data.sealNumber %}
+              {% if seal != "" %}
+                <tr class="govuk-table__row" id="row{{count}}">
+              <td class="govuk-table__cell" data-v-01965295=""><input class="govuk-input" name="containerNumber" aria-labelledby="container-number-header" data-v-01965295=""></td>
+              <td class="govuk-table__cell" data-v-01965295=""><input class="govuk-input" name="sealNumber" aria-labelledby="seal-number-header" data-v-01965295="" value="{{seal}}"></td>
+              <td class="govuk-table__cell" data-v-01965295="">
+                <button class="govuk-button govuk-button--secondary app-remove-button"data-v-01965295=""><span class="govuk-visually-hidden" data-v-01965295="" >Remove row</span><span class="fas fa-trash-alt"
+                    data-v-01965295=""></span></button>
+              </td>
+            </tr>
+            {% set count=count+1%}
+            {% endif %}
+              {% endfor %}
+            {% endif %}
+            <tr class="govuk-table__row govuk-visually-hidden" id="row0" >
               <td class="govuk-table__cell" data-v-01965295=""><input class="govuk-input" name="containerNumber" aria-labelledby="container-number-header" data-v-01965295=""></td>
               <td class="govuk-table__cell" data-v-01965295=""><input class="govuk-input" name="sealNumber" aria-labelledby="seal-number-header" data-v-01965295=""></td>
               <td class="govuk-table__cell" data-v-01965295="">
-                <button class="govuk-button govuk-button--secondary app-remove-button" style="display:none" data-v-01965295=""><span class="govuk-visually-hidden" data-v-01965295="">Remove row</span><span class="fas fa-trash-alt"
+                <button class="govuk-button govuk-button--secondary app-remove-button"data-v-01965295=""><span class="govuk-visually-hidden" data-v-01965295="">Remove row</span><span class="fas fa-trash-alt"
                     data-v-01965295=""></span></button>
               </td>
             </tr>
@@ -75,18 +85,17 @@ Container and seal numbers – GOV.UK Prototype Kit
           </tbody>
           <tfoot>
             <tr data-v-6265f2ae="">
-              <td class="govuk-table__cell" colspan="3" data-v-6265f2ae=""><a class="govuk-link" id="add-a-new-table-row" href="#" data-v-6265f2ae="">Add a new row</a></td>
+              <td class="govuk-table__cell" colspan="3" id="add-a-new-table-row"><a class="govuk-link" id="add-a-new-table-row" href="#" data-v-6265f2ae="">Add a new row</a></td>
             </tr>
           </tfoot>
         </table>
-      </div>
-    </div>
+        <span class="count govuk-visually-hidden">{{count}}</span>
   </section>
   <section id="actions" data-v-6265f2ae="">
-    <div class="govuk-grid-row" data-v-6265f2ae="">
-      <div class="govuk-grid-column-two-thirds" data-v-6265f2ae=""><button class="govuk-button" data-v-6265f2ae=""> Save and continue to task list </button></div>
-    </div>
+    <button class="govuk-button" data-v-6265f2ae=""> Save and continue </button>
   </section>
+      </div>
+    </div>
 </form>
 <!-- this is the base html to copy, it is not visuable and only used in this prototype -->
 
@@ -95,32 +104,23 @@ Container and seal numbers – GOV.UK Prototype Kit
 {% endblock %}
 {% block pageScripts %}
 <script type="text/javascript">
-  var count = 1
+  var count = $(".count").text()
   window.addEventListener('load', function() {
     $("#add-a-new-table-row").on("click", function(e) {
       e.preventDefault()
       let html = $("#row0").clone()
       let id = "row" + count
-      console.log(html)
       $(html).attr("id", id).removeClass("govuk-visually-hidden")
 
       $("table tbody").append(html)
       count += 1
-      if (count > 1) {
-        $("td .govuk-button--secondary").show()
-
-      } else {
-        $("td .govuk-button--secondary").hide()
-      }
+ 
     })
     $(document.body).on('click', '.app-remove-button', function(e) {
       e.preventDefault()
       $(this).closest(".govuk-table__row").remove()
       count -= 1
-      if (count == 1) {
-        $("td .govuk-button--secondary").hide()
-
-      }
+     
     })
 
   })

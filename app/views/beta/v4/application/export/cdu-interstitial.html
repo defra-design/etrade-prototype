@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-We’ve made some changes to how you enter commodity data – GOV.UK Prototype Kit
+We’ve made some changes to how you enter commodity data – {{super()}}
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -19,73 +19,18 @@ We’ve made some changes to how you enter commodity data – GOV.UK Prototype K
     <form method="post">
       <div class="govuk-form-group">
 
-        <!--<h1 class="govuk-heading-xl">We’ve made some changes to how you enter commodity data</h1>-->
-        <h1 class="govuk-heading-xl">You can add commodity data individually or upload it in a spreadsheet</h1>
-        <!--<p class="govuk-body">To ensure all commodity data is consistent with the EU’s TRACES database, we’ve changed the way you enter information about your consignment.</p>-->
-        <p>If you want to use a spreadsheet, you can use our template to ensure all commodity data is consistent with the EU’s TRACES database and adapt your schedule to match the template.</p>
-        
-        <!--<p>
-          <a href="{{ ehcTemplateDownloadPath }}">View or download the TRACES spreadsheet template</a>.
-        </p>
+        <h1 class="govuk-heading-xl">We’ve made some changes to how you enter commodity data</h1>
+        <p class="govuk-body">To ensure all commodity data is consistent with the EU’s TRACES database, we’ve changed the way you enter information about your consignment.</p>
+        <p>You can add commodity data individually or upload it in a spreadsheet. If you want to use a spreadsheet, you’ll need to <a href="{{ ehcTemplateDownloadPath }}">download the TRACES spreadsheet template</a>.</p>
 
         <button class="govuk-button" data-module="govuk-button">
           Continue
-        </button>-->
+        </button>
 
       </div>
 
 
     </form>
-
-
-    <div id="formGroup" class="govuk-form-group">
-      <fieldset class="govuk-fieldset">
-        
-
-          <p id="error-message" style="display: none;" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if you want to cancel, replace or re-certify the application.
-          </p>
-
-        <div class="govuk-radios" data-module="govuk-radios">
-          <form id="radio-group">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="optionOne" name="choose-account" type="radio" value="optionOne">
-              <label class="govuk-label govuk-radios__label" for="optionOne">
-                <!--Create a new template to upload many commodity records at once-->
-                Download a new template to create a schedule of many commodity records at once
-              </label>
-              <!--<div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                This is a one-time process except when there are changes in TRACES database.
-              </div>-->
-              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                This is a one-time process. If there are changes from TRACES, we will notify you to update your template.
-              </div>
-            </div>
-           
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="optionTwo" name="choose-account" type="radio" value="optionTwo">
-              <label class="govuk-label govuk-radios__label" for="optionTwo">
-                <!--Upload a template you have previously created to upload your schedule-->
-                Upload a schedule you have already created by using a template
-              </label>
-              <!--<div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint govuk-body-s">
-                There has been changes in TRACES or to business rules exporters needs to be aware of.
-              </div>-->
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="optionThree" name="choose-account" type="radio" value="optionThree">
-              <label class="govuk-label govuk-radios__label" for="optionThree">
-                Enter commodities individually
-              </label>
-            </div>
-          </form>
-        </div>
-      </fieldset>
-    </div>
-      <button class="govuk-button" onclick="submit()">Continue</button>
-
-
-
   </div>
 </div>
 {% endblock %}
@@ -95,37 +40,5 @@ We’ve made some changes to how you enter commodity data – GOV.UK Prototype K
   window.addEventListener('load', function() {
 
   })
-</script>
-
-<script>
-
-  window.addEventListener('beforeunload', function(event) {
-   document.getElementById("radio-group").reset();
-  }, false);
-  
-      function submit() {
-  const optionOne = document.querySelector('input[value="optionOne"]');
-  const optionTwo = document.querySelector('input[value="optionTwo"]');
-  const optionThree = document.querySelector('input[value="optionThree"]');
-  if (!optionOne.checked && !optionTwo.checked && !optionThree.checked) {
-    document.getElementById("error-message").style.display = "block";
-    document.getElementById("formGroup").style.borderLeft = "5px solid #d4351c";
-    document.getElementById("formGroup").style.paddingLeft = "15px";
-  } else {
-    document.getElementById("error-message").style.display = "none";
-    document.getElementById("formGroup").style.borderLeft = "none";
-    document.getElementById("formGroup").style.paddingLeft = "0";
-
-    if (optionOne.checked) 
-      window.location.href = "/beta/v4/application/select-template-v2";
-
-    if (optionTwo.checked) 
-      window.location.href = "/beta/v4/application/export/file-upload-ready";
-
-    if (optionThree.checked) 
-      window.location.href = "";
-    
-  }
-}
 </script>
 {% endblock%}

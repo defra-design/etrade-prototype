@@ -1,4 +1,4 @@
-<div class="govuk-form-group" {% if identification.sanitaryRegionOfOrigin == "BR" %} selected {% endif %}><label class="govuk-label" for="operator-search-country">Sanitary Region of Origin {% if field.requiered=="no"%}(optional){% endif %}</label>
+<div class="govuk-form-group" {% if identification.sanitaryRegionOfOrigin == "BR" %} selected {% endif %}><label class="govuk-label" for="operator-search-country">Sanitary Region of Origin {% if field.requiered=="no"%}(optional for <acronym title="TRACES is the EU's digital certification platform. You can submit your application without entering this information.">TRACES</a>){% endif %}</label>
   <select class="govuk-select full-width" id="operator-search-country" name="sanitaryRegionOfOrigin">
     <option disabled="" value="" selected>Select a sanitary region of origin</option>
     <option value="AF" {% if identification.sanitaryRegionOfOrigin == "AF" %} selected {% endif %}>Afghanistan</option>

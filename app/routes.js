@@ -52,6 +52,9 @@ require('./views/beta/v3-4/application/routes.js')(router);
 // version 3.5
 require('./views/beta/v3-5/routes.js')(router);
 
+// version 4
+require('./views/beta/v4/routes.js')(router);
+
 
 // experimental and other stories
 require('./views/experimental/routes.js')(router);

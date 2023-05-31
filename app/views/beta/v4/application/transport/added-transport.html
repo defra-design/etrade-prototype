@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Add transport methods - {{super()}}
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<style media="screen">
+  .attachment .attachment-thumb {
+    display: block;
+    width: 99px;
+    height: 140px;
+    background: #fff;
+    outline: 5px solid rgba(11, 12, 12, 0.1);
+    box-shadow: 0 2px 2px rgb(11 12 12 / 40%);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .attachment .attachment-thumb span {
+    padding-top: 50px;
+  }
+
+  .spreadsheet td,
+  .spreadsheet th {
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #bfc1c3;
+  }
+
+  .spreadsheet thead th {
+    border-bottom-width: 0px;
+  }
+
+  .spreadsheet .table-field-index,
+  .spreadsheet th {
+    background: #f8f8f8;
+    font-weight: 700;
+    text-align: center;
+  }
+</style>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    {% if query.showNotification == "yes" %}
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          File uploaded
+        </h3>
+        <p class="govuk-body">{{file.file or "my_schedule.xlsx"}}</p>
+      </div>
+    </div>
+    {% endif %}
+
+
+    {% if (data.transportList | length) == 0  %}
+
+    <h1 class="govuk-heading-xl">Add transport methods</h1>
+    
+    {% else %}
+    <h1 class="govuk-heading-xl">Added {{data.transportList | length }} transport {{"method"|plural("methods",data.transportList | length)}}</h1>
+    {% endif %}
+    <p>List all the transport methods for this consignment, from the port, airport or terminal to the border control post. You must enter them in the order that they will take place.</p>
+    {% set upload_to_traces = 0 %}
+    <dl class="govuk-summary-list app-list-with-actions hmrc-list-with-actions--short">
+      {% for t in data.transportList%}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+          <ul class="govuk-list govuk-!-margin-bottom-0">
+            <li><strong>{{loop.index}}. {{(t.typeOfTransport | capitalize) or "Plane"}} </strong> - {{t.identifier | upper or '92394234'}}</li>
+            <li></li>
+
+          </ul>
+
+        </dt>
+        <dd class="govuk-summary-list__actions app-summary-list__actions">
+          <ul class="govuk-summary-list__actions-list">
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="transport-details?id={{loop.index -1}}&change=yes"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change../ {{(t.typeOfTransport | capitalize) or "Plane"}} {{t.identifier | upper or '92394234'}}</span></a>
+            </li>
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="./transport-method-remove?id={{loop.index -1}}"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">{{(t.typeOfTransport | capitalize) or "Plane"}} {{t.identifier | upper or '92394234'}}</span></a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+      {% endfor %}
+    </dl>
+    <!-- <dl class="govuk-summary-list  govuk-summary-list--no-border">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Transport conditions
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data.conditions or "Chilled"}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd>
+      </div>
+    </dl> -->
+
+    <form method="post" >
+      {% if (data.transportList | length) == 0 %}
+      <p><button class="govuk-button govuk-button--secondary">Add a method of transport</button></p>
+      <div class="govuk-!-margin-bottom-6" id="skip-question-container">
+          <h3 class="govuk-heading-m">You can skip this section</h3>
+          <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+          <div class="govuk-checkboxes__item" id="skip-question-checkbox">
+            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
+            <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+              I've entered as much information as I can
+            </label>
+          </div>
+
+        </div>
+      <button class="govuk-button" data-module="govuk-button" type="submit">
+        Save and continue
+      </button>
+      <p class="govuk-body"></p>
+      {% else %}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you want to add another transport method?
+          </legend>
+          <div id="add-another-hint" class="govuk-hint">
+            <!-- You must tell us about all your directors. -->
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another" name="addAnotherTransport" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="add-another">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another-2" name="addAnotherTransport" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="add-another-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+      {% endif %}
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

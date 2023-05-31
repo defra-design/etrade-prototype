@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+What is the border control post - {{super()}}
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+<style media="screen">
+
+.border-inspection-post {
+    margin: 1em 0;
+    background-color: #fff;
+}
+.border-inspection-post .bcp-heading {
+    padding: 0.5em;
+    background-color: #1f70b8;
+}
+.border-inspection-post .bcp-heading .govuk-heading-s {
+    margin: 0;
+    color: #fff;
+}
+.border-inspection-post .bcp-body {
+    padding: 0.5em;
+    border: 4px solid #1f70b8;
+}
+.border-inspection-post .govuk-button {
+    margin: 0;
+}
+.disabled{
+  color: #505a5f;
+}
+</style>
+{% endblock%}
+{% block content %}
+
+  <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
+    <!---->
+  </div>
+  <div class="govuk-grid-row" data-v-771dc26c="" data-v-0c6ff6a7="">
+    <div class="govuk-grid-column-two-thirds" data-v-771dc26c="">
+      <h1 class="govuk-heading-xl"> What is the border control post? </h1>
+      <div data-v-771dc26c="">
+        <div class="govuk-form-group" data-v-771dc26c=""><label class="govuk-label" for="country" data-v-771dc26c=""> Country </label><select class="govuk-select" id="country" data-v-771dc26c="">
+            <option value="" data-v-771dc26c="">Select a country</option>
+            <option value="AT" data-v-771dc26c="" {% if query.ico== "AT" %}selected{% endif %}>Austria</option>
+            <option value="BE" data-v-771dc26c="" {% if query.ico== "BE" %}selected{% endif %}>Belgium</option>
+            <option value="BG" data-v-771dc26c="" {% if query.ico== "BG" %}selected{% endif %}>Bulgaria</option>
+            <option value="HR" data-v-771dc26c="" {% if query.ico== "HR" %}selected{% endif %}>Croatia</option>
+            <option value="CY" data-v-771dc26c="" {% if query.ico== "CY" %}selected{% endif %}>Cyprus</option>
+            <option value="CZ" data-v-771dc26c="" {% if query.ico== "CZ" %}selected{% endif %}>Czechia</option>
+            <option value="DK" data-v-771dc26c="" {% if query.ico== "DK" %}selected{% endif %}>Denmark</option>
+            <option value="EE" data-v-771dc26c="" {% if query.ico== "EE" %}selected{% endif %}>Estonia</option>
+            <option value="FI" data-v-771dc26c="" {% if query.ico== "FI" %}selected{% endif %}>Finland</option>
+            <option value="FR" data-v-771dc26c="" {% if query.ico== "FR" %}selected{% endif %}>France</option>
+            <option value="DE" data-v-771dc26c="" {% if query.ico== "DE" %}selected{% endif %}>Germany</option>
+            <option value="GR" data-v-771dc26c="" {% if query.ico== "GR" %}selected{% endif %}>Greece</option>
+            <option value="HU" data-v-771dc26c="" {% if query.ico== "HU" %}selected{% endif %}>Hungary</option>
+            <option value="IE" data-v-771dc26c="" {% if query.ico== "IE" %}selected{% endif %}>Ireland</option>
+            <option value="IT" data-v-771dc26c="" {% if query.ico== "IT" %}selected{% endif %}>Italy</option>
+            <option value="LV" data-v-771dc26c="" {% if query.ico== "LV" %}selected{% endif %}>Latvia</option>
+            <option value="LT" data-v-771dc26c="" {% if query.ico== "LT" %}selected{% endif %}>Lithuania</option>
+            <option value="LU" data-v-771dc26c="" {% if query.ico== "LU" %}selected{% endif %}>Luxembourg</option>
+            <option value="MT" data-v-771dc26c="" {% if query.ico== "MT" %}selected{% endif %}>Malta</option>
+            <option value="NL" data-v-771dc26c="" {% if query.ico== "NL" %}selected{% endif %}>Netherlands (the)</option>
+            <option value="PL" data-v-771dc26c="" {% if query.ico== "PL" %}selected{% endif %}>Poland</option>
+            <option value="PT" data-v-771dc26c="" {% if query.ico== "PT" %}selected{% endif %}>Portugal</option>
+            <option value="RO" data-v-771dc26c="" {% if query.ico== "RO" %}selected{% endif %}>Romania</option>
+            <option value="SK" data-v-771dc26c="" {% if query.ico== "SK" %}selected{% endif %}>Slovakia</option>
+            <option value="SI" data-v-771dc26c="" {% if query.ico== "SI" %}selected{% endif %}>Slovenia</option>
+            <option value="ES" data-v-771dc26c="" {% if query.ico== "ES" %}selected{% endif %}>Spain</option>
+            <option value="SE" data-v-771dc26c="" {% if query.ico== "SE" %}selected{% endif %}>Sweden</option>
+            <option value="XI" data-v-771dc26c="" {% if query.ico== "XI" %}selected{% endif %}>United Kingdom - Northern Ireland</option>
+          </select></div>
+        <div class="govuk-form-group" data-v-17d9e4bf=""><label class="govuk-label" for="search-border-post-name" data-v-17d9e4bf=""> Search for the BCP by name or ID</label><input class="govuk-input govuk-!-width-two-thirds" id="search" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}">
+          
+          <button id="bcp-search-button" class="govuk-button app-button--search" type="button">Search</button></div>
+
+
+      <form class="" method="post">
+        <div class="govuk-form-group">
+
+        {% if query.country or query.q %}
+        <div data-v-771dc26c="" id="border-inspection-post-listing">
+          <p><span id="count">3</span> border control posts {% if query.q %} with <strong>{{query.q}}</strong>{% endif %}{% if query.country and query.country !="Select a country"%} in <strong>{{query.country}}</strong>{% endif %}</p>
+          {% for country in data.bcp %}
+          {% set ico = country.ICO %}
+        
+          {% for bcp in country.ports %}
+      
+          {% if query.ico == ico or query.county == "Select a country"  %}
+          {% if ((query.q | upper) | removeWhiteSpace in bcp.id | upper)
+          or ((query.q | upper) | removeWhiteSpace in bcp.name | upper)  %}
+
+          <div class="govuk-radios__item app-establishment-list__row" data-content="{{bcp.name}}" data-country="{{bcp.country}}" data-number="{{bcp.id}}" data-ico="{{ico}}">
+            <input class="govuk-radios__input" id="establishmentIndex{{loop.index0 }}" name="selctedBCP" type="radio" value="{{ loop.index0 }}" aria-describedby="establishmentIndex{{loop.index0 }}-hint">
+            <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index0}}">
+              <strong>{{bcp.name}}</strong> - {{ bcp.id}}<br>
+              {{bcp.address}},{{bcp.country}}
+            </label>
+          </div>
+          {% endif%}
+          {% endif%}
+          {% endfor %}
+          {% endfor %}
+        </div>
+        {% endif %}
+       </div>
+        <div class="govuk-!-margin-bottom-6" id="skip-question-container">
+          <h3 class="govuk-heading-m">You can skip this section</h3>
+          <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+          <div class="govuk-checkboxes__item" id="skip-question-checkbox">
+            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+              I've entered as much information as I can
+            </label>
+          </div>
+        </div>
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+      </div>
+      </form>
+    </div>
+  </div>
+
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+<!-- // -->
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+
+window.addEventListener('load', function() {
+
+
+    $(".govuk-radios__input").change(function(e){
+      $('#skip-question-checkbox').hide()
+      $('#skip-question-container').addClass("disabled")
+    })
+
+  $("#country").on("change", function(e) {
+
+    updateFilter()
+  })
+  $("#bcp-search-button").on("click", function(e) {
+
+    updateFilter()
+  })
+  function updateFilter(){
+    // 
+
+    var URL = "border-control-post?ico="+$("#country").val()+"&q="+$("#search").val()+"&country="+$("#country").children(':selected').text();;
+    console.log(URL)
+    window.location.href = URL
+  }
+  $("#count").text($(".app-establishment-list__row").length)
+})  
+</script>
+{% endblock%}

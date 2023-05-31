@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
+Added commodities - {{super()}}
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -141,48 +141,23 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
     </div>
     {% endif %}
 
-    {% if incompleteRecordCount %}
-<!--
-    <div class="govuk-notification-banner etrade-warning-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-      <div class="govuk-notification-banner__header">
-        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          Incomplete data
-        </h2>
-      </div>
-      <div class="govuk-notification-banner__content">
-        <p class="govuk-notification-banner__heading">Some commodity data is incomplete</p>
-        {% if incompleteRecordCount < count %}
-        <p class="govuk-body"><a href="#navButtonGroup" id="shortcutToIncompleteRecords">Show only incomplete record{%if incompleteRecordCount > 1 %}s{%endif%}</a></p>
-        {% endif %}
-      </div>
-    </div>
--->
-    {% endif %}
-
-
     <span class="govuk-caption-xl">{{ cert.number or "EHC8331" }}</span>
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+    <h1 class="govuk-heading-xl">
       Added {{count}} {{recordsTitle}}
       {%if cert.addedCommodities | length > 1%} for {{cert.addedCommodities | length}} {{commodityTitle}}{% endif %}
     </h1>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <!--<h2 class="govuk-heading-m">Download commodity data</h2>-->
-        <div class="govuk-inset-text">
-          <a href="download/generate-data-spreadsheet?random={{ 100000 | randomNumberGenerator }}" class="govuk-link">Download commodity data in a spreadsheet</a> if you would like to make bulk changes or re-use this data in another EHC application.
-        </div>
-      </div>
-    </div>
-
+    {#
     {% if incompleteRecordCount and (incompleteRecordCount < count) %}
 
-    <div class="navButtonGroup" id="navButtonGroup">
-      <button id="navButtonAllRecords" type="button" role="button" aria-label="all-records" class="navButton active govuk-link govuk-!-font-size-19 govuk-!-margin-right-7 tab-link"><span class="govuk-visually-hidden">Click to display content for </span>All records</button>
-      <button id="navButtonIncompleteOnly" type="button" role="button" aria-label="incomplete-only" data-label="incomplete-only" class="navButton govuk-link govuk-!-font-size-19 govuk-!-margin-right-7 tab-link"><span class="govuk-visually-hidden">Click to display content only for </span>Incomplete records ({{ incompleteRecordCount }})</button>
-    </div>
+      <div class="navButtonGroup" id="navButtonGroup">
+        <button id="navButtonAllRecords" type="button" role="button" aria-label="all-records" class="navButton active govuk-link govuk-!-font-size-19 govuk-!-margin-right-7 tab-link"><span class="govuk-visually-hidden">Click to display content for </span>All records</button>
+        <button id="navButtonIncompleteOnly" type="button" role="button" aria-label="incomplete-only" data-label="incomplete-only" class="navButton govuk-link govuk-!-font-size-19 govuk-!-margin-right-7 tab-link"><span class="govuk-visually-hidden">Click to display content only for </span>Incomplete records ({{ incompleteRecordCount }})</button>
+      </div>
 
     {% endif %}
+    #}
+
 
     {% for commodity in cert.addedCommodities %}
       {% set hasIncompleteRecord = false %}
@@ -198,17 +173,53 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
       {% set currentCommodityID = loop.index-1 %}
 
       <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long app-summary-list--accordion govuk-!-margin-bottom-2">
+         {% set speciesCount = 0 %}
+        {% set commodityCodeItemCount = 0 %}
         {% for identification in commodity.identifications %}
-
+       
         <div class="commodity-accordion-row govuk-summary-list__row govuk-accordion__section {% if identification.isIncomplete %}incomplete{% endif %}" id="c{{currentCommodityID}}-i{{loop.index-1}}">
           <div class="govuk-summary-list__row-group govuk-accordion__section-header">
             <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key">
-              {% if query.changed=="yes" and data.commodityListID == currentCommodityID and loop.index-1 == data.changeID %} <strong class="govuk-tag govuk-tag--blue">{% if query.new %}New{%else%}Changed{%endif%}</strong>{% endif %}
+
+              <!-- count how many sections were skipped for this record -->
+              {% set skippedSectionCount = 0 %}
+              {% for schemaItem in schema %}
+                {% set itemIsIncomplete = false %}
+                {% if identification.isIncomplete %}
+                  {% for entry in identification.incomplete %}
+                    {% if entry == schemaItem.id %}
+                      {% set skippedSectionCount = skippedSectionCount + 1 %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
 
               <!--{% if identification.isIncomplete %}<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>{% endif %}-->
 
-              {% if identification.productDescription %}{{ identification.productDescription | truncate(100)}} - {% endif %}{{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}} - {{identification.packageCount or "23"}}
-              {{identification.packageCount_UNIT or "Bag"}}
+
+              {% if identification.productDescription %}
+                {{ identification.productDescription | truncate(100)}} - 
+
+              {% endif %}
+
+
+              {% if identification.packageCount or identification.netWeight %}
+                {% if identification.netWeight %}
+                  {{identification.netWeight or "23"}} {{identification.netWeight_UNIT or "kilogram"}} 
+                {% endif %}
+                {% if identification.packageCount %}
+                 {% if identification.netWeight %}-{% endif %} {{identification.packageCount or "23"}} {{identification.packageCount_UNIT or "Bag"}}
+                {% endif %}
+              {% elseif (not identification.packageCount and not identification.netWeight) and  identification.batchNumber %}
+              Batch Number: {{identification.batchNumber}} 
+              {% elseif (not identification.packageCount and not identification.netWeight) and  identification.species %}
+              {{identification.species}} {% if speciesCount > 0 %}({{speciesCount}})
+              {% set speciesCount = speciesCount+1%}
+              {% endif %}
+              {% else %}
+              Commodity: {{commodity.code}} {% if commodityCodeItemCount > 0 %}({{commodityCodeItemCount}}){% endif %}
+              {% set commodityCodeItemCount = commodityCodeItemCount + 1%}
+              {% endif %}
             </dt>
             <dd class="govuk-summary-list__actions">
               <ul class="govuk-summary-list__actions-list">
@@ -266,16 +277,24 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                       {% endfor %}
                     {% endif %}
 
-                    <div class="govuk-summary-list__row govuk-grid-column-one-half {%if itemIsIncomplete %}isIncomplete{% endif %}">
+
+                    <!-- change to the plant / center label. To keep old versions update the label in each version. -->
+                    {% set schemaTittle = schemaItem.title%}
+                    {% if schemaItem.id == "plantEstablishmentCentreActivity" %}
+                    {% set schemaTittle = "Add another establishment" %}
+                    {% endif %}
+
+                    <!-- <div class="govuk-summary-list__row govuk-grid-column-one-half {%if itemIsIncomplete %}isIncomplete{% endif %}"> -->
+                      <div class="govuk-summary-list__row govuk-grid-column-one-half "> 
                       <dt class="govuk-summary-list__key">
-                        {{ schemaItem.title }} {% if schemaItem.required == "no" %} <span class="optional">(optional)</span>{% endif %}
+                        {{ schemaTittle  }} {% if schemaItem.required == "no" %} <span class="optional">(optional)</span>{% endif %}
                       </dt>
                       <dd class="govuk-summary-list__value">
                         {% if schemaItem.type == "excel_date" %}
                           {% if identification[schemaItem.id] %}
                             {{ (identification[schemaItem.id] | getDateFromExcel) }}
                           {% else %}
-                            No value
+                            Not entered
                           {% endif %}
                         {% elseif schemaItem.type == "search" %}
                           <!-- find establishment TradingName from approval number -->
@@ -292,10 +311,10 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                           {% elseif identification[schemaItem.id] %}
                             Cannot find establishment for approval number {{ identification[schemaItem.id] }}
                           {% else %}
-                            Establishment number not provided
+                            Not entered
                           {% endif %}
                         {% else %}
-                          {{ identification[schemaItem.id] or "No value" }}
+                          {{ identification[schemaItem.id] or "Not entered" }}
                         {% endif %}
                       </dd>
                     </div>
@@ -317,7 +336,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
         <div class="govuk-grid-column-two-thirds">
 
           <form method="post" action="select-commodities">
-
+            {% if count > 0 %}
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -341,7 +360,7 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
                     {% else %}
                     {% set nextPage = "../task-list" %}
                     {% endif %}
-                    <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~{{nextPage}}?originalCommodityCount={{cert.addedCommodities | length}}&change=&copy=">
+                    <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~../task-list">
                     <label class="govuk-label govuk-radios__label" for="add-another-2">
                       No
                     </label>
@@ -350,13 +369,21 @@ Added commodities – E-Certification for EHC's - GOV.UK Prototype Kit
 
               </fieldset>
             </div>
-
             <button class="govuk-button" data-module="govuk-button">
               Continue
             </button>
+            {% else %}
+              <a href="select-certificates?displayMax=10" class="govuk-button" data-module="govuk-button">
+              Add commodities
+            </a>
+            {% endif %}
+
+            
           </form>
         </div>
       </div>
+
+
     </div>
   </div>
 

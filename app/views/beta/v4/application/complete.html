@@ -6,17 +6,28 @@ Application complete – GOV.UK Prototype Kit
 
 {% block content %}
 
-  <div class="govuk-grid-row" data-v-776dc74b="">
-    <div class="govuk-grid-column-two-thirds" data-v-776dc74b="">
-      <div class="govuk-panel govuk-panel--confirmation" id="application-submission-confirmation" data-v-776dc74b="">
-        <h1 class="govuk-panel__title" data-v-776dc74b=""> Application complete </h1>
-        <div class="govuk-panel__body" data-v-776dc74b=""> Your serial number<br data-v-776dc74b=""><strong id="application-serial-reference" data-v-776dc74b="">177CC10680DC4A8</strong></div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-panel govuk-panel--confirmation" id="application-submission-confirmation">
+        <h1 class="govuk-panel__title"> Application complete </h1>
+        <div class="govuk-panel__body"> Your serial number<br><strong id="application-serial-reference">177CC10680DC4A8</strong></div>
       </div>
     </div>
   </div>
-  <div class="govuk-grid-row" data-v-776dc74b="">
-    <div class="govuk-grid-column-two-thirds" data-v-776dc74b="">
-      <p class="govuk-body" data-v-776dc74b=""> Your application has now been submitted for review. </p><a href="dashboard" class="govuk-button" data-v-776dc74b=""> Finish </a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p>Your application has been submitted to the certifier.</p>
+      <h2 class="govuk-heading-m">What's next</h2>
+
+      <p class="govuk-body"> The certifier, <strong>{{data.certifier or "NewTestVets LTD"}}</strong> will now review your application. </p>
+      <p>
+       <p class="govuk-body"> Once your application has been certified, the information about your consignment will be validated against the EU <abbr>TRACES</abbr> data requirements. You will receive an email notification when it is approved.</p> 
+       <!-- <h3 class="govuk-heading-s">After the application is approved</h3> -->
+       <p class="govuk-body">The organisation responsible for the consignment must create a common health entry document (CHED) before the goods leave the final loading location.
+       </p>
+       <p>To learn about the changes to making an application to export animals or animal products, read about <a href="/stories/unified-dashboard/v2/how-to-paperless-certs?journey=copy">how paperless applications work.</a></p>
+      <p>
+ </p><a href="{{data.returnURL or '../dashboard'}}" class="govuk-button"> Return to your applications </a>
     </div>
   </div>
 {% endblock %}

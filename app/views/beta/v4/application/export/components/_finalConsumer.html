@@ -1,12 +1,7 @@
-{% set finalConsumerIsRequired = true %}
-{% for schema in cert.schema %}
-  {% if schema.id == "finalConsumer" and schema.required == "no" %}
-    {% set finalConsumerIsRequired = false %}
-  {% endif %}
-{% endfor %}
+
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xs">Final consumer {% if not finalConsumerIsRequired %}&nbsp;(optional){% endif %}
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xs">Final consumer {% if field.required == "no" %}&nbsp;(optional for <abbr title="TRACES is the EU's digital certification platform. You can submit your application without entering this information.">TRACES</abbr>){% endif %}
     <!---->
     <div class="govuk-radios govuk-radios--small govuk-radios--inline" data-module="govuk-radios">
       <div class="govuk-radios__item">

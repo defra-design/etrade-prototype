@@ -13,6 +13,35 @@ Find an organisation responsible for the load – {{serviceName}} - GOV.UK
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
+      <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+
+            <li id="operator-search-country-error-summary" style="display:none"><a href="#country-of-destination">A country must be selected</a></li>
+            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div id="results-error-summary" class="govuk-error-summary" data-module="govuk-error-summary" style="display:none">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#results">Select an organisation</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <h1 class="govuk-heading-xl">Find an organisation responsible for the load</h1>
       <p class="govuk-body">Enter the country and address of the organisation that will declare the consignment to the border control post. This will be either the importer or a forwarding agent.</p>
 

@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Uploaded documents – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form id="form" method="METHOD">
+
+      <h1 class="govuk-heading-xl">
+
+        {% set sealCount = 0 %}
+        {% for s in data.containerSealNumbers %}
+          {% if s.seals | length > 1 %}
+            {% if not s.seals | isString %}
+              {% for x in s.seals %}
+                {% set sealCount = sealCount +1 %}
+              {% endfor %}
+            {% else%}
+                {% set sealCount = 1 %}
+            {% endif %}
+          {% else %}
+            {% if s.seals %}
+            {% set sealCount = sealCount +1 %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        
+        Added {{data.containerSealNumbers | length}} container and {{sealCount}} seal numbers
+        
+      </h1>
+      <dl class="govuk-summary-list app-list-with-actions hmrc-list-with-actions--short">
+      {% for n in data.containerSealNumbers %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+          <ul class="govuk-list govuk-!-margin-bottom-0">
+
+            <li>{% if n.container %}<strong>Continer number</strong>  {{n.container}} <br>{% endif %}
+               {% if n.seals %} <strong>Seal number:</strong>  {{n.seals}} </li>{% endif %}
+            <li></li>
+
+          </ul>
+
+        </dt>
+        <dd class="govuk-summary-list__actions app-summary-list__actions">
+          <ul class="govuk-summary-list__actions-list">
+            
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="remove?id={{loop.index -1}}"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Remove Sydney Russell from the list</span></a>
+            </li>
+            <li class="govuk-summary-list__actions-list-item">
+              <a class="govuk-link govuk-link--no-visited-state" href="add-container-number?id={{loop.index -1}}&change=yes"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Remove Sydney Russell from the list</span></a>
+            </li>
+          </ul>
+        </dd>
+      </div>
+      {% endfor %}
+      
+    </dl>
+    <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Do you want to add another container or seal number?
+                </legend>
+                <div id="add-another-hint" class="govuk-hint">
+                  <!-- You must tell us about all your directors. -->
+                </div>
+                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes~./add-container-number">
+                    <label class="govuk-label govuk-radios__label" for="add-another">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No~../../task-list">
+                    <label class="govuk-label govuk-radios__label" for="add-another-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+
+              </fieldset>
+            </div>
+      <div class="govuk-button-group">
+      
+      <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

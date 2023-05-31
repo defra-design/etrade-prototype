@@ -2,6 +2,8 @@
 
 {% set establishmentType = id %}
 {% set establishmentApprovalNumber = identification[establishmentType] %}
+
+<!-- // new classification, however some establishments have not been updated. for consistancy there are two ways of showing the activity.  -->
 {% set establishmentActivity = identification[id+"Activity"] %}
 {% set establishmentIndex = null %}
 
@@ -25,9 +27,29 @@
 {% endfor %}
 
 <label class="govuk-label" for="{{id}}" id={{id}}>
-  {% if isIncomplete %}<strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br>{% endif %}
+  {% if isIncomplete %}
+  <!-- Removed for now to see if testing needs these indicators -->
+  <!-- <strong class="govuk-tag govuk-tag--red">Incomplete data</strong><br> -->
+  {% endif %}
+  {% set notEstablishmentLink = "Select a "+searchLabel |  lower %}
+  
+  <!-- change to the plant / center label. To keep old versions update the label in each version. -->
+  {% if field.id == "plantEstablishmentCentreActivity" %}
+  {% set searchLabel = "Additional establishment" %}
+  {% set notEstablishmentLink = "Select an additional establishment"%}
+  
+  {% endif %}
   {{searchLabel}} {% if isRequired == "no"%}(optional){% endif %}
 </label>
+{% if field.plantEstablishmentCentreActivity %}
+<p class="govuk-hint"> </p>
+{% endif %}
+{% if field.hint  %}
+<p class="govuk-hint">
+  {{field.hint}}
+</p>
+{% endif %}
+
 
 {% if establishmentApprovalNumber and establishmentActivity and (establishmentActivity != -1) %}
   <!-- Complete -->
@@ -51,9 +73,9 @@
 
     <div class="app-find-establishment-actions">
       <p class="govuk-!-margin-0">
-        <a href="../find/remove-establishment?certID={{ certID }}&commodityListID={{ commodityListID }}&changeID={{ changeID }}&establishmentType={{ establishmentType }}&random={{ 100000 | randomNumberGenerator }}">Remove</a>
+        <a href="../find/remove-establishment?certID={{ certID }}&commodityListID={{ commodityListID }}&changeID={{ commodityID }}&establishmentType={{ establishmentType }}&random={{ 100000 | randomNumberGenerator }}">Remove</a>
         {% if data.establishments[establishmentIndex].All_Activities.length > 1 %}
-         | <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&establishmentApprovalNumber={{ establishmentApprovalNumber }}">Change activity</a>
+         | <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ commodityID }}&establishmentType={{ establishmentType }}&establishmentIndex={{ establishmentIndex }}">Change activity</a>
          {% endif %}
       </p>
     </div>
@@ -83,7 +105,8 @@
 
     <div class="app-find-establishment-actions">
       <p class="govuk-!-margin-0">
-        <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&establishmentApprovalNumber={{ establishmentApprovalNumber }}" class="govuk-link">Select an activity</a>
+          <a href="../find/remove-establishment?certID={{ certID }}&commodityListID={{ commodityListID }}&changeID={{ commodityID }}&establishmentType={{ establishmentType }}&random={{ 100000 | randomNumberGenerator }}" style="display:inline-block;">Remove</a>
+        <a href="../find/activity-select?certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&establishmentApprovalNumber={{ establishmentApprovalNumber }}" class="govuk-link" style="display:inline-block;">Select an activity</a>
       </p>
     </div>
 
@@ -110,7 +133,8 @@
     </p>
     {% endif %}
     <!--<p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchLabel={{searchLabel}}&searchReturnURL={{returnURL or '../export/commodity'}}&searchID={{id}}&canSearchApprovalNumber=yes">Select a {{searchLabel | lower }}</a></p>-->
-    <p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchReturnURL={{returnURL or '../export/commodity'}}&canSearchApprovalNumber=yes&certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}">Select a {{searchLabel | lower }}</a></p>
+    <p class="govuk-!-margin-bottom-0"><a class="find-establishment-link" href="../find/results?searchReturnURL={{returnURL or '../export/commodity'}}&canSearchApprovalNumber=yes&certId={{ certID }}&addedCommoditiesId={{ commodityListID }}&identificationsId={{ changeID }}&establishmentType={{ establishmentType }}&hint={{field.hint}}">{{notEstablishmentLink}}</a></p>
+
 
   </div>
 

@@ -16,13 +16,13 @@
     {% endif  %}
   {% endif  %}
 <div class="govuk-form-group app-repeadable-holder" id="repeatable-species-holder">
-  <label class="govuk-label" for="TAXON">Species</label>
+  <label class="govuk-label" for="TAXON">Species {% if field.required == "no" %}&nbsp;(optional for <abbr title="TRACES is the EU's digital certification platform. You can submit your application without entering this information.">TRACES</abbr>){% endif %}</label>
   <div class="app-repeatable-section" id="repeatable-species">
     <div class="govuk-input__wrapper ">
       <select class="govuk-select govuk-!-width-two-thirds" id="TAXON" name="species">
         <option disabled="" value="" {% if not (species) %}selected{%endif%}>{% if (listOfSpecies| length) <= 50%}Select a taxonomy{% endif %}</option>
         {% for species in listOfSpecies%}
-        <option value="{{species}}" {% if (query.change ) and (species == identification.species[0]) %}selected{%endif%}>{{species}}</option>
+        <option value="{{species}}" {% if (query.change ) and (species == identification.species[0]) %}selected{% elseif (query.updated == 'yes' or query.hasError == 'yes') and data.species == species %}selected{%endif%}>{{species}}</option>
         {% endfor %}]
       </select>
 
@@ -40,10 +40,11 @@
   {% if loop.index > 1%}
   <div class="app-repeatable-section govuk-!-margin-top-2" id="repeatable-species{{loop.index}}">
     <div class="govuk-input__wrapper ">
+      
       <select class="govuk-select govuk-!-width-two-thirds" id="TAXON" name="species">
         <option disabled="" value="" {% if not (query.change ) %}selected{%endif%}>{% if (listOfSpecies| length) <= 50%}Select a taxonomy{% endif %}</option>
         {% for species in listOfSpecies%}
-        <option value="{{row}}" {% if (query.change) and (row == identification.species[loop.index-1]) %}selected{%endif%}>{{row}}</option>
+        <option value="{{row}}" {% if (query.change) and (row == identification.species[loop.index-1]) %}selected{% elseif (query.updated == 'yes' or query.hasError == 'yes') and data.species == species %}selected{%endif%}>{{row}}</option>
         {% endfor %}]
       </select>
 
@@ -60,13 +61,13 @@
 <input type="hidden" value="{{initialSavedValue}}" name="defaultValue" id="defaultValue">
 {% else %}
 <div class="govuk-form-group">
-  <label class="govuk-label" for="TAXON">Species</label>
+  <label class="govuk-label" for="TAXON">Species {% if field.required == "no" %}&nbsp;(optional for <abbr title="TRACES is the EU's digital certification platform. You can submit your application without entering this information.">TRACES</abbr>){% endif %}</label>
 
   <select class="govuk-select govuk-!-width-two-thirds" id="TAXON" name="species">
     <option disabled="" value="" {% if not (identification.species) %}selected{%endif%}>{% if (listOfSpecies| length) <= 10%}Select a taxonomy{% endif %}</option>
     {% if (listOfSpecies| length) > 0%}
     {% for species in listOfSpecies%}
-    <option value="{{species}}" {% if (query.change ) and (species == identification.species) %}selected{%endif%}>{{species}}</option>
+    <option value="{{species}}" {% if (query.change ) and (species == identification.species) %}selected{% elseif (query.updated == 'yes' or query.hasError == 'yes') and data.species == species %}selected{%endif%}>{{species}}</option>
     {% endfor %}]
     {% else %}
     <option value="not set">Not set any species in JSON</option>
@@ -100,7 +101,7 @@
     // If you want a chevron dropdown:
 
     // dropdownArrow: function (config) {
-    //   return '<svg class="autocomplete__dropdown-arrow-down" style="top: 12px;" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+    //   return '<svg class="autocomplete__dropdown-arrow-down" style="top: 12px;" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-5.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-5.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
     // },
   })
 </script>

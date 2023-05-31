@@ -1,110 +1,213 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Select a certificate for your export - eTrade – GOV.UK Prototype Kit
+Select a certificate - {{super()}}
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
-{% endblock %}
+<style media="screen">
+  .js-enabled .js-hidden{
+    display:none;
+  }
+</style>
+{% endblock%}
+{% block content %}
+<!-- allow for querystring override of displayMax for testing purposes -->
+{% if query.displayMax %}
+  {% set displayMax = query.displayMax | int %}
+{% else %}
+  {% set displayMax = data.displayMax %}
+{% endif %}
+
+{% set page = query.page-1 or 0 %}
+{% set min = displayMax*page %}
+{% if page == 0 %}
+{% set max = displayMax*(page+1) %}
+{% else %}
+{% set max = displayMax*(page+1)-1 %}
+{% endif %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <!-- <div class="govuk-grid-column-full" data-v-75a00750=""><span class="govuk-caption-xl"> Description of the goods
 
-    <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">Trade: E-certs</span>
-      Version 4
-    </h1>
+    </span> -->
+    <div class="govuk-grid-column-two-thirds">
+    <!--<form class="" method="post" action="how-to-add">-->
 
-    <div class="govuk-!-margin-top-7"></div>
-
-    <div id="formGroup" class="govuk-form-group">
-      <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-          <h1 class="govuk-fieldset__heading">
-              Scenarios
-          </h1>
-        </legend>
-          <p class="govuk-body">
-            This page is NOT part of the actual journey. It is to showcase the different Scenarios.
-          </p>
-
-          <p id="error-message" style="display: none;" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if you want to cancel, replace or re-certify the application.
-          </p>
-
-        <div class="govuk-radios" data-module="govuk-radios">
-          <form id="radio-group">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="optionOne" name="choose-account" type="radio" value="optionOne">
-              <label class="govuk-label govuk-radios__label" for="optionOne">
-                Select to view/download template
-              </label>
-              <!--<div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                Select this option if you’ve received official confirmation from the border control post to cancel and replace your application.
-              </div>-->
-            </div>
-            <br>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="optionTwo" name="choose-account" type="radio" value="optionTwo">
-              <label class="govuk-label govuk-radios__label" for="optionTwo">
-                Select to view/download template - *New updates in TRACES
-              </label>
-              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint govuk-body-s">
-                There has been changes in TRACES or to business rules exporters needs to be aware of.
-              </div>
-            </div>
-            <!--<div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="optionThree" name="choose-account" type="radio" value="optionThree">
-              <label class="govuk-label govuk-radios__label" for="optionThree">
-                Cancel this application
-              </label>
-              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                The exporter will still be able to create a new application for this consignment.              </div>
-            </div>-->
-          </form>
-        </div>
-      </fieldset>
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none" id="page-error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#search-and-list">Select a certificate</a>
+          </li>
+        </ul>
+      </div>
     </div>
-      <button class="govuk-button" onclick="submit()">Continue</button>
+    <form class="" method="post">
+      <h1 class="govuk-heading-xl">Select a certificate for your export</h1>
+      <div class="govuk-form-group" id="search-and-list">
+        <p class="govuk-body"></p>
+        <label class="govuk-label" for="search-term">Search for certificate</label>
+        <div class="govuk-hint">Search by certificate number or name</div>
+        <input class="govuk-input" id="search-term" type="text">
+        <br>
+        <br>
+        <div class="govuk-radios" data-module="govuk-radios" id="certificate-radios">
+          {% for cert in data.certificates %}
+            {% if loop.index >= min and loop.index <= max %}
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection{{loop.index}}" type="radio" data-target="EHC8328-commodities" value="{{loop.index-1}}">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection{{loop.index}}"><strong>{{cert.number}}</strong> {{cert.title}}  </label>
+              </div>
+            {% else %}
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection{{loop.index}}" type="radio" data-target="EHC8328-commodities" value="{{loop.index-1}}">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection{{loop.index}}"><strong>{{cert.number}}</strong> {{cert.title}}  </label>
+            </div>
+            {% endif %}
+          {% endfor%}
+        </div>
+        <div id="no-results" class="no-results govuk-!-font-size-19" style="display:none">
+          <p class="govuk-body govuk-!-font-weight-bold">There are no matching results.</p>
+          <p class="govuk-body">Improve your search results by:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>double-checking your spelling</li>
+            <li>using fewer keywords</li>
+            <li>searching for something less specific</li>
+          </ul>
+        </div>
 
+      </div>
+
+      {% if (data.certificates | length) >= displayMax  %}
+      <div class="govuk-form-group">
+        {% set count = 0 %}
+        {% set pageNumber = 1 %}
+        {% set last = (((data.certificates | length) / displayMax)| round(0, "floor")+1)  %}
+        {% if (page+1) <= 3 %}
+          <!-- start sequence. set range to show if page is under 3 -->
+          {% set rangeMin = 1 %}
+          {% set rangeMax = 4 %}
+          {% set elipsis1 = page -1 %}
+          {% set elipsis2 = rangeMax+1 %}
+        {% elseif page+3 >= last %}
+        <!-- end sequence, show 3 before the last page-->
+          {% set rangeMin = (last-3) %}
+          {% set rangeMax = last %}
+          {% set elipsis1 = rangeMin -1 %}
+          {% set elipsis2 = last +3 %}
+        {% else %}
+
+        <!-- middle sequence. This when you need to show 2 elipsis -->
+          {% set rangeMin = page %}
+          {% set rangeMax = page+2 %}
+          {% set elipsis1 = rangeMin-1 %}
+          {% set elipsis2 = rangeMax+1 %}
+        {% endif %}
+        <nav id="pagination" class="govuk-pagination" role="navigation" aria-label="results">
+
+
+          {% if query.page > 1 %}
+          <div class="govuk-pagination__prev">
+            <a class="govuk-link govuk-pagination__link" href="?page={{page}}&displayMax={{displayMax}}" rel="prev">
+              <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+              </svg>
+              <span class="govuk-pagination__link-title">Previous</span></a>
+          </div>
+          {% endif %}
+
+          <ul class="govuk-pagination__list">
+            {% for p in data.certificates %}
+
+              {% if (loop.index-1)  >= count %}
+
+              {% if pageNumber == 1 or (pageNumber >= rangeMin and pageNumber <= rangeMax) or pageNumber == last  %}
+              <li class="govuk-pagination__item {% if pageNumber == page+1 or (page==0 and pageNumber==1) %}govuk-pagination__item--current{%endif%}">
+                <a class="govuk-link govuk-pagination__link" href="?page={{pageNumber}}&displayMax={{displayMax}}" aria-label="Page {{pageNumber}}">
+                  {{pageNumber}}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if pageNumber == elipsis1 or pageNumber == elipsis2 %}
+                <li class="govuk-pagination__item govuk-pagination__item--ellipses">&ctdot;</li>
+              {% endif %}
+
+              {% set count = count+displayMax %}
+              {% set pageNumber = pageNumber+1%}
+
+              {% endif %}
+
+            {% endfor %}
+          </ul>
+          {% if page+1 != last %}
+          <div class="govuk-pagination__next">
+            <a class="govuk-link govuk-pagination__link" href="?page={{page+2}}&displayMax={{displayMax}}" rel="next"> <span class="govuk-pagination__link-title">Next</span> <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13"
+                width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg></a>
+          </div>
+          {% endif %}
+        </nav>
+      </div>
+      {% endif %}
+
+      <div class="govuk-button-group" type="submit"><button class="govuk-button" id="add-export">Add to export</button>
+        <!---->
+      </div>
+    </form>
   </div>
 </div>
-
+{% endblock %}
 
 {% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $("#search-term").on("keyup", function() {
 
-<script>
+      var value = $(this).val().toLowerCase();
 
-  window.addEventListener('beforeunload', function(event) {
-   document.getElementById("radio-group").reset();
-  }, false);
-  
-      function submit() {
-  const optionOne = document.querySelector('input[value="optionOne"]');
-  const optionTwo = document.querySelector('input[value="optionTwo"]');
-  const optionThree = document.querySelector('input[value="optionThree"]');
-  if (!optionOne.checked && !optionTwo.checked && !optionThree.checked) {
-    document.getElementById("error-message").style.display = "block";
-    document.getElementById("formGroup").style.borderLeft = "5px solid #d4351c";
-    document.getElementById("formGroup").style.paddingLeft = "15px";
-  } else {
-    document.getElementById("error-message").style.display = "none";
-    document.getElementById("formGroup").style.borderLeft = "none";
-    document.getElementById("formGroup").style.paddingLeft = "0";
+      $("#certificate-radios div").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        // if ($("#certificate-radios div").filter(":hidden").size()) {
+        if ($("#certificate-radios div.govuk-radios__item *:visible").length) {
+          // some results are still present
+          $("#no-results").hide();
+          $("#pagination").hide();
 
-    if (optionOne.checked) 
-      window.location.href = "/beta/v4/application/start";
+          // are some results being hidden
+          if (($("#certificate-radios div.govuk-radios__item *:visible").length) < ($("#certificate-radios div.govuk-radios__item").length)) {
+            $("#pagination").hide();
+          } else {
+            // $("#pagination").show();
+          }
+        } else {
+          // all results being hidden
+          $("#pagination").hide();
+          $("#no-results").show();
+        }
+      });
 
-    if (optionTwo.checked) 
-      window.location.href = "/beta/v4/application/start";
+    });
 
-    if (optionThree.checked) 
-      window.location.href = "/beta/v1-1-3/review/cancel/cancel-certificate";
-    
-  }
-}
+    $("#add-export").click(function() {
+      // show error message if nothing is selected
+      if ($("input:radio[name=certificate]:checked").length == 0) {
+        $("#search-and-list").addClass("govuk-form-group--error");
+        // $("#certificate-list").addClass("govuk-form-group--error");
+        $(".govuk-error-summary").show();
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#page-error-summary").offset().top
+        }, 20);
+        return false;
+      }
+    });
+
+  })
 </script>
-
-
 {% endblock%}
