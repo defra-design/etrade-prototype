@@ -83,7 +83,7 @@ Find a place of destination – {{serviceName}} - GOV.UK
         </select>
       </div>
 
-      {% set includeApprovalNumberSearch = false %}
+      {% set includeApprovalNumberSearch = true %}
       {% set orgSearchLabel = "Place of destination name" %}
       {% block organisationSearch %}{% include "../../persons/organisationSearchAndResults.html" %}{% endblock %}
 

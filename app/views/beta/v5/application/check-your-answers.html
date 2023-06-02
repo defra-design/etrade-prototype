@@ -138,32 +138,20 @@ Check your answers – {{super()}}
             </dd>
               <dd class="govuk-summary-list__actions"><a href="./export/weight?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">gross weight</span></dd>
             </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Country of origin </dd>
-              <dd class="govuk-summary-list__value">
-                  <p>United Kingdom (GB)</p>
-                
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./goods/place-of-origin?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Region of origin (optional) </dd>
-              <dd class="govuk-summary-list__value">
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/goods?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
+
             </dl>
           <h2 class="govuk-heading-m">2. Certification of the consignment</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Certifier </dt>
               <dd class="govuk-summary-list__value">
-                  {% if data.certifierName %}
-                {{data.certifierName}} <span class="ml-1">({{data.certifierTown}}, {{data.certifierPostcode}})</span>
-                {% elseif data.showDefaults=="yes" %}
-                  Bowland Vets (Bleasdale, PR2 1ER)
+
+
+                {% if data.certifierName %}
+                {{data.certifierName}}<br>
+                {{data.certifierAddress1}}, <br>
+                {{data.certifierTown}},<br>{{data.certifierPostcode}}
+
                 {% else %}
                   <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
@@ -226,44 +214,72 @@ Check your answers – {{super()}}
               <dt class="govuk-summary-list__key"> Consignor or Exporter </dt>
               <dd class="govuk-summary-list__value">
 
-                {% if data.consignorName %}
-                {{data.consignorName}}<br>
-                {{data.consignorAddress1}}, 
-                {{data.consignorTown}},{{data.consignorPostcode}}, 
-                {{data.consignorCountry}}<br>
-                Activity: {{data.consignorActivity}}
+             
+
+                {% if data.person['exporter'] %}
+                  {% set establishmentIndex = data.person['exporter'] %}
+                  {% set org = data.establishments[establishmentIndex] %}
+                  {{ org.TradingName }}<br>
+                  {{ org.Address1 }},
+                  {% if org.Address2 %}{{ org.Address2 }},{% endif %}
+                  {% if org.Address3 %}{{ org.Address3 }},{% endif %}
+                  {{ org.Town }}, {{ org.Postcode }}<br>
+                  {{ org.Country }}
+                  <br><br>
+
+                 {% if org.AppNo %}Approval number: {{org.AppNo}}{% endif %}
+                    Activity: {{data.consignorActivity | safe}}
                 {% else %}
-                  Denis Brinicombe Group (Crediton, EX17 3BZ)<br>
-                  Activity: Exporter
+                  <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions"><a href="./persons/consignor-or-exporter?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+           
+           <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Loading location </dd>
+              <dd class="govuk-summary-list__value">
+                  {% if data.transport['loading'] %}
+                  {% set establishmentIndex = data.transport['loading'] %}
+                  {% set org = data.establishments[establishmentIndex] %}
+                  {{ org.TradingName }}<br>
+                  {{ org.Address1 }},
+                  {% if org.Address2 %}{{ org.Address2 }},{% endif %}
+                  {% if org.Address3 %}{{ org.Address3 }},{% endif %}
+                  {{ org.Town }}, {{ org.Postcode }}<br>
+                  {{ org.Country }}
+                  
+
+                 {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
+
+                {% else %}
+                     <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/load-and-dispatch?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Dispatch location </dd>
               <dd class="govuk-summary-list__value">
 
-                  {% if data.placeOfDepartureName %}
-                  {{data.placeOfDepartureName}} ({{data.placeOfDepartureTown}}, {{data.placeOfDeparturePostcode}})
+                  {% if data.transport['dispatch'] %}
+                  {% set establishmentIndex = data.transport['dispatch'] %}
+                  {% set org = data.establishments[establishmentIndex] %}
+                  {{ org.TradingName }}<br>
+                  {{ org.Address1 }},
+                  {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
+                  {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
+                  {{ org.Town }}, {{ org.Postcode }}<br>
+                  {{ org.Country }}
+
+                   {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
                 {% else %}
                      <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
               </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/load-and-dispatch?change=yes" class="govuk-link"> Change </a></dd>
             </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Loading location </dd>
-              <dd class="govuk-summary-list__value">
-                  {% if data.placeOfLoadingName %}
-                  {{data.placeOfLoadingName}} ({{data.placeOfLoadingTown}}, {{data.placeOfLoadingPostcode}})
-                {% elseif data.showDefaults=="yes" %}
-                  Aubrey Allen Limited (Strabane, BT82)
-                {% else %}
-                     <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
+           
               <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Departure date</dt>
               <dd class="govuk-summary-list__value">
@@ -406,8 +422,8 @@ Check your answers – {{super()}}
              <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">Entry border control post</dt>
               <dd class="govuk-summary-list__value">
-                {% if data.borderControlPost or data.showDefaults=="yes" %}
-                  Antwerpen Port (UNLO Code: BEANR)
+                {% if data.selctedBCP  %}
+                  {{data.selctedBCP|safe}}
                 {% else %}
                 <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
@@ -429,13 +445,23 @@ Check your answers – {{super()}}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Importer or Consignee</dt>
               <dd class="govuk-summary-list__value">
-                {% if data.consigneeName %}
-                {{data.consigneeName}} <span class="ml-1">({{data.consignorTown}}, {{data.consigneePostcode}})</span>
-                {% elseif data.showDefaults=="yes" %}
-                  Aubrey Allen Limited (Strabane, BT82)
+
+                 {% if data.person['consignee'] %}
+                  {% set establishmentIndex = data.person['consignee'] %}
+                  {% set org = data.establishments[establishmentIndex] %}
+                  {{ org.TradingName }}<br>
+                  {{ org.Address1 }},
+                  {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
+                  {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
+                  {{ org.Town }}, {{ org.Postcode }}<br>
+                  {{ org.Country }}
+
+                   {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
                 {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                     <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
+
+               
               </dd>
               <dd class="govuk-summary-list__actions"><a href="./persons/consignee-or-importer?change=yes" class="govuk-link"> Change </a></dd>
             </div>
@@ -444,32 +470,46 @@ Check your answers – {{super()}}
             
 
             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Responsible for load </dt>
+              <dt class="govuk-summary-list__key"> Responsible for load (optional) </dt>
               <dd class="govuk-summary-list__value">
 
-                {% if data.loadName %}
-                {{data.loadName}} <span class="ml-1">({{data.loadTown}}, {{data.loadPostcode}})</span>
-                {% elseif data.showDefaults=="yes" %}
-                  Aubrey Allen Limited (Strabane, BT82)
-                  {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% if data.person['load'] %}
+                  {% set establishmentIndex = data.person['load'] %}
+                  {% set org = data.establishments[establishmentIndex] %}
+                  {{ org.TradingName }}<br>
+                  {{ org.Address1 }},
+                  {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
+                  {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
+                  {{ org.Town }}, {{ org.Postcode }}<br>
+                  {{ org.Country }}
 
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="/Export-health-certificate/d13c6032-f091-404c-aa3b-3921bd6b04d1/Operator" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Destination </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.placeOfDestinationName %}
-                  {{data.placeOfDestinationName}} ({{data.placeOfDestinationTown}}, {{data.placeOfDestinationPostcode}})
-                {% elseif data.showDefaults=="yes" %}
-                  Aubrey Allen Limited (Strabane, BT82)
+                   {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
                 {% else %}
                      <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
               </dd>
-              <dd class="govuk-summary-list__actions"><a href="/transport/place-of-destination?change=yes" class="govuk-link"> Change </a></dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/place-of-destination?change=yes" class="govuk-link"> Change </a></dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key"> Destination </dt>
+              <dd class="govuk-summary-list__value">
+
+                {% if data.transport['destination']%}
+                  {% set establishmentIndex = data.transport['destination'] %}
+                  {% set org = data.establishments[establishmentIndex] %}
+                  {{ org.TradingName }}<br>
+                  {{ org.Address1 }},
+                  {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
+                  {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
+                  {{ org.Town }}, {{ org.Postcode }}<br>
+                  {{ org.Country }}
+
+                   {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
+                {% else %}
+                     <span class="govuk-summary-list__placeholder">Not entered</span>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/place-of-destination?change=yes" class="govuk-link"> Change </a></dd>
             </div>
           </dl>
           <h2 class="govuk-heading-m">6. Additional documents (optional)</h2>

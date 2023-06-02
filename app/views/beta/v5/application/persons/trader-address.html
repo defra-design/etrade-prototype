@@ -9,10 +9,16 @@
         {% if org.Address3 %}{{ org.Address3 }}<br>{% endif %}
         {{ org.Town }}, {{ org.Postcode }}<br>
         {{ org.Country }}
-        {% if showOperatorActivity %}
+
+        
+        {% if showOperatorActivity or (showApprovalNumber and org.AppNo)  %}
           <br>
           <br>
+
+          {% if showApprovalNumber %}{% if org.AppNo %}Approval number: {{org.AppNo}}{% endif %}{% endif %}
+          {% if showOperatorActivity %}
           Activity: {{ establishmentActivity | safe }}
+          {% endif %}
         {% endif %}
       </dt>
       <dd class="govuk-summary-list__actions">

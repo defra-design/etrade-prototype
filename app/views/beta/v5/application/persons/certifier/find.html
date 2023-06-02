@@ -82,8 +82,9 @@ Find a certifier – {{serviceName}} - GOV.UK
       <label class="govuk-label govuk-radios__label" for="certifierIndex{{loop.index0}}" id="certifierIndex{{loop.index0 }}-hint">
         <strong>{{certifier.practiceName}}</strong><br>
         {{certifier.address['line1']}},<br>
-        {% if certifier.address['line2'] %}{{certifier.address['line2']}}<br>{% endif %}
-        {% if certifier.address['line3'] %}{{certifier.address['line3']}}<br>{% endif %}
+        
+        {% if certifier.address['line3'] %}{{certifier.address['line3']}}<br>
+        {% elseif certifier.address['line2'] %}{{certifier.address['line2']}}<br>{% endif %}
         {{certifier.address['postCode'] | upper }}
       </label>
     </div>

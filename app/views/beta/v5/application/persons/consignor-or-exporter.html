@@ -1,5 +1,4 @@
 {% extends "layout.html" %}
-
 {% block pageTitle %}
 Consignor or exporter – GOV.UK Prototype Kit
 {% endblock %}
@@ -8,7 +7,6 @@ Consignor or exporter – GOV.UK Prototype Kit
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
 {% block content %}
-
 <style>
   .find-establishment-link {
     padding: 30px;
@@ -23,11 +21,8 @@ Consignor or exporter – GOV.UK Prototype Kit
     border: none;
   }
 </style>
-
-<form class="" action="{% if query.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
-
+<form class="" action="{% if data.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
   <div class="modal-backdrop" data-v-4bb354a1="" data-v-0c6ff6a7="" style="display: none;">
-
   </div>
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl">Persons involved</span>
@@ -36,69 +31,54 @@ Consignor or exporter – GOV.UK Prototype Kit
       {% set searchLabel = "Consignor or exporter"%}
       {% set returnURL = "../persons/consgnor-or-exporter"%}
       <div class="govuk-form-group">
-
         {% if data.person['exporter'] and query.deleted!="yes" %}
-          {% set establishmentIndex = data.person['exporter'] %}
-          {% set org = data.establishments[establishmentIndex] %}
-          {% set establishmentActivityIndex = data.person['consignorActivity'] %}
-          {% set establishmentActivity = org.All_Activities[data.person['consignorActivity']] %}
-          {% if org.activityClassifications %}
-          {% set establishmentActivity = 
-          org.activityClassifications[data.person['consignorActivity']].activity.name
-          +" - <abbr title='"+ org.activityClassifications[data.person['consignorActivity']].classification.name+"'>"
+        {% set establishmentIndex = data.person['exporter'] %}
+        {% set org = data.establishments[establishmentIndex] %}
+        {% set establishmentActivityIndex = data.person['consignorActivity'] %}
+        {% set establishmentActivity = org.All_Activities[data.person['consignorActivity']] %}
+        {% if org.activityClassifications %}
+        {% set establishmentActivity =
+        org.activityClassifications[data.person['consignorActivity']].activity.name
+        +" - <abbr title='"+ org.activityClassifications[data.person[' consignorActivity']].classification.name+"'>"
           + org.activityClassifications[data.person['consignorActivity']].classification.code
-           +"</abbr> - "
-           + org.activityClassifications[data.person['consignorActivity']].classificationGroup.name %}
-          {% else %}
-          {% set establishmentActivity = org.All_Activities[data.person['consignorActivity']] %}
-          {% endif %}
-          {% set showOperatorActivity = true %}
-
-          {% if org.All_Activities.length > 1 %}
-            {% set includeChangeAction = true %}
-          {% endif %}
-
-          <!-- set fields for check your answers -->
-          <input type="hidden" name="consignorName"  value="{{org.TradingName}}">
-          <input type="hidden" name="consignorAddress1" value="{{ org.Address1 }}">
-          <input type="hidden" name="consignorTown"  value="{{org.Town}}">
-          <input type="hidden" name="consignorCountry"  value="{{ org.Country }}">
-          <input type="hidden" name="consignorPostcode"  value="{{org.Postcode}}">
-          <input type="hidden" name="consignorActivity" value="{{establishmentActivity}}">
-          
-
-          {% set removeLink = "./remove?who=consignor&redirect=consignor-or-exporter" %}
-          {% set changeLink = "./consignor/activity?establishmentIndex=" + establishmentIndex + "&establishmentApprovalIndex=" + establishmentActivityIndex %}
-          {% block traderAddress %}{% include "./trader-address.html" %}{% endblock %}
-
+          +"</abbr> - "
+        + org.activityClassifications[data.person['consignorActivity']].classificationGroup.name %}
         {% else %}
-          <p class="govuk-!-margin-bottom-10 find-establishment-link">
-            <a href="./consignor/find" class="govuk-link govuk-link--no-visited-state">Select an exporter or consignor</a>
-          </p>
+        {% set establishmentActivity = org.All_Activities[data.person['consignorActivity']] %}
         {% endif %}
-
+        {% set showOperatorActivity = true %}
+        {% if org.All_Activities.length > 1 %}
+        {% set includeChangeAction = true %}
+        {% endif %}
+        <!-- set fields for check your answers -->
+        <input type="hidden" name="consignorName" value="{{org.TradingName}}">
+        <input type="hidden" name="consignorAddress1" value="{{ org.Address1 }}">
+        <input type="hidden" name="consignorTown" value="{{org.Town}}">
+        <input type="hidden" name="consignorCountry" value="{{ org.Country }}">
+        <input type="hidden" name="consignorPostcode" value="{{org.Postcode}}">
+        <input type="hidden" name="consignorActivity" value="{{establishmentActivity}}">
+        {% set removeLink = "./remove?who=consignor&redirect=consignor-or-exporter" %}
+        {% set changeLink = "./consignor/activity?establishmentIndex=" + establishmentIndex + "&establishmentApprovalIndex=" + establishmentActivityIndex %}
+        {% block traderAddress %}{% include "./trader-address.html" %}{% endblock %}
+        {% else %}
+        <p class="govuk-!-margin-bottom-10 find-establishment-link">
+          <a href="./consignor/find" class="govuk-link govuk-link--no-visited-state">Select an exporter or consignor</a>
+        </p>
+        {% endif %}
       </div>
-
-
-
-
-
-
-
-<button class="govuk-button">Continue</button>
-      </div>
+      <input type="hidden" name="change" value="no">
+      <button class="govuk-button">Continue</button>
+    </div>
   </div>
 </form>
 <!-- this is the base html to copy, it is not visuable and only used in this prototype -->
-
 <!-- // -->
-
 {% endblock %}
 {% block pageScripts %}
 <script type="text/javascript">
-  window.addEventListener('load', function() {
+window.addEventListener('load', function() {
 
 
-  })
+})
 </script>
 {% endblock%}

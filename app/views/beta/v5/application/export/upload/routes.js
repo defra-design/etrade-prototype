@@ -5,7 +5,7 @@ module.exports = function(router) {
   const upload = multer({ dest: './public/data/uploads/' })
 
   // CHANGE VERSION each time you create a new version
-  const base_url = "beta/v3-5/application/export/"
+  const base_url = "beta/v5/application/export/"
 
   function getCommodityIndex(commodity_code, certificate_index, certificate) {
     // console.log("In getCommodityIndex with params commodity_code: " + commodity_code + ", certificate_index: " + certificate_index + ", certificate: " + certificate);

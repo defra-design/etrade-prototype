@@ -25,7 +25,7 @@ Responsible for load – GOV.UK Prototype Kit
 </style>
 
 
-<form class="" action="../task-list" method="post">
+<form class="" action="{% if data.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Responsible for load (optional)</h1>
@@ -47,15 +47,24 @@ Responsible for load – GOV.UK Prototype Kit
     <p>If this is blank the organsiation responsible for load will need to manually search for this certificate using the IMSOC number and the certificate reference in TRACES. </p>
   </div>
 </details> -->
-
-   
-        <input type="hidden" name="loadName"  value="Testing Company name">
-          <input type="hidden" name="loadTown"  value="London">
-          <input type="hidden" name="loadPostcode"  value="SW6 5HM">
       
-           <p>This is a prototype. Please click continue as if you had filled in the details.</p>
-  
+      {% if data.person['load'] %}
+      {% set showApprovalNumber = 'yes' %}
+        {% set establishmentIndex = data.person['load'] %}
+        {% set org = data.establishments[establishmentIndex] %}
+        <!-- set fields for check your answers -->
+          <input type="hidden" name="loadName"  value="{{org.TradingName}}">
+          <input type="hidden" name="loadTown"  value="{{org.Town}}">
+          <input type="hidden" name="loadPostcode"  value="{{org.Postcode}}">
+        {% set removeLink = "./remove?who=load&redirect=load" %}
+        {% block traderAddress %}{% include "./trader-address.html" %}{% endblock %}
 
+      {% else %}
+        <p class="govuk-!-margin-bottom-10 find-establishment-link">
+          <a href="./load/find" class="govuk-link govuk-link--no-visited-state">Select an organisation responsible for load</a>
+        </p>
+      {% endif %}
+         <input type="hidden" name="change" value="no">
        <!-- <p>The organisation responsible for load will get notificaied by <abbr title="Trade Control and Expert System">TRACES</abbr> in order to create a <abbr title="Common Health Entry Document">CHED</abbr>. </p> -->
       <button class="govuk-button">Continue</button>
     </div>
@@ -70,7 +79,7 @@ Responsible for load – GOV.UK Prototype Kit
 <script type="text/javascript">
   window.addEventListener('load', function() {
 
-    $( 'a' ) .click(function() { return false; });
+    // $( 'a' ) .click(function() { return false; });
   })
 </script>
 {% endblock%}

@@ -9,7 +9,7 @@ module.exports = function(router) {
   
 
   // CHANGE VERSION each time you create a new version
-  const base_url = "beta/v3-5/"
+  const base_url = "beta/v5/"
 
   function isAlreadyAdded(a, v) {
     let r = a.find(element => {

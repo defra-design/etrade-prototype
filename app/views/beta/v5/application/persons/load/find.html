@@ -48,7 +48,7 @@ Find an organisation responsible for the load – {{serviceName}} - GOV.UK
       {% set defaultCountry = "Any" %}
       {% block countryOfOrigin %}{% include "../../find/_country-of-origin-select.html" %}{% endblock %}
 
-      {% set includeApprovalNumberSearch = false %}
+      {% set includeApprovalNumberSearch = true %}
       {% set orgSearchLabel = "Responsible for load organisation name" %}
       {% block organisationSearch %}{% include "../organisationSearchAndResults.html" %}{% endblock %}
 

@@ -48,7 +48,7 @@ Find a consignee or importer – {{serviceName}} - GOV.UK
       {% set defaultCountry = "Any" %}
       {% block countryOfOrigin %}{% include "../../find/_country-of-origin-select.html" %}{% endblock %}
 
-      {% set includeApprovalNumberSearch = false %}
+      {% set includeApprovalNumberSearch = true %}
       {% set orgSearchLabel = "Consignee or importer name" %}
       {% block organisationSearch %}{% include "../organisationSearchAndResults.html" %}{% endblock %}
 

@@ -4,7 +4,7 @@ module.exports = function(router) {
   // Load helper functions
 
   // CHANGE VERSION each time you create a new version
-  const base_url = "beta/v3-5/application/";
+  const base_url = "beta/v5/application/";
 
   router.post('/' + base_url + "persons/consignee/find", function(req, res) {
     console.log("In consignee/find.html");
