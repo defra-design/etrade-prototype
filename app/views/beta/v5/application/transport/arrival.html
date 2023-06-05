@@ -19,12 +19,12 @@ When will the consignment arrive at the border control post (BCP) - {{super()}}
             </label>
             <div id="date-hint" class="govuk-hint" data-v-4e598067="">This must be after the departure date 2 March 2022. For example, 20/03/2022</div>
             <!---->
-            <input  type="date" class="js-question govuk-input govuk-input--width-10" id="arrival" name="arrival" inputmode="none">
+            <input  type="date" class="js-question govuk-input govuk-input--width-10" id="arrival" name="arrival" inputmode="none" value="{{data.arrival}}">
         </div>
         <div class="govuk-form-group"> 
               <label class="govuk-label" for="arrival-time">Estimated time of arrival</label>
               <div class="govuk-hint" id="arrival-time-hint">For example 2pm or 14:30</div>
-              <input type="text" class="js-question govuk-input--width-5 govuk-input" name="arrivalTime" value="" id="arrival-time" aria-described-by="">
+              <input type="text" class="js-question govuk-input--width-5 govuk-input" name="arrivalTime" value="" id="arrival-time" aria-described-by="" value="{{data.arrivalTime}}">
             </div>
 
           <div class="govuk-form-group" id="skip-question-container">

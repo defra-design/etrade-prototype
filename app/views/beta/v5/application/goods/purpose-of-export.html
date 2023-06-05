@@ -48,12 +48,12 @@ What type of consignment are you sending - {{super()}}
           {% endif %}
           <div class="govuk-radios" data-module="govuk-radios">
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="radio-internal" name="Purpose" type="radio" value="Internal market" aria-decribedby="purpose-internal-hint">
+            <input class="govuk-radios__input" id="radio-internal" name="Purpose" type="radio" value="EU or Northern Ireland market" aria-decribedby="purpose-internal-hint" {% if data.Purpose == 'EU or Northern Ireland market' %}checked{% endif %}>
             <label class="govuk-label govuk-radios__label" for="radio-intmark">EU or Northern Ireland market</label>
             <div id="purpose-internal-hint" class="govuk-hint govuk-radios__hint">Your consignment will be delivered to the EU or Northern Ireland and stay there.</div>
           </div>
           <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="radio-transit" name="Purpose" type="radio" value="Transit" aria-decribedby="purpose-transit-hint" data-aria-controls="conditional-transit-country" {% if query.hasError and query.errorType=='noCountry' %} checked{% endif %}>
+              <input class="govuk-radios__input" id="radio-transit" name="Purpose" type="radio" value="In transit consignment" aria-decribedby="purpose-transit-hint" data-aria-controls="conditional-transit-country" {% if query.hasError and query.errorType=='noCountry' %} checked{% endif %} {% if data.Purpose == 'In transit consignment' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="radio-transit">In transit consignment</label>
               <div id="purpose-transit-hint" class="govuk-hint govuk-radios__hint">Your consignment’s final destination is a non-EU country, but it will pass through an EU country or Northern Ireland.</div>
             </div>
@@ -66,7 +66,7 @@ What type of consignment are you sending - {{super()}}
                 </p>
                 {% endif %}
              
-                <select class="govuk-select " id="purpose-of-export-country" required="">
+                <select class="govuk-select " id="purpose-of-export-country" name="inTransitDestination"required="">
                   <option value="">select a country</option>
                   <option value="afghanistan">afghanistan</option>
                   <option value="albania">albania</option>
@@ -281,7 +281,7 @@ What type of consignment are you sending - {{super()}}
                 </select></div>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="radio-ReEntry" name="Purpose" type="radio" value="Re-entry">
+              <input class="govuk-radios__input" id="radio-ReEntry" name="Purpose" type="radio" value="Re-entry consignment" {% if data.Purpose == 'Re-entry consignment' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="radio-ReEntry">Re-entry consignment</label>
               <div id="purpose-internal-hint" class="govuk-hint govuk-radios__hint">Your consignment is originally from the EU or Northern Ireland, and it will be delivered to its original location after a temporary stay in Great Britain.</div>
             </div>

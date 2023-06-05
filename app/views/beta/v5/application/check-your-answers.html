@@ -192,13 +192,11 @@ Check your answers – {{super()}}
             </div>
         
             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Type of consignment</dt>
+              <dt class="govuk-summary-list__key">Type of consignment</dt>
               <dd class="govuk-summary-list__value">
 
                 {% if data.Purpose %}
-                  {{data.Purpose | capitalize }}
-                {% elseif data.showDefaults=="yes" %}
-                  Transit
+                  {{data.Purpose}} {% if data.Purpose == "In transit consignment" %} to {{data.inTransitDestination | capitalize}}{% endif %}
                 {% else %}
                   <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
@@ -379,35 +377,23 @@ Check your answers – {{super()}}
              <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">Transport method</dt>
               <dd class="govuk-summary-list__value">
-                {% if data.addedTransport  and data.addedTransport != ""%}
-                {% if data.addedTransport  | length > 2 %}
+                {% if data.transportList %}
                 <ol class="govuk-list govuk-list--number">
-                {% for t in data.addedTransport %}
-                <!-- dont show the first one which is always empty -->
-                <!-- For ease of wrting I made sure this was always a list by adding a hiddden input for addedTransport by default-->
-                {% if loop.index > 1 %}
-                <li>{{t}} - {{data.transportID[loop.index+4]}}</li>
-                {% endif %}
+                {% for t in data.transportList %}
+                <li>{{(t.typeOfTransport | capitalize)}} - {{t.identifier | upper }} </li>
                 {% endfor %}
                 </ol>
-                {% else %}
-                <!-- // for single entries dont show in list -->
-                <!-- Id is from the 5th entry in the array as there are hidden sections with the same input name, these are always blank -->
-                {{data.addedTransport[1]}} - {{data.transportID[5]}}
-                {% endif %}
                 {% else %}
                 <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
               </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/means-of-transport?change=yes" class="govuk-link"> Change </a></dd>
+              <dd class="govuk-summary-list__actions"><a href="./transport/added-transport?change=yes" class="govuk-link"> Change </a></dd>
             </div>
              <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">Transport storage </dt>
               <dd class="govuk-summary-list__value">
-                {% if data.tcondition %}
-                {{data.tcondition}}
-                {% elseif data.showDefaults=="yes" %}
-                  Chilled
+                {% if data.trasnportConditions %}
+                {{data.trasnportConditions}}
                 {% else %}
                 <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
@@ -490,7 +476,7 @@ Check your answers – {{super()}}
                      <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
               </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/place-of-destination?change=yes" class="govuk-link"> Change </a></dd>
+              <dd class="govuk-summary-list__actions"><a href="./persons/load?change=yes" class="govuk-link"> Change </a></dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Destination </dt>

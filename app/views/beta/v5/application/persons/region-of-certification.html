@@ -29,7 +29,6 @@ Where will the consignment be certified – GOV.UK Prototype Kit
       <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
         <fieldset class="govuk-fieldset" {% if query.hasError=="yes" %}aria-describedby="where-certification-error" {% endif %}>
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-            <span class="govuk-caption-l">Persons involved</span>
             <h1 class="govuk-fieldset__heading">
               Where will the consignment be certified?
             </h1>
@@ -40,11 +39,11 @@ Where will the consignment be certified – GOV.UK Prototype Kit
           </p>
           {% endif %}
           <div class="govuk-radios" data-module="govuk-radios">
-            <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification" name="regionOfCertification" type="radio" value="GB-ENG"><label class="govuk-label govuk-radios__label" for="region-of-certification">
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification" name="regionOfCertification" type="radio" value="England" {%if data.regionOfCertification=='England' %}checked{% endif %}><label class="govuk-label govuk-radios__label" for="region-of-certification">
                 England </label></div>
-            <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification-2" name="regionOfCertification" type="radio" value="GB-SCT"><label class="govuk-label govuk-radios__label" for="region-of-certification-2">
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification-2" name="regionOfCertification" type="radio" value="Scotland"><label class="govuk-label govuk-radios__label" for="region-of-certification-2" {%if data.regionOfCertification=='Scotland' %}checked{% endif %}>
                 Scotland </label></div>
-            <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification-3" name="regionOfCertification" type="radio" value="GB-WLS"><label class="govuk-label govuk-radios__label" for="region-of-certification-3">
+            <div class="govuk-radios__item"><input class="govuk-radios__input" id="region-of-certification-3" name="regionOfCertification" type="radio" value="Wales" {%if data.regionOfCertification=='wales' %}checked{% endif %}><label class="govuk-label govuk-radios__label" for="region-of-certification-3">
                 Wales </label></div>
           </div>
         </fieldset>

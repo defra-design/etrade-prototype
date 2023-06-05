@@ -22,12 +22,12 @@ Departure and arrival – {{super()}}
             </legend>
             <div id="date-hint" class="govuk-hint" data-v-4e598067=""> For example, 26/09/2022 </div>
             <!---->
-            <input  type="date" class="js-question govuk-input govuk-input--width-10" id="departure" name="departure" inputmode="none">
+            <input  type="date" class="js-question govuk-input govuk-input--width-10" id="departure" name="departure" inputmode="none" value="{{data.departure}}">
         </div>
         <div class="govuk-form-group"> 
               <label class="govuk-label" for="departure-time">Estimated time of departure (for live animals only)</label>
               <div class="govuk-hint" id="departure-time-hint">For example 2pm or 14:30</div>
-              <input type="text" class="govuk-input--width-5 govuk-input" name="departureTime" value="" id="departure-time" aria-described-by="">
+              <input type="text" class="govuk-input--width-5 govuk-input" name="departureTime" value="" id="departure-time" aria-described-by="" value="{{data.departureTime}}">
             </div>
 
           <div class="govuk-form-group" id="skip-question-container">

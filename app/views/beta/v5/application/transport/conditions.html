@@ -23,17 +23,18 @@ How will the consignment be stored during transport – {{serviceName}} – GOV.
 
               <p>If different parts of the consignment will be stored in different conditions (for example, part in chilled storage and part in frozen storage), a separate application for each part of the consignment must be created.</p>
               <div class="govuk-radios" data-filled="no" data-module="govuk-radios" id="purpose" data-v-133877c6="">
-                <div class="govuk-radios__item purpose" data-v-133877c6="">
-                  <input class="govuk-radios__input" id="conditions-Chilled" name="trasnportConditions" type="radio" value="Chilled" {% if data.conditions == "Chilled" %}checked{% endif %}>
-                  <label class="govuk-label govuk-radios__label"
-                    for="conditions-Chilled" data-v-133877c6="">Chilled storage</label></div>
-                <!---->
-                <div class="govuk-radios__item purpose" data-v-133877c6="">
-                  <input class="govuk-radios__input" id="conditions-Ambient" name="trasnportConditions" type="radio" value="Ambient" {% if data.conditions == "Ambient" %}checked{% endif %}>
+                 <div class="govuk-radios__item purpose" data-v-133877c6="">
+                  <input class="govuk-radios__input" id="conditions-Ambient" name="trasnportConditions" type="radio" value="Ambient" {% if data.trasnportConditions == "Ambient" %}checked{% endif %}>
                   <label class="govuk-label govuk-radios__label"
                     for="conditions-Ambient" data-v-133877c6="">Ambient storage</label></div>
                 <div class="govuk-radios__item purpose" data-v-133877c6="">
-                  <input class="govuk-radios__input" id="conditions-Frozen" name="trasnportConditions" type="radio" value="Frozen" {% if data.conditions == "Frozen" %}checked{% endif %}>
+                  <input class="govuk-radios__input" id="conditions-Chilled" name="trasnportConditions" type="radio" value="Chilled" {% if data.trasnportConditions == "Chilled" %}checked{% endif %}>
+                  <label class="govuk-label govuk-radios__label"
+                    for="conditions-Chilled" data-v-133877c6="">Chilled storage</label></div>
+                <!---->
+               
+                <div class="govuk-radios__item purpose" data-v-133877c6="">
+                  <input class="govuk-radios__input" id="conditions-Frozen" name="trasnportConditions" type="radio" value="Frozen" {% if data.trasnportConditions == "Frozen" %}checked{% endif %}>
                   <label class="govuk-label govuk-radios__label"  for="conditions-Frozen">Frozen storage</label></div>
               </div>
             </fieldset>
@@ -64,6 +65,11 @@ window.addEventListener('load', function() {
       $('#skip-question-checkbox').hide()
       $('#skip-question-container').addClass("disabled")
     })
+
+    if( $('.govuk-radios__input').is(':checked') ){
+      $('#skip-question-checkbox').hide()
+      $('#skip-question-container').addClass("disabled")
+    }
 
 });
 </script>

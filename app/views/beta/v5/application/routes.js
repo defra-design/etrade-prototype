@@ -287,7 +287,8 @@ module.exports = function(router) {
       res.redirect(301, '/' + base_url + 'transport/select-transport');
     }
 
-    if (req.query.change == "yes") {
+    if (req.session.data.change == "yes") {
+      req.session.data.change=="no"
       res.redirect(301, '/' + base_url + 'check-your-answers');
     } else {
       res.redirect(301, '/' + base_url + 'task-list');
