@@ -149,6 +149,25 @@ module.exports = function(env) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
+  filters.parseDate  = function(s){
+    console.log(s.length)
+    // expecting 10 character date, for example, 2021-10-23
+     var months = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    if (s.length != 10 ) {
+      // retrun a default value
+      return ["24","March","2023"]
+    }
+    var day= s.slice(8,10);
+    var m = parseInt(s.slice(5,7));
+    var y = s.slice(0,4);
+
+    // remove leading 0 if number is lower than 10
+    var d = day.replace(/^0+/, '');
+
+    return d + " " + months[m - 1] + " " + y
+  }
 
 
   filters.getDate = function(day, mon, year) {

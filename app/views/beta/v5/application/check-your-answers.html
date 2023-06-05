@@ -284,7 +284,9 @@ Check your answers – {{super()}}
               <dt class="govuk-summary-list__key"> Departure date</dt>
               <dd class="govuk-summary-list__value">
                 {% if data.departure %}
-                  {{data.departure}} {% if data.departureTime %}- {{data.departureTime}}{% endif %}
+                
+             
+                  {{ data.departure | parseDate() }} {% if data.departureTime %}- {{data.departureTime}}{% endif %}
                 {% else %}
                   <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
@@ -434,7 +436,7 @@ Check your answers – {{super()}}
               <dt class="govuk-summary-list__key"> Estimated arrival date</dt>
               <dd class="govuk-summary-list__value">
                 {% if data.arrival %}
-                  {{data.arrival}} {%if data.arrivalTime %} - {{data.arrivalTime}}{% endif %}
+                  {{ data.arrival | parseDate() }}{%if data.arrivalTime %} - {{data.arrivalTime}}{% endif %}
                 {% else %}
                   <span class="govuk-summary-list__placeholder">Not entered</span>
                 {% endif %}
