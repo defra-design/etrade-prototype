@@ -96,9 +96,7 @@ Check your answers – {{super()}}
       {% set certID = query.currentCertID or ((data.addedEHC|length)-1) or 0 %}
 {% set cert = data.addedEHC[certID] %}
 {% set schema = cert.schema %}
-      <table class="govuk-table govuk-!-margin-bottom-4" id="commodityTable">
-        <caption class="govuk-table__caption govuk-table__caption--s">
-          {% set commodityCount = 0%}
+  {% set commodityCount = 0%}
           {% for cert in data.addedEHC %}
             {% for c in cert.addedCommodities %}
               {% for i in c.identifications %}
@@ -106,6 +104,11 @@ Check your answers – {{super()}}
               {% endfor%}
             {% endfor%}
           {% endfor%}
+
+          {% if commodityCount > 1 %}
+      <table class="govuk-table govuk-!-margin-bottom-4" id="commodityTable">
+        <caption class="govuk-table__caption govuk-table__caption--s">
+        
           {{commodityCount}} {% if commodityCount == 1 %}record{% else %}records{%endif%} added
          
         </caption>
@@ -151,8 +154,12 @@ Check your answers – {{super()}}
               <a href="#" class="govuk-link govuk-link--no-visited-state">Delete<span class="govuk-visually-hidden"> this commodity</span></a>
             </td> -->
           </tr>
+          
           {% endfor %}
            {% endfor %}
+           <tr>
+            <th class="govuk-table__cell" colspan="4"><a href="export/added-commodities-list" class="govuk-link--no-visited-state ">Add or manage commodities</a><br><br></th>
+          </tr>
         </tbody>
         <tfoot>
           <tr class="govuk-table__row">
@@ -185,34 +192,24 @@ Check your answers – {{super()}}
                   <a href="how-to-identify?return_url=check-your-answers" class="govuk-link govuk-link--no-visited-state">Change<span class="govuk-visually-hidden"> this commodity</span></a>
             </td>
           </tr>
+          
         </tfoot>
       </table>
+      {% else %}
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <!-- <div class="govuk-summary-list__row">
+          <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Commodities </dt>
               <dd class="govuk-summary-list__value">
-              {% if (data.addedEHC | length) > 0%}
-                {% set commodityCount = 0%}
-                {% for cert in data.addedEHC %}
-                  {% for c in cert.addedCommodities %}
-                    {% for i in c.identifications %}
-                      {% set commodityCount = commodityCount+1 %}
-                    {% endfor%}
-                  {% endfor%}
-                {% endfor%}
-                {{commodityCount}} {% if commodityCount == 1 %}record{% else %}records{%endif%} added
+               
+                <span class="govuk-summary-list__placeholder">Not entered</span>
 
-
-                {% else %}
-                <span class="certified-goods">3 records for 2 commodities</span>
-                {% endif %}
                 </dd>
 
 
               <dd class="govuk-summary-list__actions">
                 <a href="export/added-commodities-list?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">commodities</span></a> </dd>
-            </div> -->
-       <!--    <div class="govuk-summary-list__row">
+            </div>
+          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key"> Gross weight </dt>
             <dd class="govuk-summary-list__value">
               {% if data.GROSS_WEIGHT %}
@@ -223,8 +220,9 @@ Check your answers – {{super()}}
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions"><a href="./export/weight?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">gross weight</span></dd>
-          </div> -->
+          </div>
         </dl>
+         {% endif %}
         <h2 class="govuk-heading-m">2. Certification of the consignment</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
