@@ -292,6 +292,10 @@ module.exports = function(env) {
     return sum
   }
 
+  filters.convertToNumber = function(n){
+    return parseInt(n)
+  }
+
   filters.convertAorAn =function (val){
   return /^[aeiou]/i.test(val) ? 'an' : 'a';
 }

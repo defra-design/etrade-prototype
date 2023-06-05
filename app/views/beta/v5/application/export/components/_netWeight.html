@@ -8,10 +8,10 @@
       <div class="govuk-input__suffix suffix__action no-border">
         <select class="govuk-select max-w-155" id="netWeight-4-11930-1901-units" data-v-0dd78fbf="">
           <option disabled="" value="" data-v-0dd78fbf="">Select a unit</option>
-          <option value="gram" data-v-0dd78fbf="">gram</option>
-          <option value="kilogram" data-v-0dd78fbf="">kilogram</option>
-          <option value="kilotonne" data-v-0dd78fbf="">kilotonne</option>
+          <option value="g" data-v-0dd78fbf="">gram</option>
+          <option value="kg" data-v-0dd78fbf="">kilogram</option>
           <option value="tonne (metric ton)" data-v-0dd78fbf="">tonne (metric ton)</option>
+           <option value="kilotonne" data-v-0dd78fbf="">kilotonne</option>
         </select>
         <button type="button" data-count="1" data-target="repeatable-net-weight" class="govuk-button govuk-button--secondary multi-data add-repeatable-section"><span class="fas fa-plus"></span>
         </button>
@@ -29,10 +29,11 @@
     <div class="govuk-input__suffix suffix__action" data-v-4e8f37a8="">
       <select class="govuk-select" id="netWeight-3-10410-31010000-units" name="netWeight_UNIT" data-v-4e8f37a8="">
         <option disabled="" value="" data-v-4e8f37a8="" selected>Select a unit</option>
-        <option value="gram" {% if (data.change or data.copy) and identification.netWeight_UNIT == 'gram'%}selected{% endif %}>gram</option>
-        <option value="kilogram" {% if (data.change or data.copy) and identification.netWeight_UNIT == 'kilogram'%}selected{% endif %}>kilogram</option>
+        <option value="g" {% if (data.change or data.copy) and identification.netWeight_UNIT == 'gram'%}selected{% endif %}>gram</option>
+        <option value="kg" {% if (data.change or data.copy) and identification.netWeight_UNIT == 'kilogram'%}selected{% endif %}>kilogram</option>
+         <option value="tonne (metric ton)" {% if (data.change or data.copy) and identification.netWeight_UNIT ==  'tonne (metric ton)'%}selected{% endif %}>tonne (metric ton)</option>
         <option value="kilotonne" {% if (data.change or data.copy) and identification.netWeight_UNIT == 'kilotonne'%}selected{% endif %}>kilotonne</option>
-        <option value="tonne (metric ton)" {% if (data.change or data.copy) and identification.netWeight_UNIT ==  'tonne (metric ton)'%}selected{% endif %}>tonne (metric ton)</option>
+       
       </select>
     </div>
   </div>

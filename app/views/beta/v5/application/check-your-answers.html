@@ -1,14 +1,11 @@
 {% extends "layout.html" %}
-
 {% block pageTitle %}
 Check your answers – {{super()}}
 {% endblock %}
-
 {% block beforeContent %}
 {{super()}}
 <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 {% endblock%}
-
 {% block content %}
 {{pdf | dump}}
 <style>
@@ -63,25 +60,30 @@ Check your answers – {{super()}}
    .govuk-footer { display:none; }
 }
 </style>
-
-    <div class="ehc-summary">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-three-quarters">
-          <h1 class="govuk-heading-xl">Check your answers before submitting your application</h1>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
-        <div class="govuk-summary-list__row govuk-summary-list__row--print">
-              <dt class="govuk-summary-list__key"> Application ID </dt>
-              <dd class="govuk-summary-list__value">
-               3083845984093853498
-            </dd>
-              <dd class="govuk-summary-list__actions"></dd>
+<div class="ehc-summary">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <h1 class="govuk-heading-xl">Check your answers before submitting your application</h1>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9" data-v-e8e27fc8="">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key"> Application ID </dt>
+          <dd class="govuk-summary-list__value">
+            3083845984093853498
+          </dd>
+          <dd class="govuk-summary-list__actions"></dd>
         </div>
-        <div class="govuk-summary-list__row govuk-summary-list__row--print">
+        <!--      <div class="govuk-summary-list__row govuk-summary-list__row--print">
               <dt class="govuk-summary-list__key"> Created by </dt>
               <dd class="govuk-summary-list__value">
                 Bill Shoggins
             </dd>
               <dd class="govuk-summary-list__actions"></dd>
+        </div> -->
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key"> Certificate </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data.certificates[(data.certificate | makeNumber)].number or "test" }} - {{ data.certificates[(data.certificate | makeNumber)].title or "Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland" }}
+          </dd>
         </div>
         <div class="govuk-summary-list__row " data-v-e8e27fc8="">
           <dt class="govuk-summary-list__key" data-v-e8e27fc8="">Application Reference</dt>
@@ -90,19 +92,103 @@ Check your answers – {{super()}}
           <dd class="govuk-summary-list__actions" data-v-e8e27fc8=""><a href="create-reference?showNotification=no&change=yes" class="govuk-link" data-v-e8e27fc8=""> Change </a></dd>
         </div>
       </dl>
+      <h2 class="govuk-heading-m">1. What’s in your consignment</h2>
+      {% set certID = query.currentCertID or ((data.addedEHC|length)-1) or 0 %}
+{% set cert = data.addedEHC[certID] %}
+{% set schema = cert.schema %}
+      <table class="govuk-table govuk-!-margin-bottom-4" id="commodityTable">
+        <caption class="govuk-table__caption govuk-table__caption--s">
+          {% set commodityCount = 0%}
+          {% for cert in data.addedEHC %}
+            {% for c in cert.addedCommodities %}
+              {% for i in c.identifications %}
+                {% set commodityCount = commodityCount+1 %}
+              {% endfor%}
+            {% endfor%}
+          {% endfor%}
+          {{commodityCount}} {% if commodityCount == 1 %}record{% else %}records{%endif%} added
+         
+        </caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Commodity</th>
+            <th class="govuk-table__header" scope="col">Description</th>
+            <th class="govuk-table__header" scope="col">Net weight</th>
+            <th class="govuk-table__header" scope="col">Number of packages</th>
+            <!-- <th class="govuk-table__header govuk-table__header--numeric" scope="col">Actions</th> -->
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for c in cert.addedCommodities %}
+              {% for i in c.identifications %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">{{c.code}} </th>
+            <td class="govuk-table__cell">
+            {% if i.productDescription  %}
+            {{i.productDescription }}
+            {% elseif i.batchNumber %}
+            {{i.batchNumber}}
+            {% elseif i.species %}
+            "species: "+i.species 
+            {% else %}
+            <span class="govuk-summary-list__placeholder">Not entered</span>
+            {% endif %}
+            <td class="govuk-table__cell">
+              {% if i.netWeight %}
+              {{i.netWeight}}{{i.netWeight_UNIT or 'kg'}}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% if i.packageCount %}
+              {{i.packageCount}} {{i.packageCount_UNIT or 'Boxes'}}
+              {% endif %}
+            </td>
+           <!--  <td class="govuk-table__cell" style="text-align: right;">
+              <a href="how-to-identify?return_url=check-your-answers" class="govuk-link govuk-link--no-visited-state">Change<span class="govuk-visually-hidden"> this commodity</span></a>
+              <br>
+              <a href="#" class="govuk-link govuk-link--no-visited-state">Delete<span class="govuk-visually-hidden"> this commodity</span></a>
+            </td> -->
+          </tr>
+          {% endfor %}
+           {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" colspan="2">Total net weight (calculated)</th>
+            <td class="govuk-table__cell" colspan="2">
+              {% set netWeightTotal = 0%}
+          {% for cert in data.addedEHC %}
+            {% for c in cert.addedCommodities %}
+              {% for i in c.identifications %}
+                {% set netWeightTotal = netWeightTotal+(i.netWeight|convertToNumber) %}
+              {% endfor%}
+            {% endfor%}
+          {% endfor%}
 
-
-          <h2 class="govuk-heading-m">1. What’s in your consignment</h2>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Certificate </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data.certificates[(data.certificate | makeNumber)].number or "test" }} - {{ data.certificates[(data.certificate | makeNumber)].title or "Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland" }}
-
-              </dd>
-            
-            </div>
-            <div class="govuk-summary-list__row">
+            {{netWeightTotal}}{{packageCount_UNIT or 'kg'}}</td>
+             <td class="govuk-table__cell" style="text-align: right;">
+                
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" colspan="2">Total gross weight</th>
+            <td class="govuk-table__cell" colspan="1">
+              {% if data.GROSS_WEIGHT %}
+              {{data.GROSS_WEIGHT}}
+              {{data.GROSS_WEIGHT_quantifier or "kg"}}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}</td>
+             <td class="govuk-table__cell" style="text-align: right;">
+                  <a href="how-to-identify?return_url=check-your-answers" class="govuk-link govuk-link--no-visited-state">Change<span class="govuk-visually-hidden"> this commodity</span></a>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <!-- <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key"> Commodities </dt>
               <dd class="govuk-summary-list__value">
               {% if (data.addedEHC | length) > 0%}
@@ -125,459 +211,394 @@ Check your answers – {{super()}}
 
               <dd class="govuk-summary-list__actions">
                 <a href="export/added-commodities-list?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">commodities</span></a> </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Gross weight </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.GROSS_WEIGHT %}
-                  {{data.GROSS_WEIGHT}}
-                  {{data.GROSS_WEIGHT_quantifier  or "kg"}}
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
+            </div> -->
+       <!--    <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Gross weight </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.GROSS_WEIGHT %}
+              {{data.GROSS_WEIGHT}}
+              {{data.GROSS_WEIGHT_quantifier or "kg"}}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
             </dd>
-              <dd class="govuk-summary-list__actions"><a href="./export/weight?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">gross weight</span></dd>
-            </div>
-
-            </dl>
-          <h2 class="govuk-heading-m">2. Certification of the consignment</h2>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Certifier </dt>
-              <dd class="govuk-summary-list__value">
-
-
-                {% if data.certifierName %}
-                {{data.certifierName}}<br>
-                {{data.certifierAddress1}}, <br>
-                {{data.certifierTown}},<br>{{data.certifierPostcode}}
-
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./persons/certifier?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Region of certification </dt>
-              <dd class="govuk-summary-list__value">
-                 {% if data.regionOfCertification %}
-                {{data.regionOfCertification}}
-                {% elseif data.showDefaults=="yes" %}
-                  England
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./persons/region-of-certification?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Goods certified as </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.goods_certified_as %}
-                  {{data.goods_certified_as}}
-                {% elseif data.showDefaults=="yes" %}
-                Human consumption
-                {% elseif data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs | length > 1 or  not data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs%}
-                  Human consumption
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                   {% if data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs | length > 1 or  not data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs%}
-                <a href="./goods/goods-certified-as?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">goods certified as</span></dd>
-                {% endif %}
-            </div>
-        
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Type of consignment</dt>
-              <dd class="govuk-summary-list__value">
-
-                {% if data.Purpose %}
-                  {{data.Purpose}} {% if data.Purpose == "In transit consignment" %} to {{data.inTransitDestination | capitalize}}{% endif %}
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./goods/purpose-of-export?change=yes" class="govuk-link"> Change </a><span class="govuk-visually-hidden">Purpose of the export</span></dd>
-            </div>
-          </dl>
-          
-          <h2 class="govuk-heading-m">3. Sending the consignment</h2>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Consignor or Exporter </dt>
-              <dd class="govuk-summary-list__value">
-
-             
-
-                {% if data.person['exporter'] %}
-                  {% set establishmentIndex = data.person['exporter'] %}
-                  {% set org = data.establishments[establishmentIndex] %}
-                  {{ org.TradingName }}<br>
-                  {{ org.Address1 }},
-                  {% if org.Address2 %}{{ org.Address2 }},{% endif %}
-                  {% if org.Address3 %}{{ org.Address3 }},{% endif %}
-                  {{ org.Town }}, {{ org.Postcode }}<br>
-                  {{ org.Country }}
-                  <br><br>
-
-                 {% if org.AppNo %}Approval number: {{org.AppNo}}{% endif %}
-                    Activity: {{data.consignorActivity | safe}}
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./persons/consignor-or-exporter?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-           
-           <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Loading location </dd>
-              <dd class="govuk-summary-list__value">
-                  {% if data.transport['loading'] %}
-                  {% set establishmentIndex = data.transport['loading'] %}
-                  {% set org = data.establishments[establishmentIndex] %}
-                  {{ org.TradingName }}<br>
-                  {{ org.Address1 }},
-                  {% if org.Address2 %}{{ org.Address2 }},{% endif %}
-                  {% if org.Address3 %}{{ org.Address3 }},{% endif %}
-                  {{ org.Town }}, {{ org.Postcode }}<br>
-                  {{ org.Country }}
-                  
-
-                 {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
-
-                {% else %}
-                     <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/load-and-dispatch?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Dispatch location </dd>
-              <dd class="govuk-summary-list__value">
-
-                  {% if data.transport['dispatch'] %}
-                  {% set establishmentIndex = data.transport['dispatch'] %}
-                  {% set org = data.establishments[establishmentIndex] %}
-                  {{ org.TradingName }}<br>
-                  {{ org.Address1 }},
-                  {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
-                  {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
-                  {{ org.Town }}, {{ org.Postcode }}<br>
-                  {{ org.Country }}
-
-                   {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
-                {% else %}
-                     <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/load-and-dispatch?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-           
-              <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Departure date</dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.departure %}
-                
-             
-                  {{ data.departure | parseDate() }} {% if data.departureTime %}- {{data.departureTime}}{% endif %}
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-          </dl>
-          <h2 class="govuk-heading-m">4. Transport</h2>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Goods transported in closed containers</dt>
-              <dd class="govuk-summary-list__value">
-
-                {% if  data.goodsInContianers  %}
-                  {{data.goodsInContianers | capitalize }}
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-
-                {% endif %}
-    
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="./goods/containter-seal-numbers/goods-in-closed-containers?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Goods transported in closed containers</span></a>
-              </dd>
-            </div>
-            {% if data.goodsInContianers != "yes" %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Official seals are affixed to the goods during transport</dt>
-              <dd class="govuk-summary-list__value">
-
-                {% if  data.goodsHaveSeal  %}
-                  {{data.goodsHaveSeal | capitalize }}
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-
-                {% endif %}
-    
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="./goods/containter-seal-numbers/want-to-add-seal-numbers?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Official seals are affixed to the goods during transport</span></a>
-              </dd>
-            </div>
+            <dd class="govuk-summary-list__actions"><a href="./export/weight?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">gross weight</span></dd>
+          </div> -->
+        </dl>
+        <h2 class="govuk-heading-m">2. Certification of the consignment</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Certifier </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.certifierName %}
+              {{data.certifierName}}<br>
+              {{data.certifierAddress1}}, <br>
+              {{data.certifierTown}},<br>{{data.certifierPostcode}}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./persons/certifier?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Region of certification </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.regionOfCertification %}
+              {{data.regionOfCertification}}
+              {% elseif data.showDefaults=="yes" %}
+              England
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./persons/region-of-certification?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Goods certified as </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.goods_certified_as %}
+              {{data.goods_certified_as}}
+              {% elseif data.showDefaults=="yes" %}
+              Human consumption
+              {% elseif data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs | length > 1 or not data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs%}
+              Human consumption
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs | length > 1 or not data.certificates[(data.certificate | makeNumber)].goodsCertifiedAs%}
+              <a href="./goods/goods-certified-as?change=yes" class="govuk-link"> Change </a> <span class="govuk-visually-hidden">goods certified as</span></dd>
             {% endif %}
-            {% if data.goodsInContianers == "yes" or data.goodsHaveSeal == "yes"  %}
-
-              {% set sealCount = 0 %}
-                {% for s in data.containerSealNumbers %}
-                  {% if s.seals | length > 1 %}
-                    {% if not s.seals | isString %}
-                      {% for x in s.seals %}
-                        {% set sealCount = sealCount +1 %}
-                      {% endfor %}
-                    {% else%}
-                        {% set sealCount = 1 %}
-                    {% endif %}
-                  {% else %}
-                    {% if s.seals %}
-                    {% set sealCount = sealCount +1 %}
-                    {% endif %}
-                  {% endif %}
-                {% endfor %}
-
-        
-        
-        
-            <h3 class="govuk-heading-m"></h3>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">  Container and seal numbers</dt>
-              <dd class="govuk-summary-list__value">
-
-              
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Type of consignment</dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.Purpose %}
+              {{data.Purpose}} {% if data.Purpose == "In transit consignment" %} to {{data.inTransitDestination | capitalize}}{% endif %}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./goods/purpose-of-export?change=yes" class="govuk-link"> Change </a><span class="govuk-visually-hidden">Purpose of the export</span></dd>
+          </div>
+        </dl>
+        <h2 class="govuk-heading-m">3. Sending the consignment</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Consignor or Exporter </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.person['exporter'] %}
+              {% set establishmentIndex = data.person['exporter'] %}
+              {% set org = data.establishments[establishmentIndex] %}
+              {{ org.TradingName }}<br>
+              {{ org.Address1 }},
+              {% if org.Address2 %}{{ org.Address2 }},{% endif %}
+              {% if org.Address3 %}{{ org.Address3 }},{% endif %}
+              {{ org.Town }}, {{ org.Postcode }}<br>
+              {{ org.Country }}
+              <br><br>
+              {% if org.AppNo %}Approval number: {{org.AppNo}}{% endif %}
+              Activity: {{data.consignorActivity | safe}}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./persons/consignor-or-exporter?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Loading location </dd>
+            <dd class="govuk-summary-list__value">
+              {% if data.transport['loading'] %}
+              {% set establishmentIndex = data.transport['loading'] %}
+              {% set org = data.establishments[establishmentIndex] %}
+              {{ org.TradingName }}<br>
+              {{ org.Address1 }},
+              {% if org.Address2 %}{{ org.Address2 }},{% endif %}
+              {% if org.Address3 %}{{ org.Address3 }},{% endif %}
+              {{ org.Town }}, {{ org.Postcode }}<br>
+              {{ org.Country }}
+              {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./transport/load-and-dispatch?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Dispatch location </dd>
+            <dd class="govuk-summary-list__value">
+              {% if data.transport['dispatch'] %}
+              {% set establishmentIndex = data.transport['dispatch'] %}
+              {% set org = data.establishments[establishmentIndex] %}
+              {{ org.TradingName }}<br>
+              {{ org.Address1 }},
+              {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
+              {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
+              {{ org.Town }}, {{ org.Postcode }}<br>
+              {{ org.Country }}
+              {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./transport/load-and-dispatch?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Departure date</dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.departure %}
+              {{ data.departure | parseDate() }} {% if data.departureTime %}- {{data.departureTime}}{% endif %}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./transport/arrival-and-departure?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+        </dl>
+        <h2 class="govuk-heading-m">4. Transport</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Goods transported in closed containers</dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.goodsInContianers %}
+              {{data.goodsInContianers | capitalize }}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="./goods/containter-seal-numbers/goods-in-closed-containers?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Goods transported in closed containers</span></a>
+            </dd>
+          </div>
+          {% if data.goodsInContianers != "yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Official seals are affixed to the goods during transport</dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.goodsHaveSeal %}
+              {{data.goodsHaveSeal | capitalize }}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="./goods/containter-seal-numbers/want-to-add-seal-numbers?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Official seals are affixed to the goods during transport</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data.goodsInContianers == "yes" or data.goodsHaveSeal == "yes" %}
+          {% set sealCount = 0 %}
+          {% for s in data.containerSealNumbers %}
+          {% if s.seals | length > 1 %}
+          {% if not s.seals | isString %}
+          {% for x in s.seals %}
+          {% set sealCount = sealCount +1 %}
+          {% endfor %}
+          {% else%}
+          {% set sealCount = 1 %}
+          {% endif %}
+          {% else %}
+          {% if s.seals %}
+          {% set sealCount = sealCount +1 %}
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+          <h3 class="govuk-heading-m"></h3>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Container and seal numbers</dt>
+            <dd class="govuk-summary-list__value">
               <ul class="govuk-list govuk-!-margin-bottom-0">
                 {% for n in data.containerSealNumbers %}
                 <li class="govuk-!-margin-bottom-2">{% if n.container %}Continer number: {{n.container}} <br>{% endif %}
-                {% if n.seals %} 
-                Seal number: {{n.seals}} </li>
+                  {% if n.seals %}
+                  Seal number: {{n.seals}} </li>
                 {% endif %}
                 {% endfor %}
-               </ul>
-           </dd>
-              <dd class="govuk-summary-list__actions">
-                <a href="./goods/containter-seal-numbers/container-seal-numbers-list?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Official seals are affixed to the goods during transport</span></a>
-              </dd>
-            </div>
-
-
-            
-
-            {% endif %}
-             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Transport method</dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.transportList %}
-                <ol class="govuk-list govuk-list--number">
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="./goods/containter-seal-numbers/container-seal-numbers-list?change=yes" class="govuk-link"> Change <span class="govuk-visually-hidden">Official seals are affixed to the goods during transport</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Transport method</dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.transportList %}
+              <ol class="govuk-list govuk-list--number">
                 {% for t in data.transportList %}
                 <li>{{(t.typeOfTransport | capitalize)}} - {{t.identifier | upper }} </li>
                 {% endfor %}
-                </ol>
-                {% else %}
-                <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/added-transport?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Transport storage </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.trasnportConditions %}
-                {{data.trasnportConditions}}
-                {% else %}
-                <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/conditions?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-          
-            
-            
-
-            </dl>
-          <h2 class="govuk-heading-m">5. When the consignment arrives</h2>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Entry border control post</dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.selctedBCP  %}
-                  {{data.selctedBCP|safe}}
-                {% else %}
-                <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/border-control-post?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Estimated arrival date</dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.arrival %}
-                  {{ data.arrival | parseDate() }}{%if data.arrivalTime %} - {{data.arrivalTime}}{% endif %}
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/arrival?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-           
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Importer or Consignee</dt>
-              <dd class="govuk-summary-list__value">
-
-                 {% if data.person['consignee'] %}
-                  {% set establishmentIndex = data.person['consignee'] %}
-                  {% set org = data.establishments[establishmentIndex] %}
-                  {{ org.TradingName }}<br>
-                  {{ org.Address1 }},
-                  {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
-                  {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
-                  {{ org.Town }}, {{ org.Postcode }}<br>
-                  {{ org.Country }}
-
-                   {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
-                {% else %}
-                     <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-
-               
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./persons/consignee-or-importer?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-           
-          
-            
-
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Responsible for load (optional) </dt>
-              <dd class="govuk-summary-list__value">
-
-                {% if data.person['load'] %}
-                  {% set establishmentIndex = data.person['load'] %}
-                  {% set org = data.establishments[establishmentIndex] %}
-                  {{ org.TradingName }}<br>
-                  {{ org.Address1 }},
-                  {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
-                  {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
-                  {{ org.Town }}, {{ org.Postcode }}<br>
-                  {{ org.Country }}
-
-                   {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
-                {% else %}
-                     <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./persons/load?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Destination </dt>
-              <dd class="govuk-summary-list__value">
-
-                {% if data.transport['destination']%}
-                  {% set establishmentIndex = data.transport['destination'] %}
-                  {% set org = data.establishments[establishmentIndex] %}
-                  {{ org.TradingName }}<br>
-                  {{ org.Address1 }},
-                  {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
-                  {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
-                  {{ org.Town }}, {{ org.Postcode }}<br>
-                  {{ org.Country }}
-
-                   {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
-                {% else %}
-                     <span class="govuk-summary-list__placeholder">Not entered</span>
-                {% endif %}
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./transport/place-of-destination?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-          </dl>
-          <h2 class="govuk-heading-m">6. Additional documents (optional)</h2>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key"> Accompanying documents </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data.additionalDocuments != "" %}
-                 <ul class="govuk-list govuk-!-margin-bottom-0">
-                  {% for file in data.additionalDocuments%}
-                    <li>{{file.file or "my_schedule.xlsx"}} ({{file.documentReference or "Consignment by rail for shipment"}})</li>
-                  {% endfor %}
-                </ul>
-                {% else %}
-                  <span class="govuk-summary-list__placeholder">No documents uploaded</span>
-                {% endif %}
-                
-              </dd>
-              <dd class="govuk-summary-list__actions"><a href="./attachments/added-documents?change=yes" class="govuk-link"> Change </a></dd>
-            </div>
-          </dl>
-
-
-          <div class="app-main-footer">
-<!--           <div class="gem-c-print-link govuk-!-display-none-print govuk-!-margin-top-3 govuk-!-margin-bottom-8">
+              </ol>
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./transport/added-transport?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Transport storage </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.trasnportConditions %}
+              {{data.trasnportConditions}}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./transport/conditions?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+        </dl>
+        <h2 class="govuk-heading-m">5. When the consignment arrives</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Entry border control post</dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.selctedBCP %}
+              {{data.selctedBCP|safe}}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./transport/border-control-post?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Estimated arrival date</dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.arrival %}
+              {{ data.arrival | parseDate() }}{%if data.arrivalTime %} - {{data.arrivalTime}}{% endif %}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./transport/arrival?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Importer or Consignee</dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.person['consignee'] %}
+              {% set establishmentIndex = data.person['consignee'] %}
+              {% set org = data.establishments[establishmentIndex] %}
+              {{ org.TradingName }}<br>
+              {{ org.Address1 }},
+              {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
+              {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
+              {{ org.Town }}, {{ org.Postcode }}<br>
+              {{ org.Country }}
+              {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./persons/consignee-or-importer?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Responsible for load (optional) </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.person['load'] %}
+              {% set establishmentIndex = data.person['load'] %}
+              {% set org = data.establishments[establishmentIndex] %}
+              {{ org.TradingName }}<br>
+              {{ org.Address1 }},
+              {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
+              {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
+              {{ org.Town }}, {{ org.Postcode }}<br>
+              {{ org.Country }}
+              {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./persons/load?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Destination </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.transport['destination']%}
+              {% set establishmentIndex = data.transport['destination'] %}
+              {% set org = data.establishments[establishmentIndex] %}
+              {{ org.TradingName }}<br>
+              {{ org.Address1 }},
+              {% if org.Address2 %}{{ org.Address2 }}, {% endif %}
+              {% if org.Address3 %}{{ org.Address3 }}, {% endif %}
+              {{ org.Town }}, {{ org.Postcode }}<br>
+              {{ org.Country }}
+              {% if org.AppNo %}<br><br> Approval number: {{org.AppNo}}{% endif %}
+              {% else %}
+              <span class="govuk-summary-list__placeholder">Not entered</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./transport/place-of-destination?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+        </dl>
+        <h2 class="govuk-heading-m">6. Additional documents (optional)</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key"> Accompanying documents </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data.additionalDocuments != "" %}
+              <ul class="govuk-list govuk-!-margin-bottom-0">
+                {% for file in data.additionalDocuments%}
+                <li>{{file.file or "my_schedule.xlsx"}} ({{file.documentReference or "Consignment by rail for shipment"}})</li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <span class="govuk-summary-list__placeholder">No documents uploaded</span>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions"><a href="./attachments/added-documents?change=yes" class="govuk-link"> Change </a></dd>
+          </div>
+        </dl>
+        <div class="app-main-footer">
+          <!--           <div class="gem-c-print-link govuk-!-display-none-print govuk-!-margin-top-3 govuk-!-margin-bottom-8">
     <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="ga4-event-tracker print-link" data-track-category="printButton" data-track-action="clicked" data-track-label="Print this page" data-ga4-event="{&quot;event_name&quot;:&quot;print_page&quot;,&quot;type&quot;:&quot;print page&quot;,&quot;index&quot;:{&quot;index_link&quot;:1},&quot;index_total&quot;:2,&quot;section&quot;:&quot;Content&quot;}" data-ga4-event-tracker-module-started="true" data-print-link-module-started="true">Print your answers</button>
 </div> -->
-
-<!--  <p class="download-a-document">
+          <!--  <p class="download-a-document">
             <span class="download-a-document-image"><img class="" src="/public/images/icon-file-download.png" alt="your answers in a specimen certificate"><span class="govuk-visually-hidden">File download</span></span>
             <strong><a href="/public/images/ehc-2849ehc-3.1.pdf" target="_blank" data-qa-id="Link-PreviewCertificate" class="govuk-link">Download your application as a PDF</a>
             </strong>
           </p> -->
-
-           <p class="download-a-document">
-          
-            <strong><a href="/public/images/check-your-answer.pdf" download  class="govuk-link">Download your application as a PDF</a>
+          <p class="download-a-document">
+            <strong><a href="/public/images/check-your-answer.pdf" download class="govuk-link">Download your application as a PDF</a>
             </strong>
           </p>
-
           <h2 class="govuk-heading-m"> Submit to certifier </h2>
           <p class="govuk-body"> Once you've entered all the information you can, you can review your answers and submit the application to your certifier.
-          <div>
-            <a href="review" class="govuk-button" id="submit" >
+            <div>
+              <a href="review" class="govuk-button" id="submit">
                 Continue
               </a>
-
-            <!---->
-            <p id="eleapsed-time" aria-live="polite" class="govuk-body" style="display:none"></p>
-          </div>
-          </div>
+              <!---->
+              <p id="eleapsed-time" aria-live="polite" class="govuk-body" style="display:none"></p>
+            </div>
         </div>
-      </div>
     </div>
-
-
+  </div>
+</div>
 {% endblock %}
 {% block pageScripts %}
 <script type="text/javascript">
-  window.addEventListener('load', function() {
-    var timer;
-    var timeTaken = 1;
-    function validate (){
-      $("#eleapsed-time").text("Elapsed time : "+timeTaken+" secs")
-      timeTaken+=1
-      if(timeTaken == 8){
-        clearInterval(timer);
-        $("#submit").show()
-        $('#validate').hide()
-      }
+window.addEventListener('load', function() {
+  var timer;
+  var timeTaken = 1;
+
+  function validate() {
+    $("#eleapsed-time").text("Elapsed time : " + timeTaken + " secs")
+    timeTaken += 1
+    if (timeTaken == 8) {
+      clearInterval(timer);
+      $("#submit").show()
+      $('#validate').hide()
     }
-    $('#validate').on('click',function(e){
-      e.preventDefault()
-        $(this).text("Validating application")
-      $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
-      $(this).attr("disabled","disabled")
-      $("#eleapsed-time").show()
-      $("#eleapsed-time").text("Elapsed time : 0 secs")
-      timer = setInterval(validate, 1000);
-    })
+  }
+  $('#validate').on('click', function(e) {
+    e.preventDefault()
+    $(this).text("Validating application")
+    $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
+    $(this).attr("disabled", "disabled")
+    $("#eleapsed-time").show()
+    $("#eleapsed-time").text("Elapsed time : 0 secs")
+    timer = setInterval(validate, 1000);
   })
+})
 </script>
 {% endblock%}
