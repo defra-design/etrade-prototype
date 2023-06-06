@@ -1,0 +1,253 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Manage in-service messaging</h1>
+
+    
+    
+
+    <form method="get" action="./add-picker">
+      <input type="hidden" name="name" value="">
+      <button class="govuk-button govuk-!-margin-top-6" data-module="govuk-button">
+        Add a new message
+      </button>
+    </form>
+
+    
+    <table class="govuk-table" style="font-size: 16px;">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header">Message</th>
+          <th scope="col" class="govuk-table__header">Message type</th>
+          <th scope="col" class="govuk-table__header">Audience</th>
+          <th scope="col" class="govuk-table__header">Start date</th>
+          <th scope="col" class="govuk-table__header">End date</th>
+          <th scope="col" class="govuk-table__header">Action</th>
+        </tr>
+      </thead>
+
+
+      <tbody class="govuk-table__body">
+        {% if query.showNew=="yes" %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag">
+            Live
+          </strong></td>{{data["message"] or 'The service will be unavailable from 01 August 2021 until 04 August 2021 due to maintenance.'}}</td>
+          <td class="govuk-table__cell">{{data["notification-type"] or "Information"}}</td>
+          <td class="govuk-table__cell">{% if data["notification-visibility"] | length !=2 %}{{data["notification-visibility"] or "e
+        Exporter" }} {% else %}Both{% endif %}</td>
+          <td class="govuk-table__cell">20 May 2021 at 8:00pm </td>
+          <td class="govuk-table__cell">27 May 2021 at 12:01am </td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr>
+        {% endif %}
+        
+          <tr><td class="govuk-table__cell"><strong class="govuk-tag">
+            Live
+          </strong></td>
+          <td class="govuk-table__cell">The service will be unavailable from 01 August 2021 until 04 August 2021 due to maintenance.</td>
+          <td class="govuk-table__cell">Information</td>
+          <td class="govuk-table__cell">Certifiers</td>
+          <td class="govuk-table__cell">20 May 2021 at 8:00pm </td>
+          <td class="govuk-table__cell">27 May 2021 at 12:01am </td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr>
+          <tr><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+            Pending
+          </strong></td>
+          <td class="govuk-table__cell">You can now request a pre-certificate if you need an official copy of the certificate before APHA processes your application.</td>
+          <td class="govuk-table__cell">Information</td>
+          <td class="govuk-table__cell">Exporters</td>
+          <td class="govuk-table__cell">16 Jul 2021 at 8:00pm </td>
+          <td class="govuk-table__cell">17 Jul 2021 at 12:01am </td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr>
+        
+          <tr><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+            Pending
+          </strong></td>
+          <td class="govuk-table__cell">You can now request a pre-certificate if you need an official copy of the certificate before APHA processes your application.</td>
+          <td class="govuk-table__cell">Alert</td>
+          <td class="govuk-table__cell">Exporters</td>
+          <td class="govuk-table__cell">04 Aug 2021 at 8:00pm </td>
+          <td class="govuk-table__cell"> </td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr>
+        
+       <!--    <tr><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+            Draft
+          </strong></td>
+          <td class="govuk-table__cell">The service will be unavailable from 01 August 2021 until 04 August 2021 due to maintenance.</td>
+          <td class="govuk-table__cell">Information</td>
+          <td class="govuk-table__cell">Both </td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell"> </td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr> -->
+        
+     <!--      <tr><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+            Draft
+          </strong></td>
+          <td class="govuk-table__cell">Planned maintenance on 20 December 2020 at 6pm. You will not be able to use the service at this time. </td>
+          <td class="govuk-table__cell">Alert</td>
+          <td class="govuk-table__cell">Exporters</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr> -->
+        
+        <!--   <tr><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+            Draft
+          </strong></td>
+          <td class="govuk-table__cell">The service will be unavailable from 01 August 2021 until 04 August 2021 due to maintenance.</td>
+          <td class="govuk-table__cell">Information</td>
+          <td class="govuk-table__cell">Both</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr> -->
+        <!-- 
+          <tr><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+            Draft
+          </strong></td>
+          <td class="govuk-table__cell">You can now request a pre-certificate if you need an official copy of the certificate before APHA processes your application.</td>
+          <td class="govuk-table__cell">Information</td>
+          <td class="govuk-table__cell">Certifiers </td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr> -->
+        
+          <tr><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+            Expired
+          </strong></td>
+          <td class="govuk-table__cell">Planned maintenance on 20 December 2020 at 6pm. You will not be able to use the service at this time. </td>
+          <td class="govuk-table__cell">Alert</td>
+          <td class="govuk-table__cell">Certifiers </td>
+          <td class="govuk-table__cell">1 Jan 2020</td>
+          <td class="govuk-table__cell">4 Jan 2020</td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr>
+        
+          <tr><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+            Expired
+          </strong></td>
+          <td class="govuk-table__cell">You can now request a pre-certificate if you need an official copy of the certificate before APHA processes your application.</td>
+          <td class="govuk-table__cell">Alert</td>
+          <td class="govuk-table__cell">Exporters</td>
+          <td class="govuk-table__cell">4 Apr 2020</td>
+          <td class="govuk-table__cell">6 Apr 2020</td>
+          <td class="govuk-table__cell"><a href="./edit">Edit</a><br><a href="./delete">Delete</a></td>
+        </tr>
+        
+<!-- 
+          
+          <td class="govuk-table__cell ">Warning. The service will be unavailable from 01 August 2021 until 04 August 2021 due to maintenance.</td>
+          <td class="govuk-table__cell ">Alert</td>
+          <td class="govuk-table__cell ">Exporters</td>
+          <td class="govuk-table__cell ">20 May 2021 at 8:00pm </td>
+          <td class="govuk-table__cell ">27 May 2021 at 12:01am </td>
+          <td class="govuk-table__cell "><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+          <td class="govuk-table__cell ">The service will be unavailable from 01 August 2021 until 04 August 2021 due to maintenance.</td>
+          <td class="govuk-table__cell ">Information</td>
+          <td class="govuk-table__cell ">Certifiers</td>
+          <td class="govuk-table__cell ">20 May 2021 at 8:00pm </td>
+          <td class="govuk-table__cell ">27 May 2021 at 12:01am </td>
+          <td class="govuk-table__cell "><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+          <td class="govuk-table__cell ">You can now request a pre-certificate if you need an official copy of the certificate before APHA processes your application.</td>
+          <td class="govuk-table__cell ">Information</td>
+          <td class="govuk-table__cell ">Exporters</td>
+          <td class="govuk-table__cell ">16 Jul 2021 at 8:00pm </td>
+          <td class="govuk-table__cell ">17 Jul 2021 at 12:01am </td>
+          <td class="govuk-table__cell "><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+          <td class="govuk-table__cell ">You can now request a pre-certificate if you need an official copy of the certificate before APHA processes your application.</td>
+          <td class="govuk-table__cell ">Alert</td>
+          <td class="govuk-table__cell ">Exporters</td>
+          <td class="govuk-table__cell ">04 Aug 2021 at 8:00pm </td>
+          <td class="govuk-table__cell "> </td>
+          <td class="govuk-table__cell "><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+          <td class="govuk-table__cell inactive">The service will be unavailable from 01 August 2021 until 04 August 2021 due to maintenance.</td>
+          <td class="govuk-table__cell inactive">Information</td>
+          <td class="govuk-table__cell inactive">Both </td>
+          <td class="govuk-table__cell inactive"></td>
+          <td class="govuk-table__cell inactive"> </td>
+          <td class="govuk-table__cell inactive"><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+          <td class="govuk-table__cell inactive">Planned maintenance on 20 December 2020 at 6pm. You will not be able to use the service at this time. </td>
+          <td class="govuk-table__cell inactive">Alert</td>
+          <td class="govuk-table__cell inactive">Exporters</td>
+          <td class="govuk-table__cell inactive"></td>
+          <td class="govuk-table__cell inactive"></td>
+          <td class="govuk-table__cell inactive"><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+          <td class="govuk-table__cell inactive">The service will be unavailable from 01 August 2021 until 04 August 2021 due to maintenance.</td>
+          <td class="govuk-table__cell inactive">Information</td>
+          <td class="govuk-table__cell inactive">Both</td>
+          <td class="govuk-table__cell inactive"></td>
+          <td class="govuk-table__cell inactive"></td>
+          <td class="govuk-table__cell inactive"><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+          <td class="govuk-table__cell inactive">You can now request a pre-certificate if you need an official copy of the certificate before APHA processes your application.</td>
+          <td class="govuk-table__cell inactive">Information</td>
+          <td class="govuk-table__cell inactive">Certifiers </td>
+          <td class="govuk-table__cell inactive"></td>
+          <td class="govuk-table__cell inactive"></td>
+          <td class="govuk-table__cell inactive"><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+          <td class="govuk-table__cell ">Planned maintenance on 20 December 2020 at 6pm. You will not be able to use the service at this time. </td>
+          <td class="govuk-table__cell ">Alert</td>
+          <td class="govuk-table__cell ">Certifiers </td>
+          <td class="govuk-table__cell ">1 Jan 2020</td>
+          <td class="govuk-table__cell ">4 Jan 2020</td>
+          <td class="govuk-table__cell "><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+          <td class="govuk-table__cell ">You can now request a pre-certificate if you need an official copy of the certificate before APHA processes your application.</td>
+          <td class="govuk-table__cell ">Alert</td>
+          <td class="govuk-table__cell ">Exporters</td>
+          <td class="govuk-table__cell ">4 Apr 2020</td>
+          <td class="govuk-table__cell ">6 Apr 2020</td>
+          <td class="govuk-table__cell "><a href="./edit">Edit</a><br /><a
+              href="./delete">Delete</td>
+        </tr>
+        
+ -->
+      </tbody>
+    </table>
+
+    
+    <!-- <p class="govuk-body"><a href="./add">Add a notification</a></p>
+ -->
+  </div>
+</div>
+
+{% endblock %}

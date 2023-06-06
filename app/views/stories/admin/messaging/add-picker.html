@@ -1,0 +1,171 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Add an in-service message – GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<style>
+  .banner-alt-color{
+      border: 5px solid #ffbf45;
+    }
+    .banner__header-alt-color{
+      color: #000;
+      background-color: #ffbf45;
+    }
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Add an in-service message</h1>
+    <form method="post" action="./list">
+      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="message">
+              Message
+            </label>
+          </h2>
+          <p class="govuk-hint" id="message-hint">For example, "The service will be unavailable from 01 August 2021 until 04 August 2021 due to maintenance".</p>
+          <textarea style="resize:none" class="govuk-textarea govuk-js-character-count" id="message" name="message" rows="5" aria-describedby="message-info message-hint"></textarea>
+          <div id="message-info" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 500 characters remaining</div>
+        </div>
+      </div>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">What is the message type?</h2>
+          </legend>
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="notification-type-information" name="notification-type" type="radio" value="information">
+              <label class="govuk-label govuk-radios__label" for="notification-type-information">
+                Information
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="notification-type-warning" name="notification-type" type="radio" value="alert">
+              <label class="govuk-label govuk-radios__label" for="notification-type-warning">
+                Alert
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-body">
+        <h2 class="govuk-heading-m">Preview</h2>
+        <div class="govuk-notification-banner" role="region" id="preview-display" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header" id="govuk-notification-banner">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Information
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content ">
+            <p id="echo-preview" class="govuk-notification-banner__heading govuk-!-font-size-19"><span class="govuk-hint govuk-!-font-weight-normal">(Your message will show here)</span><br><a class="govuk-notification-banner__link" href="?show_feature_notification_one=no">Dismiss notification</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="target-audience">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+              Who will see the message?
+            </h2>
+          </legend>
+          <div id="target-audience" class="govuk-hint">
+            Select all that apply
+          </div>
+          <div class="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="notification-visibility-exporters" name="notification-visibility" type="checkbox" value="exporters">
+              <label class="govuk-label govuk-checkboxes__label" for="notification-visibility-exporters">
+                Exporters
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="notification-visibility-certifiers" name="notification-visibility" type="checkbox" value="certifiers">
+              <label class="govuk-label govuk-checkboxes__label" for="notification-visibility-certifiers">
+                Certifiers
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h2 class="govuk-fieldset__heading">
+            When will the message start?
+          </h2>
+        </legend>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="startDate">Start date</label>
+          <p id="startDate-hint" class="govuk-hint">
+            For example, 24 3 2023
+          </p>
+          <input class="govuk-input govuk-!-width-one-third" type="date" name="startDate" id="startDate" value="startDate-hint" aria-described-by="startDate-hint">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="start-time">Start time (optional)?</label>
+          <p id="submit-date-hint" class="govuk-hint">
+            If you don't enter a start time the message will start at 1am. <br>For example, 9:30am or 14:30pm - enter 12pm for midday
+          </p>
+          <input id="start-time" type="text" name="startTime" class="govuk-input  govuk-!-width-one-quarter"aria-describedby="start-date-hint" />
+        </div>
+     
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h2 class="govuk-fieldset__heading">
+            When will the message end?
+          </h2>
+        </legend>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="endDate">End date</label>
+          <p id="endDate-hint" class="govuk-hint">
+            For example, 24 3 2023
+          </p>
+          <input class="govuk-input govuk-!-width-one-third" type="date" name="endDate" id="startDate" value="startDate-hint" aria-described-by="endDate-hint">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="end-time">End time (optional)?</label>
+          <p id="end-date-hint" class="govuk-hint">
+            If you don't enter a end time the message will end at 11:59pm. <br>For example, 9:30am or 14:30pm - enter 12pm for midday
+          </p>
+          <input id="end-time" type="text" name="endTime" class="govuk-input  govuk-!-width-one-quarter" aria-describedby="end-date-hint"/>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-top-6" data-module="govuk-button">
+          Add message
+        </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+
+  console.log('init');
+
+  $("#message").keyup(function(event) {
+    //console.log( event.which );
+    let str = $("#message").val();
+    console.log(str);
+    $('#echo-preview').text(str);
+    $('#echo-preview').append('<br/><a class="govuk-notification-banner__link" href="?show_feature_notification_one=no">Dismiss notification</a>')
+  });
+
+  $('input[type="radio"][name="notification-type"]').click(function() {
+    var demovalue = $(this).val();
+    if (demovalue == "alert") {
+      $('#preview-display').addClass("banner-alt-color");
+      $('#govuk-notification-banner').addClass("banner__header-alt-color");
+      $('#govuk-notification-banner-title').addClass("banner__header-alt-color");
+      $('#govuk-notification-banner-title').text("Alert");
+    } else {
+      $('#preview-display').removeClass("banner-alt-color");
+      $('#govuk-notification-banner').removeClass("banner__header-alt-color");
+      $('#govuk-notification-banner-title').removeClass("banner__header-alt-color");
+      $('#govuk-notification-banner-title').text('Information');
+    }
+  });
+
+
+})
+</script>
+{% endblock %}

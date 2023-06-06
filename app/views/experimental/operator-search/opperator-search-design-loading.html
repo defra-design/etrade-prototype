@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<form class="" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl"> Dispatch and loading locations </h1>
+      <h2 class="govuk-heading-m">Loading location</h2>
+      <p class="govuk-body">This is the location where the consignment will be loaded.</p>
+      {% if data.showLoadingLocation != "no" %}
+      <section class="app-summary-card  govuk-!-margin-bottom-6 govuk-!-font-size-19">
+        <header class="app-summary-card__header">
+          <h2 class="app-summary-card__title govuk-!-font-size-19">
+            <strong>Denis Brinicombe Group </strong>
+          </h2>
+          <div class="app-summary-card__actions">
+            <ul class="app-summary-card__actions-list">
+              <li class="app-summary-card__actions-list-item ">
+                <a class="govuk-link govuk-link--no-visited-state" href="opperator-search-design-loading?showLoadingLocation=no">
+                  Remove<span class="govuk-visually-hidden"> {{ certificate.number }} </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <div class="app-summary-card__body">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Addresss
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Denis Brinicombe Group<br>
+                Fordton Industrial Estate<br>
+                Crediton<br>
+                Devon, EX17 3BZ<br>
+                United Kingdom
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Approval Number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                U1344327/ABP/MIMC
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+      {%else%}
+      <a href="find?title=Loading location&hint=This is the location where the consignment will be loaded&type=showLoadingLocation" class="govuk-button govuk-button--secondary">Find loading location</a>
+      {% endif %}
+      <h2 class="govuk-heading-m">Dispatch location</h2>
+      <p class="govuk-body">This is the location that the consignment will be transported from in Great Britain.</p>
+      {% if data.showDispatchLocation != "no" %}
+       <section class="app-summary-card  govuk-!-margin-bottom-6 govuk-!-font-size-19">
+        <header class="app-summary-card__header">
+          <h2 class="app-summary-card__title govuk-!-font-size-19">
+            <strong>Moy Park Ltd </strong>
+          </h2>
+          <div class="app-summary-card__actions">
+            <ul class="app-summary-card__actions-list">
+              <li class="app-summary-card__actions-list-item ">
+                <a class="govuk-link govuk-link--no-visited-state" href="opperator-search-design-loading?showDispatchLocation=no">
+                  Remove<span class="govuk-visually-hidden"> {{ certificate.number }} </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <div class="app-summary-card__body">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Addresss
+              </dt>
+              <dd class="govuk-summary-list__value">
+               
+   
+        Moy Park Ltd<br>
+        8 Willow Road, Bready<br>
+        Strabane<br>
+        County Tyrone, BT82<br>
+        Northern Ireland
+
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Approval Number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                56932
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+      {% else %}
+       <a href="find?title=Dispatch location&hint=This is the location that the consignment will be transported from in Great Britain&type=showDispatchLocation" class="govuk-button govuk-button--secondary">Find Dispatch location</a>
+      {% endif %}
+      <div class="govuk-form-group govuk-!-margin-top-6" id="skip-question-container">
+        <h3 class="govuk-heading-m">You can skip this section</h3>
+        <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+        <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox" style="display: none;">
+          <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
+          <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+            I've entered as much information as I can
+          </label>
+        </div>
+      </div>
+      <button class="govuk-button"> Save and continue </button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  let opperatorSearchCount = 2
+  if ($(".establishmentAdded").length == opperatorSearchCount) {
+    $(".govuk-checkboxes__item").hide()
+  }
+
+})
+</script>
+{% endblock%}
