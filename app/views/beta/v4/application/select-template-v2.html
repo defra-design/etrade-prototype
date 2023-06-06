@@ -113,7 +113,7 @@ table tr, table td {
       <div id="csvTable"></div>-->
 
 
-      <button onclick="generateCSV()" class="govuk-button" role="button" draggable="false" data-module="govuk-button">View template</button>
+      <button onclick="generateCSV()" class="govuk-button" role="button" draggable="false" data-module="govuk-button">View template</button> 
 
 
     </div>
@@ -139,6 +139,7 @@ table tr, table td {
         ["", "", "","","","","","","","","","","","","","","","",""],
         ["", "", "","","","","","","","","","","","","","","","",""],
         ["", "", "","","","","","","","","","","","","","","","",""],
+        /*["", "", "","","","","","","","","","","","","","","","",""],
         ["", "", "","","","","","","","","","","","","","","","",""],
         ["", "", "","","","","","","","","","","","","","","","",""],
         ["", "", "","","","","","","","","","","","","","","","",""],
@@ -146,8 +147,7 @@ table tr, table td {
         ["", "", "","","","","","","","","","","","","","","","",""],
         ["", "", "","","","","","","","","","","","","","","","",""],
         ["", "", "","","","","","","","","","","","","","","","",""],
-        ["", "", "","","","","","","","","","","","","","","","",""],
-        ["", "", "","","","","","","","","","","","","","","","",""]
+        ["", "", "","","","","","","","","","","","","","","","",""]*/
       ];
       
       // Create the CSV string
@@ -190,9 +190,9 @@ table tr, table td {
         templateDiv.appendChild(table);
       
         // Create a download button
-        var downloadButton = templateWindow.document.createElement("button");
+        var downloadButton = templateWindow.document.createElement("a");
         downloadButton.textContent = "Download template";
-        downloadButton.classList.add("govuk-button", "templatebutton");
+        downloadButton.classList.add("govuk-link", "templatebutton");
         downloadButton.onclick = function() {
           // Create a new link element
           var link = templateWindow.document.createElement("a");
@@ -217,7 +217,7 @@ table tr, table td {
         templateDiv.appendChild(downloadButton);
 
         // Get the downloadlink div element
-        var downloadLink = templateWindow.document.getElementById("downloadlink");
+        var downloadLink = templateWindow.document.getElementById("downloadlink", "govuk-link");
 
         // Append the download button to the downloadlink div
         downloadLink.appendChild(downloadButton);

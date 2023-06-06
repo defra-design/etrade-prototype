@@ -1,0 +1,283 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Before your start - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+
+{% block content %}
+
+<style>
+ 
+table {
+			table-layout: fixed;
+			border-collapse: collapse;
+			width: 100%;
+			overflow-x: scroll;
+			display: block;
+		}
+
+		th, td {
+			padding: 10px;
+			text-align: left;
+			border: 1px solid 	#b1b4b6;
+			white-space: nowrap;
+      font-size: 16px;
+		}
+
+		th {
+			/*background-color: #ccc;*/
+			font-weight: bold;
+      font-size: 16px;
+		}
+
+    .red {
+      color: 	#d4351c;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .black {
+      font-weight: bold;
+      font-size: 14px;
+      color: 	#505a5f;
+    }
+
+    table::-webkit-scrollbar {
+      width: 12px;
+      height: 10px;
+    }
+
+    table::-webkit-scrollbar-track {
+      background-color: #f3f2f1;
+    }
+
+    table::-webkit-scrollbar-thumb {
+      background-color: #b1b4b6;
+      border-radius: 6px;
+    }
+
+    table::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-width">
+
+    <h1 class="govuk-heading-xl">Template for EHC 8468</h1>
+
+    <p>
+      Adapt your schedule to match this template and use it to add many commodity data at once.
+      When completed, upload the schedule to your application.
+    </p>
+
+    <p>
+      <a href="#" class="govuk-link govuk-link--no-visited-state" onclick="downloadCSV()">Download template</a>
+    </p>
+
+    <table id="myTable" class="govuk-table">
+      <thead>
+        <tr style="background-color: #f3f2f1;">
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="black">Optional</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="black">Optional</span></th>
+          <th colspan="1"><span class="black">Optional</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="black">Optional</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          <th colspan="1"><span class="red">Required</span></th>
+          
+        </tr>
+        <tr style="background-color: 	#1d70b8; color: #fff;">
+          <th>Commodity code</th>
+          <th>Product description</th>
+          <th>Species</th>
+          <th>Cold store</th>
+          <th>Cold store activity</th>
+          <th>Identification mark</th>
+          <th>Package count</th>
+          <th>Package count Unit</th>
+          <th>Net weight</th>
+          <th>Net weight Unit</th>
+          <th>Treatment type</th>
+          <th>Nature of commodity</th>
+          <th>Batch number</th>
+          <th>Final consumer</th>
+          <th>Date of collection/production</th>
+          <th>Manufacturing plant</th>
+          <th>Manufacturing plant activity</th>
+          <th>Plant/Establishment/Centre</th>
+          <th>Plant/Establishment/Centre activity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="govuk-button-group">
+      <a href="/beta/v4/application/export/file-upload" class="govuk-button" data-module="govuk-button">
+        Continue your application
+      </button>
+      <a class="govuk-link" href="/beta/v4/application/task-list">Save and return after preparing schedule</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function downloadCSV() {
+      const table = document.getElementById("myTable");
+      const rows = Array.from(table.querySelectorAll("tr"));
+      const csvContent = rows.map(row => Array.from(row.querySelectorAll("th, td")).map(cell => cell.innerText).join(",")).join("\n");
+      const csvBlob = new Blob([csvContent], { type: "text/csv" });
+      const csvURL = URL.createObjectURL(csvBlob);
+      const link = document.createElement("a");
+      link.href = csvURL;
+      link.download = "table_data.csv";
+      link.click();
+    }
+</script>
+
+{% endblock %}

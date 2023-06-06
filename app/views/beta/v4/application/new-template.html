@@ -13,7 +13,7 @@ Before your start - eTrade – GOV.UK Prototype Kit
 }
 
 table th, .spreadsheet td {
-  border: 1px solid #ddd;
+  border: 1px solid #000;
   padding: 8px;
   text-align: left;
   width: 100%;
@@ -22,6 +22,7 @@ table th, .spreadsheet td {
 table th {
   background-color: 	#1d70b8;
   color: #fff;
+  font-size: 16px;
 }
 
 #template{
@@ -40,7 +41,10 @@ table tr, table td {
 }
 
 .templatebutton{
-  margin-top: 15px;
+  margin-top: 30px;
+  color: 	#1d70b8;
+  cursor: pointer;
+  
 }
 </style>
 
@@ -57,17 +61,31 @@ table tr, table td {
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full-width">
+
+    <p id="downloadlink" class="govuk-link templatebutton">
+      
+    </p>
+
     <div id="template" class="govuk-body">
 
     </div>
 
-    <div id="downloadlink">
+    
       
     </div>
 
-    <p>
+    <!--<p>
       <a href="/beta/v4/application/export/file-upload" class="govuk-link govuk-body">Continue the application</a>
-    </p>
+    </p>-->
+
+    <br>
+
+    <div class="govuk-button-group">
+      <a href="/beta/v4/application/export/file-upload" class="govuk-button" data-module="govuk-button">
+        Continue your application
+      </button>
+      <a class="govuk-link" href="/beta/v4/application/task-list">Save and return to application after preparing schedule</a>
+    </div>
 
     
   </div>
@@ -107,7 +125,7 @@ table tr, table td {
         data.map(row => row.join(",")).join("\n");
       
       // Create a new window with the template page
-      var templateWindow = window.open("hey-template.html");
+      var templateWindow = window.open("new-template.html");
       
       // Wait for the template page to load
       templateWindow.onload = function() {
@@ -141,9 +159,9 @@ table tr, table td {
         templateDiv.appendChild(table);
       
         // Create a download button
-        var downloadButton = templateWindow.document.createElement("button");
+        var downloadButton = templateWindow.document.createElement("a");
         downloadButton.textContent = "Download template";
-        downloadButton.classList.add("govuk-button", "templatebutton");
+        downloadButton.classList.add("govuk-link", "templatebutton");
         downloadButton.onclick = function() {
           // Create a new link element
           var link = templateWindow.document.createElement("a");
