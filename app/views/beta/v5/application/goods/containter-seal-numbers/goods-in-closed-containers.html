@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Will the goods be transported in closed containers – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <!-- routing is controlled in v3-5/application/routes.js -->
+    <form id="form" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Will the goods be transported in closed containers?
+            </h1>
+          </legend>
+          <!--   <div id="contact-hint" class="govuk-hint">
+     You can provide either a container number or seal number, or both.
+    </div> -->
+          <div class="govuk-radios govuk-radios--inline js-question " data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="goodsInContianers" name="goodsInContianers" type="radio" value="yes" {% if data.goodsInContianers=='yes' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="goodsInContianers" >
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="goodsInContianers-2" name="goodsInContianers" type="radio" value="no" {% if data.goodsInContianers=='no' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="goodsInContianers-2" >
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group" id="skip-question-container">
+        <h3 class="govuk-heading-m">You can skip this section</h3>
+        <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+        <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
+          <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if data.goods['hasContainers']=="skipped" %}checked{% endif %}>
+          <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+            I've entered as much information as I can
+          </label>
+        </div>
+      </div>
+      <div class="govuk-button-group">
+        <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+
+function toggleSkipped(){
+   if ($('input[name=goodsInContianers]:checked').length > 0) {
+    $('#skip-question-checkbox').hide()
+    $('.skip-wrapper.govuk-error-message').hide()
+    $('.skip-wrapper.govuk-form-group').removeClass('govuk-form-group--error')
+
+
+
+  } else {
+    $('#skip-question-checkbox').show()
+
+  }
+}
+
+ 
+  $('.govuk-radios__input').change(function() {
+    toggleSkipped()
+  })
+
+toggleSkipped()
+
+
+})
+</script>
+{% endblock%}

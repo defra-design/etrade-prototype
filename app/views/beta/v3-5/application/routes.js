@@ -1,4 +1,6 @@
 module.exports = function(router) {
+
+
   // Load helper functions
 
   // CHANGE VERSION each time you create a new version
@@ -95,6 +97,25 @@ module.exports = function(router) {
     res.redirect(301, '/' + base_url + 'persons/load');
   })
 
+  router.post('/' + base_url + "transport/place-of-origin/loading", function(req, res) {
+    console.log("In transport/place-of-origin/loading.html");
+
+    const establishmentIndex = req.body.establishmentIndex;
+
+    req.session.data.transport['loading'] = establishmentIndex;
+    res.redirect(301, '/' + base_url + 'transport/load-and-dispatch');
+  })
+
+  router.post('/' + base_url + "transport/place-of-origin/dispatch", function(req, res) {
+    console.log("In transport/place-of-origin/dispatch.html");
+
+    const establishmentIndex = req.body.establishmentIndex;
+
+    req.session.data.transport['dispatch'] = establishmentIndex;
+    res.redirect(301, '/' + base_url + 'transport/load-and-dispatch');
+  })
+
+
   router.post('/' + base_url + "transport/place-of-destination/find", function(req, res) {
     console.log("In place-of-destination/find.html");
 
@@ -136,6 +157,8 @@ module.exports = function(router) {
     delete req.session.data.person[person];
     res.redirect(301, '/' + base_url + "persons/" + redirect + "?deleted=yes&who=" + person);
   })
+
+  
 
   router.get('/' + base_url + 'transport/remove', function(req, res) {
     const person = req.query.who;
@@ -329,10 +352,17 @@ module.exports = function(router) {
     req.session.data.goods['hasSealNumber'] = ""
     if (req.body['skip-question'] == 'yes') {
       req.session.data.goods['hasSealNumber'] = "skipped";
+      if (req.query.change == "yes") {
+      res.redirect(301, '/' + base_url + 'check-your-answers');
+      }else{
+        res.redirect(301, '/' + base_url + 'task-list');
+      }
     }
     if (req.query.change == "yes") {
       res.redirect(301, '/' + base_url + 'check-your-answers');
-    } else {
+    } else if (req.body.goodsHaveSeal=="no"){
+      res.redirect(301, '/' + base_url + 'task-list');
+    }else{
       res.redirect(301, '/' + base_url + 'goods/containter-seal-numbers/add-seal-numbers');
     }
   })

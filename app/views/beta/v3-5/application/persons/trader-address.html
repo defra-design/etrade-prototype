@@ -12,7 +12,7 @@
         {% if showOperatorActivity %}
           <br>
           <br>
-          Activity: {{ establishmentActivity }}
+          Activity: {{ establishmentActivity | safe }}
         {% endif %}
       </dt>
       <dd class="govuk-summary-list__actions">

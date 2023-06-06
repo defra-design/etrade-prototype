@@ -16,7 +16,7 @@ Changes to the service - Apply for an Export health certificate - GOVUK
 <!-- get a list of certs -->
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">You can now submit a paperless application to send goods to the EU or Northern Ireland</h1>
+    <h1 class="govuk-heading-xl">You can now submit a digital application to send goods to the EU or Northern Ireland</h1>
 
       <p class="govuk-body" lang="en">
         To make sure all export data is consistent with the EU’s trade and control expert system (TRACES), we’re making some changes to how you apply to move animals and animal products to the EU and Northern Ireland.
@@ -27,10 +27,8 @@ Changes to the service - Apply for an Export health certificate - GOVUK
         <li>certifiers and importers will no longer need to use paper copies of EHCs</li>
         <li>commodity data will be consistent with EU border control post requirements</li>
       </ul>
-      <p>To learn more, you can read about <a href="how-to-paperless-certs?journey=copy">how paperless applications work.</a></p>
-      <div class="govuk-inset-text">
-You will still be able to use paper-based applications for consignments to Northern Ireland or the EU.
-</div>
+      <p>To learn more, you can read more about <a href="how-to-paperless-certs?journey=copy">how digital applications work</a>.</p>
+
       <form method="post" novalidate="">
         <div class="govuk-form-group">
     <fieldset class="govuk-fieldset">
@@ -39,7 +37,7 @@ You will still be able to use paper-based applications for consignments to North
       </legend>
       <div class="govuk-radios" data-module="govuk-radios">
         <div class="govuk-radios__item">
-          <!-- <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~/beta/v3-4/application/export/set-certificate?ehc={{data.selectedCertificate or '8350' }}"> -->
+          <!-- <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~/beta/v{{data.version or '3-5'}}/application/export/set-certificate?ehc={{data.selectedCertificate or '8350' }}"> -->
           <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~./create-reference">
           <label class="govuk-label govuk-radios__label" for="where-do-you-live">
              Yes

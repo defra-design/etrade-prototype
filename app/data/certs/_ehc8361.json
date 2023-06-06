@@ -26,9 +26,11 @@
   "schema": [
         { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
         { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
-        { "id": "species", "title": "Species", "required" : "yes", "type" : "dropdown", "error" : "Species name is invalid"},
+        
         { "id": "coldStore", "title": "Cold store", "required" : "no", "type" : "search"},
         { "id": "coldStoreActivity", "title": "Cold store activity", "required" : "no", "type" : "string"},
+        { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
+        { "id": "manufacturingPlantActivity", "title": "Manufacturing plant activity", "required" : "yes", "type" : "string", "error" : "Manufacturing plant activity is a required field - please select a valid activity"},
         { "id": "identificationMark", "title": "Identification mark", "required" : "yes", "type" : "text", "error" : "Identification mark is a required field", "multiple" : "yes"},
         { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
         { "id": "packageCount_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"},
@@ -39,10 +41,9 @@
         { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "text", "error" : "Batch number is required", "multiple" : "yes"},
         { "id": "finalConsumer", "title": "Final consumer", "required" : "no", "type" : "radio"},
         { "id": "dateOfCollectionProduction", "title": "Date of collection / production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of collection / production"},
-        { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
-        { "id": "manufacturingPlantActivity", "title": "Manufacturing plant activity", "required" : "yes", "type" : "string", "error" : "Manufacturing plant activity is a required field - please select a valid activity"},
         { "id": "quantity", "title": "Quantity", "required" : "no", "type" : "decimal"},
-        { "id": "quantity_unit", "title": "Quantity unit", "required" : "no", "type" : "string"}
+        { "id": "quantity_unit", "title": "Quantity unit", "required" : "no", "type" : "string"},
+        { "id": "species", "title": "Species", "required" : "yes", "type" : "dropdown", "error" : "Species name is invalid"}
       ],
   "commodities": [
     {

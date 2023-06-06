@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Find a place of destination – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form id="search" method="post" action="find">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+      <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+
+            <li id="operator-search-country-error-summary" style="display:none"><a href="#operator-search-country">A country must be selected</a></li>
+            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div id="results-error-summary" class="govuk-error-summary" data-module="govuk-error-summary" style="display:none">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#results">Select an organisation</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="govuk-heading-xl">Find a place of destination</h1>
+      <p class="govuk-body">This is the final destination of the consignment.</p>
+
+      <div class="govuk-form-group" id="operator-search-country-form-group">
+        <label class="govuk-label" for="operator-search-country">Country</label>
+        <p id="operator-search-country-error" class="govuk-error-message" style="display:none">
+          <span class="govuk-visually-hidden">Error:</span> A country must be selected
+        </p>
+        <select class="govuk-select full-width" id="operator-search-country">
+          <option selected value="Any">Select a country</option>
+          <option value="AT">Austria</option>
+          <option value="BE">Belgium</option>
+          <option value="BG">Bulgaria</option>
+          <option value="HR">Croatia</option>
+          <option value="CY">Cyprus</option>
+          <option value="CZ">Czechia</option>
+          <option value="DK">Denmark</option>
+          <option value="EE">Estonia</option>
+          <option value="FI">Finland</option>
+          <option value="FR">France</option>
+          <option value="DE">Germany</option>
+          <option value="GR">Greece</option>
+          <option value="HU">Hungary</option>
+          <option value="IE">Ireland</option>
+          <option value="IT">Italy</option>
+          <option value="LV">Latvia</option>
+          <option value="LT">Lithuania</option>
+          <option value="LU">Luxembourg</option>
+          <option value="MT">Malta</option>
+          <option value="NL">Netherlands (the)</option>
+          <option value="PL">Poland</option>
+          <option value="PT">Portugal</option>
+          <option value="RO">Romania</option>
+          <option value="SK">Slovakia</option>
+          <option value="SI">Slovenia</option>
+          <option value="ES">Spain</option>
+          <option value="SE">Sweden</option>
+          <option value="XI">United Kingdom - Northern Ireland</option>
+        </select>
+      </div>
+
+      {% set includeApprovalNumberSearch = true %}
+      {% set orgSearchLabel = "Place of destination name" %}
+      {% block organisationSearch %}{% include "../../persons/organisationSearchAndResults.html" %}{% endblock %}
+
+    </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}

@@ -2,9 +2,11 @@ module.exports = function(router) {
   require('./application/export/upload/routes.js')(router);
   require('./write-excel/routes.js')(router);
   require('./application/routes.js')(router);
-  
+
   // Load helper functions
   const writeXlsxFile = require('write-excel-file/node');
+
+  
 
   // CHANGE VERSION each time you create a new version
   const base_url = "beta/v3-5/"
@@ -446,13 +448,14 @@ module.exports = function(router) {
   }
 
   router.post('/' + base_url + 'application/find/results', function(req, res) {
-
+    console.log(" ")
+    console.log("---- results post---- ")
     let certId = req.body.addedEHC_certId;
     let addedCommoditiesId = req.body.addedEHC_addedCommoditiesId;
     let identificationsId = req.body.addedEHC_identificationsId;
     let establishmentType = req.body.addedEHC_establishmentType;
     let establishmentIndex = parseInt(req.body.establishmentIndex);
-
+    console.log(establishmentIndex)
     if (establishmentIndex) {
       console.log("We have an establishmentIndex");
       console.log("Getting identification data");
@@ -475,7 +478,7 @@ module.exports = function(router) {
        } else {
          identification.incomplete = [];
        }
-
+       console.log(establishment.All_Activities)
 
       if (establishment.All_Activities.length == 1) {
         // select the index and redirect
@@ -497,8 +500,8 @@ module.exports = function(router) {
         if (!identification.incomplete || (identification.incomplete.length == 0)) {
           identification.isIncomplete = false;
         }
-
-        res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+        // res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+        res.redirect(301, '/' + base_url + 'application/export/commodity?commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
       } else {
         // prompt the user to select an activity
         res.redirect(301, '/' + base_url + 'application/find/activity-select?certId=' + certId + '&addedCommoditiesId=' + addedCommoditiesId + '&identificationsId=' + identificationsId + '&establishmentType=' + establishmentType + '&establishmentIndex=' + establishmentIndex);
@@ -579,7 +582,9 @@ module.exports = function(router) {
 
 
       // redirect
-      res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+      // Removed the change=yes from the URL redirect as it was causeing the UI to think it was changining an existing commodity, not sure what this was supposed to do
+      // res.redirect(301, '/' + base_url + 'application/export/commodity?change=yes&commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
+      res.redirect(301, '/' + base_url + 'application/export/commodity?commodityListID=' + addedCommoditiesId + '&changeID=' + identificationsId);
     } else {
         console.log("Missing required activityName radio button value");
         // ?certId=0&addedCommoditiesId=2&identificationsId=0&establishmentType=manufacturingPlant&establishmentIndex=40
@@ -677,11 +682,17 @@ module.exports = function(router) {
   });
 
   router.post('/' + base_url + 'application/create-reference', function(req, res) {
+    const regex = /^[a-zA-Z _.\/-]{1,25}/;
+
     if (req.body.UserReference == "") {
       res.redirect(301, '/' + base_url + 'application/create-reference?has_error=yes&error_type=empty');
     }
-    if (req.body.UserReference.length > 20) {
+  
+    if (req.body.UserReference.length > 25) {
       res.redirect(301, '/' + base_url + 'application/create-reference?has_error=yes&error_type=length');
+    }
+    if(!req.body.UserReference.match(regex)){
+
     }
     if (req.query.change == "yes") {
       res.redirect(301, '/' + base_url + 'application/task-list');
@@ -870,6 +881,8 @@ module.exports = function(router) {
 
 
   });
+
+
 
 
 

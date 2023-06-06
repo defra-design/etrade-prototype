@@ -42,6 +42,16 @@ Consignor or exporter – GOV.UK Prototype Kit
           {% set org = data.establishments[establishmentIndex] %}
           {% set establishmentActivityIndex = data.person['consignorActivity'] %}
           {% set establishmentActivity = org.All_Activities[data.person['consignorActivity']] %}
+          {% if org.activityClassifications %}
+          {% set establishmentActivity = 
+          org.activityClassifications[data.person['consignorActivity']].activity.name
+          +" - <abbr title='"+ org.activityClassifications[data.person['consignorActivity']].classification.name+"'>"
+          + org.activityClassifications[data.person['consignorActivity']].classification.code
+           +"</abbr> - "
+           + org.activityClassifications[data.person['consignorActivity']].classificationGroup.name %}
+          {% else %}
+          {% set establishmentActivity = org.All_Activities[data.person['consignorActivity']] %}
+          {% endif %}
           {% set showOperatorActivity = true %}
 
           {% if org.All_Activities.length > 1 %}

@@ -11,11 +11,14 @@ Select a commodity – GOV.UK Prototype Kit
     display:none;
   }
 </style>
+
+hello? {{data.displayMax}}
 {% endblock%}
 {% block content %}
 {% set page = query.page-1 or 0 %}
 {% set min = data.displayMax*page %}
 {% set max = data.displayMax*(page+1) %}
+
 {% set ehc = (data.certificate|makeNumber) or 1 %}
 <input type="hidden" id="displayMax" name="displayMax" value="{{data.displayMax}}">
 <div class="govuk-grid-row" data-v-75a00750="" data-v-0c6ff6a7="">

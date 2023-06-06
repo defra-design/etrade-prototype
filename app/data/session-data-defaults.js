@@ -47,7 +47,7 @@ module.exports = {
   "establishments" : establishments,
   "certifiers" : certifiers,
   "applications": applications,
-  "unifiedTestinigUser": "Freedown",
+  "unifiedTestinigUser": "Aquatica",
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,
@@ -64,7 +64,7 @@ module.exports = {
   "currentCertID" : 0,
   "currentCommodityID": 0,
   "displayMax": 30,
-  "paginationMax": 3,
+  "paginationMax": 5,
   "manualSelection": ["not-selected"],
   "goods": {},
   "person": {consignor : "0", consignorActivity : "0"},
@@ -72,5 +72,7 @@ module.exports = {
   "setNetWeight": ["120","56"],
   "setGrossWeight": "190",
   "netToGrossWeightIs": "under",
-  "bcpDestination": "Northern Ireland"
+  "bcpDestination": "Northern Ireland",
+  // latest version
+  "version" : "3-5"
 }

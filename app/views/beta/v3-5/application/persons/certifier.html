@@ -42,17 +42,21 @@ Certifier – GOV.UK Prototype Kit
           {% set removeLink = "./remove?who=certifier&redirect=certifier" %}
 
           <input type="hidden" name="certifierName"  value="{{certifier.practiceName}}">
+          <input type="hidden" name="certifierAddress1"  value=" {{certifier.address['line1']}}">
+          <input type="hidden" name="certifierAddress2"  value=" {{certifier.address['line2']}}">
           <input type="hidden" name="certifierTown"  value="{{certifier.address['line3']}}">
           <input type="hidden" name="certifierPostcode"  value="{{certifier.address['postCode'] | upper }}">
 
+         
+ 
           <dl class="govuk-summary-list app-list-with-actions app-list-with-actions--long govuk-!-margin-bottom-10 app-find-establishment-card">
             <div class="govuk-summary-list__row">
               <div class="govuk-summary-list__row-group">
                 <dt class="govuk-summary-list__key govuk-!-font-weight-regular app-summary-list__key app-find-establishment-card">
                   <strong>{{certifier.practiceName}}</strong><br>
                   {{certifier.address['line1']}},<br>
-                  {% if certifier.address['line2'] %}{{certifier.address['line2']}}<br>{% endif %}
-                  {% if certifier.address['line3'] %}{{certifier.address['line3']}}<br>{% endif %}
+                  {% if certifier.address['line2'] %}{{certifier.address['line2']}},<br>
+                  {% elseif certifier.address['line3'] %}{{certifier.address['line3']}},<br>{% endif %}
                   {{certifier.address['postCode'] | upper }}
                 </dt>
                 <dd class="govuk-summary-list__actions">

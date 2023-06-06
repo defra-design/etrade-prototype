@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Find a consignee or importer – {{serviceName}} - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+<form id="search" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+      <div id="general-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+
+            <li id="operator-search-country-error-summary" style="display:none"><a href="#operator-search-country">A country must be selected</a></li>
+            <li id="search-field-organisation-name-error-summary" style="display:none"><a href="#organisation-search-label">Organisation name cannot be blank</a></li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div id="results-error-summary" class="govuk-error-summary" data-module="govuk-error-summary" style="display:none">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#results">Select an organisation</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="govuk-heading-xl">Find a consignee or importer</h1>
+      <p class="govuk-body">This is the organisation that will receive this consignment. They must be located in either Northern Ireland or the EU.</p>
+
+      {% set defaultCountry = "Any" %}
+      {% block countryOfOrigin %}{% include "../../find/_country-of-origin-select.html" %}{% endblock %}
+
+      {% set includeApprovalNumberSearch = true %}
+      {% set orgSearchLabel = "Consignee or importer name" %}
+      {% block organisationSearch %}{% include "../organisationSearchAndResults.html" %}{% endblock %}
+
+    </div>
+</form>
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}

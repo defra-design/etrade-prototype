@@ -52,6 +52,12 @@ require('./views/beta/v3-4/application/routes.js')(router);
 // version 3.5
 require('./views/beta/v3-5/routes.js')(router);
 
+// version 4
+// This is a seperate version to focus on uploading multiple records
+
+// version 5
+require('./views/beta/v5/routes.js')(router);
+
 
 // experimental and other stories
 require('./views/experimental/routes.js')(router);

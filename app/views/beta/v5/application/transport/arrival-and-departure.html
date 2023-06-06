@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Departure and arrival – {{super()}}
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+
+    <div class="govuk-grid-row" data-v-4e598067="">
+      <div class="govuk-grid-column-two-thirds" data-v-4e598067="">
+        <h1 class="govuk-heading-xl">When will the consignment leave Great Britain?</h1>
+        <p>This is the date the consignment will leave the port, airport or terminal in Great Britain.</p>
+        <form class="" method="post" >
+          <div class="govuk-form-group" >
+            <label class="govuk-label" for="departure">
+              Date of departure
+            </legend>
+            <div id="date-hint" class="govuk-hint" data-v-4e598067=""> For example, 26/09/2022 </div>
+            <!---->
+            <input  type="date" class="js-question govuk-input govuk-input--width-10" id="departure" name="departure" inputmode="none" value="{{data.departure}}">
+        </div>
+        <div class="govuk-form-group"> 
+              <label class="govuk-label" for="departure-time">Estimated time of departure (for live animals only)</label>
+              <div class="govuk-hint" id="departure-time-hint">For example 2pm or 14:30</div>
+              <input type="text" class="govuk-input--width-5 govuk-input" name="departureTime" value="" id="departure-time" aria-described-by="" value="{{data.departureTime}}">
+            </div>
+
+          <div class="govuk-form-group" id="skip-question-container">
+            <h3 class="govuk-heading-m">You can skip this section</h3>
+            <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+            <div class="govuk-checkboxes__item" id="skip-question-checkbox">
+              <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+                I've entered as much information as I can
+              </label>
+            </div>
+
+          </div>
+          <button class="govuk-button">Save and continue</button>
+        </form>
+
+
+
+
+ 
+          </div>
+    </div>
+
+
+<!-- this is the base html to copy, it is not visuable and only used in this prototype -->
+
+<!-- // -->
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+    $('.js-question').each(function() {
+        console.log("looking to see if complete")
+        var elem = $(this);
+
+        // Save current value of element
+        elem.data('oldVal', elem.val());
+        if (elem.val()!=""){
+            elem.attr('data-filled', 'yes')
+        }
+        // Look for changes in the value
+        elem.bind("propertychange change click keyup input paste", function(event) {
+            // If value has changed...
+            console.log("checking content")
+            if (elem.data('oldVal') != elem.val()) {
+                console.log("value has changed")
+                // Updated stored value
+
+                // Do action
+                if (elem.val() == "//default") {
+                    elem.val(elem.attr('data-default'));
+
+                }
+                console.log("val length = " + elem.val().length)
+                if (elem.val().length === 0) {
+                    elem.attr('data-filled', 'no')
+                } else {
+                    elem.attr('data-filled', 'yes')
+                }
+
+                console.log("data-filled = " + elem.attr('data-filled'))
+                // elem.attr('data-filled','yes')
+
+                elem.data('oldVal', elem.val());
+            }
+
+
+            checkFilled()
+        });
+    });
+
+    function checkFilled() {
+        var completed = 0;
+        var max = $('.js-question').length
+        console.log("---checkFilled---- " + max)
+        $('.js-question').each(function() {
+            console.log("Chekcing if its complete: " + ($(this).attr('data-filled') == "yes"))
+            if ($(this).attr('data-filled') === "yes") {
+                completed += 1
+            }
+
+        })
+        console.log("Completed = " + completed)
+        if (completed >= max) {
+            // $('.defra-callout h3').text(max +" questions answered")
+            // $('.defra-callout .defra-callout--content').hide()
+            $('#skip-question-checkbox').hide()
+        } else {
+            $('#skip-question-checkbox').show()
+        }
+        console.log("---end----")
+    }
+
+    checkFilled()
+});
+</script>
+{% endblock%}

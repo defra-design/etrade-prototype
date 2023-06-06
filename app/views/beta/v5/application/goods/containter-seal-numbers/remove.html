@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Will the goods be transported in closed containers – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post">
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        Are you sure you want to remove this {{query.type or "continer and seal"}} number?
+      </h1>
+    </legend>
+        <p>
+          {% if data.containerSealNumbers[query.id].container %}<strong>Continer number</strong>  {{data.containerSealNumbers[query.id].container}} <br>{% endif %}
+               {% if data.containerSealNumbers[query.id].seals %} <strong>Seal number:</strong>  {{data.containerSealNumbers[query.id].seals}} </li>{% endif %}
+        
+
+          
+      </p>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live" name="remove_commodity" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-2" name="remove_commodity" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  function toggleSkipped() {
+    if ($('input[name=goodsHaveSeal]:checked').length > 0) {
+      $('#skip-question-checkbox').hide()
+      $('.skip-wrapper.govuk-error-message').hide()
+      $('.skip-wrapper.govuk-form-group').removeClass('govuk-form-group--error')
+
+
+
+    } else {
+      $('#skip-question-checkbox').show()
+
+    }
+  }
+
+
+  $('.govuk-radios__input').change(function() {
+    toggleSkipped()
+  })
+
+  toggleSkipped()
+
+
+})
+</script>
+{% endblock%}

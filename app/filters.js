@@ -62,6 +62,8 @@ module.exports = function(env) {
     return show
   }
 
+
+
   filters.getCommodityCode = function(s) {
     var n = s
     var marker = s.indexOf("-") - 1;
@@ -77,6 +79,18 @@ module.exports = function(env) {
       return s.slice(0, c) + "..."
     }
     return s;
+  }
+
+  filters.removeWord = function(t, s) {
+    console.log("text="+t)
+    let l = t.indexOf(s)
+    console.log(l)
+    if (l >= 0 ) {
+      console.log("Return altered "+t.replace(s,''))
+      return t.replace(s,'')
+    }
+    console.log("Return original"+t.replace(s,''))
+    return t;
   }
 
   filters.removeEmptyItems = function(arr) {
@@ -134,6 +148,25 @@ module.exports = function(env) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+  filters.parseDate  = function(s){
+    console.log(s.length)
+    // expecting 10 character date, for example, 2021-10-23
+     var months = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    if (s.length != 10 ) {
+      // retrun a default value
+      return ["24","March","2023"]
+    }
+    var day= s.slice(8,10);
+    var m = parseInt(s.slice(5,7));
+    var y = s.slice(0,4);
+
+    // remove leading 0 if number is lower than 10
+    var d = day.replace(/^0+/, '');
+
+    return d + " " + months[m - 1] + " " + y
   }
 
 
@@ -259,6 +292,13 @@ module.exports = function(env) {
     return sum
   }
 
+  filters.convertToNumber = function(n){
+    return parseInt(n)
+  }
+
+  filters.convertAorAn =function (val){
+  return /^[aeiou]/i.test(val) ? 'an' : 'a';
+}
   
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:

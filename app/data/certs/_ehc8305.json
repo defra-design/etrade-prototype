@@ -1,9 +1,10 @@
 {
   "number": "EHC8305",
   "title": "Processed pet food other than canned pet food to, or transit through, the European Union and Northern Ireland",
-  "species": ["Ruminantia","Aves","Otra","Crustacea","Mammalia excl Ruminantia/Suidae","Mammalia","Pesca","Invertebrata","Suidae","Ungulates","Mollusca","Invertebrata excl Mollusca/Crustacea"],  
+  "species": ["Ruminantia", "Aves", "Otra", "Crustacea", "Mammalia excl Ruminantia/Suidae", "Mammalia", "Pesca", "Invertebrata", "Suidae", "Ungulates", "Mollusca", "Invertebrata excl Mollusca/Crustacea"],
   "natureOfCommodity": [
-    "Apiculture by-products","Apiculture products for hc","Aquarium","Bile","Biodiesel","Biogas","Blood","Blood and blood products from equidae","Blood products / feedingstuff","Blood products / technical","Blood products for feeding purposes","Blood products for technical purposes","Bone","Bones, horns, hooves and products thereof","Bowels","Breeding eggs","By-products / feedingstuff","By-products / technical","Canned petfood","Carcass_quarters","Carcass_side","Carcass_whole","Casing","Casing","Catering waste","Collagen","Colostrum","Composite products","Compost after composting","Consumption","Cosmetic products","Cuts","Dairy","Dicalcium phosphate","Digestion residues from biogas production other than biogas","Digestive tract content","Domestic","Dried noodles","Edible collagen","Egg products","Egg products for hc","Embryos","Farmed game","Farmed stock","Fat derivatives","Feathers","Feed additives and premixtures","Feed production (please specify)","Fertilisers other than comr, bior, manu, manp","Fishery products","Fishery_products_canned","Fishery_products_not_canned","Flavouring innards","Flavouring innards for petfood","Fresh meat","Game","Game trophies","Game trophies","Gelatine","Gelatine/collagen for hc","Hatching eggs","Hc, preserved at ambient temperature","Hc, preserved at frozen/chilled temperature","Hides","Highly refined products for hc","Horns/hooves","Htst simple","Htst,sterilisation,uht","Human consumption","Hydrolised proteins","Hydrolysed protein","Insects for hc","Insects including maggots and worms","Jelly royal","Large farmed game","Large wild game","Large wild game","Material collected from waste water treatment","Material of category 1","Material of category 2","Material of category 3","Meat and bone meal (category 1, 2)","Meat preparations","Meat products","Medical devices","Milk based products","Milk, colostrum and derived products from milk and colostrum","Minced meat","Non edible collagen","Non human consumption","Offal","Organic","Other","Other unprocessed abp","Others","Ova-embryos","Ovoproducts","Pasteurized","Petfood: dogchews","Pharmaceutical products","Powder","Powder bones","Processed animal protein (category 3; indicate animal species)","Processed manure","Processed manure and manure products","Processed petfood other than canned petfood","Product in capsules","Products of animal origin/ no longer for human consumption","Products produced by bees","Raw hides and skins","Raw material for hc gelatine/collagen","Raw material for processing of gelatine and collagen","Raw milk","Raw petfood","Raw petfood","Rendered fat for hc","Rendered fat from abp for oleochemical purposes","Rendered fats and fish oil for feeding","Rendered fats and fish oil for purposes other than for feeding or for oleochemical purposes","Semen","Small feathered farmed game","Small feathered wild game","Small wild game","Spf","Sterilization","Treated hides and skins","Treated raw material for processing of gelatine and collagen","Tricalcium phosphate","Uht","Unprocessed manure","Unprocessed manure","Whole bodies of dead animals (cadavers)","Wild game","Wild stock","Wool, hair, pig bristles, feathers"],
+   "Animal","Apiculture by-products", "Apiculture products for hc", "Aquarium", "Bile", "Biodiesel", "Biogas", "Blood", "Blood and blood products from equidae", "Blood products / feedingstuff", "Blood products / technical", "Blood products for feeding purposes", "Blood products for technical purposes", "Bone", "Bones, horns, hooves and products thereof", "Bowels", "Breeding eggs", "By-products / feedingstuff", "By-products / technical", "Canned petfood", "Carcass_quarters", "Carcass_side", "Carcass_whole", "Casing", "Casing", "Catering waste", "Collagen", "Colostrum", "Composite products", "Compost after composting", "Consumption", "Cosmetic products", "Cuts", "Dairy", "Dicalcium phosphate", "Digestion residues from biogas production other than biogas", "Digestive tract content", "Domestic", "Dried noodles", "Edible collagen", "Egg products", "Egg products for hc", "Embryos", "Farmed game", "Farmed stock", "Fat derivatives", "Feathers", "Feed additives and premixtures", "Feed production (please specify)", "Fertilisers other than comr, bior, manu, manp", "Fishery products", "Fishery_products_canned", "Fishery_products_not_canned", "Flavouring innards", "Flavouring innards for petfood", "Fresh meat", "Game", "Game trophies", "Game trophies", "Gelatine", "Gelatine/collagen for hc", "Hatching eggs", "Hc, preserved at ambient temperature", "Hc, preserved at frozen/chilled temperature", "Hides", "Highly refined products for hc", "Horns/hooves", "Htst simple", "Htst,sterilisation,uht", "Human consumption", "Hydrolised proteins", "Hydrolysed protein", "Insects for hc", "Insects including maggots and worms", "Jelly royal", "Large farmed game", "Large wild game", "Large wild game", "Material collected from waste water treatment", "Material of category 1", "Material of category 2", "Material of category 3", "Meat and bone meal (category 1, 2)", "Meat preparations", "Meat products", "Medical devices", "Milk based products", "Milk, colostrum and derived products from milk and colostrum", "Minced meat", "Non edible collagen", "Non human consumption", "Offal", "Organic", "Other", "Other unprocessed abp", "Others", "Ova-embryos", "Ovoproducts", "Pasteurized", "Petfood: dogchews", "Pharmaceutical products", "Powder", "Powder bones", "Processed animal protein (category 3; indicate animal species)", "Processed manure", "Processed manure and manure products", "Processed petfood other than canned petfood", "Product in capsules", "Products of animal origin/ no longer for human consumption", "Products produced by bees", "Raw hides and skins", "Raw material for hc gelatine/collagen", "Raw material for processing of gelatine and collagen", "Raw milk", "Raw petfood", "Raw petfood", "Rendered fat for hc", "Rendered fat from abp for oleochemical purposes", "Rendered fats and fish oil for feeding", "Rendered fats and fish oil for purposes other than for feeding or for oleochemical purposes", "Semen", "Small feathered farmed game", "Small feathered wild game", "Small wild game", "Spf", "Sterilization", "Treated hides and skins", "Treated raw material for processing of gelatine and collagen", "Tricalcium phosphate", "Uht", "Unprocessed manure", "Unprocessed manure", "Whole bodies of dead animals (cadavers)", "Wild game", "Wild stock", "Wool, hair, pig bristles, feathers"
+  ],
   "multiples": [
     "batchNumber"
   ],
@@ -51,15 +52,226 @@
     "Unskinned"
   ],
   "schema": [
-    { "id": "commodity_code",  "title": "Commodity code", "required" : "yes", "type" : "string", "error" : "Commodity code is a required field"},
-    { "id": "productDescription", "title": "Description", "required" : "no", "type" : "text"},
-    { "id": "manufacturingPlant", "title": "Manufacturing plant", "required" : "yes", "type" : "search", "error" : "Manufacturing plant is a required field - please enter a valid approval number"},
-    { "id": "natureOfCommodity", "title": "Nature of commodity", "required" : "yes", "type" : "dropdown", "error" : "Nature of commodity is a required field", "multiple" : "no"},
-    { "id": "batchNumber", "title": "Batch number", "required" : "yes", "type" : "text", "error" : "Batch number is required", "multiple" : "yes"},
-    { "id": "netWeight", "title": "Net weight", "required" : "yes", "type" : "decimal", "error" : "Net weight is a required field"},
-    { "id": "netWeight_UNIT", "title": "Net weight unit", "required" : "yes", "type" : "string", "error" : "Select a net weight unit from the list"},
-    { "id": "packageCount", "title": "Package count", "required" : "yes", "type" : "decimal", "error" : "Enter a whole number for package count"},
-    { "id": "packageCount_UNIT", "title": "Package count unit", "required" : "yes", "type" : "string", "error" : "Select a package unit from the list"}
-  ],
-  "commodities": [{"code":"230990","title":" other than 2309 10"},{"code":"23011000","title":" Flours, meals and pellets, of meat or meat offal; greaves"},{"code":"23012000","title":" Flours, meals and pellets, of fish or of crustaceans, molluscs or other aquatic invertebrates"},{"code":"0401","title":" Milk and cream, not concentrated nor containing added sugar or other sweetening matter"},{"code":"0402","title":" Milk and cream, concentrated or containing added sugar or other sweetening matter"},{"code":"1501","title":" Pig fat (including lard) and poultry fat, other than that of heading|0209|or 1503"},{"code":"2835","title":" Phosphinates (hypophosphites), phosphonates (phosphites) and phosphates; polyphosphates, whether or not chemically defined"},{"code":"3501","title":" Casein, caseinates and other casein derivatives; casein glues"},{"code":"040210","title":" In powder, granules or other solid forms, of a fat content, by weight, not exceeding 1,5|%"},{"code":"040390","title":" Buttermilk, curdled milk and cream, kephir and other fermented or acidified milk and cream, whether or not concentrated or containing added sugar or other sweetening matter or flavoured or containing added fruit, nuts or cocoa"},{"code":"050510","title":" Feathers of a kind used for stuffing; down"},{"code":"051199","title":" Other"},{"code":"150410","title":" Fish-liver oils and their fractions"},{"code":"150420","title":" Fats and oils and their fractions, of fish, other than liver oils"},{"code":"150430","title":" Fats and oils and their fractions, of marine mammals"},{"code":"350300","title":" Gelatin (including gelatin in rectangular (including square) sheets, whether or not surface-worked or coloured) and gelatin derivatives; isinglass; other glues of animal origin, excluding casein glues of heading|3501"},{"code":"05040000","title":" Guts, bladders and stomachs of animals (other than fish), whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"},{"code":"05059000","title":" Skins and other parts of birds, with their feathers or down, not further worked than cleaned, disinfected or treated for preservation; powder and waste of feathers or parts of feathers"},{"code":"05061000","title":" Ossein and bones treated with acid"},{"code":"05069000","title":" Other"},{"code":"05119110","title":" Fish waste"},{"code":"05119190","title":" Other"},{"code":"15021010","title":" For industrial uses other than the manufacture of foodstuffs for human consumption"},{"code":"15029010","title":" For industrial uses other than the manufacture of foodstuffs for human consumption"},{"code":"15030030","title":" Tallow oil for industrial uses other than the manufacture of foodstuffs for human consumption"},{"code":"35029090","title":" Albuminates and other albumin derivatives"},{"code":"35040010","title":" Concentrated milk proteins specified in additional note 1 to this chapter"},{"code":"35040090","title":" Other"},{"code":"04081120","title":" Unfit for human consumption"},{"code":"04081920","title":" Unfit for human consumption"},{"code":"04089120","title":" Unfit for human consumption"},{"code":"04089920","title":" Unfit for human consumption"},{"code":"15030011","title":" For industrial uses"},{"code":"35022091","title":" Dried (for example, in sheets, scales, flakes, powder)"},{"code":"35022099","title":" Other"},{"code":"35029020","title":" Unfit, or to be rendered unfit, for human consumption (1)"},{"code":"35021110","title":" Unfit, or to be rendered unfit, for human consumption"},{"code":"35021910","title":" Unfit, or to be rendered unfit, for human consumption (1)"}]
+  {
+    "id": "commodity_code",
+    "title": "Commodity code",
+    "required": "yes",
+    "type": "string",
+    "error": "Commodity code is a required field"
+  },
+  {
+    "id": "productDescription",
+    "title": "Description",
+    "required": "no",
+    "type": "text"
+  },
+  {
+    "id": "manufacturingPlant",
+    "title": "Manufacturing plant",
+    "required": "yes",
+    "type": "search",
+    "error": "Manufacturing plant is a required field - please enter a valid approval number"
+  },
+  {
+    "id": "natureOfCommodity",
+    "title": "Nature of commodity",
+    "required": "yes",
+    "type": "dropdown",
+    "error": "Nature of commodity is a required field",
+    "multiple": "no"
+  },
+  {
+    "id": "batchNumber",
+    "title": "Batch number",
+    "required": "yes",
+    "type": "text",
+    "error": "Batch number is required",
+    "multiple": "yes"
+  },
+  {
+    "id": "netWeight",
+    "title": "Net weight",
+    "required": "yes",
+    "type": "decimal",
+    "error": "Net weight is a required field"
+  },
+  {
+    "id": "netWeight_UNIT",
+    "title": "Net weight unit",
+    "required": "yes",
+    "type": "string",
+    "error": "Select a net weight unit from the list"
+  },
+  {
+    "id": "packageCount",
+    "title": "Package count",
+    "required": "yes",
+    "type": "decimal",
+    "error": "Enter a whole number for package count"
+  },
+  {
+    "id": "packageCount_UNIT",
+    "title": "Package count unit",
+    "required": "yes",
+    "type": "string",
+    "error": "Select a package unit from the list"
+  },
+  { "id": "species", "title": "Species", "required" : "yes", "type" : "text", "error" : "Species name is invalid"}],
+  "commodities": [
+  {
+    "code": "230910",
+    "title": "Dog or cat food, put up for retail sale"
+  },
+  {
+    "code": "230990",
+    "title": " other than 2309 10"
+  },
+  {
+    "code": "23011000",
+    "title": " Flours, meals and pellets, of meat or meat offal; greaves"
+  },
+  {
+    "code": "23012000",
+    "title": " Flours, meals and pellets, of fish or of crustaceans, molluscs or other aquatic invertebrates"
+  },
+  {
+    "code": "0401",
+    "title": " Milk and cream, not concentrated nor containing added sugar or other sweetening matter"
+  },
+  {
+    "code": "0402",
+    "title": " Milk and cream, concentrated or containing added sugar or other sweetening matter"
+  },
+  {
+    "code": "1501",
+    "title": " Pig fat (including lard) and poultry fat, other than that of heading|0209|or 1503"
+  },
+  {
+    "code": "2835",
+    "title": " Phosphinates (hypophosphites), phosphonates (phosphites) and phosphates; polyphosphates, whether or not chemically defined"
+  },
+  {
+    "code": "3501",
+    "title": " Casein, caseinates and other casein derivatives; casein glues"
+  },
+  {
+    "code": "040210",
+    "title": " In powder, granules or other solid forms, of a fat content, by weight, not exceeding 1,5|%"
+  },
+  {
+    "code": "040390",
+    "title": " Buttermilk, curdled milk and cream, kephir and other fermented or acidified milk and cream, whether or not concentrated or containing added sugar or other sweetening matter or flavoured or containing added fruit, nuts or cocoa"
+  },
+  {
+    "code": "050510",
+    "title": " Feathers of a kind used for stuffing; down"
+  },
+  {
+    "code": "051199",
+    "title": " Other"
+  },
+  {
+    "code": "150410",
+    "title": " Fish-liver oils and their fractions"
+  },
+  {
+    "code": "150420",
+    "title": " Fats and oils and their fractions, of fish, other than liver oils"
+  },
+  {
+    "code": "150430",
+    "title": " Fats and oils and their fractions, of marine mammals"
+  },
+  {
+    "code": "350300",
+    "title": " Gelatin (including gelatin in rectangular (including square) sheets, whether or not surface-worked or coloured) and gelatin derivatives; isinglass; other glues of animal origin, excluding casein glues of heading|3501"
+  },
+  {
+    "code": "05040000",
+    "title": " Guts, bladders and stomachs of animals (other than fish), whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"
+  },
+  {
+    "code": "05059000",
+    "title": " Skins and other parts of birds, with their feathers or down, not further worked than cleaned, disinfected or treated for preservation; powder and waste of feathers or parts of feathers"
+  },
+  {
+    "code": "05061000",
+    "title": " Ossein and bones treated with acid"
+  },
+  {
+    "code": "05069000",
+    "title": " Other"
+  },
+  {
+    "code": "05119110",
+    "title": " Fish waste"
+  },
+  {
+    "code": "05119190",
+    "title": " Other"
+  },
+  {
+    "code": "15021010",
+    "title": " For industrial uses other than the manufacture of foodstuffs for human consumption"
+  },
+  {
+    "code": "15029010",
+    "title": " For industrial uses other than the manufacture of foodstuffs for human consumption"
+  },
+  {
+    "code": "15030030",
+    "title": " Tallow oil for industrial uses other than the manufacture of foodstuffs for human consumption"
+  },
+  {
+    "code": "35029090",
+    "title": " Albuminates and other albumin derivatives"
+  },
+  {
+    "code": "35040010",
+    "title": " Concentrated milk proteins specified in additional note 1 to this chapter"
+  },
+  {
+    "code": "35040090",
+    "title": " Other"
+  },
+  {
+    "code": "04081120",
+    "title": " Unfit for human consumption"
+  },
+  {
+    "code": "04081920",
+    "title": " Unfit for human consumption"
+  },
+  {
+    "code": "04089120",
+    "title": " Unfit for human consumption"
+  },
+  {
+    "code": "04089920",
+    "title": " Unfit for human consumption"
+  },
+  {
+    "code": "15030011",
+    "title": " For industrial uses"
+  },
+  {
+    "code": "35022091",
+    "title": " Dried (for example, in sheets, scales, flakes, powder)"
+  },
+  {
+    "code": "35022099",
+    "title": " Other"
+  },
+  {
+    "code": "35029020",
+    "title": " Unfit, or to be rendered unfit, for human consumption (1)"
+  },
+  {
+    "code": "35021110",
+    "title": " Unfit, or to be rendered unfit, for human consumption"
+  },
+  {
+    "code": "35021910",
+    "title": " Unfit, or to be rendered unfit, for human consumption (1)"
+  }]
 }

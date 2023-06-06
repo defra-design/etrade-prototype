@@ -1,0 +1,1144 @@
+{
+  "number": "EHC8461",
+  "manufacturingPlant": "yes",
+  "title": "Re-export of Products of Animal Origin of European Union or Northern Ireland origin back to the European Union or Northern Ireland after storage in Great Britain",
+  "natureOfCommodity": ["Animal","Apiculture by-products","Apiculture products for hc","Aquarium","Bile","Biodiesel","Biogas","Blood","Blood and blood products from equidae","Blood products / feedingstuff","Blood products / technical","Blood products for feeding purposes","Blood products for technical purposes","Bone","Bones, horns, hooves and products thereof","Bowels","Breeding eggs","By-products / feedingstuff","By-products / technical","Canned petfood","Carcass_quarters","Carcass_side","Carcass_whole","Casing","Casing","Catering waste","Collagen","Colostrum","Composite products","Compost after composting","Consumption","Cosmetic products","Cuts","Dairy","Dicalcium phosphate","Digestion residues from biogas production other than biogas","Digestive tract content","Domestic","Dried noodles","Edible collagen","Egg products","Egg products for hc","Embryos","Farmed game","Farmed stock","Fat derivatives","Feathers","Feed additives and premixtures","Feed production (please specify)","Fertilisers other than comr, bior, manu, manp","Fishery products","Fishery_products_canned","Fishery_products_not_canned","Flavouring innards","Flavouring innards for petfood","Fresh meat","Game","Game trophies","Game trophies","Gelatine","Gelatine/collagen for hc","Hatching eggs","Hc, preserved at ambient temperature","Hc, preserved at frozen/chilled temperature","Hides","Highly refined products for hc","Horns/hooves","Htst simple","Htst,sterilisation,uht","Human consumption","Hydrolised proteins","Hydrolysed protein","Insects for hc","Insects including maggots and worms","Jelly royal","Large farmed game","Large wild game","Large wild game","Material collected from waste water treatment","Material of category 1","Material of category 2","Material of category 3","Meat and bone meal (category 1, 2)","Meat preparations","Meat products","Medical devices","Milk based products","Milk, colostrum and derived products from milk and colostrum","Minced meat","Non edible collagen","Non human consumption","Offal","Organic","Other","Other unprocessed abp","Others","Ova-embryos","Ovoproducts","Pap_from_ruminants_and_non_ruminants","Pasteurized","Petfood: dogchews","Pharmaceutical products","Powder","Powder bones","Processed manure","Processed manure and manure products","Processed petfood other than canned petfood","Product in capsules","Products of animal origin/ no longer for human consumption","Products produced by bees","Raw hides and skins","Raw material for hc gelatine/collagen","Raw material for processing of gelatine and collagen","Raw milk","Raw petfood","Raw petfood","Rendered fat for hc","Rendered fat from abp for oleochemical purposes","Rendered fats and fish oil for feeding","Rendered fats and fish oil for purposes other than for feeding or for oleochemical purposes","Semen","Small feathered farmed game","Small feathered wild game","Small wild game","Spf","Sterilization","Treated hides and skins","Treated raw material for processing of gelatine and collagen","Tricalcium phosphate","Uht","Unprocessed manure","Unprocessed manure","Whole bodies of dead animals (cadavers)","Wild game","Wild stock","Wool, hair, pig bristles, feathers"],
+  "treatmentType": ["A = 0 T°C", "Animal by-products of category 1", "Animal by-products of category 2", "B = Fo>=3°", "bone in", "C = T>=80°", "Chilled", "Combined heat treatment", "cooked", "D = T>=70°C", "deboned", "dried", "E = Aw<=0.93+Ph<=6", "eviscerated", "F = T>=65°C pv=40", "Fresh", "frozen", "Homogenisation", "In shell", "Live", "matured", "minced", "No thermal treatment", "Otherwise processed", "pasteurisation", "Plucked", "prepared", "preserved", "processed", "Raw milk", "Roasted", "salted", "shelled", "sterilisation", "Single heat treatment", "Skinned", "smoked", "Treated", "UHT", "Ultrafiltration", "Ultrasonication", "uneviscerated", "Unplucked", "unskinned"],
+  "batchNumber": "yes",
+  "netWeight": "yes",
+  "multiples": null,
+  "species": ["Aix","Anas","Anser","Gallus gallus","Meleagris gallopavo","Numida meleagris"],
+  "schema": [
+    {
+      "id": "commodity_code",
+      "title": "Commodity code",
+      "required": "yes",
+      "type": "string",
+      "error": "Commodity code is a required field"
+    },
+    {
+      "id": "productDescription",
+      "title": "Description",
+      "required": "no",
+      "type": "text"
+    },
+
+    {
+      "id": "coldStore",
+      "title": "Cold store",
+      "required": "no",
+      "type": "search"
+    },
+    {
+      "id": "coldStoreActivity",
+      "title": "Cold store activity",
+      "required": "no",
+      "type": "string"
+    },
+    {
+      "id": "identificationMark",
+      "title": "Identification mark",
+      "required": "yes",
+      "type": "text",
+      "error": "Identification mark is a required field"
+    },
+    {
+      "id": "natureOfCommodity",
+      "title": "Nature of commodity",
+      "required": "yes",
+      "dropdown": "string",
+      "error": "Nature of commodity is a required field",
+      "multiple" : "yes"
+    },
+    {
+      "id": "packageCount",
+      "title": "Package count",
+      "required": "yes",
+      "type": "decimal",
+      "error": "Enter a whole number for package count",
+      "multiple": "yes"
+    },
+    {
+      "id": "packageCount_UNIT",
+      "title": "Package count unit",
+      "required": "yes",
+      "type": "string",
+      "error": "Select a package unit from the list"
+    },
+    {
+      "id": "netWeight",
+      "title": "Net weight",
+      "required": "yes",
+      "type": "decimal",
+      "error": "Net weight is a required field"
+    },
+    {
+      "id": "netWeight_UNIT",
+      "title": "Net weight unit",
+      "required": "yes",
+      "type": "string",
+      "error": "Select a net weight unit from the list"
+    },
+
+    {
+      "id": "batchNumber",
+      "title": "Batch number",
+      "required": "yes",
+      "type": "text",
+      "error": "Batch number is required"
+    },
+      {
+      "id": "plantEstablishmentCentre",
+      "title": "Plant / establishment / centre",
+      "required": "yes",
+      "type": "search",
+      "error": "Plant / establishment / centre is a required field - please enter a valid approval number"
+    },
+    {
+      "id": "plantEstablishmentCentreActivity",
+      "title": "Plant / establishment / centre",
+      "required": "yes",
+      "type": "string",
+      "error": "Plant / establishment / centre activity is a required field - please select a valid activity"
+    },
+
+    {
+      "id": "finalConsumer",
+      "title": "Final consumer",
+      "required": "no",
+      "type": "radio"
+    },
+    { "id": "dateOfProduction", "title": "Date of collection/production", "required" : "yes", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of production", "multiple" : "yes"},
+    { "id": "dateOfCollection", "title": "Date of production range", "required" : "no", "type": "excel_date", "error" : "Enter a date in the format DD/MM/YYYY for Date of production", "multiple" : "yes"},
+  
+    {
+      "id": "species",
+      "title": "Species",
+      "required": "yes",
+      "type": "text",
+      "error": "Species name is invalid"
+    }
+
+  ],
+  "commodities": [
+  {
+    "code": "1501",
+    "title": " Pig fat (including lard) and poultry fat, other than that of heading|0209|or 1503"
+  },
+  {
+    "code": "2004",
+    "title": " Other vegetables prepared or preserved otherwise than by vinegar or acetic acid, frozen, other than products of heading|2006"
+  },
+  {
+    "code": "2005",
+    "title": " Other vegetables prepared or preserved otherwise than by vinegar or acetic acid, not frozen, other than products of heading|2006"
+  },
+  {
+    "code": "3501",
+    "title": " Casein, caseinates and other casein derivatives; casein glues"
+  },
+  {
+    "code": "3502",
+    "title": " Albumins (including concentrates of two or more whey proteins, containing by weight more than 80|% whey proteins, calculated on the dry matter), albuminates and other albumin derivatives"
+  },
+  {
+    "code": "3503",
+    "title": " Gelatin (including gelatin in rectangular (including square) sheets, whether or not surface-worked or coloured) and gelatin derivatives; isinglass; other glues of animal origin, excluding casein glues of heading|3501"
+  },
+  {
+    "code": "3504",
+    "title": " Peptones and their derivatives; other protein substances and their derivatives, not elsewhere specified or included; hide powder, whether or not chromed"
+  },
+  {
+    "code": "3507",
+    "title": " Enzymes; prepared enzymes not elsewhere specified or included:"
+  },
+  {
+    "code": "3913",
+    "title": " Natural polymers (for example, alginic acid) and modified natural polymers (for example, hardened proteins, chemical derivatives of natural rubber), not elsewhere specified or included, in primary forms"
+  },
+  {
+    "code": "4101",
+    "title": " Raw hides and skins of bovine (including buffalo) or equine animals (fresh, or salted, dried, limed, pickled or otherwise preserved, but not tanned, parchment-dressed or further prepared), whether or not dehaired or split"
+  },
+  {
+    "code": "4102",
+    "title": " Raw skins of sheep or lambs (fresh, or salted, dried, limed, pickled or otherwise preserved, but not tanned, parchment-dressed or further prepared), whether or not with wool on or split, other than those excluded by note|1(c) to this chapter"
+  },
+  {
+    "code": "4103",
+    "title": " Other raw hides and skins (fresh, or salted, dried, limed, pickled or otherwise preserved, but not tanned, parchment-dressed or further prepared), whether or not dehaired or split, other than those excluded by note|1(b) or 1(c) to this chapter"
+  },
+  {
+    "code": "020110",
+    "title": " Carcases and half-carcases"
+  },
+  {
+    "code": "020120",
+    "title": " Other cuts with bone in"
+  },
+  {
+    "code": "020130",
+    "title": " Boneless"
+  },
+  {
+    "code": "020210",
+    "title": " Carcases and half-carcases"
+  },
+  {
+    "code": "020220",
+    "title": " Other cuts with bone in"
+  },
+  {
+    "code": "020230",
+    "title": " Boneless"
+  },
+  {
+    "code": "15019000",
+    "title": " Poultry fat"
+  },
+  {
+    "code": "350300",
+    "title": " Gelatin (including gelatin in rectangular (including square) sheets, whether or not surface-worked or coloured) and gelatin derivatives; isinglass; other glues of animal origin, excluding casein glues of heading|3501"
+  },
+  {
+    "code": "350400",
+    "title": " Peptones and their derivatives; other protein substances and their derivatives, not elsewhere specified or included; hide powder, whether or not chromed"
+  },
+  {
+    "code": "35071000",
+    "title": " Rennet and concentrates thereof"
+  },
+  {
+    "code": "39139000",
+    "title": " Other"
+  },
+  {
+    "code": "02041000",
+    "title": " Carcases and half-carcases of lamb, fresh or chilled"
+  },
+  {
+    "code": "02043000",
+    "title": " Carcases and half-carcases of lamb, frozen"
+  },
+  {
+    "code": "02050020",
+    "title": " Fresh or chilled"
+  },
+  {
+    "code": "02050080",
+    "title": " Frozen"
+  },
+  {
+    "code": "15011090",
+    "title": " for human consumption."
+  },
+  {
+    "code": "15012090",
+    "title": " for human consumption."
+  },
+  {
+    "code": "35040090",
+    "title": " Other"
+  },
+  {
+    "code": "35079030",
+    "title": " Lipoprotein lipase; aspergillus alkaline protease"
+  },
+  {
+    "code": "39171010",
+    "title": " Artificial guts (sausage casings) of hardened protein"
+  },
+  {
+    "code": "02031110",
+    "title": " Of domestic swine"
+  },
+  {
+    "code": "02031190",
+    "title": " of wild suidae,"
+  },
+  {
+    "code": "02031290",
+    "title": " of wild suidae,"
+  },
+  {
+    "code": "02031990",
+    "title": " Other cuts Of wild suidae,"
+  },
+  {
+    "code": "02032110",
+    "title": " Of domestic swine"
+  },
+  {
+    "code": "02032190",
+    "title": " of wild suidae"
+  },
+  {
+    "code": "02032290",
+    "title": " of wild suidae,"
+  },
+  {
+    "code": "02032990",
+    "title": " Other cuts of wild suidae"
+  },
+  {
+    "code": "02045031",
+    "title": " other Cuts with bone in, exc. 02045011; 02045013; 02045015; 02045019"
+  },
+  {
+    "code": "02045039",
+    "title": " Boneless cuts"
+  },
+  {
+    "code": "02045011",
+    "title": " Carcases and half-carcases, Fresh or chilled"
+  },
+  {
+    "code": "02045013",
+    "title": " Short forequarters, Fresh or chilled"
+  },
+  {
+    "code": "02045015",
+    "title": " Chines and/or best ends , Fresh or chilled"
+  },
+  {
+    "code": "02045019",
+    "title": " Legs , Fresh or chilled"
+  },
+  {
+    "code": "02045071",
+    "title": " Other Cuts with bone in, exc. 02045051; 02045053; 02045055; 02045059"
+  },
+  {
+    "code": "02045079",
+    "title": " Boneless cuts"
+  },
+  {
+    "code": "02045051",
+    "title": " Carcases and half-carcases"
+  },
+  {
+    "code": "02045053",
+    "title": " Short forequarters"
+  },
+  {
+    "code": "02045055",
+    "title": " Chines and/or best ends"
+  },
+  {
+    "code": "02045059",
+    "title": " Legs"
+  },
+  {
+    "code": "02042100",
+    "title": " Carcases and half-carcases, exc 020410"
+  },
+  {
+    "code": "02042210",
+    "title": " Short forequarters"
+  },
+  {
+    "code": "02042230",
+    "title": " Chines and/or best ends"
+  },
+  {
+    "code": "02042250",
+    "title": " Legs"
+  },
+  {
+    "code": "02042290",
+    "title": " other than 020422 10; 020422 30; 020422 50."
+  },
+  {
+    "code": "02042300",
+    "title": " Boneless"
+  },
+  {
+    "code": "02044100",
+    "title": " Carcases and half-carcases exc 020430"
+  },
+  {
+    "code": "02044210",
+    "title": " Short forequarters"
+  },
+  {
+    "code": "02044230",
+    "title": " Chines and/or best ends"
+  },
+  {
+    "code": "02044250",
+    "title": " Legs"
+  },
+  {
+    "code": "02044290",
+    "title": " other than 020442 10; 020442 30; 020442 50."
+  },
+  {
+    "code": "02044310",
+    "title": " Of lamb"
+  },
+  {
+    "code": "02044390",
+    "title": " other than 020443 10."
+  },
+  {
+    "code": "02031211",
+    "title": " Hams and cuts thereof"
+  },
+  {
+    "code": "02031219",
+    "title": " Shoulders and cuts thereof"
+  },
+  {
+    "code": "02031955",
+    "title": " Boneless"
+  },
+  {
+    "code": "02031959",
+    "title": " Other than 02031911; 02031913; 02031915; 02031955"
+  },
+  {
+    "code": "02031911",
+    "title": " Fore-ends and cuts thereof"
+  },
+  {
+    "code": "02031913",
+    "title": " Loins and cuts thereof, with bone in"
+  },
+  {
+    "code": "02031915",
+    "title": " Bellies (streaky) and cuts thereof"
+  },
+  {
+    "code": "02032211",
+    "title": " Hams and cuts thereof"
+  },
+  {
+    "code": "02032219",
+    "title": " Shoulders and cuts thereof"
+  },
+  {
+    "code": "02032911",
+    "title": " Fore-ends and cuts thereof"
+  },
+  {
+    "code": "02032913",
+    "title": " Loins and cuts thereof, with bone in"
+  },
+  {
+    "code": "02032915",
+    "title": " Bellies (streaky) and cuts thereof"
+  },
+  {
+    "code": "02032955",
+    "title": " Boneless"
+  },
+  {
+    "code": "02032959",
+    "title": " Other than 02032911; 02032913; 02032915; 02032955;"
+  },
+  {
+    "code": "150410",
+    "title": " Fish-liver oils and their fractions"
+  },
+  {
+    "code": "150420",
+    "title": " Fats and oils and their fractions, of fish, other than liver oils"
+  },
+  {
+    "code": "150430",
+    "title": " Fats and oils and their fractions, of marine mammals"
+  },
+  {
+    "code": "151610",
+    "title": " Animal fats and oils and their fractions"
+  },
+  {
+    "code": "151710",
+    "title": " Margarine, excluding liquid margarine"
+  },
+  {
+    "code": "151790",
+    "title": " other than 151710"
+  },
+  {
+    "code": "160100",
+    "title": " Sausages and similar products, of meat, meat offal or blood; food preparations based on these products"
+  },
+  {
+    "code": "160210",
+    "title": " Homogenised preparations"
+  },
+  {
+    "code": "160220",
+    "title": " Of liver of any animal"
+  },
+  {
+    "code": "160231",
+    "title": " Of turkeys"
+  },
+  {
+    "code": "160232",
+    "title": " Of fowls of the species Gallus domesticus"
+  },
+  {
+    "code": "160239",
+    "title": " of poultry of heading 0105 other than 160231; 160232"
+  },
+  {
+    "code": "160250",
+    "title": " Of bovine animals"
+  },
+  {
+    "code": "160290",
+    "title": " Other, including preparations of blood of any animal"
+  },
+  {
+    "code": "160300",
+    "title": " Extracts and juices of meat, fish or crustaceans, molluscs or other aquatic invertebrates"
+  },
+  {
+    "code": "15021010",
+    "title": " For industrial uses other than the manufacture of foodstuffs for human consumption"
+  },
+  {
+    "code": "15021090",
+    "title": " for human consumption"
+  },
+  {
+    "code": "15029010",
+    "title": " For industrial uses other than the manufacture of foodstuffs for human consumption"
+  },
+  {
+    "code": "15029090",
+    "title": " for human consumption"
+  },
+  {
+    "code": "15030030",
+    "title": " Tallow oil for industrial uses other than the manufacture of foodstuffs for human consumption"
+  },
+  {
+    "code": "15030090",
+    "title": " lard oil and oleo-oil, tallow oil, not emulsified or mixed or otherwise prepared"
+  },
+  {
+    "code": "15050010",
+    "title": " Wool grease, crude"
+  },
+  {
+    "code": "15050090",
+    "title": " Fatty substances derived from Wool grease (including lanolin)"
+  },
+  {
+    "code": "15060000",
+    "title": " Other animal fats and oils and their fractions, whether or not refined, but not chemically modified"
+  },
+  {
+    "code": "15171010",
+    "title": " Containing, by weight, more than 10|% but not more than 15|% of milkfats"
+  },
+  {
+    "code": "15171090",
+    "title": " other than 151710 10"
+  },
+  {
+    "code": "15179010",
+    "title": " Containing, by weight, more than 10|% but not more than 15|% of milkfats"
+  },
+  {
+    "code": "15179091",
+    "title": " Fixed vegetable oils, fluid, mixed"
+  },
+  {
+    "code": "15179093",
+    "title": " Edible mixtures or preparations of a kind used as mould-release preparations"
+  },
+  {
+    "code": "15179099",
+    "title": " other than 151790 10; 151790 91; 151790 93."
+  },
+  {
+    "code": "15180091",
+    "title": " Animal or vegetable fats and oils and their fractions, boiled, oxidised, dehydrated, sulphurised, blown, polymerised by heat in vacuum or in inert gas or otherwise chemically modified, excluding those of heading|1516"
+  },
+  {
+    "code": "15180095",
+    "title": " Inedible mixtures or preparations of animal or of animal and vegetable fats and oils and their fractions"
+  },
+  {
+    "code": "15180099",
+    "title": " other than 15180010; 15180031; 15180091; 15180095"
+  },
+  {
+    "code": "15219010",
+    "title": " Spermaceti, whether or not refined or coloured"
+  },
+  {
+    "code": "16029010",
+    "title": " Preparations of blood of any animal"
+  },
+  {
+    "code": "16029031",
+    "title": " Of game or rabbit"
+  },
+  {
+    "code": "16029051",
+    "title": " Containing meat or meat offal of domestic swine"
+  },
+  {
+    "code": "16029061",
+    "title": " Containing bovine meat or offal: Uncooked; mixtures of cooked meat or offal and uncooked meat or offal"
+  },
+  {
+    "code": "16029069",
+    "title": " Containing bovine meat or offal cooked."
+  },
+  {
+    "code": "16029091",
+    "title": " Of sheep"
+  },
+  {
+    "code": "16029095",
+    "title": " Of goats"
+  },
+  {
+    "code": "16029099",
+    "title": " of species not already listed in 160290"
+  },
+  {
+    "code": "160241",
+    "title": " Hams and cuts thereof"
+  },
+  {
+    "code": "160242",
+    "title": " Shoulders and cuts thereof"
+  },
+  {
+    "code": "160249",
+    "title": " other than 160241 and 160242"
+  },
+  {
+    "code": "16042005",
+    "title": " Preparations of surimi"
+  },
+  {
+    "code": "16042010",
+    "title": " Of salmon"
+  },
+  {
+    "code": "16042030",
+    "title": " Of salmonidae, other than salmon"
+  },
+  {
+    "code": "16042040",
+    "title": " Of anchovies"
+  },
+  {
+    "code": "16042050",
+    "title": " Of sardines, bonito, mackerel of the species Scomber scombrus and Scomber japonicus, fish of the species Orcynopsis unicolor"
+  },
+  {
+    "code": "16042070",
+    "title": " Of tunas, skipjack or other fish of the genus Euthynnus"
+  },
+  {
+    "code": "16042090",
+    "title": " fish other than 160420"
+  },
+  {
+    "code": "16051000",
+    "title": " Crab"
+  },
+  {
+    "code": "16053010",
+    "title": " Lobster meat, cooked, for the manufacture of lobster butter or of lobster pastes, pâtés, soups or sauces"
+  },
+  {
+    "code": "16053090",
+    "title": " Other"
+  },
+  {
+    "code": "16054000",
+    "title": " Other crustaceans"
+  },
+  {
+    "code": "15030011",
+    "title": " For industrial uses"
+  },
+  {
+    "code": "15030019",
+    "title": " for human consumption"
+  },
+  {
+    "code": "15219091",
+    "title": " Raw"
+  },
+  {
+    "code": "15219099",
+    "title": " refined or coloured:"
+  },
+  {
+    "code": "16043100",
+    "title": " Caviar (sturgeon roe)"
+  },
+  {
+    "code": "16043200",
+    "title": " Caviar substitutes"
+  },
+  {
+    "code": "16041100",
+    "title": " Salmon"
+  },
+  {
+    "code": "16041210",
+    "title": " Fillets, raw, merely coated with batter or breadcrumbs, whether or not pre-fried in oil, frozen"
+  },
+  {
+    "code": "16041291",
+    "title": " In airtight containers"
+  },
+  {
+    "code": "16041299",
+    "title": " other than 16041210; 16041291"
+  },
+  {
+    "code": "16041390",
+    "title": " sardinella and brisling or sprats,"
+  },
+  {
+    "code": "16041490",
+    "title": " Bonito (Sarda spp.)"
+  },
+  {
+    "code": "16041590",
+    "title": " Of the species Scomber australasicus"
+  },
+  {
+    "code": "15030030",
+    "title": " Tallow oil for industrial uses other than the manufacture of foodstuffs for human consumption"
+  },
+  {
+    "code": "15030090",
+    "title": " lard oil and oleo-oil, tallow oil, not emulsified or mixed or otherwise prepared"
+  },
+  {
+    "code": "15050010",
+    "title": " Wool grease, crude"
+  },
+  {
+    "code": "15050090",
+    "title": " Fatty substances derived from Wool grease (including lanolin)"
+  },
+  {
+    "code": "15060000",
+    "title": " Other animal fats and oils and their fractions, whether or not refined, but not chemically modified"
+  },
+  {
+    "code": "15171010",
+    "title": " Containing, by weight, more than 10|% but not more than 15|% of milkfats"
+  },
+  {
+    "code": "15171090",
+    "title": " other than 151710 10"
+  },
+  {
+    "code": "15179010",
+    "title": " Containing, by weight, more than 10|% but not more than 15|% of milkfats"
+  },
+  {
+    "code": "15179091",
+    "title": " Fixed vegetable oils, fluid, mixed"
+  },
+  {
+    "code": "15179093",
+    "title": " Edible mixtures or preparations of a kind used as mould-release preparations"
+  },
+  {
+    "code": "15179099",
+    "title": " other than 151790 10; 151790 91; 151790 93."
+  },
+  {
+    "code": "15180091",
+    "title": " Animal or vegetable fats and oils and their fractions, boiled, oxidised, dehydrated, sulphurised, blown, polymerised by heat in vacuum or in inert gas or otherwise chemically modified, excluding those of heading|1516"
+  },
+  {
+    "code": "15180095",
+    "title": " Inedible mixtures or preparations of animal or of animal and vegetable fats and oils and their fractions"
+  },
+  {
+    "code": "15180099",
+    "title": " other than 15180010; 15180031; 15180091; 15180095"
+  },
+  {
+    "code": "15219010",
+    "title": " Spermaceti, whether or not refined or coloured"
+  },
+  {
+    "code": "16029010",
+    "title": " Preparations of blood of any animal"
+  },
+  {
+    "code": "16029031",
+    "title": " Of game or rabbit"
+  },
+  {
+    "code": "16029051",
+    "title": " Containing meat or meat offal of domestic swine"
+  },
+  {
+    "code": "16029061",
+    "title": " Containing bovine meat or offal: Uncooked; mixtures of cooked meat or offal and uncooked meat or offal"
+  },
+  {
+    "code": "16029069",
+    "title": " Containing bovine meat or offal cooked."
+  },
+  {
+    "code": "16029091",
+    "title": " Of sheep"
+  },
+  {
+    "code": "16029095",
+    "title": " Of goats"
+  },
+  {
+    "code": "16029099",
+    "title": " of species not already listed in 160290"
+  },
+  {
+    "code": "160241",
+    "title": " Hams and cuts thereof"
+  },
+  {
+    "code": "160242",
+    "title": " Shoulders and cuts thereof"
+  },
+  {
+    "code": "160249",
+    "title": " other than 160241 and 160242"
+  },
+  {
+    "code": "16042005",
+    "title": " Preparations of surimi"
+  },
+  {
+    "code": "16042010",
+    "title": " Of salmon"
+  },
+  {
+    "code": "16042030",
+    "title": " Of salmonidae, other than salmon"
+  },
+  {
+    "code": "16042040",
+    "title": " Of anchovies"
+  },
+  {
+    "code": "16042050",
+    "title": " Of sardines, bonito, mackerel of the species Scomber scombrus and Scomber japonicus, fish of the species Orcynopsis unicolor"
+  },
+  {
+    "code": "16042070",
+    "title": " Of tunas, skipjack or other fish of the genus Euthynnus"
+  },
+  {
+    "code": "16042090",
+    "title": " fish other than 160420"
+  },
+  {
+    "code": "16051000",
+    "title": " Crab"
+  },
+  {
+    "code": "16053010",
+    "title": " Lobster meat, cooked, for the manufacture of lobster butter or of lobster pastes, pâtés, soups or sauces"
+  },
+  {
+    "code": "16053090",
+    "title": " Other"
+  },
+  {
+    "code": "16054000",
+    "title": " Other crustaceans"
+  },
+  {
+    "code": "15030011",
+    "title": " For industrial uses"
+  },
+  {
+    "code": "15030019",
+    "title": " for human consumption"
+  },
+  {
+    "code": "15219091",
+    "title": " Raw"
+  },
+  {
+    "code": "15219099",
+    "title": " refined or coloured:"
+  },
+  {
+    "code": "16043100",
+    "title": " Caviar (sturgeon roe)"
+  },
+  {
+    "code": "16043200",
+    "title": " Caviar substitutes"
+  },
+  {
+    "code": "16041100",
+    "title": " Salmon"
+  },
+  {
+    "code": "16041210",
+    "title": " Fillets, raw, merely coated with batter or breadcrumbs, whether or not pre-fried in oil, frozen"
+  },
+  {
+    "code": "16041291",
+    "title": " In airtight containers"
+  },
+  {
+    "code": "16041299",
+    "title": " other than 16041210; 16041291"
+  },
+  {
+    "code": "16041390",
+    "title": " sardinella and brisling or sprats,"
+  },
+  {
+    "code": "16041490",
+    "title": " Bonito (Sarda spp.)"
+  },
+  {
+    "code": "16041590",
+    "title": " Of the species Scomber australasicus"
+  },
+  {
+    "code": "190240",
+    "title": " Couscous"
+  },
+  {
+    "code": "210500",
+    "title": " Ice cream and other edible ice, whether or not containing cocoa"
+  },
+  {
+    "code": "210610",
+    "title": " Protein concentrates and textured protein substances"
+  },
+  {
+    "code": "210690",
+    "title": " Other"
+  },
+  {
+    "code": "17021100",
+    "title": " Containing by weight 99|% or more lactose, expressed as anhydrous lactose, calculated on the dry matter"
+  },
+  {
+    "code": "18069060",
+    "title": " Spreads containing cocoa"
+  },
+  {
+    "code": "18069070",
+    "title": " Preparations containing cocoa for making beverages"
+  },
+  {
+    "code": "19021100",
+    "title": " Containing eggs"
+  },
+  {
+    "code": "19022010",
+    "title": " Containing more than 20|% by weight of fish, crustaceans, molluscs or other aquatic invertebrates"
+  },
+  {
+    "code": "19022030",
+    "title": " Containing more than 20|% by weight of sausages and the like, of meat and meat offal of any kind, including fats of any kind or origin"
+  },
+  {
+    "code": "19022091",
+    "title": " Cooked"
+  },
+  {
+    "code": "19022099",
+    "title": " Other"
+  },
+  {
+    "code": "19023010",
+    "title": " Dried"
+  },
+  {
+    "code": "19023090",
+    "title": " Other"
+  },
+  {
+    "code": "19049010",
+    "title": " Obtained from rice"
+  },
+  {
+    "code": "200811",
+    "title": " Groundnuts"
+  },
+  {
+    "code": "21039090",
+    "title": " Other"
+  },
+  {
+    "code": "21069092",
+    "title": " Containing no milkfats, sucrose, isoglucose, glucose or starch or containing, by weight, less than 1,5|% milkfat, 5|% sucrose or isoglucose, 5|% glucose or starch"
+  },
+  {
+    "code": "21069098",
+    "title": " Other"
+  },
+  {
+    "code": "20052020",
+    "title": " Thin slices, fried or baked, whether or not salted or flavoured, in airtight packings, suitable for immediate consumption"
+  },
+  {
+    "code": "0401",
+    "title": " Milk and cream, not concentrated nor containing added sugar or other sweetening matter"
+  },
+  {
+    "code": "0402",
+    "title": " Milk and cream, concentrated or containing added sugar or other sweetening matter"
+  },
+  {
+    "code": "41019000",
+    "title": " Other, including butts, bends and bellies"
+  },
+  {
+    "code": "0403",
+    "title": " Buttermilk, curdled milk and cream, yogurt, kephir and other fermented or acidified milk and cream, whether or not concentrated or containing added sugar or other sweetening matter or flavoured or containing added fruit, nuts or cocoa"
+  },
+  {
+    "code": "0404",
+    "title": " Whey, whether or not concentrated or containing added sugar or other sweetening matter; products consisting of natural milk constituents, whether or not containing added sugar or other sweetening matter, not elsewhere specified or included"
+  },
+  {
+    "code": "0405",
+    "title": " Butter and other fats and oils derived from milk; dairy spreads"
+  },
+  {
+    "code": "0406",
+    "title": " Cheese and curd"
+  },
+  {
+    "code": "040210",
+    "title": " In powder, granules or other solid forms, of a fat content, by weight, not exceeding 1,5|%"
+  },
+  {
+    "code": "040291",
+    "title": " Not containing added sugar or other sweetening matter"
+  },
+  {
+    "code": "040299",
+    "title": " containing added sugar or other sweetening matter"
+  },
+  {
+    "code": "040320",
+    "title": " Yogurt"
+  },
+  {
+    "code": "040390",
+    "title": " Buttermilk, curdled milk and cream, kephir and other fermented or acidified milk and cream, whether or not concentrated or containing added sugar or other sweetening matter or flavoured or containing added fruit, nuts or cocoa"
+  },
+  {
+    "code": "040410",
+    "title": " Whey and modified whey, whether or not concentrated or containing added sugar or other sweetening matter"
+  },
+  {
+    "code": "040490",
+    "title": " products consisting of natural milk constituents, whether or not containing added sugar or other sweetening matter, not elsewhere specified or included"
+  },
+  {
+    "code": "040510",
+    "title": " Butter"
+  },
+  {
+    "code": "040520",
+    "title": " Dairy spreads"
+  },
+  {
+    "code": "040590",
+    "title": " fats and oils derived from milk Other than butter and dairy spreads"
+  },
+  {
+    "code": "040610",
+    "title": " Fresh (unripened or uncured) cheese, including whey cheese, and curd"
+  },
+  {
+    "code": "040630",
+    "title": " Processed cheese, not grated or powdered"
+  },
+  {
+    "code": "040640",
+    "title": " Blue-veined cheese and other cheese containing veins produced by Penicillium roqueforti"
+  },
+  {
+    "code": "040690",
+    "title": " Other cheese than 040610; 040620; 040630; 040640"
+  },
+  {
+    "code": "04109000",
+    "title": " Other"
+  },
+  {
+    "code": "04062000",
+    "title": " Grated or powdered cheese, of all kinds"
+  },
+  {
+    "code": "04079010",
+    "title": " Of poultry"
+  },
+  {
+    "code": "05040000",
+    "title": " Guts, bladders and stomachs of animals (other than fish), whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"
+  },
+  {
+    "code": "05100000",
+    "title": " Ambergris, castoreum, civet and musk; cantharides; bile, whether or not dried; glands and other animal products used in the preparation of pharmaceutical products, fresh, chilled, frozen or otherwise provisionally preserved"
+  },
+  {
+    "code": "05119110",
+    "title": " Fish waste"
+  },
+  {
+    "code": "05119190",
+    "title": " Other"
+  },
+  {
+    "code": "04072100",
+    "title": " Of fowls of the species Gallus domesticus"
+  },
+  {
+    "code": "04072910",
+    "title": " Of poultry, other than of fowls of the species Gallus domesticus"
+  },
+  {
+    "code": "04072990",
+    "title": " other than. 0407 29 10"
+  },
+  {
+    "code": "04081180",
+    "title": " for human consumption"
+  },
+  {
+    "code": "04081981",
+    "title": " Liquid"
+  },
+  {
+    "code": "04081989",
+    "title": " Other, including frozen"
+  },
+  {
+    "code": "04089180",
+    "title": " for human consumption"
+  },
+  {
+    "code": "04089980",
+    "title": " for human consumption"
+  },
+  {
+    "code": "21032000",
+    "title": " Tomato ketchup and other tomato sauces"
+  }]
+}
