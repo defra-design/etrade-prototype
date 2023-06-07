@@ -67,7 +67,7 @@ What type of consignment are you sending – GOV.UK Prototype Kit
                   <span class="govuk-visually-hidden">Error:</span> Enter the destination country for the consignment
                 </p>
                 {% endif %}
-                <select class="govuk-select {% if query.hasError and query.errorType =='noCountry' %}govuk-select--error{% endif %}" id="purpose-of-export-country" required="" data-v-a3b8a65e="" style="text-transform: capitalize;">
+                <select class="govuk-select {% if query.hasError and query.errorType =='noCountry' %}govuk-select--error{% endif %}" id="purpose-of-export-country" {% if query.hasError and query.errorType == "noCountry"%}aria-decribedby='final-destination-error' {% endif %} required="" data-v-a3b8a65e="" style="text-transform: capitalize;">
                   <option value="">Select a country</option>
                   <option value="afghanistan">AFGHANISTAN</option>
                   <option value="albania">ALBANIA</option>
