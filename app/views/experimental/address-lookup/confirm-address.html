@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<!-- <style media="screen">
+  .app-no-js{
+    display:none;
+  }
+</style> -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" class="form">
+      <h1 class="govuk-heading-l">Confirm your business address</h1>
+      <p class="govuk-body-l govuk-!-margin-bottom-2">
+        {% if data.addressline1 %}
+        {{data.addressline1}}<br />
+        {{data.addressline2}}<br />
+        {{data.addressline3}}<br />
+        {{data.addressline4}}
+        {% elseif data.directMatch == "yes" %}
+        {{data.addressNo}} Romford Road,<br />
+        Wellington,<br />
+        Telford,<br />
+        {{data.postcode | upper}}
+        {% else %}
+        {% set address = (data.addresschoice or '3 Romford Road, Wellington, Telford, TF1 4ER')|getArrayFromString%}
+        {% for line in address%}
+        {{line}}{% if loop.index != (address|length) %},<br>{% endif %}
+        {% endfor %}
+        {% endif %}
+
+      </p>
+      <p class="govuk-!-margin-bottom-7">
+                    <a class="govuk-link" href="/lookup-address/b8377f7b-3bdb-4e4e-9a65-f6dd6708f6ad/edit" id="changeLink">Change address</a>
+                </p>
+      <!-- <a href="business-address">Change</a> -->
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Is this address correct?
+          </legend>
+          <div class="govuk-radio govuk-radios--conditional" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="requirementAnswer1-Yes" name="is_signed" type="radio" value="yes~end">
+              <label class="govuk-label govuk-radios__label" for="requirementAnswer1-Yes">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="requirementAnswer1-No" name="is_signed" type="radio" value="no~business-address">
+              <label class="govuk-label govuk-radios__label" for="requirementAnswer1-No">
+                No, I want to choose a different address
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <input type="submit" name="" class="govuk-button" value="Save and continue">
+    </form>
+  </div>
+  <!--end column-two-thirds-->
+</div>
+<!--end row-->
+{% endblock %}
+<!-- PAGE based javascript -->
+{% block pageScripts %}
+{{super()}}
+<script type="text/javascript">
+  window.onload = function() {}
+</script>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" novalidate action="uploads2">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-6">
+            <h1 class="govuk-fieldset__heading">
+              Address lookup
+            </h1>
+          </legend>
+          <p>HMRC have their own look up micro service. <a href='config'>Set up an integration</a>
+          <h2 class="govuk-heading-m"><a href="business-address">Version 1</a></h2>
+          <p>Initial designs</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>User can skip straight to confirming address by entering a house name or number</li>
+            <li>Allows enter manually either before address selection or if the address is not in the list</li>
+            <li>Use radio buttons for address selection.</li>
+            <li>Clear action to change address an address</li>
+
+          </ul>
+          <p>Use <strong>HD7 5UZ</strong> to display large list of addresses</p>
+
+          <h2 class="govuk-heading-m"><a href="autocomplete-lookup">Version 1.2</a></h2>
+          <p>Using autocomplete</p>
+
+          <h2 class="govuk-heading-m"><a href="alt_postcode">GDS version</a></h2>
+          <p><a href="https://design-system.service.gov.uk/patterns/addresses/">Based on the GDS pattern</a>. We question the design of this. Escpecially using a dropdown to select the address. </p>
+
+
+  </div>
+</div>
+{% endblock %}
