@@ -370,7 +370,7 @@ Find a {{ establishmentTypeLabel }} – {{super()}}
                     <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
                       <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s name
                     </p>
-                    <input class="govuk-input govuk-!-width-three-quarters" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}" aria-describedby="search-field-organisation-name-hint">
+                    <input class="govuk-input govuk-!-width-two-thirds" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}" aria-describedby="search-field-organisation-name-hint">
                     <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
                   </div>
                 </div>
@@ -419,7 +419,7 @@ Find a {{ establishmentTypeLabel }} – {{super()}}
               {{operator.Country}}
             </label>
             <div id="establishmentIndex{{loop.index0 }}-hint" class="govuk-hint govuk-radios__hint">
-              {% if operator.AppNo %}TRACES number: {{operator.AppNo}}<br>{% endif %}
+              {% if operator.AppNo %}Approval number: {{operator.AppNo}}<br>{% endif %}
               Activities:
               {% for activity in operator.All_Activities%}{% if loop.index != 1 %}, {% endif %}{{activity}}{% endfor %}
             </div>
