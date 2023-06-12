@@ -33,7 +33,7 @@
             Enter the organisation’s approval number. For example AB123, BC&nbsp;001 or XZ-2892-830.
           </label>
           <p id="search-field-approval-number-error" class="govuk-error-message" style="display:none">
-            <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s approval number
+            <span class="govuk-visually-hidden">Error:</span> Approval number cannot be blank
           </p>
           <input class="govuk-input govuk-!-width-one-half" id="search-field-approval-number" name="q" type="search" spellcheck="false" aria-describedby="contact-by-email-error" value="{{query.q}}">
           <button id="operator-search-button" class="govuk-button app-button--search" type="button">Search</button>
@@ -51,9 +51,9 @@
             You will see more search results if you search for part of the organisation name, rather than the full name.
           </label>
           <p id="search-field-organisation-name-error" class="govuk-error-message" style="display:none">
-            <span class="govuk-visually-hidden">Error:</span> Enter the organisation’s name
+            <span class="govuk-visually-hidden">Error:</span> Organisation name cannot be blank
           </p>
-          <input class="govuk-input govuk-!-width-two-thirds" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}">
+          <input class="govuk-input govuk-!-width-one-half" id="search-field-organisation-name" spellcheck="false" name="q" type="search" placeholder="" value="{{query.q}}">
           <button id="organisation-search-button" class="govuk-button app-button--search" type="button">Search</button>
         </div>
       </div>
@@ -446,8 +446,6 @@
         $('#organisation-search-button').text("Search");
         $('#organisation-search-button').removeAttr("disabled");
         var organisationNameSearchString = $("#search-field-organisation-name").val();
-        // clear other search field
-        $("#search-field-approval-number").val("")
         searchEstablishments("organisationName", organisationNameSearchString);
         $('#results').show();
         timeTaken = 1;
@@ -461,25 +459,19 @@
         $('#operator-search-button').text("Search");
         $('#operator-search-button').removeAttr("disabled");
         var approvalNumberSearchString = $("#search-field-approval-number").val();
-        // clear other search field
-        $("#search-field-organisation-name").val("")
         searchEstablishments("approvalNumber", approvalNumberSearchString);
         $('#results').show();
         timeTaken = 1;
       }
     }
 
-    $('#save-and-continue').on("click", function(e) {
+    $('#save-and-continue').on("click", function() {
       // make sure that we have a selected result
-      resetErrors()
-      if ($("input[name=establishmentIndex]:checked").val() === undefined ) {
 
-        $("#general-error-summary").show();
+      if ($("#results").is(":visible") && $("input[name=establishmentIndex]:checked").val() === undefined ) {
         $("#results").addClass("govuk-form-group--error");
         $("#results-error").show();
         $("#results-error-summary").show();
-        setTimeout(function() { $("#general-error-summary").focus() }, 1000);
-
         return false;
       } else {
         $("#results").removeClass("govuk-form-group--error");
@@ -488,34 +480,13 @@
       }
     });
 
-    function resetErrors(){
-      $('#search-field-organisation-name').attr("aria-describedby", "certifier-search-hint")
-      $("#results-error-summary").hide();
-      $("#results").removeClass("govuk-form-group--error");
-      $("#results-error").hide();
-      $("#clearFilter").hide();
-      $("#results").hide()
-      $("#save-and-continue").hide()
-      $("#search-field-approval-number-error").hide();
-      $("#govuk-form-group-approval-number").removeClass("govuk-form-group--error");
-      $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
-       $("#govuk-form-group-approval-number").addClass("govuk-form-group--error");
-      $("#search-field-organisation-name-error").hide();
-      $("#search-field-approval-number-error-summary").hide();
-      $("#search-field-organisation-name-error-summary").hide();
-      $("#search-field-organisation-name").removeClass("govuk-input--error");
-      
+    $('#operator-search-button').on("click", function() {
 
-    }
-
-    $('#operator-search-button').on("click", function(e) {
-       e.preventDefault();
       // validate that 1) a country was selected and 2) a search string was provided
       var hasError = false;
       var hasCountryError = false;
       var hasApprovalNumberError = false;
-      resetErrors()
-      $("#search-field-organisation-name").val("")
+
       if ($("#operator-search-country").val() == "Any") {
         hasCountryError = true;
         hasError = true;
@@ -528,60 +499,50 @@
         $("#operator-search-country-error-summary").hide();
       }
       if ($("#search-field-approval-number").val().trim().length == 0) {
-
         hasApprovalNumberError = true;
         hasError = true;
         $("#govuk-form-group-approval-number").addClass("govuk-form-group--error");
         $("#search-field-approval-number-error").show();
         $("#search-field-approval-number-error-summary").show();
-        $("#search-field-approval-number").addClass("govuk-input--error");
-        $("#search-field-organisation-name").val()
+        $("#search-field-approval-number").addClass(".govuk-input--error");
 
       } else {
-    
-        $("#search-field-approval-number").removeClass("govuk-input--error");
         $("#govuk-form-group-approval-number").removeClass("govuk-form-group--error");
         $("#search-field-approval-number-error").hide();
         $("#search-field-approval-number-error-summary").hide();
-        
+        $("#search-field-approval-number").removeClass(".govuk-input--error");
       }
 
       if (hasError) {
-        $("#general-error-summary").show(); 
-        $("#general-error-summary").focus()
-        setTimeout(function() { $("#general-error-summary").focus() }, 1000);
-
+        $("#general-error-summary").show();
       } else {
         $("#general-error-summary").hide();
-        $('#results').hide();
-        $("#clearFilter").hide();
+
         $(this).text(" Searching ...")
         $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
         $(this).attr("disabled","disabled")
-
         timer = setInterval(updateApprovalNumberSearchButton, 1000);
-      }
 
+        // var approvalNumberSearchString = $("#search-field-approval-number").val();
+        // searchEstablishments("approvalNumber", approvalNumberSearchString);
+      }
 
       return false;
     })
 
-    $('#organisation-search-button').on("click", function(e) {
-       e.preventDefault();
+    $('#organisation-search-button').on("click", function() {
+
       // validate that 1) a country was selected and 2) a search string was provided
       var hasError = false;
       var hasCountryError = false;
       var hasOrganisationNameError = false;
-      resetErrors()
-
-      $("#search-field-approval-number").val("")
 
       if ($("#operator-search-country").val() == "Any") {
         hasCountryError = true;
         hasError = true;
         $("#operator-search-country-form-group").addClass("govuk-form-group--error");
         $("#operator-search-country-error").show();
-        $("#operator-search-country-error-summary").show()
+        $("#operator-search-country-error-summary").show();
       } else {
         $("#operator-search-country-form-group").removeClass("govuk-form-group--error");
         $("#operator-search-country-error").hide();
@@ -593,43 +554,34 @@
         $("#govuk-form-group-organisation-name").addClass("govuk-form-group--error");
         $("#search-field-organisation-name-error").show();
         $("#search-field-organisation-name-error-summary").show();
-        $("#search-field-organisation-name").addClass("govuk-input--error");
-
+        $("#search-field-organisation-name").addClass(".govuk-input--error");
 
       } else {
         $("#govuk-form-group-organisation-name").removeClass("govuk-form-group--error");
         $("#search-field-organisation-name-error").hide();
         $("#search-field-organisation-name-error-summary").hide();
-        $("#search-field-organisation-name").removeClass("govuk-input--error");
+        $("#search-field-organisation-name").removeClass(".govuk-input--error");
       }
 
       if (hasError) {
-        $(".govuk-error-summary").show()
-        $("#general-error-summary").focus()
-        setTimeout(function() { $("#general-error-summary").focus() }, 1000);
+        $("#general-error-summary").show();
       } else {
-        $(".govuk-error-summary").hide();
+        $("#general-error-summary").hide();
         $('#results').hide();
-        $("#clearFilter").hide();
         $(this).text(" Searching ...")
         $(this).prepend('<span class="fas fa-spinner fa-spin"></span>')
         $(this).attr("disabled","disabled")
         timer = setInterval(updateOperatorSearchButton, 1000);
       }
 
-       $("#search-field-approval-number").removeClass("govuk-input--error");
-        $("#govuk-form-group-approval-number").removeClass("govuk-form-group--error");
-        $("#search-field-approval-number-error").hide();
-        $("#search-field-approval-number-error-summary").hide();
-
-
+      // var organisationNameSearchString = $("#search-field-organisation-name").val();
+      // searchEstablishments("organisationName", organisationNameSearchString);
       return false;
     })
 
     function searchEstablishments(searchType, searchString) {
 
       $("#results").show();
-      $("#clearFilter").show();
       $(".app-establishment-list__row").hide();
 
       let q = searchString.toLowerCase();
@@ -654,17 +606,20 @@
       var count = $(".app-establishment-list__row:visible").length
       var r
       if (count == 1) {
-        r = count + " result for " + "<strong>" + q + "</strong> in <strong>United Kingdom</strong>";
+        r = count + " result for " + "<strong>" + q + "</strong><span class='selectedCountry'> in <strong>United Kingdom</strong></span>";
       } else {
-        r = count + " results for " + "<strong>" + q + "</strong> in <strong>United Kingdom</strong>";
+        r = count + " results for " + "<strong>" + q + "</strong><span class='selectedCountry'> in <strong >United Kingdom</strong></span>";
       }
       if (count > 0) {
         $(".no-results-block").hide()
         $(".moj-pagination").show()
         $("#save-and-continue").show();
+        $("#cannotFindDetails").show();
+    
       } else {
         $(".no-results-block").show()
         $("#save-and-continue").hide();
+        $("#cannotFindDetails").hide();
       }
       $(".search-result").html(r)
     }

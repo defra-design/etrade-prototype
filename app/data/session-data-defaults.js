@@ -32,6 +32,7 @@ var globalCertificate = require('./global-certificate.json')
 var applications = require('./applications.json')
 var bcp = require('./bcp.json')
 var forms = require('./forms.json')
+var address_hd7 = require('./postcode-hd7.json')
 
 module.exports = {
   "account": "Isosure Trading Ltd",
@@ -73,6 +74,7 @@ module.exports = {
   "setGrossWeight": "190",
   "netToGrossWeightIs": "under",
   "bcpDestination": "Northern Ireland",
+  "postcode_hd7": address_hd7,
   // latest version
   "version" : "3-5"
 }

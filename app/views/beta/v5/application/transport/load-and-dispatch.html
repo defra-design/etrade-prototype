@@ -85,6 +85,7 @@ Dispatch and loading locations – {{serviceName}} – GOV.UK Prototype Kit
         <input type="hidden" name="placeOfDispatchPostcode" value="{{org.Postcode}}" >
         <input type="hidden" name="placeOfDispatchApproval" value="{{org.AppNo}}" >
           {% set removeLink = "./remove?who=dispatch&redirect=load-and-dispatch" %}
+
           {% block traderAddress %}{% include "../persons/trader-address.html" %}{% endblock %}
 
         {% else %}
@@ -94,8 +95,8 @@ Dispatch and loading locations – {{serviceName}} – GOV.UK Prototype Kit
         {% endif %}
         <div class="govuk-form-group govuk-!-margin-top-6" id="skip-question-container">
       <h3 class="govuk-heading-m">You can skip this section</h3>
-      <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-      <div class="govuk-checkboxes__item" id="skip-question-checkbox">
+      <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+      <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
         <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if hasIncompleteRecord %}checked{% endif %}>
         <label class="govuk-label govuk-checkboxes__label" for="skip-question">
           I've entered as much information as I can
@@ -121,7 +122,10 @@ Dispatch and loading locations – {{serviceName}} – GOV.UK Prototype Kit
 {% block pageScripts %}
 <script type="text/javascript">
   window.addEventListener('load', function() {
-    // $( 'a' ) .click(function() { return false; });
+    let opperatorSearchCount = 2
+    if($(".establishmentAdded").length == opperatorSearchCount){
+      $(".govuk-checkboxes__item").hide()
+    }
 
   })
 </script>

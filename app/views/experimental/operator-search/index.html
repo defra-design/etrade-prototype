@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Operator search v2 (design update)</h1>
+
+      <!-- <h2 class="govuk-heading-m">What changed</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Removed the functionality to copy the same certificate upto 100 times</li>
+        <li>Flow update, now copy journey takes user to the task list intead of back to the dashboard</li>
+        <li>Changing the reference is now done on a seperate page</li>
+        <li>Small update to the design</li>
+      </ul>,, -->
+      <p>This version has not been tested yet</p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/clear-data?url=/experimental/operator-search/opperator-search-design-loading?showLoadingLocation=no&showDispatchLocation=no">Loading and dispatch (non selected)</li>
+          <li><a href="/clear-data?url=/experimental/operator-search/opperator-search-design-loading?showLoadingLocation=yes&showDispatchLocation=yes">Loading and dispatch (both selected)</li>
+            <li><a href="/clear-data?url=/experimental/operator-search/commodity-not-selected">Commodity page (non selected) </li>
+              <li><a href="/clear-data?url=/experimental/operator-search/commodity-selected">Commodity page (selected) </li>
+      </ul>
+
+  </div>
+</div>
+
+{% endblock %}

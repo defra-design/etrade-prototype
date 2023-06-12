@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Add an in-service message – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+      .banner-alt-color{
+      border: 5px solid #ffbf45;
+    }
+    .banner__header-alt-color{
+      color: #000;
+      background-color: #ffbf45;
+    }
+</style>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group">
+      <form method="post" action="./list">
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-heading-xl">Are you sure you want to delete this message</h1>
+          </legend>
+
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m"></caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header"></th>
+                <th scope="col" class="govuk-table__header"></th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Status</th>
+                <td class="govuk-table__cell"><strong class="govuk-tag--red">Expired</strong></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Message</th>
+                <td class="govuk-table__cell">You can now request a pre-certificate if you need an official copy of the certificate before APHA processes your application.</td>
+
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Type</th>
+                <td class="govuk-table__cell">Alert</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Audience</th>
+                <td class="govuk-table__cell">Exporters</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Start</th>
+                <td class="govuk-table__cell">17 May 2021 6:00pm</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">End</th>
+                <td class="govuk-table__cell">17 May 2021 8:00pm</td>
+              </tr>
+             </tbody>
+          </table>
+          <input type="hidden" name="name" value="">
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live" name="remove_commodity" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-2" name="remove_commodity" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+          No
+        </label>
+      </div>
+    </div>
+      
+    </fieldset></form></div>
+  </div>
+  
+        </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function () {
+
+    console.log('init');
+
+    $("#message").keyup(function (event) {
+      //console.log( event.which );
+      let str = $("#message").val();
+      console.log(str);
+      $('#echo-preview').text(str);
+      $('#echo-preview').append('<br/><a class="govuk-notification-banner__link" href="?show_feature_notification_one=no">Dismiss notification</a>')
+    });
+
+    $('input[type="radio"][name="notification-type"]').click(function () {
+      var demovalue = $(this).val();
+      if (demovalue == "alert") {
+        $('#preview-display').addClass("banner-alt-color");
+        $('#govuk-notification-banner').addClass("banner__header-alt-color");
+        $('#govuk-notification-banner-title').addClass("banner__header-alt-color");
+        $('#govuk-notification-banner-title').text("Alert");
+      } else {
+        $('#preview-display').removeClass("banner-alt-color");
+        $('#govuk-notification-banner').removeClass("banner__header-alt-color");
+        $('#govuk-notification-banner-title').removeClass("banner__header-alt-color");
+        $('#govuk-notification-banner-title').text('Information');
+      }
+    });
+
+
+  })
+</script>
+{% endblock %}

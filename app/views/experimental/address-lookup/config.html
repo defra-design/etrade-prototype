@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<!-- <style media="screen">
+  .app-no-js{
+    display:none;
+  }
+</style> -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="https://www.qa.tax.service.gov.uk/lookup-address/test-only/v2/test-setup" method="POST">
+
+    <input type="hidden" name="csrfToken" value="2b7b6d26ad405cbefce7c730d29d64e02f87686f-1613581946892-59c9a2c4b400133b2bfbe967">
+
+
+        <h1 class="form-title govuk-heading-l" id="pageHeading">Stub For starting new journey in ALF with V2 config</h1>
+
+
+
+  <div class="govuk-form-group">
+
+
+
+
+
+
+
+
+    <textarea class="govuk-textarea" id="journeyConfig" name="journeyConfig" rows="15">{
+  "version" : 2,
+  "options" : {
+    "continueUrl" : "This will be ignored"
+  },
+  "labels" : { }
+}</textarea>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <button type="submit" name="continue" class="govuk-button" data-module="govuk-button">
+        Start New Journey
+
+      </button>
+
+
+</form>
+  </div>
+</div>
+
+{% endblock %}
+<!-- PAGE based javascript -->
+{% block pageScripts %}
+{{super()}}
+<script type="text/javascript">
+  window.onload = function() {
+    $('#submit-button').on('click', function(e) {
+      e.preventDefault()
+      if ($('#addressNo').val() == "") {
+        $('.form').submit()
+      } else {
+        $('.form').attr('action', 'confirm-address')
+        $('.form').submit()
+      }
+    })
+  }
+</script>
+{% endblock %}

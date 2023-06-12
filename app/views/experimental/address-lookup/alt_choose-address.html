@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<!-- <style media="screen">
+  .app-no-js{
+    display:none;
+  }
+</style> -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" class="form" action="end">
+
+
+      <h1 class="govuk-heading-l">Select your address</h1>
+
+      <h2 class="govuk-heading-m">Postcode</h2>
+      <p class="govuk-body"><strong>{{data.postcode | upper}}</strong> <a class="govuk-link" href="alt_postcode">Change postcode</a><br></p>
+      <input type="hidden" name="directMatch" value="no">
+      <fieldset class="govuk-fieldset">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="sort">
+            Select an address
+          </label>
+          <select class="govuk-select" id="sort" name="sort">
+            <option value="defualt" selected>10 address found</option>
+            <option value="1">102 Tilstock Cresent, Wellington, Telford, TF1 4ER</option>
+            <option value="2">103 Tilstock Cresent, Wellington, Telford, TF1 4ER</option>
+            <option value="3">104 Tilstock Cresent Wellington, Telford, TF1 4ER</option>
+            <option value="4">105 Tilstock Cresent, Wellington, Telford, TF1 4ER</option>
+            <option value="5">106 Tilstock Cresent, Wellington, Telford, TF1 4ER</option>
+            <option value="6">107 Tilstock Cresent, Wellington, Telford, TF1 4ER</option>
+            <option value="7">108 Tilstock Cresent, Wellington, Telford, TF1 4ER</option>
+            <option value="8">109 Tilstock Cresent, Wellington, Telford, TF1 4ER</option>
+            <option value="9">110 Tilstock Cresent, Wellington, Telford, TF1 4ER</option>
+            <option value="10">112 Tilstock Cresent, Wellington, Telford, TF1 4ER</option>
+          </select>
+        </div>
+
+      </fieldset>
+
+      <br>
+
+
+      <p class="govuk-body"><a href="enter-address">I can't find my address in the list</a></p>
+      <input type="submit" name="" class="govuk-button" value="Continue"><br><br><br>
+
+    </form>
+
+  </div>
+  <!--end column-two-thirds-->
+
+</div>
+<!--end row-->
+
+
+{% endblock %}
+
+<!-- PAGE based javascript -->
+{% block pageScripts %}
+{{super()}}
+<script type="text/javascript">
+  window.onload = function() {}
+</script>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+<!-- <style media="screen">
+  .app-no-js{
+    display:none;
+  }
+</style> -->
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+          <form method="post" class="form" action="confirm-address">
+
+
+            <h1 class="govuk-heading-l">Select your address</h1>
+            <!--<fieldset>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="block-label" for="radio-inline-1-company-address-input" id="radio-inline-1-company-address">-->
+                        <!--<input id="radio-inline-1-company-address-input" type="radio" name="addr" value="1 Romford Road, Wellington, Telford, TF1 4ER">1 Romford Road, Wellington, Telford, TF1 4ER-->
+                    <!--</label>-->
+                    <!--<label class="block-label" for="radio-inline-2-company-address-input" id="radio-inline-2-company-address">-->
+                        <!--<input id="radio-inline-2-company-address-input" type="radio" name="addr" value="2 Romford Road, Wellington, Telford, TF1 4ER">2 Romford Road, Wellington, Telford, TF1 4ER-->
+                    <!--</label>-->
+                    <!--<label class="block-label" for="radio-inline-3-company-address-input" id="radio-inline-3-company-address">-->
+                        <!--<input id="radio-inline-3-company-address-input" type="radio" name="addr" value="3 Romford Road, Wellington, Telford, TF1 4ER">3 Romford Road, Wellington, Telford, TF1 4ER-->
+                    <!--</label>-->
+                    <!--<label class="block-label" for="radio-inline-4-company-address-input" id="radio-inline-4-company-address">-->
+                        <!--<input id="radio-inline-4-company-address-input" type="radio" name="addr" value="4 Romford Road, Wellington, Telford, TF1 4ER">4 Romford Road, Wellington, Telford, TF1 4ER-->
+                    <!--</label>-->
+                <!--</div>-->
+
+          <!---->
+            <!--</fieldset>-->
+            {% set count = 10 %}
+
+            {% if "HD7" in (data.postcode | upper) %}
+              {% set count = data.postcode_hd7.addresses | length %}
+            {%endif%}
+              <p class="govuk-body">{{count}} addresses found for <strong>{{data.postcode | upper}}</strong>. <a class="govuk-link" href="business-address">Change postcode</a></p>
+
+              <input type="hidden" name="directMatch" value="no">
+                <fieldset class="govuk-fieldset">
+                    <div class="govuk-radios">
+                      {% if "HD7" in (data.postcode | upper) %}
+                      {% for address in data.postcode_hd7.addresses %}
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-{{loop.index}}" type="radio" name="addresschoice" value="1 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-{{loop.index}}" class="govuk-label govuk-radios__label">{{address.line_1}},{% if address.line_2 %} {{address.line_2}},{%endif%} {{address.town_or_city}}, HD7 5UZ</label>
+                      </div>
+                      {% endfor %}
+                      {% else %}
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-1" type="radio" name="addresschoice" value="1 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-1" class="govuk-label govuk-radios__label">1 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-2" type="radio" name="addresschoice" value="2 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-2" class="govuk-label govuk-radios__label">2 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-3" type="radio" name="addresschoice" value="3 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-3" class="govuk-label govuk-radios__label">3 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-4" type="radio" name="addresschoice" value="4 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-4" class="govuk-label govuk-radios__label">4 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-5" type="radio" name="addresschoice" value="5 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-5" class="govuk-label govuk-radios__label">5 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-5" type="radio" name="addresschoice" value="6 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-6" class="govuk-label govuk-radios__label">6 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-5" type="radio" name="addresschoice" value="7 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-7" class="govuk-label govuk-radios__label">7 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-5" type="radio" name="addresschoice" value="8 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-8" class="govuk-label govuk-radios__label">8 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-5" type="radio" name="addresschoice" value="9 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-9" class="govuk-label govuk-radios__label">9 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-5" type="radio" name="addresschoice" value="10 Romford Road, Wellington, Telford, TF1 4ER">
+                        <label for="address-choice-10" class="govuk-label govuk-radios__label">10 Romford Road, Wellington, Telford, TF1 4ER</label>
+                      </div>
+
+
+                      {%endif%}
+                      <div class="govuk-radios__divider">or</div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="address-choice-5" type="radio" name="addresschoice" value="5 Romford Road, Wellington, Telford, TF1 4ER~enter-address">
+                        <label for="address-choice-5" class="govuk-label govuk-radios__label">Add the address manually</label>
+                      </div>
+                    </div>
+
+                </fieldset>
+
+              <br>
+
+
+
+                <input type="submit" name="" class="govuk-button" value="Continue"><br><br><br>
+
+        </form>
+
+            </div><!--end column-two-thirds-->
+
+        </div><!--end row-->
+
+
+{% endblock %}
+
+<!-- PAGE based javascript -->
+{% block pageScripts %}
+  {{super()}}
+  <script type="text/javascript">
+    window.onload = function(){
+  }
+
+</script>
+{% endblock %}
