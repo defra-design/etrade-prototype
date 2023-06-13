@@ -1,0 +1,229 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Before your start - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+
+{% block content %}
+
+<style>
+  #searchBar {
+      display: flex;
+      align-items: center;
+    }
+    
+    #searchInput {
+      
+      
+      border: 1px solid #fff;
+    }
+    
+    #searchButton {
+      border: none;
+      cursor: pointer;
+      padding: 12px;
+    }
+
+    .govuk-button {
+      margin-bottom: 0;
+      box-shadow: none;
+    }
+
+    .govuk-button::after{
+      content: "Search";
+    }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-width" style="background-color: #1d70b8;">
+    <div style="width: 66.67%; color: #fff; padding: 50px 0 50px 30px ;">
+      <h2 class="govuk-heading-l" style="color: #fff;" ;>Guidance on commodity data that you may need to submit as part of your export health certificate application</h2>
+
+      <p class="govuk-body-s" style="color: #fff;" >
+        From: <span><strong>Government Digital Services</strong></span>
+        <br>
+        Published 9 June 2023
+        <br>
+        Updated 9 June 2023
+      </p>
+
+      <div id="searchBar">
+        <input class="govuk-input" type="text" id="searchInput" placeholder="Search...">
+        <button class="govuk-button" id="searchButton">
+          <!--<img src="" alt="Search">-->
+        </button>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="govuk-!-padding-bottom-9"></div>
+
+  <h2 class="govuk-heading-s">A - Z</h2>
+
+    <a href="#section-a">A</a>
+    <a href="#section-b">B</a>
+    <a href="#section-c">C</a>
+    <a href="#section-d">D</a>
+    <a href="#section-e">E</a>
+    <a href="#section-f">F</a>
+    <a href="#section-g">G</a>
+    <a href="#section-h">H</a>
+    <a href="#section-i">I</a>
+    <a href="#section-j">J</a>
+    <a href="#section-k">K</a>
+    <a href="#section-l">L</a>
+    <a href="#section-m">M</a>
+    <a href="#section-n">N</a>
+    <a href="#section-o">O</a>
+    <a href="#section-p">P</a>
+    <a href="#section-q">Q</a>
+    <a href="#section-r">R</a>
+    <a href="#section-s">S</a>
+    <a href="#section-t">T</a>
+    <a href="#section-u">U</a>
+    <a href="#section-v">V</a>
+    <a href="#section-w">W</a>
+    <a href="#section-x">X</a>
+    <a href="#section-y">Y</a>
+    <a href="#section-z">Z</a>
+
+    <div class="govuk-!-margin-bottom-5"></div>
+    
+    <div id="searchResults">
+      <!-- Your content here -->
+      <div class="result">
+        <hr>
+        <h2 class="govuk-heading-s" id="section-a">A</h2>
+        <hr>
+        <h2 class="govuk-heading-s">Additional establishment</h2>
+        <p>
+          This is any relevant establishment and activity that you have not already entered for this commodity. For example, a processing plant or meat preparation establishment.
+        </p>
+      </div>
+
+      <div class="govuk-!-padding-bottom-5"></div>
+
+      <div class="result">
+        <hr>
+        <h2 class="govuk-heading-s" id="section-b">B</h2>
+        <hr>
+        <h2 class="govuk-heading-s">Batch number</h2>
+        <p>
+          Format and explanation.
+        </p>
+      </div>
+
+      <div class="govuk-!-padding-bottom-5"></div>
+
+      <div class="result">
+        <hr>
+        <h2 class="govuk-heading-s" id="section-c">C</h2>
+        <hr>
+        <h2 class="govuk-heading-s">Cold store</h2>
+        <p>
+          Format and explanation.
+        </p>
+        <div class="govuk-!-padding-bottom-3"></div>
+      </div>
+
+      
+
+      <div class="result">
+        <h2 class="govuk-heading-s">Cold store activity</h2>
+        <p>
+          Format and explanation.
+        </p>
+      </div>
+
+      <div class="govuk-!-padding-bottom-3"></div>
+
+      <div class="result">
+        <h2 class="govuk-heading-s">Commodity code</h2>
+        <p>
+          Format and explanation.
+        </p>
+      </div>
+
+      <div class="govuk-!-padding-bottom-5"></div>
+
+      <div class="result">
+        <hr>
+        <h2 class="govuk-heading-s" id="section-d">D</h2>
+        <hr>
+        <h2 class="govuk-heading-s">Date of collection or production</h2>
+        <p>
+          If the commodity is a raw material, enter the earliest collection date. If the commodity is processed or manufactured, enter the earliest production date.
+        </p>
+      </div>
+
+      <div class="govuk-!-padding-bottom-5"></div>
+
+      <div class="result">
+        <hr>
+        <h2 class="govuk-heading-s" id="section-n">N</h2>
+        <hr>
+        <h2 class="govuk-heading-s">Number of packages</h2>
+        <p>
+          This is usually the outer packaging you use to ship the consignment. For example, 5 boxes.
+        </p>
+      </div>
+
+      <div class="govuk-!-padding-bottom-5"></div>
+
+      <div class="result">
+        <hr>
+        <h2 class="govuk-heading-s" id="section-p">P</h2>
+        <hr>
+        <h2 class="govuk-heading-s">Product description</h2>
+        <p>
+          If your consignment contains multiple commodities, a description may help you to identify this product. It will not appear on your final application.
+        </p>  
+        </div>
+
+        <div class="govuk-!-padding-bottom-5"></div>
+
+        <div class="result">
+          <hr>
+          <h2 class="govuk-heading-s" id="section-q">Q</h2>
+          <hr>
+          <h2 class="govuk-heading-s">Quantity</h2>
+          <p>
+            This is number of items inside each package.
+          </p>  
+          </div>
+
+          <div class="govuk-!-padding-bottom-5"></div>
+
+    </div>
+  
+    
+   
+    
+    
+  
+</div>
+
+
+<script>
+  document.getElementById('searchButton').addEventListener('click', function() {
+    var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    var results = document.getElementsByClassName('result');
+    
+    for (var i = 0; i < results.length; i++) {
+      var resultText = results[i].textContent.toLowerCase();
+      
+      if (resultText.includes(searchTerm)) {
+        results[i].style.display = 'block';
+      } else {
+        results[i].style.display = 'none';
+      }
+    }
+  });
+</script>
+
+{% endblock %}
