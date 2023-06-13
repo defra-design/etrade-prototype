@@ -1,0 +1,211 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">E-certs</span>
+      Get a URL for testing
+    </h1>
+    <form id="updateUserForm" method="post">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="sort">
+          User
+        </label>
+        <select class="govuk-select js-item" id="selectUser" name="unifiedTestinigUser">
+          {% for org in data.applications%}
+          <option value="{{org.user}}" {% if data.unifiedTestinigUser==org.user %}selected{% endif %} style="text-transform: capitalize;">{{org.user}}{% if org.user=='default' %} (digital and paper){% endif%}</option>
+          {% endfor %}
+        </select>
+        <input type="hidden" id="listType" name="listType" value="{{data.unifiedTestinigUser}}">
+      </div>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Dashboard
+            </h1>
+          </legend>
+          <div class="govuk-radios govuk-radios--small js-item" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="dashboardType" name="dashboardType" type="radio" value="unified" checked>
+              <label class="govuk-label govuk-radios__label" for="dashboardType">
+                Unified dashboard (new)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="dashboardType-2" name="dashboardType" type="radio" value="original">
+              <label class="govuk-label govuk-radios__label" for="dashboardType-2">
+                Current dashboard
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Holding page
+            </h1>
+          </legend>
+          <p>This a waiting page to show the user before the test starts.</p>
+          <div class="govuk-checkboxes govuk-checkboxes--small js-item" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="holdingPage" name="holdingPage" type="checkbox" value="hmrc" data-aria-controls="conditional-scenario" checked>
+              <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                Add a holding page
+              </label>
+            </div>
+            <!-- <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-scenario">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="more-detail">
+            Provide a scenario for this testing (optional)
+          </label>
+          <textarea class="govuk-textarea" id="scenario" name="scenario" rows="5"></textarea>
+        </div>
+      </div> -->
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Application system
+            </h1>
+          </legend>
+          <p class="govuk-hint" id="">This is where the main applicaiton journey will be directed to.</p>
+          <div class="govuk-radios govuk-radios--small js-item" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="system" name="system" type="radio" value="prototype" data-aria-controls="conditional-prototype" {% if data.system=="prototype" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="system">
+                Prototype (recomended)
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-prototype">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="selectVersion">
+                  Version
+                </label>
+                <p class="govuk-hint">You can update the version and list of versions in app/data/session-data-defaults</p>
+                <select class="govuk-select govuk-!-width-one-third js-item" id="selectVersion" name="version">
+                  {% for v in data.versionList %}
+                  <option value="{{v}}" {% if data.latestVersion==v %}selected{% endif %}>{{v}} {% if loop.index == data.versionList | length %}(latest){% endif %}</option>
+                  {% endfor %}
+                </select>
+                <input type="hidden" id="listType" name="listType" value="{{data.unifiedTestinigUser}}">
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="system-2" name="system" type="radio" value="pre-prod" data-aria-controls="conditional-pre-prod" {% if data.system=="pre-prod" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="system-2">
+                Pre-prod
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-pre-prod">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="applicationURL">
+                  Pre-prod URL
+                </label>
+                <p>Create a new application on pre-prod and copy the URL on the "create reference" page.</p>
+                <input class="govuk-input js-item" id="applicationURL" name="applicationURL" type="text" spellcheck="false">
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="system-3" name="system" type="radio" value="dev" {% if data.system=="dev" %}checked{% endif %} data-aria-controls="conditional-dev">
+              <label class="govuk-label govuk-radios__label" for="applicationURL2">
+                Dev
+              </label>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-dev">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="applicationURL2">
+                  Pre-prod URL
+                </label>
+                <p>Create a new application on pre-prod and copy the URL on the "create reference" page.</p>
+                <input class="govuk-input js-item" id="applicationURL2" name="applicationURL2" type="text" spellcheck="false">
+              </div>
+            </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div style="padding:20px; background: #f4f4f4;">
+        <div class="govuk-form-group ">
+          <label class="govuk-label" for="shareURL">
+            URL to share
+          </label>
+          <p class="govuk-hint">Copy the address below if you want to share it.</p>
+          <input class="govuk-input" id="shareURL" name="shareURL" type="text" spellcheck="false" >
+        </div>
+        <a href="#" class="govuk-button" role="button">Start</a>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+</script>
+{% endblock %}
+{% block pageScripts %}
+<script>
+function getURL() {
+  console.log("Updatating URL")
+  var baseURL = window.location.origin
+  let user = $('#selectUser').val()
+  let v = $('#selectVersion').val()
+  let system = $('input[name="system"]:checked').val()
+ console.log($('#applicationURL').val())
+  if ($('#holdingPage').is(":checked")) {
+    baseURL += "/tools/holding-page?urlRedirect="
+  }
+  // currently this goes to verifiy login
+  baseURL += "/beta/verify/gov-sign-in?loginReturnURL="
+  if ($('input[name="dashboardType"]:checked').val() == "unified") {
+    baseURL += "/stories/unified-dashboard/v2/dashboard"
+  } else {
+    baseURL += "/beta/v"+v+"/dashboard"
+  }
+  let applicationURL = $('#applicationURL').val() || $('#applicationURL2').val()
+ 
+  console.log(applicationURL)
+  let url = baseURL + "?unifiedTestinigUser="+user+"&system="+system+"&applicationURL="+applicationURL+"&version="+v
+  return url
+
+}
+
+window.addEventListener('load', function() {
+
+
+  $('#shareURL').val(getURL())
+  $('.govuk-button').attr('href',getURL())
+  // $('#selectUser').change(function() {
+  //   $('#shareURL').val(getURL())
+  // });
+  // $('#selectVersion').change(function() {
+  //   $('#shareURL').val(getURL())
+  // });
+
+
+  $('.js-item').each(function() {
+        console.log("looking to see if complete")
+        var elem = $(this);
+
+        // Look for changes in the value
+        elem.bind("propertychange change click keyup input paste", function(event) {
+            // If value has changed...
+
+              $('#shareURL').val(getURL())
+               $('.govuk-button').attr('href',getURL())
+        });
+    });
+
+  $(".govuk-radios__input").on("click",function(e){
+      $('#shareURL').val(getURL())
+       $('.govuk-button').attr('href',getURL())
+    })
+
+})
+</script>
+{% endblock %}

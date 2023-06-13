@@ -21,39 +21,70 @@ Add closed containers number – {{serviceName}} – GOV.UK
 {% endblock%}
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-three-quarters">
-    <h1 class="govuk-heading-xl">Add container and or seal numbers</h1>
-    <p>You must enter continer and or seal numbers if: </p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>the goods will be transported in closed containers</li>
-      <li>a seal is affixed to the container, truck or rail wagon during transport.</li>
-    </ul>
-    <p>You do not need to enter trailer ship or tanker numbers here.</p>
+  <div class="govuk-grid-column-two-thirds">
+     {% if query.hasError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+    
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        <li>
+          <a href="containerNumbers1">The container number must be 3 letters followed by a U,J,Z or R then followed by 7 numbers</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endif %}
+    
 
-    <form id="form" method="post" action="add-seal-numbers">
-      <div class="govuk-form-group">
+    <form id="form" method="post">
+      <div class="govuk-form-group {% if query.hasError  and errorType == 'empty' %}govuk-form-group--error{% endif%}">
       <fieldset class="govuk-fieldset">
-         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-visually-hidden">
-     Enter the container or seal number or both.
+         <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+     Add a container and or seal numbers
   </legend>
+  <p class="govuk-hint">You do not need to enter trailer ship or tanker numbers here.</p>
       <div class="govuk-checkboxes" data-module="govuk-checkboxes">
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="sealType-1" name="sealType" type="checkbox" value="container" data-aria-controls="conditional-sealType-1">
+          <input 
+          class="govuk-checkboxes__input" 
+          id="sealType-1" name="sealType" 
+          type="checkbox" 
+          value="container" 
+          data-aria-controls="conditional-sealType-1" 
+          {% if  (query.hasError and data.sealType) %}
+           {% if  'container' in data.sealType %}checked{% endif %}
+           {% endif %}
+           >
           <label class="govuk-label govuk-checkboxes__label" for="sealType-1">
-            Container number
+            Closed shipping continer number
           </label>
         </div>
         <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-sealType-1">
-          <div class="govuk-form-group">
+          <div class="govuk-form-group 
+          {% if query.hasError  and data.errorType == 'containers' %}govuk-form-group--error{% endif%}">
             <label class="govuk-label govuk-visually-hidden" for="containerNumbers">
-            Container number
+            Enter a closed shipping continer number
             </label>
-            <p class="govuk-hint" id="containerNumbersHint">This is 4 letters followed by 7 numbers. For example, BICU1234567 </p>
-            <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers" name="containerNumbers" aria-described-by="containerNumbersHint"></textarea>
+            <p class="govuk-hint" id="containerNumbersHint">This is 3 letters followed by a U,J,Z or R then followed by 7 numbers. For example, BICU1234567</p>
+            {% if query.hasError and data.errorType == 'containers' %}
+            <p class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> The container number must be 3 letters followed by a U,J,Z or R then followed by 7 numbers
+            </p>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10" type="text" id="containerNumbers" name="containerNumbers" aria-described-by="containerNumbersHint" {% if (query.hasError and data.sealType and 'container' in data.sealType ) and data.containerNumbers %}value="{{data.containerNumbers}}"{% endif %}>
           </div>
         </div>
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="sealType-2" name="sealType" type="checkbox" value="seal" data-aria-controls="conditional-sealType-2">
+          <input class="govuk-checkboxes__input" id="sealType-2" name="sealType" type="checkbox" value="seal" data-aria-controls="conditional-sealType-2"
+          {% if  (query.hasError and data.sealType) %}
+           {% if  'seal' in data.sealType %}checked{% endif %}
+           {% endif %}
+          >
           <label class="govuk-label govuk-checkboxes__label" for="sealType-2">
             Seal number
           </label>
@@ -63,16 +94,18 @@ Add closed containers number – {{serviceName}} – GOV.UK
             <label class="govuk-label govuk-visually-hidden" for="sealNumbers">
                 Seal number 
             </label>
-            <p class="govuk-hint" id="sealNumbersHint">Enter this if a seal is affixed to the container, truck or rail wagon under the supervision of the competent authority issuing the certificate.</p>
-            <input class="govuk-input govuk-input--width-20" type="text" id="sealNumbers" name="sealNumbers" aria-described-by="sealNumbersHint"></input>
+            <p class="govuk-hint" id="sealNumbersHint">The seals can be attached to either a container or the transport vehicle.</p>
+            <input class="govuk-input govuk-!-width-two-thirds" type="text" id="sealNumbers" name="sealNumbers" aria-described-by="sealNumbersHint"
+            {% if (query.hasError and data.sealType and 'seal' in data.sealType ) and data.sealNumbers %}value="{{data.containerNumbers}}"{% endif %}
+            ></input>
           </div>
         </div>
       </div>
 
       </fieldset>
-      <p class="govuk-body"><strong>You will be able to add multiple container and or seal numbers</strong></p>
+      <!-- <p class="govuk-body"><strong>You will be able to add multiple container and or seal numbers</strong></p> -->
        </div>
-          <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+          <button class="govuk-button" data-v-563d6e59="">Add</button>
       
     </form>
   </div>

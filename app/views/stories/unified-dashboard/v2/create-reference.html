@@ -34,9 +34,12 @@
         </div>
       </div>
       {% endif %}
-
       {% set certificate = data.selectedCertificate %}
-      <form method="post" novalidate action="/beta/v{{data.version or '3-5'}}/application/export/set-certificate?ehc={{certificate}}&url=task-list?new=yes&returnURL=/stories/unified-dashboard/v2/dashboard?added=yes">
+      {% set action = "/beta/v"+data.version+"/application/export/set-certificate?ehc="+certificate+"&url=task-list?new=yes&returnURL=/stories/unified-dashboard/v2/dashboard?added=yes" %}
+      {% if data.system and data.system != "prototype" and data.applicationURL %}
+      {% set action = data.applicationURL %}
+      {% endif %}
+      <form method="post" novalidate action="{{action}}">
         <div class="govuk-form-group {% if query.has_error %}govuk-form-group--error{% endif %}">
           <h1 class="govuk-label-wrapper ">
             <label class="govuk-label govuk-label--xl" for="ref" id="ref-label">

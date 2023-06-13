@@ -65,6 +65,42 @@ module.exports = function(router) {
     
     
   })
+  router.post('/' + base_url + 'container-numbers/*/add-container-and-seal-number', function(req, res) {
+  console.log("post from add-container-and-seal-number")
+    var seals = req.body.sealNumbers
+    var container = req.body.containerNumbers
+    var item = {"container":container,"seals":seals}
+    // check to see if continer number matches the requirment. 
+    // 3 letters followed by a U,J,Z or R then followed by 6 numbers followed by 1 number.
+    if(!container.match(/^[a-zA-Z]{3}[UJZR][0-9]{6}(\s)*\d$/)){
+
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/add-container-and-seal-number?hasError=yes&errorType=containers');
+    }
+    else{
+      // need it to be UpperCase
+      req.session.data.containerSealNumbers.push(item)
+
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-list');
+    }
+    
+    
+    
+  })
+ router.post('/' + base_url + "container-numbers/*/remove", function(req, res) {
+    console.log("In goods containter-seal-numbers remove");
+    req.session.data.goods['hasContainers'] = ""
+    if (req.body.remove == "yes" ) {
+      req.session.data.containerSealNumbers.splice(req.query.id, 1);
+    }
+    if(req.session.data.containerSealNumbers.length == 0 ){
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-start');
+    }else{
+      res.redirect(301, '/' + base_url + 'container-numbers/'+req.params[0]+'/container-seal-numbers-list');
+    }
+
+
+  })
+  
  router.post('/' + base_url + 'container-numbers/*/add-seal-numbers', function(req, res) {
     var seals = req.body.sealNumbers
     var container = req.body.containerNumbers
