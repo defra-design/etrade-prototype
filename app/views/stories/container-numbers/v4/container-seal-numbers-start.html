@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Uploaded documents – {{serviceName}} – GOV.UK
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form id="form" method="METHOD" action="../task-list">
+
+      <h1 class="govuk-heading-xl">Add container and or seal numbers</h1>
+      <p>You must enter continer and or seal numbers if: </p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>the goods will be transported in closed shipping containers</li>
+      <li>a seal is affixed to the container, truck or rail wagon during transport.</li>
+    </ul>
+
+    <p><a href="add-container-and-seal-number" class="govuk-button govuk-button--secondary">Add a container or seal number</a></p>
+
+    <div class="govuk-form-group" id="skip-question-container">
+        <h3 class="govuk-heading-m">You can skip this section</h3>
+        <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+        <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
+          <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if data.goods['hasSealNumber']=="skipped" %}checked{% endif %}>
+          <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+            I've entered as much information as I can
+          </label>
+        </div>
+      </div>
+
+      <div class="govuk-button-group">
+      
+      <button class="govuk-button" data-v-563d6e59="">Save and continue</button>
+
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  function toggleSkipped() {
+    if ($('input[name=goodsHaveSeal]:checked').length > 0) {
+      $('#skip-question-checkbox').hide()
+      $('.skip-wrapper.govuk-error-message').hide()
+      $('.skip-wrapper.govuk-form-group').removeClass('govuk-form-group--error')
+
+
+
+    } else {
+      $('#skip-question-checkbox').show()
+
+    }
+  }
+
+
+  $('.govuk-radios__input').change(function() {
+    toggleSkipped()
+  })
+
+  toggleSkipped()
+
+
+})
+
+</script>
+{% endblock%}

@@ -76,5 +76,11 @@ module.exports = {
   "bcpDestination": "Northern Ireland",
   "postcode_hd7": address_hd7,
   // latest version
-  "version" : "3-5"
+  "latestVersion" : "5",
+  // list versions available from the testing config page 
+  "versionList": ["3-1","3-2","3-3","3-4","3-5","5"],
+  // for config page to create various routes for testing. 
+  "system": "prototype",
+  // for config page to show either current dashboard or use the "unified" dashboard design. 
+  "dashboardType": "unified"
 }
