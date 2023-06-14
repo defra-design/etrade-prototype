@@ -38,7 +38,7 @@
       {% set action = "/beta/v"+data.version+"/application/export/set-certificate?ehc="+certificate+"&url=task-list?new=yes&returnURL=/stories/unified-dashboard/v2/dashboard?added=yes" %}
       {% if data.system and data.system != "prototype" and data.applicationURL %}
       {% set action = data.applicationURL %}
-      {% endif %}
+      {% endif %} 
       <form method="post" novalidate action="{{action}}">
         <div class="govuk-form-group {% if query.has_error %}govuk-form-group--error{% endif %}">
           <h1 class="govuk-label-wrapper ">
@@ -63,7 +63,11 @@
         <section class="m-t-15" id="actions" data-v-01948390="">
           <div class="govuk-grid-row" data-v-01948390="">
             <div class="govuk-grid-column-two-thirds" data-v-01948390="">
+              {% if data.system and data.system != "prototype" and data.applicationURL %}
+              <a role="button" href="{{action}}" class="govuk-button" data-v-01948390="">Save and continue</a>
+              {% else %}
               <button role="button" type="submit" class="govuk-button" data-v-01948390="">Save and continue</button>
+              {% endif %}
             </div>
           </div>
         </section>
