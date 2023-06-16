@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Copy – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent%}
+<a href="dashboard" class="govuk-back-link">Return to your applications</a>
+{% endblock%}
+
+{% block content %}
+
+{% set id = query.id or '0' %}
+{% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
+{% set app = list[id] %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <p><span class="govuk-tag">Digital</span></p>
+    <h1 class="govuk-heading-xl">Manage application <span style="white-space: nowrap;"> {{app.applicationID}} </span>
+    </h1>
+      <div class="govuk-tabs" data-module="govuk-tabs">
+                <h2 class="govuk-tabs__title">
+                    Contents
+                </h2>
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#summary">
+                            Summary
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#comnodities">
+                            Commodities (3)
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#exportDetails">
+                            Export details
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#attachments">
+                            Documents (2)
+                        </a>
+                    </li>
+                 
+                </ul>
+                <!-- Aplication summary START  -->
+                <div class="govuk-tabs__panel" id="summary">
+                    <h2 class="govuk-heading-l">Application Summary</h2>
+                    {% block summaryTab %}{% include './components/_tab-overview.html' %}{% endblock %}
+                </div>
+                <!-- Aplication summary END  -->
+                <!-- Commodities  START  -->
+                <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="comnodities">
+                    <h2 class="govuk-heading-l">Added 3 records</h2>
+                    {% block commodityTab %}{% include './components/_tab-commodities.html' %}{% endblock %}
+                </div>
+                <!-- Commodities END  -->
+                <!-- Export details  START  -->
+                <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="exportDetails">
+                    <h2 class="govuk-heading-l">Export details</h2>
+                      {% block exportTab %}{% include './components/_tab-export.html' %}{% endblock %}
+
+                </div>
+                <!--  Export details  END  -->
+                <!-- Attachements details  START  -->
+                <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="attachments">
+                    <h2 class="govuk-heading-l">2 added documents</h2>
+                    <p class="govuk-body"><a href="#" class="govuk-link"> Download all 5 files [zip]</a></p>
+                    <dl class="govuk-summary-list app-list-with-actions hmrc-list-with-actions--short">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+                                <ul class="govuk-list govuk-!-margin-bottom-0">
+                                    <li><strong>6-3_ehc8359_Noble_1.xlsx</strong></li>
+                                    <li>Rail info</li>
+                                    <li>Rail consignment note</li>
+                                </ul>
+                            </dt>
+                            <dd class="govuk-summary-list__actions app-summary-list__actions">
+                                <ul class="govuk-summary-list__actions-list">
+                                    <li class="govuk-summary-list__actions-list-item">
+                                        <a class="govuk-link govuk-link--no-visited-state" href="#"><span aria-hidden="true">Download</span><span class="govuk-visually-hidden">Change Sydney Russell</span></a>
+                                    </li>
+          
+                                </ul>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+                                <ul class="govuk-list govuk-!-margin-bottom-0">
+                                    <li><strong>ehc8361-template_21092022-v3 (DFDS 10b).xlsx</strong></li>
+                                    <li>Packing list</li>
+                                    <li>Other</li>
+                                </ul>
+                            </dt>
+                            <dd class="govuk-summary-list__actions app-summary-list__actions">
+                                <ul class="govuk-summary-list__actions-list">
+                                    <li class="govuk-summary-list__actions-list-item">
+                                        <a class="govuk-link govuk-link--no-visited-state" href="#"><span aria-hidden="true">Download</span><span class="govuk-visually-hidden">Change Sydney Russell</span></a>
+                                    </li>
+        
+                                </ul>
+                            </dd>
+                        </div>
+                    </dl>
+                    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="../certificates/2849EHC/supporting-documents">Add attachments</a></p>
+                </div>
+                <!-- Attachements details  END  -->
+                
+            </div>
+
+
+   
+    <!-- <p class="govuk-body">
+
+      <a class="govuk-button govuk-button--secondary " href="clone">Clone as new application</a>
+
+    </p> -->
+    <h2 class=govuk-heading-l>Actions</h2>    <ul class="govuk-list  govuk-!-margin-bottom-6">
+
+      <li><a class="govuk-link govuk-link--no-visited-state" href="certificate/check-your-progress?certificate=ehc2849">Edit and submit this application</a></li>
+
+      <li><a class="govuk-link govuk-link--no-visited-state" href="clone?id=4&amp;is_group=">Copy as new application</a></li>
+
+      <li><a class="govuk-link govuk-link--no-visited-state" href="delete">Delete this application</a></li>
+
+    </ul>
+
+  </div>
+</div>
+{% endblock %}

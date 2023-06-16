@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Copy – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent%}
+<a href="../dashboard" class="govuk-back-link">Return to your applications</a>
+{% endblock%}
+
+{% block content %}
+{% set list =  (data.unifiedTestinigUser | findObjectByKey(data.applications)).applications %}
+{% set id = query.id or '0' %}
+{% set app = list[id] %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p><span class="govuk-tag">Paper</span></p>
+    <h1 class="govuk-heading-xl">Manage application <span style="white-space: nowrap;"> {{app.applicationID}} </span>
+    </h1>
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Application status
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <div class="govuk-tag govuk-tag--{{app.tag}}">
+            {{app.status}}
+          </div>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Application id
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{app.applicationID}}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Your reference
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-hint">{{app.reference or 'Not set'}} </span>
+        </dd>
+      </div>
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          EHC
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{app.EHC}}EHC
+          <br>
+          {{app.cert_info}}
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Destination
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{app.importer}} LTD<br>
+          {{app.destination}}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Exporter
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{app.exporter or 'not set'}}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Certifier
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{app.certifier or "VetsforPets Ltds"}}
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__40">
+            Proposed export date
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__40">
+            02 Jan 2022
+          </dd>
+        </div>
+    </dl>
+
+    <!-- <p class="govuk-body">
+
+      <a class="govuk-button govuk-button--secondary " href="clone">Clone as new application</a>
+
+    </p> -->
+    <ul class="govuk-list  govuk-!-margin-bottom-6">
+
+      <li><a class="govuk-link govuk-link--no-visited-state" href="certificate/check-your-progress?certificate=ehc2849">Edit and submit this application</a></li>
+
+     {% set link = "./echo/application?id="+(loop.index-1) %}
+              {% set copyLink = "./echo/copy?id="+(loop.index-1) %}
+              {% if app.type == 'Digital'%}
+              {% set link = "application?id="+(loop.index-1) %}
+              {% set copyLink = "copy-application?id="+(loop.index-1)+"&selectedCertificate="+app.EHC%}
+              {% else %}
+              {% if app.isEU == "yes" %}
+              {% set copyLink = "changes-to-service-copy?id="+(loop.index-1)+"&selectedCertificate="+app.EHC %}
+              {% endif %}
+              {% endif %}
+
+
+      <li><a class="govuk-link govuk-link--no-visited-state" href="../{{copyLink}}">Copy as new application</a></li>
+
+      <li><a class="govuk-link govuk-link--no-visited-state" href="delete">Delete this application</a></li>
+
+    </ul>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% set serviceName = "Apply to export animals or animal products
+
+"%}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Changes to the service - Apply for an Export health certificate - GOVUK
+{% endblock %}
+
+{% block beforeContent%}
+{% block navigation %}{% include './components/_navigation.html' %}{% endblock %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+<!-- get a list of certs -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">How paperless applications work</h1>
+
+      <h2 class="govuk-heading-m">Entering details of your consignment</h2>
+      <p class="govuk-body" lang="en">
+          The information that you enter about your consignment – for example, species, quantity and method of transport – will be validated against the EU’s Trade Control and Expert System (<abbr>TRACES</abbr>). This ensures the data is consistent with the requirements of the country you are sending your consignment to.
+      </p>
+      <h2 class="govuk-heading-m">Certifier checks</h2>
+      <p>Once you’ve entered information about your consignment, your certifier can use the online service to: 
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>review the information you have entered</li>
+        <li>enter information for any sections you skipped</li>
+        <li>cancel and replace the application if there are any changes to the consignment
+</li>
+      </ul>
+    <h2 class="govuk-heading-m">Creating a common health entry document (<abbr>CHED</abbr>)</h2>
+      <p>Once your certifier has sent the application to TRACES for validation, the importer will be able to create a CHED
+
+      </p>
+
+
+<h2 class="govuk-heading-m">When the consignment arrives at the border control post</h2>
+<p>The driver responsible for your consignment will be able to download a unique QR code to show at the border control post (BCP). 
+      </p>
+
+      <p>You will be able to check whether your BCP accepts paperless applications before you submit your application. If they cannot accept a paperless application, you will need to submit a paper EHC instead.
+
+      </p>
+      <form method="post" novalidate="">
+        <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Do you want to create a new digital application for this EHC?
+      </legend>
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <!-- <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~/beta/v{{data.version or '3-5'}}/application/export/set-certificate?ehc={{data.selectedCertificate or '8350' }}"> -->
+          <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~./create-reference">
+          <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+             Yes
+          </label>
+          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+            You will be able to download a QR code to show at the border control post.
+
+        </div>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="where-do-you-live-2" name="typeOfCertificate" type="radio" value="paper~https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc{{data.selectedCertificate or '8350' }}">
+          <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+             No, {%if data.journey == "copy" %}copy the paper EHC{% else %}apply for a paper EHC{%endif%} 
+          </label>
+          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+            You will need to print a copy to accompany your consignment.
+        </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+        <input type="hidden" name="firstTime" value="no">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}
+

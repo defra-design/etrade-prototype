@@ -1,0 +1,168 @@
+{% set serviceName = "Apply to export animals or animal products
+
+"%}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Changes to the service - Apply for an Export health certificate - GOVUK
+{% endblock %}
+
+{% block beforeContent%}
+{% block navigation %}{% include './components/_navigation.html' %}{% endblock %}
+<a href="recent-certificates" class="govuk-back-link">Back</a>
+<style type="text/css">
+  .chevron::after {
+  border-style: solid;
+  border-width: 0.5em 0.5em 0 0;
+  content: '';
+  display: block;
+  height: 1em;
+  right: 0em;
+  position: absolute;
+  top: 80px;
+  transform: rotate(-45deg);
+  vertical-align: top;
+  width: 1em;
+}
+
+.chevron.right:after {
+  right: 0;
+  transform: rotate(45deg);
+}
+.govuk-grid-column-one-quarter{
+  position:relative;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- get a list of certs -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">You can now submit a digital application to the EU and Northern Ireland</h1>
+
+      <p class="govuk-body govuk-body-l" lang="en">
+        For applications to the EU and Northern Ireland, you can create a paperless EHC with data that matches the EU's legislative requirements (CHED) and their IT system (TRACES).
+      </p>
+    </div>
+  </div>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    <h2 class="govuk-heading-l">How it works</h2>
+    <ol class="govuk-list govuk-row govuk-!-margin-top-4" style="overflow: hidden;">
+        <li class="govuk-grid-column-one-quarter ">
+          <h3 class="gouvk-heading-s" style="display:block; text-align: center; margin-bottom:10px;"><span class="govuk-tag">You</span></h3>
+          <div class="chevron right" align="center" style="display:block; text-align: center; height:150px;"><img src = "/public/images/exporting-stage-1-exporter-creates-application.svg" alt="Showing a computer screen with a government online form fields with a submit button" /></div>
+          <p class="govuk-!-font-size-16">1. Create a digital application, similar to paper but some data you must select, such as commodity codes, and premises, such as cold stores. You can defer some questions to your certifier, such as transport details.
+          <!-- but some data you must select, such as commodity codes, and premises, such as cold stores. You can choose to defer some questions to your certifier, such as transport details. -->
+          </p>
+        </li>
+        <li class="govuk-grid-column-one-quarter">
+          <h3 class="gouvk-heading-s" style="display:block; text-align: center; margin-bottom:10px;"><span class="govuk-tag">Certifier</span></h3>
+          <div class="chevron right" align="center" style="display:block; text-align: center; height:150px;">
+<img src = "/public/images/Export-stage2-review-and-submit.svg" alt="Showing a computer screen with a government online form fields with a submit button" /></div>
+          <p class="govuk-!-font-size-16">2. The data is reviewed, digitally approved and validated against TRACES. The Certifier will no longer need to print and stamp amendments.</p>
+        </li>
+        <li class="govuk-grid-column-one-quarter">
+          <h3 class="gouvk-heading-s" style="display:block; text-align: center; margin-bottom:10px;"><span class="govuk-tag">Importer</span></h3>
+          <div class="chevron right" align="center" style="display:block; text-align: center; height:150px;" ><img src = "/public/images/export-stage-3-transfer.svg" alt="Showing a computer screen with a government online form fields with a submit button" /></div>
+          <p class="govuk-!-font-size-16">3. All data appears in TRACES as an EU Import Notice and is copied into a CHED, and the two are linked.</p>
+        </li>
+        <li class="govuk-grid-column-one-quarter">
+           <h3 class="gouvk-heading-s" style="display:block; text-align: center; margin-bottom:10px;"><span class="govuk-tag">Transporter</span></h3>
+          <div align="center" style="display:block; text-align: center; height:150px;" >
+           
+            <img src = "/public/images/export-stage-4-QR-on-phone.svg" alt="Showing a computer screen with a government online form fields with a submit button"/></div>
+          <p class="govuk-!-font-size-16">4. You will give a QR code to the transporter enabling the BCP to locate the linked Import Notice and CHED.</p>
+        </li>
+      </ol>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    
+  <div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">
+      What's remains the same
+    </h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>No requirement to print and stamp EHCs</li>
+      <li>Data validation with the EU’s requirements prior to dispatch</li>
+      <li>Data matching between the EU Import Notice and CHED</li>
+      <li>Reduced burden on importer when creating the CHED</li>
+      <li>Data can be changed after the goods have been dispatched in the digital service, such as transport changes or BCP feedback (Cancel & reissue)</li>
+    </ul>
+    
+     <h2 class="govuk-heading-m">
+      What remains the same
+    </h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Certifiers will continue to check data and the goods</li>
+      <li>Data (and sometimes goods) are checked by BCPs (a separate process to data validation)</li>
+      <li>A previous digital application can be copied</li>
+    </ul>
+<h2 class="govuk-heading-m">
+      Before you start
+    </h2>
+
+
+      <p>Ensure you allow adequate time for your first application.</p>
+
+ <p>In order to use the data in your application, the person cloning the CHED will need to find the EU import notice. You must make the person that creates the CHED aware of this before you start. If you’re not sure who does this, contact your customer.
+
+</p>
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      More about how to create a CHED
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <iframe src="https://giphy.com/embed/czgwocJCnPQyiLuc2p" width="430" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+  </div>
+</details>
+
+
+
+
+      <form method="post" novalidate="">
+        <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Do you want to create a new digital application for this EHC?
+      </legend>
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <!-- <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~/beta/v{{data.version or '3-5'}}/application/export/set-certificate?ehc={{data.selectedCertificate or '8350' }}"> -->
+          <input class="govuk-radios__input" id="where-do-you-live" name="typeOfCertificate" type="radio" value="digital~./create-reference">
+          <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+             Yes
+          </label>
+          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+            You will be able to download a QR code to show at the border control post.
+
+        </div>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="where-do-you-live-2" name="typeOfCertificate" type="radio" value="paper~https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc{{data.selectedCertificate or '8350' }}">
+          <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+             No, create a non-digital version
+          </label>
+          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+            Existing data from this application will be copied and a paper certificate will need to accompany your consignment.
+        </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+        <input type="hidden" name="firstTime" value="no">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,314 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Select a certificate - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  <!-- <div class="govuk-grid-column-full" data-v-75a00750=""><span class="govuk-caption-xl"> Description of the goods
+    </span> -->
+  <div class="govuk-grid-column-two-thirds">
+    <!--<form class="" method="post" action="how-to-add">-->
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" style="display:none" id="page-error-summary" tabindex="-1">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#search-and-list">Select a certificate</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <form class="" method="post" action="{% if data.firstTime != 'no' %}type-of-certificate{% elseif data.firstTime == 'no' %}digital-or-paper{% else %}https://defra-ehco-prototype.herokuapp.com/beta/v8/core/certificate/check-your-progress?certificate=ehc{{cert.EHC}}{% endif %}">
+      <h1 class="govuk-heading-xl">Select a certificate for your export</h1>
+      <div class="govuk-form-group" id="search-and-list">
+        <p class="govuk-body"></p>
+        <label class="govuk-label" for="search-term">Search for certificate</label>
+        <div class="govuk-hint">Search by certificate number or name</div>
+        <input class="govuk-input" id="search-term" type="text">
+        <br>
+        <br>
+        <div class="govuk-radios" data-module="govuk-radios" id="certificate-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection1" type="radio" data-target="EHC8328-commodities" value="0">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection1"><strong>EHC8299</strong> Blood products not intended for human consumption that could be used as feed material intended for dispatch to, or transit through, the
+              European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection2" type="radio" data-target="EHC8328-commodities" value="1">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection2"><strong>EHC8307</strong> Blood and blood products from equidae to be used outside the feed chain to, or transit through, the European Union and Northern Ireland
+              </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection3" type="radio" data-target="EHC8328-commodities" value="2">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection3"><strong>EHC8308</strong> Untreated blood products for the manufacture of derived products for purposes outside the feed chain for farmed animals to, or transit
+              through, the European Union and Northern Ireland </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection4" type="radio" data-target="EHC8328-commodities" value="3">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection4"><strong>EHC8323</strong> Bovine colostrum and bovine colostrum products not intended for human consumption to the European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection5" type="radio" data-target="EHC8328-commodities" value="4">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection5"><strong>EHC8328</strong> Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection6" type="radio" data-target="EHC8328-commodities" value="5">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection6"><strong>EHC8329</strong> Treated hides and skins of ruminants and equidae that have been separated for 21 days to the European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection7" type="radio" data-target="EHC8328-commodities" value="6">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection7"><strong>EHC8331</strong> Pig bristles from third countries free from African swine fever to the European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection8" type="radio" data-target="EHC8328-commodities" value="7">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection8"><strong>EHC8332</strong> Fish oil not intended for human consumption to, or transit through, the European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection10" type="radio" data-target="EHC8328-commodities" value="9">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection10"><strong>EHC8351</strong> Composite food products intended for human consumption for transit through, or storage in the European Union or Northern Ireland post 21
+              April 2021</label>
+          </div>
+          <div class="govuk-radios__item js-hidden">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection11" type="radio" data-target="EHC8328-commodities" value="10">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection11"><strong>EHC8359</strong> Eggs for human consumption to the European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item js-hidden">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection12" type="radio" data-target="EHC8328-commodities" value="11">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection12"><strong>EHC8361</strong> Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to
+              the European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item js-hidden">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection13" type="radio" data-target="EHC8328-commodities" value="12">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection13"><strong>EHC8364</strong> Live bivalve molluscs, echinoderms, tunicates, marine gastropods and products from these animals intended for human consumption to the
+              European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item js-hidden">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection14" type="radio" data-target="EHC8328-commodities" value="13">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection14"><strong>EHC8367</strong> Fresh meat of wild bovidae, camelid and cervid animals to the European Union and Northern Ireland post 21 April 2021
+            </label>
+          </div>
+          <div class="govuk-radios__item js-hidden">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection15" type="radio" data-target="EHC8328-commodities" value="14">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection15"><strong>EHC8370</strong> Fresh meat, excluding mechanically separated meat, of domestic porcine animals to the European Union and Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item js-hidden">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection16" type="radio" data-target="EHC8328-commodities" value="15">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection16"><strong>EHC8371</strong> Fresh meat intended for human consumption, excluding minced meat and mechanically separated meat, of poultry to the European Union and
+              Northern Ireland</label>
+          </div>
+          <div class="govuk-radios__item js-hidden">
+            <input class="govuk-radios__input " name="certificate" id="certificate-selection17" type="radio" data-target="EHC8328-commodities" value="16">
+            <label class="govuk-label govuk-radios__label" for="certificate-selection17"><strong>EHC8468</strong> Dairy products intended for human consumption that are required to undergo a pasteurisation treatment to the European Union and Northern
+              Ireland</label>
+          </div>
+
+
+
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection1" type="radio" data-target="EHC8328-commodities" value="0">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection1"><strong>EHC8299</strong> Blood products not intended for human consumption that could be used as feed material intended for dispatch to, or transit through, the European Union and Northern Ireland </label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection2" type="radio" data-target="EHC8328-commodities" value="1">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection2"><strong>EHC8307</strong> Blood and blood products from equidae to be used outside the feed chain to, or transit through, the European Union and Northern Ireland</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection3" type="radio" data-target="EHC8328-commodities" value="2">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection3"><strong>EHC8308</strong> Untreated blood products for the manufacture of derived products for purposes outside the feed chain for farmed animals to, or transit through, the European Union and Northern Ireland</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection4" type="radio" data-target="EHC8328-commodities" value="3">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection4"><strong>EHC8323</strong> Bovine colostrum and bovine colostrum products not intended for human consumption to the European Union and Northern Ireland</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection5" type="radio" data-target="EHC8328-commodities" value="4">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection5"><strong>EHC8328</strong> Treated hides and skins of ungulates to, or transit through, the European Union and Northern Ireland</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection6" type="radio" data-target="EHC8328-commodities" value="5">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection6"><strong>EHC8329</strong> Treated hides and skins of ruminants and equidae that have been separated for 21 days to the European Union and Northern Ireland</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection7" type="radio" data-target="EHC8328-commodities" value="6">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection7"><strong>EHC8331</strong> Pig bristles from third countries free from African swine fever to the European Union and Northern Ireland</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection8" type="radio" data-target="EHC8328-commodities" value="7">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection8"><strong>EHC8332</strong> Fish oil not intended for human consumption to, or transit through, the European Union and Northern Ireland</label>
+            </div>
+
+
+
+            <div class="govuk-radios__item js-hidden">
+              <input class="govuk-radios__input " name="certificate" id="certificate-selection9" type="radio" data-target="EHC8328-commodities" value="8">
+              <label class="govuk-label govuk-radios__label" for="certificate-selection9"><strong>EHC8350</strong> Composite food products intended for human consumption to the European Union and Northern Ireland post 21 April 2021</label>
+            </div>
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection10" type="radio" data-target="EHC8328-commodities" value="9">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection10"><strong>EHC8351</strong> Composite food products intended for human consumption for transit through, or storage in the European Union or Northern Ireland post 21 April 2021</label>
+              </div>
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection11" type="radio" data-target="EHC8328-commodities" value="10">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection11"><strong>EHC8359</strong> Eggs for human consumption to the European Union and Northern Ireland</label>
+              </div>
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection12" type="radio" data-target="EHC8328-commodities" value="11">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection12"><strong>EHC8361</strong> Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</label>
+              </div>
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection13" type="radio" data-target="EHC8328-commodities" value="12">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection13"><strong>EHC8364</strong> Live bivalve molluscs, echinoderms, tunicates, marine gastropods and products from these animals intended for human consumption to the European Union and Northern Ireland</label>
+              </div>
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection14" type="radio" data-target="EHC8328-commodities" value="13">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection14"><strong>EHC8367</strong> Fresh meat of wild bovidae, camelid and cervid animals to the European Union and Northern Ireland post 21 April 2021</label>
+              </div>
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection15" type="radio" data-target="EHC8328-commodities" value="14">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection15"><strong>EHC8370</strong> Fresh meat, excluding mechanically separated meat, of domestic porcine animals to the European Union and Northern Ireland</label>
+              </div>
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection16" type="radio" data-target="EHC8328-commodities" value="15">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection16"><strong>EHC8371</strong> Fresh meat intended for human consumption, excluding minced meat and mechanically separated meat, of poultry to the European Union and Northern Ireland</label>
+              </div>
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input " name="certificate" id="certificate-selection17" type="radio" data-target="EHC8328-commodities" value="16">
+                <label class="govuk-label govuk-radios__label" for="certificate-selection17"><strong>EHC8468</strong> Dairy products intended for human consumption that are required to undergo a pasteurisation treatment to the European Union and Northern Ireland</label>
+              </div>
+
+
+        </div>
+        <div id="no-results" class="no-results govuk-!-font-size-19" style="display:none">
+          <p class="govuk-body govuk-!-font-weight-bold">There are no matching results.</p>
+          <p class="govuk-body">Improve your search results by:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>double-checking your spelling</li>
+            <li>using fewer keywords</li>
+            <li>searching for something less specific</li>
+          </ul>
+        </div>
+      </div>
+      <div class="govuk-form-group">
+        <!-- start sequence. set range to show if page is under 3 -->
+        <nav id="pagination" class="govuk-pagination" role="navigation" aria-label="results">
+          <ul class="govuk-pagination__list">
+            <li class="govuk-pagination__item govuk-pagination__item--current">
+              <a class="govuk-link govuk-pagination__link" href="?page=1&amp;displayMax=10" aria-label="Page 1">
+                1
+              </a>
+            </li>
+            <li class="govuk-pagination__item ">
+              <a class="govuk-link govuk-pagination__link" href="?page=2&amp;displayMax=10" aria-label="Page 2">
+                2
+              </a>
+            </li>
+          </ul>
+          <div class="govuk-pagination__next">
+            <a class="govuk-link govuk-pagination__link" href="?page=2&amp;displayMax=10" rel="next"> <span class="govuk-pagination__link-title">Next</span> <svg class="govuk-pagination__icon govuk-pagination__icon--next"
+                xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+              </svg></a>
+          </div>
+        </nav>
+      </div>
+      <div class="govuk-button-group" type="submit"><button class="govuk-button" id="add-export">Continue</button>
+        <!---->
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    $("#search-term").on("keyup", function() {
+
+      var value = $(this).val().toLowerCase();
+
+      $("#certificate-radios div").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        // if ($("#certificate-radios div").filter(":hidden").size()) {
+        if ($("#certificate-radios div.govuk-radios__item *:visible").length) {
+          // some results are still present
+          $("#no-results").hide();
+          $("#pagination").hide();
+
+          // are some results being hidden
+          if (($("#certificate-radios div.govuk-radios__item *:visible").length) < ($("#certificate-radios div.govuk-radios__item").length)) {
+            $("#pagination").hide();
+          } else {
+            // $("#pagination").show();
+          }
+        } else {
+          // all results being hidden
+          $("#pagination").hide();
+          $("#no-results").show();
+        }
+      });
+
+    });
+
+    $("#add-export").click(function() {
+      // show error message if nothing is selected
+      if ($("input:radio[name=certificate]:checked").length == 0) {
+        $("#search-and-list").addClass("govuk-form-group--error");
+        // $("#certificate-list").addClass("govuk-form-group--error");
+        $(".govuk-error-summary").show();
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#page-error-summary").offset().top
+        }, 20);
+        return false;
+      }
+    });
+
+  })
+</script>
+{% endblock%}

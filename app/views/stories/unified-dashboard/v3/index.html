@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Unified dashboard – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Unified dashboard</h1>
+      <h2 class="govuk-heading-m">Testing scenario</h2>
+      <form class="" id="updateUserForm"  method="post">
+        <form id="updateUserForm"  method="post">
+          <div class="govuk-form-group">
+      <label class="govuk-label" for="sort">
+        User
+      </label>
+      <select class="govuk-select" id="selectUser" name="unifiedTestinigUser">
+        {% for org in data.applications%}
+        <option value="{{org.user}}" {% if data.unifiedTestinigUser == org.user %}selected{% endif %} style="text-transform: capitalize;">{{org.user}}{% if org.user=='default' %} (digital and paper){% endif%}</option>
+        {% endfor %}
+      </select>
+      <input type="hidden"  id="listType" name="listType" value="{{data.unifiedTestinigUser}}">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="sort">
+        Version
+      </label>
+      <select class="govuk-select" id="selectVersion" name="version">
+        <option value="3-3" {% if data.version == "3-3" %}selected{% endif %}>3-3</option>
+        <option value="3-4" {% if data.version == "3-4" %}selected{% endif %}>3-4</option>
+        <option value="3-5" {% if data.version == "3-5" or not data.version %}selected{% endif %}>3-5</option>
+      </select>
+      <input type="hidden"  id="listType" name="listType" value="{{data.unifiedTestinigUser}}">
+    </div>
+        </form>
+
+        <script>
+          window.addEventListener('load', function() {
+            $('#selectUser').change(function(){
+              var data= $(this).val();
+              $('#listType').val(data);;
+              $('#updateUserForm').submit()
+            });
+          })
+        </script>
+    </form>
+      <ol class="govuk-list">
+        <li><a href="/clear-data?url=/stories/unified-dashboard/v2/holding-page?urlRedirect=/beta/verify/gov-sign-in?loginReturnURL=/stories/unified-dashboard/v2/dashboard?unifiedTestinigUser={{data.unifiedTestinigUser}}&isSignedIn=no&showDefaults=yes&showDefaults=yes">Sign in - Unified dashboard</a>
+        </li>
+      </ol>
+
+    <h2 class="govuk-heading-m">Pages</h2>
+    <ul class="govuk-list">
+      <li><a href="/clear-data?url=/stories/unified-dashboard/v2/govuk">Start from govuk</a>
+      </li>
+      <li><a href="/clear-data?url=/stories/unified-dashboard/v2/form-finder">Start from find an export heath certificate</a>
+      </li>
+      <li><a href="/clear-data?url=/beta/verify/gov-sign-in?loginReturnURL=/stories/unified-dashboard/v2/dashboard">Sign in (Gov gateway)</a>
+      </li>
+      <li><a href="/clear-data?url=/stories/unified-dashboard/v2/dashboard&?unifiedTestinigUser=default">Dashboard - exisiting user - both EEHC and ECHO</a>
+      </li>
+      <p class="govuk-!-margin-bottom-2">Create a new certificate</p>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v2/recent-certificates">Which certificate (recently used)</a>
+
+      </li>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v2/type-of-certificate">We’ve made some changes to the service</a> - Shown first time
+
+      </li>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v2/digital-or-paper">What type of EU certificate do you want to apply for?</a>  - Shown second time through
+
+      </li>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v2/changes-to-service">Changes are coming</a>  - Interstital page after sign in (March 23rd)
+      </li>
+      <li>
+        <a href="/clear-data?url=/stories/unified-dashboard/v2/start">Before you start</a>
+      </li>
+    </ul>
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  window.addEventListener('load', function() {
+    $('#selectUser').change(function(){
+      var data= $(this).val();
+      $('#updateUserForm').submit()
+    });
+    $('#selectVersion').change(function(){
+      var data= $(this).val();
+      $('#updateUserForm').submit()
+    });
+  })
+</script>
+{% endblock %}

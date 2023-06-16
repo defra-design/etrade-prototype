@@ -1,0 +1,79 @@
+{% extends "layout-with-navigation-only-signout.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block beforeContent %}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="" method="post">  <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="select-org-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+       <h1 class="govuk-fieldset__heading">
+          Which organisation do you want to manage EHC applications for?
+       </h1>
+     </legend>
+
+     <p class="govuk-hint" id="select-org-hint">You will be able to switch between different organisations after signing in.
+</p>
+     <p>4 organisations</p>
+          <div class="govuk-radios" data-module="govuk-radios">
+
+
+
+
+
+
+            {% for org in data.applications%}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="select-org-{{org.user}}" name="org" type="radio" value="{{org.user}}~./dashboard?unifiedTestinigUser={{org.user}}">
+              <label class="govuk-label govuk-radios__label" for="select-org-{{org.user}}">
+                <span style="text-transform: capitalize;">{{org.user}}</span> {% if org.user=='default' %} (digital and paper){% endif%}
+              </label>
+            </div>
+            {% endfor %}
+
+
+            <!-- <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="org-name" name="org" type="radio" value="Richard Hatton~./dashboard-exporter?account=Richard Hatton">
+              <label class="govuk-label govuk-radios__label" for="org-name">
+                <strong style="text-transform: capitalize;">Richard Hatton</strong> - individual account
+              </label>
+            </div> -->
+
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Can't find your organisation?
+
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Only organisations approved for the previous service are currenlty able to access this new service. You can <a href="mailto:contact@exports@apha.gov.uk">contact APHA for support </a> in setting up an organisation.</p>
+          <!-- <p>Only organisations that are not approved to use EHCO do not have access this service.</p>
+          <p>For example, this could be because they are not approved for inspection - please <a href="mailto:contact@exports@apha.gov.uk" > APHA for support </a> </p> -->
+
+
+
+        </div>
+      </details>
+      <button class="govuk-button">Continue</button>
+      </form>
+  </div>
+
+</div>
+{% endblock%}
