@@ -163,7 +163,7 @@ function getURL() {
   // currently this goes to verifiy login
   baseURL += "/beta/verify/gov-sign-in?loginReturnURL="
   if ($('input[name="dashboardType"]:checked').val() == "unified") {
-    baseURL += "/stories/unified-dashboard/v2/dashboard"
+    baseURL += "/stories/unified-dashboard/v3/dashboard"
   } else {
     baseURL += "/beta/v"+v+"/dashboard"
   }

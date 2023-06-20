@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Before your start - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
+    <form>
+        <!-- This is just for testing we dont intend to implement this  -->
+  
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--xl" for="more-detail">
+      Why did you choose to continue with a paperless application?
+    </label>
+  </h1>
+  <div id="more-detail-hint" class="govuk-hint">
+    This will help us to improve our service.
+  </div>
+  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+    <p><a href="./return-to-prototype" class="govuk-button">Continue</a></p>
+      </form>
+  </div>
+</div>
+
+{% endblock %}

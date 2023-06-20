@@ -388,4 +388,52 @@ module.exports = function(router) {
 
   })
 
+   router.post('/' + base_url + "transport/*/transport/added-transport", function(req, res) {
+    console.log("In transport/arrival-and-departure");
+    if (req.body['skip-question'] == 'yes') {
+      req.session.data.transport['transportMethod'] = "skipped";
+    } else if (req.body.addAnotherTransport != "no") {
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/transport/select-transport');
+    }
+
+    if (req.session.data.return == "check-your-answers") {
+      req.session.data.change=="no"
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/check-your-answers');
+    } else {
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/task-list');
+    }
+  })
+router.post('/' + base_url + 'transport/*/transport/transport-details', function(req, res) {
+    if(req.query.change){
+      req.session.data.transportList[req.query.id] = req.body
+    }else{
+        req.session.data.transportList.push(req.body);
+    }
+
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/transport/added-transport');
+  })
+
+  router.post('/' + base_url + 'transport/*/transport/transport-method-remove', function(req, res) {
+    if(req.body.remove_document == "yes"){
+      req.session.data.transportList.splice(req.query.id,1);
+        res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/transport/added-transport?removed=yes');
+    }else{
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/transport/added-transport');
+    }
+  })
+
+  router.post('/' + base_url + "transport/*/transport/conditions", function(req, res) {
+    console.log("In transport/conditions");
+    if (req.body['skip-question'] == 'yes') {
+      req.session.data.transport['transportConditions'] = "skipped";
+    }
+
+    if (req.session.data.return == "check-your-answers") {
+      req.session.data.change=="no"
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/check-your-answers');
+    } else {
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/task-list');
+    }
+  })
+
 }

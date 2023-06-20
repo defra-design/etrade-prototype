@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Before your start - eTrade – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row" data-v-0c6ff6a7="">
+  <div class="govuk-grid-column-two-thirds"><span class="govuk-caption-xl"></span>
+    <form>
+        <!-- This is just for testing we dont intend to implement this  -->
+  
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--xl" for="more-detail">
+      Return and choose to create a digital application
+    </label>
+  </h1>
+  <div id="more-detail-hint" class="govuk-hint">
+    For the purposes of this research session, please select ‘Yes’ on the next page to make a digital application.
+
+  </div>
+</div>
+    <p><a href="./{% if data.iscopy == 'yes' %}changes-to-service-copy{%else%}type-of-certificate{% endif %}" class="govuk-button">Continue</a></p>
+      </form>
+  </div>
+</div>
+
+{% endblock %}
