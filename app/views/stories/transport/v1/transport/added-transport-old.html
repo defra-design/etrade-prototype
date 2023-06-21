@@ -76,25 +76,8 @@ Add transport methods - {{super()}}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
           <ul class="govuk-list govuk-!-margin-bottom-0">
-            <li><strong>{{loop.index}}. {{(t.typeOfTransport | capitalize)}} {% if t.identifier %}{{t.identifier | upper }}</strong> {% else %}</strong><span class="govuk-hint"> (identification not entered)</span>{% endif %}
-              {% if t.typeOfTransport == 'Road vehicle' %} 
-              <br>
-              Trailer number: {% if t.trailer %}{{t.trailer}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
-              <br>
-              Country: {% if t.country %}{{t.country}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
-              
-              {% endif %}
-
-              {% if t.typeOfTransport == 'Boat' %} 
-              <br>
-              IMO Number: {% if t.imo %}{{t.imo}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
-              <br>
-              Flag State: {% if t.flagState %}{{t.flagState}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
-              
-              {% endif %}
-
-            </li>
-          
+            <li><strong>{{loop.index}}. {{(t.typeOfTransport | capitalize)}} </strong> - {{t.identifier | upper }}</li>
+            <li></li>
 
           </ul>
 

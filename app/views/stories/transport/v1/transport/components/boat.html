@@ -1,10 +1,10 @@
 <div class="govuk-form-group" data-v-6d4fc99b="">
   <label class="govuk-label" for="ship-name-2" data-v-6d4fc99b="">Ship name</label>
-  <input class="govuk-input js-question" maxlength="30" id="ship-name-2" name="identifier">
+  <input class="govuk-input js-question" maxlength="30" id="ship-name-2" name="identifier" value="{% if transportDetails %}{{transportDetails.identifier}}{% endif %}">
 </div>
 <div class="govuk-form-group">
   <label for="flag-state-2" class="govuk-label" data-v-6d4fc99b="">Flag state</label>
-  <select class="govuk-select full-wilabelh js-question" id="flag-state-2" data-v-6d4fc99b="">
+  <select class="govuk-select js-question" id="flag-state-2" name="flagState" >
     <option value="empty" data-v-6d4fc99b="" selected disabled></option>
     <option value="AF" data-v-6d4fc99b="">Afghanistan (AF)</option>
     <option value="AX" data-v-6d4fc99b="">Åland Islands (AX)</option>
@@ -250,8 +250,8 @@
   </select>
 </div>
 <div class="govuk-form-group" data-v-6d4fc99b="">
-  <label class="govuk-label" for="imo-number-2" data-v-6d4fc99b=""> IMO Number </label>
-  <input class="govuk-input js-question" maxlength="30" type="text" id="imo-number-2" data-v-6d4fc99b="">
+  <label class="govuk-label" for="imo-number-2" > IMO Number </label>
+  <input class="govuk-input js-question" maxlength="30" type="text" id="imo-number-2" name="imo" value="{% if transportDetails.imo %}{{transportDetails.imo}}{% endif %}">
 </div>
 
 <div class="govuk-form-group" data-v-6d4fc99b="">

@@ -48,7 +48,7 @@ module.exports = {
   "establishments" : establishments,
   "certifiers" : certifiers,
   "applications": applications,
-  "unifiedTestinigUser": "Aquatica",
+  "unifiedTestinigUser": "PetsUp",
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,

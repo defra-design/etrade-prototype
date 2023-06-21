@@ -2,7 +2,7 @@
 
               <div class="govuk-form-group" data-v-1e0d18a4="">
                   <label class="govuk-label" for="vehicle-registration-0" data-v-1e0d18a4=""> Vehicle registration </label>
-                  <input class="govuk-input govuk-!-width-two-thirds js-question" maxlength="30" id="vehicle-registration-0"  name="identifier" value="{% if transportDetails %}{{transportDetails.identifier}}{% endif %}"></div>
+                  <input class="govuk-input govuk-!-width-two-thirds js-question" maxlength="30" id="vehicle-registration-0"  name="identifier" value="{% if query.change and  transportDetails.identifier %}{{transportDetails.identifier}}{% endif %}"></div>
               <div class="govuk-form-group" data-v-1e0d18a4="">
                 <label class="govuk-label" for="vehicle-trailer-number-0" data-v-1e0d18a4=""> Trailer number </label>
                 <input class="govuk-input govuk-!-width-two-thirds js-question" maxlength="30" id="vehicle-trailer-number-0" name="trailer" value="{% if transportDetails %}{{transportDetails.trailer}}{% endif %}"></div>
