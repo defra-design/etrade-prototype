@@ -24,7 +24,7 @@ How will the consignment be stored during transport – {{serviceName}} – GOV.
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#skip-question">Select if you have answered as many questions as you can</a>
+              <a href="#conditions-Ambient">Select how the consignment will be stored during transport</a>
             </li>
           </ul>
         </div>
@@ -34,12 +34,14 @@ How will the consignment be stored during transport – {{serviceName}} – GOV.
 
      <form id="form" method="POST">
           <!---->
-          <div class="govuk-form-group " >
+          <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}" >
             <fieldset class="govuk-fieldset" aria-describedby="trasnportConditions-hint {% if query.hasError %}trasnportConditions-error{% endif %}">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl" >How will the consignment be stored during transport?</legend>
 
               <p class="govuk-hint" id="trasnportConditions-hint">If different parts of the consignment will be stored in different conditions (for example, part in chilled storage and part in frozen storage), a separate application for each part of the consignment must be created.</p>
-                  
+                  <p id="trasnportConditions-error" class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span> Select the country where you live
+    </p>
 
               <div class="govuk-radios" data-filled="no" data-module="govuk-radios" id="purpose" data-v-133877c6="">
                  <div class="govuk-radios__item purpose" data-v-133877c6="">
@@ -58,20 +60,8 @@ How will the consignment be stored during transport – {{serviceName}} – GOV.
               </div>
             </fieldset>
           </div>
-          <div class="govuk-!-margin-bottom-6 {% if query.hasError %}govuk-form-group--error{% endif %}" id="skip-question-container">
-          <h3 class="govuk-heading-m">You can skip this section</h3>
-          <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-          <p id="trasnportConditions-error" class="govuk-error-message">
-      <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
-    </p>
-          <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
-            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
-            <label class="govuk-label govuk-checkboxes__label" for="skip-question">
-              I've entered as much information as I can
-            </label>
-          </div>
-        </div>
-          <button class="govuk-button" >Continue</button>
+     
+          <button class="govuk-button" >Save and continue</button>
 
     </form>
 
@@ -83,15 +73,7 @@ How will the consignment be stored during transport – {{serviceName}} – GOV.
 <script type="text/javascript">
 window.addEventListener('load', function() {
     
-    $(".govuk-radios__input").on("click",function(e){
-      $('#skip-question-checkbox').hide()
-      $('#skip-question-container').addClass("disabled")
-    })
 
-    if( $('.govuk-radios__input').is(':checked') ){
-      $('#skip-question-checkbox').hide()
-      $('#skip-question-container').addClass("disabled")
-    }
 
 });
 </script>

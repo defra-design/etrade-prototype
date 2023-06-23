@@ -428,6 +428,9 @@ router.post('/' + base_url + 'transport/*/transport/transport-details', function
       req.session.data.transport['transportConditions'] = "skipped";
     }
 
+    if(req.body['skip-question'] != 'yes' &&  !req.body.trasnportConditions){
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/transport/conditions?hasError=yes');
+    }
     if (req.session.data.return == "check-your-answers") {
       req.session.data.change=="no"
       res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/check-your-answers');
