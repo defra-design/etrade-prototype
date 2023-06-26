@@ -35,7 +35,7 @@ How will the consignment be stored during transport – {{serviceName}} – GOV.
      <form id="form" method="POST">
           <!---->
           <div class="govuk-form-group " >
-            <fieldset class="govuk-fieldset" aria-describedby="trasnportConditions-hint {% if query.hasError %}trasnportConditions-error{% endif %}">
+            <fieldset class="govuk-fieldset" aria-describedby="trasnportConditions-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl" >How will the consignment be stored during transport?</legend>
 
               <p class="govuk-hint" id="trasnportConditions-hint">If different parts of the consignment will be stored in different conditions (for example, part in chilled storage and part in frozen storage), a separate application for each part of the consignment must be created.</p>
@@ -45,11 +45,11 @@ How will the consignment be stored during transport – {{serviceName}} – GOV.
                  <div class="govuk-radios__item purpose" data-v-133877c6="">
                   <input class="govuk-radios__input" id="conditions-Ambient" name="trasnportConditions" type="radio" value="Ambient" {% if data.trasnportConditions == "Ambient" %}checked{% endif %}>
                   <label class="govuk-label govuk-radios__label"
-                    for="conditions-Ambient" data-v-133877c6="">Ambient storage</label></div>
-                <div class="govuk-radios__item purpose" data-v-133877c6="">
+                    for="conditions-Ambient" >Ambient storage</label></div>
+                <div class="govuk-radios__item purpose" >
                   <input class="govuk-radios__input" id="conditions-Chilled" name="trasnportConditions" type="radio" value="Chilled" {% if data.trasnportConditions == "Chilled" %}checked{% endif %}>
                   <label class="govuk-label govuk-radios__label"
-                    for="conditions-Chilled" data-v-133877c6="">Chilled storage</label></div>
+                    for="conditions-Chilled" >Chilled storage</label></div>
                 <!---->
                
                 <div class="govuk-radios__item purpose" data-v-133877c6="">

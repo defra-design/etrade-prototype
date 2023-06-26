@@ -33,7 +33,7 @@ var applications = require('./applications.json')
 var bcp = require('./bcp.json')
 var forms = require('./forms.json')
 var address_hd7 = require('./postcode-hd7.json')
-
+var iso = require('./iso.json')
 module.exports = {
   "account": "Isosure Trading Ltd",
   "certificates" : certs,
@@ -48,7 +48,8 @@ module.exports = {
   "establishments" : establishments,
   "certifiers" : certifiers,
   "applications": applications,
-  "unifiedTestinigUser": "PetsUp",
+  "iso":iso,
+  "unifiedTestinigUser": "CTSyren",
   "approvedAccounts" :[],
   "userName": "Bill Schoggins",
   "scheduleUploadProcessing": scheduleUploadProcessing,

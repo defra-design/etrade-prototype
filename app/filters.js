@@ -1,4 +1,5 @@
 const _ = require('lodash');
+var iso = require('./data/iso.json')
 module.exports = function(env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -196,7 +197,10 @@ module.exports = function(env) {
     }
     
   }
-
+  filters.getCountryName=function(code){
+    let obj = iso.find(c => c.ISO === code);
+    return obj.name
+  }
 
   filters.isString = function(obj){
     return typeof obj == 'string';

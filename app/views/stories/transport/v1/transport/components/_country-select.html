@@ -1,0 +1,28 @@
+
+<!-- 
+  *  Set the label in the parent page if different to country example  set countryLabel = 'Flag state'
+
+  * If this is an establihsment search country select you can choose to append the type of operator you are looking up eg. Country of manufacturing plant. Set this in the parent page  set establishmentTypeLabel = 'cutting plant' 
+
+-->
+<div class="govuk-form-group" id="operator-search-country-form-group">
+  <label class="govuk-label" for="operator-search-country">{{ countryLabel or 'Country' }} {% if establishmentTypeLabel %} of {{establishmentTypeLabel}}{% endif %}</label>
+  <p id="operator-search-country-error" class="govuk-error-message" style="display:none">
+    <span class="govuk-visually-hidden">Error:</span> A country must be selected
+  </p>
+  {% if query.hasError == "yes" and (query.errorType and query.errorType == "country") %}
+  <p id="operator-search-country-error" class="govuk-error-message" style="display:none">
+    <span class="govuk-visually-hidden">Error:</span> A {{ countryLabel or 'Country' }} must be selected
+  </p>
+  {% endif %}
+  <select class="govuk-select {% if query.hasError == 'yes' and (query.errorType and query.errorType == 'country') %}govuk-input--error{% endif %}" id="operator-search-country" name="country">
+    <option value="Any" {%if defaultCountry == "Any" or not defaultCountry %}selected{% endif %}>Select a country</option>
+    {% for c in data.iso %}
+    <option value="{{c.ISO}}" {% if data.transport.country == c.iso or data.transport.country == c.name  %}selected{% endif %}>{{c.name}}</option>
+    
+    {% endfor %}
+  </select>
+  <input type="hidden" name="defaultValue" id="defaultValue" value="{% if query.hasError == 'yes'%}{{data.countrySelect[0]}}{%else%}{% endif %}">
+</div>
+
+<!-- To show the country as a name instead of an ISO use: data.country | getCountryName -->

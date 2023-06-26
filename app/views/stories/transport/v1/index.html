@@ -26,12 +26,23 @@ Trasnport v1 redesign – GOV.UK Prototype Kit
             <li><a href="check-your-answers">From Check your answers</a></li>
           </ul>
           <h2 class="govuk-heading-m">Conditions</h2>
+          <p>Conditions is now its seprate page</p>
           <ul class="govuk-list govuk-list--bullet">
             <li><a href="transport/conditions">Conditions</a></li>
             <li><a href="transport/conditions?hasError=yes">Conditions with error (exporter)</a></li>
-            <li><a href="transport/conditions-certifier?hasError=yes">Conditions with error (Certifier)</a> - Only for error message</li>
-            <li><a href="weight?hasError=yes">Gross weight page with error</a></li>
-            <li><a href="check-your-answers?hasError=yes&errorType=over">Check your answers with error</a></li>
+            <li><a href="transport/conditions-certifier?hasError=yes">Conditions with error (Certifier)</a> - Only for error message. This page would appear inside the main UI on the certifier page as a parital<br></li>
+            <li><strong>IF conditions page is built first.</strong> The current transport methods page would remain but remove the "conditions" section<br><a href="old-transport-methods-without-conditions">Current transport methods page without the conditions section</a></li>
+          </ul>
+          <p></p>
+               <h2 class="govuk-heading-m">Transport methods</h2>
+               <p>New flow. This is now an add to list.</p>
+          <ul class="govuk-list govuk-list--bullet">
+       
+            <li><a href=/clear-data?url=/stories/transport/v1/transport/added-transport?return=task-list>Transport method: Start and when 0 added transport methods</a></li>
+             <li><a href=/clear-data?url=/stories/transport/v1/transport/added-transport?hasError=yes&return=task-list>Transport method: 0 added - with not skipped error </a></li>
+              <li><a href=/clear-data?url=/stories/transport/v1/transport/select-transport?return=task-list>Select type of transport </a></li>
+              <li><a href=/clear-data?url=/stories/transport/v1/transport/select-transport?hasError=yes&return=task-list>Select type of transport - with error </a></li>
+            
           </ul>
    
   </div>

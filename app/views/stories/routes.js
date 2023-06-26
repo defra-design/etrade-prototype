@@ -390,11 +390,19 @@ module.exports = function(router) {
 
    router.post('/' + base_url + "transport/*/transport/added-transport", function(req, res) {
     console.log("In transport/arrival-and-departure");
+
+    console.log(req.session.data.transportList.length )
+    console.log(req.session.data.transport['transportMethod'] )
+    if(req.body['skip-question'] != 'yes' && req.session.data.transportList.length == 0 ){
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/transport/added-transport?hasError=yes');
+    }
+
     if (req.body['skip-question'] == 'yes') {
       req.session.data.transport['transportMethod'] = "skipped";
     } else if (req.body.addAnotherTransport != "no") {
       res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/transport/select-transport');
     }
+
 
     if (req.session.data.return == "check-your-answers") {
       req.session.data.change=="no"
@@ -429,7 +437,7 @@ router.post('/' + base_url + 'transport/*/transport/transport-details', function
     }
 
     if(req.body['skip-question'] != 'yes' &&  !req.body.trasnportConditions){
-      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/transport/conditions?hasError=yes');
+      res.redirect(301, '/' + base_url + 'transport/'+req.params[0]+'/transport/conditions');
     }
     if (req.session.data.return == "check-your-answers") {
       req.session.data.change=="no"

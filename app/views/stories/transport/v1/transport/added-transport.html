@@ -22,7 +22,6 @@ Add transport methods - {{super()}}
   .attachment .attachment-thumb span {
     padding-top: 50px;
   }
-
   .spreadsheet td,
   .spreadsheet th {
     padding-left: 10px;
@@ -33,7 +32,6 @@ Add transport methods - {{super()}}
   .spreadsheet thead th {
     border-bottom-width: 0px;
   }
-
   .spreadsheet .table-field-index,
   .spreadsheet th {
     background: #f8f8f8;
@@ -45,21 +43,24 @@ Add transport methods - {{super()}}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-    {% if query.showNotification == "yes" %}
-    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-      <div class="govuk-notification-banner__header">
-        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          Success
-        </h2>
-      </div>
-      <div class="govuk-notification-banner__content">
-        <h3 class="govuk-notification-banner__heading">
-          File uploaded
-        </h3>
-        <p class="govuk-body">{{file.file or "my_schedule.xlsx"}}</p>
+
+    {% if query.hasError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+    <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#skip-question">Select if you have answered as many questions as you can</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     {% endif %}
+
 
 
     {% if (data.transportList | length) == 0  %}
@@ -76,12 +77,12 @@ Add transport methods - {{super()}}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
           <ul class="govuk-list govuk-!-margin-bottom-0">
-            <li><strong>{{loop.index}}. {{(t.typeOfTransport | capitalize)}} {% if t.identifier %}{{t.identifier | upper }}</strong> {% else %}</strong><span class="govuk-hint"> (identification not entered)</span>{% endif %}
+            <li><strong>{{loop.index}}. {{(t.typeOfTransport | capitalize)}} {% if t.identifier %} - {{t.identifier | upper }}</strong> {% else %}</strong><span class="govuk-hint"> (identification not entered)</span>{% endif %}
               {% if t.typeOfTransport == 'Road vehicle' %} 
               <br>
               Trailer number: {% if t.trailer %}{{t.trailer}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
               <br>
-              Country: {% if t.country %}{{t.country}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
+              Country: {% if t.country %}{{t.country | getCountryName}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
               
               {% endif %}
 
@@ -89,7 +90,8 @@ Add transport methods - {{super()}}
               <br>
               IMO Number: {% if t.imo %}{{t.imo}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
               <br>
-              Flag State: {% if t.flagState %}{{t.flagState}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
+              {{t | dump}}
+              Flag State: {% if t.country %}{{t.country | getCountryName}}{% else %}<span class="govuk-hint"> not entered</span>{% endif %}
               
               {% endif %}
 
@@ -130,12 +132,15 @@ Add transport methods - {{super()}}
 
     <form method="post" >
       {% if (data.transportList | length) == 0 %}
-      <p><button class="govuk-button govuk-button--secondary">Add a method of transport</button></p>
-      <div class="govuk-!-margin-bottom-6" id="skip-question-container">
+      <p><a href="select-transport" class="govuk-button govuk-button--secondary">Add a method of transport</a></p>
+      <div class="govuk-!-margin-bottom-6 {% if query.hasError %}govuk-form-group--error{% endif %}" id="skip-question-container">
           <h3 class="govuk-heading-m">You can skip this section</h3>
-          <p class="govuk-body">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+          <p class="govuk-body" id="skip-hint-text">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+                  <p id="transport-skip-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
+          </p>
           <div class="govuk-checkboxes__item" id="skip-question-checkbox">
-            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
+            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" aria-descibed-by="skip-hint-text {% if query.hasError == 'yes' %}transport-skip-error{% endif %}">
             <label class="govuk-label govuk-checkboxes__label" for="skip-question">
               I've entered as much information as I can
             </label>

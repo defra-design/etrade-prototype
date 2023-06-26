@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Trasnport v1 redesign – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle = "commodity"%}
+{% endif %}
+<div class="govuk-grid-row" data-v-7f50990d="">
+  <div class="govuk-grid-column-two-thirds" data-v-7f50990d=""><span class="govuk-caption-xl"> Transport </span>
+    <h1 class="govuk-heading-xl"> Means of transport </h1>
+    <!---->
+    <!---->
+    <!---->
+    <p class="govuk-body" data-v-7f50990d=""> Identification of the means of transport: for airplane the flight number, for vessels the ship name(s), for railways the train identity and wagon number, for road transports the registration number plate with trailer number plate if applicable.<br data-v-7f50990d=""><br data-v-7f50990d=""> In the case of a ferry, state the identification of the road vehicle, the registration number plate with trailer number plate if applicable, and the name of the scheduled ferry. </p>
+    <!---->
+    <div class="sticky-panel" data-v-7f50990d="">
+      <h2 class="govuk-heading-m" data-v-7f50990d="">What are the means of transport during this export?</h2>
+      <div class="govuk-form-group" data-v-7f50990d=""><label class="govuk-label" for="meansOfTransportSelection" data-v-7f50990d=""> Means of transport </label>
+        <div class="govuk-input__wrapper" data-v-7f50990d="">
+          <div class="govuk-form-group" data-v-7f50990d=""><select class="govuk-select full-width" id="meansOfTransportSelection" data-v-7f50990d="">
+              <option disabled="" value="" data-v-7f50990d="">Make a selection</option>
+              <option value="Railway" data-v-7f50990d="">Railway</option>
+              <option value="Road" data-v-7f50990d="">Road vehicle</option>
+              <option value="Airplane" data-v-7f50990d="">Airplane</option>
+              <option value="Vessel" data-v-7f50990d="">Vessel</option>
+            </select></div>
+          <div class="govuk-input__suffix means-of-transport-selection-suffix" data-v-7f50990d=""><button class="govuk-button" disabled="" data-v-7f50990d="">Add means of transport</button></div>
+        </div>
+      </div>
+    </div>
+    <ul class="govuk-list" data-v-7f50990d=""></ul>
+    <div class="skip-wrapper govuk-!-margin-bottom-6 govuk-form-group" id="skip-question-container" data-v-7f50990d="">
+      <h3 class="govuk-heading-m" data-v-7f50990d="">You can skip this section</h3>
+      <p class="govuk-body govuk-!-margin-bottom-0" data-v-7f50990d="">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+      
+   
+      <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox" data-v-7f50990d=""><input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" aria-describedby="skipError" data-v-7f50990d="" aria-described-by="trasnportConditions-error"><label class="govuk-label govuk-checkboxes__label" for="skip-question" data-v-7f50990d=""> I've entered as much information as I can </label></div>
+    </div><button class="govuk-button" data-v-7f50990d=""> Save and continue </button>
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+
+});
+</script>
+{% endblock%}

@@ -11,31 +11,53 @@ How will this consignment be exported – {{super()}}
 {% set id = query.id or 0 %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-three-quarters">
+  <div class="govuk-grid-column-two-thirds">
+    {% if query.hasError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#conditions-Ambient">Select how this consignment will be exported</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endif %}
     <form id="form" method="get" action="transport-details">
-      <div class="govuk-form-group" data-v-133877c6="">
-              <span class="govuk-caption-l">Transport methods</span>
-        <fieldset class="govuk-fieldset" >
-        
+      <div class="govuk-form-group {% if query.hasError == 'yes' %}govuk-form-group--error{% endif %}" ">
+      <span class="govuk-caption-l">Transport methods</span>
+        <fieldset class="govuk-fieldset" {% if query.hasError == 'yes' %}aria-described-by="type-of-transport-error" {% endif %} >
+          
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl" data-v-133877c6="">How will this consignment be exported?</legend>
+          {% if query.hasErrro == "yes"%}
+              <p id="trasnportConditions-error" class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span> Select how this consignment will be exported
+    </p>
+    {% endif %}
 
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" id="purpose" data-v-133877c6="">
-            <div class="govuk-radios__item purpose" data-v-133877c6="">
-              <input class="govuk-radios__input" id="conditions-Chilled" name="transportType" type="radio" value="Road vehicle" {% if query.change and data.transportList[id].typeOfTransport == 'Road vehicle'%}checked{% endif %}>
+            <div class="govuk-radios__item" data-v-133877c6="">
+              <input class="govuk-radios__input" id="type-of-transport" name="transportType" type="radio" value="Road vehicle" {% if query.change and data.transportList[id].typeOfTransport == 'Road vehicle'%}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="conditions-Chilled" data-v-133877c6="">Road vehicle</label>
             </div>
-            <div class="govuk-radios__item purpose" data-v-133877c6="">
-              <input class="govuk-radios__input" id="conditions-Frozen" name="transportType" type="radio" value="Plane" {% if query.change and data.transportList[id].typeOfTransport == 'Plane'%}checked{% endif %}>
+
+            <div class="govuk-radios__item" data-v-133877c6="">
+              <input class="govuk-radios__input" id="type-of-transport-plane" name="transportType" type="radio" value="Plane" {% if query.change and data.transportList[id].typeOfTransport == 'Plane'%}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="conditions-Frozen">Plane</label>
             </div>
 
-            <div class="govuk-radios__item purpose" data-v-133877c6="">
-              <input class="govuk-radios__input" id="conditions-Ambient" name="transportType" type="radio" value="Train" {% if query.change and data.transportList[id].typeOfTransport == 'Train'%}checked{% endif %}>
+            <div class="govuk-radios__item" data-v-133877c6="">
+              <input class="govuk-radios__input" id="type-of-transport-train" name="transportType" type="radio" value="Train" {% if query.change and data.transportList[id].typeOfTransport == 'Train'%}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="conditions-Ambient" data-v-133877c6="">Train</label>
             </div>
-            <div class="govuk-radios__item purpose" data-v-133877c6="">
-              <input class="govuk-radios__input" id="conditions-Frozen" name="transportType" type="radio" value="Boat" {% if query.change and data.transportList[id].typeOfTransport == 'Boat'%}checked{% endif %}>
-              <label class="govuk-label govuk-radios__label" for="conditions-Frozen">Boat</label>
+            <div class="govuk-radios__item" data-v-133877c6="">
+              <input class="govuk-radios__input" id="type-of-transport-boat" name="transportType" type="radio" value="Boat" {% if query.change and data.transportList[id].typeOfTransport == 'Boat'%}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="conditions-Frozen">Ship or boat</label>
             </div>
           </div>
         </fieldset>
