@@ -153,14 +153,16 @@ Add transport methods - {{super()}}
       </button>
       <p class="govuk-body"></p>
       {% else %}
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+      <div class="govuk-form-group {% if query.hasError %}govuk-form-group--error{% endif %}">
+        <fieldset class="govuk-fieldset" aria-describedby="transportContinue-error">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
             Do you want to add another transport method?
           </legend>
-          <div id="add-another-hint" class="govuk-hint">
-            <!-- You must tell us about all your directors. -->
-          </div>
+          {% if query.hasError %}
+          <p id="transportContinue-error" class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span> Select if you want to add another transport method
+    </p>
+    {% endif %}
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="add-another" name="addAnotherTransport" type="radio" value="yes">
