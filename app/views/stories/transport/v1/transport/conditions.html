@@ -11,6 +11,9 @@ How will the consignment be stored during transport – {{serviceName}} – GOV.
   .disabled p{
     color: #505a5f  ;
   }
+  .disabled .govuk-error-message{
+    display:none;
+  }
 </style>
 
 <div class="govuk-grid-row">
@@ -61,9 +64,11 @@ How will the consignment be stored during transport – {{serviceName}} – GOV.
           <div class="govuk-!-margin-bottom-6 {% if query.hasError %}govuk-form-group--error{% endif %}" id="skip-question-container">
           <h3 class="govuk-heading-m">You can skip this section</h3>
           <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-          <p id="trasnportConditions-error" class="govuk-error-message">
+                {% if query.hasError %}
+          <p id="transportSkip-error" class="govuk-error-message">
       <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
     </p>
+    {% endif %}
           <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
             <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
             <label class="govuk-label govuk-checkboxes__label" for="skip-question">
@@ -86,11 +91,15 @@ window.addEventListener('load', function() {
     $(".govuk-radios__input").on("click",function(e){
       $('#skip-question-checkbox').hide()
       $('#skip-question-container').addClass("disabled")
+      $('#trasnportskip-error').show()
     })
 
     if( $('.govuk-radios__input').is(':checked') ){
       $('#skip-question-checkbox').hide()
       $('#skip-question-container').addClass("disabled")
+      $('#transportSkip-error').hide()
+
+
     }
 
 });

@@ -3,6 +3,7 @@
   <input class="govuk-input js-question" maxlength="30" id="ship-name-2" name="identifier" value="{% if transportDetails %}{{transportDetails.identifier}}{% endif %}">
 </div>
 <div class="govuk-form-group">
+  {% set countryLabel = "Flag state" %}
   {% block country %}{% include "./_country-select.html" %}{% endblock %}
 
 </div>

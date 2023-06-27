@@ -15,10 +15,14 @@
     <span class="govuk-visually-hidden">Error:</span> A {{ countryLabel or 'Country' }} must be selected
   </p>
   {% endif %}
-  <select class="govuk-select {% if query.hasError == 'yes' and (query.errorType and query.errorType == 'country') %}govuk-input--error{% endif %}" id="operator-search-country" name="country">
+
+
+  <select class="govuk-select
+    {% if isSkippable %} js-question{% endif %}
+   {% if query.hasError == 'yes' and (query.errorType and query.errorType == 'country') %} govuk-input--error{% endif %}" id="operator-search-country" name="country">
     <option value="Any" {%if defaultCountry == "Any" or not defaultCountry %}selected{% endif %}>Select a country</option>
     {% for c in data.iso %}
-    <option value="{{c.ISO}}" {% if data.transport.country == c.iso or data.transport.country == c.name  %}selected{% endif %}>{{c.name}}</option>
+    <option value="{{c.ISO}}" {% if defaultCountry == c.ISO  %}selected{% endif %}>{{c.name}}</option>
     
     {% endfor %}
   </select>

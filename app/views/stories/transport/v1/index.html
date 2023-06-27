@@ -42,9 +42,17 @@ Trasnport v1 redesign – GOV.UK Prototype Kit
              <li><a href=/clear-data?url=/stories/transport/v1/transport/added-transport?hasError=yes&return=task-list>Transport method: 0 added - with not skipped error </a></li>
               <li><a href=/clear-data?url=/stories/transport/v1/transport/select-transport?return=task-list>Select type of transport </a></li>
               <li><a href=/clear-data?url=/stories/transport/v1/transport/select-transport?hasError=yes&return=task-list>Select type of transport - with error </a></li>
+
             
           </ul>
-   
+            <h3 class="govuk-heading-s">Transport details</h2>
+            <ul class="govuk-list govuk-list--bullet">
+              <li><a href="./transport/transport-details?transportType=roadVehicle">Road vehicle</a></li>
+              <li><a href="./transport/transport-details?transportType=plane">Plane</a></li>
+              <li><a href="./transport/transport-details?transportType=train">Train</a></li>
+              <li><a href="./transport/transport-details?transportType=boat">boat</a></li><br>
+           <li><a href="./transport/transport-details?hasError=yes">Transport details example with error (EXPORTER)</a></li>
+          </ul>
   </div>
 </div>
 {% endblock %}
