@@ -47,6 +47,31 @@ module.exports = function(router) {
     
   })
 
+  router.post('/' + base_url + 'bcp/*/bcp/border-control-post-dynamic', function(req, res) {
+   console.log(req.body['skip-question'])
+    if(req.body['skip-question'] == 'yes'){
+     req.session.data.transport['bcp'] = "skipped";
+    }
+    console.log(req.body.selctedBCP)
+
+    if(req.body['skip-question'] != 'yes' && !req.body.selctedBCP){
+
+      res.redirect(301, '/' + base_url + 'bcp/'+req.params[0]+'/bcp/border-control-post-dynamic?hasError=yes');
+    }
+
+
+
+
+
+    if (req.session.data.return == "check-your-answers") {
+      req.session.data.change=="no"
+      res.redirect(301, '/' + base_url + 'bcp/'+req.params[0]+'/check-your-answers');
+    } else {
+      res.redirect(301, '/' + base_url + 'bcp/'+req.params[0]+'/task-list');
+    }
+    
+  })
+
   router.post('/' + base_url + 'container-numbers/*/add-container-number', function(req, res) {
     var container = req.body.containerNumbers 
     // check to see if continer number matches the requirment. 

@@ -59,10 +59,10 @@ Transport methods – {{super()}}
   <div class="govuk-grid-column-three-quarters">
     {% if query.hasError %}
     <div class="govuk-error-summary" data-module="govuk-error-summary">
-  <div role="alert">
-    <h2 class="govuk-error-summary__title">
-      There is a problem
-    </h2>
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
@@ -74,49 +74,45 @@ Transport methods – {{super()}}
     </div>
     {% endif %}
     <form id="form" method="post">
-       <span class="govuk-caption-l">Transport methods</span>
+      <span class="govuk-caption-l">Transport methods</span>
       <div class="govuk-form-group" data-v-133877c6="">
         <fieldset class="govuk-fieldset" data-v-133877c6="">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl" data-v-133877c6="">
             {% if data.transportType == "Ship" %}
             Ship or boat
             {% else %}
-          {{data.transportType or "Road vehicle"}}
-          {% endif %} 
-          details
-        </legend>
+            {{data.transportType or "Road vehicle"}}
+            {% endif %}
+            details
+          </legend>
           {% if query.change and transportDetails.country %}
           {% set defaultCountry = transportDetails.country %}
           {% endif %}
-          {% set type = (data.transportType|removeWhiteSpace)|lower or  'roadvehicle'%}
+          {% set type = (data.transportType|removeWhiteSpace)|lower or 'roadvehicle'%}
           {% block transport %}{% include "./components/"+type+".html" %}{% endblock %}
         </fieldset>
       </div>
-
-<div class="govuk-!-margin-bottom-6 {% if query.hasError %}govuk-form-group--error{% endif %}" id="skip-question-container">
-          <h3 class="govuk-heading-m">You can skip this section</h3>
-          <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
-          {% if query.hasError %}
-          <p id="trasnportConditions-error" class="govuk-error-message">
-      <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
-    </p>
-    {% endif %}
-          <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
-            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
-            <label class="govuk-label govuk-checkboxes__label" for="skip-question">
-              I've entered as much information as I can
-            </label>
-          </div>
+      <div class="govuk-!-margin-bottom-6 {% if query.hasError %}govuk-form-group--error{% endif %}" id="skip-question-container">
+        <h3 class="govuk-heading-m">You can skip this section</h3>
+        <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+        {% if query.hasError %}
+        <p id="trasnportConditions-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
+        </p>
+        {% endif %}
+        <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
+          <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
+          <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+            I've entered as much information as I can
+          </label>
         </div>
+      </div>
       <input type="hidden" name="typeOfTransport" value="{{data.transportType or 'Plane'}}">
       <button class="govuk-button" data-v-133877c6="">{% if query.change %}Save and continue{% else %}Add means of transport{% endif %}</button>
     </form>
-
   </div>
 </div>
-
 {% endblock %}
-
 {% block pageScripts %}
 <script type="text/javascript">
 window.addEventListener('load', function() {
@@ -126,7 +122,7 @@ window.addEventListener('load', function() {
 
     // Look for changes in the value
     elem.bind("propertychange change click keyup input paste", function(event) {
-      
+
 
 
       checkFilled()
@@ -138,7 +134,7 @@ window.addEventListener('load', function() {
     var max = $('.js-question').length
     console.log("---checkFilled---- " + max)
     $('.js-question').each(function() {
-      console.log("checking : " +$(this).val() )
+      console.log("checking : " + $(this).val())
       if ($(this).val() != "" && $(this).val() != "Any") {
         completed += 1
       }

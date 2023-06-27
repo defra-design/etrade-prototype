@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Trasnport v1 redesign – GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+{{super()}}
+<a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock%}
+{% block content %}
+{% set commodityTitle = "commodities"%}
+{% if (data.addedCommodities | length) == 1%}
+{% set commodityTitle = "commodity"%}
+{% endif %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Transport v2
+    </h1>
+    <!-- <p>This is a simplified version with just an error on submiting a gross weight under the total net weight, on both the weight page and the check your answers. <br>
+           <a href="https://dev.azure.com/defragovuk/DEFRA-EEHC/_workitems/edit/167963">UX Ticket</a> 
+          </p> -->
+    <h2 class="govuk-heading-m">Pages</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="task-list">From task list</a></li>
+      <li><a href="check-your-answers">From Check your answers</a></li>
+    </ul>
+    <h2 class="govuk-heading-m">Design</h2>
+    <p>We only have 1 or 2 BCP's currenlty that allow digital ceritifcates. We need a way of showing BCP's that can be used. This initial version will need search as the number of BCP's grow.</p>
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Warning</span>
+        The prototype shows BCP's that might not yet allow digital certs
+      </strong>
+    </div>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="bcp/border-control-post-dynamic">Border contol post - radio only (WITH categories Of Animals Goods) </a></li>
+      <li><a href="bcp/border-control-post-no-category">Border contol post - radio only (WITHOUT categories Of Animals Goods) </a></li>
+        <li><a href="/bcp/border-control-post-dynamic?hasError=yes">Border contol post - with error (EXPORTER) </a></li>
+    
+    </ul>
+    <h3 class="govuk-heading-m">Other designs</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="./bcp/border-control-post-with-search?ico=XI&q=&country=United%20Kingdom%20-%20Northern%20Ireland">With search and country filter.</a> (This did not test as well)</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+
+});
+</script>
+{% endblock%}

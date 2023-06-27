@@ -147,14 +147,26 @@ Home – GOV.UK Prototype Kit
         <div class="govuk-summary-list__value" data-v-316e8278="">
           <div data-v-316e8278="">The Karro Food Group Ltd (Great Wratting, CB9) </div>
         </div>
-        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Origin/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="./bcp/border-control-post-dynamic?change=yes" class="govuk-link" data-v-316e8278=""> Change </a></div>
       </div>
       <div class="govuk-summary-list__row" id="borderControlPost" data-v-316e8278="">
-        <div class="govuk-summary-list__key" data-v-316e8278=""> Entry border control post </div>
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Border control post </div>
         <div class="govuk-summary-list__value" data-v-316e8278="">
-          <div data-v-316e8278="">Belfast Port - DAERA <span class="ml-1" data-v-316e8278="">(UNLO Code: GBBEL)</span></div>
+
+          {% if data.selctedBCP %}
+          {% set bcp = data.bcp[data.bcpCountryID or 0].ports[data.selctedBCP]%}
+              {{bcp.name}} - {{data.bcp[bcpCountryID or 0].destination}}
+              <br>{{bcp.address}}
+              <br>UN/LOCODE: {{bcp.unlocode}}
+              <br>Code: {{bcp.id}}
+            </label>
+            {% else %}
+            <span class="govuk-hint"> not entered</span>
+          {% endif %}
+
+          
         </div>
-        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Border-Control-Post/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="./bcp/border-control-post-dynamic?change=yes&return=check-your-answers" class="govuk-link" data-v-316e8278=""> Change </a></div>
       </div>
        <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">Transport method</dt>
@@ -187,7 +199,7 @@ Home – GOV.UK Prototype Kit
             <span class="govuk-summary-list__placeholder">Not entered</span>
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions"><a href="./transport/added-transport?change=yes&return=check-your-answers" class="govuk-link"> Change </a></dd>
+          <dd class="govuk-summary-list__actions"><a href="./transport/added-transport?change=yes" class="govuk-link"> Change </a></dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">Transport storage </dt>
