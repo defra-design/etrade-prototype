@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-What is the border control post - {{super()}}
+Which border control post will your consignment – {{serviceName}} – GOV.UK Prototype Kit
 {% endblock %}
 {% block beforeContent %}
 {{super()}}
@@ -33,36 +33,92 @@ What is the border control post - {{super()}}
 {% block content %}
 <div class="govuk-grid-row" data-v-771dc26c="" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-two-thirds" data-v-771dc26c="">
-    <h1 class="govuk-heading-xl"> What is the border control post? </h1>
-    <p>Showing only BCP’s that allow digital applications </p>
+    {% if query.hasError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#skip-question">Select if you have answered as many questions as you can</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    
     <form class="" method="post">
       
 
-      <div class="govuk-form-group">
-        <div data-v-771dc26c="" id="border-inspection-post-listing">
+      <div class="govuk-form-group ">
+        <div  id="border-inspection-post-listing">
+          <fieldset class="govuk-fieldset" aria-described-by="bcp-hint {% if query.hasError %} {% endif %}">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Which border control post will your consignment arrive at?
+                </h1>
+              </legend>
+              <p class="govuk-hint" id="bcp-hint">Because you are submitting a digital application, you can only select a border control post that accepts digital applications.</p>
+
         {% for country in data.bcp %}
         {% if country.destination == data.bcpDestination %}
+        <input type="hidden" name="bcpCountryID" value="{{loop.index0}}">
           {% for bcp in country.ports %}
           {% if bcp.status == "active" %}
+
           <div class="govuk-radios__item app-establishment-list__row" data-content="{{bcp.name}}" data-country="{{country.destination}}" data-number="{{bcp.id}}" data-ico="{{country.ICO}}">
-            <input class="govuk-radios__input" id="establishmentIndex{{loop.index}}" name="selctedBCP" type="radio" value="{{loop.index-1}}" aria-describedby="establishmentIndex{{loop.index}}-hint">
+            <input class="govuk-radios__input" id="establishmentIndex{{loop.index}}" name="selctedBCP" type="radio" value="{{loop.index0}}" aria-describedby="establishmentIndex{{loop.index}}-hint" {% if query.change and data.selctedBCP == loop.index0 %}checked{% endif %}>
             <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index}}">
               <strong>{{bcp.name}}</strong> - {{country.destination}}
               <br>{{bcp.address}}
-              <br>
+              <br>UN/LOCODE: {{bcp.unlocode}}
+              <br>Code: {{bcp.id}}
             </label>
-            <div id="establishmentIndex{{loop.index}}-hint" class="govuk-hint govuk-radios__hint ">
-              code: {{bcp.id}}
-              <br> unlocode: {{bcp.unlocode or "GBLAR"}}
-            </div>
+           <!--  <div id="establishmentIndex{{loop.index}}-hint" class="govuk-hint govuk-radios__hint">
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Commodity types accepted by this BCP
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <ul class="govuk-list govuk-list--bullet">
+                    {% for category in bcp.categoriesOfAnimalsGoodsSpecs %}
+                    <li><strong>{{category.code}}</strong> {{category.description}}</li>
+                    {% endfor %}
+                   
+                  </ul>
+                </div>
+              </details>
+            </div> -->
           </div>
           {% endif %}
           {% endfor %}
           {% endif %}
           {% endfor %}
+          </fieldset>
         </div>
-        <p class="govuk-!-margin-top-6 govuk-!-margin-bottom-6"><strong>If you cannot find the BCP please <a href="https://www.gov.uk/export-health-certificates/composite-food-products-intended-for-human-consumption-to-the-european-union-and-northern-ireland-post-21-april-2021-certificate-8350">continue to use paper based application</a> for any consignments.</strong></p>
+        <p class="govuk-!-margin-top-6 govuk-!-margin-bottom-6"><strong>
+          If you cannot find the border control post you're looking for, it may not accept digital applications. You will need to <a href="https://www.gov.uk/export-health-certificates?keywords=8350">submit a paper-based application</a> for this consignment.</strong></p>
         
+        <div class="govuk-!-margin-bottom-6 {% if query.hasError %}govuk-form-group--error{% endif %}" id="skip-question-container">
+          <h3 class="govuk-heading-m">You can skip this section</h3>
+          <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+          {% if query.hasError %}
+          <p id="skip-error" class="govuk-error-message govuk-!-margin-top-4">
+      <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
+    </p>
+    {% endif %}
+          <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
+            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if query.hasError %}aria-described-by="skip-error"{% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="skip-question">
+              I've entered as much information as I can
+            </label>
+          </div>
+        </div>
       <button class="govuk-button" data-module="govuk-button">
         Save and continue
       </button>
@@ -70,3 +126,22 @@ What is the border control post - {{super()}}
   </div>
 </div>
 {% endblock%}
+
+
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+    if( $('.govuk-radios__input').is(':checked') ){
+      $('#skip-question-checkbox').hide()
+      $('#skip-question-container').addClass("disabled")
+
+    }
+    $(".govuk-radios__input").on("click",function(e){
+      $('#skip-question-checkbox').hide()
+      $('#skip-question-container').addClass("disabled")
+
+    })
+
+});
+</script>
+{% endblock %}
