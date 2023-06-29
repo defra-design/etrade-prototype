@@ -1,0 +1,286 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<style type="text/css">
+  .govuk-summary-list__placeholder{
+    color:#505a5f ;
+  }
+</style>
+<div class="govuk-grid-row" data-v-316e8278="">
+  <div class="govuk-grid-column-three-quarters" data-v-316e8278="">
+    <h1 class="govuk-heading-l" data-v-316e8278="">Check your answers before submitting your application</h1>
+    <!---->
+    <!---->
+    <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-316e8278="">
+      <div class="govuk-summary-list__row" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Application Reference </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">test</div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Reference/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m" data-v-316e8278="">1. Description of the goods</h2>
+    <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-316e8278="">
+      <div class="govuk-summary-list__row" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Certificate </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">EHC8361 - Live fish, crustaceans, certain fishery products (i.e. Cephalopods) and products from these animals intended for human consumption to the European Union and Northern Ireland</div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""></div>
+      </div>
+      <div class="govuk-summary-list__row" id="manageCommodities" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Commodities </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div data-v-316e8278="">1 record for 1 commodity</div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Certificate-Summary/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="grossWeight" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Gross weight </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <p id="gross-weight-error" class="govuk-error-message" data-v-316e8278=""><span class="govuk-visually-hidden" data-v-316e8278="">Error:</span></p>
+          <div data-v-316e8278="">124 GRM</div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Certificate/Weight/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="goodsCertifiedAs" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Goods certified as </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div class="certified-goods" data-v-316e8278="">canning industry</div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Goods-Certified-As/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="containerNoSealNo" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Container number/seal number (optional) </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+         <span class="govuk-summary-list__placeholder">Not entered</span>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Container-Seal-Number/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="purposeOfTheExport" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Purpose of export </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div data-v-316e8278="">Transit <span class="ml-1" data-v-316e8278=""></span></div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Purpose-Of-Export/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m" data-v-316e8278="">2. Additional documents (optional)</h2>
+    <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-316e8278="">
+      <div class="govuk-summary-list__row" id="accompanyingDocuments" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Accompanying documents </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div data-v-316e8278="">No documents uploaded</div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Accompanying-Documents/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m" data-v-316e8278="">3. Persons involved</h2>
+    <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-316e8278="">
+      <div class="govuk-summary-list__row" id="consignor" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Exporter or Consignor </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <dd class="govuk-summary-list__value">
+            
+            
+            MOY PARK<br>
+            170 LARNE ROAD, BALLYMENA,
+            Ballymena,
+            County Antrim,
+            Northern Ireland, BT42<br>
+            United Kingdom - Northern Ireland (XI)
+            <br><br>
+            <!-- Approval number: 56938<br> -->
+            Activity: Importer
+            
+          </dd>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Consignor-Or-Exporter/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="consignee" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Importer or Consignee </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <dd class="govuk-summary-list__value">
+            Denis Brinicombe Group<br>
+            Fordton Industrial Estate,
+            Crediton, 
+            
+            Devon, EX17 3BZ<br>
+            United Kingdom
+            <!-- <br><br> Approval number: U1344327 -->
+            
+          </dd>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Consignee-Or-Importer/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="certifier" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Certifier </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div data-v-316e8278="">
+            <p data-v-316e8278="">ABC ACCOUNTANCY &amp; MARKETING SERVICES LTD Hornbeam House CW1 6GJ &nbsp; (ABC ACCOUNTANCY &amp; MARKETING SERVICES LTD)</p>
+          </div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Certifier/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="regionOfCertification" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Region of certification </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div data-v-316e8278="">Wales</div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Region-of-certification/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="operator" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Responsible for load </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <span class="govuk-summary-list__placeholder">Not entered</span>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Responsible-For-Load/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m" data-v-316e8278="">4. Transport</h2>
+    <div class="govuk-summary-list govuk-!-margin-bottom-9" data-v-316e8278="">
+      <div class="govuk-summary-list__row" id="arrivalAndDeparture" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Departure and arrival </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div data-v-316e8278="">
+            <p data-v-316e8278="">Departure - 20 Jun 2023 16:10</p>
+            <p data-v-316e8278="">Arrival - 23 Jun 2023 16:10</p>
+          </div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Arrival-And-Departure/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="place-of-origin-country" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Country of origin </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div data-v-316e8278="">United Kingdom (GB) </div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Origin/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="place-of-origin-region" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Region of origin (optional) </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div data-v-316e8278="">GB-1</div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Origin/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="place-of-origin-dispatch" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Place of dispatch </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <dd class="govuk-summary-list__value">
+            
+            
+            
+            DOVECOTE POULTRY PRODUCTS<br>
+            2 The Haymarket,
+            Wheatsheef Road,
+            
+            Wolverhampton, WV8 1XE<br>
+            United Kingdom
+            <!-- <br><br> Approval number: 4599 -->
+            
+          </dd>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Origin/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="place-of-origin-loading" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Place of loading </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <dd class="govuk-summary-list__value">
+            
+            
+            
+            DOVECOTE POULTRY PRODUCTS<br>
+            2 The Haymarket,
+            Wheatsheef Road,
+            
+            Wolverhampton, WV8 1XE<br>
+            United Kingdom
+            <!-- <br><br> Approval number: 4599 -->
+            
+          </dd>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Origin/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+      <div class="govuk-summary-list__row" id="borderControlPost" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Entry border control post </div>
+        <div class="govuk-summary-list__value" data-v-316e8278="">
+          <div data-v-316e8278="">Belfast Port - DAERA <span class="ml-1" data-v-316e8278="">(UNLO Code: GBBEL)</span></div>
+        </div>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="/Export-health-certificate/Border-Control-Post/EhcTaskSummaryList/82339719-4195-450f-9543-6cb930eaeb62" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+       <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Transport method</dt>
+          <dd class="govuk-summary-list__value">
+
+
+            <span class="govuk-summary-list__placeholder">Not entered</span>
+
+          </dd>
+          <dd class="govuk-summary-list__actions"><a href="./transport/added-transport?change=yes&return=check-your-answers" class="govuk-link"> Change </a></dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Transport storage </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data.trasnportConditions %}
+            {{data.trasnportConditions}}
+            {% else %}
+            <span class="govuk-summary-list__placeholder">Not entered</span>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions"><a href="./transport/conditions?return=check-your-answers" class="govuk-link"> Change </a></dd>
+        </div>
+
+      <div class="govuk-summary-list__row" id="placeOfDestination" data-v-316e8278="">
+        <div class="govuk-summary-list__key" data-v-316e8278=""> Place of destination </div>
+        <dd class="govuk-summary-list__value">
+            
+            
+            
+            DOVECOTE POULTRY PRODUCTS<br>
+            2 The Haymarket,
+            Wheatsheef Road,
+            
+            Wolverhampton, WV8 1XE<br>
+            United Kingdom
+            <!-- <br><br> Approval number: 4599 -->
+            
+          </dd>
+        <div class="govuk-summary-list__actions" data-v-316e8278=""><a href="./transport/conditions?return=check-your-answers" class="govuk-link" data-v-316e8278=""> Change </a></div>
+      </div>
+    </div>
+    <div data-v-316e8278="">
+      <h2 class="govuk-heading-m" data-v-316e8278=""> Check and submit your application </h2>
+      <div data-v-316e8278="">
+        <p class="govuk-body" data-v-316e8278=""> Once you've entered all the information you can, you can review your answers and submit the application to your certifier. </p><button class="govuk-button" data-v-316e8278=""> Check and continue </button>
+      </div>
+    </div>
+    <!---->
+  </div>
+</div>
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  var timer;
+  var timeTaken = 1;
+
+  function validate() {
+    $("#eleapsed-time").text("Elapsed time : " + timeTaken + " secs")
+    timeTaken += 1
+    if (timeTaken == 8) {
+      clearInterval(timer);
+      $("#submit").show()
+      $('#validate').hide()
+    }
+  }
+  $('#validate').on('click', function(e) {
+    e.preventDefault()
+    $(this).text("Validating application")
+    $(this).prepend('<span class="fas fa-spinner fa-spin" data-v-e8e27fc8=""></span>')
+    $(this).attr("disabled", "disabled")
+    $("#eleapsed-time").show()
+    $("#eleapsed-time").text("Elapsed time : 0 secs")
+    timer = setInterval(validate, 1000);
+  })
+})
+</script>
+{% endblock%}
