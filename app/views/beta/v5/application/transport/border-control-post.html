@@ -33,102 +33,51 @@ Which border control post will your consignment – {{serviceName}} – GOV.UK P
 {% block content %}
 <div class="govuk-grid-row" data-v-771dc26c="" data-v-0c6ff6a7="">
   <div class="govuk-grid-column-two-thirds" data-v-771dc26c="">
-    <h1 class="govuk-heading-xl"> Which border control post will your consignment arrive at?</h1>
-    <p>Because you are submitting a digital application, you can only select a border control post that accepts digital applications.</p>
+    {% if query.hasError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#skip-question">Select if you have answered as many questions as you can</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    
     <form class="" method="post">
-      <div class="govuk-form-group">
-        <div data-v-771dc26c="" id="border-inspection-post-listing">
-          <div class="govuk-radios__item app-establishment-list__row" data-content="Belfast Port - BCC" data-country="Northern Ireland" data-number="XIBEL1-BCC" data-ico="XI">
-            <input class="govuk-radios__input" id="establishmentIndex1" name="selctedBCP" type="radio" value="Belfast Port - BCC - Northern Ireland<br>UN/LOCODE: GBBEL<br>Code: XIBEL1-BCC" aria-describedby="establishmentIndex1-hint">
-            <label class="govuk-label govuk-radios__label" for="establishmentIndex1">
-              <strong>Belfast Port - BCC</strong> - Northern Ireland
-              <br>Belfast City Council, 5 Corry Place, Belfast Harbour Estate, BT3 9HY
-              <br>UN/LOCODE: GBBEL
-              <br>Code: XIBEL1-BCC
-            </label>
-            <div id="establishmentIndex1-hint" class="govuk-hint govuk-radios__hint">
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Commodity types accepted by this BCP
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li><strong>POA-HC-T(FR)(2)</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. Frozen products. Packed products only. </li>
-                    <li><strong>POA-NHC-T(FR)(2)</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. Frozen products. Packed products only. </li>
-                    <li><strong>PNAO</strong> Products of non-animal origin. </li>
-                    <li><strong>HC (Food)</strong> Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014. </li>
-                    <li><strong>NHC (other)</strong> Products of non-animal origin, which are neither food nor feed. </li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
+      
 
-          <div class="govuk-radios__item app-establishment-list__row" data-content="Belfast Port - DAERA" data-country="Northern Ireland" data-number="XIBEL1-DAERA" data-ico="XI">
-            <input class="govuk-radios__input" id="establishmentIndex2" name="selctedBCP" type="radio" value="Belfast Port - DAERA - Northern Ireland<br>UN/LOCODE: GBBEL <br>Code: XIBEL1-DAERA" aria-describedby="establishmentIndex2-hint">
-            <label class="govuk-label govuk-radios__label" for="establishmentIndex2">
-              <strong>Belfast Port - DAERA</strong> - Northern Ireland
-              <br>DAERA Office,Cargo Centre,Belfast International Airport,Belfast,BT29 4AB
-              <br>UN/LOCODE: GBBEL
-              <br>Code: XIBEL1-DAERA
-            </label>
-            <div id="establishmentIndex2-hint" class="govuk-hint govuk-radios__hint">
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Commodity types accepted by this BCP
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li><strong>POA-HC-T(FR)(2)</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. Frozen products. Packed products only. </li>
-                    <li><strong>POA-NHC-T(FR)(2)</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. Frozen products. Packed products only. </li>
-                    <li><strong>PNAO</strong> Products of non-animal origin. </li>
-                    <li><strong>HC (Food)</strong> Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014. </li>
-                    <li><strong>NHC (other)</strong> Products of non-animal origin, which are neither food nor feed. </li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
+      <div class="govuk-form-group ">
+        <div  id="border-inspection-post-listing">
+          <fieldset class="govuk-fieldset" aria-described-by="bcp-hint {% if query.hasError %} {% endif %}">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Which border control post will your consignment arrive at?
+                </h1>
+              </legend>
+              <p class="govuk-hint" id="bcp-hint">Because you are submitting a digital application, you can only select a border control post that accepts digital applications.</p>
 
-          <div class="govuk-radios__item app-establishment-list__row" data-content="CALAIS BOULOGNE PORT" data-country="France" data-number="FRCQF1-TUNNEL" data-ico="FR">
-            <input class="govuk-radios__input" id="establishmentIndex8" name="selctedBCP" type="radio" value="CALAIS BOULOGNE PORT - France<br>UN/LOCODE: FRCQF <br>Code: FRCQF1-PORT" aria-describedby="establishmentIndex8-hint">
-            <label class="govuk-label govuk-radios__label" for="establishmentIndex8">
-              <strong>CALAIS BOULOGNE PORT</strong> - France
-              <br>Calais Port Terminal transmanche 62100 Calais, Boulogne sur Mer 105 rue de Constantine 62200 Boulogne sur mer,Eurotunnel Boulevard de l’Europe 62231 Coquelles
-              <br>UN/LOCODE: FRCQF
-              <br>Code: FRCQF1-PORT
-            </label>
-            <div id="establishmentIndex8-hint" class="govuk-hint govuk-radios__hint">
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Commodity types accepted by this BCP
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li><strong>HC</strong> Products for human consumption.</li>
-                    <li><strong>NHC</strong>Products not for human consumption.</li>
-                    <li><strong>LA</strong>Live animals</li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
+        {% for country in data.bcp %}
+        {% if country.destination == data.bcpDestination %}
+        <input type="hidden" name="bcpCountryID" value="{{loop.index0}}">
+          {% for bcp in country.ports %}
+          {% if bcp.status == "active" %}
 
-          <div class="govuk-radios__item app-establishment-list__row" data-content="CALAIS BOULOGNE TUNNEL" data-country="France" data-number="FRCQF1-TUNNEL" data-ico="FR">
-            <input class="govuk-radios__input" id="establishmentIndex9" name="selctedBCP" type="radio" value="CALAIS BOULOGNE TUNNEL - France<br>UN/LOCODE: FRCQF <br>Code: FRCQF1-TUNNEL" aria-describedby="establishmentIndex9-hint">
-            <label class="govuk-label govuk-radios__label" for="establishmentIndex9">
-              <strong>CALAIS BOULOGNE TUNNEL</strong> - France
-              <br>Calais Port Terminal transmanche 62100 Calais, Boulogne sur Mer 105 rue de Constantine 62200 Boulogne sur mer,Eurotunnel Boulevard de l’Europe 62231 Coquelles
-              <br>UN/LOCODE: FRCQF
-              <br>Code: FRCQF1-TUNNEL
+          <div class="govuk-radios__item app-establishment-list__row" data-content="{{bcp.name}}" data-country="{{country.destination}}" data-number="{{bcp.id}}" data-ico="{{country.ICO}}">
+            <input class="govuk-radios__input" id="establishmentIndex{{loop.index}}" name="selctedBCP" type="radio" value="{{loop.index0}}" aria-describedby="establishmentIndex{{loop.index}}-hint" {% if query.change and data.selctedBCP == loop.index0 %}checked{% endif %}>
+            <label class="govuk-label govuk-radios__label" for="establishmentIndex{{loop.index}}">
+              <strong>{{bcp.name}}</strong> - {{country.destination}}
+              <br>{{bcp.address}}
+              <br>UN/LOCODE: {{bcp.unlocode}}
+              <br>Code: {{bcp.id}}
             </label>
-            <div id="establishmentIndex9-hint" class="govuk-hint govuk-radios__hint">
+           <!--  <div id="establishmentIndex{{loop.index}}-hint" class="govuk-hint govuk-radios__hint">
               <details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                   <span class="govuk-details__summary-text">
@@ -137,199 +86,61 @@ Which border control post will your consignment – {{serviceName}} – GOV.UK P
                 </summary>
                 <div class="govuk-details__text">
                   <ul class="govuk-list govuk-list--bullet">
-                    <li><strong>HC</strong> Products for human consumption.</li>
-                    <li><strong>NHC</strong>Products not for human consumption.</li>
-                    <li><strong>LA</strong>Live animals</li>
+                    {% for category in bcp.categoriesOfAnimalsGoodsSpecs %}
+                    <li><strong>{{category.code}}</strong> {{category.description}}</li>
+                    {% endfor %}
+                   
                   </ul>
                 </div>
               </details>
-            </div>
+            </div> -->
           </div>
-
-          <div class="govuk-radios__item app-establishment-list__row" data-content="Dublin Port Feed" data-country="France" data-number="FRDKK1" data-ico="FR">
-            <input class="govuk-radios__input" id="establishmentIndex20" name="selctedBCP" type="radio" value="Dublin Port Feed - Ireland<br>UN/LOCODE: IEDUB <br>Code: IEDUB1-Feed" aria-describedby="establishmentIndex20-hint">
-            <label class="govuk-label govuk-radios__label" for="establishmentIndex20">
-              <strong>Dublin Port Feed</strong> - Ireland
-              <br>  Department of Agriculture, Food and the Marine Terminal 9 & 10  Dublin 1
-              <br>UN/LOCODE: IEDUB
-              <br>Code: IEDUB1-Feed
-            </label>
-            <div id="establishmentIndex20-hint" class="govuk-hint govuk-radios__hint">
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Commodity types accepted by this BCP
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li><strong>POA</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw.</li>
-                    <li><strong>LA</strong> Live animals.</li>
-                    <li><strong>PNAO</strong> Products of non-animal origin.</li>
-                    <li><strong>P</strong> Plants.</li>
-                    <li><strong>OO</strong> Other objects.</li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
-
-          <div class="govuk-radios__item app-establishment-list__row" data-content="Dublin Port Feed" data-country="France" data-number="IEDUB" data-ico="FR">
-            <input class="govuk-radios__input" id="establishmentIndex21" name="selctedBCP" type="radio" value="Dublin Port HSE - Ireland <br>UN/LOCODE: IEDUB <br>Code: IEDUB1-HSE" aria-describedby="establishmentIndex21-hint">
-            <label class="govuk-label govuk-radios__label" for="establishmentIndex20">
-              <strong>Dublin Port HSE</strong> - Ireland
-              <br>  Department of Agriculture, Food and the Marine Terminal 9 & 10  Dublin 1
-              <br>UN/LOCODE: IEDUB
-              <br>Code: IEDUB1-HSE
-            </label>
-            <div id="establishmentIndex20-hint" class="govuk-hint govuk-radios__hint">
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Commodity types accepted by this BCP
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li><strong>POA</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw.</li>
-                    <li><strong>LA</strong> Live animals.</li>
-                    <li><strong>PNAO</strong> Products of non-animal origin.</li>
-                    <li><strong>P</strong> Plants.</li>
-                    <li><strong>PP</strong> Plants prodcuts</li>
-                    <li><strong>OO</strong> Other objects.</li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
-
-
-           <div class="govuk-radios__item app-establishment-list__row" data-content="DUNKERQUE" data-country="France" data-number="FRDKK1" data-ico="FR">
-            <input class="govuk-radios__input" id="establishmentIndex10" name="selctedBCP" type="radio" value="DUNKERQUE - France <br>UN/LOCODE: FRDKK <br>Code: FRDKK1" aria-describedby="establishmentIndex10-hint">
-            <label class="govuk-label govuk-radios__label" for="establishmentIndex10">
-              <strong>DUNKERQUE</strong> - France
-              <br> Port 5805 Route des Amériques 59279 LOON PLAGE
-              <br>UN/LOCODE: FRDKK
-              <br>Code: FRDKK1
-            </label>
-            <div id="establishmentIndex10-hint" class="govuk-hint govuk-radios__hint">
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Commodity types accepted by this BCP
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li><strong>POA-HC</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption.</li>
-                    <li><strong>POA-NHC</strong>Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption.</li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
-
-          <div class="govuk-radios__item app-establishment-list__row" data-content="Larne Harbour - DAERA" data-country="Northern Ireland" data-number="XILAR1-DAERA" data-ico="XI">
-            <input class="govuk-radios__input" id="establishmentIndex3" name="selctedBCP" type="radio" value="Larne Harbour - DAERA- Northern Ireland <br>UN/LOCODE: GBLAR <br>Code: XILAR1-DAERA" aria-describedby="establishmentIndex3-hint">
-            <label class="govuk-label govuk-radios__label" for="establishmentIndex3">
-              <strong>Larne Harbour - DAERA</strong> - Northern Ireland
-              <br>Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Redlands Road, Larne Harbour, BT40 1AX
-              <br>UN/LOCODE: GBLAR
-              <br>Code: XILAR1-DAERA
-            </label>
-            <div id="establishmentIndex3-hint" class="govuk-hint govuk-radios__hint">
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Commodity types accepted by this BCP
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li><strong>LA-E</strong> Live animals. Registered equidae. </li>
-                    <li><strong>LA-O</strong> Live animals. Other animals other than Ungulates (This abbreviation includes zoo Ungulates). </li>
-                    <li><strong>LA-U</strong> Live animals. Ungulates other than registered equidae. </li>
-                    <li><strong>POA-HC</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. </li>
-                    <li><strong>POA-NHC</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. </li>
-                    <li><strong>PNAO-NHC(feed)</strong> Products of non-animal origin. Feed of non-animal origin covered by conditions or measures referred to in Article 47(1)(d)(e) or (f) of (Regulation (EU) 2017/625. </li>
-                    <li><strong>P</strong> Plants. </li>
-                    <li><strong>PP</strong> Plant products. </li>
-                    <li><strong>PP(WP)</strong> Wood and wood products. </li>
-                    <li><strong>OO</strong> Other objects. </li>
-                    <li><strong>POA-HC(fish/fishery products)</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Unknown description. </li>
-                    <li><strong>PNAO-HC(food)</strong> Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014. </li>
-                    <li><strong>PNAO-NHC(other)(1)</strong> Products of non-animal origin. Products of non-animal origin, which are neither food nor feed. See additional specifications. </li>
-                    <li><strong>COI(organics)</strong> Unknown description. </li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
-          <div class="govuk-radios__item app-establishment-list__row" data-content="Warrenpoint Port - DAERA" data-country="Northern Ireland" data-number="XIWPT1-DAERA" data-ico="XI">
-            <input class="govuk-radios__input" id="establishmentIndex4" name="selctedBCP" type="radio" value="3" aria-describedby="establishmentIndex4-hint">
-            <label class="govuk-label govuk-radios__label" for="establishmentIndex4">
-              <strong>Warrenpoint Port - DAERA</strong> - Northern Ireland
-              <br>Dept. Agriculture, Environment and Rural Affairs Veterinary Service Portal Branch, Portal Inspection Office, Warrenpoint Port, BT34 3JR
-              <br>UN/LOCODE: GBWPT
-              <br>Code: XIWPT1-DAERA
-            </label>
-            <div id="establishmentIndex4-hint" class="govuk-hint govuk-radios__hint">
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Commodity types accepted by this BCP
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li><strong>LA-E</strong> Live animals. Registered equidae. </li>
-                    <li><strong>LA-O</strong> Live animals. Other animals other than Ungulates (This abbreviation includes zoo Ungulates). </li>
-                    <li><strong>LA-U</strong> Live animals. Ungulates other than registered equidae. </li>
-                    <li><strong>POA-HC</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products for human consumption. </li>
-                    <li><strong>POA-NHC</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Products not for human consumption. </li>
-                    <li><strong>PNAO-NHC(feed)</strong> Products of non-animal origin. Feed of non-animal origin covered by conditions or measures referred to in Article 47(1)(d)(e) or (f) of (Regulation (EU) 2017/625. </li>
-                    <li><strong>P</strong> Plants. </li>
-                    <li><strong>PP</strong> Plant products. </li>
-                    <li><strong>PP(WP)</strong> Wood and wood products. </li>
-                    <li><strong>OO</strong> Other objects. </li>
-                    <li><strong>POA-HC(fish/fishery products)</strong> Products of animal origin, composite products, germinal products, animal by-products, hay and straw. Unknown description. </li>
-                    <li><strong>PNAO-HC(food)</strong> Products of non-animal origin. Food of non-animal origin covered by conditions or measures referred to in Annex 2 of Regulation (EU) 2019/1014. </li>
-                    <li><strong>PNAO-NHC(other)(1)</strong> Products of non-animal origin. Products of non-animal origin, which are neither food nor feed. See additional specifications. </li>
-                    <li><strong>COI(organics)</strong> Unknown description. </li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+          </fieldset>
         </div>
         <p class="govuk-!-margin-top-6 govuk-!-margin-bottom-6"><strong>
-            If you cannot find the border control post you're looking for, it may not accept digital applications. You will need to <a href="https://www.gov.uk/export-health-certificates?keywords=8350">submit a paper-based application</a> for this consignment.</strong></p>
-        <div class="govuk-!-margin-bottom-6" id="skip-question-container">
+          If you cannot find the border control post you're looking for, it may not accept digital applications. You will need to <a href="https://www.gov.uk/export-health-certificates?keywords=8350">submit a paper-based application</a> for this consignment.</strong></p>
+        
+        <div class="govuk-!-margin-bottom-6 {% if query.hasError %}govuk-form-group--error{% endif %}" id="skip-question-container">
           <h3 class="govuk-heading-m">You can skip this section</h3>
           <p class="govuk-body govuk-!-margin-bottom-0">If you're unable to enter some information, you can leave the section blank and submit the application to your certifier to complete.</p>
+          {% if query.hasError %}
+          <p id="skip-error" class="govuk-error-message govuk-!-margin-top-4">
+      <span class="govuk-visually-hidden">Error:</span> Select if you have answered as many questions as you can
+    </p>
+    {% endif %}
           <div class="govuk-checkboxes__item govuk-!-margin-top-4" id="skip-question-checkbox">
-            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes">
+            <input class="govuk-checkboxes__input" id="skip-question" name="skip-question" type="checkbox" value="yes" {% if query.hasError %}aria-described-by="skip-error"{% endif %}>
             <label class="govuk-label govuk-checkboxes__label" for="skip-question">
               I've entered as much information as I can
             </label>
           </div>
         </div>
-        <button class="govuk-button" data-module="govuk-button">
-          Save and continue
-        </button>
-      </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
     </form>
   </div>
 </div>
 {% endblock%}
+
+
 {% block pageScripts %}
 <script type="text/javascript">
 window.addEventListener('load', function() {
+    if( $('.govuk-radios__input').is(':checked') ){
+      $('#skip-question-checkbox').hide()
+      $('#skip-question-container').addClass("disabled")
 
-  $(".govuk-radios__input").on("click", function(e) {
-    $('#skip-question-checkbox').hide()
-    $('#skip-question-container').addClass("disabled")
-  })
+    }
+    $(".govuk-radios__input").on("click",function(e){
+      $('#skip-question-checkbox').hide()
+      $('#skip-question-container').addClass("disabled")
+
+    })
 
 });
 </script>

@@ -1,19 +1,14 @@
 {% extends "layout.html" %}
-
 {% block pageTitle %}
-Version 3.5 – GOV.UK Prototype Kit
+Version 5 – GOV.UK Prototype Kit
 {% endblock %}
-
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <h1 class="govuk-heading-xl">
       <span class="govuk-caption-xl">Trade: E-certs</span>
-      Version 3.5
+      Version 5 (lastest version)
     </h1>
-
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
@@ -22,50 +17,114 @@ Version 3.5 – GOV.UK Prototype Kit
       </summary>
       <div class="govuk-details__text">
         <ul class="govuk-list govuk-list--bullet">
-          <li>Goods certified as, removed search when less than 15 radios and other at the bottom. </li>
-          <li>Guidence to ....</li>
+          <li>todo</li>
         </ul>
       </div>
     </details>
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-    <h2 class="govuk-heading-m">Pages</h2>
-    <h3 class="govuk-heading-s">New user</h3>
+    <!-- <h3 class="govuk-heading-m">New user</h3>
     <ul class="govuk-list govuk-list--bullet">
-
       <li><a href="../verify/gov-sign-in?loginReturnURL=/beta/v3-2/dashboard-no-applications">From login - new user</a></li>
       <li><a href="dashboard-no-applications">Dashboard new user</a></li>
-    </ul>
-    <h3 class="govuk-heading-s">Existing user</h3>
+    </ul> -->
     <ul class="govuk-list govuk-list--bullet">
-      <li><a href="../verify/gov-sign-in?loginReturnURL=/beta/v3-2/dashboard">From login - existing user</a></li>
-      <li><a href="dashboard">Dashboard existing user</a></li>
+      <li><a href="../verify/gov-sign-in?loginReturnURL=/beta/v3-2/dashboard">From login  (existing user)</a></li>
+      <li><a href="dashboard">From dashboard (existing user)</a></li>
     </ul>
-
-    <h3 class="govuk-heading-s">Application</h3>
+    <h3 class="govuk-heading-m">Application</h3>
     <ul class="govuk-list govuk-list--bullet">
       <li><a href="application/start">Start new application</a></li>
       <li><a href="application/create-reference">Reference number</a></li>
       <li><a href="application/export/select-certificates?displayMax=10">Select certificate</a></li>
     </ul>
-
-    <h3 class="govuk-heading-s">Task list</h3>
+    <h3 class="govuk-heading-m">Task list</h3>
     <ul class="govuk-list govuk-list--bullet">
       <li><a href="application/task-list">Task list</a></li>
-      <li><a href="application/task-list">Task list - complete</a></li>
+      <li><a href="application/task-list?isComplete=yes">Task list (with review and submit section clickable)</a></li>
+    </ul>
+    <h4 class="govuk-heading-s">1.What’s in your consignment</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="./export/added-commodities-list?change=no&certificate=12">Commodities page</a> you will need to select a certificate if one has not been addded</li>
+      <li><a href="./application/export/weight?change=no&certificate=12">Gross weight</a></li>
+    </ul>
+    
+    <h4 class="govuk-heading-s">2.Certification of the consignment</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="application/persons/certifier?change=no&certificate=12">Certifier</a></li>
+      <li><a href="application/persons/region-of-certification?change=no&certificate=12">Where will the consignment be certified?</a></li>
+      <li><a href="application/goods/goods-certified-as?change=no&certificate=12">Goods certified as (4 entries)</a>
+      <li><a href="application/goods/goods-certified-as?change=no&certificate=0">Goods certified as (15 entries + other)</a></li>
     </ul>
 
-    <h3 class="govuk-heading-s">Pages</h3>
+
+    <h4 class="govuk-heading-s">3.Sending the consignment</h4>
     <ul class="govuk-list govuk-list--bullet">
-      <li><a href="application/goods/goods-certified-as?change=no&certificate=12">Goods certified as (4 entries)</a>
-        <li><a href="application/goods/goods-certified-as?change=no&certificate=0">Goods certified as (15 entries + other)</a></li>
-      <li><a href="application/task-list">Task list - complete</a></li>
+      <li><a href="persons/consignor-or-exporter?change=no&deleted=yes&who=consignor&certificate=12">Exporter or consignor
+        </a></li>
+        <li><a href="application/persons/consignor/activity?establishmentIndex=0&change=no&deleted=yes&who=consignor&certificate=12">Exporter or consignor - select and activity
+        </a></li>
+        <li><a href="application/transport/load-and-dispatch?change=no&establishmentIndex=0&change=no&deleted=yes&who=consignor&certificate=12">Dispatch and loading locations
+        </a></li>
+        <li><a href="application/transport/arrival-and-departure">When will the consignment leave Great Britain?
+        </a></li>
+        
     </ul>
-     <h3 class="govuk-heading-s">Check your answers</h3>
+
+    <h4 class="govuk-heading-s">4. Transport</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="application/goods/containter-seal-numbers/goods-in-closed-containers?change=no">Container and seal numbers
+        </a></li>
+        <br>
+        <li><a href="./application/transport/added-transport">
+          Transport methods
+        </a></li>
+        <li><a href="./application/transport/select-transport">
+          Transport methods - select a transport
+        </a></li>
+        <li><a href="./application/transport/transport-details?transportType=Road+vehicle">
+         Transport methods - Road vehicle details
+        </a></li>
+        <li><a href="./application/transport/transport-details?transportType=Plane">
+         Transport methods - Plane details
+        </a></li>
+        <li><a href="./application/transport/transport-details?transportType=Train">
+         Transport methods - Train details
+        </a></li>
+        <li><a href="./application/transport/transport-details?transportType=Ship">
+         Transport methods - Ship details
+        </a></li>
+        <br>
+        <li><a href="./application/transport/conditions
+&certificate=12">Transport storage
+        </a></li>
+        
+    </ul>
+
+    <h4 class="govuk-heading-s">5. When the consignment arrives</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="application/goods/purpose-of-export?change=no">What type of consignment are you sending?
+        </a></li>
+        <li><a href="./application/transport/border-control-post?change=no">Border control post (BCP)</li>
+        <li><a href="./application/transport/arrival">When will the consignment arrive at the border control post (BCP)?</li>
+          <li><a href="./application/persons/consignee-or-importer?change=no">Importer or consignee
+</li>
+         <li><a href="./application/persons/load?change=no">Responsible for load (optional)</li>
+
+          <li><a href="./application/transport/place-of-destination?change=no">Place of destination
+</li>
+         
+      </ul>
+      <h4 class="govuk-heading-s">6. Additional documents (optional)
+</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="./application/attachments/added-documents?change=no">Add additional documents</a></li>
+      <li><a href="./application/attachments/uploads?change=no">Upload an additional document</a></li>
+      </ul>
+    <h3 class="govuk-heading-m">Check your answers</h3>
     <ul class="govuk-list govuk-list--bullet">
       <li><a href="application/check-your-answers">Check your answers complete</a></li>
       <li><a href="application/check-your-answers">Check your answers with skipped fields</a></li>
     </ul>
-
   </div>
   <div class="govuk-grid-column-one-thirds">
     <!--
@@ -77,5 +136,4 @@ Version 3.5 – GOV.UK Prototype Kit
     -->
   </div>
 </div>
-
 {% endblock %}

@@ -27,7 +27,7 @@ Consignee or importer – GOV.UK Prototype Kit
 <form class="" action="{% if data.change == 'yes'%}../check-your-answers{%else%}../task-list{% endif %}" method="post">
   <div class="govuk-grid-row" data-v-0c6ff6a7="">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">Consignee or importer</h1>
+      <h1 class="govuk-heading-xl">Importer or consignee</h1>
       <p class="govuk-body">This is the organisation that will receive this consignment. They must be located in either Northern Ireland or the EU.</p>
         {% set showApprovalNumber = 'yes' %}
         {% if data.person['consignee'] %}
